@@ -136,6 +136,14 @@ target=_blank>$dname</a>";
 echo '
 </blockquote>
 <p>
+Installation Guide:
+<blockquote>
+';
+echo "<a href=\"install.php\"
+target=_blank>PHP News Reader - Installation and Configuration</a>";
+echo '
+</blockquote>
+<p>
 Discussion Forum:
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
