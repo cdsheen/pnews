@@ -52,8 +52,8 @@ echo <<<EOH
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
 <li>Workaround for broken news server which expiration does not work correctly.
-<li>Support command to show original article, inclding NNTP headers.
-<li>Empty lines are ignored in the quoted article when replying.
+<li>Support command to show article headers.
+<li>Empty lines are deleted in the quoted article when replying.
 <li>Viewing and downloading UUENCODE attachment.
 </ul>
 PHP News Reader v2.4.1 (2003/10/25)

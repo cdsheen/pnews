@@ -434,7 +434,7 @@ function nnrp_show ( $nhd, $artnum, $mode, $prepend = '', $postpend = '', $trans
 	}
 }
 
-function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8' ) {
+function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8', $time_format = '%Y/%m/%d %H:%M:%S' ) {
 	send_command( $nhd, "HEAD $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
 
@@ -460,7 +460,7 @@ function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8' ) {
 		$nowline = $nextline;
 	}
 
-	return( get_mime_info( $headers, $def_charset ) );
+	return( get_mime_info( $headers, $def_charset, $time_format ) );
 }
 
 function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organization, $ref = null, $real_email, $art_charset ) {
@@ -607,9 +607,7 @@ function mb_wordwrap($str)
 	return $str_conv;
 }
 
-function get_mime_info( $headers, $def_charset = 'utf-8' ) {
-
-	global $CFG;
+function get_mime_info( $headers, $def_charset, $time_format ) {
 
 	$artinfo['charset'] = $def_charset;
 
@@ -634,7 +632,7 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 		$artinfo['encoding'] = '7bit';
 
 	if( $headers['Date'] )
-		$artinfo['date'] = strftime( $CFG['time_format'], strtotime($headers['Date']) );
+		$artinfo['date'] = strftime( $time_format, strtotime($headers['Date']) );
 
 	$artinfo['msgid'] = $headers['Message-ID'];
 

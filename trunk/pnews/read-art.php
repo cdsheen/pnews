@@ -66,7 +66,7 @@ else {
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
-$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 if( !$artinfo ) {
 	if( $CFG['show_article_popup'] )
