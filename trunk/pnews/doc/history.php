@@ -52,11 +52,12 @@ echo <<<EOH
 PHP News Reader v2.4.1 (2003/10/11)
 <ul>
 <li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module
+<li>Support <a href=guide.php#ftps_auth>FTPS</a> (FTP over SSL) authentication module
 </ul>
 PHP News Reader v2.4.0 (2003/10/04)
 <ul>
 <li>Support News Server with NNTP over SSL connection (also known as NNTPS or SNEWS)
-<li>Support <a href=guide.php#nntps_auth>NNTPS</a> authentication module
+<li>Support <a href=guide.php#nntps_auth>NNTPS</a> (NNTP over SSL) authentication module
 <li>Overview format is confirmed by <b>LIST OVERVIEW.FMT</b>
 <li>Caching can be enabled to accelerate the indexing process. (<a href=guide.php#cache_dir>\$CFG["cache_dir"]</a>)
 <li>Check for the invalid access to groups not listed in newsgroups.lst

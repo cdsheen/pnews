@@ -57,13 +57,14 @@ $CFG["auth_http_realm"] = "XXX";
 #               REQUIRED if auth_type != "open"
 #      "ldap" - authenticated via LDAP server,
 #      "pop3" - authenticated via POP3 server,
-#     "pop3s" - authenticated via POP3S server,
+#     "pop3s" - authenticated via POP3 over SSL server, (>=v2.4.1)
 #       "ftp" - authenticated via FTP server,
+#      "ftps" - authenticated via FTP over SSL server, (>=v2.4.1)
 #      "mail" - authenticated via multiple POP3 server,
 #     "mysql" - authenticated via MySQL database,
 #     "pgsql" - authenticated via PostgreSQL database,
 #      "nntp" - authenticated via NNTP server,
-#     "nntps" - authenticated via NNTPS server, (>=v2.4.0)
+#     "nntps" - authenticated via NNTP over SSL server, (>=v2.4.0)
 #       "cas" - authenticated via CAS (>=v2.3.0)
 #      "user" - authenticated via your self-defined method,
 
@@ -117,6 +118,15 @@ $CFG["auth_organization"] = "XXX Club";
 
 // $CFG["ftp_server"]      = "ftp.domain.org";
 // $CFG["ftp_deny"]        = array( 'anonymous', 'guest', 'ftp', 'root' );
+
+
+# FTPS authentication parameters (REQUIRED if auth_method == 'ftp')
+#      [$ftps_server] FTP over SSL server address ( address:port )
+#        [$ftps_deny] The user list which is denied for FTPS authentication
+#                    (default: array( 'anonymous', 'guest', 'ftp' ) )
+
+// $CFG["ftps_server"]      = "ftps.domain.org";
+// $CFG["ftps_deny"]        = array( 'anonymous', 'guest', 'ftp', 'root' );
 
 
 # POP3 authentication parameters (REQUIRED if auth_method == 'pop3')

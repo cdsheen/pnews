@@ -29,7 +29,7 @@ require_once('config.inc.php');
 
 $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form', 'cas' );
-$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
+$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
 
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
@@ -113,6 +113,22 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'FTP authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'FTP authentication module is invalid' );
+		break;
+	case 'ftps':
+		if( !isset( $CFG['ftps_server'] ) )
+			config_error( '$CFG["ftps_server"]' );
+		if( !isset( $CFG['ftps_deny'] ) )
+			$CFG['ftps_deny'] = array( 'anonymous', 'guest', 'ftp' );
+		if( file_exists('auth/ftps.inc.php') )
+			include('auth/ftps.inc.php');
+		else
+			show_error( 'FTPS authentication module missed' );
+		if( !function_exists( 'check_user_password' ) )
+			show_error( 'FTPS authentication module is invalid' );
+		if( version_check( '4.3.0' ) )
+			show_error( 'PHP 4.3.0 or greater is required for FTP over SSL support' );
+		if( !function_exists( 'openssl_get_publickey' ) )
+			show_error( 'OpenSSL is required for FTP over SSL support' );
 		break;
 	case 'mysql':
 		if( !function_exists( 'mysql_connect' ) )

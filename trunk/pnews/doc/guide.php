@@ -171,13 +171,14 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       ) </p>
     <p>&quot;ldap&quot; - authenticated via LDAP server,<br />
       &quot;pop3&quot; - authenticated via POP3 server,<br />
-      &quot;pop3s&quot; - authenticated via POP3S server (with version >= 2.4.1),<br />
+      &quot;pop3s&quot; - authenticated via POP3S (POP3 over SSL) server (with version >= 2.4.1),<br />
       &quot;ftp&quot; - authenticated via FTP server,<br />
+      &quot;ftps&quot; - authenticated via FTPS (FTP over SSL) server (with version >= 2.4.1),<br />
       &quot;mail&quot; - authenticated via multiple POP3 server,<br />
       &quot;mysql&quot; - authenticated via MySQL database,<br />
       &quot;pgsql&quot; - authenticated via PostgreSQL database,<br />
       &quot;nntp&quot; - authenticated via NNTP News Server (with version >= 2.2.1),<br />
-      &quot;nntps&quot; - authenticated via NNTPS News Server (with version >= 2.4.0),<br />
+      &quot;nntps&quot; - authenticated via NNTPS (NNTP over SSL) News Server (with version >= 2.4.0),<br />
       &quot;cas&quot; - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br />
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
@@ -269,6 +270,23 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["ftp_deny"] = array( 'anonymous', 'guest', 'ftp', 'root' );</p>
     </blockquote>
   </blockquote>
+<a name=ftps_auth></a>
+  <p><br />
+    <strong>FTPS (FTP over SSL) authentication parameters</strong> (REQUIRED if auth_method == 'ftps')</p>
+  <blockquote> 
+    <p> <strong>$CFG[&quot;ftps_server&quot;]</strong></p>
+    <blockquote> 
+      <p>FTPS server address ( address:port ), default port is 990</p>
+      <p>$CFG["ftps_server"] = "ftps.domain.org";</p>
+    </blockquote>
+    <p> <strong>$CFG[&quot;ftps_deny&quot;]</strong></p>
+    <blockquote>
+      <p> The user list which is denied for FTPS authentication<br />
+        (default:<em><strong> array( 'anonymous', 'guest', 'ftp' )</strong></em> 
+        )</p>
+      <p>$CFG["ftps_deny"] = array( 'anonymous', 'guest', 'ftp', 'root' );</p>
+    </blockquote>
+  </blockquote>
 <a name=pop3_auth></a>
   <p> <strong>POP3 authentication parameters</strong> (REQUIRED if auth_method == 'pop3')</p>
   <blockquote> 
@@ -283,16 +301,18 @@ You can download phpCAS from the following place:<br />
       <p>Normally, you did not need this parameter. But on some BBS systems, a little modification is needed, such as:</p>
       <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
     </blockquote>
+    <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
+    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=pop3s_auth></a>
-  <p> <strong>POP3S authentication parameters</strong> (REQUIRED if auth_method == 'pop3')</p>
+  <p> <strong>POP3S (POP3 over SSL) authentication parameters</strong> (REQUIRED if auth_method == 'pop3s')</p>
   <blockquote>
     <p> <strong>$CFG[&quot;pop3s_server&quot;]</strong></p>
     <blockquote> 
       <p>POP3S server address ( address:port ), default port is 995</p>
       <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
     </blockquote>
-    <p>This setting first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
+    <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
     <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=mail_auth></a>
@@ -325,7 +345,7 @@ You can download phpCAS from the following place:<br />
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=nntps_auth></a>
-  <p><strong>NNTPS authentication parameters</strong> (REQUIRED if auth_method == 'nntps')</p>
+  <p><strong>NNTPS (NNTP over SSL) authentication parameters</strong> (REQUIRED if auth_method == 'nntps')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;auth_nntps_server&quot;]</strong></p>
     <blockquote> 
@@ -335,7 +355,7 @@ You can download phpCAS from the following place:<br />
     <p>Note that this option only deal with the authentication of PHP News Reader,
        it has nothing to do with the authentication perform by news server.
        Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
-    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+    <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
     <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=cas_auth></a>
