@@ -197,7 +197,7 @@ else {
 			if( strlen( $id ) > $id_limit )
 				$id = substr( $id, 0, $id_limit ) . ' ..';
 			elseif( $id == '' )
-			$id = '&lt;author&gt;';
+				$id = '&lt;author&gt;';
 			$nick = $id;
 		}
 		$email = trim($ov[3]);
