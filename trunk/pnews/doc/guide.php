@@ -159,7 +159,8 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       (used only if <a href="#auth_type">$CFG["auth_type"]</a> is not <i>'open'</i>)</p>
     <p> "http" - authenticated user via HTTP login window<br />
       "form" - authenticated user via HTML login form (default and is recommended)<br />
-      "cas" - authenticated user via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0)</p>
+      "cas" - authenticated user via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0)<br />
+      "other" - authenticated user via third party system (ex: <a href="#phpbb_auth">phpBB</a>), (with version >= 2.5.6)</p>
   </blockquote>
 <a name=post_restriction></a><a name=global_readonly></a>
   <p><strong>$CFG["global_readonly"]</strong></p>
@@ -192,6 +193,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       "<a href=#nntp_auth>nntp</a>" - authenticated via NNTP News Server (with version >= 2.2.1),<br />
       "<a href=#nntps_auth>nntps</a>" - authenticated via NNTPS (NNTP over SSL) News Server (with version >= 2.4.0),<br />
       "<a href=#cas_auth>cas</a>" - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br />
+      "<a href=#phpbb_auth>phpbb</a>" - authenticated via <a href=http://www.phpbb.com/ target=_blank>phpBB</a> (with version >= 2.5.6),<br />
       "user" - authenticated via your self-defined method,</p>
   </blockquote>
 <p>
@@ -396,8 +398,24 @@ You can download phpCAS from the following place:<br />
     </blockquote>
     <p>The above settings first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=phpbb_auth></a>
+  <p><strong>phpBB authentication module paramenters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'phpbb'</i>)</p></p>
+  <blockquote>
+    <p><strong>$CFG["auth_phpbb_url_base"]</strong></p>
+    <blockquote>
+      <p>The base URL of your phpBB installation</p>
+      <p>$CFG["auth_phpbb_url_base"] = "http://phpbb.foobar.com/";</p>
+    </blockquote>
+    <p><strong>$CFG["auth_phpbb_path"]</strong></p>
+    <blockquote>
+      <p>The relative path of absolute path of your phpBB installation</p>
+      <p>$CFG["auth_phpbb_path"] = "../phpbb/";</p>
+    </blockquote>
+    <p>Notice: Your <a href="#auth_prompt">$CFG["auth_prompt"]</a> must be <i>'other'</i> if you want to use phpBB authtication module.
+    <p>The above settings first appeared in the <b>v2.5.6</b> of PHP News Reader</p>
+  </blockquote>
 <a name=db_auth></a>
-  <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
+  <p><strong>MySQL/PostgreSQL Database authentication parameters</strong></p>
   <blockquote>
     <p>(REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'mysql'</i> or <i>'pgsql'</i> )</p>
     <p>These parameters are used in both MySQL and PostgreSQL database authentication module.</p>
@@ -451,6 +469,7 @@ You can download phpCAS from the following place:<br />
         $CFG["db_password_crypt"] = "md5";<br />
         $CFG["db_variable"] = array( "%e" =&gt; "user_email" 
         );</p>
+      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
     </blockquote>
   </blockquote>
 <a name=auth_expire_time></a>

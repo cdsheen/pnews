@@ -45,6 +45,7 @@ $CFG["auth_type"] = "optional";
 #               (used when auth_type != 'open')
 #      "http" - authentication via HTTP login window    (default)
 #      "form" - authentication with login form
+#     "other" - authentication with third party system (>=2.5.6)
 
 $CFG["auth_prompt"] = "form";
 
@@ -74,6 +75,7 @@ $CFG["auth_http_realm"] = "XXX";
 #      "nntp" - authenticated via NNTP server,
 #     "nntps" - authenticated via NNTP over SSL server, (>=v2.4.0)
 #       "cas" - authenticated via CAS (>=v2.3.0)
+#     "phpbb" - authenticated via phpBB (>=v2.5.6)
 #      "user" - authenticated via your self-defined method,
 
 // $CFG["auth_method"] = "ftp";
@@ -205,6 +207,15 @@ $CFG["auth_cas_server"] = 'cas.domain.name:8443';
 $CFG["auth_cas_base_uri"] = 'cas';
 
 // $CFG["auth_cas_debug"] = '/var/log/phpcas.log';
+
+# phpBB authetication parameters (REQUIRED if auth_method == 'phpbb')
+#   [$auth_phpbb_url_base] The base URL of your phpBB installation
+#   [$auth_phpbb_path]     The relative of absolute path of
+#                          your phpBB installation
+
+// $CFG['auth_phpbb_url_base'] = 'http://phpbb.foobar.com/';
+// $CFG['auth_phpbb_path'] = '../phpbb/';
+
 
 # [auth_expire_time] After this time in seconds, authentication is expired
 #                    And login again is required. Zero means never expire

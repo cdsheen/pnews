@@ -40,7 +40,7 @@ REL;
 		if( $curr_scr == $scr )
 			echo "<td align=25% bgcolor=black><font size=3 color=white>$menu</font></td>\n";
 		else
-			echo "<td align=25% bgcolor=#FFFFA0 onMouseover='this.bgColor=\"#D0E0D0\"' onMouseout='this.bgColor=\"#FFFFA0\"'><a href=$scr><font size=3>$menu</font></a></td>\n";
+			echo "<td align=25% bgcolor=#FFFFA0 onMouseover='this.bgColor=\"#CCCCFF\"' onMouseout='this.bgColor=\"#FFFFA0\"'><a href=$scr><font size=3>$menu</font></a></td>\n";
 	}
 	echo "</tr>\n";
 	echo "</table>\n";

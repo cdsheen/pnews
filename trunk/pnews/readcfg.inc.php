@@ -199,6 +199,8 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'User-defined authentication module is invalid' );
 		break;
 	case 'phpbb':
+		if( $CFG['auth_prompt'] != 'other' )
+			show_error( '$CFG["auth_prompt"] should be "other" to use phpbb authentication module' );
 		if( file_exists('auth/phpbb.inc.php') )
 			include('auth/phpbb.inc.php');
 		else
