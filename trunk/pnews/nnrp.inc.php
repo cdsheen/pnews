@@ -485,6 +485,12 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 
 		$body[$i] = htmlspecialchars( $body[$i], ENT_NOQUOTES );
 
+		# replace the space(s) as &nbsp;
+#		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $body[$i] , $match ) )
+#			$body[$i] = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
+		if( !$space_asis )
+			$body[$i] = preg_replace( '/\s/', '&nbsp;', $body[$i] );
+
 		# hyperlink/email auto-detection
 		if( $show_hlink ) {
 			/* replace hyperlink */
@@ -507,10 +513,6 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		# convert charset if required
 		if( $trans_func )
 			$body[$i] = $trans_func( $body[$i] );
-
-		# replace the leading space as &nbsp;
-		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $body[$i] , $match ) )
-			$body[$i] = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
 
 		echo $prepend . $body[$i] . $postpend;
 	}
