@@ -359,10 +359,11 @@ EOE;
 	exit;
 }
 
-function version_check($vercheck) {
-	$minver = explode(".", $vercheck);
-	$curver = explode(".", phpversion());
-	if( ($curver[0] <= $minver[0]) && ($curver[1] <= $minver[1])
+function version_check($check) {
+	$minver = explode( '.', $check );
+	$curver = explode( '.', phpversion() );
+	if( ($curver[0] <= $minver[0])
+			&& ($curver[1] <= $minver[1])
 			&& ($curver[1] <= $minver[1])
 			&& ($curver[2][0] < $minver[2][0]) )
 		return true;
