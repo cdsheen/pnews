@@ -39,7 +39,7 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'it'         => 'language/italian.inc.php',
 			'sk'         => 'language/slovak.inc.php' );
 
-$lang_coding = array(	'en'         => 'us-ascii',
+$lang_coding = array(	'en'         => 'iso-8859-1',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
