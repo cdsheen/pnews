@@ -116,7 +116,7 @@ http://sourceforge.net/projects/pnews/
 </a>
 </blockquote>
 <p>
-Sample running system:
+Sample running system: (in Chinese)
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>
 </blockquote>
