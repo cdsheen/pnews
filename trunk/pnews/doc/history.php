@@ -39,7 +39,7 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.5.8 (2004/08/04)
+PHP News Reader v2.5.8 (2004/08/05)
 <ul>
 <li>Fix the paging bug while <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is disabled.
 <li>Group descriptions are escaped to prevent from destroying HTML layout.
