@@ -51,7 +51,7 @@ echo <<<EOH
 -->
 PHP News Reader v2.2.3 (2003/07/20)
 <ul>
-<li>Bug in replying if the quoted article has leading spaces.
+<li>Bug at replying if the quoted article has leading spaces.
 </ul>
 PHP News Reader v2.2.2 (2003/07/05)
 <ul>
