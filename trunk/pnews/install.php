@@ -432,7 +432,7 @@ PHP News Reader - Installation and Configuration
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
-<font size=2>PHP News Reader - Shen Cheng-Da</font>
+<font size=3><? echo $pnews_claim; ?></font>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">

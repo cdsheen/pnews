@@ -19,6 +19,11 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
+PHP News Reader v2.0.4 (2003/02/18)
+<ul>
+<li>Change the article number order (from ascent to descent)
+</ul>
+<p>
 PHP News Reader v2.0.3 (2003/02/05)
 <ul>
 <li>Use UTF-8 for English locale
@@ -100,9 +105,16 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <li>Fix a bug of checking both "Not post to newsgroup" and "Reply to author"
 </ul>
 <hr>
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr><td>
 ';
 echo "<font size=2>$pnews_claim</font>\n";
 echo '
+</td><td align=right>
+<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
+<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
+</a>
+</td></tr></table>
 </font>
 </body>
 </html>
