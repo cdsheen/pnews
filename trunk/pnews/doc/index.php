@@ -186,9 +186,9 @@ Installation Guide:
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
-Anonymous access to CVS Repository (read only):
+Checking out the latest source from CVS Repository (read only):
 <blockquote>
-# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><br />
+# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><be />
 Logging in to :pserver:anonymous@cvs.sourceforge.net:2401/cvsroot/pnews<br />
 CVS password: <font color=orange>(Press Enter)</font><br />
 # <font color=green>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br />
