@@ -125,7 +125,8 @@ function html_tail() {
 	echo <<<EOT
 
 <!-- Copyright (C) 2001-2003 - All rights reserved -->
-<!-- Shen Cheng-Da (cdsheen@users.sourceforge.net) -->
+<!-- Shen Cheng-Da from Taipei, Taiwan             -->
+<!-- cdsheen at users dot sourceforge dot net      -->
 </body>
 </html>
 

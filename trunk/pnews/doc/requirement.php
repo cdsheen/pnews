@@ -47,7 +47,7 @@ The requirement for PHP News Reader on the server side (news server) :
 <li>News Server with full <a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a> Implementation
 <li>News Server with <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a> Extension
 </ul>
-The requirement for using NNTPS (SNEWS) News Server or using NNTPS as authentication method:
+The requirement for using NNTPS (SNEWS) News Server or using NNTP/FTP/POP3 over SSL as your authentication method:
 <ul>
 <li>PHP 4.3.0 or greater
 <li>PHP module with OpenSSL support

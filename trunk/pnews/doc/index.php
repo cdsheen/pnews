@@ -200,7 +200,7 @@ Author:
 <blockquote>
 Shen Cheng-Da<br />
 Taipei, Taiwan<br />
-<a href="mailto:cdsheen@users.sourceforge.net">cdsheen@users.sourceforge.net</a><br />
+cdsheen @ users . sourceforge . net<br />
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>

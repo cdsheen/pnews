@@ -262,7 +262,7 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 			if( $artlist ) {
 #				echo "<!-- Cache size: " . count($artlist) . " -->\n";
 				foreach( $artlist as $idx => $artnum ) {
-					if( !is_numeric($idx) || $artnum < $lowmark || $artnum > $highmark )
+					if( $artnum < $lowmark || $artnum > $highmark )
 						unset($artlist[$idx]);
 					else {
 						if( $artnum > $cache_max )
@@ -304,11 +304,13 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
 	if( $cache_file ) {
 		$fp = @fopen( $cache_file, 'w' );
-		if( flock( $fp, LOCK_EX|LOCK_NB ) ) {
-			@fputs( $fp, serialize( $artlist ) );
-			@flock( $fp, LOCK_UN );
+		if( $fp ) {
+			if( flock( $fp, LOCK_EX|LOCK_NB ) ) {
+				@fputs( $fp, serialize( $artlist ) );
+				@flock( $fp, LOCK_UN );
+			}
+			@fclose($fp);
 		}
-		@fclose($fp);
 	}
 	return( $artlist );
 }
