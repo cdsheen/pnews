@@ -47,6 +47,9 @@ if( $CFG['auth_type'] != 'open' ) {
 	if( !isset($CFG['auth_method']) || !in_array( $CFG['auth_method'], $valid_auth_method ) )
 		config_error( '$CFG["auth_method"]' );
 
+	if( $CFG['auth_method'] != 'mail' && !isset( $CFG['auth_user_email'] ) )
+		config_error( '$CFG["auth_user_email"]' );
+
 	// CAS
 	if( $CFG['auth_prompt'] == 'cas' && $CFG['auth_method'] != 'cas' )
 		show_error( 'when using CAS, $CFG["auth_prompt"] and $CFG["auth_method"] should be both set to "cas"' );
@@ -232,9 +235,6 @@ if( !isset( $CFG['post_signature'] ) )
 
 if( !isset( $CFG['auth_user_fullname'] ) )
 	$CFG['auth_user_fullname'] = '%u';
-
-if( !isset( $CFG['auth_user_email'] ) )
-	config_error( '$CFG["auth_user_email"]' );
 
 $checks = array( 'config', 'grouplst', 'database', 'interface' );
 

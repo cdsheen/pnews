@@ -459,14 +459,14 @@ You can download phpCAS from the following place:<br />
 <a name=auth_user_email></a>
   <p> <strong>$CFG["auth_user_email"]</strong></p>
   <blockquote> 
-    <p>The E-Mail of authenticated user (REQUIRED)<br />
+    <p>The E-Mail of authenticated user (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <b>not</b> <i>'mail')<br />
       <br />
       The %u will be substituted by the username enter by authentication session<br />
       <br />
       Other variables are defined in the [db_variable] or [ldap_variable]<br />
       <br />
-      An exception is, if you use 'mail' auth-method, %e will be substituted with the user's E-Mail,<br />
-      and %u will be substituted with the user name part of the E-Mail (the strings before '@')</p>
+      Note: if you use <i>'mail'</i> as your <b>auth_method</b>, 
+      $CFG["auth_user_email"] will always been set to user's E-Mail.
   </blockquote>
 <a name=log></a>
   <p><strong>$CFG["log"]</strong></p>
