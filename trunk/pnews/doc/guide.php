@@ -23,7 +23,7 @@ $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
 $pname = 'pnews' . preg_replace( '/\D/', '', $pnews_version ) ;
 
-if( $_SERVER['HTTPS'] )
+if( isset($_SERVER['HTTPS']) )
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';

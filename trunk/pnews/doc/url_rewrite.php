@@ -19,7 +19,7 @@
 
 require_once('../version.inc.php');
 
-if( $_SERVER['HTTPS'] )
+if( isset($_SERVER['HTTPS']) )
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';

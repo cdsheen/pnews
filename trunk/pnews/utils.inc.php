@@ -290,7 +290,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		$auth_success = true;
 	}
 	elseif( $need_auth ) {
-		if( isset($CFG['https_login']) && $CFG['https_login'] && !$_SERVER['HTTPS'] ) {
+		if( isset($CFG['https_login']) && $CFG['https_login'] && !isset($_SERVER['HTTPS']) ) {
 			$_SESSION['save_postvar'] = true;
 			$_SESSION['POSTVAR'] = $_POST;
 			header( 'Location: https://' . $_SERVER['HTTP_HOST'] . $uri );
@@ -428,14 +428,14 @@ if( $CFG['log'] && $CFG['log_level'] > 0
 
 function form_login_dialog( $is_expire ) {
 	global $CFG, $referal, $uri;
-	global $strNeedLogin, $strLoginName, $strPassWord, $strUseYourAccountAt, $strLogin, $strAuthExpired;
+	global $strNeedLogin, $strLoginName, $strPassWord, $strUseYourAccountAt, $strLogin, $strAuthExpired, $strGoBack;
 
 	if( isset($_GET['login']) )
 		$target = $referal;
 	else
 		$target = $uri;
 
-	if( $_SERVER['HTTPS'] )
+	if( isset($_SERVER['HTTPS']) )
 		$target = str_replace( 'http://', 'https://', $target );
 
 	$_SESSION['current_session_id'] = session_id();
@@ -788,7 +788,12 @@ EMAIL;
 }
 
 function hide_mail_link( $email, $linktext = '' ) {
-	list( $id, $domain ) = explode( '@', $email );
+	if( strchr( $email, '@' ) )
+		list( $id, $domain ) = explode( '@', $email );
+	else {
+		$id = $email;
+		$domain = '';
+	}
 	$id = str_replace( '\\', '\\\\', $id );
 	$id = str_replace( '"', '\\"', $id );
 	$domain = str_replace( '\\', '\\\\', $domain );

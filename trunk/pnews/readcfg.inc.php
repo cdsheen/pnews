@@ -30,6 +30,56 @@ if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timesta
 	# cache hit - restore $CFG from cache
 	# echo 'cache hit, restote $CFG from cache';
 	$CFG = $_SESSION['cfg_cache'];
+
+	if( $CFG['auth_type'] != 'open' ) {
+
+		switch( $CFG['auth_method'] ) {
+		case 'pop3':
+			include('auth/pop3.inc.php');
+			break;
+		case 'pop3s':
+			include('auth/pop3s.inc.php');
+			break;
+		case 'mail':
+			include('auth/mail.inc.php');
+			break;
+		case 'ldap':
+			include('auth/ldap.inc.php');
+			break;
+		case 'ftp':
+			include('auth/ftp.inc.php');
+			break;
+		case 'ftps':
+			include('auth/ftps.inc.php');
+			break;
+		case 'mysql':
+			include('auth/mysql.inc.php');
+			break;
+		case 'pgsql':
+			include('auth/pgsql.inc.php');
+			break;
+		case 'nntp':
+			include('auth/nntp.inc.php');
+			break;
+		case 'nntps':
+			include('auth/nntps.inc.php');
+			break;
+		case 'user':
+			include( $CFG['auth_user_module'] );
+			break;
+		case 'phpbb':
+			include('auth/phpbb.inc.php');
+			break;
+		}
+		if( $CFG['auth_prompt'] == 'cas' ) {
+
+			@include_once('CAS/CAS.php');
+
+			phpCAS::setDebug($CFG['auth_cas_debug']);
+
+			phpCAS::client( CAS_VERSION_2_0, $cas_server, $cas_port, $CFG['auth_cas_base_uri']);
+		}
+	}
 	return;
 }
 
@@ -331,12 +381,15 @@ elseif( !is_writeable( $CFG['cache_dir'] ) )
 if( !isset($CFG['thread_enable'] ) )
 	$CFG['thread_enable'] = false;
 
+if( !isset( $CFG['thread_db_format'] ) )
+	$CFG['thread_db_format'] = '';
+
 if( $CFG['thread_enable'] ) {
 	if( ! $CFG['cache_dir'] )
 		show_error( '$CFG["cache_dir"] should be assigned for thread support' );
 	if( !function_exists( 'dba_open' ) )
 		show_error( 'DBA extension should be enabled for thread support' );
-	if( !isset( $CFG['thread_db_format'] ) ) {
+	if( $CFG['thread_db_format'] == '' ) {
 		if( version_check( '4.3.2' ) )
 			$CFG['thread_db_format'] = 'db4';
 		else

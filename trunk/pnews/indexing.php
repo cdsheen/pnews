@@ -134,6 +134,8 @@ $curlist = array();
 
 echo "<!-- cursor = $cursor   lowmark = $lowmark -->\n";
 
+$higher = $lower = '';
+
 $i = $cursor;
 while( $i >= $lowmark ) {
 	$cut_end = array_search( $i, $artlist );

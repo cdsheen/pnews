@@ -34,7 +34,7 @@ function check_user_password( $username, $password ) {
 	}
 
 	$extra_fields = '';
-	if( $CFG['db_variable'] )
+	if( is_array($CFG['db_variable']) )
 		foreach( $CFG['db_variable'] as $var => $field )
 			$extra_fields .= ",$field";
 
@@ -71,7 +71,7 @@ function check_user_password( $username, $password ) {
 
 	/* authentication ok */
 
-	if( $CFG['db_variable'] )
+	if( is_array($CFG['db_variable']) )
 		foreach( $CFG['db_variable'] as $var => $field )
 			$userinfo[$var] = $arr[strtolower($field)];
 

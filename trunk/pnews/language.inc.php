@@ -99,7 +99,10 @@ function b2g( $instr ) {
 	for( $i = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h >= 160 ) {
-			$l = ord($instr[$i+1]);
+			if( $i < $len-1 )
+				$l = ord($instr[$i+1]);
+			else
+				$l = 32;
 			if( $h == 161 && $l == 64 )
 				$gb = '  ';
 			else {
@@ -123,7 +126,10 @@ function g2b( $instr ) {
 	for( $i = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h > 160 && $h < 248 ) {
-			$l = ord($instr[$i+1]);
+			if( $i < $len-1 )
+				$l = ord($instr[$i+1]);
+			else
+				$l = 32;
 			if( $l > 160 && $l < 255 ) {
 				fseek( $fp, (($h-161)*94+$l-161)*3 );
 				$bg = fread( $fp, 2 );

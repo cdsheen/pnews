@@ -179,7 +179,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 				break;
 			preg_match( '/^(\S+)\s+(.+)$/', $buf, $match );
 #			echo "$match[1] $match[2]<br />\n";
-			if( is_array( $active[$match[1]] ) ) {
+			if( isset($match[1]) && is_array($active[$match[1]]) ) {
 				if( $func )
 					array_push( $active[$match[1]], $func($match[2]) );
 				else
@@ -233,6 +233,8 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 	if( $code[0] != '2' )
 		return(null);
 
+	$ov = array();
+
 	while( $buf = fgets( $nhd, 4096 ) ) {
 #		echo "$buf<br />";
 		$buf = chop( $buf );
@@ -262,7 +264,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$ov[$n][3] = $from[2];
 		}
 		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $xover[$ovfmt['From:']], $from ) ) {
-			$from[4] = strip_quotes( $from[4] );
+			$from[4] = isset($from[4]) ? strip_quotes( $from[4] ) : '';
 			$ov[$n][1] = decode_subject($from[4]);
 			$ov[$n][3] = $from[1];
 		}
@@ -385,12 +387,12 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false, $th
 			@fclose($fp);
 		}
 	}
-
-	if( $db_subject )
-		@dba_close($db_subject);
-	if( $db_thread )
-		@dba_close($db_thread);
-
+	if( $thread_enable ) {
+		if( $db_subject )
+			@dba_close($db_subject);
+		if( $db_thread )
+			@dba_close($db_thread);
+	}
 	return( $artlist );
 }
 
@@ -413,9 +415,7 @@ function nnrp_next( $nhd, $artnum ) {
 	if( $code[0] != '2' )
 		return(-1);
 
-	list( $nextart, $artid, $rest ) = split( ' ', $msg );
-
-	return( $nextart );
+	return( array_shift(split( ' ', $msg )) );
 }
 
 function nnrp_last( $nhd, $artnum ) {
@@ -430,9 +430,7 @@ function nnrp_last( $nhd, $artnum ) {
 	if( $code[0] != '2' )
 		return(-1);
 
-	list( $lastart, $artid, $rest ) = split( ' ', $msg );
-
-	return( $lastart );
+	return( array_shift(split( ' ', $msg )) );
 }
 
 define( 'SHOW_HYPER_LINK',  1 );
@@ -473,7 +471,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 			if( $buf == '.' || $buf == '' )
 				break;
 
-			list($field, $value) = explode( ':', $buf );
+#			list($field, $value) = explode( ':', $buf );
 
 			$buf = htmlspecialchars( $buf, ENT_NOQUOTES );
 
@@ -504,7 +502,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 			if( strtolower($buf) == 'end' )
 				$uuencode_skip = false;
 		}
-		elseif( $buf[0] == '.' )
+		elseif( ereg( '^\.', $buf ) )
 			$body[$i++] = substr( $buf, 1 );
 		elseif( preg_match( '/^begin\s+(\d+)\s+(.+)\s*$/i', $buf, $match ) ) {
 			$uuencode_skip = true;
@@ -797,7 +795,7 @@ function decode_subject( $instr ) {
 	$enstr = $instr;
 	while( preg_match( '/^([^?]+)?=\?[^?]+\?(B|Q)\?([^?]+)=?=?\?=(.+)?$/i', $enstr, $match ) ) {
 		if( $match[2] == 'b' || $match[2] == 'B' )
-			$enstr = $match[1] . base64_decode( $match[3] ) . $match[4];
+			$enstr = $match[1] . base64_decode( $match[3] ) . (isset($match[4])?$match[4]:'');
 		else
 			$enstr = $match[1] . quoted_printable_decode( $match[3] );
 	}
@@ -854,8 +852,9 @@ function strip_quotes( $str ) {
 function get_mime_info( $headers, $def_charset, $time_format ) {
 
 	$artinfo['charset'] = $def_charset;
+	$artinfo['type'] = $artinfo['subtype'] = '';
 
-	if( $headers['Content-Type'] ) {
+	if( isset($headers['Content-Type']) ) {
 		$ctype = preg_split( '/[;\s]+/', strtolower($headers['Content-Type']) );
 		if( is_array( $ctype ) ) {
 			list( $type, $subtype ) = split( '/', $ctype[0]);
@@ -874,17 +873,19 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 		}
 	}
 
-	if( $headers['Content-Transfer-Encoding'] )
+	if( isset($headers['Content-Transfer-Encoding']) )
 		$artinfo['encoding'] = $headers['Content-Transfer-Encoding'];
 	else
 		$artinfo['encoding'] = '7bit';
 
-	if( $headers['Date'] )
+	if( isset($headers['Date']) )
 		$artinfo['date'] = strftime( $time_format, strtotime($headers['Date']) );
+	else
+		$artinfo['date'] = '';
 
 	$artinfo['msgid'] = $headers['Message-ID'];
-
-	if( $headers['From'] ) {
+	$artinfo['name'] = $artinfo['mail'] = '';
+	if( isset($headers['From']) ) {
 		if( preg_match( '/^<([^@]+)@([\w-_.]+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
@@ -899,23 +900,20 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			$artinfo['mail'] = $from[2];
 		}
 		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $headers['From'], $from ) ) {
-			$from[4] = strip_quotes( $from[4] );
+			$from[4] = isset( $from[4] ) ? strip_quotes( $from[4] ) : '' ;
 			$artinfo['name'] = decode_subject($from[4]);
 			$artinfo['mail'] = $from[1];
 		}
 	}
-	else
-		$artinfo['name'] = $artinfo['mail'] = '';
 
-	$artinfo['org'] = decode_subject($headers['Organization']);
+	$artinfo['org'] = isset($headers['Organization']) ? decode_subject($headers['Organization']) : '';
 
 	$artinfo['subject'] = decode_subject($headers['Subject']);
 
-	$refs = trim($headers['References']);
-	if( $refs == '' )
-		$artinfo['ref'] = array();
+	if( isset($headers['References']) )
+		$artinfo['ref'] = preg_split( '/\s+/', trim($headers['References']) );
 	else
-		$artinfo['ref'] = preg_split( '/\s+/', $refs );
+		$artinfo['ref'] = array();
 
 	return($artinfo);
 }

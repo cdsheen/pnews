@@ -23,7 +23,7 @@ preg_match( '/^v(\d+)\.(\d+)\.(\d+)$/', $pnews_version, $ver );
 
 $dname = 'pnews-' . $ver[1] . $ver[2] . $ver[3] . '.tgz' ;
 
-if( $_SERVER['HTTPS'] )
+if( isset($_SERVER['HTTPS']) )
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';

@@ -184,10 +184,10 @@ while ( list ($group, $value) = each ($active) ) {
 			$glink = "<a href=\"indexing.php?server=$server&group=$group\">$group</a>";
 	}
 
-	if( strlen( $value[2] ) > 50 )
-		$value[2] = htmlspecialchars(substr( $value[2], 0, 50 )) . ' ..';
-	elseif( $value[2] == '' )
+	if( !isset($value[2]) || $value[2] == '' )
 		$value[2] = '&nbsp;';
+	elseif( strlen( $value[2] ) > 50 )
+		$value[2] = htmlspecialchars(substr( $value[2], 0, 50 )) . ' ..';
 
 	$num = $value[0] - $value[1] + 1;
 	if( $num < 0 ) $num = 0;
