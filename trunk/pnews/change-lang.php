@@ -19,11 +19,15 @@
 
 session_start();
 
-setcookie( 'cookie_language', $_GET['language'], time()+86400*30 );
+$to_charset = strtolower($_GET['charset']);
 
-$_SESSION['session_language'] = $_GET['language'];
+setcookie( 'cookie_charset', $to_charset, time()+86400*30 );
+
+$_SESSION['session_charset'] = $to_charset;
 
 include('language.inc.php');
+
+$to_language = $lang_option[$charset_lang[$to_charset]];
 
 $referal = $_GET['from'];
 
@@ -40,7 +44,7 @@ echo "<html>
 <br>
 <br>
 <font size=3 face=Georgia>
-Changing Interface Language to <b>${_GET['language']}</b> ...
+Changing Interface Language to <b>$to_language</b> ...
 </font>
 </center>
 </html>";

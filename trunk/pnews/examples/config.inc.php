@@ -226,6 +226,10 @@ $CFG["organization"] = "XXX News Server";
 // $CFG["post_signature"] = "\n-- \nPOST BY: PHP News Reader\n";
 
 
+# [show_sourceforge_logo] Show SourceForge logo (default: true)
+
+// $CFG["show_sourceforge_logo"] = false;
+
 # [links] The links referring to other pages, (default: null)
 
 // $CFG["links"] = array( "Back Home" => "../index.php",
@@ -248,10 +252,10 @@ $CFG["organization"] = "XXX News Server";
 #     "zh-cn" - Simplified Chinese         GB2312
 #   "unicode" - Unicode (Mainly Chinese)   UTF8
 
-$CFG["language"]["config"]    = "zh-tw";
-$CFG["language"]["grouplst"]  = "zh-tw";
-$CFG["language"]["database"]  = "zh-tw";
-$CFG["language"]["interface"] = "zh-tw";
+$CFG["charset"]["config"]    = "big5";
+$CFG["charset"]["grouplst"]  = "big5";
+$CFG["charset"]["database"]  = "big5";
+$CFG["charset"]["interface"] = "big5";
 
 
 ############################################################################

@@ -44,7 +44,7 @@ $lineppg          = 20;	# Lines Per Page
 $subject_limit    = 45;	# Chars Limit for Subject
 $nick_limit       = 15;	# Chars Limit for Nickname
 $id_limit         = 18;	# Chars Limit for ID ( E-Mail before @ )
-$org_limit        = 15;	# Chars Limit for Organization
+$org_limit        = 20;	# Chars Limit for Organization
 
 $textcol          = 66;
 
@@ -59,9 +59,8 @@ if( !$lst )
 $catalog_num = -1;
 $default_catalog = 0 ;
 
-#$testing_groups_flag = false;
+$group_default_charset = $CFG['charset']['grouplst'];
 
-$group_default_language = $CFG['language']['grouplst'];
 $private_catalogs = array();
 
 while( $buf = fgets( $lst, 512) ) {
@@ -72,7 +71,7 @@ while( $buf = fgets( $lst, 512) ) {
 	if( preg_match( '/^\[(.+)\]$/', $buf, $match ) ) {
 		$catalog_num++;
 		$news_catalog[$catalog_num]  = $match[1];
-		$news_language[$catalog_num] = $group_default_language;
+		$news_charset[$catalog_num] = $group_default_charset;
 		$news_server[$catalog_num]   = $group_default_server;
 		$news_authperm[$catalog_num] = false;
 		$options = array();
@@ -82,9 +81,10 @@ while( $buf = fgets( $lst, 512) ) {
 	if( $catalog_num == -1 ) {
 		if( preg_match( '/^server\s+(.+)$/', $buf, $match ) )
 			$group_default_server = $match[1];
-		if( preg_match( '/^lang\s+(.+)$/', $buf, $match ) ) {
-			if( in_array( $match[1], $valid_language ) )
-				$group_default_language = $match[1];
+		if( preg_match( '/^charset\s+(.+)$/', $buf, $match ) ) {
+			$match[1] = strtolower( $match[1] );
+			if( in_array( $match[1], $valid_charsets ) )
+				$group_default_charset = $match[1];
 		}
 	}
 	elseif( preg_match( '/^option\s+(.+)$/', $buf, $match ) ) {
@@ -102,13 +102,11 @@ while( $buf = fgets( $lst, 512) ) {
 	elseif( preg_match( '/^groups?\s+(.+)$/', $buf, $match ) ) {
 		$news_groups[$catalog_num] = $match[1];
 	}
-	elseif( preg_match( '/^lang\s+(.+)$/', $buf, $match ) ) {
-		if( in_array( $match[1], $valid_language ) )
-			$news_language[$catalog_num] = $match[1];
+	elseif( preg_match( '/^charset\s+(.+)$/', $buf, $match ) ) {
+		$match[1] = strtolower( $match[1] );
+		if( in_array( $match[1], $valid_charsets ) )
+			$news_charset[$catalog_num] = $match[1];
 	}
-#	elseif( preg_match( '/^testing\s+(.+)$/', $buf, $match ) ) {
-#		$testing_groups[] = $news_server[$catalog_num] . '/' . $match[1] ;
-#	}
 }
 fclose($lst);
 
@@ -120,28 +118,33 @@ $catalog_num++;
 
 if( isset($_SESSION['rem_catalog']) )
 	$curr_catalog = $_SESSION['rem_catalog'];
+
+if( $self_base == 'index.php' ) {
+	if( isset( $_GET['catalog'] ) )
+		$curr_catalog = $_GET['catalog'];
+	else
+		$curr_catalog = $default_catalog;
+}
+elseif( isset( $_GET['server'], $_GET['group'] ) ) {
+	$verify_catalog = verifying( $_GET['server'], $_GET['group'] );
+	if( $verify_catalog >= 0 )
+		$curr_catalog = $verify_catalog;
+	else
+		$curr_catalog = $default_catalog;
+}
 else
 	$curr_catalog = $default_catalog;
-
-if( $self_base == 'index.php' && isset( $_GET['catalog'] ) )
-	$curr_catalog = $_GET['catalog'];
 
 if( $curr_catalog == '' || $curr_catalog >= $catalog_num )
 	$curr_catalog = $default_catalog;
 
+
 ##############################################################################
 # Language conversion Phase 1
 
-
-$config_convert   = get_conversion( $CFG['language']['config'], $curr_language );
-$grouplst_convert = get_conversion( $CFG['language']['grouplst'], $curr_language );
-$database_convert = get_conversion( $CFG['language']['database'], $curr_language );
-
-#echo "curr: $curr_language<br>\n";
-#echo "define: " . $lang_define[$curr_language] . "<br>\n";
-#echo "cfgc: " . $config_convert['to'] . "<br>\n";
-#echo "grpc: " . $grouplst_convert['to'] . "<br>\n";
-#echo "dbsc: " . $database_convert['to'] . "<br>\n";
+$config_convert   = get_conversion( $CFG['charset']['config'], $curr_charset );
+$grouplst_convert = get_conversion( $CFG['charset']['grouplst'], $curr_charset );
+$database_convert = get_conversion( $CFG['charset']['database'], $curr_charset );
 
 if( $config_convert['to'] ) {
 	$CFG['auth_organization'] = $config_convert['to']( $CFG['auth_organization'] );
@@ -188,7 +191,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		elseif( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
 			$server = $_GET['server'];
 			$group  = $_GET['group'];
-			if( $server == '' || $group == '' || !verifying( $server, $group ) ) {
+			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
 				exit;
@@ -204,7 +207,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
 			$server = $_GET['server'];
 			$group  = $_GET['group'];
-			if( $server == '' || $group == '' || !verifying( $server, $group ) ) {
+			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
 				exit;
@@ -268,9 +271,7 @@ $_SESSION['rem_catalog'] = $curr_catalog ;
 ##############################################################################
 # Language conversion - Dependent on $curr_catalog after authentication
 
-$article_convert  = get_conversion( $news_language[$curr_catalog], $curr_language );
-
-#echo "artc: " . $article_convert['to'] . "<br>\n";
+$article_convert  = get_conversion( $news_charset[$curr_catalog], $curr_charset );
 
 #if( $article_convert['to'] ) {
 #	$read_claim = '// Article auto-converted from ' . $article_convert['source'] . ' to ' . $article_convert['result'];
@@ -474,15 +475,15 @@ function verifying( $server, $group ) {
 	global $news_groups, $news_server, $catalog_num;
 
 	if( $server == '' || $group == '' )
-		return(false);
+		return(-1);
 
 	for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 		if( $server == $news_server[$i]
 			&& match_group( $group, $news_groups[$i] ) )
-			return(true);
+			return($i);
 	}
 
-	return(false);
+	return(-1);
 }
 
 function match_group( $group, $pattern ) {

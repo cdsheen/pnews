@@ -36,7 +36,7 @@ if( $content != '' && $postgroup != '' ) {
 	$server = $_POST['server'];
 	$group  = $_POST['group'];
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error();
 
 	$nickname   = $_POST['nickname'];
@@ -46,14 +46,16 @@ if( $content != '' && $postgroup != '' ) {
 	$refid      = $_POST['refid'];
 #	$authormail = $_POST['authormail'];
 
+	$artconv = get_conversion( $_POST['charset'], $curr_charset );
+
 	$nhd = nnrp_open( $server );
 
-	if( $article_convert['back'] ) {
-		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $postgroup, $article_convert['back']($organization), $refid, $auth_email );
+	if( $artconv['back'] ) {
+		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($organization), $refid, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $organization, $refid, $auth_email );
+		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $organization, $refid, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $content );
 	}
 
@@ -89,14 +91,31 @@ elseif( $artnum != '' ) {
 	$server = $_GET['server'];
 	$group  = $_GET['group'];
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	$nhd = nnrp_open( $server );
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-	list( $from, $email, $subject, $date, $msgid, $org ) = nnrp_head( $nhd, $artnum, $article_convert['to'] );
+	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
+
+	if( $artconv['to'] ) {
+		$from  = $artconv['to']( $artinfo['name'] );
+		$email = $artconv['to']( $artinfo['mail'] );
+		$subject = $artconv['to']( $artinfo['subject'] );
+		$org = $artconv['to']( $artinfo['org'] );
+	}
+	else {
+		$from  = $artinfo['name'];
+		$email = $artinfo['mail'];
+		$subject = $artinfo['subject'];
+		$org = $artinfo['org'];
+	}
+	$date = $artinfo['date'];
+	$msgid = $artinfo['msgid'];
 
 #	if( !preg_match( '/^Re: /i', $subject ) )
 #		$subject = 'Re: ' . $subject ;
@@ -158,7 +177,7 @@ elseif( $artnum != '' ) {
 	echo "<input name=server value=\"$server\" type=hidden>\n";
 	echo "<input name=group value=\"$group\" type=hidden>\n";
 	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
-
+	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";
 	echo " <input class=b type=button value='$strFormConfirmPost' onClick='verify()' tabindex=2>\n";

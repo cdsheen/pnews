@@ -27,7 +27,26 @@ $nhd = nnrp_open( $server );
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-list( $from, $email, $subject, $date, $msgid, $org ) = nnrp_head( $nhd, $artnum, $article_convert['to'] );
+#list( $from, $email, $subject, $date, $msgid, $org )
+
+$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+$artconv = get_conversion( $artinfo['charset'], $curr_charset );
+
+if( $artconv['to'] ) {
+	$from  = $artconv['to']( $artinfo['name'] );
+	$email = $artconv['to']( $artinfo['mail'] );
+	$subject = $artconv['to']( $artinfo['subject'] );
+	$org = $artconv['to']( $artinfo['org'] );
+}
+else {
+	$from  = $artinfo['name'];
+	$email = $artinfo['mail'];
+	$subject = $artinfo['subject'];
+	$org = $artinfo['org'];
+}
+$date = $artinfo['date'];
+$msgid = $artinfo['msgid'];
 
 html_head( "$group - $subject", null, 'topmargin=0 leftmargin=0' );
 #html_head( "$group - $subject", null, 'topmargin=0' );
@@ -55,8 +74,8 @@ echo "<td align=right class=x>$org</td></tr>\n";
 
 echo "<tr><td colspan=2 bgcolor=#EEFFEE>";
 echo "<hr><font size=2>";
-if( $article_convert['to'] )
-	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $article_convert['to'] );
+if( $artconv['to'] )
+	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $artconv['to'] );
 else
 	nnrp_body( $nhd, $artnum, "", "<br>\n" );
 echo "</font>";

@@ -30,7 +30,7 @@ if( $_POST['content'] != '' ) {
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	if( $post_restriction )
@@ -43,13 +43,13 @@ if( $_POST['content'] != '' ) {
 
 	$nhd = nnrp_open( $server );
 	if( $article_convert['back'] ) {
-		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($organization), null, $auth_email );
+		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($organization), null, $auth_email, $news_charset[$curr_catalog] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
 		if( $CFG['post_signature'] )
 			nnrp_post_write( $nhd, $article_convert['back']($CFG['post_signature']) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $organization, null, $auth_email );
+		nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $organization, null, $auth_email, $news_charset[$curr_catalog] );
 		nnrp_post_write( $nhd, $content );
 		if( $CFG['post_signature'] )
 			nnrp_post_write( $nhd, $CFG['post_signature'] );

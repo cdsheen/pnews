@@ -27,23 +27,44 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php' );
 
-$lang_coding = array(	'en'         => 'UTF-8',
+$lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8'       );
 
-if( isset($_SESSION['session_language']) )
-	$curr_language = $_SESSION['session_language'];
-elseif( isset($_COOKIE['cookie_language']) ) {
-	$curr_language = $_COOKIE['cookie_language'];
-	$_SESSION['session_language'] = $_COOKIE['cookie_language'];
+$charset_lang = array(  'big5'       => 'zh-tw',
+			'gb'         => 'zh-cn',
+			'gb2312'     => 'zh-cn',
+			'utf-8'      => 'unicode',
+			'iso-8859-1' => 'en',
+			'us-ascii'   => 'en',
+			'ascii'      => 'en' );
+
+$charset_alias = array( 'big5'       => 'big5',
+			'gb'         => 'gb2312',
+			'gb2312'     => 'gb2312',
+			'utf-8'      => 'utf-8',
+			'iso-8859-1' => 'us-ascii',
+			'us-ascii'   => 'us-ascii',
+			'ascii'      => 'us-ascii' );
+
+if( isset($_SESSION['session_charset']) )
+	$curr_charset = $_SESSION['session_charset'];
+elseif( isset($_COOKIE['cookie_charset']) ) {
+	$curr_charset = $_COOKIE['cookie_charset'];
+	$_SESSION['session_charset'] = $_COOKIE['cookie_charset'];
+}
+else
+	$curr_charset = '';
+
+if( $curr_charset == '' || $charset_lang[$curr_charset] == '' ) {
+	$curr_charset = $default_charset;
+	$_SESSION['session_charset'] = $default_charset;
 }
 
-if( $curr_language == '' || !isset($lang_define[$curr_language]) ) {
-	$curr_language = $default_language;
-	setcookie( 'cookie_language', $default_language, time()+86400*30 );
-	$_SESSION['session_language'] = $default_language;
-}
+setcookie( 'cookie_charset', $curr_charset, time()+86400*30 );
+
+$curr_language = $charset_lang[$curr_charset];
 
 /* Include the localized language definition resource */
 
@@ -251,12 +272,25 @@ function u2g( $instr ) {
 	}
 }
 
+/*
 function get_conversion( $orig_lang, $pref_lang ) {
 
 	global	$lang_coding;
 
 	$original = strtolower($lang_coding[$orig_lang]);
 	$preferred = strtolower($lang_coding[$pref_lang]);
+*/
+
+function same($text) {
+	return($text);
+}
+
+function get_conversion( $original, $preferred ) {
+
+	global $charset_alias;
+
+	$original = $charset_alias[strtolower($original)];
+	$preferred = $charset_alias[strtolower($preferred)];
 
 	if ( ( $preferred == 'big5' ) && ( $original == 'gb2312' ) ) {
 		$convert['to'] = 'g2b';
@@ -274,24 +308,24 @@ function get_conversion( $orig_lang, $pref_lang ) {
 		$convert['to'] = 'b2u';
 		$convert['back'] = 'u2b';
 		$convert['source'] = 'BIG5';
-		$convert['result'] = 'Unicode (UTF-8)';
+		$convert['result'] = 'UTF-8';
 	}
 	elseif ( ( $preferred == 'big5' ) && ( $original == 'utf-8' ) ) {
 		$convert['to'] = 'u2b';
 		$convert['back'] = 'b2u';
-		$convert['source'] = 'Unicode (UTF-8)';
+		$convert['source'] = 'UTF-8';
 		$convert['result'] = 'BIG5';
 	}
 	elseif ( ( $preferred == 'utf-8' ) && ( $original == 'gb2312' ) ) {
 		$convert['to'] = 'g2u';
 		$convert['back'] = 'u2g';
 		$convert['source'] = 'GB2312';
-		$convert['result'] = 'Unicode (UTF-8)';
+		$convert['result'] = 'UTF-8';
 	}
 	elseif ( ( $preferred == 'gb2312' ) && ( $original == 'utf-8' ) ) {
 		$convert['to'] = 'u2g';
 		$convert['back'] = 'g2u';
-		$convert['source'] = 'Unicode (UTF-8)';
+		$convert['source'] = 'UTF-8';
 		$convert['result'] = 'GB2312';
 	}
 	else {

@@ -161,22 +161,27 @@ if( !isset( $CFG['auth_user_email'] ) )
 	config_error( '$CFG["auth_user_email"]' );
 
 $checks = array( 'config', 'grouplst', 'database', 'interface' );
-$valid_language = array( 'en', 'zh-tw', 'zh-cn', 'unicode' );
+
+$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii' );
+$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en' );
 
 foreach( $checks as $section ) {
-	if( !isset( $CFG['language'][$section] ) )
-		$CFG['language'][$section] = 'en';
-	elseif( !in_array( $CFG['language'][$section], $valid_language ) )
-		config_error( '$CFG["language"]["' . $section . '"]' );
+	if( !isset( $CFG['charset'][$section] ) )
+		$CFG['charset'][$section] = 'utf-8';
+	elseif( !in_array( $CFG['charset'][$section], $valid_charsets ) )
+		config_error( '$CFG["charset"]["' . $section . '"]' );
 }
 
-$default_language = $CFG['language']['interface'];
+$default_charset = $CFG['charset']['interface'];
 
 if( !isset( $CFG['group_list'] ) )
 	$CFG['group_list'] = 'newsgroups.lst';
 
 if( !file_exists( $CFG['group_list'] ) )
 	config_error( '$CFG["group_list"]' );
+
+if( !isset($CFG['show_sourceforge_logo']) )
+	$CFG['show_sourceforge_logo'] = true;
 
 /* un-documented settings */
 
@@ -214,7 +219,7 @@ function check_db_settings() {
 }
 
 function config_error( $error_var ) {
-	show_error( "The <b>$error_var</b> setting is incorrect in your config.inc.php !");
+	show_error( "<font color=red size=3><i><b>ERROR:</b></i></font> The <b>$error_var</b> setting is incorrect in your config.inc.php !");
 }
 
 function show_error( $err_string ) {
@@ -223,13 +228,19 @@ function show_error( $err_string ) {
 <head>
 <title>Configuration Error</title>
 <style>
-body { color: white ; background: black }
+body { color: white ; background: black; font-family: Georgia }
+hr { height: 1px ; color: blue }
+a { color: magenta }
+a:visited { color: magenta }
+a:hover { color: red }
 </style>
 </head>
 <body>
 <?
-	echo "<font size=2><b>Configuration Error</b></font><hr>";
-	echo "<font size=3>$err_string</font>\n";
+	echo "<font size=4>PHP News Reader - Configuration Error</font><hr>";
+	echo "<br><font size=3>$err_string</font>\n<br><p>\n";
+	echo "<font color=cyan>For more information, please read the <a href=install.php>Installation Guide</a> for details.</font>\n";
+	echo "<br><br><br><hr>\n";
 	echo "</body>\n</html>\n";
 	exit;
 }

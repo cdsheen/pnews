@@ -186,17 +186,19 @@ PHP News Reader - Installation and Configuration
         null)<br>
         ( %u can not be used here )</p>
       <p>$CFG["ldap_variable"] = array( "%e" => "Email", "%n" => "Fullname" );</p>
+      <p>In the above setting, the ldap attribure "Email" will be extracted from this search,<br>
+         and be putted in variable %e for later use</p>
     </blockquote>
   </blockquote>
   <p><br>
     <strong>FTP authentication parameters</strong> (REQUIRED if auth_method == 'ftp')</p>
   <blockquote> 
-    <p> <strong>$CFG[&quot;$ftp_server&quot;]</strong></p>
+    <p> <strong>$CFG[&quot;ftp_server&quot;]</strong></p>
     <blockquote> 
       <p>FTP server address ( address:port )</p>
       <p>$CFG["ftp_server"] = "ftp.domain.org";</p>
     </blockquote>
-    <p> <strong>$CFG[&quot;$ftp_deny&quot;]</strong></p>
+    <p> <strong>$CFG[&quot;ftp_deny&quot;]</strong></p>
     <blockquote> 
       <p> The user list which is denied for FTP authentication<br>
         (default:<em><strong> array( 'anonymous', 'guest', 'ftp' )</strong></em> 
@@ -204,7 +206,7 @@ PHP News Reader - Installation and Configuration
       <p>$CFG["ftp_deny"] = array( 'anonymous', 'guest', 'ftp', 'root' );</p>
     </blockquote>
   </blockquote>
-  <p> POP3 authentication parameters (REQUIRED if auth_method == 'pop3')</p>
+  <p> <strong>POP3 authentication parameters</strong> (REQUIRED if auth_method == 'pop3')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;pop3_server&quot;]</strong></p>
     <blockquote> 
@@ -220,7 +222,7 @@ PHP News Reader - Installation and Configuration
   </blockquote>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if auth_method == 'mail')</p>
   <blockquote> 
-    <p> <strong>$CFG[&quot;pop3_mapping]</strong></p>
+    <p> <strong>$CFG[&quot;pop3_mapping&quot;]</strong></p>
     <blockquote> 
       <p>the mapping from E-Mail to POP3 server address</p>
       <p>User should login with full E-Mail address, and this module will
@@ -325,14 +327,14 @@ PHP News Reader - Installation and Configuration
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br>
   </p>
-  <p> <strong>$CFG[&quot;title]</strong></p>
+  <p> <strong>$CFG[&quot;title&quot;]</strong></p>
   <blockquote> 
     <p>The title for this webnews (default: &quot;Webnews&quot;)</p>
   </blockquote>
   <p> <strong>$CFG[&quot;banner&quot;]</strong></p>
   <blockquote> 
-    <p>The banner text or images, ex: &quot;&lt;img src=banner.jpg&gt;&quot; (default: 
-      &quot;&quot;)</p>
+    <p>The banner text or images (default: &quot;&quot;)</p>
+    <p>$CFG["banner"] = "&lt;img src=banner.jpg&gt;";
   </blockquote>
   <p><strong>$CFG[&quot;group_list&quot;]</strong></p>
   <blockquote> 
@@ -340,11 +342,11 @@ PHP News Reader - Installation and Configuration
       <br>
       You should get a copy from examples/newsgroups.lst (default: &quot;newsgroups.lst&quot;)</p>
   </blockquote>
-  <p><strong>$CFG[&quot;group_sorting]</strong></p>
+  <p><strong>$CFG[&quot;group_sorting&quot;]</strong></p>
   <blockquote> 
     <p>sort newsgroups in each catalog (default: off)</p>
   </blockquote>
-  <p> <strong>$CFG[&quot;organization]</strong></p>
+  <p> <strong>$CFG[&quot;organization&quot;]</strong></p>
   <blockquote> 
     <p>The organization name of this site (default: &quot;News Server&quot;)</p>
   </blockquote>
@@ -352,39 +354,48 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>The signature to appended at each posted article (default: &quot;&quot;)</p>
   </blockquote>
-  <p><strong>$CFG[&quot;links]</strong></p>
+  <p> <strong>$CFG[&quot;show_sourceforge_logo&quot;]</strong></p>
   <blockquote> 
-    <p>The links referring to other pages, (default: null), ex:<br>
+    <p>Show sourceforge logo (default: on)</p>
+  </blockquote>
+  <p><strong>$CFG[&quot;links&quot;]</strong></p>
+  <blockquote> 
+    <p>The links referring to other pages, (default: null)<br>
       <br>
       $CFG[&quot;links&quot;] = array( &quot;Back Home&quot; =&gt; &quot;../index.php&quot;, 
       &quot;Tech News&quot; =&gt; &quot;http://foo.bar/technews/&quot; );</p>
   </blockquote>
   <p><strong><br>
     Section 3 - Languages</strong></p>
-  <p> This section controls the setting about languages</p>
-  <p>Natively supported languages and the codings are:</p>
-  <blockquote> 
-    <p> &quot;en&quot; - Englush iso-8859-1 (default)<br>
-      &quot;zh-tw&quot; - Traditional Chinese BIG5<br>
-      &quot;zh-cn&quot; - Simplified Chinese GB2312<br>
-      &quot;unicode&quot; - Unicode (Mainly Chinese) UTF8</p>
+  <p> This section controls the setting about languages and charsets</p>
+  <p>Natively supported languages and the charsets are:</p>
+  <blockquote>
+    <p>
+	<table border=1 cellspacing=0 cellpadding=2>
+	<tr><td width=150>Language</td><td width=80>Locale</td><td width=150>Charset</td></tr>
+	<tr><td>English</td><td>en</td><td>us-ascii (default)</td></tr>
+ 	<tr><td>Tranditional Chinese</td><td>zh-tw</td><td>BIG5</td></tr>
+	<tr><td>Simplified Chinese</td><td>zh-cn</td><td>GB2312</td></tr>
+ 	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8</td></tr>
+	</table>
   </blockquote>
-  <p> <strong>$CFG[&quot;language&quot;][&quot;config&quot;]</strong></p>
+  <p> <strong>$CFG[&quot;charset&quot;][&quot;config&quot;]</strong></p>
   <blockquote> 
-    <p>The language setting used in this config.inc.php</p>
+    <p>The charset setting used in this config.inc.php</p>
   </blockquote>
-  <p> <strong>$CFG[&quot;language&quot;][&quot;grouplst&quot;]</strong></p>
+  <p> <strong>$CFG[&quot;charset&quot;][&quot;grouplst&quot;]</strong></p>
   <blockquote> 
-    <p>The language setting used in newsgroups.lst</p>
+    <p>The charset setting used in newsgroups.lst</p>
   </blockquote>
-  <p> <strong>$CFG[&quot;language&quot;][&quot;database&quot;]</strong></p>
+  <p> <strong>$CFG[&quot;charset&quot;][&quot;database&quot;]</strong></p>
   <blockquote> 
-    <p>The language setting used in database or LDAP</p>
+    <p>The charset setting used in database or LDAP</p>
   </blockquote>
-  <p> <strong>$CFG[&quot;language&quot;][&quot;interface&quot;]</strong></p>
+  <p> <strong>$CFG[&quot;charset&quot;][&quot;interface&quot;]</strong></p>
   <blockquote> 
-    <p>The initial language setting of interface</p>
+    <p>The initial charset setting of interface</p>
   </blockquote>
+  <strong>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br>please use $CFG["charset"] section instead</strong>
 </blockquote>
 <hr size="1">
 <strong><em><font color="#0000FF">Configuration for NEWSGROUPS.LST</font></em></strong> 
@@ -411,8 +422,8 @@ PHP News Reader - Installation and Configuration
   <p>The setting before any catalogs are global settings. Two global settings 
     are valid now:</p>
   <blockquote> 
-    <p><strong># default encoding for all catalog<br>
-      lang&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zh-tw</strong></p>
+    <p><strong># default charset for all catalog<br>
+      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big5</strong></p>
     <p><strong># default news server for all catalog<br>
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org</strong></p>
   </blockquote>
@@ -429,18 +440,18 @@ PHP News Reader - Installation and Configuration
     <p><strong>[catalog3]<br>
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br>
       group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br>
-      lang&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zh-cn</strong></p>
+      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
   </blockquote>
   <p>The first catalog &quot;catalog1&quot; contains all newsgroups matching &quot;nopy.*&quot; 
     or &quot;nopy.comp.network&quot; from the news server &quot;news1.domain.org&quot;, 
-    and the default encoding are used in these groups.</p>
+    and the default charset is used in these groups.</p>
   <p>The second catalog &quot;catalog2&quot; contains all newsgroups matching 
     &quot;nopy.test&quot; or &quot;nopy.talk.*&quot; from the default news server 
-    defined in the above global settings, and the default encoding are used in 
+    defined in the above global settings, and the default charset is used in 
     these groups. </p>
   <p>The third catalog &quot;catalog3&quot; contains all newsgroups matching &quot;nopy.comp.*&quot; 
     or &quot;nopy.rec.*&quot; from the news server &quot;news2.domain.org&quot;, 
-    and the &quot;zh-cn&quot; encoding is used in these groups.</p>
+    and the &quot;gb2312&quot; charset is used in these groups.</p>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
   <p>Two possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>
@@ -457,6 +468,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p><strong>option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default,private</strong></p>
   </blockquote>
+  <strong>Notice: the original 'lang' setting is deprecated since v2.1.0,<br>please use 'charset' instead.</strong>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>

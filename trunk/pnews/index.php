@@ -126,8 +126,8 @@ while ( list ($group, $value) = each ($active) ) {
 	$magic = $value[0];
 	$glink = "<a class=sub href=indexing.php?server=$server&group=$group&magic=$magic>$group</a>";
 
-	if( strlen( $value[2] ) > 45 )
-		$value[2] = substr( $value[2], 0, 45 ) . ' ..';
+	if( strlen( $value[2] ) > 50 )
+		$value[2] = substr( $value[2], 0, 50 ) . ' ..';
 	elseif( $value[2] == '' )
 		$value[2] = '&nbsp;';
 ?>

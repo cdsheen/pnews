@@ -19,6 +19,18 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
+PHP News Reader v2.1.0 (expected to be released on 2003/03/08)
+<ul>
+<li>Installation Guide released.
+<li>Use \'charset\' instead of \'language\' in the configuration file
+<li>The correct charset of group is used while loading pages without session.
+<li>The MIME charset of article will be honored while processing news articles.
+<li>The article will be posted and mailed with correct MIME headers about charset information based on the RFC 2045 standard.
+<!--
+<li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
+-->
+</ul>
+<p>
 PHP News Reader v2.0.4 (2003/02/18)
 <ul>
 <li>Change the article numbering order (descent)

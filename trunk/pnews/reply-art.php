@@ -30,7 +30,7 @@ if( $_POST['content'] != '' ) {
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	if( $post_restriction )
@@ -43,19 +43,23 @@ if( $_POST['content'] != '' ) {
 	$refid      = $_POST['refid'];
 	$authormail = $_POST['authormail'];
 
+	$artconv = get_conversion( $_POST['charset'], $curr_charset );
+
 	$nhd = nnrp_open( $server );
 
 	if( ! $onlymail ) {
-		if( $article_convert['back'] ) {
-			nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($organization), $refid, $auth_email );
-			nnrp_post_write( $nhd, $article_convert['back']($content) );
+		if( $artconv['back'] ) {
+			nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($organization), $refid, $auth_email, $_POST['charset'] );
+			nnrp_post_write( $nhd, $artconv['back']($content) );
+			if( $CFG['post_signature'] )
+				nnrp_post_write( $nhd, $artconv['back']($CFG['post_signature']) );
 		}
 		else {
-			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $organization, $refid, $auth_email );
+			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $organization, $refid, $auth_email, $_POST['charset'] );
 			nnrp_post_write( $nhd, $content );
+			if( $CFG['post_signature'] )
+				nnrp_post_write( $nhd, $CFG['post_signature'] );
 		}
-		if( $CFG['post_signature'] )
-			nnrp_post_write( $nhd, $CFG['post_signature'] );
 		nnrp_post_finish( $nhd );
 		nnrp_close($nhd);
 	}
@@ -83,8 +87,9 @@ if( $_POST['content'] != '' ) {
 	echo "<hr>\n";
 
 	if( !$post_restriction && $replymail ) {
-		if( $article_convert['back'] )
-			mail( $authormail, $article_convert['back']($subject), $article_convert['back']($content), "From: $email\n$mail_add_header" );
+		$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";
+		if( $artconv['back'] )
+			mail( $authormail, $artconv['back']($subject), $artconv['back']($content), "From: $email\n$mail_add_header\n$mime_headers" );
 		else
 			mail( $authormail, $subject, $content, "From: $email\n$mail_add_header" );
 	}
@@ -98,7 +103,7 @@ elseif( $artnum != '' ) {
 
 #	echo "server[$server] group[$group]<br>\n";
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	if( $post_restriction )
@@ -108,7 +113,24 @@ elseif( $artnum != '' ) {
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-	list( $from, $email, $subject, $date, $msgid, $org ) = nnrp_head( $nhd, $artnum, $article_convert['to'] );
+	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
+
+	if( $artconv['to'] ) {
+		$from  = $artconv['to']( $artinfo['name'] );
+		$email = $artconv['to']( $artinfo['mail'] );
+		$subject = $artconv['to']( $artinfo['subject'] );
+		$org = $artconv['to']( $artinfo['org'] );
+	}
+	else {
+		$from  = $artinfo['name'];
+		$email = $artinfo['mail'];
+		$subject = $artinfo['subject'];
+		$org = $artinfo['org'];
+	}
+	$date = $artinfo['date'];
+	$msgid = $artinfo['msgid'];
 
 	if( !preg_match( '/^Re: /i', $subject ) )
 		$subject = 'Re: ' . $subject ;
@@ -174,6 +196,7 @@ elseif( $artnum != '' ) {
 	echo "<tr><td class=x align=right>$strSubject:</td><td colspan=2><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 #	echo "</table>\n<table>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>";
+	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 	echo "<input name=server value=\"$server\" type=hidden>";
 	echo "<input name=group value=\"$group\" type=hidden>\n";
 	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
@@ -186,7 +209,6 @@ elseif( $artnum != '' ) {
 <?
 	echo "<tr><td class=x align=right>\n";
 	echo "$strContent:</td>";
-#	echo "<td calss=x colspan=2 align=right><span class=link onClick='InsertQuote();'>$strFormInsertQuote</span></td></tr>\n";
 	echo "<td calss=x colspan=2 align=right><input type=button onClick='InsertQuote();' value=\"$strFormInsertQuote\"></td></tr>\n";
 	echo "<tr><td class=x colspan=3>";
 	echo "<textarea name=content class=text wrap=physical tabindex=1>";
@@ -194,7 +216,7 @@ elseif( $artnum != '' ) {
 	echo "</td></tr></table></center>\n";
 	echo "<textarea name=quote style='display: none' disabled>";
 	printf("\n$strQuoteFrom\n", "$from ($email)" );
-	nnrp_body( $nhd, $artnum, "&gt ", "\n", false, true, $article_convert['to'] );
+	nnrp_body( $nhd, $artnum, "&gt ", "\n", false, true, $artconv['to'] );
 	nnrp_close($nhd);
 	echo "</textarea>";
 	echo "</form>\n";

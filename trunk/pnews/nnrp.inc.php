@@ -194,59 +194,36 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 	}
 }
 
-function nnrp_head ( $nhd, $artnum, $func = null ) {
+function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8' ) {
 	send_command( $nhd, "HEAD $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
 
 	if( $code[0] != '2' )
 		return(null);
+
 	$n = 0 ;
 	$nowline = fgets( $nhd, 4096 );
 	$nowline = chop($nowline);
 	while( $nowline && $nowline != '.' ) {
 		$nextline = fgets( $nhd, 4096 );
 		$nextline = chop($nextline);
-		if( preg_match( '/^\s/', $nextline ) ) {
+		while( preg_match( '/^\s/', $nextline ) ) {
 			$nowline .= ' ' . trim($nextline);
 			$nextline = fgets( $nhd, 4096 );
 			$nextline = chop($nextline);
 		}
+
 		preg_match( '/^([^:]+): (.+)$/', $nowline, $match );
-		$match[2] = decode_subject($match[2]);
-		if( $func )
-			$match[2] = $func( $match[2] );
-		if( $match[1] == 'From' ) {
-			if( preg_match( '/^<(\S+)@(\S+)>$/', $match[2], $from ) ) {
-				$head[0] = $from[1];
-				$head[1] = $from[1] . '@' . $from[2];
-			}
-			elseif( preg_match( '/^(\S+)@(\S+)$/', $match[2], $from ) ) {
-				$head[0] = $from[1];
-				$head[1] = $from[0];
-			}
-			elseif( preg_match( '/^"?([^"]+)?"? <(\S+@\S+)>$/', $match[2], $from ) ) {
-				$head[0] = decode_subject($from[1]);
-				$head[1] = $from[2];
-			}
-			elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $match[2], $from ) ) {
-				$head[0] = decode_subject($from[2]);
-				$head[1] = $from[1];
-			}
-		}
-		elseif( $match[1] == 'Date' )
-			$head[3] = strftime("%Y/%m/%d %H:%M:%S", strtotime($match[2]));
-		elseif( $match[1] == 'Message-ID' )
-			$head[4] = $match[2];
-		elseif( $match[1] == 'Organization' )
-			$head[5] = $match[2];
-		elseif( $match[1] == 'Subject' )
-			$head[2] = decode_subject($match[2]);
+
+		$headers[$match[1]] = $match[2];
+
 		$nowline = $nextline;
 	}
-	return($head);
+
+	return( get_mime_info( $headers, $def_charset ) );
 }
 
-function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organization, $ref = null, $real_email ) {
+function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organization, $ref = null, $real_email, $art_charset ) {
 
 	global $php_news_agent;
 
@@ -270,6 +247,9 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 	fwrite( $nhd, "Organization: $organization\r\n" );
 	fwrite( $nhd, "X-User-Real-E-Mail: $real_email\r\n" );
 	fwrite( $nhd, "User-Agent: $php_news_agent\r\n" );
+	fwrite( $nhd, "Mime-Version: 1.0\r\n" );
+	fwrite( $nhd, "Content-Type: text/plain; charset=\"%s\"\r\n", $art_charset );
+	fwrite( $nhd, "Content-Transfer-Encoding: 8bit\r\n" );
 #	fwrite( $nhd, "X-User-Agent-URL: http://www.csie.nctu.edu.tw/~cdsheen/php-news/\r\n" );
 	fwrite( $nhd, "X-HTTP-Posting-Host: $client\r\n" );
 	if( $proxy != '' )
@@ -398,6 +378,62 @@ function mb_wordwrap($str)
 	return $str_conv;
 }
 
+function get_mime_info( $headers, $def_charset = 'utf-8' ) {
+
+	$artinfo['charset'] = $def_charset;
+
+	if( $headers['Content-Type'] ) {
+		$ctype = preg_split( '/[;\s]+/', strtolower($headers['Content-Type']) );
+		if( is_array( $ctype ) ) {
+			list( $type, $subtype ) = preg_split( '/\//', $ctype[0]);
+			$artinfo['type'] = $type;
+			$artinfo['subtype'] = $subtype;
+			array_shift( $ctype );
+			foreach( $ctype as $c_param ) {
+				list( $param, $value ) = preg_split( '/=/', $c_param );
+				if( $param == 'charset' )
+					$artinfo['charset'] = str_replace( '"', '', $value );
+			}
+		}
+	}
+
+	if( $headers['Content-Transfer-Encoding'] )
+		$artinfo['encoding'] = $headers['Content-Transfer-Encoding'];
+	else
+		$artinfo['encoding'] = '7bit';
+
+	if( $headers['Date'] )
+		$artinfo['date'] = strftime("%Y/%m/%d %H:%M:%S", strtotime($headers['Date']) );
+
+	$artinfo['msgid'] = $headers['Message-ID'];
+
+	if( $headers['From'] ) {
+		if( preg_match( '/^<(\S+)@(\S+)>$/', $headers['From'], $from ) ) {
+			$artinfo['name'] = $from[1];
+			$artinfo['mail'] = $from[1] . '@' . $from[2];
+		}
+		elseif( preg_match( '/^(\S+)@(\S+)$/', $headers['From'], $from ) ) {
+			$artinfo['name'] = $from[1];
+			$artinfo['mail'] = $from[0];
+		}
+		elseif( preg_match( '/^"?([^"]+)?"? <(\S+@\S+)>$/', $headers['From'], $from ) ) {
+			$artinfo['name'] = decode_subject($from[1]);
+			$artinfo['mail'] = $from[2];
+		}
+		elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $headers['From'], $from ) ) {
+			$artinfo['name'] = decode_subject($from[2]);
+			$artinfo['mail'] = $from[1];
+		}
+	}
+	else
+		$artinfo['name'] = $artinfo['mail'] = '';
+
+	$artinfo['org'] = decode_subject($headers['Organization']);
+
+	$artinfo['subject'] = decode_subject($headers['Subject']);
+
+	return($artinfo);
+}
 
 // Copyright (C) 2001-2003 - All rights reserved
 // Shen Cheng-Da (cdsheen@users.sourceforge.net)

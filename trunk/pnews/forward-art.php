@@ -34,7 +34,7 @@ if( $_POST['content'] != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	$receiver   = $_POST['receiver'];
@@ -50,6 +50,8 @@ if( $_POST['content'] != '' ) {
 	echo "<font size=2 color=navy>$strArticleIsForwarded</font>\n";
 	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=$strCloseWindow></td></tr></table><hr>\n";
 
+	$artconv = get_conversion( $_POST['charset'], $curr_charset );
+
 	$content = str_replace( '\\"', '"', $content );
 	$content = str_replace( '\\\'', "'", $content );
 	$content = str_replace( '\\\\', '\\', $content );
@@ -63,7 +65,12 @@ if( $_POST['content'] != '' ) {
 	echo '<hr><pre><font size=3 color=black>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
 	echo "<hr>\n";
 
-	mail( $receiver, $subject, $content, "From: $auth_email\n$mail_add_header" );
+	$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";
+
+	if( $artconv['back'] )
+		mail( $receiver, $artconv['back']($subject), $artconv['back']($content), "From: $auth_email\n$mail_add_header\n$mime_headers" );
+	else
+		mail( $receiver, $subject, $content, "From: $auth_email\n$mail_add_header\n$mime_headers" );
 
 	html_delay_close( 2000 );
 	html_tail();
@@ -76,14 +83,31 @@ elseif( $artnum != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	if( verifying( $server, $group ) == false )
+	if( verifying( $server, $group ) == -1 )
 		session_error( $server, $group );
 
 	$nhd = nnrp_open( $server );
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-	list( $from, $email, $subject, $date, $msgid, $org ) = nnrp_head( $nhd, $artnum, $article_convert['to'] );
+	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
+
+	if( $artconv['to'] ) {
+		$from  = $artconv['to']( $artinfo['name'] );
+		$email = $artconv['to']( $artinfo['mail'] );
+		$subject = $artconv['to']( $artinfo['subject'] );
+		$org = $artconv['to']( $artinfo['org'] );
+	}
+	else {
+		$from  = $artinfo['name'];
+		$email = $artinfo['mail'];
+		$subject = $artinfo['subject'];
+		$org = $artinfo['org'];
+	}
+	$date = $artinfo['date'];
+	$msgid = $artinfo['msgid'];
 
 	$subject = 'FW: ' . preg_replace( '/^Re: /i', '', $subject ) ;
 
@@ -129,6 +153,7 @@ elseif( $artnum != '' ) {
 	echo "<tr><td class=x align=right>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
 
 	echo "<tr><td class=x align=right>\n";
+	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>\n";
 	echo " <input class=b type=button value=\"$strFormConfirmForward\" onClick='verify();' tabindex=2>\n";

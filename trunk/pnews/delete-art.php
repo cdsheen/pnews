@@ -35,9 +35,11 @@ if( $confirm == 1 ) {
 	$msgid   = $_POST['msgid'];
 	$subject = $_POST['subject'];
 
+	$artconv = get_conversion( $_POST['charset'], $curr_charset );
+
 	$nhd = nnrp_open( $server );
-	if( $article_convert['back'] )
-		nnrp_cancel( $nhd, $article_convert['back']($auth_user), $auth_email, $msgid, $group, $article_convert['back']($subject) );
+	if( $artconv['back'] )
+		nnrp_cancel( $nhd, $artconv['back']($auth_user), $auth_email, $msgid, $group, $artconv['back']($subject) );
 	else
 		nnrp_cancel( $nhd, $auth_user, $auth_email, $msgid, $group, $subject );
 	nnrp_close($nhd);
@@ -66,7 +68,24 @@ elseif( $artnum != '' ) {
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-	list( $from, $email, $subject, $date, $msgid, $org ) = nnrp_head( $nhd, $artnum, $article_convert['to'] );
+	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
+
+	if( $artconv['to'] ) {
+		$from  = $artconv['to']( $artinfo['name'] );
+		$email = $artconv['to']( $artinfo['mail'] );
+		$subject = $artconv['to']( $artinfo['subject'] );
+		$org = $artconv['to']( $artinfo['org'] );
+	}
+	else {
+		$from  = $artinfo['name'];
+		$email = $artinfo['mail'];
+		$subject = $artinfo['subject'];
+		$org = $artinfo['org'];
+	}
+	$date = $artinfo['date'];
+	$msgid = $artinfo['msgid'];
 
 	html_head( "$strDeleteDetail - $subject" );
 
@@ -87,6 +106,7 @@ elseif( $artnum != '' ) {
 	echo "<input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" type=hidden>\n";
 	echo "<input name=server value=$server type=hidden>\n";
 	echo "<input name=group value=$group type=hidden>\n";
+	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";
 	echo " <input class=b type=submit value='$strFormConfirmDelete'>\n";

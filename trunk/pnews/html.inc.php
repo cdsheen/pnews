@@ -39,16 +39,17 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 }
 
 function show_language_switch() {
-	global $CFG, $lang_option, $curr_language;
+	global $CFG, $lang_option, $curr_language, $lang_coding;
 	if( $CFG['language_switch'] ) {
 		$uri = $_SERVER['REQUEST_URI'];
 		$path = preg_replace( '/\/([^\/]+)$/', '/', $uri );
 		echo "<select class=lang onChange='change_language(this.value, \"$path\", \"$uri\");'>\n";
 		foreach( $lang_option as $region => $desc ) {
+			$charset = $lang_coding[$region];
 			if( $region == $curr_language )
-				echo "<option value=\"$region\" selected>$desc\n";
+				echo "<option value=\"$charset\" selected>$desc\n";
 			else
-				echo "<option value=\"$region\">$desc\n";
+				echo "<option value=\"$charset\">$desc\n";
 		}
 		echo "</select>\n";
 	}
@@ -74,9 +75,15 @@ function html_foot() {
      &nbsp;
 </td>
 <td align=right valign=center>
+<?
+	if( $CFG['show_sourceforge_logo'] ) {
+?>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" height=20 alt="SourceForge.net Logo">
 </a>
+<?
+	}
+?>
   </td><td align=right>
      <font size=2>
 <?
