@@ -2,6 +2,8 @@
 
 require_once('version.inc.php');
 
+$dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
+
 echo '<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
@@ -120,7 +122,10 @@ Sample running system:
 <p>
 Download from SourceForge:
 <blockquote>
-<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.0.1.tgz?download" target=_blank>pnews-2.0.1.tgz</a>
+';
+echo "<a href=\"http://prdownloads.sourceforge.net/pnews/$dname?download\"
+target=_blank>$dname</a>";
+echo '
 </blockquote>
 <p>
 Discussion Forum:
