@@ -46,8 +46,8 @@ include('header.php');
 <ol>
 <li><a href=#upgrade>Upgrade from previous version</a>
 <li><a href=#newinstall>New installation</a>
-<li><a href=#config_inc_php>Configuration of config.inc.php</a>
-<li><a href=#newsgroups_lst>Configuration of newsgroups.lst</a>
+<li><a href=#config_inc_php>Configuration of <b>config.inc.php</b></a>
+<li><a href=#newsgroups_lst>Configuration of <b>newsgroups.lst</b></a>
 </ol>
 </font>
 <hr />
