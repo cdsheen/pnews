@@ -136,12 +136,12 @@ while( $buf = fgets( $fp, 255 ) ) {
 fclose($fp);
 
 echo <<<EOR
-You can view the history since June 2002 by <a href=history.php>clicking here</a>.
+You can browse the change log since June 2002 by <a href=history.php>clicking here</a>.
 <p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>click here</a> for a reference.<br />
 <p>
 You are free to use or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br />
-And I will be very appreciate if you can share your comments and modification with me.
+And I am very appreciated if you share your comments and modification with me.
 <p>
 Acknowledgement
 <blockquote>
