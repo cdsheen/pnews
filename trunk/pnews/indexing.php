@@ -145,7 +145,7 @@ for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
 	$onclick = "onClick='javascript:read_article( \"$server\", \"$group\", " . $xover[$i][0] . ");'";
 ?>
 <tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
-  <td <? echo $onclick; ?> class=index align=right><i><? echo $highmark-$xover[$i][0]+1; ?></i></td>
+  <td <? echo $onclick; ?> class=index align=right><i><? echo $xover[$i][0]-$lowmark+1; ?></i></td>
   <td class=index>
   <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
   </td>

@@ -19,7 +19,7 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
 
-VERSION=2.0.3
+VERSION=2.0.4
 
 all:	html	pkg
 
