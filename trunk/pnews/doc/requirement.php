@@ -70,8 +70,6 @@ For example, when you telnet to an INN News server at port 119, you must get res
 </ul>
 instead of,
 <ul>
-200 nopy.com InterNetNews server INN 2.3.2 ready<br>
--or-<br>
 502 You have no permission to talk.  Goodbye.
 </ul>
 <p>
