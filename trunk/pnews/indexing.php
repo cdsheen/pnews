@@ -60,9 +60,9 @@ else
 	$cursor = $_GET['cursor'];
 
 echo <<<EOH
-<table border=1 cellpadding=0 cellspacing=0 width=100%>
-<tr><td>
-    <table width=100% border=1 cellpadding=2 cellspacing=0>
+<table border=1 class=shadow cellpadding=0 cellspacing=0 width=100%>
+<tr><td class=bg>
+    <table width=100% border=0 cellpadding=2 cellspacing=1>
     <tr><td class=group onMouseOver='this.className="group_hover";' onMouseout='this.className="group";'>
 
 EOH;
@@ -78,20 +78,20 @@ if( $CFG['url_rewrite'] )
 else
 	echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
 
-echo "</td>";
+echo "</td>\n";
 
 
 if( $CFG['url_rewrite'] ) {
 	if( $auth_success )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>\n";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/login\">$strLogin</a></td>\n";
 }
 else {
 	if( $auth_success )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>\n";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>\n";
 }
 
 echo <<<EOH
@@ -99,7 +99,7 @@ echo <<<EOH
            <a href=index.php>$strReturnToGroupList</a></td>
     </tr>
     </table>
-    <table width=100% border=1 cellpadding=1 cellspacing=0>
+    <table width=100% border=0 cellpadding=1 cellspacing=1>
 
 EOH;
 
@@ -251,7 +251,7 @@ else {
 
 echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
 
-echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
+echo "<table width=100% border=0 cellpadding=2 cellspacing=1>";
 
 echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
