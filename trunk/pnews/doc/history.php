@@ -46,10 +46,10 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
-PHP News Reader v2.5.1 (2003/12/24)
+PHP News Reader v2.5.1 (2003/12/25)
 <ul>
 <li>Rewrite the `uudecode' codes to fix the bug which result in wrong outputs.
-<li>E-Mail address is now encoded by default to prevent spamlist collection (<a href=guide.php#hide_email>\$CFG['hide_email']</a>)
+<li>Anti-Spam: E-Mail address is now encoded by default to prevent spamlist collection (<a href=guide.php#hide_email>\$CFG['hide_email']</a>)
 <li>Uuencoded image attachment is shown inline unless explicitly setting <a href=guide.php#image_inline>\$CFG['image_inline']</a> to <i>false</i>.
 <li>Fix the charset information in the login-failed page.
 <li>E-Mail link auto-detection is refined for multi-bytes environment.
