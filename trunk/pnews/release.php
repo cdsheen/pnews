@@ -125,8 +125,13 @@ PHP News Reader applies <a href=copying.php>GPL</a> license, please view the det
 <p>
 Since 2003/01, PHP News Reader hosts on SourceForge:
 <blockquote>
+<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
+<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
+</a>
+</blockquote>
+Project Home:
+<blockquote>
 <a href="http://sourceforge.net/projects/pnews/" alt="http://sourceforge.net/projects/pnews/" target=_blank>
-<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo"><br>
 http://sourceforge.net/projects/pnews/
 </a>
 </blockquote>
