@@ -90,7 +90,7 @@ There are various handy authentication modules availabled.
 <li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
 </ul>
 <p>
-The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.
+The support for MySQL and PostgreSQL also makes it possible to authenticate through the <a href="http://www.phpbb.com/" target=_blank>phpBB</a> accounts.
 <p>
 And it is easy to write your authentication module to be used by PHP News Reader.
 <p>
@@ -99,9 +99,10 @@ The login prompt can be configured as HTTP authentication or FORM style.
 PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese and Fran&ccedil;ais.
 The preferred language can be switched any time and any where.
 <p>
-PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese and Simplified Chinese.
+PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in China).
 <p>
-But unfortunately, the PHP iconv() function does not work on some systems and it also has problems of handling Chinese words.
+But unfortunately, the PHP iconv() function does not work on some systems
+and it also has problems of handling Chinese words.
 So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
 The charset of article is auto-converted to the preferred one
@@ -132,14 +133,18 @@ while( $buf = fgets( $fp, 255 ) ) {
 fclose($fp);
 
 echo <<<EOR
-You can view the history since June 2002 by <a href=history.php>clicking here</a>.<p>
-PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference<br>
+You can view the history since June 2002 by <a href=history.php>clicking here</a>.
+<p>
+PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference.<br>
+<p>
+You are free to use or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br>
+And I will be very appreciate if you can share your comments and modification with me.
 <p>
 Acknowledgement
 <blockquote>
-Lots of people help the development of PHP News Reader, <a href=acknowlege.php>clicking here</a> to know their contributions.
+Many people help the development of PHP News Reader, <a href=acknowlege.php>clicking here</a> to know their contributions.
 </blockquote>
-Since January 2003, PHP News Reader hosts on SourceForge:
+Since January 2003, PHP News Reader hosts itself on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net Logo">
