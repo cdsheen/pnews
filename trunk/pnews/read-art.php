@@ -56,7 +56,7 @@ else {
 $date = $artinfo['date'];
 $msgid = $artinfo['msgid'];
 
-html_head( "$group - $subject", null, 'topmargin=0 leftmargin=0' );
+html_head( "$subject ($group)", null, 'topmargin=0 leftmargin=0' );
 #html_head( "$group - $subject", null, 'topmargin=0' );
 
 #if( strlen( $subject ) > $subject_limit + 6 )
