@@ -48,7 +48,7 @@ echo <<<EOH
 <hr />
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>
-<li>Supporting attach files (by UUENCODE) when posting article (<a href=guide.php#allow_attach_file>\$CFG['allow_attach_file']</a>)
+<li>Supporting attach files (by UUENCODE) when posting or replying article (<a href=guide.php#allow_attach_file>\$CFG['allow_attach_file']</a>)
 <li>Mail authentication module now support <a href=guide.php#mail_auth>pop3s</a>.
 <li>References header in replied article now works exactly as defined in <a href="http://rfc.giga.net.tw/rfc2822" target=_blank>RFC 2822</a>.
 <li>The correct E-Mail domain is always used after login from Mail authentication module.
