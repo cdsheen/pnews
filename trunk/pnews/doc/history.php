@@ -52,6 +52,7 @@ echo <<<EOH
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>
 <li>Fix a potential bug which cause heavy loading if caching is enabled.
+<li>Fix a bug about indexing articles which cause execution timeout.
 <li>Login fail message is now displayed if using "form" style login
 <li>Refined interface and style sheet.
 <li>Default value of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> is <i>false</i> now.
@@ -242,7 +243,7 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
 </font>

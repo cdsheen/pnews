@@ -100,7 +100,7 @@ function html_foot($langopt = true) {
 	if( $CFG['show_sourceforge_logo'] ) {
 		echo <<<EOL
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" height=20 alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" height=20 alt="SourceForge.net">
 </a>
 
 EOL;

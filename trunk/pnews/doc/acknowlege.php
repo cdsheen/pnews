@@ -49,7 +49,7 @@ Acknowledgement
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
 </font>

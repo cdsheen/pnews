@@ -116,15 +116,46 @@ EOR;
 $ncount = 0;
 $curlist = array();
 
+echo "<!-- cursor = $cursor   lowmark = $lowmark -->\n";
+
+$i = $cursor;
+while( $i >= $lowmark ) {
+	$cut_end = array_search( $i, $artlist );
+
+	if( $cut_end != false ) {
+		echo "<!-- found $i at $cut_end -->\n";
+		$cut_from = $cut_end - $artsppg + 1;
+		if( $cut_from < 0 )
+			$cut_from = 0;
+		$ncount = $cut_end - $cut_from + 1;
+		for( $j = $cut_end ; $j >= $cut_from ; $j-- )
+			$curlist[] = $artlist[$j];
+		if( $cut_from > 0 )
+			$lower = $artlist[$cut_from-1];
+		else
+			$lower = $lowmark;
+		if( $cut_end + $artsppg + 1 < $artsize )
+			$higher = $artlist[$cut_end+$artsppg];
+		else
+			$higher = $highmark;
+		break;
+	}
+	$i--;
+	if( $i < $cursor - 1000 )
+		break;
+}
+/*
 for( $i = $cursor ; $i >= $lowmark && $ncount < $artsppg ; $i-- ) {
+	echo "<!-- Test $i -->\n";
 	if( in_array( $i, $artlist ) ) {
+		echo "<!-- $i ok -->\n";
 		$curlist[] = $i;
 		$ncount++;
 	}
 }
 
 $lower = $curlist[$ncount-1];
-
+echo "<!-- lower = $lower -->\n";
 for( $i = $lower-1 ; $i >= $lowmark ; $i-- ) {
 	if( in_array( $i, $artlist ) ) {
 		$lower = $i;
@@ -135,12 +166,14 @@ for( $i = $lower-1 ; $i >= $lowmark ; $i-- ) {
 $higher = $curlist[0];
 
 $s = 0;
+echo "<!-- higher = $higher -->\n";
 for( $i = $higher+1 ; $i <= $highmark && $s < $artsppg ; $i++ ) {
 	if( in_array( $i, $artlist ) ) {
 		$higher = $i;
 		$s++;
 	}
 }
+*/
 
 if( !$CFG['show_newest_top'] ) {
 	sort($curlist);

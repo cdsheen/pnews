@@ -295,14 +295,14 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
 			$artinfo = preg_split( '/\t/', $buf );
 
-			$artlist[] = $artinfo[0];
+			$artlist[] = intval($artinfo[0]);
 		}
 	}
 
-	$artlist = array_values( $artlist );
-#	$artlist = sort( $artlist );
 
 	if( $cache_file ) {
+		$artlist = array_values( $artlist );
+#		$artlist = sort( $artlist );
 		$fp = @fopen( $cache_file, 'w' );
 		if( $fp ) {
 			if( flock( $fp, LOCK_EX|LOCK_NB ) ) {

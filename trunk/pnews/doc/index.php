@@ -147,7 +147,7 @@ Many people help the development of PHP News Reader, <a href=acknowlege.php>clic
 Since January 2003, PHP News Reader hosts itself on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </blockquote>
 Project Home:
