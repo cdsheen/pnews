@@ -4,7 +4,7 @@
 # PHP News Reader Configuration File
 #
 # Copyright (C) 2001-2003 - All rights reserved
-# Shen Cheng-Da (cdsheen@users.sourceforge.net)
+# Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 # This is a sample configuration.
 # You should make a copy of this file at the directory of pnews.
@@ -383,7 +383,7 @@ $CFG["charset"]["database"]  = "big5";
 ############################################################################
 # PHP News Reader
 # Copyright (C) 2001-2003 - All rights reserved
-# Shen Cheng-Da (cdsheen@users.sourceforge.net)
+# Shen Cheng-Da (cdsheen at users.sourceforge.net)
 ############################################################################
 
 ?>
