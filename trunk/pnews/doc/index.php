@@ -27,6 +27,7 @@ else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 
 echo <<<EOR
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
  <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">

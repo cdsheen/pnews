@@ -24,7 +24,9 @@ if( $_SERVER['HTTPS'] )
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 
-echo '<html>
+echo <<<EOH
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
@@ -32,11 +34,8 @@ echo '<html>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
-';
-echo "<font face=\"Georgia\"><h3>$pnews_name $pnews_version</h3></font>\n";
-echo "</td><td align=right valign=bottum>";
-echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
-echo '
+</td><td align=right valign=bottum>
+<font face="Georgia" size=1>Release Date: $pnews_release</font>
 </td></tr></table>
 <font size=3 color=black face="Georgia">
 Requirement
@@ -78,8 +77,6 @@ The requirement for PHP News Reader on the client side (web browser) :
 <li>Accept Cookies (not necessary)
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
-';
-echo<<<EOH
 <hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
@@ -90,5 +87,6 @@ echo<<<EOH
 </font>
 </body>
 </html>
+
 EOH;
 ?>

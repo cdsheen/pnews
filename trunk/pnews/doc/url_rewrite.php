@@ -24,7 +24,9 @@ if( $_SERVER['HTTPS'] )
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 
-echo '<html>
+echo <<<EOH
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="../style.css">
@@ -32,11 +34,9 @@ echo '<html>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
-';
-echo "<font face=\"Georgia\"><h3>$pnews_name $pnews_version</h3></font>\n";
-echo "</td><td align=right valign=bottum>";
-echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
-echo '
+<font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
+</td><td align=right valign=bottum>
+<font face="Georgia" size=1>Release Date: $pnews_release</font>
 </td></tr></table>
 <font size=3 color=black face="Georgia">
 URL Rewrite Function
@@ -60,13 +60,12 @@ http://webnews.domain.net/news/article//nopy.test/21012
 To enable URL Rewrite, you need:
 <ul>
 <li>Apache web server with "mod_rewrite" enabled
-<li>Correct setting for AllowOverride at the program\'s directory in httpd.conf
+<li>Correct setting for AllowOverride at the program's directory in httpd.conf
 </ul>
-For more information about Apache\'s mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
+For more information about Apache's mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
 <p>
 Check the <a href=guide.php>Installation Manual</a> for other configuration parameters.
-';
-echo<<<EOH
+
 <hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
@@ -77,5 +76,7 @@ echo<<<EOH
 </font>
 </body>
 </html>
+
 EOH;
+
 ?>

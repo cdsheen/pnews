@@ -40,13 +40,13 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 <head>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding">
 <META HTTP-EQUIV="Content-Language" CONTENT="$region">
+<BASE HREF="$urlbase/">
 
 EOH;
 
-	echo '<base href="' . $urlbase . '/">';
 
 	if( $redirect )
-		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">";
+		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">\n";
 
 	echo <<<EOX
   <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">

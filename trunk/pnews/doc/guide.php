@@ -26,7 +26,9 @@ if( $_SERVER['HTTPS'] )
 else
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 
-echo '<html>
+echo <<<EOH
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
@@ -34,17 +36,17 @@ echo '<html>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
-';
-echo "<font face=\"Georgia\"><h3>$pnews_name $pnews_version</h3></font>\n";
-echo "</td><td align=right valign=bottum>";
-echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
-echo '
-</td></tr></table>
+<font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
+</td><td align=right valign=bottum>
+<font face="Georgia" size=1>Release Date: $pnews_release</font>
+</td></tr>
+</table>
 <font size=3 color=black face="Georgia">
 PHP News Reader - Installation and Configuration
 </font>
 <hr>
-';
+EOH;
+
 ?>
 <font size=3 color=black face="Georgia">
 <strong><em><font color="#0000FF">Installation</font></em></strong> 
