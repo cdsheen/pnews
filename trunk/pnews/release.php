@@ -110,7 +110,7 @@ Sample running system:
 <p>
 Download from SourceForge:
 <blockquote>
-<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.0.tgz?download" target=_blank>pnews-2.0.tgz</a>
+<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.0.1.tgz?download" target=_blank>pnews-2.0.1.tgz</a>
 </blockquote>
 <p>
 Discussion Forum:
