@@ -57,6 +57,7 @@ $CFG["auth_http_realm"] = "XXX";
 #               REQUIRED if auth_type != "open"
 #      "ldap" - authenticated via LDAP server,
 #      "pop3" - authenticated via POP3 server,
+#     "pop3s" - authenticated via POP3S server,
 #       "ftp" - authenticated via FTP server,
 #      "mail" - authenticated via multiple POP3 server,
 #     "mysql" - authenticated via MySQL database,
@@ -120,11 +121,14 @@ $CFG["auth_organization"] = "XXX Club";
 
 # POP3 authentication parameters (REQUIRED if auth_method == 'pop3')
 #      [pop3_server] POP3 server address ( address:port )
-# [pop3_user_modify] fix the username used for POP3, %u replaced by username
-#                    (default: "%u")
 
 // $CFG["pop3_server"]      = "pop3.domain.org";
-// $CFG["pop3_user_modify"] = "%u";
+
+
+# POP3S authentication parameters (REQUIRED if auth_method == 'pop3s')
+#      [pop3_server] POP3S server address ( address:port )
+
+// $CFG["pop3s_server"]      = "pop3s.domain.org";
 
 
 # Mail authentication parameters (REQUIRED if auth_method == 'mail')

@@ -49,6 +49,10 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.4.1 (2003/10/11)
+<ul>
+<li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module
+</ul>
 PHP News Reader v2.4.0 (2003/10/04)
 <ul>
 <li>Support News Server with NNTP over SSL connection (also known as NNTPS or SNEWS)

@@ -29,7 +29,7 @@ require_once('config.inc.php');
 
 $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form', 'cas' );
-$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
+$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
 
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
@@ -63,6 +63,20 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'POP3 authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'POP3 authentication module is invalid' );
+		break;
+	case 'pop3s':
+		if( !isset( $CFG['pop3s_server'] ) )
+			config_error( '$CFG["pop3s_server"]' );
+		if( file_exists('auth/pop3s.inc.php') )
+			include('auth/pop3s.inc.php');
+		else
+			show_error( 'POP3S authentication module missed' );
+		if( !function_exists( 'check_user_password' ) )
+			show_error( 'POP3S authentication module is invalid' );
+		if( version_check( '4.3.0' ) )
+			show_error( 'PHP 4.3.0 or greater is required for POP3 over SSL support' );
+		if( !function_exists( 'openssl_get_publickey' ) )
+			show_error( 'OpenSSL is required for POP3 over SSL support' );
 		break;
 	case 'mail':
 		if( !isset( $CFG['pop3_mapping'] ) )

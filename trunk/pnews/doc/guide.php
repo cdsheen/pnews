@@ -171,6 +171,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       ) </p>
     <p>&quot;ldap&quot; - authenticated via LDAP server,<br />
       &quot;pop3&quot; - authenticated via POP3 server,<br />
+      &quot;pop3s&quot; - authenticated via POP3S server (with version >= 2.4.1),<br />
       &quot;ftp&quot; - authenticated via FTP server,<br />
       &quot;mail&quot; - authenticated via multiple POP3 server,<br />
       &quot;mysql&quot; - authenticated via MySQL database,<br />
@@ -282,6 +283,17 @@ You can download phpCAS from the following place:<br />
       <p>Normally, you did not need this parameter. But on some BBS systems, a little modification is needed, such as:</p>
       <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
     </blockquote>
+  </blockquote>
+<a name=pop3s_auth></a>
+  <p> <strong>POP3S authentication parameters</strong> (REQUIRED if auth_method == 'pop3')</p>
+  <blockquote>
+    <p> <strong>$CFG[&quot;pop3s_server&quot;]</strong></p>
+    <blockquote> 
+      <p>POP3S server address ( address:port ), default port is 995</p>
+      <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
+    </blockquote>
+    <p>This setting first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
+    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=mail_auth></a>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if auth_method == 'mail')</p>
