@@ -43,7 +43,7 @@ PHP News Reader v2.6.0 (2004/10/)
 <ul>
 <li>Added <a href=guide.php#confirm_post>\$CFG['confirm_post']</a> and <a href=guide.php#confirm_forward>\$CFG['confirm_forward']</a> to enable the confirmation for message posting.
 <li>Fix the wrong version-checking codes when enabling nntps.
-<li>All language strings (\$strXXX) are renamed as \$pnews_str array.
+<li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.
 </ul>
 PHP News Reader v2.5.9 (2004/08/11)

@@ -8,115 +8,115 @@
 // Copyright (C) 2001-2004 - All rights reserved
 // Francesco Rolando (ogekuri at porcate.org)
 
-$pnews_str['Authentication']     = 'Autenticazione';
-$pnews_str['LoginName']          = 'Nome utente';
-$pnews_str['PassWord']           = 'Password';
-$pnews_str['NeedLogin']          = 'Questa pagina richiede un`autenticazione';
-$pnews_str['UseYourAccountAt']   = 'Inserisci il tuo nominativo in <b>%s</b> per autenticarti:';
-$pnews_str['Login']              = 'Entra';
-$pnews_str['Logout']             = 'Esci';
+$pnews_msg['Authentication']     = 'Autenticazione';
+$pnews_msg['LoginName']          = 'Nome utente';
+$pnews_msg['PassWord']           = 'Password';
+$pnews_msg['NeedLogin']          = 'Questa pagina richiede un`autenticazione';
+$pnews_msg['UseYourAccountAt']   = 'Inserisci il tuo nominativo in <b>%s</b> per autenticarti:';
+$pnews_msg['Login']              = 'Entra';
+$pnews_msg['Logout']             = 'Esci';
 
-$pnews_str['HTTPlogoutInfo']     = 'Chiudi tutte le finestre del tuo browser per evitare accessi non autorizzati.';
+$pnews_msg['HTTPlogoutInfo']     = 'Chiudi tutte le finestre del tuo browser per evitare accessi non autorizzati.';
 
-$pnews_str['AuthExpired']        = 'Tempo scaduto! Devi autenticarti nuovamente!';
+$pnews_msg['AuthExpired']        = 'Tempo scaduto! Devi autenticarti nuovamente!';
 
-$pnews_str['AuthFail']           = 'Autenticazione fallita';
-$pnews_str['ReadyReturn']        = 'Sto ritornando alla pagina principale, premi qua <a href="%s">here</a> per ritornarci ora';
-$pnews_str['PasswordRetryFail']  = 'Il nome e la password non sono cotterri';
-$pnews_str['ReLogin']            = 'Autentificati di nuovo';
+$pnews_msg['AuthFail']           = 'Autenticazione fallita';
+$pnews_msg['ReadyReturn']        = 'Sto ritornando alla pagina principale, premi qua <a href="%s">here</a> per ritornarci ora';
+$pnews_msg['PasswordRetryFail']  = 'Il nome e la password non sono cotterri';
+$pnews_msg['ReLogin']            = 'Autentificati di nuovo';
 
-$pnews_str['GoBack']             = 'Ritorna';
+$pnews_msg['GoBack']             = 'Ritorna';
 
-$pnews_str['NewsServer']         = 'News Server';
-$pnews_str['ConnectServerError'] = 'Connessione al server fallita.';
-$pnews_str['ReadonlyNotify']     = 'Modalita` sola lettura';
+$pnews_msg['NewsServer']         = 'News Server';
+$pnews_msg['ConnectServerError'] = 'Connessione al server fallita.';
+$pnews_msg['ReadonlyNotify']     = 'Modalita` sola lettura';
 
-$pnews_str['GroupList']          = 'Lista gruppi';
+$pnews_msg['GroupList']          = 'Lista gruppi';
 
-$pnews_str['SessionError']       = 'Errore d`accesso';
-$pnews_str['SessionErrorReason'] = 'Errore d`accesso %s - modalita` in sola lettura o tempo scaduto';
-$pnews_str['SessionErrorReturn'] = 'Please return to %s and retry again';
+$pnews_msg['SessionError']       = 'Errore d`accesso';
+$pnews_msg['SessionErrorReason'] = 'Errore d`accesso %s - modalita` in sola lettura o tempo scaduto';
+$pnews_msg['SessionErrorReturn'] = 'Please return to %s and retry again';
 
-$pnews_str['Number']             = 'N.';
-$pnews_str['PostNumber']         = 'Numero Art.';
-$pnews_str['Group']              = 'Gruppo';
-$pnews_str['GroupDescription']   = 'Descrizione';
-$pnews_str['Subject']            = 'Oggetto';
-$pnews_str['Author']             = 'Autore';
-$pnews_str['Time']               = 'Ora';
-$pnews_str['Action']             = 'Azione';
-$pnews_str['Receiver']           = 'Ricevuto da';
-$pnews_str['Name']               = 'Nome';
-$pnews_str['Email']              = 'E-Mail';
-$pnews_str['Content']            = 'Contenuto';
-$pnews_str['Attachment']         = 'Allegato';
+$pnews_msg['Number']             = 'N.';
+$pnews_msg['PostNumber']         = 'Numero Art.';
+$pnews_msg['Group']              = 'Gruppo';
+$pnews_msg['GroupDescription']   = 'Descrizione';
+$pnews_msg['Subject']            = 'Oggetto';
+$pnews_msg['Author']             = 'Autore';
+$pnews_msg['Time']               = 'Ora';
+$pnews_msg['Action']             = 'Azione';
+$pnews_msg['Receiver']           = 'Ricevuto da';
+$pnews_msg['Name']               = 'Nome';
+$pnews_msg['Email']              = 'E-Mail';
+$pnews_msg['Content']            = 'Contenuto';
+$pnews_msg['Attachment']         = 'Allegato';
 
-$pnews_str['NoSubject']          = '<nessun oggetto>';
+$pnews_msg['NoSubject']          = '<nessun oggetto>';
 
-$pnews_str['Refresh']            = 'Aggiorna';
+$pnews_msg['Refresh']            = 'Aggiorna';
 
-$pnews_str['Reply']              = 'Rispondi';
-$pnews_str['Delete']             = 'Cancella';
-$pnews_str['CrossPost']          = 'Crosspost';
-$pnews_str['Forward']            = 'Inoltra';
+$pnews_msg['Reply']              = 'Rispondi';
+$pnews_msg['Delete']             = 'Cancella';
+$pnews_msg['CrossPost']          = 'Crosspost';
+$pnews_msg['Forward']            = 'Inoltra';
 
-$pnews_str['Post']               = 'Posta';
+$pnews_msg['Post']               = 'Posta';
 
-$pnews_str['CloseWindow']        = 'Chiudi';
+$pnews_msg['CloseWindow']        = 'Chiudi';
 
-$pnews_str['ShowHeader']         = 'Mostra intestazioni';
+$pnews_msg['ShowHeader']         = 'Mostra intestazioni';
 
-$pnews_str['FirstPage']          = 'Primo';
-$pnews_str['LastPage']           = 'Ultimo';
-$pnews_str['NextPage']           = 'Prossimo';
-$pnews_str['PreviousPage']       = 'Precedente';
+$pnews_msg['FirstPage']          = 'Primo';
+$pnews_msg['LastPage']           = 'Ultimo';
+$pnews_msg['NextPage']           = 'Prossimo';
+$pnews_msg['PreviousPage']       = 'Precedente';
 
-$pnews_str['NextArticle']        = 'Prossimo';
-$pnews_str['LastArticle']        = 'Precedente'; 
+$pnews_msg['NextArticle']        = 'Prossimo';
+$pnews_msg['LastArticle']        = 'Precedente'; 
 
-$pnews_str['PageNumber']         = 'Pagina %s su un totale di %s pagine(a)';
+$pnews_msg['PageNumber']         = 'Pagina %s su un totale di %s pagine(a)';
 
-$pnews_str['ReturnToGroupList']  = 'Lista gruppi';
-$pnews_str['ReturnToIndexing']   = 'Lista articoli';
-$pnews_str['NoPostPermission']   = 'Non hai permessi sufficienti per postare questo articolo in questo gruppo';
-$pnews_str['NoArticle']          = 'Non ci sono articoli in questo gruppo';
+$pnews_msg['ReturnToGroupList']  = 'Lista gruppi';
+$pnews_msg['ReturnToIndexing']   = 'Lista articoli';
+$pnews_msg['NoPostPermission']   = 'Non hai permessi sufficienti per postare questo articolo in questo gruppo';
+$pnews_msg['NoArticle']          = 'Non ci sono articoli in questo gruppo';
 
-$pnews_str['ArticlePosted']      = 'L`articolo e` stato postato';
-$pnews_str['ArticleIsDeleted']   = 'L`articolo e` stato cancellato';
-$pnews_str['ArticleIsForwarded'] = 'L`articolo e` stato inoltrato';
+$pnews_msg['ArticlePosted']      = 'L`articolo e` stato postato';
+$pnews_msg['ArticleIsDeleted']   = 'L`articolo e` stato cancellato';
+$pnews_msg['ArticleIsForwarded'] = 'L`articolo e` stato inoltrato';
 
-$pnews_str['RealyQuit']          = 'Vuoi uscire dall`editazione ?';
-$pnews_str['RealyDelete']        = 'Vuoi cancellare questo articolo ?';
+$pnews_msg['RealyQuit']          = 'Vuoi uscire dall`editazione ?';
+$pnews_msg['RealyDelete']        = 'Vuoi cancellare questo articolo ?';
 
-$pnews_str['FormConfirmPost']    = 'Posta';
-$pnews_str['FormCancelPost']     = 'Annulla';
+$pnews_msg['FormConfirmPost']    = 'Posta';
+$pnews_msg['FormCancelPost']     = 'Annulla';
 
-$pnews_str['FormConfirmDelete']  = 'Cancella';
-$pnews_str['FormCancelDelete']   = 'Annulla';
+$pnews_msg['FormConfirmDelete']  = 'Cancella';
+$pnews_msg['FormCancelDelete']   = 'Annulla';
 
-$pnews_str['FormConfirmForward'] = 'Inoltra';
-$pnews_str['FormCancelForward']  = 'Annulla';
+$pnews_msg['FormConfirmForward'] = 'Inoltra';
+$pnews_msg['FormCancelForward']  = 'Annulla';
 
-$pnews_str['FormInsertQuote']    = 'Copia il testo';
+$pnews_msg['FormInsertQuote']    = 'Copia il testo';
 
-$pnews_str['PleaseEnterName']    = 'Inserisci il tuo nome!';
-$pnews_str['PleaseEnterEmail']   = 'Inserisci la tua E-Mail!';
-$pnews_str['PleaseEnterGroup']   = 'Speficica un gruppo!';
-$pnews_str['PleaseEnterSubject'] = 'Specifica un oggetto!';
-$pnews_str['PleaseEnterContent'] = 'Inserisci il testo dell`articolo!';
-$pnews_str['PleaseEnterReceiver']= 'Inserisci un`E-Mail del destinatario!';
+$pnews_msg['PleaseEnterName']    = 'Inserisci il tuo nome!';
+$pnews_msg['PleaseEnterEmail']   = 'Inserisci la tua E-Mail!';
+$pnews_msg['PleaseEnterGroup']   = 'Speficica un gruppo!';
+$pnews_msg['PleaseEnterSubject'] = 'Specifica un oggetto!';
+$pnews_msg['PleaseEnterContent'] = 'Inserisci il testo dell`articolo!';
+$pnews_msg['PleaseEnterReceiver']= 'Inserisci un`E-Mail del destinatario!';
 
-$pnews_str['NoPostJustMail']     = 'Vuoi rispondere all`email senza postare l`articolo ?';
+$pnews_msg['NoPostJustMail']     = 'Vuoi rispondere all`email senza postare l`articolo ?';
 
-$pnews_str['ReplyToAuthor']      = 'Rispondi all`autore';
-$pnews_str['NotPostToGroup']     = 'Non postare';
+$pnews_msg['ReplyToAuthor']      = 'Rispondi all`autore';
+$pnews_msg['NotPostToGroup']     = 'Non postare';
 
-$pnews_str['QuoteFrom']          = '== Quotato dall`articolo %s';
-$pnews_str['ForwardFrom']        = '== Inoltrato da %s';
-$pnews_str['CrossPostAuthor']    = '== Repost dell`articolo %s';
+$pnews_msg['QuoteFrom']          = '== Quotato dall`articolo %s';
+$pnews_msg['ForwardFrom']        = '== Inoltrato da %s';
+$pnews_msg['CrossPostAuthor']    = '== Repost dell`articolo %s';
 
-$pnews_str['PostStatus']         = '== Postato in %s da %s';
+$pnews_msg['PostStatus']         = '== Postato in %s da %s';
 
-$pnews_str['MyFavor']            = 'Preferito';
+$pnews_msg['MyFavor']            = 'Preferito';
 
 ?>

@@ -81,15 +81,15 @@ if( is_array($CFG['links']) )
 
 if( $CFG['url_rewrite'] ) {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$pnews_str[Logout]: $auth_user\">$pnews_str[Logout]</a></td></tr>";
+		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$pnews_msg[Logout]: $auth_user\">$pnews_msg[Logout]</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$pnews_str[Login]</a></td></tr>";
+		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$pnews_msg[Login]</a></td></tr>";
 }
 else {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$pnews_str[Logout]: $auth_user\">$pnews_str[Logout]</a></td></tr>";
+		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$pnews_msg[Logout]: $auth_user\">$pnews_msg[Logout]</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$pnews_str[Login]</a></td></tr>";
+		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$pnews_msg[Login]</a></td></tr>";
 }
 
 echo "</table>\n";
@@ -98,7 +98,7 @@ echo "</td></tr></table>\n";
 echo "</td><td valign=top align=left>";
 
 if( ! $nhd ) {
-	echo "<br /><br /><font size=3>$pnews_str[ConnectServerError] (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -109,7 +109,7 @@ nnrp_authenticate( $nhd );
 $active = nnrp_list_group( $nhd, $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {
-	echo "<br /><br /><font size=3>$pnews_str[ConnectServerError] &lt;" . $news_server[$curr_catalog] . "&gt;</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] &lt;" . $news_server[$curr_catalog] . "&gt;</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -117,7 +117,7 @@ if( $active == null ) {
 
 /*
 if( $global_readonly ) {
-	echo "<font color=red>* $pnews_str[ReadonlyNotify]</font>\n";
+	echo "<font color=red>* $pnews_msg[ReadonlyNotify]</font>\n";
 	echo '<p>';
 }
 */
@@ -125,16 +125,16 @@ if( $global_readonly ) {
 
 echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 
-// $row = array( $pnews_str['Number'], $pnews_str['PostNumber'], $pnews_str['Group'], $pnews_str['GroupDescription'] );
+// $row = array( $pnews_msg['Number'], $pnews_msg['PostNumber'], $pnews_msg['Group'], $pnews_msg['GroupDescription'] );
 
 if( $CFG['show_group_description'] )
 	echo <<<EOH
 <table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
-  <td>$pnews_str[Number]</td>
-  <td align=right>$pnews_str[PostNumber]</td>
-  <td>$pnews_str[Group]</td>
-  <td>$pnews_str[GroupDescription]</td>
+  <td>$pnews_msg[Number]</td>
+  <td align=right>$pnews_msg[PostNumber]</td>
+  <td>$pnews_msg[Group]</td>
+  <td>$pnews_msg[GroupDescription]</td>
 </tr>
 
 EOH;
@@ -142,9 +142,9 @@ else
 	echo <<<EOH
 <table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
-  <td>$pnews_str[Number]</td>
-  <td align=right>$pnews_str[PostNumber]</td>
-  <td>$pnews_str[Group]</td>
+  <td>$pnews_msg[Number]</td>
+  <td align=right>$pnews_msg[PostNumber]</td>
+  <td>$pnews_msg[Group]</td>
 </tr>
 
 EOH;

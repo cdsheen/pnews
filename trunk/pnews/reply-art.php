@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $pnews_str[Reply]";
+$title .= " - $pnews_msg[Reply]";
 
 # -------------------------------------------------------------------
 
@@ -105,16 +105,16 @@ if( $_POST['content'] != '' ) {
 
 	echo <<<EOT
 <table width=100%>
-<tr><td class=status>$pnews_str[ArticlePosted]</td>
-    <td class=field><input class=normal type=button onClick="close_window()" value="$pnews_str[CloseWindow]"></td>
+<tr><td class=status>$pnews_msg[ArticlePosted]</td>
+    <td class=field><input class=normal type=button onClick="close_window()" value="$pnews_msg[CloseWindow]"></td>
 </tr>
 </table>
 <hr />
 <table>
-<tr><td class=field>$pnews_str[Author]: </td><td class=value>$nickname ($email)</td></tr>
-<tr><td class=field>$pnews_str[Time]: </td><td class=value>$time</td></tr>
-<tr><td class=field>$pnews_str[Subject]: </td><td class=value>$subject</td></tr>
-<tr><td class=field>$pnews_str[Group]: </td><td class=value>$group</td></tr>
+<tr><td class=field>$pnews_msg[Author]: </td><td class=value>$nickname ($email)</td></tr>
+<tr><td class=field>$pnews_msg[Time]: </td><td class=value>$time</td></tr>
+<tr><td class=field>$pnews_msg[Subject]: </td><td class=value>$subject</td></tr>
+<tr><td class=field>$pnews_msg[Group]: </td><td class=value>$group</td></tr>
 </table>
 <hr />
 
@@ -182,7 +182,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($pnews_str['RealyQuit']); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_msg['RealyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -190,7 +190,7 @@ elseif( $artnum != '' ) {
 	}
 	function check_reply() {
 		if( document.post.onlymail.checked && !document.post.replymail.checked ) {
-			if( confirm('<? echo addslashes($pnews_str['NoPostJustMail']); ?>') ) {
+			if( confirm('<? echo addslashes($pnews_msg['NoPostJustMail']); ?>') ) {
 				document.post.replymail.checked = true;
 			}
 		}
@@ -198,22 +198,22 @@ elseif( $artnum != '' ) {
 	}
 	function verify() {
 		if( document.post.nickname.value == "" ) {
-			alert('<? echo addslashes($pnews_str['PleaseEnterName']); ?>');
+			alert('<? echo addslashes($pnews_msg['PleaseEnterName']); ?>');
 			document.post.nickname.focus();
 			return(false);
 		}
 		if( document.post.email.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.email.value) ) {
-			alert('<? echo addslashes($pnews_str['PleaseEnterEmail']); ?>');
+			alert('<? echo addslashes($pnews_msg['PleaseEnterEmail']); ?>');
 			document.post.email.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo addslashes($pnews_str['PleaseEnterSubject']); ?>');
+			alert('<? echo addslashes($pnews_msg['PleaseEnterSubject']); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo addslashes($pnews_str['PleaseEnterContent']); ?>');
+			alert('<? echo addslashes($pnews_msg['PleaseEnterContent']); ?>');
 			document.post.content.focus();
 			return(false);
 		}
@@ -236,14 +236,14 @@ CONFIRM;
 #	$subject = str_replace( '"', '\"', $subject );
 	echo "<form name=post action=\"$self\" method=post enctype=\"multipart/form-data\">\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
-	echo "<tr><td class=field>$pnews_str[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
-	echo " <td class=text><input name=replymail type=checkbox>$pnews_str[ReplyToAuthor]</td></tr>\n";
-	echo "<tr><td class=field>$pnews_str[Email]:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td>\n";
-	echo " <td class=text><input name=onlymail type=checkbox onClick='check_reply();'>$pnews_str[NotPostToGroup]</td></tr>\n";
-	echo "<tr><td class=field>$pnews_str[Group]:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td>\n";
-	echo " <td class=text><input class=normal type=button value=\"$pnews_str[FormConfirmPost]\" onClick='verify()' tabindex=2>\n";
-	echo " <input class=normal type=button value=\"$pnews_str[FormCancelPost]\" onClick='really()' tabindex=3></td></tr>\n";
-	echo "<tr><td class=field>$pnews_str[Subject]:</td><td colspan=2><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
+	echo " <td class=text><input name=replymail type=checkbox>$pnews_msg[ReplyToAuthor]</td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td>\n";
+	echo " <td class=text><input name=onlymail type=checkbox onClick='check_reply();'>$pnews_msg[NotPostToGroup]</td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td>\n";
+	echo " <td class=text><input class=normal type=button value=\"$pnews_msg[FormConfirmPost]\" onClick='verify()' tabindex=2>\n";
+	echo " <input class=normal type=button value=\"$pnews_msg[FormCancelPost]\" onClick='really()' tabindex=3></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td colspan=2><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 #	echo "</table>\n<table>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
@@ -258,9 +258,9 @@ CONFIRM;
 </script>
 <?
 	echo <<<EOF
-<tr><td class=field>$pnews_str[Content]:</td>
+<tr><td class=field>$pnews_msg[Content]:</td>
 <td colspan=2 align=right>
-<input class=normal type=button onClick='InsertQuote();' value="$pnews_str[FormInsertQuote]">
+<input class=normal type=button onClick='InsertQuote();' value="$pnews_msg[FormInsertQuote]">
 </td></tr>
 <tr><td colspan=3>
 <textarea name=content class=content wrap=hard tabindex=1 cols=82>
@@ -276,14 +276,14 @@ EOF;
 		if( $i % 2 == 1 ) {
 			echo <<<EOA
  <tr><td class=field align=right>
- $pnews_str[Attachment] $i:</td>
+ $pnews_msg[Attachment] $i:</td>
  <td align=left><input name="attach$i" type="file" tabindex="$ti">
  </td>
 EOA;
 		}
 		else {
 			echo <<<EOA
- <td class=field align=right>$pnews_str[Attachment] $i:
+ <td class=field align=right>$pnews_msg[Attachment] $i:
  <input name="attach$i" type="file" tabindex="$ti">
  </td></tr>
 EOA;
@@ -296,7 +296,7 @@ EOA;
 		echo "</table>\n";
 	echo "</center>\n";
 	echo "<textarea name=quote style='display: none' disabled>";
-	printf("\n$pnews_str[QuoteFrom]\n", "$from ($email)" );
+	printf("\n$pnews_msg[QuoteFrom]\n", "$from ($email)" );
 
 	$show_mode |= SPACE_ASIS;
 	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '&gt; ', "\n", $artconv['to'] );
