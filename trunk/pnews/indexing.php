@@ -215,7 +215,7 @@ if( $show_end < $highmark ) {
 	$target = $show_end + 1 ;
 
 	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group/$target>$strFirstPage</a>";
+		echo "<a href=group/$server/$group/${target}r>$strPreviousPage</a>";
 	else
 		echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strPreviousPage</a>";
 }
@@ -237,7 +237,7 @@ if( $show_from > $lowmark ) {
 	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group/$lowmark>$strLastPage</a>";
+		echo "<a href=group/$server/$group/${lowmark}r>$strLastPage</a>";
 	else
 		echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
 }

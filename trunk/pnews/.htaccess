@@ -3,4 +3,5 @@ RewriteBase	/
 RewriteRule	^(.*)section/([0-9]+)/?$			$1index.php?catalog=$2
 RewriteRule	^(.*)group/([^/]+)/([^/]+)/?$		$1indexing.php?server=$2&group=$3	[L]
 RewriteRule	^(.*)group/([^/]+)/([^/]+)/([0-9]+)/?$		$1indexing.php?server=$2&group=$3&cursor=$4	[L]
+RewriteRule	^(.*)group/([^/]+)/([^/]+)/([0-9]+)r/?$		$1indexing.php?server=$2&group=$3&cursor=$4&forward=1	[L]
 RewriteRule	^(.*)article/([^/]+)/([^/]+)/([0-9]+)/?$	$1read-art.php?server=$2&group=$3&artnum=$4&origwin=1	[L]
