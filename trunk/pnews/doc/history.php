@@ -39,6 +39,10 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+PHP News Reader v2.5.5 (2004/03/13)
+<ul>
+<li>Fixed the quote problem of the Italian language translation.
+</ul>
 PHP News Reader v2.5.4 (2004/03/02)
 <ul>
 <li>Fixed the incorrect restoring of \$_POST variable after authentication.

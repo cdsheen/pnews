@@ -286,7 +286,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		$auth_success = true;
 	}
 	elseif( $need_auth ) {
-		if( $CFG['https_login'] && !$_SERVER['HTTPS'] ) {
+		if( isset($CFG['https_login']) && $CFG['https_login'] && !$_SERVER['HTTPS'] ) {
 			$_SESSION['save_postvar'] = true;
 			$_SESSION['POSTVAR'] = $_POST;
 			header( 'Location: https://' . $_SERVER['HTTP_HOST'] . $uri );
