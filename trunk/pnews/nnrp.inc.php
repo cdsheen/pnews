@@ -253,7 +253,7 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 	fwrite( $nhd, "Mime-Version: 1.0\r\n" );
 	fwrite( $nhd, sprintf("Content-Type: text/plain; charset=\"%s\"\r\n", $art_charset ) );
 	fwrite( $nhd, "Content-Transfer-Encoding: 8bit\r\n" );
-#	fwrite( $nhd, "X-User-Agent-URL: http://www.csie.nctu.edu.tw/~cdsheen/php-news/\r\n" );
+#	fwrite( $nhd, "X-User-Agent-URL: http://pnews.sourceforge.net/\r\n" );
 	fwrite( $nhd, "X-HTTP-Posting-Host: $client\r\n" );
 	if( $proxy != '' )
 		fwrite( $nhd, "X-HTTP-Proxy-Server: $proxy\r\n" );
