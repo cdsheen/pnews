@@ -144,36 +144,6 @@ while( $i >= $lowmark ) {
 	if( $i < $cursor - 1000 )
 		break;
 }
-/*
-for( $i = $cursor ; $i >= $lowmark && $ncount < $artsppg ; $i-- ) {
-	echo "<!-- Test $i -->\n";
-	if( in_array( $i, $artlist ) ) {
-		echo "<!-- $i ok -->\n";
-		$curlist[] = $i;
-		$ncount++;
-	}
-}
-
-$lower = $curlist[$ncount-1];
-echo "<!-- lower = $lower -->\n";
-for( $i = $lower-1 ; $i >= $lowmark ; $i-- ) {
-	if( in_array( $i, $artlist ) ) {
-		$lower = $i;
-		break;
-	}
-}
-
-$higher = $curlist[0];
-
-$s = 0;
-echo "<!-- higher = $higher -->\n";
-for( $i = $higher+1 ; $i <= $highmark && $s < $artsppg ; $i++ ) {
-	if( in_array( $i, $artlist ) ) {
-		$higher = $i;
-		$s++;
-	}
-}
-*/
 
 if( !$CFG['show_newest_top'] ) {
 	sort($curlist);
