@@ -470,8 +470,8 @@ You can download phpCAS from the following place:<br />
         $CFG["db_password_crypt"] = "md5";<br />
         $CFG["db_variable"] = array( "%e" =&gt; "user_email" 
         );</p>
-      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.<p>
-      <p>With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
+      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
+      With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     </blockquote>
   </blockquote>
 <a name=auth_expire_time></a>
