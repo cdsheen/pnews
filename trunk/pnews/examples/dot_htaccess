@@ -10,8 +10,7 @@
 	Deny from all
 </Files>
 
-# Turn off MultiViews
-Options		-MultiViews
+#Options	-MultiViews
 
 # URL Rewriting Rules
 # The following directives are used when your $CFG['url_rewrite'] is true.
