@@ -61,7 +61,7 @@ The preferred encoding can be switched any time and any where.
 <p>
 Since the PHP iconv() function may not work on some systems and it also has problems of handling Chinese words.
 PHP News Reader use a self-written conversion system.
-The conversion between Chinese (BIG5, GB2312 and UTF-8) encodings is supported.
+The conversion between Chinese (BIG5, GB2312 and Unicode/UTF-8) encodings is supported.
 The encoding of article is auto-converted to the preferred one
 while the selected encoding of interface is different from the encoding of the news articles.
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
