@@ -138,7 +138,8 @@ echo "<center>\n";
 
 	if( !isset($_GET['header']) ) {
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$strShowHeader</span>";
+#		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$strShowHeader</span>";
+		echo "<a href=\"$uri#\" onClick='window.location=\"$headerurl\"'>$strShowHeader</a>";
 		echo "</td>\n";
 	}
 
