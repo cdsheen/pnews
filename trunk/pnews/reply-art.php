@@ -32,7 +32,7 @@ if( $_POST['content'] != '' ) {
 
 	$c = check_group( $server, $group );
 
-	if( $post_restriction )
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
 	if( $CFG['email_editing'] )
@@ -84,7 +84,7 @@ if( $_POST['content'] != '' ) {
 
 	$time = strftime($CFG['time_format']);
 
-	if( !$post_restriction && $replymail ) {
+	if( !$global_readonly && !$news_readonly[$c] && $replymail ) {
 		$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";
 		if( $artconv['back'] )
 			mail( $authormail, $artconv['back']($subject), $artconv['back']($content), "From: $email\n$mail_add_header\n$mime_headers" );
@@ -124,7 +124,7 @@ elseif( $artnum != '' ) {
 
 	$c = check_group( $server, $group );
 
-	if( $post_restriction )
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
 	$nhd = nnrp_open( $server, $news_nntps[$c] );

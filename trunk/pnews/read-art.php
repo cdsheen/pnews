@@ -164,8 +164,6 @@ echo "<td class=date>$date</td></tr>\n";
 echo "<tr><td class=author>$from (<a href=\"mailto:$email\">$email</a>)</td>\n";
 echo "<td class=server>$org</td></tr>\n";
 
-#toolbar( $server, $group, $artnum, $subject );
-
 echo "<tr><td colspan=2 class=content>";
 
 echo "<hr />";
@@ -192,7 +190,7 @@ echo "</td></tr>";
 
 echo "</table>";
 
-toolbar( $server, $group, $artnum, $subject );
+toolbar( $server, $group, $c, $artnum, $subject );
 
 echo "</td></tr></table>\n";
 
@@ -200,14 +198,14 @@ echo "</center>";
 html_foot(false);
 html_tail();
 
-function toolbar( $server, $group, $artnum, $title ) {
-	global $post_restriction, $email, $auth_email;
+function toolbar( $server, $group, $c, $artnum, $title ) {
+	global $global_readonly, $email, $auth_email, $news_readonly;
 	global $strCloseWindow, $strReply;
 	global $strCrossPost, $strForward, $strDelete;
 	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
 	global $CFG, $nexturl, $lasturl, $idxurl;
 	echo "<table width=100% border=0 cellspacing=2 cellpadding=2>\n";
-	if( !$post_restriction ) {
+	if( !$global_readonly && !$news_readonly[$c] ) {
 		echo "<tr>";
 		if( ! $CFG['show_article_popup'] ) {
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";

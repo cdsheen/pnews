@@ -342,9 +342,9 @@ $CFG["organization"] = "XXX News Server";
 // $CFG["post_signature"] = "\n-- \nPOST BY: PHP News Reader\n";
 
 
-# [show_sourceforge_logo] Show SourceForge logo (default: true)
+# [show_sourceforge_logo] Show SourceForge logo (default: false)
 
-$CFG["show_sourceforge_logo"] = false;
+$CFG["show_sourceforge_logo"] = true;
 
 # [links] The links referring to other pages, (default: null)
 

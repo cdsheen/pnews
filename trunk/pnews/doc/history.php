@@ -46,6 +46,12 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
+PHP News Reader v2.5.0 (2003/11/16)
+<ul>
+<li>Crosspost verification bug is fixed.
+<li>Per-catalog readonly can be configured.
+<li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
+</ul>
 PHP News Reader v2.4.4 (2003/11/09)
 <ul>
 <li>Fix a bug of parsing NNTP headers, which may cause coding conversion fail to work.

@@ -599,7 +599,7 @@ You can download phpCAS from the following place:<br />
 <a name=show_sourceforge_logo></a>
   <p> <strong>$CFG["show_sourceforge_logo"]</strong></p>
   <blockquote> 
-    <p>Show sourceforge logo (default: <i>true</i>)</p>
+    <p>Show sourceforge logo (default: <i>false</i>)</p>
   </blockquote>
 <a name=language_switch></a>
   <p> <strong>$CFG["language_switch"]</strong></p>

@@ -29,7 +29,9 @@ if( $confirm == 1 ) {
 	$server = $_POST['server'];
 	$group  = $_POST['group'];
 
-	if( $post_restriction )
+	$c = check_group( $server, $group );
+
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
 	$msgid   = $_POST['msgid'];
@@ -40,8 +42,6 @@ if( $confirm == 1 ) {
 		$subject  = $_POST['subject'];
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
-
-	$c = check_group( $server, $group );
 
 	$nhd = nnrp_open( $server, $news_nntps[$c] );
 
@@ -83,10 +83,10 @@ elseif( $artnum != '' ) {
 	$server = $_GET['server'];
 	$group  = $_GET['group'];
 
-	if( $post_restriction )
-		readonly_error( $server, $group );
-
 	$c = check_group( $server, $group );
+
+	if( $global_readonly || $news_readonly[$c] )
+		readonly_error( $server, $group );
 
 	$nhd = nnrp_open( $server, $news_nntps[$c] );
 

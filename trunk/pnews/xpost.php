@@ -30,13 +30,14 @@ $artnum     = $_GET['artnum'];
 
 if( $content != '' && $postgroup != '' ) {
 
-	if( $post_restriction )
+	$c = check_group( $server, $postgroup );
+
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $postgroup );
 
-	$server = $_POST['server'];
 	$group  = $_POST['group'];
 
-	$c = check_group( $server, $group );
+	check_group( $server, $group );
 
 	$nickname   = $_POST['nickname'];
 	$content    = $_POST['content'];

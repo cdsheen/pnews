@@ -288,7 +288,7 @@ if( !file_exists( $CFG['group_list'] ) )
 	config_error( '$CFG["group_list"]' );
 
 if( !isset($CFG['show_sourceforge_logo']) )
-	$CFG['show_sourceforge_logo'] = true;
+	$CFG['show_sourceforge_logo'] = false;
 
 if( !isset($CFG['time_format']) )
 	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';

@@ -31,10 +31,10 @@ if( $_POST['content'] != '' ) {
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
-	if( $post_restriction )
-		readonly_error( $server, $group );
-
 	$c = check_group( $server, $group );
+
+	if( $global_readonly || $news_readonly[$c] )
+		readonly_error( $server, $group );
 
 	$receiver   = $_POST['receiver'];
 	$refid      = $_POST['refid'];
@@ -80,10 +80,10 @@ elseif( $artnum != '' ) {
 	$server   = $_GET['server'];
 	$group    = $_GET['group'];
 
-	if( $post_restriction )
-		readonly_error( $server, $group );
-
 	$c = check_group( $server, $group );
+
+	if( $global_readonly || $news_readonly[$c] )
+		readonly_error( $server, $group );
 
 	$nhd = nnrp_open( $server, $news_nntps[$c] );
 

@@ -384,7 +384,7 @@ printf( $strPageNumber, $page, $totalpg );
 echo "</td>\n";
 
 echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
-if( !$post_restriction ) {
+if( !$global_readonly && !$news_readonly[$c] ) {
 	echo post_article( $server, $group, $strPost );
 }
 else

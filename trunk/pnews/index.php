@@ -115,7 +115,7 @@ if( $active == null ) {
 }
 
 /*
-if( $post_restriction ) {
+if( $global_readonly ) {
 	echo "<font color=red>* $strReadonlyNotify</font>\n";
 	echo '<p>';
 }

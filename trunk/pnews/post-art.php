@@ -30,7 +30,7 @@ if( $_POST['content'] != '' ) {
 
 	$c = check_group( $server, $group );
 
-	if( $post_restriction )
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
 	if( $CFG['email_editing'] )
@@ -100,7 +100,7 @@ else {
 	$server = $_GET['server'];
 	$group  = $_GET['group'];
 
-	if( $post_restriction )
+	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
 	html_head( $title );

@@ -45,7 +45,7 @@ if( $CFG['filter_ansi_color'] )
 #if( $referal == '' )
 #	$referal = 'index.php';
 
-$post_restriction = $CFG['post_restriction'];
+$global_readonly = $CFG['post_restriction'];
 
 $mail_add_header  = "X-Mailer: $pnews_name $pnews_version (CDSHEEN)\n"; 
 $mail_add_header .= "X-Source: $ip_from";
@@ -89,6 +89,7 @@ while( $buf = fgets( $lst, 512) ) {
 		$news_server[$catalog_num]   = $group_default_server;
 		$news_nntps[$catalog_num]    = false;
 		$news_authperm[$catalog_num] = false;
+		$news_readonly[$catalog_num] = false;
 		$options = array();
 		continue;
 	}
@@ -117,6 +118,8 @@ while( $buf = fgets( $lst, 512) ) {
 			if( !function_exists( 'openssl_get_publickey' ) )
 				show_error( 'OpenSSL is required for NNTPS support' );
 		}
+		if( in_array( 'readonly', $options ) )
+			$news_readonly[$catalog_num] = true;
 	}
 	elseif( preg_match( '/^server\s+(\S+)$/', $buf, $match ) ) {
 		$news_server[$catalog_num] = $match[1];

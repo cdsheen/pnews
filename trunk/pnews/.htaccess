@@ -1,3 +1,8 @@
+
+<Files newsgroups.lst>
+	Deny from all
+</Files>
+
 RewriteEngine	on
 
 #RewriteBase	/
@@ -28,4 +33,3 @@ RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)h/?$		read-art.php?server=$1&group=
 RewriteRule	^dl//?([^/]+)/([0-9]+)/(.+)$			download.php?server=*&group=$1&artnum=$2&type=uuencode&filename=$3	[L]
 RewriteRule	^dl/([^/]+)/([^/]+)/([0-9]+)/(.+)$		download.php?server=$1&group=$2&artnum=$3&type=uuencode&filename=$4	[L]
 
-RewriteRule	^newsgroups\.lst$				index.php	[L]
