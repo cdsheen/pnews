@@ -326,16 +326,6 @@ $CFG["organization"] = "XXX News Server";
 ############################################################################
 # Section 3 - Languages - Configure the setting about languages
 ############################################################################
-
-# [interface_language] The language setting of interface (default: en)
-
-$CFG["interface_language"] = "en";
-
-
-# [charset] The charset setting for various resource (default: "utf-8")
-#             [config] The language setting used in this config.inc.php
-#           [grouplst] The language setting used in newsgroups.lst
-#           [database] The language setting used in database or LDAP
 #
 #    Natively supported languages and the codings are:
 #        "en" - Englush                    US-ASCII
@@ -343,6 +333,15 @@ $CFG["interface_language"] = "en";
 #     "zh-cn" - Simplified Chinese         GB2312
 #   "unicode" - Unicode                    UTF-8       (default)
 #        "fr" - French                     ISO-8859-1
+
+# [interface_language] The language setting of interface (default: "en")
+
+$CFG["interface_language"] = "en";
+
+# [charset] The charset setting for various resource (default: "utf-8")
+#             [config] The language setting used in this config.inc.php
+#           [grouplst] The language setting used in newsgroups.lst
+#           [database] The language setting used in database or LDAP
 
 $CFG["charset"]["config"]    = "big5";
 $CFG["charset"]["grouplst"]  = "big5";

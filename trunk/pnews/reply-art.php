@@ -43,6 +43,8 @@ if( $_POST['content'] != '' ) {
 
 	$refid      = $_POST['refid'];
 	$authormail = $_POST['authormail'];
+	$onlymail   = $_POST['onlymail'];
+	$replymail  = $_POST['replymail'];
 
 	if( $auto_slash ) {
 		$nickname = stripslashes($_POST['nickname']);
