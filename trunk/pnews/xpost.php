@@ -50,6 +50,14 @@ if( $content != '' && $postgroup != '' ) {
 
 	$nhd = nnrp_open( $server );
 
+	if( ! $nhd ) {
+		html_head('ERROR');
+		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
+		html_foot();
+		html_tail();
+		exit;
+	}
+
 	if( $artconv['back'] ) {
 		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($organization), $refid, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
@@ -95,6 +103,14 @@ elseif( $artnum != '' ) {
 		session_error( $server, $group );
 
 	$nhd = nnrp_open( $server );
+
+	if( ! $nhd ) {
+		html_head('ERROR');
+		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
+		html_foot();
+		html_tail();
+		exit;
+	}
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

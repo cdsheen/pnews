@@ -42,6 +42,15 @@ if( $_POST['content'] != '' ) {
 	$subject  = $_POST['subject'];
 
 	$nhd = nnrp_open( $server );
+
+	if( ! $nhd ) {
+		html_head('ERROR');
+		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
+		html_foot();
+		html_tail();
+		exit;
+	}
+
 	if( $article_convert['back'] ) {
 		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($organization), null, $auth_email, $news_charset[$curr_catalog] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
