@@ -457,7 +457,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		if( in_array( $i, $uu ) ) {
 			if( $show_hlink ) {
 				$ext = substr( $body[$i], strrpos( $body[$i], '.') + 1);
-				if( $image_inline && strstr( 'jpg.gif.bmp.png', strtolower($ext) ) ) {
+				if( $image_inline && strstr( 'jpg.jpeg.gif.bmp.png', strtolower($ext) ) ) {
 					echo "$prepend<img src=\"";
 					printf( "$download_url", $body[$i] );
 					echo "\" alt=\"{$body[$i]}\" />$postpend";
