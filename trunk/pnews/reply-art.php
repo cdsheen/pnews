@@ -73,12 +73,9 @@ if( $_POST['content'] != '' ) {
 			nnrp_post_write( $nhd, $content );
 		}
 		$an = intval($CFG['allow_attach_file']);
-#		echo $an;
 		for( $i = 1 ; $i <= $an ; $i++ ) {
-#			echo "attach$i [" .$HTTP_POST_FILES["attach$i"]['name']. "]<br>\n";
 			if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
 				$filename = $HTTP_POST_FILES["attach$i"]['name'];
-#				echo "Attaching $filename...<br>\n";
 				uuencode( $nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
 			}
 		}
