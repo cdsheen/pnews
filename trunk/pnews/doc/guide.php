@@ -388,7 +388,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>Specify the base URL of your PHP News Reader installation (REQUIRED)</p>
     <p>Prior to <b>v2.2.1</b>, this setting is only REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
-    <p>After to <b>v2.2.2</b>, this setting is always REQUIRED</p>
+    <p>After <b>v2.2.2</b>, this setting is always REQUIRED</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=url_rewrite></a>
