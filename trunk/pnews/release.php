@@ -8,7 +8,7 @@ echo '<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>PHP News Reader</title>
+<title>PHP News Reader - A web-based USENET News client</title>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
@@ -19,11 +19,12 @@ echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
 echo '
 </td></tr></table>
 <font size=3 color=black face="Georgia">
-PHP News Reader / NNRP Library
+PHP News Reader
 </font>
 <hr>
 <font face="Georgia" size="3" color="black">
-PHP News Reader is a Web-based News Reader. It supports the 
+PHP News Reader is a web based News Reader. It supports the 
+
 standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=971" target=_blank>RFC 971</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 In fact, PHP News Reader contains various useful functions to communicate
