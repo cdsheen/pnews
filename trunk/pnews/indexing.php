@@ -218,7 +218,7 @@ else {
 
 		$artidx = $artnum - $lowmark + 1;
 		if( $CFG['hide_email'] )
-			$hmail = hide_mail_link( $email, $nick );
+			$hmail = hide_mail_link( $email, "$nick " );
 		else
 			$hmail = "<a href=\"mailto:$email\">$nick</a>";
 		echo <<<ROW

@@ -301,7 +301,8 @@ if( !isset($CFG['show_sourceforge_logo']) )
 	$CFG['show_sourceforge_logo'] = false;
 
 if( !isset($CFG['time_format']) )
-	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';
+	$CFG['time_format'] = '%m/%d %H:%M';
+#	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';
 
 if( !isset($CFG['style_sheet']) || !file_exists( 'css/' . $CFG['style_sheet'] ))
 	$CFG['style_sheet'] = 'standard.css';
