@@ -84,47 +84,6 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <li>Correct the problem about author information of XOVER, HEAD
 <li>Fix a bug of checking both "Not post to newsgroup" and "Reply to author"
 </ul>
-<p>
-Future works:
-<ul>
-<li>Article search functionality
-<li>Cross post with smart group selection
-<li>MIME content support
-</ul>
-<p>
-The source code of PHP News Reader v2.0 will be released soon.
-I think I need to write some documents before make it public.
-If you really need this program, you are welcomed to write a mail to me,
-telling me your plan, I\'ll see how I can help.
-<p>
-Any bug report or functional suggestion is appreciated. Please send your
-requests by mail or leave a messages on the web.
-<p>
-PHP News Reader official site:
-<blockquote>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/php-news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/php-news/</a>
-</blockquote>
-<p>
-Demo:
-<blockquote>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>
-</blockquote>
-<p>
-Suggestion Board:
-<blockquote>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/php-news/board.php" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/php-news/board.php</a>
-</blockquote>
-<p>
-Author:
-<blockquote>
-Shen Cheng-Da<br>
-Taipei, Taiwan<br>
-+886-926-356815<br>
-ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">73013633</a><br>
-<a href="mailto:cdsheen@csie.nctu.edu.tw">cdsheen@csie.nctu.edu.tw</a><br>
-<a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
-http://www.csie.nctu.edu.tw/~cdsheen/</a>
-</blockquote>
 <hr>
 ';
 echo "<font size=2>$pnews_claim</font>\n";
