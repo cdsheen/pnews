@@ -124,7 +124,7 @@ else {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo $strRealyQuit; ?>') ) {
+		if( confirm('<? echo addslashes($strRealyQuit); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -132,22 +132,22 @@ else {
 	}
 	function verify() {
 		if( document.post.nickname.value == "" ) {
-			alert('<? echo $strPleaseEnterName; ?>');
+			alert('<? echo addslashes($strPleaseEnterName); ?>');
 			document.post.nickname.focus();
 			return(false);
 		}
 		if( document.post.email.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.email.value) ) {
-			alert('<? echo $strPleaseEnterEmail; ?>');
+			alert('<? echo addslashes($strPleaseEnterEmail); ?>');
 			document.post.email.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo $strPleaseEnterSubject; ?>');
+			alert('<? echo addslashes($strPleaseEnterSubject); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo $strPleaseEnterContent; ?>');
+			alert('<? echo addslashes($strPleaseEnterContent); ?>');
 			document.post.content.focus();
 			return(false);
 		}

@@ -25,7 +25,8 @@ $lang_option = array(	'en'         => 'English',
 			'unicode'    => 'Unicode (UTF-8)',
 			'fr'         => 'Fran&ccedil;ais',
 			'fi'         => 'Finnish',
-			'de'         => 'German' );
+			'de'         => 'German',
+			'it'         => 'Italian' );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
@@ -33,26 +34,29 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'unicode'    => 'language/english.inc.php',
 			'fr'         => 'language/french.inc.php',
 			'fi'         => 'language/finnish.inc.php',
-			'de'         => 'language/german.inc.php' );
+			'de'         => 'language/german.inc.php',
+			'it'         => 'language/italian.inc.php' );
 
 $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
-			'fr'         => 'iso-8859-1',
-			'fi'         => 'iso-8859-1',
-			'de'         => 'iso-8859-1'  );
-#			'fr'         => 'fr-ascii'       );
+			'fr'         => 'iso-8859-15',
+			'fi'         => 'iso-8859-15',
+			'de'         => 'iso-8859-15',
+			'it'         => 'ISO-8859-15' );
 
 $charset_alias = array( 'big5'       => 'big5',
 			'gb'         => 'gb2312',
 			'gb2312'     => 'gb2312',
 			'utf-8'      => 'utf-8',
 			'iso-8859-1' => 'iso-8859-1',
-			'de-ascii'   => 'iso-8859-1',
-			'us-ascii'   => 'iso-8859-1',
-			'fr-ascii'   => 'iso-8859-1',
-			'ascii'      => 'iso-8859-1' );
+			'iso-8859-15'=> 'iso-8859-15',
+			'de-ascii'   => 'iso-8859-15',
+			'us-ascii'   => 'iso-8859-15',
+			'fr-ascii'   => 'iso-8859-15',
+			'it-ascii'   => 'iso-8859-15',
+			'ascii'      => 'iso-8859-15' );
 
 if( isset($_SESSION['session_language']) )
 	$curr_language = $_SESSION['session_language'];

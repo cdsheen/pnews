@@ -124,7 +124,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo $strRealyQuit; ?>') ) {
+		if( confirm('<? echo addslashes($strRealyQuit); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -132,17 +132,17 @@ elseif( $artnum != '' ) {
 	}
 	function verify() {
 		if( document.post.receiver.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.receiver.value)) {
-			alert('<? echo $strPleaseEnterReceiver; ?>');
+			alert('<? echo addslashes($strPleaseEnterReceiver); ?>');
 			document.post.receiver.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo $strPleaseEnterSubject; ?>');
+			alert('<? echo addslashes($strPleaseEnterSubject); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo $strPleaseEnterContent; ?>');
+			alert('<? echo addslashes($strPleaseEnterContent); ?>');
 			document.post.content.focus();
 			return(false);
 		}
