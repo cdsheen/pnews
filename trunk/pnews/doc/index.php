@@ -96,11 +96,12 @@ And it is easy to write your authentication module to be used by PHP News Reader
 <p>
 The login prompt can be configured as HTTP authentication or FORM style.
 <p>
-PHP News Reader supports three interface languages (English, Traditional Chinese and Simplified Chinese).
+PHP News Reader supports multi interface languages, including English, Traditional Chinese, Simplified Chinese and Fran&ccedil;ais.
 The preferred language can be switched any time and any where.
 <p>
-Since the PHP iconv() function may not work on some systems and it also has problems of handling Chinese words.
-PHP News Reader use a self-written conversion system.
+PHP News Reader supports the on-the-fly coding conversion between Traditional Chinese and Simplified Chinese.
+Unfortunately, the PHP iconv() function does not work on some systems and it also has problems of handling Chinese words.
+So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
 The charset of article is auto-converted to the preferred one
 while the selected charset of interface is different from the charset of the news articles.
@@ -108,8 +109,9 @@ This conversion also effectives while posting, replying, forwarding and cross-po
 The posted articles will also be converted to the charset of the original article in the server.
 <p>
 PHP News Reader's development started around August 2001.
-I wrote this software in my leisure time, mostly in the weekend. Although PHP News Reader still
-lacks many fancy features, it works fine to meet the basic requirements.
+I wrote this software in my leisure time, mostly in the weekend.
+Although PHP News Reader still lacks many fancy features,
+it works fine to meet the basic requirements - Reading Netnews.
 <p>
 The latest version of PHP News Reader is <b>$pnews_version</b>, here is the release notes:
 <p>
@@ -134,7 +136,7 @@ PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php
 <p>
 Acknowledgement
 <blockquote>
-Many people help the development of PHP News Reader, <a href=acknowlege.php>clicking here</a> to know their contributions.
+Lots of people help the development of PHP News Reader, <a href=acknowlege.php>clicking here</a> to know their contributions.
 </blockquote>
 Since January 2003, PHP News Reader hosts on SourceForge:
 <blockquote>
