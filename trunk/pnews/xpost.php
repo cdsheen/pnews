@@ -85,15 +85,23 @@ if( $content != '' && $postgroup != '' ) {
 	html_head( "$postgroup - $subject" );
 
 	$time = strftime($CFG['time_format']);
+	$subject = htmlspecialchars( $subject );
+	echo <<<EOT
+<table width=100%>
+ <tr><td class=status>$strArticlePosted</td>
+ <td class=field><input class=normal type=button onClick="close_window();" value="$strCloseWindow"></td></tr>
+</table>
+<hr>
+<table>
+ <tr><td class=field>$strAuthor: </td><td class=value>$nickname ($email)</td></tr>
+ <tr><td class=field>$strTime: </td><td class=value>$time</td></tr>
+ <tr><td class=field>$strSubject: </td><td class=value>$subject</td></tr>
+ <tr><td class=field>$strGroup: </td><td class=value>$postgroup</td></tr>
+</table>
+<hr>
 
-	echo "<table width=100%><tr><td class=x>";
-	echo "<font size=2 color=navy>$strArticlePosted</font>\n";
-	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n<table>\n";
-	echo "<tr><td align=right>$strAuthor: </td><td><font color=blue>$nickname ($email)</font></td></tr>\n";
-	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
-	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr>\n";
-	echo "<tr><td align=right>$strGroup: </td><td><font color=blue>$postgroup</font></td></tr></table><hr>\n";
-	echo '<pre><font size=3 color=black face=monospace>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
+EOT;
+	echo '<pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</pre>\n";
 	echo "<hr>\n";
 
 	html_delay_close( 2000 );
@@ -190,12 +198,12 @@ elseif( $artnum != '' ) {
 <?
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table cellspacing=0 cellpadding=0 width=100%>\n";
-	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
-	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
-	echo "<tr><td class=x align=right>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
+	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
+	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td></tr>\n";
+	echo "<tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
+	echo "<tr><td class=field>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 
-	echo "<tr><td class=x align=right>\n";
+	echo "<tr><td class=field>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>\n";
 	echo "<input name=server value=\"$server\" type=hidden>\n";
 	echo "<input name=group value=\"$group\" type=hidden>\n";
@@ -203,10 +211,10 @@ elseif( $artnum != '' ) {
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";
-	echo " <input class=b type=button value='$strFormConfirmPost' onClick='verify()' tabindex=2>\n";
-	echo " <input class=b type=button value='$strFormCancelPost' onClick='really()' tabindex=3></td></tr>\n";
-	echo "<tr><td class=x colspan=2>";
-	echo "<textarea name=content class=text wrap=physical tabindex=1>";
+	echo " <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=2>\n";
+	echo " <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=3></td></tr>\n";
+	echo "<tr><td colspan=2>";
+	echo "<textarea name=content class=content wrap=physical tabindex=1>";
 
 	printf("\n$strCrossPostAuthor\n", "$from ($email)" );
 	printf("$strPostStatus\n\n", $date, $group );

@@ -29,6 +29,7 @@ $artnum   = $_GET['artnum'];
 if( $_POST['content'] != '' ) {
 
 	$server   = $_POST['server'];
+	$group    = $_POST['group'];
 
 	if( $post_restriction )
 		readonly_error( $server, $group );
@@ -48,21 +49,20 @@ if( $_POST['content'] != '' ) {
 		$subject  = $_POST['subject'];
 	}
 
-	html_head( "$newsgroup - $subject" );
+	html_head( "$group - $subject" );
 
 	$time = strftime($CFG['time_format']);
 
-	echo "<table width=100%><tr><td class=x>";
-	echo "<font size=2 color=navy>$strArticleIsForwarded</font>\n";
-	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n";
+	echo "<table width=100%><tr><td class=status>$strArticleIsForwarded</td>\n";
+	echo "<td class=field><input class=normal type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n";
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
 	echo "<table>\n";
-	echo "<tr><td align=right>$strReceiver: </td><td><font color=blue>$receiver</font></td></tr>\n";
-	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
-	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr></table>\n";
-	echo '<hr><pre><font size=3 color=black face=monospace>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
+	echo "<tr><td class=field>$strReceiver: </td><td class=value>$receiver</td></tr>\n";
+	echo "<tr><td class=field>$strTime: </td><td class=value>$time</td></tr>\n";
+	echo "<tr><td class=field>$strSubject: </td><td class=value>" . htmlspecialchars( $subject ) . "</td></tr></table>\n";
+	echo '<hr><pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</pre>\n";
 	echo "<hr>\n";
 
 	$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";
@@ -159,17 +159,17 @@ elseif( $artnum != '' ) {
 <?
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% cellspacing=0 cellpadding=0>\n";
-	echo "<tr><td class=x align=right>$strReceiver:</td><td><input name=receiver size=50></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
+	echo "<tr><td class=field>$strReceiver:</td><td><input name=receiver size=50></td></tr>\n";
+	echo "<tr><td class=field>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
 
-	echo "<tr><td class=x align=right>\n";
+	echo "<tr><td class=field>\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>\n";
-	echo " <input class=b type=button value=\"$strFormConfirmForward\" onClick='verify();' tabindex=2>\n";
-	echo " <input class=b type=button value=\"$strFormCancelForward\" onClick='really();' tabindex=3></td></tr>\n";
-	echo "<tr><td colspan=3><textarea name=content class=text wrap=physical tabindex=1>";
+	echo " <input class=normal type=button value=\"$strFormConfirmForward\" onClick='verify();' tabindex=2>\n";
+	echo " <input class=normal type=button value=\"$strFormCancelForward\" onClick='really();' tabindex=3></td></tr>\n";
+	echo "<tr><td colspan=3><textarea name=content class=content wrap=physical tabindex=1>";
 
 	printf("\n\n\n$strForwardFrom\n", "$from ($email)" );
 	printf( "$strPostStatus\n\n", $date, $group );

@@ -257,6 +257,16 @@ $CFG["title"] = "XXX News Service";
 // $CFG["time_format"] = "%Y/%m/%d %H:%M:%S";
 
 
+# [style_sheet] Alternative CSS (default: "style.css")
+
+// $CFG["style_sheet"] = 'my_style.css';
+
+
+# [language_switch] Show language switch or not (default: on)
+
+// $CFG["language_switch"] = off;
+
+
 # [organization] The organization name of this site (default: "News Server")
 
 $CFG["organization"] = "XXX News Server";

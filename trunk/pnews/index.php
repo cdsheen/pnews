@@ -95,9 +95,8 @@ if( is_array($CFG['links']) )
 			$text = $config_convert['to']($text);
 			$link = $config_convert['to']($link);
 		}
-		echo "<tr><td class=menu_link colspan=$maxc width=100 bgcolor=#FFEEEE align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_link\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
+		echo "<tr><td class=menu_link colspan=$maxc width=100 align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_link\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
 	}
-#echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
 
 if( $CFG['url_rewrite'] ) {
 	if( $CFG['auth_type'] != 'open' && $auth_success )

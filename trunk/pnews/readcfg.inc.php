@@ -216,6 +216,9 @@ if( !isset($CFG['time_format']) )
 
 /* un-documented settings */
 
+if( !isset($CFG['style_sheet']) )
+	$CFG['style_sheet'] = 'style.css';
+
 if( !isset($CFG['language_switch']) )
 	$CFG['language_switch'] = true;
 

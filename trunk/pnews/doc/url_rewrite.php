@@ -21,21 +21,24 @@ URL Rewrite Function
 <hr>
 URL Rewrite is a cool function that make the link more readable.
 For example, the link to read an article is:
-<ul>
+<ul><font color=blue>
 http://webnews.domain.net/news/read-art.php?server=news.nopy.com&group=nopy.test&artnum=21012
+</font>
 </ul>
 If you enable the URL rewriting, the link will become:
-<ul>
+<ul><font color=blue>
 http://webnews.domain.net/news/article/news.nopy.com/nopy.test/21012
+</font>
 </ul>
-If <i>news.nopy.com</i> is your default news server, the link becomes shorter (v2.0.1):
-<ul>
+If <i><b>news.nopy.com</b></i> is your default news server, the link even becomes shorter (v2.2.1):
+<ul><font color=blue>
 http://webnews.domain.net/news/article//nopy.test/21012
+</font>
 </ul>
 To enable URL Rewrite, you need:
 <ul>
 <li>Apache web server with "mod_rewrite" enabled
-<li>Correct setting for AllowOverride of the program\'s directory in httpd.conf
+<li>Correct setting for AllowOverride at the program\'s directory in httpd.conf
 </ul>
 For more information about Apache\'s mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
 <p>

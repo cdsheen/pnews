@@ -358,24 +358,24 @@ echo <<<EOF
 <form name=login action="form-login.php" method="post">
 <table>
 <tr>
- <td align=right>$strLoginName</td>
- <td align=left><input class=login name=loginName size=25></td>
+ <td class=field>$strLoginName</td>
+ <td class=value><input class=login name=loginName size=25></td>
 </tr>
 <tr>
- <td align=right>$strPassWord</td>
- <td align=left><input class=login name=passWord type=password size=25></td>
+ <td class=field>$strPassWord</td>
+ <td class=value><input class=login name=passWord type=password size=25></td>
 </tr>
 <tr>
  <td>&nbsp;<input name=target type=hidden value="$target"></td>
- <td align=left><input class=b type=submit value="$strLogin"></td>
+ <td align=left><input class=normal type=submit value="$strLogin"></td>
 </tr>
 
 EOF;
 
 if( $CFG['auth_registration_info'] != '' ) {
-	echo "<tr><td colspan=2 align=center><font color=black size=2><i>";
+	echo "<tr><td colspan=2 align=center class=text><i>";
 	echo '<br>' . $CFG['auth_registration_info'];
-	echo "</i></font></td></tr>\n";
+	echo "</i></td></tr>\n";
 }
 ?>
 </table>
@@ -413,7 +413,7 @@ function http_login_error() {
 <font size=2>
 <? echo $strPasswordRetryFail; ?>
 </font><p>
-<form><input class=b type=button value="<? echo $strReLogin; ?>" onClick='reload();'></form>
+<form><input class=normal type=button value="<? echo $strReLogin; ?>" onClick='reload();'></form>
 </td>
 </tr>
 <?
@@ -444,7 +444,7 @@ function http_logout() {
 	html_head( "$title - $strLogout" );
 	echo "<font size=2><b>$title - $strLogout</b></font><hr>";
 	echo "<font size=3 color=black>$strHTTPlogoutInfo</font><p>\n";
-	echo "<form><input type=button class=b value=\"$strCloseWindow\" onClick='close_window();'></form>\n";
+	echo "<form><input type=button class=normal value=\"$strCloseWindow\" onClick='close_window();'></form>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -479,7 +479,7 @@ function readonly_error( $server, $group ) {
     </td></tr>
 </table>
 <form>
-<input class=b type=button value="$strCloseWindow" onClick='close_window();'>
+<input class=normal type=button value="$strCloseWindow" onClick='close_window();'>
 </form>
 </center>
 

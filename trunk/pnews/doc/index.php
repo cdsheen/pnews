@@ -4,31 +4,35 @@ require_once('../version.inc.php');
 
 $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
-echo '<html>
+echo <<<EOR
+<html>
 <head>
-<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
-<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>PHP News Reader - A Web-based USENET News Client</title>
+ <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+ <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+ <title>PHP News Reader - A Web-based USENET News Client</title>
 </head>
 <body style="background-color: #EEFFFF">
-<table width=100% cellpadding=0 cellspacing=0><tr><td>
-';
-echo "<font face=\"Georgia\"><h3>$pnews_name $pnews_version</h3></font>\n";
-echo "</td><td align=right valign=bottum>";
-echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
-echo '
-</td></tr></table>
+
+<table width=100% cellpadding=0 cellspacing=0>
+<tr>
+ <td>
+ <font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
+ </td>
+ <td align=right valign=bottum>
+ <font face="Georgia" size=1>Release Date: $pnews_release</font>
+ </td></tr>
+</table>
+
 <font size=3 color=black face="Georgia">
 PHP News Reader
 </font>
 <hr>
 <font face="Georgia" size="3" color="black">
-PHP News Reader is a web based News Reader. It supports the 
-
-standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a>) for reading, posting, deleting,
+PHP News Reader is a web based News Reader.
+It supports the standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
-PHP News Reader does not need your PHP installation to be compiled with \'--with-imap\'.
+PHP News Reader does not need your PHP installation to be compiled with '--with-imap'.
 PHP News Reader use a self-written NNRP Library to access news server via NNTP.
 And it works just fine without any database installation.
 <p>
@@ -59,7 +63,7 @@ There are various handy authentication modules availabled.
 <li>FTP - authenticate user with the existing FTP server
 <li>MySQL - authenticate user existing in MySQL database.
 <li>PostgreSQL - authenticate user existing in PostgreSQL database.
-<li>NNTP - authenticate user using NNTP server. (version >= 2.2.0)
+<li>NNTP - authenticate user using NNTP server. (version >= 2.2.1)
 </ul>
 <p>
 The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.
@@ -77,27 +81,32 @@ while the selected charset of interface is different from the charset of the new
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
 The posted articles will also be converted to the original charset of the server.
 <p>
-PHP News Reader\'s development started around August 2001.
-I wrote this software in my leisure time. Although PHP News Reader still
-lacks many fancy features, it works fine to meet the most requirements.
+PHP News Reader's development started around August 2001.
+I wrote this software in my leisure time, mostly in the weekend. Although PHP News Reader still
+lacks many fancy features, it works fine to meet the basic requirements.
 <p>
-PHP News Reader v2.2.0 (2003/05/25)
-<ul>
-<li>Support news server which requires authorization.
-<li>The ANSI coloring codes are filtered by default (<a href=guide.php#filter_ansi_color>$CFG["filter_ansi_color"]</a>).
-<li>Support links to Next and Previous articles.
-<li>Support URL rewrite function (<a href=guide.php#url_rewrite>$CFG["url_rewrite"]</a> and <a href=guide.php#url_base>$CFG["url_base"]</a>)
-<li>Deleted articles are skipped and exactly 20 articles are displayed in one page
-<li>Add option (<a href=guide.php#article_order_reverse>$CFG["article_order_reverse"]</a>) to config the article numbering order.
-<li>Add option (<a href=guide.php#show_article_popup>$CFG["show_article_popup"]</a>) to config the use of popup window.
-<li>Support NNTP authentication module for authenticate with News server.
-<li>Number of articles per page is configurable by <a href=guide.php#articles_per_page>$CFG["articles_per_page"]</a> (default is 20).
-<li>Fix a bug when post after timeout with "form" style login.
-</ul>
+The latest version of PHP News Reader is <b>$pnews_version</b>, here is the release notes:
+<p>
+EOR;
+
+$fp = fopen('history.php', 'r');
+while( $buf = fgets( $fp, 255 ) ) {
+	if( preg_match( "/^PHP News Reader $pnews_version/", $buf ) )
+		break;
+}
+echo $buf;
+while( $buf = fgets( $fp, 255 ) ) {
+	echo str_replace('\\$', '$', $buf);
+	if( rtrim($buf) == "</ul>" )
+		break;
+}
+fclose($fp);
+
+echo <<<EOR
 You can view the history since June 2002 by <a href=history.php>clicking here</a>.<p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference<br>
 <p>
-Since Jan 2003, PHP News Reader hosts on SourceForge:
+Since January 2003, PHP News Reader hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
@@ -120,18 +129,12 @@ Sample running system:
 <p>
 Download the latest version from SourceForge:
 <blockquote>
-';
-echo "<a href=\"http://sourceforge.net/project/showfiles.php?group_id=71412\"
-target=_blank>Source downloads</a>";
-echo '
+<a href="http://sourceforge.net/project/showfiles.php?group_id=71412" target=_blank>Source downloads</a>
 </blockquote>
 <p>
 Installation Guide:
 <blockquote>
-';
-echo "<a href=\"guide.php\"
-target=_blank>PHP News Reader - Installation and Configuration Guide</a>";
-echo '
+<a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
 Discussion Forum:
@@ -149,11 +152,11 @@ ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
 <hr>
-';
-echo "<font size=2>$pnews_claim</font>\n";
-echo '
+<font size=2>$pnews_claim</font>
 </font>
 </body>
 </html>
-';
+
+EOR;
+
 ?>

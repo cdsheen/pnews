@@ -104,7 +104,7 @@ PHP News Reader - Installation and Configuration
   <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
   <blockquote> 
     <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
-    <p>Read more about this function <a href=url_rewrite.php target=_blank>here</a>.
+    <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
     <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br>
     For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
@@ -151,7 +151,7 @@ PHP News Reader - Installation and Configuration
       &quot;mail&quot; - authenticated via multiple POP3 server,<br>
       &quot;mysql&quot; - authenticated via MySQL database,<br>
       &quot;pgsql&quot; - authenticated via PostgreSQL database,<br>
-      &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.0),<br>
+      &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.1),<br>
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
 <a name=auth_organization></a>
@@ -377,6 +377,12 @@ PHP News Reader - Installation and Configuration
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br>
   </p>
+<a name=style_sheet></a>
+  <p><strong>$CFG[&quot;style_sheet&quot;]</strong></p>
+  <blockquote> 
+    <p>Setting the style sheet used for all html (default: &quot;style.css&quot;)</p>
+    <p>This setting first appeared in the <b>v2.2.1</b> of PHP News Reader</p>
+  </blockquote>
 <a name=title></a>
   <p> <strong>$CFG[&quot;title&quot;]</strong></p>
   <blockquote> 
@@ -439,6 +445,11 @@ PHP News Reader - Installation and Configuration
   <p> <strong>$CFG[&quot;show_sourceforge_logo&quot;]</strong></p>
   <blockquote> 
     <p>Show sourceforge logo (default: true)</p>
+  </blockquote>
+<a name=language_switch></a>
+  <p> <strong>$CFG[&quot;language_switch&quot;]</strong></p>
+  <blockquote> 
+    <p>Show language switch or not (default: true)</p>
   </blockquote>
 <a name=time_format></a>
   <p> <strong>$CFG[&quot;time_format&quot;]</strong></p>

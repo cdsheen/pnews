@@ -75,16 +75,25 @@ if( $_POST['content'] != '' ) {
 	html_head( "$group - $subject" );
 
 	$time = strftime($CFG['time_format']);
+	$subject = htmlspecialchars( $subject );
 
-	echo "<table width=100%><tr><td class=x>";
-	echo "<font size=2 color=navy>$strArticlePosted</font>\n";
-	echo '</td><td class=x align=right><input class=b type=button onClick="close_window()" value=' . $strCloseWindow . '></td></tr></table><hr>';
-	echo "\n<table>\n";
-	echo "<tr><td align=right>$strAuthor: </td><td><font color=blue>$nickname ($email)</font></td></tr>\n";
-	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
-	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr>\n";
-	echo "<tr><td align=right>$strGroup: </td><td><font color=blue>$group</font></td></tr></table><hr>\n";
-	echo '<font size=2 color=black face=monospace>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</font>\n";
+	echo <<<EOT
+<table width=100%>
+ <tr><td class=status>$strArticlePosted</td>
+     <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
+</tr>
+</table>
+<hr>
+<table>
+ <tr><td class=field>$strAuthor: </td><td class=value>$nickname ($email)</td></tr>
+ <tr><td class=field>$strTime: </td><td class=value>$time</td></tr>
+ <tr><td class=field>$strSubject: </td><td class=value>$subject</font></td></tr>
+ <tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
+</table>
+<hr>
+
+EOT;
+	echo '<pre class=content>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</div>\n";
 	html_delay_close( 2000 );
 	echo "<hr>\n";
 	html_tail();
@@ -142,17 +151,17 @@ echo <<<EOF
 <form name=post action="$self" method=post>
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td></tr>
- <tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value="$auth_email"></td></tr>
- <tr><td class=x align=right>$strGroup:</td><td><input name=postgroup size=40 value="$group" disabled></td></tr>
- <tr><td class=x align=right>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>
- <tr><td class=x align=right>$strContent:</td><td align=right>
-  <input class=b type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>
-  <input class=b type=button value='$strFormCancelPost' onClick='really()' tabindex=4></td></tr>
- <tr><td colspan=2 class=x>
+ <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td></tr>
+ <tr><td class=field>$strEmail:</td><td><input name=email size=40 value="$auth_email"></td></tr>
+ <tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value="$group" disabled></td></tr>
+ <tr><td class=field>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>
+ <tr><td class=field>$strContent:</td><td align=right>
+  <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>
+  <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=4></td></tr>
+ <tr><td colspan=2>
   <input name=server value="$server" type=hidden>
  <input name=group value="$group" type=hidden>
- <textarea name=content class=text rows=12 wrap=physical tabindex=2></textarea><br>
+ <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br>
 </td></tr>
 </table>
 </center>

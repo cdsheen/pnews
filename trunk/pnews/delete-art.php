@@ -59,11 +59,23 @@ if( $confirm == 1 ) {
 
 	html_head( $strDeleteDetail );
 
-	echo "<font size=2 color=navy>$strArticleIsDeleted</font><hr>\n<table>";
-	echo "<tr><td align=right>$strAuthor: </td><td><font color=blue>$auth_user ($auth_email)</font></td></tr>\n";
-	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars($subject) . "</font></td></tr>\n";
-	echo "<tr><td align=right>$strGroup: </td><td><font color=blue>$group</font></td></tr></table><hr>\n";
-	echo "<a href=\"javascript:close_window();\">$strCloseWindow</a>";
+	$subject = htmlspecialchars( $subject );
+
+	echo <<<EOT
+<table width=100%>
+<tr><td class=status>$strArticleIsDeleted</td>
+    <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
+</tr>
+</table>
+<hr>
+<table>
+<tr><td class=field>$strAuthor: </td><td class=value>$auth_user ($auth_email)</td></tr>
+<tr><td class=field>$strSubject: </td><td class=value>$subject</td></tr>
+<tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
+</table>
+<hr>
+
+EOT;
 
 	html_delay_close( 2000 );
 
@@ -119,12 +131,12 @@ elseif( $artnum != '' ) {
 
 	echo "<form style='margin-top: 0' name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
-	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strSubject:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
+	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$strGroup:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$strSubject:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
 
-	echo "<tr><td align=right class=x>\n";
+	echo "<tr><td class=field>\n";
 	echo "<input name=confirm value=1 type=hidden>\n";
 	echo "<input name=msgid value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\" type=hidden>\n";
 	echo "<input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" type=hidden>\n";
@@ -133,10 +145,10 @@ elseif( $artnum != '' ) {
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";
-	echo " <input class=b type=submit value='$strFormConfirmDelete'>\n";
-	echo " <input class=b type=button value='$strFormCancelDelete' onClick='close_window();'></td></tr>\n";
+	echo " <input class=normal type=submit value='$strFormConfirmDelete'>\n";
+	echo " <input class=normal type=button value='$strFormCancelDelete' onClick='close_window();'></td></tr>\n";
 	echo "<tr><td colspan=2>";
-	echo "<textarea name=content class=text rows=10 wrap=physical disabled>";
+	echo "<textarea name=content class=content rows=10 wrap=physical disabled>";
 	nnrp_body( $nhd, $artnum, '', "\n", false, false, $article_convert['to'] );
 	nnrp_close($nhd);
 	echo "\n</textarea></td></tr>\n";
