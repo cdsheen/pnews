@@ -48,16 +48,14 @@ $artsize = count($artlist);
 $highmark = $artlist[$artsize-1];
 $lowmark  = $artlist[0];
 
-echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark -->\n";
+echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark  (count: $artsize)-->\n";
 
-$lineppg = $CFG['articles_per_page'];
+$artsppg = $CFG['articles_per_page'];
 
 if( !isset($_GET['cursor']) )
 	$cursor = $highmark;
 else
 	$cursor = $_GET['cursor'];
-
-echo "<!-- cursor: $cursor    lineppg: $lineppg -->\n";
 
 echo <<<EOH
 <table border=1 cellpadding=0 cellspacing=0 width=100%>
@@ -116,7 +114,7 @@ EOR;
 $ncount = 0;
 $curlist = array();
 
-for( $i = $cursor ; $i >= $lowmark && $ncount < $lineppg ; $i-- ) {
+for( $i = $cursor ; $i >= $lowmark && $ncount < $artsppg ; $i-- ) {
 	if( in_array( $i, $artlist ) ) {
 		$curlist[] = $i;
 		$ncount++;
@@ -135,7 +133,7 @@ for( $i = $lower-1 ; $i >= $lowmark ; $i-- ) {
 $higher = $curlist[0];
 
 $s = 0;
-for( $i = $higher+1 ; $i <= $highmark && $s < $lineppg ; $i++ ) {
+for( $i = $higher+1 ; $i <= $highmark && $s < $artsppg ; $i++ ) {
 	if( in_array( $i, $artlist ) ) {
 		$higher = $i;
 		$s++;
@@ -220,29 +218,32 @@ ROW;
 
 }
 
-echo "</table>";
+echo "</table>\n";
 
-$totalpg = ceil($artsize / $lineppg) ;
+$totalpg = ceil($artsize / $artsppg) ;
+
+echo "<!-- Total arts: $artsize   Arts/page: $artsppg   Total pages: $totalpg -->\n";
 
 if( $totalpg == 1 )
 	$page = 1;
 elseif( $CFG['show_newest_top'] ) {
-	$page = floor( ( $artsize - array_search( $show_from, $artlist ) ) / $lineppg);
+	$page = floor( ( $artsize - array_search( $show_from, $artlist ) + 1 ) / $artsppg);
+#	echo "<!-- show_newest_top: $page -->\n";
 	if( $page == 1 && $show_end < $highmark )
 		$page = 2;
 	elseif( $page == $totalpg && $show_from > $lowmark )
 		$page = $totalpg - 1;
-	elseif( $page > $totalpg )
+	elseif( $page > $totalpg || $show_from == $lowmark )
 		$page = $totalpg;
 }
 else {
-	$page = floor( (array_search( $show_end, $artlist ) + $lineppg -1 ) / $lineppg);
+	$page = floor( (array_search( $show_end, $artlist ) + $artsppg -1 ) / $artsppg);
 
 	if( $page == 1 && $show_from > $lowmark )
 		$page = 2;
 	elseif( $page == $totalpg && $show_end < $highmark )
 		$page = $totalpg - 1;
-	elseif( $page > $totalpg )
+	elseif( $page > $totalpg || $show_end == $highmark )
 		$page = $totalpg;
 }
 
@@ -273,7 +274,7 @@ if( $CFG['show_newest_top'] )
 else
 	if( $show_from > $lowmark ) {
 
-		$target = isset($artlist[$lineppg-1])?$artlist[$lineppg-1]:$artlist[$artsize-1];
+		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strFirstPage</a>";
@@ -304,7 +305,7 @@ if( $CFG['show_newest_top'] )
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-		$target = isset($artlist[$lineppg-1])?$artlist[$lineppg-1]:$artlist[$artsize-1];
+		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strLastPage</a>";

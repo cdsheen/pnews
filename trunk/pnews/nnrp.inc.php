@@ -277,7 +277,8 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 		else
 			send_command( $nhd, "XOVER $lowmark-$highmark" );
 		list( $code, $msg ) = get_status( $nhd );
-		echo "\n<!-- caching: $lowmark-$highmark -->\n";
+
+		echo "\n<!-- XOVER $lowmark-$highmark -->\n";
 
 		if( $code[0] != '2' )
 			return($artlist);
@@ -307,35 +308,6 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 	}
 
 	return( $artlist );
-}
-
-function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
-
-	$next = ( $forward ? 1 : -1 );
-
-	$artnum = $from;
-
-	for( $i = 0 ; $i < $count ;  ) {
-
-		$xover = nnrp_xover( $nhd, $artnum );
-
-		if( sizeof($xover) > 0 )
-			$overview[$i++] = $xover[0];
-
-		$artnum += $next;
-
-		if( $forward && $artnum > $limit )
-			break;
-		if( !$forward && $artnum < $limit )
-			break;
-	}
-
-	if( $forward )
-		return( $overview );
-	elseif( $i == 0 )
-		return( null );
-	else
-		return( array_reverse($overview) );
 }
 
 function nnrp_stat( $nhd, $artnum ) {

@@ -264,6 +264,14 @@ $CFG["title"] = "XXX News Service";
 // $CFG["magic_tag"] = false;
 
 
+# [cache_dir] Enable caching of indexing data   (default: false)
+#             To enable caching, set this to the directory of cache data.
+#             You should grant write permission on this directory to the
+#             user running PHP.
+
+// $CFG["cache_dir"] = "/tmp/pnews-cache";
+
+
 # [group_sorting] sort newsgroups in each catalog (default: off)
 
 // $CFG["group_sorting"] = on;

@@ -115,7 +115,7 @@ I wrote this software in my leisure time, mostly in the weekend.
 Although PHP News Reader still lacks many fancy features,
 it works fine to meet the basic requirements - Reading Netnews.
 <p>
-The latest version of PHP News Reader is <b>$pnews_version</b>, here is the release notes:
+This is PHP News Reader <b>$pnews_version</b>, and the release notes here:
 <p>
 EOR;
 

@@ -59,14 +59,15 @@ The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
 <li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
 <li>XOVER &nbsp;[range]
+<li>LIST &nbsp;OVERVIEW.FMT  (not necessary)
 </ul>
 The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
 <p>
-If your server is operated by INN, you should check about the NNRP access permission.
-For example, when you telnet to an INN News server at port 119, you must get response like this: (note the <b>NNRP</b> in bold)
+If your server is operated by INN, you can verify the NNRP access permission by hand.
+For example, when you telnet to an INN News server at port 119, you must get response like this:
 <ul>
-200 nopy.com InterNetNews <b>NNRP</b> server INN 2.3.2 ready (posting ok).
+200 nopy.com InterNetNews NNRP server INN 2.3.2 ready (posting ok).
 </ul>
 instead of,
 <ul>

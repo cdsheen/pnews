@@ -51,8 +51,21 @@ EOH;
 
 ?>
 <font size=3 color=black face="Georgia">
-<strong><em><font color="#0000FF">Installation</font></em></strong> 
-<blockquote> 
+<strong><em><font color="#0000FF">Upgrading</font></em></strong> 
+<blockquote>
+To upgrade PHP News Reader from the previous version, please follow
+the following procedure:
+<ol>
+<li>Backup <b>config.inc.php</b> and <b>newsgroups.lst</b>
+<li><a href="http://sourceforge.net/project/showfiles.php?group_id=71412" target=_blank>Download</a> the latest version of PHP News Reader
+<li>Unpack the latest version of PHP News Reader and over-write the existing installation
+<li>Restore <b>config.inc.php</b> and <b>newsgroups.lst</b>
+<li>Reading the <a href=history.php>release notes</a>, and modify <b>config.inc.php</b> or <b>newsgroups.lst</b> if appliable
+</ol>
+</blockquote>
+<hr />
+<strong><em><font color="#0000FF">New Installation</font></em></strong> 
+<blockquote>
   <p> The installation of PHP News Reader is quite simple.<br />
     You can download the latest source of PHP News Reader from:</p>
   <blockquote> 
@@ -494,6 +507,16 @@ You can download phpCAS from the following place:<br />
     <blockquote>$CFG[&quot;magic_tag&quot;] = off;</blockquote>
     <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
   </blockquote>
+<a name=cache_dir></a>
+  <p><strong>$CFG[&quot;cache_dir&quot;]</strong></p>
+  <blockquote>
+    <p>Enable caching of indexing data (default: false)</p>
+    <p>Turning on the caching will relief the loading of news server,
+       and speed up the indexing process for large groups.<p>
+    <p>To enable caching, set this to the directory of cache data.<br>
+       You should grant write permission on this directory to the user running PHP.<p>
+    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+  </blockquote>
 <a name=group_sorting></a>
   <p><strong>$CFG[&quot;group_sorting&quot;]</strong></p>
   <blockquote> 
@@ -511,11 +534,13 @@ You can download phpCAS from the following place:<br />
     <p>Setting the number of articles shown per page (default: 20)</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=show_newest_top></a>
 <a name=article_order_reverse></a>
-  <p><strong>$CFG[&quot;article_order_reverse&quot;]</strong></p>
+  <p><strong>$CFG[&quot;show_newest_top&quot;]</strong></p>
   <blockquote> 
-    <p>Reverse the order of articles list (default: false)</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>Show the newest article as the top item (default: true)</p>
+    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+    <p>It is to replace $CFG[&quot;article_order_reverse&quot;] in <b>v2.2 - v2.3</b></p>
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG[&quot;show_article_popup&quot;]</strong></p>
