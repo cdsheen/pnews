@@ -45,6 +45,7 @@ PHP News Reader v2.6.1 (2005/01/01)
 <li>Attachment is now cached if <a href=guide.php#cache_dir>\$CFG['cache_dir']</a> is enabled.
 <li>Fixed the bug which cause all attachment(s) not downloaded in v2.6.0.
 <li>Fixed the downloading of attachment with filename contains special characters (again).
+<li><a href=guide.php#html_header>\$CFG['html_header']</a> or <a href=guide.php#html_footer>\$CFG['html_footer']</a> can be a PHP script.
 <li>Add a new feature to show all articles of current thread in one single page.
 <li><a href=guide.php#show_article_popup>\$CFG['show_article_popup']</a> is deprecated.
 </ul>

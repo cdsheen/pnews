@@ -25,8 +25,12 @@ html_head( $title );
 
 #echo "<center>\n";
 
-if( $CFG['html_header'] )
-	readfile( $CFG['html_header'] );
+if( $CFG['html_header'] ) {
+	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
+		include( $CFG['html_header'] );
+	else
+		readfile( $CFG['html_header'] );
+}
 elseif( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
 else
@@ -217,9 +221,12 @@ html_foot();
 
 $nnrp->close();
 
-if( $CFG['html_footer'] )
-	readfile( $CFG['html_footer'] );
-
+if( $CFG['html_footer'] ) {
+	if( preg_match( '/\.php$/', $CFG['html_footer'] ) )
+		include( $CFG['html_footer'] );
+	else
+		readfile( $CFG['html_footer'] );
+}
 html_tail();
 
 ?>

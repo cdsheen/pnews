@@ -586,6 +586,7 @@ You can download phpCAS from the following place:<br />
     <p>If $CFG["html_header"] is a valid file which can be included,<br />
        then the $CFG["banner"] setting is ignored!</p>
     <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
+    <p>$CFG['html_header'] can be a PHP script since <b>v2.6.1</b> of PHP News Reader</p>
   </blockquote>
 <a name=html_footer></a>
   <p><strong>$CFG["html_footer"]</strong></p>
@@ -593,6 +594,7 @@ You can download phpCAS from the following place:<br />
     <p>The file to be included as page footer (default: <i>false</i>)</p>
     <p>$CFG["html_footer"] = "footer.htm";
     <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
+    <p>$CFG['html_footer'] can be a PHP script since <b>v2.6.1</b> of PHP News Reader</p>
   </blockquote>
 <a name=group_list></a>
   <p><strong>$CFG["group_list"]</strong></p>
