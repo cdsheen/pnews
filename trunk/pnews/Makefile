@@ -36,13 +36,14 @@ pkg:
 	mv -f pnews-$(VERSION).tgz ..
 
 html:
-	php doc/release.php | tail +4 > release.html
+	php doc/index.php | tail +4 > doc/release.html
 
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
 
 www:	html
-	cp -f version.inc.php release.html history.php copying.php requirement.php install.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
+	cp -f doc/style.css doc/release.html doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php /home/users/c/cd/cdsheen/groups/htdocs/
 
 clean:
 	rm -f *~
