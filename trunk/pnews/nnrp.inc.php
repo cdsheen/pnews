@@ -179,7 +179,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 				break;
 			preg_match( '/^(\S+)\s+(.+)$/', $buf, $match );
 #			echo "$match[1] $match[2]<br />\n";
-			if( isset($match[1]) && is_array($active[$match[1]]) ) {
+			if( isset($match[1]) && isset($active[$match[1]]) ) {
 				if( $func )
 					array_push( $active[$match[1]], $func($match[2]) );
 				else

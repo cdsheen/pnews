@@ -41,7 +41,7 @@ echo <<<EOH
 <font face=Georgia>
 PHP News Reader v2.5.9 (2004/08/11)
 <ul>
-<li>Fix the login-fail bug which intruduced by the configuration cache support.
+<li>Fix the login-fail bug which introduced by the configuration cache support.
 <li>Cleaning for most PHP Notice warnings.
 </ul>
 PHP News Reader v2.5.8 (2004/08/05)
