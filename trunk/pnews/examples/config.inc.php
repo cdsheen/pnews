@@ -272,10 +272,10 @@ $CFG["title"] = "XXX News Service";
 
 
 # [magic_tag] Use magic tag to indicate the unread state of newsgroup
-#             (default: true)
+#             (default: flase)
 #
 
-// $CFG["magic_tag"] = false;
+// $CFG["magic_tag"] = true;
 
 
 # [cache_dir] Enable caching of indexing data   (default: false)

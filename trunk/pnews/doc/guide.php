@@ -489,7 +489,7 @@ You can download phpCAS from the following place:<br />
 <a name=url_rewrite></a>
   <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
   <blockquote> 
-    <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
+    <p>Enable or disable the URL rewrite function (default: false)</p>
     <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
     <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br />
     For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
@@ -498,7 +498,7 @@ You can download phpCAS from the following place:<br />
 <a name=https_login></a>
   <p> <strong>$CFG[&quot;https_login&quot;]</strong></p>
   <blockquote> 
-    <p>Whether to use SSL(HTTPS) after authentication (default: off)</p>
+    <p>Whether to use SSL(HTTPS) after authentication (default: false)</p>
     <p>This setting first appeared in the <b>v2.2.2</b> of PHP News Reader</p>
   </blockquote>
 <a name=style_sheet></a>
@@ -529,15 +529,16 @@ You can download phpCAS from the following place:<br />
 <a name=magic_tag></a>
   <p><strong>$CFG[&quot;magic_tag&quot;]</strong></p>
   <blockquote> 
-    <p>Use magic tag to indicate the visit state of newsgroup (default: on)</p>
+    <p>Use magic tag to indicate the visit state of newsgroup (default: false)</p>
       While magic_tag is on, the url for each newsgroup will become:
     <blockquote>http://webnews.host/indexing.php?server=*&group=news.test<font color=red>&magic=23479</font></blockquote>
       or while url_rewrite is on,
     <blockquote>http://webnews.host/group//news.help<font color=red>?23479</font></blockquote>
       PHP News Reader use the above magic number in <font color=red>red</font> to indicate that the group has been visited by user (with the help of browser's history).<br /><br />
       The default is on. If you do not like this feature, you can turn it off by:
-    <blockquote>$CFG[&quot;magic_tag&quot;] = off;</blockquote>
+    <blockquote>$CFG[&quot;magic_tag&quot;] = false;</blockquote>
     <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
+    <p>The default value of $CFG["magic_tag"] has changed to <i>false</i> since <b>v2.4.1</b> of PHP News Reader</p>
   </blockquote>
 <a name=cache_dir></a>
   <p><strong>$CFG[&quot;cache_dir&quot;]</strong></p>

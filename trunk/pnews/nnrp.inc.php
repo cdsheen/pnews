@@ -249,19 +249,20 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 
 function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
+	$new_art = $lowmark;
+
 	$artlist = array();
 
 	if( $cache_file ) {
 		$fp = @fopen( $cache_file, 'rb');
 		if( $fp ) {
-			$cache_max = $lowmark;
-			$list_cache = @unserialize( fread( $fp, filesize($cache_file)) );
+			$cache_max = -1;
+			$artlist = @unserialize( fread( $fp, filesize($cache_file)) );
 			fclose($fp);
-			if( $list_cache ) {
-				$artlist = $list_cache;
-				unset($list_cache);
+			if( $artlist ) {
+#				echo "<!-- Cache size: " . count($artlist) . " -->\n";
 				foreach( $artlist as $idx => $artnum ) {
-					if( $artnum < $lowmark || $artnum > $highmark )
+					if( !is_numeric($idx) || $artnum < $lowmark || $artnum > $highmark )
 						unset($artlist[$idx]);
 					else {
 						if( $artnum > $cache_max )
@@ -269,18 +270,19 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 					}
 				}
 			}
-			$lowmark = $cache_max + 1;
+			if( $cache_max > 0 )
+				$new_art = $cache_max + 1;
 		}
 	}
 
-	if( $lowmark <= $highmark ) {
-		if( $lowmark == $highmark )
-			send_command( $nhd, "XOVER $lowmark" );
+	if( $new_art <= $highmark ) {
+		if( $new_art == $highmark )
+			send_command( $nhd, "XOVER $new_art" );
 		else
-			send_command( $nhd, "XOVER $lowmark-$highmark" );
+			send_command( $nhd, "XOVER $new_art-$highmark" );
 		list( $code, $msg ) = get_status( $nhd );
 
-		echo "\n<!-- XOVER $lowmark-$highmark   STATUS: $code -->\n";
+		echo "\n<!-- XOVER $new_art-$highmark   STATUS: $code -->\n";
 
 		if( $code[0] != '2' )
 			return($artlist);
@@ -297,7 +299,7 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 		}
 	}
 
-#	$artlist = array_values( $artlist );
+	$artlist = array_values( $artlist );
 #	$artlist = sort( $artlist );
 
 	if( $cache_file ) {
