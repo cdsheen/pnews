@@ -71,6 +71,15 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
+PHP News Reader v2.1.1 (2003/03/08)
+<ul>
+<li>The format of time displayed can be configured by $CFG["time_format"].
+<li>Show only group name in the title of indexing page.
+<li>Add more error handling codes for invalid news server settting.
+<li>Several author name/mail parsing problems fixed.
+<li>Fix variable missing problem in 'open' authentication type.
+</ul>
+<p>
 PHP News Reader v2.1.0 (2003/03/02)
 <ul>
 <li>Installation Guide released.
