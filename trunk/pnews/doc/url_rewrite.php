@@ -42,7 +42,7 @@ echo <<<EOH
 <div>
 URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
 <hr />
-URL Rewrite is a cool function that make the link more readable.<br />
+URL Rewrite is a cool function that make the link more readable, and this is also a search-engine friendly feature.<br />
 <br />
 For example, the link to read an article is:
 <ul><font color=blue>
