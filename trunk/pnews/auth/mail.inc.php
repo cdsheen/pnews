@@ -32,7 +32,7 @@ function check_user_password( $username, $password ) {
 
 	$server = $CFG['pop3_mapping'][$domain];
 
-	if( preg_match( '/^(\w+):\/\/([^/]+)\/?$/', $server, $match ) ) {
+	if( preg_match( '/^(\w+):\/\/([^\/]+)\/?$/', $server, $match ) ) {
 		$protocol = $match[1];
 		$server = $match[2];
 	}

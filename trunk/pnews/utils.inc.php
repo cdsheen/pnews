@@ -330,7 +330,11 @@ if( is_array($info) && $database_convert['to'] )
 		$_SESSION['auth_info'][$var] = $database_convert['to']($value);
 
 $auth_user  = vars_convert( $CFG['auth_user_fullname'] );
-$auth_email = vars_convert( $CFG['auth_user_email'] );
+
+if( $info['%e'] )
+	$auth_email = $info['%e'];
+else
+	$auth_email = vars_convert( $CFG['auth_user_email'] );
 
 # After authentication, $curr_catalog is permitted to access
 $_SESSION['rem_catalog'] = $curr_catalog ;

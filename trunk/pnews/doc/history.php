@@ -49,6 +49,7 @@ echo <<<EOH
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>
 <li>Mail authentication module now support pop3s.
+<li>Correct E-Mail domain is used after login from Mail authentication module.
 <li>Per-catalog readonly can be configured.
 <li>Check for valid session before performing authentication.
 <li>GB2312 translation is refined (by Czz).
