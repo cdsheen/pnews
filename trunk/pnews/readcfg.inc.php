@@ -227,6 +227,9 @@ if( !isset( $CFG['organization'] ) )
 if( !isset( $CFG['auth_registration_info'] ) )
 	$CFG['auth_registration_info'] = '';
 
+if( !isset( $CFG['domain_select'] ) )
+	$CFG['domain_select'] = true;
+
 if( !isset( $CFG['post_restriction'] ) )
 	$CFG['post_restriction'] = false;
 

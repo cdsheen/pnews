@@ -142,10 +142,13 @@ $CFG["auth_organization"] = "XXX Club";
 
 
 # Mail authentication parameters (REQUIRED if auth_method == 'mail')
-#     [pop3_mapping] the mapping from E-Mail to POP3 server address
+#   [pop3_mapping] the mapping from E-Mail to POP3 server address
+#  [domain_select] Show domain-list selector in login dialog (default: true)
 
 // $CFG["pop3_mapping"] = array( "@foobar.com"       => "pop3.foobar.com",
 //				 "@mail.domain.org"  => "pop3.domain.org" );
+
+// $CFG["domain_select"] = false;
 
 # MySQL/PostgreSQL Database authentication parameters
 # (REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )

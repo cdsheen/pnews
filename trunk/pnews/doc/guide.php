@@ -97,7 +97,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     You can refer the template of these two files in the subdirectory "examples/".</p>
   <p> The config.inc.php should be put in the root directory of PHP News Reader, 
     (such as /home/www/htdocs/news/)</p>
-  <p> You can copy the file in the examples/ directory as a reference.</p>
+  <p> You can copy the file from the examples/ directory as a reference.</p>
   <blockquote> 
     <p> <strong># cd &nbsp;/home/www/htdocs/news/<br />
       # cp &nbsp;examples/config.inc.php&nbsp;&nbsp; .</strong></p>
@@ -290,12 +290,6 @@ You can download phpCAS from the following place:<br />
       <p>POP3 server address ( address:port ), default port is 110</p>
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
-    <p> <strong>$CFG["pop3_user_modify"]</strong></p>
-    <blockquote> 
-      <p>fix the username used for POP3, %u is substituted by username (default: <i>"%u"</i>)</p>
-      <p>Normally, you did not need this parameter. But on some BBS systems, a little modification is needed, such as:</p>
-      <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
-    </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
     <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
@@ -331,6 +325,11 @@ You can download phpCAS from the following place:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
     <p>OpenSSL support for PHP module should be enabled for <b>pop3s</b>, and the PHP should be v4.3.0 or greater</p>
+    </blockquote>
+    <p> <strong>$CFG["domain_select"]</strong></p>
+    <blockquote> 
+      <p>Show domain-list selector in login dialog (default: <i>true</i>)</p>
+      <p>Note that domain-list selector only appear if <a href="#auth_prompt">$CFG["auth_prompt"]</a> is <i>'form'</i></p>
     </blockquote>
   </blockquote>
 <a name=nntp_auth></a>

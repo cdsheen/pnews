@@ -414,7 +414,7 @@ echo <<<EOF
  <td class=value>
 EOF;
 
-if( $CFG['auth_method'] == 'mail' ) {
+if( $CFG['auth_method'] == 'mail' && $CFG['domain_select'] ) {
 	echo "<input class=login name=loginName size=15>\n";
 	echo "<select name=domain class=login>\n";
 	foreach( $CFG['pop3_mapping'] as $d => $s ) {
