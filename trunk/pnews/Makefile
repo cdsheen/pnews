@@ -19,21 +19,23 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
-VERSION=2.2.4
+ZIPNAME=pnews224
 
 all:	html	pkg
 
 pkg:
-	rm -rf pnews-$(VERSION)*
-	mkdir pnews-$(VERSION)
-	cp -r .htaccess *.php *.css *.js examples doc language auth pnews-$(VERSION)
-	rm -rf pnews-$(VERSION)/examples/CVS
-	rm -rf pnews-$(VERSION)/language/CVS
-	rm -rf pnews-$(VERSION)/auth/CVS
-	rm -rf pnews-$(VERSION)/doc/CVS
-	tar zcvf pnews-$(VERSION).tgz pnews-$(VERSION)
-	rm -rf pnews-$(VERSION)
-	mv -f pnews-$(VERSION).tgz ..
+	rm -rf $(ZIPNAME)*
+	mkdir $(ZIPNAME)
+	cp -r .htaccess *.php *.js examples doc language auth css $(ZIPNAME)
+	rm -rf $(ZIPNAME)/examples/CVS
+	rm -rf $(ZIPNAME)/language/CVS
+	rm -rf $(ZIPNAME)/auth/CVS
+	rm -rf $(ZIPNAME)/doc/CVS
+	rm -rf $(ZIPNAME)/css/CVS
+	tar zcvf $(ZIPNAME).tgz $(ZIPNAME)
+	zip -r $(ZIPNAME) $(ZIPNAME)
+	rm -rf $(ZIPNAME)
+	mv -f $(ZIPNAME).tgz $(ZIPNAME).zip ..
 
 html:
 	php doc/index.php | tail +4 > doc/release.html

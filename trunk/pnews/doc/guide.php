@@ -21,6 +21,8 @@ require_once('../version.inc.php');
 
 $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
+$pname = 'pnews' . preg_replace( '/\D/', '', $pnews_version ) ;
+
 if( $_SERVER['HTTPS'] )
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 else
@@ -56,25 +58,25 @@ EOH;
   <blockquote> 
     <p> <a href="http://pnews.sourceforge.net/" target="_blank">http://pnews.sourceforge.net/</a></p>
   </blockquote>
-  <p> The source is packaged in tar+gzip (tgz) format, and the filename looks 
-    like:</p>
-  <blockquote> 
-    <p> <strong>pnews-x.y.z.tgz</strong></p>
-  </blockquote>
-  <p> where x is the major version number, y is the minor version number, and z is 
-    the patch version number</p>
+  <p> The source is packaged in two different format, one is tar+gzip (tgz),
+and the other is zip.<br>Please download your preferred format from SourceForge.</p>
   <p> After downloaded the source, extract the source tarball in the temporary 
     directory:</p>
   <blockquote> 
-    <p> <strong># tar &nbsp;zxvf &nbsp;pnews-x.y.z.tgz</strong></p>
+    <p> <strong># tar &nbsp;zxvf &nbsp;<? echo $pname; ?>.tgz</strong></p>
   </blockquote>
-  <p> All source will be extracted into the directory &quot;pnews-x.y.z/&quot;</p>
-  <p> Now, you can copy all the source (including sub-directory) from pnews-x.y.z/ to the directory where you 
+  or if you prefer the zip format,
+  <blockquote> 
+    <p> <strong># unzip &nbsp;<? echo $pname; ?>.zip</strong></p>
+  </blockquote>
+
+  <p> All source will be extracted into the directory &quot;<? echo $pname; ?>/&quot;</p>
+  <p> Now, you can copy all the source (including sub-directory) from pnews224/ to the directory where you 
     want to<br>
     provide web service. Supposed your web document directory is in /home/www/htdocs/,</p>
   <blockquote> 
     <p> <strong># mkdir &nbsp;/home/www/htdocs/news/<br>
-      # cd &nbsp;pnews-x.y.z/<br>
+      # cd &nbsp;<? echo $pname; ?>/<br>
       # cp &nbsp;-a &nbsp;* &nbsp;/home/www/htdocs/news/</strong></p>
   </blockquote>
   <p> The configuration of PHP News Reader contains two files, &quot;config.inc.php&quot; 
