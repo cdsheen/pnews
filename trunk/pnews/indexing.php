@@ -390,9 +390,9 @@ function initPage(pgidx) {
 }
 PG;
 if( $CFG['url_rewrite'] )
-	$pageurl = "group/$reserver/$group/p";
+	$pageurl = $CFG['url_base'] . "group/$reserver/$group/p";
 else
-	$pageurl = "$self?server=$server&group=$group&page=";
+	$pageurl = $CFG['url_base'] . "$self?server=$server&group=$group&page=";
 ?>
 
 function changePage(pgidx) {
