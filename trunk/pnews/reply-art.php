@@ -65,13 +65,13 @@ if( $_POST['content'] != '' ) {
 
 	if( ! $onlymail ) {
 		if( $artconv['back'] ) {
-			nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($organization), $refid, $auth_email, $_POST['charset'] );
+			nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
 			nnrp_post_write( $nhd, $artconv['back']($content) );
 			if( $CFG['post_signature'] )
 				nnrp_post_write( $nhd, $artconv['back']($CFG['post_signature']) );
 		}
 		else {
-			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $organization, $refid, $auth_email, $_POST['charset'] );
+			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
 			nnrp_post_write( $nhd, $content );
 			if( $CFG['post_signature'] )
 				nnrp_post_write( $nhd, $CFG['post_signature'] );

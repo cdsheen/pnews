@@ -48,8 +48,9 @@ echo <<<EOH
 <hr />
 PHP News Reader v2.5.0 (2003/11/16)
 <ul>
-<li>Crosspost verification bug is fixed.
 <li>Per-catalog readonly can be configured.
+<li>Crosspost verification bug is fixed.
+<li>Organization header bug is fixed.
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
 </ul>
 PHP News Reader v2.4.4 (2003/11/09)

@@ -68,11 +68,11 @@ if( $content != '' && $postgroup != '' ) {
 		connect_error( $server );
 
 	if( $artconv['back'] ) {
-		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($organization), $refid, $auth_email, $_POST['charset'] );
+		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $organization, $refid, $auth_email, $_POST['charset'] );
+		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $content );
 	}
 

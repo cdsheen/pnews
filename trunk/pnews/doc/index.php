@@ -133,7 +133,7 @@ EOR;
 
 $fp = fopen('history.php', 'r');
 while( $buf = fgets( $fp, 255 ) ) {
-	if( preg_match( "/^PHP News Reader v/", $buf ) )
+	if( preg_match( "/^PHP News Reader $pnews_version/", $buf ) )
 		break;
 }
 echo $buf;
