@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -48,37 +48,37 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 		$subject  = $_POST['subject'];
 	}
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
 	if( $article_convert['back'] ) {
-		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($CFG['organization']), null, $auth_email, $news_charset[$curr_catalog] );
-		nnrp_post_write( $nhd, $article_convert['back']($content) );
+		$nnrp->post_init( $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($CFG['organization']), null, $auth_email, $news_charset[$curr_catalog] );
+		$nnrp->post_write( $article_convert['back']($content) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $CFG['organization'], null, $auth_email, $news_charset[$curr_catalog] );
-		nnrp_post_write( $nhd, $content );
+		$nnrp->post_init( $nickname, $email, $subject, $group, $CFG['organization'], null, $auth_email, $news_charset[$curr_catalog] );
+		$nnrp->post_write( $content );
 	}
 
 	$an = intval($CFG['allow_attach_file']);
 	for( $i = 1 ; $i <= $an ; $i++ ) {
 		if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
 			$filename = $HTTP_POST_FILES["attach$i"]['name'];
-			uuencode( $nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
+			uuencode( $nnrp->nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
 		}
 	}
 
 	if( $CFG['post_signature'] ) {
 		if( $article_convert['back'] )
-			nnrp_post_write( $nhd, $article_convert['back']($CFG['post_signature']) );
+			$nnrp->post_write( $article_convert['back']($CFG['post_signature']) );
 		else
-			nnrp_post_write( $nhd, $CFG['post_signature'] );
+			$nnrp->post_write( $CFG['post_signature'] );
 	}
 
-	nnrp_post_finish( $nhd );
-	nnrp_close($nhd);
+	$nnrp->post_end();
+	$nnrp->close();
 
 	html_head( "$group - $subject" );
 

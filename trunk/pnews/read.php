@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -35,15 +35,15 @@ else
 
 $c = check_group( $server, $group );
 
-$nhd = nnrp_open( $server, $news_nntps[$c] );
+$nnrp->open( $server, $news_nntps[$c] );
 
-if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 	connect_error( $server );
 
-list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-$nextnum = nnrp_last( $nhd, $artnum );
-$lastnum = nnrp_next( $nhd, $artnum );
+$nextnum = $nnrp->prev( $artnum );
+$lastnum = $nnrp->next( $artnum );
 
 if( $CFG['url_rewrite'] ) {
 	$nexturl = ($nextnum>0) ? "$urlbase/article/$reserver/$group/$nextnum" : '';
@@ -60,7 +60,7 @@ else {
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
-$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 if( !$artinfo ) {
 	if( $CFG['show_article_popup'] )
@@ -188,11 +188,11 @@ if( $CFG['hide_email'] )
 $dlbase = str_replace( 'https://', 'http://', $urlbase );
 
 if( $CFG['url_rewrite'] )
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/dl/$server/$group/$artnum/%s" );
+	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/dl/$server/$group/$artnum/%s" );
 else
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
+	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
-nnrp_close($nhd);
+$nnrp->close();
 
 echo "</td></tr>";
 

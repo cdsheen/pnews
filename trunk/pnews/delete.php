@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,16 +43,16 @@ if( $confirm == 1 ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
 	if( $artconv['back'] )
-		nnrp_cancel( $nhd, $artconv['back']($auth_user), $auth_email, $msgid, $group, $artconv['back']($subject) );
+		$nnrp->cancel( $artconv['back']($auth_user), $auth_email, $msgid, $group, $artconv['back']($subject) );
 	else
-		nnrp_cancel( $nhd, $auth_user, $auth_email, $msgid, $group, $subject );
-	nnrp_close($nhd);
+		$nnrp->cancel( $auth_user, $auth_email, $msgid, $group, $subject );
+	$nnrp->close();
 
 	html_head( $pnews_msg['Delete'] );
 
@@ -88,14 +88,14 @@ elseif( $artnum != '' ) {
 	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
-	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+	list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+	$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 	if( !$artinfo )
 		kill_myself();
@@ -144,8 +144,8 @@ elseif( $artnum != '' ) {
 	echo "<tr><td colspan=2>";
 	echo "<textarea name=content class=content rows=10 wrap=hard disabled cols=82>";
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
-	nnrp_close($nhd);
+	$nnrp->show( $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
+	$nnrp->close();
 	echo "\n</textarea></td></tr>\n";
 	echo "</table></center>\n";
 	echo "</form>\n";

@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -62,22 +62,22 @@ if( $content != '' && $postgroup != '' ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
 	if( $artconv['back'] ) {
-		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($CFG['organization']), null, $auth_email, $_POST['charset'] );
-		nnrp_post_write( $nhd, $article_convert['back']($content) );
+		$nnrp->post_init( $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($CFG['organization']), null, $auth_email, $_POST['charset'] );
+		$nnrp->post_write( $article_convert['back']($content) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $CFG['organization'], null, $auth_email, $_POST['charset'] );
-		nnrp_post_write( $nhd, $content );
+		$nnrp_post_init( $nickname, $email, $subject, $postgroup, $CFG['organization'], null, $auth_email, $_POST['charset'] );
+		$nnrp_post_write( $content );
 	}
 
-	nnrp_post_finish( $nhd );
-	nnrp_close($nhd);
+	$nnrp->post_end();
+	$nnrp->close();
 
 
 	html_head( "$postgroup - $subject" );
@@ -112,14 +112,14 @@ elseif( $artnum != '' ) {
 
 	$c = check_group( $server, $group );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
-	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+	list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+	$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 	if( !$artinfo )
 		kill_myself();
 
@@ -225,8 +225,8 @@ CONFIRM;
 #	echo "-------------------------------------------------------------\n";
 
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
-	nnrp_close($nhd);
+	$nnrp->show( $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
+	$nnrp->close();
 
 	echo "\n</textarea>\n";
 	echo "</td></tr></table></center>\n";

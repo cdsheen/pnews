@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -51,6 +51,7 @@ PHP News Reader v2.6.0 (2004/12/25)
 <li>Multiple 'group' directive are allowed in one catalog.
 <li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.
+<li>NNRP functions are collected as a class object.
 </ul>
 PHP News Reader v2.5.9 (2004/08/11)
 <ul>

@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,24 +26,24 @@ $filename = $_GET['filename'];
 
 $c = check_group( $server, $group );
 
-$nhd = nnrp_open( $server, $news_nntps[$c] );
+$nnrp->open( $server, $news_nntps[$c] );
 
-if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 	connect_error( $server );
 
-list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 if( !$artinfo ) {
 	echo "unable to download this attachement<br>\n";
 	exit;
 }
 
-$binary = nnrp_get_attachment( $nhd, $artnum, $_GET['type'], $filename );
+$binary = $nnrp->get_attachment( $artnum, $_GET['type'], $filename );
 $size = strlen($binary);
 
-nnrp_close($nhd);
+$nnrp->close();
 
 $mimetype = array( 'doc'  => 'application/msword',
 		   'htm'  => 'text/html',

@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,20 +32,21 @@ elseif( $CFG['banner'] )
 
 $c = check_group( $server, $group );
 
-$nhd = nnrp_open( $server, $news_nntps[$c] );
+$nnrp->open( $server, $news_nntps[$c] );
 
-if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 	connect_error( $server );
 
-list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-if( $CFG['cache_dir'] ) {
-	$cachedir = $CFG['cache_dir'] . '/' . $server . '/' . str_replace( '.', '/', $group );
-	mkdirs($cachedir);
-	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $cachedir, $CFG['thread_enable'], $CFG['thread_db_format'] );
-}
-else
-	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark );
+#if( $CFG['cache_dir'] ) {
+#	$cachedir = $CFG['cache_dir'] . '/' . $server . '/' . str_replace( '.', '/', $group );
+#	mkdirs($cachedir);
+#	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $cachedir, $CFG['thread_enable'], $CFG['thread_db_format'] );
+#}
+#else
+
+$artlist = $nnrp->article_list( $lowmark, $highmark );
 
 $artsize = count($artlist);
 
@@ -172,7 +173,7 @@ if( $ncount > 0 ) {
 	$show_from = $curlist[$ncount - 1];
 	$show_end  = $curlist[0];
 	echo "<!-- XOVER: $show_from-$show_end -->\n";
-	$xover = nnrp_xover( $nhd, $show_from, $show_end );
+	$xover = $nnrp->xover( $show_from, $show_end );
 
 	$ncount = count($xover);
 }
@@ -363,7 +364,7 @@ EOT;
 
 html_foot();
 
-nnrp_close($nhd);
+$nnrp->close();
 
 if( $CFG['html_footer'] )
 	readfile( $CFG['html_footer'] );

@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -30,7 +30,7 @@ else
 
 $urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
 
-function html_head($title, $redirect = null, $bodymod = '' ) {
+function html_head( $title, $redirect = null, $bodymod = '' ) {
 	global $lang_coding, $curr_language, $urlbase, $CFG;
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
@@ -45,7 +45,6 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 
 EOH;
 
-
 	if( $redirect )
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\" />\n";
 
@@ -56,9 +55,9 @@ EOH;
 		echo "<META NAME=\"keywords\" content=\"{$CFG['meta_keywords']}\" />\n";
 
 	echo <<<EOX
-  <LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}" />
-  <script language="javascript" src="utils.js"></script>
-  <title>$title </title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}" />
+<script language="javascript" src="utils.js"></script>
+<title>$title </title>
 </head>
 <body $bodymod>
 
@@ -132,7 +131,7 @@ function html_tail() {
 
 	echo <<<EOT
 
-<!-- Copyright (C) 2001-2004 - All rights reserved -->
+<!-- Copyright (C) 2001-2005 - All rights reserved -->
 <!-- Shen Cheng-Da from Taipei, Taiwan             -->
 <!-- cdsheen at users dot sourceforge dot net      -->
 </body>

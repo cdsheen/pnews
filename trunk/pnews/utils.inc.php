@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -31,7 +31,7 @@ require_once('readcfg.inc.php');
 
 require_once('version.inc.php');
 require_once('html.inc.php');
-require_once('nnrp.inc.php');
+require_once('nnrpclass.php');
 
 # Global variables
 
@@ -51,7 +51,7 @@ $show_mode        = 0;
 if( $CFG['filter_ansi_color'] )
 	$show_mode |= FILTER_ANSI;
 
-set_nnrp_debug_level( $CFG['debug_level'] );
+$nnrp = new pnews_nnrp( $CFG['debug_level'], $CFG['cache_dir'], $CFG['thread_enable'], $CFG['db_format'] );
 
 #if( $referal == '' )
 #	$referal = 'index.php';
@@ -675,20 +675,21 @@ function match_group( $group, $pattern ) {
 	return(false);
 }
 
-function nnrp_authenticate( $nhd ) {
+function nnrp_authenticate() {
 	global  $CFG;
+	global	$nnrp;
 	global	$curr_catalog;
 	global	$news_authinfo;
 
 	if( $curr_catalog < 0 ) {
-		nnrp_mode_reader($nhd);
+		$nnrp->mode_reader();
 		return(true);
 	}
 
 	$authinfo = $news_authinfo[$curr_catalog];
 
 	if( $authinfo == 'none' || $authinfo == '' ) {
-		nnrp_mode_reader($nhd);
+		$nnrp->mode_reader();
 		return(true);
 	}
 
@@ -699,8 +700,8 @@ function nnrp_authenticate( $nhd ) {
 		$pass = str_replace( '%http_pw',   $_SERVER['PHP_AUTH_PW'],   $pass);
 	}
 
-	if( nnrp_auth( $nhd, $user, $pass ) ) {
-		nnrp_mode_reader($nhd);
+	if( $nnrp->auth( $user, $pass ) ) {
+		$nnrp->mode_reader();
 		return(true);
 	}
 	else

@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -58,36 +58,36 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error($server);
 
 	if( ! $onlymail ) {
 		if( $artconv['back'] ) {
-			nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
-			nnrp_post_write( $nhd, $artconv['back']($content) );
+			$nnrp->post_init( $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
+			$nnrp->post_write( $artconv['back']($content) );
 		}
 		else {
-			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
-			nnrp_post_write( $nhd, $content );
+			$nnrp->post_init( $nickname, $email, $subject, $group, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
+			$nnrp->post_write( $content );
 		}
 		$an = intval($CFG['allow_attach_file']);
 		for( $i = 1 ; $i <= $an ; $i++ ) {
 			if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
 				$filename = $HTTP_POST_FILES["attach$i"]['name'];
-				uuencode( $nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
+				uuencode( $nnrp->nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
 			}
 		}
 
 		if( $CFG['post_signature'] ) {
 			if( $artconv['back'] )
-				nnrp_post_write( $nhd, $artconv['back']($CFG['post_signature']) );
+				$nnrp->post_write( $artconv['back']($CFG['post_signature']) );
 			else
-				nnrp_post_write( $nhd, $CFG['post_signature'] );
+				$nnrp->post_write( $CFG['post_signature'] );
 		}
-		nnrp_post_finish( $nhd );
-		nnrp_close($nhd);
+		$nnrp->post_end();
+		$nnrp->close();
 	}
 
 	html_head( "$group - $subject" );
@@ -138,14 +138,14 @@ elseif( $artnum != '' ) {
 	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
-	$nhd = nnrp_open( $server, $news_nntps[$c] );
+	$nnrp->open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
 		connect_error( $server );
 
-	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+	list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+	$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 	if( !$artinfo )
 		kill_myself();
@@ -299,8 +299,8 @@ EOA;
 	printf("\n$pnews_msg[QuoteFrom]\n", "$from ($email)" );
 
 	$show_mode |= SPACE_ASIS;
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '&gt; ', "\n", $artconv['to'] );
-	nnrp_close($nhd);
+	$nnrp->show( $artnum, $artinfo, $show_mode, '&gt; ', "\n", $artconv['to'] );
+	$nnrp->close();
 	echo "</textarea>";
 	echo "</form>\n";
 	html_focus( 'post', 'content' );

@@ -5,7 +5,7 @@
 // Language: Slovak
 // Coding:   ISO-8859-2
 
-// Copyright (C) 2001-2004 - All rights reserved
+// Copyright (C) 2001-2005 - All rights reserved
 // tichu (jahu at gentoo.sk)
 
 $pnews_msg['Authentication']     = 'Prihlásenie';

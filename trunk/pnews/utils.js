@@ -1,5 +1,4 @@
-
-/* PHP News Reader - Copyright(C) 2001-2004         */
+/* PHP News Reader - Copyright(C) 2001-2005         */
 /* Shen Cheng-Da (cdsheen at users.sourceforge.net) */
 
 /* Javascript Functions, included by html.inc.php   */
@@ -54,10 +53,10 @@ function setCookie(sName, sValue, sPath) {
 	document.cookie = sName + "=" + escape(sValue) + "; path=" + sPath;
 }
 function change_language( lang, path, from ) {
-	window.location = "change-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
+	window.location = "chg-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
 }
 function change_language_base( base, lang, path, from ) {
-	window.location = base + "change-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
+	window.location = base + "chg-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
 }
 function myfavor( url, title ) {
 

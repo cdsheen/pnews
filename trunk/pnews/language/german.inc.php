@@ -5,7 +5,7 @@
 // Language: German (Germany)
 // Coding:   ISO-8859-1
 
-// Copyright (C) 2001-2004 - All rights reserved
+// Copyright (C) 2001-2005 - All rights reserved
 // Jochen Staerk (jstaerk at usegroup.de)
 
 $pnews_msg['Authentication']     = 'Login';

@@ -5,7 +5,7 @@
 // Language: Italian
 // Coding:   ISO-8859-1
 
-// Copyright (C) 2001-2004 - All rights reserved
+// Copyright (C) 2001-2005 - All rights reserved
 // Francesco Rolando (ogekuri at porcate.org)
 
 $pnews_msg['Authentication']     = 'Autenticazione';

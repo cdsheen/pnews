@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2004 Shen Cheng-Da
+# Copyright (C) 2001-2005 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,16 +32,7 @@ elseif( $CFG['banner'] )
 else
 	echo "<font color=black size=5 face=Georgia>$title</font><br />";
 
-/*
-for( $i = 0 ; $i < $catalog_num ; $i++ ) {
-	if( ! $nhd[$news_server[$i]] )
-		$nhd[$i] = $nhd[$news_server[$i]] = nnrp_open( $news_server[$i] );
-	else
-		$nhd[$i] = $nhd[$news_server[$i]];
-}
-*/
-
-$nhd = nnrp_open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
+$nnrp->open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
 
 echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
@@ -97,16 +88,16 @@ echo "</td></tr></table>\n";
 
 echo "</td><td valign=top align=left>";
 
-if( ! $nhd ) {
+if( ! $nnrp->nhd ) {
 	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
 }
 
-nnrp_authenticate( $nhd );
+nnrp_authenticate();
 
-$active = nnrp_list_group( $nhd, $news_groups[$curr_catalog], $article_convert['to'] );
+$active = $nnrp->list_group( $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {
 	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] &lt;" . $news_server[$curr_catalog] . "&gt;</font></td></tr></table>\n";
@@ -224,7 +215,7 @@ echo "</td></tr></table>\n";
 
 html_foot();
 
-if( $nhd ) nnrp_close($nhd);
+if( $nnrp->nhd ) $nnrp->close();
 
 if( $CFG['html_footer'] )
 	readfile( $CFG['html_footer'] );
