@@ -35,8 +35,13 @@ function set_nnrp_debug_level( $level ) {
 
 function open_nntp ( $nnrp_server ) {
 
+	if( strstr( $nnrp_server, ':' ) )
+		list( $server, $port ) = split( ':', $server );
+	else
+		$port = 119;
+
 	$nhd = null;
-	$nhd = @fsockopen( $nnrp_server, 119, $errno, $errstr, 5 );
+	$nhd = @fsockopen( $server, $port, $errno, $errstr, 5 );
 
 	if( ! $nhd )
 		return(null);
@@ -62,8 +67,13 @@ function nnrp_mode_reader ( $nhd ) {
 
 function open_nntps ( $nnrp_server ) {
 
+	if( strstr( $nnrp_server, ':' ) )
+		list( $server, $port ) = split( ':', $nnrp_server );
+	else
+		$port = 563;
+
 	$nhd = null;
-	$nhd = fsockopen( "ssl://$nnrp_server", 563, $errno, $errstr, 5 );
+	$nhd = fsockopen( "ssl://$server", $port, $errno, $errstr, 5 );
 
 	if( ! $nhd )
 		return(null);

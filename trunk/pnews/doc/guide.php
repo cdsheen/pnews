@@ -43,7 +43,17 @@ include('header.php');
 
 ?>
 <font size=3 color=black face="Georgia">
-<strong><em><font color="#0000FF">Upgrade from previous version</font></em></strong> 
+<ol>
+<li><a href=#upgrade>Upgrade from previous version</a>
+<li><a href=#newinstall>New installation</a>
+<li><a href=#config_inc_php>Configuration of config.inc.php</a>
+<li><a href=#newsgroups_lst>Configuration of newsgroups.lst</a>
+</ol>
+</font>
+<hr />
+<a name=upgrade></a>
+<font size=3 color=black face="Georgia">
+<strong><em><font color="#0000FF">1. Upgrade from previous version</font></em></strong> 
 <blockquote>
 To upgrade PHP News Reader from the previous version, please follow
 the following procedure:
@@ -56,7 +66,8 @@ the following procedure:
 </ol>
 </blockquote>
 <hr />
-<strong><em><font color="#0000FF">New Installation</font></em></strong> 
+<a name=newinstall></a>
+<strong><em><font color="#0000FF">2. New Installation</font></em></strong> 
 <blockquote>
   <p> The installation of PHP News Reader is quite simple.<br />
     You can download the latest source of PHP News Reader from:</p>
@@ -113,7 +124,8 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     your comments to cdsheen@users.sourceforge.net, any suggestion is appreciated.</p>
 </blockquote>
 <hr size="1">
-<strong><em><font color="#0000FF"> Configuration for CONFIG.INC.PHP</font></em></strong> 
+<a name=config_inc_php></a>
+<strong><em><font color="#0000FF">3. Configuration for CONFIG.INC.PHP</font></em></strong> 
 <blockquote> 
   <p> config.inc.php controls how PHP News Reader works.</p>
   <p> You can find the sample config.inc.php in the "example/" directory.</p>
@@ -740,7 +752,7 @@ You can download phpCAS from the following place:<br />
 </blockquote>
 <a name=newsgroups_lst></a>
 <hr size="1">
-<strong><em><font color="#0000FF">Configuration for NEWSGROUPS.LST</font></em></strong> 
+<strong><em><font color="#0000FF">4. Configuration for NEWSGROUPS.LST</font></em></strong> 
 <blockquote> 
   <p>newsgroups.lst list the news server / news groups to access</p>
   <p>The syntax of this file is different from that of config.inc.php</p>
@@ -765,6 +777,10 @@ You can download phpCAS from the following place:<br />
   <p><strong>'server' directive</strong></p>
   <blockquote>
   This directive defines the news server used to retrieve newsgroups in this catalog.
+  <p>
+  Since v2.5.5 of PHP News Reader, the address of the news server can be configured with port number.
+  <p>
+  For example: <i>news.pnews-test.com:12345</i>
   </blockquote>
   <a name=group_match></a>
   <p><strong>'group' directive</strong></p>

@@ -39,9 +39,10 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.5.5 (2004/03/13)
+PHP News Reader v2.5.5 (2004/03/14)
 <ul>
 <li>Fixed the quote problem of the Italian language translation.
+<li>News server can be configured on an <a href=guide.php#grouplst_server>alternative port number</a> (host.domain:port)
 </ul>
 PHP News Reader v2.5.4 (2004/03/02)
 <ul>
