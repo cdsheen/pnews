@@ -49,3 +49,7 @@ www:	html
 
 clean:
 	rm -f *~
+
+update:
+	cvs update -dP
+
