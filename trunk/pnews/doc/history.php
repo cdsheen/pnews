@@ -41,7 +41,7 @@ echo <<<EOH
 <font face=Georgia>
 PHP News Reader v2.5.6 (2004/04/01)
 <ul>
-<li>New authentication module for integration with phpBB. (<a href=guide.php#auth_method>\$CFG['auth_method']</a>)
+<li>New authentication module 'phpbb' for truely integration with phpBB. (<a href=guide.php#auth_method>\$CFG['auth_method']</a>)
 <li>HTML tags are now recognized in articles with 'text/html' as Content-Type.
 <li>Fix the word wrapping bug in textarea.
 <li>Workaround for the news server which does not support <b>LIST NEWSGROUPS [wildmat]</b> of RFC 2980
