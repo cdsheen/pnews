@@ -429,7 +429,8 @@ You can download phpCAS from the following place:<br />
       <p>If your password does not saved as cleartext in the database,
       <br />this parameter defined the hashing method used to hash password.</p>
     </blockquote>
-    <p>The support for database authentication module make it easy to integrate with the existing phpBB system.</p>
+    <a name=phpbb></a>
+    <p>The support for database authentication module make it easy to integrate with the existing <a href=http://www.phpbb.com/ target=_blank>phpBB</a> system.</p>
     <p>For example, to enable PHP News Reader to authenticate with the existing 
       users of your phpBB 2.0, use the following settings:</p>
     <blockquote> 
