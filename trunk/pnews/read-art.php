@@ -125,20 +125,24 @@ echo "<center>\n";
 
 #if( !$CFG['show_article_popup'] ) {
 	echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
-	echo "<tr><td bgcolor=#DDFFDD>\n";
 
-	if( $CFG['show_article_popup'] )
-		echo "<font size=2 face=Georgia><i><b>$group</i></b></font>";
-	elseif( $CFG['url_rewrite'] )
-		echo "<font size=2 face=Georgia><a href=group/$reserver/$group><i><b>$group</i></b></a></font>";
-	else
-		echo "<font size=2 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
+	if( $CFG['show_article_popup'] ) {
+		echo "<tr><td class=group>\n";
+		echo "$group";
+	}
+	else {
+		echo "<tr><td class=group onMouseover='this.className=\"group_hover\";' onMouseout='this.className=\"group\";'>\n";
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$reserver/$group>$group</a>";
+		else
+			echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
+	}
 
 	echo "</td>";
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	echo "<a href=\"$lasturl\">$strLastArticle</a>";
 	echo "</td>\n";
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	echo "<a href=\"$nexturl\">$strNextArticle</a>";
 	echo "</td>\n";
 	echo "</tr></table>\n";
@@ -146,29 +150,26 @@ echo "<center>\n";
 
 echo "<table width=100% cellpadding=3 cellspacing=0>\n";
 
-echo "<tr bgcolor=#DDDDFF><td class=x align=left><font size=3><b><a href=\"$uri\">$subject</a></b></font></td>\n";
-echo "<td align=right>$date</td></tr>\n";
-echo "<tr bgcolor=#FFFFEE><td class=x>$from (<a href=\"mailto:$email\">$email</a>)</td>\n";
-echo "<td align=right class=x>$org</td></tr>\n";
+echo "<tr><td class=subject align=left><a href=\"$uri\">$subject</a></td>\n";
+echo "<td class=date>$date</td></tr>\n";
+echo "<tr><td class=author>$from (<a href=\"mailto:$email\">$email</a>)</td>\n";
+echo "<td class=server>$org</td></tr>\n";
 
 #toolbar( $server, $group, $artnum, $subject );
 
-echo "<tr><td colspan=2 bgcolor=#EEFFEE>";
+echo "<tr><td colspan=2 class=content>";
 
-echo "<hr><font size=2 face=monospace>";
+echo "<hr>";
 if( $artconv['to'] )
 	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $artconv['to'] );
 else
 	nnrp_body( $nhd, $artnum, "", "<br>\n" );
-echo "</font>";
 nnrp_close($nhd);
 
 echo "</td></tr><tr><td align=center colspan=2>\n";
 
 
 echo "</td></tr>";
-#echo "<tr><td align=right colspan=2>";
-#echo "</td></tr>";
 echo "</table>";
 
 toolbar( $server, $group, $artnum, $subject );
@@ -187,34 +188,34 @@ function toolbar( $server, $group, $artnum, $title ) {
 	if( !$post_restriction ) {
 		echo "<tr>";
 		if( ! $CFG['show_article_popup'] ) {
-			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$nexturl\">$strNextArticle</a>";
 			echo "</td>\n";
-			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$lasturl\">$strLastArticle</a>";
 			echo "</td>\n";
-			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
 			echo "</td>\n";
 		}
 
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo reply_article( $server, $group, $artnum, $strReplyDetail, false, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-#		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+#		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 #		echo reply_article( $server, $group, $artnum, $strReplyQuoteDetail, true, true );
 #		echo "</td>\n";
 
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo xpost_article( $server, $group, $artnum, $strCrossPostDetail, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo forward_article( $server, $group, $artnum, $strForwardDetail, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email )
 			echo delete_article( $server, $group, $artnum, $strDeleteDetail, $CFG['show_article_popup'] );
 		else
@@ -223,7 +224,7 @@ function toolbar( $server, $group, $artnum, $title ) {
 	}
 
 	$host = $_SERVER['HTTP_HOST'];
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
 		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$strMyFavor</a>\n";
 	else
@@ -231,11 +232,11 @@ function toolbar( $server, $group, $artnum, $title ) {
 	echo "</td>\n";
 
 	if( $CFG['show_article_popup'] ) {
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo "<a href=\"javascript:close_window()\">$strCloseWindow</a>";
 		echo "</td>";
 	}
-	echo "<td bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 #	echo "Language: ";
 	show_language_switch();
 	echo "</td></tr></table>\n";

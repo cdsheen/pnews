@@ -89,7 +89,7 @@ echo <<<EOH
 <table border=1 cellpadding=0 cellspacing=0 width=100%>
 <tr><td>
     <table width=100% border=1 cellpadding=2 cellspacing=0>
-    <tr><td class=title onMouseOver='this.className="title_hover";' onMouseout='this.className="title";'>
+    <tr><td class=group onMouseOver='this.className="group_hover";' onMouseout='this.className="group";'>
 
 EOH;
 
@@ -100,9 +100,9 @@ else
 
 
 if( $CFG['url_rewrite'] )
-	echo "<a href=group/$reserver/$group><i><b>$group</i></b></a>";
+	echo "<a href=group/$reserver/$group>$group</a>";
 else
-	echo "<a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a>";
+	echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
 
 echo "</td>";
 

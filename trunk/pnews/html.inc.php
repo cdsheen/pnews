@@ -72,17 +72,14 @@ function html_foot($langopt = true) {
 ?>
   <p>
 <hr><table width=100% border=0 cellpadding=0 cellspacing=0>
-  <tr><td>
+  <tr class=footbar><td>
      <i>
-       <font size=2>
 <?
 	if( $CFG['author_link'] == false )
 		echo "<a href=\"http://sourceforge.net/projects/pnews/\" target=_blank>PHP News Reader</a> $pnews_version by Shen Cheng-Da";
 	else
 		echo '<a href="doc/index.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
 ?>
-
-       </font>
      </i>
      &nbsp;
 </td>
@@ -98,14 +95,12 @@ EOL;
 	}
 ?>
   </td><td align=right>
-     <font size=2>
 <?
 	if( $CFG['language_switch'] && $langopt ) {
-		echo "<i>Language:</i>";
+		echo "Language:";
 		show_language_switch();
 	}
 ?>
-     </font>
   </td></tr>
   </table>
 <?
