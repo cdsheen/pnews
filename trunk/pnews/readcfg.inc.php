@@ -227,7 +227,7 @@ foreach( $checks as $section ) {
 
 #$default_charset = $CFG['charset']['interface'];
 
-if( !isset( $CFG['cache_dir'] )
+if( !isset( $CFG['cache_dir'] ) )
 	$CFG['cache_dir'] = false;
 
 if( !isset( $CFG['url_rewrite'] ) ) 

@@ -162,6 +162,9 @@ else {
 
 	$xover = nnrp_xover( $nhd, $show_from, $show_end );
 
+	if( $CFG['show_newest_top'] )
+		krsort($xover);
+
 	foreach( $xover as $artnum => $ov ) {
 
 		if( !$ov )
@@ -270,7 +273,7 @@ if( $CFG['show_newest_top'] )
 else
 	if( $show_from > $lowmark ) {
 
-		$target = $artlist[$lineppg-1];
+		$target = isset($artlist[$lineppg-1])?$artlist[$lineppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strFirstPage</a>";
@@ -301,7 +304,7 @@ if( $CFG['show_newest_top'] )
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-		$target = $artlist[$artsize-1];
+		$target = isset($artlist[$lineppg-1])?$artlist[$lineppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strLastPage</a>";
