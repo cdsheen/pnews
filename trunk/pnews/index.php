@@ -46,6 +46,8 @@ for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 		$nhd[$i] = $nhd[$news_server[$i]];
 }
 
+nnrp_authenticate( $nhd[$curr_catalog] );
+
 $active = nnrp_list_group( $nhd[$curr_catalog], $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {

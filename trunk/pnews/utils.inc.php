@@ -108,12 +108,12 @@ while( $buf = fgets( $lst, 512) ) {
 		if( in_array( $match[1], $valid_charsets ) )
 			$news_charset[$catalog_num] = $match[1];
 	}
-	elseif( preg_match( '/^auth\s+(\S+)\s*(\S*)\s*(\S*)$/', $buf, $match ) ) {
+	elseif( preg_match( '/^auth\s+(.+)$/', $buf, $match ) ) {
 		$match[1] = strtolower( $match[1] );
-		if( $match[1] == 'login' )
-			$news_authinfo[$catalog_num] = 'login';
-		elseif( $match[1] == 'user' )
-			$news_authinfo[$catalog_num] = $match[2] . ':' . $match[3];
+#		if( $match[1] == 'login' )
+#			$news_authinfo[$catalog_num] = 'login';
+#		elseif( $match[1] == 'user' )
+		$news_authinfo[$catalog_num] = $match[1];
 	}
 }
 fclose($lst);
@@ -521,6 +521,25 @@ function match_group( $group, $pattern ) {
 			return(true);
 	}
 	return(false);
+}
+
+function nnrp_authenticate( $nhd ) {
+	global	$curr_catalog;
+	global	$news_authinfo;
+
+	if( $curr_catalog < 0 )
+		return(true);
+
+	$authinfo = $news_authinfo[$curr_catalog];
+
+	if( $authinfo == 'none' || $authinfo == '' )
+		return(true);
+
+	list( $user, $pass ) = explode( ',', $authinfo );
+	if( nnrp_auth( $nhd, $user, $pass ) )
+		return(true);
+	else
+		return(false);
 }
 
 /*

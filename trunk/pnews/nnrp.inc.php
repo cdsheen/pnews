@@ -33,6 +33,21 @@ function nnrp_open ( $nnrp_server ) {
 
 }
 
+function nnrp_auth( $nhd, $username, $password ) {
+
+	send_command( $nhd, "AUTHINFO USER $username" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '3' )
+		return(false);
+
+	send_command( $nhd, "AUTHINFO PASS $password" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(false);
+
+	return(true);
+}
+
 function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 
 	if( $filter == '*' )

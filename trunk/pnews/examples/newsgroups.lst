@@ -17,12 +17,11 @@ option	default
 
 [catalog2]
 # use the default news server
-auth	login
 group	nopy.test,nopy.talk.*
 
 [catalog3]
 server	news2.domain.org
-auth	account	username,password
+auth	username,password
 group	nopy.comp.*,nopy.rec.*
 charset	gb
 
