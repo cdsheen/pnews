@@ -30,7 +30,6 @@ pkg:
 	rm -rf pnews-$(VERSION)/examples/CVS
 	rm -rf pnews-$(VERSION)/language/CVS
 	rm -rf pnews-$(VERSION)/auth/CVS
-	rm -f  pnews-$(VERSION)/examples/newsgroups-giga.lst
 	tar zcvf pnews-$(VERSION).tgz pnews-$(VERSION)
 	rm -rf pnews-$(VERSION)
 	mv -f pnews-$(VERSION).tgz ..
