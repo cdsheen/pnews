@@ -180,8 +180,8 @@ if( $thread_all ) {
 			$email = $artconv['to']( $artinfo['mail'] );
 		}
 		else {
-			$from  = $artconv['name'];
-			$email = $artconv['mail'];
+			$from  = $artinfo['name'];
+			$email = $artinfo['mail'];
 		}
 
 		$date = $artinfo['date'];
