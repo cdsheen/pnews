@@ -75,7 +75,7 @@ PHP News Reader has nothing to do with the user registration.
 It is designed to work with the EXISTING authentication system.
 PHP News Reader supports several flexible authentication interface modules,
 which let administrator easy to control how to authenticate users.
-There are various handy authentication modules availabled.
+There are various built-in authentication modules.
 <ul>
 <li>POP3 - authenticate user using the existing POP3 server.
 <li>Mail - authenticate user using multiple POP3 servers.
