@@ -79,9 +79,9 @@ The requirement for PHP News Reader on the client side (web browser) :
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
 ';
-echo "<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>\n";
-echo "<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>\n";
-echo '
+echo<<<EOH
+<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net Logo">
@@ -90,5 +90,5 @@ echo '
 </font>
 </body>
 </html>
-';
+EOH;
 ?>
