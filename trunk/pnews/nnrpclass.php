@@ -168,7 +168,6 @@ class pnews_nnrp {
 			}
 			else
 				$re_match = '*';
-#			echo "$re_match,$re_group,$re_filter<br />";
 			if( $re_match == '*' )
 				$this->send_command( "LIST ACTIVE $group");
 			else
@@ -177,14 +176,12 @@ class pnews_nnrp {
 			if( $code[0] != '2' )
 				break;
 			while( $buf = fgets( $this->nhd, 4096 ) ) {
-#				echo "$buf<br />";
 				$buf = chop($buf);
 				if( $buf == '.' )
 					break;
 				$entry = split( ' ', $buf );
 				if( $re_match != '*' && !preg_match( "/\.$re_filter\$/i", $entry[0] ) )
 					continue;
-#				echo "$buf<br />";
 				$active[$entry[0]] = array( (int)$entry[1], (int)$entry[2] );
 			}
 			$this->send_command( "LIST newsgroups $group");
@@ -192,12 +189,10 @@ class pnews_nnrp {
 			if( $code[0] != '2' )
 				continue;
 			while( $buf = fgets( $this->nhd, 4096 ) ) {
-#				echo "$buf<br />";
 				$buf = chop( $buf );
 				if( $buf == '.' )
 					break;
 				preg_match( '/^(\S+)\s+(.+)$/', $buf, $match );
-#				echo "$match[1] $match[2]<br />\n";
 				if( isset($match[1]) && isset($active[$match[1]]) ) {
 					if( $func )
 						array_push( $active[$match[1]], $func($match[2]) );
@@ -234,7 +229,6 @@ class pnews_nnrp {
 				$buf = trim( $buf );
 				if( $buf == "." )
 					break;
-#				echo "<!-- [$buf] => $n -->\n";
 				$ovfmt[$buf] = $n++;
 			}
 		}
@@ -247,7 +241,6 @@ class pnews_nnrp {
 			return(null);
 		$ov = array();
 		while( $buf = fgets( $this->nhd, 4096 ) ) {
-#			echo "$buf<br />";
 			$buf = chop( $buf );
 			if( $buf == "." )
 				break;
@@ -284,7 +277,6 @@ class pnews_nnrp {
 				$ov[$n][5] = preg_split( '/\s+/', $refs );
 			$n++;
 		}
-#		print_r( $ov );
 		return( $ov );
 	}
 
@@ -292,9 +284,9 @@ class pnews_nnrp {
 		$new_art = $lowmark;
 		$artlist = array();
 		if( $this->cache_dir ) {
-			$cache_dir = $this->cache_dir . '/' . $curr_server . '/' . str_replace( '.', '/', $curr_group );
-			mkdirs($cache_dir);
-			$cache_file = $cache_dir . '/artnum.idx';
+			$gdir = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $this->curr_group );
+			mkdirs($gdir);
+			$cache_file = $gdir . '/artnum.idx';
 			$fp = @fopen( $cache_file, 'rb');
 			if( $fp ) {
 				$cache_max = -1;
@@ -316,7 +308,7 @@ class pnews_nnrp {
 			}
 		}
 		if( $this->thread_enable ) {
-			$file_thread  = $cache_dir . '/' . $curr_server . '/' . str_replace( '.', '/', $curr_group ) . '/thread.db';
+			$file_thread  = $gdir . '/thread.db';
 			// require PHP 4.3+ (for 'd' mode flag)
 			if( file_exists( $file_thread ) )
 				$db_thread = dba_open( $file_thread, 'wd', $this->db_handler );
@@ -437,7 +429,6 @@ class pnews_nnrp {
 				$buf = chop($buf);
 				if( $buf == '.' || $buf == '' )
 					break;
-#				list($field, $value) = explode( ':', $buf );
 				$buf = htmlspecialchars( $buf, ENT_NOQUOTES );
 				if( $hide_email && !strstr( $buf, $artinfo['msgid'] ) )
 					$buf = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/e', '"$1".hide_mail("$2@$3")' , $buf );
@@ -513,6 +504,7 @@ class pnews_nnrp {
 				if( $show_hlink ) {
 					/* replace hyperlink */
 					$body[$i] = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#;]|(&amp;))+)/', '<a href="$1" target=_blank>$1</a>' , $body[$i] );
+#					$body[$i] = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w-_.]+)(\/([\w-.:\/~+=?,#;]|(&amp;))+)?)/', '<a href="$3://$4" target=_blank>$3://$4</a>' , $body[$i] );
 					/* replace mail link */
 					if( $hide_email )
 						$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/e', '"$1".hide_mail_link("$2@$3")', $body[$i] );
@@ -692,7 +684,30 @@ class pnews_nnrp {
 			fclose($this->nhd);
 	}
 
-	function get_thread( $subject, $lowmark, $highmark ) {
+	function get_thread( $group, $subject ) {
+
+		list( $code, $count, $lowmark, $highmark ) = $this->group( $group );
+#		echo "$count, $lowmark, $highmark";
+		$thlist = array();
+		$thread_db = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $group ) . '/thread.db';
+		if( !file_exists( $thread_db ) ) {
+			return($thlist);
+		}
+		$db = dba_open( $thread_db, 'r', $this->db_handler );
+		if( $db ) {
+			$subject = preg_replace( '/^((RE|FW):\s*)+/i', '', trim($this->decode_subject($subject)));
+			if( ( $thread = dba_fetch( $subject, $db ) ) !== FALSE ) {
+#				echo "$thread ($lowmark-$highmark)";
+				$thlist_x = explode( '+', $thread );
+				foreach( $thlist_x as $t ) {
+					if( $t >= $lowmark && $t <= $highmark )
+						$thlist[] = $t;
+				}
+				sort($thlist);
+			}
+			dba_close($db);
+		}
+		return($thlist);
 	}
 
 	function send_command( $cmd ) {

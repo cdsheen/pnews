@@ -46,17 +46,18 @@ $nextnum = $nnrp->prev( $artnum );
 $lastnum = $nnrp->next( $artnum );
 
 if( $CFG['url_rewrite'] ) {
-	$nexturl = ($nextnum>0) ? "$urlbase/article/$reserver/$group/$nextnum" : '';
-	$lasturl = ($lastnum>0) ? "$urlbase/article/$reserver/$group/$lastnum" : '';
+	$prefix = "$urlbase/article/$reserver/$group/";
 	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
-	$headerurl = "$urlbase/article/$reserver/$group/{$artnum}h";
+	$headerurl = $prefix . $artnum . 'h';
 }
 else {
-	$nexturl = ($nextnum>0) ? "read.php?server=$server&group=$group&artnum=$nextnum" : '';
-	$lasturl = ($lastnum>0) ? "read.php?server=$server&group=$group&artnum=$lastnum" : '';
+	$prefix = "read.php?server=$server&group=$group&artnum=";
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
-	$headerurl = "read.php?server=$server&group=$group&artnum=$artnum&header";
+	$headerurl = $prefix . $artnum . "&header";
 }
+
+$nexturl = ($nextnum>0) ? $prefix . $nextnum : '';
+$lasturl = ($lastnum>0) ? $prefix . $lastnum : '';
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
@@ -191,6 +192,24 @@ if( $CFG['url_rewrite'] )
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/dl/$server/$group/$artnum/%s" );
 else
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
+
+if( $CFG['thread_enable'] ) {
+	$thlist = $nnrp->get_thread( $group, $subject );
+	if( count($thlist) > 1 ) {
+		echo "<hr /><table border=0 cellpadding=1 cellspacing=0><tr>\n";
+		$i = 0;
+		foreach( $thlist as $art ) {
+			$i++;
+			if( $i > 1 && $i % 20 == 1 )
+				echo "</tr>\n<tr>";
+			if( $art == $artnum )
+				echo "<td class=thread_current>$i</td>";
+			else
+				echo "<td class=thread onClick='window.location=\"$prefix$art\"' onMouseover='this.className=\"thread_hover\"' onMouseout='this.className=\"thread\"'>$i</td>";
+		}
+		echo "</tr></table>";
+	}
+}
 
 $nnrp->close();
 

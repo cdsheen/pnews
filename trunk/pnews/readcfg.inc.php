@@ -26,11 +26,10 @@ if( !file_exists('config.inc.php') )
 	show_error( "You should edit your 'config.inc.php'. Copy examples/config.inc.php as a template.");
 
 $cfg_timestamp = filemtime('config.inc.php');
-if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timestamp <= $_SESSION['cfg_cache_time'] ) {
+if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timestamp == $_SESSION['cfg_cache_time'] ) {
 	# cache hit - restore $CFG from cache
 	# echo 'cache hit, restote $CFG from cache';
 	$CFG = $_SESSION['cfg_cache'];
-
 	if( $CFG['auth_type'] != 'open' ) {
 
 		switch( $CFG['auth_method'] ) {

@@ -33,6 +33,14 @@ require_once('version.inc.php');
 require_once('html.inc.php');
 require_once('nnrpclass.php');
 
+if( $_SESSION['rem_url_base'] != $CFG['url_base'] ) {
+	$_SESSION['rem_url_base'] = $CFG['url_base'];
+	unset($_SESSION['rem_catalog']);
+	unset($_SESSION['auth_time']);
+	unset($_SESSION['auth_expire_time']);
+	unset($_SESSION['auth_ticket']);
+}
+
 # Global variables
 
 $uri = isset($_SERVER['REQUEST_URI']) ?
@@ -51,7 +59,7 @@ $show_mode        = 0;
 if( $CFG['filter_ansi_color'] )
 	$show_mode |= FILTER_ANSI;
 
-$nnrp = new pnews_nnrp( $CFG['debug_level'], $CFG['cache_dir'], $CFG['thread_enable'], $CFG['db_format'] );
+$nnrp = new pnews_nnrp( $CFG['debug_level'], $CFG['cache_dir'], $CFG['thread_enable'], $CFG['thread_db_handler'] );
 
 #if( $referal == '' )
 #	$referal = 'index.php';

@@ -46,6 +46,7 @@ PHP News Reader v2.6.0 (2004/12/25)
 <li>Fixed the wrong version-checking codes when enabling nntps.
 <li>The line length limit of 'newsgroups.lst' has been expanded from 512 to 4096.
 <li>Fixed the downloading of attachment with filename contains special characters. (Fixed by ogekuri)
+<li>Clear session variables and reload the config file when switching between different instance.
 <li>Bug fixed for posting article with line begin with a period. (Fixed by ogekuri)
 <li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is deprecated.
 <li>Multiple 'group' directive are allowed in one catalog.
