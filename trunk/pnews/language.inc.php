@@ -23,22 +23,22 @@ $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
 			'zh-cn'      => 'Chinese (GB)',
 			'unicode'    => 'Unicode (UTF-8)',
-			// FR by Pascal Aubry
-			'fr'         => 'Fran&ccedil;ais'    );
+			'fr'         => 'Fran&ccedil;ais',
+			'fi'         => 'Finnish'    );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php',
-			// FR by Pascal Aubry
-			'fr'         => 'language/french.inc.php' );
+			'fr'         => 'language/french.inc.php',
+			'fi'         => 'language/finnish.inc.php' );
 
 $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
-			// FR by Pascal Aubry
-			'fr'         => 'iso-8859-1'     );
+			'fr'         => 'iso-8859-1',
+			'fi'         => 'iso-8859-1'     );
 #			'fr'         => 'fr-ascii'       );
 
 $charset_alias = array( 'big5'       => 'big5',
