@@ -57,7 +57,7 @@ if( $confirm == 1 ) {
 		nnrp_cancel( $nhd, $auth_user, $auth_email, $msgid, $group, $subject );
 	nnrp_close($nhd);
 
-	html_head( $strDeleteDetail );
+	html_head( $strDelete );
 
 	$subject = htmlspecialchars( $subject );
 
@@ -123,7 +123,7 @@ elseif( $artnum != '' ) {
 	$date = $artinfo['date'];
 	$msgid = $artinfo['msgid'];
 
-	html_head( "$strDeleteDetail - $subject" );
+	html_head( "$strDelete - $subject" );
 
 	echo $strRealyDelete ;
 

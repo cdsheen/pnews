@@ -180,8 +180,8 @@ html_tail();
 
 function toolbar( $server, $group, $artnum, $title ) {
 	global $post_restriction, $email, $auth_email;
-	global $strCloseWindow, $strReplyDetail, $strReplyQuoteDetail;
-	global $strCrossPostDetail, $strForwardDetail, $strDeleteDetail;
+	global $strCloseWindow, $strReply;
+	global $strCrossPost, $strForward, $strDelete;
 	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
 	global $CFG, $nexturl, $lasturl, $idxurl;
 	echo "<table width=100% border=1 cellspacing=0 cellpadding=2>\n";
@@ -200,24 +200,20 @@ function toolbar( $server, $group, $artnum, $title ) {
 		}
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo reply_article( $server, $group, $artnum, $strReplyDetail, false, $CFG['show_article_popup'] );
-		echo "</td>\n";
-
-#		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-#		echo reply_article( $server, $group, $artnum, $strReplyQuoteDetail, true, true );
-#		echo "</td>\n";
-
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo xpost_article( $server, $group, $artnum, $strCrossPostDetail, $CFG['show_article_popup'] );
+		echo reply_article( $server, $group, $artnum, $strReply, false, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo forward_article( $server, $group, $artnum, $strForwardDetail, $CFG['show_article_popup'] );
+		echo xpost_article( $server, $group, $artnum, $strCrossPost, $CFG['show_article_popup'] );
+		echo "</td>\n";
+
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo forward_article( $server, $group, $artnum, $strForward, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email )
-			echo delete_article( $server, $group, $artnum, $strDeleteDetail, $CFG['show_article_popup'] );
+			echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
 		else
 			echo "&nbsp;";
 		echo "</td>\n";

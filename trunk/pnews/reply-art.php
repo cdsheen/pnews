@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $strReplyDetail";
+$title .= " - $strReply";
 
 # -------------------------------------------------------------------
 

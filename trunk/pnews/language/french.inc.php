@@ -58,11 +58,6 @@ $strCrossPost          = 'Envoi group&eacute;';
 $strForward            = 'Envoyer';
 
 $strPost               = 'Poster';
-$strReplyDetail        = 'R&eacute;pondre';
-$strReplyQuoteDetail   = 'R&eacute;pondre(inclure message)';
-$strDeleteDetail       = 'Effacer';
-$strCrossPostDetail    = 'Envoi group&eacute;';
-$strForwardDetail      = 'Envoyer';
 
 $strCloseWindow        = 'Fermer';
 

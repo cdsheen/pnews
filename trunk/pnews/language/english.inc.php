@@ -58,11 +58,6 @@ $strCrossPost          = 'Crosspost';
 $strForward            = 'Forward';
 
 $strPost               = 'Post';
-$strReplyDetail        = 'Reply';
-$strReplyQuoteDetail   = 'Reply(Quote)';
-$strDeleteDetail       = 'Delete';
-$strCrossPostDetail    = 'Crosspost';
-$strForwardDetail      = 'Forward';
 
 $strCloseWindow        = 'Close';
 

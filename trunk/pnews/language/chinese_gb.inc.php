@@ -51,17 +51,12 @@ $strNoSubject          = '<无标题>';
 
 $strRefresh            = '重新整理';
 
-$strReply              = '回覆';
-$strDelete             = '删除';
-$strCrossPost          = '转贴';
-$strForward            = '转寄';
+$strReply              = '回覆文章';
+$strDelete             = '删除文章';
+$strCrossPost          = '转贴文章';
+$strForward            = '转寄文章';
 
 $strPost               = '发表文章';
-$strReplyDetail        = '回覆文章';
-$strReplyQuoteDetail   = '引文回覆';
-$strDeleteDetail       = '删除文章';
-$strCrossPostDetail    = '转贴文章';
-$strForwardDetail      = '转寄文章';
 
 $strCloseWindow        = '关闭视窗';
 
