@@ -27,6 +27,7 @@ pkg:
 	rm -rf $(ZIPNAME)*
 	mkdir $(ZIPNAME)
 	cp -r .htaccess *.php *.js favicon.ico examples doc language auth css $(ZIPNAME)
+	chmod 600 $(ZIPNAME)/clear-cache.php
 	rm -rf $(ZIPNAME)/examples/CVS
 	rm -rf $(ZIPNAME)/language/CVS
 	rm -rf $(ZIPNAME)/auth/CVS
