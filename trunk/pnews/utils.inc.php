@@ -112,6 +112,10 @@ fclose($lst);
 
 $catalog_num++;
 
+if( isset($_SESSION['POSTVAR']) ) {
+	$_POST = $_SESSION['POSTVAR'];
+	unset( $_SESSION['POSTVAR'] );
+}
 
 ##############################################################################
 # Determine the $curr_catalog
@@ -304,6 +308,9 @@ if( isset($CFG['log']) ) {
 function form_login_dialog( $is_expire ) {
 	global $CFG;
 	global $strNeedLogin, $strLoginName, $strPassWord, $strUseYourAccountAt, $strLogin, $strAuthExpired;
+
+	$_SESSION['POSTVAR'] = $_POST;
+
 ?>
 <!-- Authentication with FORM style - - - - - - - - - - - - - -->
 <center>
