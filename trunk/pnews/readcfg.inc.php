@@ -263,7 +263,7 @@ if( !isset( $CFG['meta_description'] ) )
 	$CFG['meta_description'] = 'PHP News Reader';
 
 if( !isset( $CFG['meta_keywords'] ) )
-	$CFG['meta_keywords'] = 'news,pnews,webnews,nntp';
+	$CFG['meta_keywords'] = 'news,pnews,webnews,nntp,usenet,netnews';
 
 if( !isset( $CFG['auth_user_fullname'] ) )
 	$CFG['auth_user_fullname'] = '%u';
