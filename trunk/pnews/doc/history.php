@@ -43,7 +43,8 @@ PHP News Reader v2.5.8 (2004/08/01)
 <ul>
 <li>Fix the paging bug while <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is disabled.
 <li>Group descriptions are escaped to prevent from destroying HTML layout.
-<li>Fix the warning message if <a href=guide.php#html_footer>\$CFG['html_footer']</a> does not exist.
+<li>Fix the warning if <a href=guide.php#html_footer>\$CFG['html_footer']</a> is not defined.
+<li>Configuraton reading is not cached by session.
 <li>Added Slovak translation (By Tichu)
 </ul>
 PHP News Reader v2.5.7 (2004/06/02)

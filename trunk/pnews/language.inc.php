@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#$default_language = 'en';
+#$CFG['default_language'] = 'en';
 
 $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
@@ -72,8 +72,8 @@ else
 	$curr_language = '';
 
 if( $curr_language == '' || $lang_option[$curr_language] == '' ) {
-	$curr_language = $default_language;
-	$_SESSION['session_language'] = $default_language;
+	$curr_language = $CFG['default_language'];
+	$_SESSION['session_language'] = $CFG['default_language'];
 }
 
 setcookie( 'cookie_language', $curr_language, time()+86400*30 );

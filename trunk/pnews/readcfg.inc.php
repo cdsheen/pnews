@@ -19,15 +19,23 @@
 
 /* Read and check the configuration (config.inc.php) */
 
-$valid_auth_type   = array( 'required', 'optional', 'open' );
-$valid_auth_prompt = array( 'http', 'form', 'cas', 'other' );
-$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user', 'phpbb' );
-
 $valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1', 'iso-8859-2', 'iso-8859-15' );
 $valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi', 'de', 'it', 'sk' );
 
 if( !file_exists('config.inc.php') )
 	show_error( "You should edit your 'config.inc.php'. Copy examples/config.inc.php as a template.");
+
+$cfg_timestamp = filemtime('config.inc.php');
+if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timestamp <= $_SESSION['cfg_cache_time'] ) {
+	# cache hit - restore $CFG from cache
+	# echo 'cache hit, restote $CFG from cache';
+	$CFG = $_SESSION['cfg_cache'];
+	return;
+}
+
+$valid_auth_type   = array( 'required', 'optional', 'open' );
+$valid_auth_prompt = array( 'http', 'form', 'cas', 'other' );
+$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user', 'phpbb' );
 
 require_once('config.inc.php');
 
@@ -284,9 +292,9 @@ if( !isset( $CFG['auth_user_fullname'] ) )
 $checks = array( 'config', 'grouplst', 'database' );
 
 if( !isset($CFG['interface_language']) || !in_array( $CFG['interface_language'], $valid_language ) )
-	$default_language = 'en';
+	$CFG['default_language'] = 'en';
 else
-	$default_language = $CFG['interface_language'];
+	$CFG['default_language'] = $CFG['interface_language'];
 
 /*
 $default_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
@@ -319,6 +327,31 @@ elseif( !is_dir( $CFG['cache_dir'] ) ) {
 }
 elseif( !is_writeable( $CFG['cache_dir'] ) )
 	show_error( '$CFG["cache_dir"] is not a write-able directory' );
+
+if( !isset($CFG['thread_enable'] ) )
+	$CFG['thread_enable'] = false;
+
+if( $CFG['thread_enable'] ) {
+	if( ! $CFG['cache_dir'] )
+		show_error( '$CFG["cache_dir"] should be assigned for thread support' );
+	if( !function_exists( 'dba_open' ) )
+		show_error( 'DBA extension should be enabled for thread support' );
+	if( !isset( $CFG['thread_db_format'] ) ) {
+		if( version_check( '4.3.2' ) )
+			$CFG['thread_db_format'] = 'db4';
+		else
+			$CFG['thread_db_format'] = 'db3';
+	}
+	if( version_check( '4.3.0' ) ) {
+		if( !in_array( $CFG['thread_db_format'], dba_handlers() ) )
+			show_error('$CFG["thread_db_format"] handler is not supported by your DBA extension');
+	}
+	else {
+		$valid_handler = array( 'dbm', 'ndbm', 'gdbm', 'db2', 'db3' );
+		if( !in_array( $CFG['thread_db_format'], $valid_handler ) )
+			show_error('$CFG["thread_db_format"] handler may not be supported by your DBA extension');
+	}
+}
 
 if( !isset( $CFG['url_rewrite'] ) ) 
 	$CFG['url_rewrite'] = false;
@@ -414,6 +447,13 @@ if( $CFG["auth_prompt"] == 'cas' ) {
 	phpCAS::client( CAS_VERSION_2_0, $cas_server, $cas_port, $CFG['auth_cas_base_uri']);
 }
 
+/* cache the configuration setting */
+
+$_SESSION['cfg_cache'] = $CFG;
+$_SESSION['cfg_cache_time'] = $cfg_timestamp;
+
+return;
+
 /* ------------------------------------------------------------------------ */
 
 function check_db_settings() {
@@ -471,9 +511,7 @@ EOE;
 function version_check($check) {
 	$minver = explode( '.', $check );
 	$curver = explode( '.', phpversion() );
-	if( ($curver[0] <= $minver[0])
-			&& ($curver[1] <= $minver[1])
-			&& ($curver[1] <= $minver[1])
+	if( ($curver[0] <= $minver[0]) && ($curver[1] <= $minver[1])
 			&& ($curver[2][0] < $minver[2][0]) )
 		return true;
 	else
