@@ -154,7 +154,7 @@ fclose($lst);
 
 $catalog_num++;
 
-if( isset($_SESSION['save_postvar']) ) {
+if( isset($_SESSION['save_postvar']) && $_SESSION['save_postvar'] ) {
 	$_POST = $_SESSION['POSTVAR'];
 	$_SESSION['POSTVAR'] = array();
 	$_SESSION['save_postvar'] = false;
@@ -349,7 +349,7 @@ if( is_array($info) && $database_convert['to'] )
 
 $auth_user  = vars_convert( $CFG['auth_user_fullname'] );
 
-if( $info['%e'] )
+if( isset($info['%e']) )
 	$auth_email = $info['%e'];
 else
 	$auth_email = vars_convert( $CFG['auth_user_email'] );

@@ -257,7 +257,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$ov[$n][3] = $from[1];
 		}
 
-		$refs = trim($xover[$ovfmt['References']]);
+		$refs = isset($xover[$ovfmt['References']]) ? trim($xover[$ovfmt['References']]) : '';
 		if( $refs == '' )
 			$ov[$n][5] = array();
 		else

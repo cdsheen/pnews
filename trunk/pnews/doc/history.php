@@ -39,6 +39,10 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+PHP News Reader v2.5.4 (2004/03/02)
+<ul>
+<li>Fixed the incorrect restoring of \$_POST variable after authentication.
+</ul>
 PHP News Reader v2.5.3 (2004/02/22)
 <ul>
 <li>Added Italian translation (by Francesco Rolando)

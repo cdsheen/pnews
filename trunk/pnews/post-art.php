@@ -22,7 +22,6 @@ include('utils.inc.php');
 $title .= " - $strPost";
 
 # -------------------------------------------------------------------
-
 if( $_POST['content'] != '' ) {
 
 	$server   = $_POST['server'];
