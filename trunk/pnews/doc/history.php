@@ -52,6 +52,7 @@ echo <<<EOH
 PHP News Reader v2.3.1 (2003/09/27)
 <ul>
 <li>Reading article with invalid artnum will be redirected into indexing page.
+<li>Dead news server will not slow down the access for groups in other servers.
 <li>Better error handling when news server is unavailable.
 <li>Remove the read-only indication when <a href=guide.php#post_restriction>\$CFG["post_restriction"]</a> is enabled.
 <li>Fix several missing style sheet errors.

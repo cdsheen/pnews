@@ -30,22 +30,16 @@ if( $CFG['banner'] )
 else
 	echo "<font color=black size=5 face=Georgia>$title</font><br>";
 
-for( $i = 0 ; $i < $catalog_num ; $i++ ) {
-	if( ! $nhd[$news_server[$i]] ) {
-#		echo "open " . $news_server[$i] . " as $i<br>\n";
-		$nhd[$i] = $nhd[$news_server[$i]] = nnrp_open( $news_server[$i] );
 /*
-		if( ! $nhd[$i] ) {
-			echo "<p><font size=3>$strConnectServerError (" . $news_server[$i] . ")</font><br>\n";
-			html_foot();
-			html_tail();
-			exit;
-		}
-*/
-	}
+for( $i = 0 ; $i < $catalog_num ; $i++ ) {
+	if( ! $nhd[$news_server[$i]] )
+		$nhd[$i] = $nhd[$news_server[$i]] = nnrp_open( $news_server[$i] );
 	else
 		$nhd[$i] = $nhd[$news_server[$i]];
 }
+*/
+
+$nhd = nnrp_open( $news_server[$curr_catalog] );
 
 echo "<br><table width=95%><tr><td valign=top width=120>\n";
 
@@ -101,16 +95,16 @@ echo "</table>\n";
 
 echo "</td><td valign=top align=left>";
 
-if( ! $nhd[$curr_catalog] ) {
+if( ! $nhd ) {
 	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
 }
 
-nnrp_authenticate( $nhd[$curr_catalog] );
+nnrp_authenticate( $nhd );
 
-$active = nnrp_list_group( $nhd[$curr_catalog], $news_groups[$curr_catalog], $article_convert['to'] );
+$active = nnrp_list_group( $nhd, $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {
 	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
@@ -204,12 +198,7 @@ echo "</td></tr></table>\n";
 
 html_foot();
 
-for( $i = 0 ; $i < $catalog_num ; $i++ ) {
-	if( $nhd[$news_server[$i]] ) {
-		nnrp_close($nhd[$i]);
-		$nhd[$news_server[$i]] = 0;
-	}
-}
+if( $nhd ) nnrp_close($nhd);
 
 html_tail();
 
