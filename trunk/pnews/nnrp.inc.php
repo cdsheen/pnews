@@ -738,7 +738,9 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			$artinfo['subtype'] = $subtype;
 			array_shift( $ctype );
 			foreach( $ctype as $c_param ) {
-				if( preg_match( '/^(.+)\s*="?\s*(.+)"?$/', $c_param, $match ) ) {
+				if( preg_match( '/^(.+)\s*=\s*(.+)$/', $c_param, $match ) ) {
+					if( preg_match( '/^"(.+)"$/', $match[2], $quotes ) )
+						$match[2] = $quotes[1];
 					if( $match[1] == 'charset' )
 						$artinfo['charset'] = strtolower($match[2]);
 					elseif( $match[1] == 'boundary' )
