@@ -1,28 +1,54 @@
 
-body      { font-size: 12px; color: black; background: #EEEEFF; font-family: arial }
-a         { text-decoration:none; color: blue }
-a:visited { color: blue }
-a:hover   { text-decoration:underline; color:red }
-a.sub         { text-decoration:none; color: blue }
-a.sub:visited { color: #0000A0 }
-a.sub:hover   { text-decoration:underline; color:red }
-a.catalog         { text-decoration:none; color: blue }
-a.catalog:visited { color: blue }
-a.catalog:hover   { text-decoration:underline; color:black }
-hr        { height: 1pt; color: #8080A0 }
+body            { font-size: 12px; color: black; background: #EEEEFF; font-family: arial }
+
+a               { text-decoration:none; color: blue }
+a:visited       { color: blue }
+a:hover         { text-decoration:underline; color:red }
+
+a.menu          { text-decoration:none; color: blue }
+a.menu:visited  { color: blue }
+a.menu:hover    { text-decoration:underline; color: #FF5020 }
+
+hr              { height: 1pt; color: #8080A0 }
+
+td.menu         { width: 100px; font-size: 12px; background: #DDFFDD; text-align: center }
+td.menu_hover   { width: 100px; font-size: 12px; background: #D0D0FF; text-align: center }
+td.menu_select  { width: 100px; font-size: 12px; color: black; background: #D0D0FF; text-align: center }
+td.menu_auth    { width: 100px; font-size: 12px; background: #EEFFEE; text-align: center }
+td.menu_link    { width: 100px; font-size: 12px; background: #FFEEEE; text-align: center }
+td.menu_null    { width: 100px; font-size: 12px; background: #EEFFEE; text-align: center }
+td.login        { width: 100px; font-size: 12px; background: #EEFFFF; text-align: center }
+td.login_hover  { width: 100px; font-size: 12px; background: #FFFFC0; text-align: center }
+td.logout       { width: 100px; font-size: 12px; background: #EEFFFF; text-align: center }
+td.logout_hover { width: 100px; font-size: 12px; background: #FFFFC0; text-align: center }
+
+tr.header       { background: #EEDDFF; color: black; font-size: 12px }
+
+td.title        { background: #DDFFDD; font-family: Georgia; font-size: 16px }
+td.title_hover  { background: #FFFF80; font-family: Georgia; font-size: 16px }
+
+td.action       { width: 100px; font-size: 12px; background: #FFDDEE; text-align: center }
+td.action_hover { width: 100px; font-size: 12px; background: #FFFFC0; text-align: center }
+
+td.empty_group	{ font-size: 14px; color: black }
+
+tr.list         { background: #EEFFFF; font-size: 12px }
+tr.list_hover   { background: #FFFFA0; font-size: 12px }
+
+td.page         { background: #DDFFDD; font-size: 12px; text-align: center }
+td.page_hover   { background: #FFFFC0; font-size: 12px; text-align: center }
+
 pre       { color: brown }
 input     { vertical-align: middle; font-size: 12px }
 select    { vertical-align: middle }
-td        { color: black; font-size: 12px }
-ul        { font-size: 11px }
+
 tr.a      { background: #FFFFEE; color: brown }
 tr.b      { background: #EEFFEE; color: brown }
 td.a      { background: #EEFFEE; padding-left: 5pt; padding-right: 5pt }
 td.b      { background: #CCDDFF; color: black; padding-left: 5pt; padding-right: 5pt }
-tr.head   { background: #FFEEFF; color: navy }
-td.xhead  { background: #EEDDFF; color: #223344 }
+
 td.x	  { color: black }
-td.index  { color: black }
+
 input     { vertical-align: text-bottom }
 input.w   { vertical-align: top; background: white }
 input.b   { vertical-align: top; background: #DDDDDD }

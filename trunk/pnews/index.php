@@ -78,13 +78,13 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 		else
 			$link = "$self?catalog=$i";
 		if( $cn >= $catalog_num )
-			echo "<td width=100 bgcolor=#EEFFEE>&nbsp;</td>";
+			echo "<td class=menu>&nbsp;</td>";
 		elseif( $cn == $curr_catalog )
-			echo " <td width=100 bgcolor=#D0D0FF align=center>$news_catalog[$cn]</td>\n";
+			echo " <td class=menu_select align=center>$news_catalog[$cn]</td>\n";
 		elseif( $news_authperm[$cn] )
-			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=catalog href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td class=menu_auth onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
 		else
-			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=catalog href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td class=menu onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
 	}
 	echo "</tr>\n";
 }
@@ -95,21 +95,21 @@ if( is_array($CFG['links']) )
 			$text = $config_convert['to']($text);
 			$link = $config_convert['to']($link);
 		}
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#FFEEEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFEEEE\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
+		echo "<tr><td class=menu_link colspan=$maxc width=100 bgcolor=#FFEEEE align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_link\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
 	}
 #echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
 
 if( $CFG['url_rewrite'] ) {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=logout onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$urlbase/login\">$strLogin</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=login onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$strLogin</a></td></tr>";
 }
 else {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=logout onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"auth.php?login=1\">$strLogin</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=login onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$strLogin</a></td></tr>";
 }
 
 echo "</table>\n";
@@ -121,9 +121,16 @@ echo "<table width=100% border=1 cellpadding=1 cellspacing=0>\n";
 
 $row = array( $strNumber, $strPostNumber, $strGroup, $strGroupDescription );
 
-echo "<table border=1 cellspacing=0 cellpadding=2>\n";
+echo <<<EOH
+<table border=1 cellspacing=0 cellpadding=2>
+<tr class=header height=25>
+  <td>$strNumber</td>
+  <td>$strPostNumber</td>
+  <td>$strGroup</td>
+  <td>$strGroupDescription</td>
+</tr>
 
-table_head( $row, 'head', 'xhead', 25 );
+EOH;
 
 if( $CFG['group_sorting'] )
 	ksort( $active );
@@ -141,25 +148,30 @@ while ( list ($group, $value) = each ($active) ) {
 	$magic = $value[0];
 	if( $CFG['url_rewrite'] ) {
 		if( $server == $group_default_server )
-			$glink = "<a class=sub href=\"group//$group?$magic\">$group</a>";
+			$glink = "<a href=\"group//$group?$magic\">$group</a>";
 		else
-			$glink = "<a class=sub href=\"group/$server/$group?$magic\">$group</a>";
+			$glink = "<a href=\"group/$server/$group?$magic\">$group</a>";
 	}
 	else
-		$glink = "<a class=sub href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
+		$glink = "<a href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
 
 	if( strlen( $value[2] ) > 50 )
 		$value[2] = substr( $value[2], 0, 50 ) . ' ..';
 	elseif( $value[2] == '' )
 		$value[2] = '&nbsp;';
-?>
-<tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
-  <td class=index align=right><i><? echo $i; ?></i></td>
-  <td class=index align=right><font color=#202020><? echo ($value[0]-$value[1]+1); ?></font></td>
-  <td class=index><? echo $glink; ?></td>
-  <td class=index><? echo $value[2]; ?></td>
+
+	$num = $value[0] - $value[1] + 1;
+
+	echo <<<EOR
+<tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
+  <td align=right><i>$i</i></td>
+  <td align=right><font color=#202020>$num</font></td>
+  <td>$glink</td>
+  <td>$value[2]</td>
 </tr>
-<?
+
+EOR;
+
 }
 
 echo "</table>";

@@ -28,6 +28,7 @@ PHP News Reader v2.2.1 (2003/06/??) - not released yet
 <li>Handling quotes correctly with the <i>magic_quotes_gpc</i> state of PHP.
 <li>The leading spaces are displayed as-is while reading articles.
 <li>Article is displayed in \'mono-space\' font.
+<li>Fix the bug of the configuration checking about NNTP authentication module.
 </ul>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>

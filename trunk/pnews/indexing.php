@@ -89,7 +89,7 @@ echo <<<EOH
 <table border=1 cellpadding=0 cellspacing=0 width=100%>
 <tr><td>
     <table width=100% border=1 cellpadding=2 cellspacing=0>
-    <tr><td bgcolor=#DDFFDD onMouseOver='this.bgColor="#FFFF80";' onMouseout='this.bgColor="#DDFFDD";'>
+    <tr><td class=title onMouseOver='this.className="title_hover";' onMouseout='this.className="title";'>
 
 EOH;
 
@@ -100,28 +100,28 @@ else
 
 
 if( $CFG['url_rewrite'] )
-	echo "<font size=3 face=Georgia><a href=group/$reserver/$group><i><b>$group</i></b></a></font>";
+	echo "<a href=group/$reserver/$group><i><b>$group</i></b></a>";
 else
-	echo "<font size=3 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
+	echo "<a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a>";
 
 echo "</td>";
 
 
 if( $CFG['url_rewrite'] ) {
 	if( $auth_success )
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
+		echo "<td class=action onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
 }
 else {
 	if( $auth_success )
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
+		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
 }
 
 echo <<<EOH
-        <td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor="#FFFFC0";' onMouseout='this.bgColor="#FFDDEE";'>
+        <td class=action onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
            <a href=index.php>$strReturnToGroupList</a></td>
     </tr>
     </table>
@@ -129,27 +129,18 @@ echo <<<EOH
 
 EOH;
 
-
-#$row = array( ':>:' . $strNumber, $strSubject, ':c2:' . $strAuthor, $strTime, $page_action );
-
-$span = $ncount+1;
 echo <<<EOR
-    <tr class=head height=25>
-        <td class=xhead align=right width=32pt>$strNumber</td>
-        <td class=xhead>$strSubject</td>
-        <td class=xhead align=center width=120pt>$strAuthor</td>
-        <td class=xhead align=center width=100pt>$strTime</td>
+    <tr class=header height=25>
+        <td align=right width=32pt>$strNumber</td>
+        <td width=70%>$strSubject</td>
+        <td align=center width=120pt>$strAuthor</td>
+        <td align=center width=100pt>$strTime</td>
     </tr>
 
 EOR;
 
-#table_head( $row, 'head', 'xhead', 25 );
-
-#echo "<tr class=head height=25><td class=xhead align=right>$strNumber</td><td class=xhead>$strSubject</td><td class=xhead colspan=2>$strAuthor</td><td class=xhead>$strTime</td></tr>\n";
-# $n, $rows, $oddcolor, $evencolor, $selectcolor, $tdclass, $height = 0
-
 if( $ncount == 0 ) {
-	echo "<tr class=a><td colspan=4 class=x height=50>$strNoArticle</td></tr>\n";
+	echo "<tr><td colspan=4 class=empty_group height=50>$strNoArticle</td></tr>\n";
 }
 else {
 
@@ -190,17 +181,19 @@ for( ; ; ) {
 	$email = trim($xover[$i][5]);
 	$pos = strrpos( $xover[$i][3] , ':' );
 	$datestr = substr( $xover[$i][3], 0, $pos);
-#	$onclick = "onClick='javascript:read_article( \"$server\", \"$group\", " . $xover[$i][0] . ");'";
-?>
-<tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
-  <td class=index align=right><i><? echo $xover[$i][0]-$lowmark+1; ?></i></td>
-  <td class=index>
-  <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
-  </td>
-  <td class=index title="<? echo $email; ?>"><a href="mailto:<? echo $email; ?>"><? echo $nick; ?></a></td>
-  <td class=index align=center><font face=serif><? echo $datestr; ?></font></td>
+
+	$artnum = $xover[$i][0] - $lowmark + 1 ;
+	$readlink = read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' );
+	echo <<<ROW
+<tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
+  <td align=right><i>$artnum</i></td>
+  <td>$readlink</td>
+  <td title="$email"><a href="mailto:$email">$nick</a></td>
+  <td align=center><font face=serif>$datestr</font></td>
 </tr>
-<?
+
+ROW;
+
 	if( $CFG['article_order_reverse'] ) {
 		$i--;
 		if( $i < 0 ) break;
@@ -216,7 +209,7 @@ for( ; ; ) {
 echo "</table>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
-echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
+echo "<tr><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 if( $CFG["article_order_reverse"] )
 	if( $show_end < $highmark ) {
@@ -224,7 +217,7 @@ if( $CFG["article_order_reverse"] )
 			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		$target = $show_end + 1 ;
 
@@ -235,7 +228,7 @@ if( $CFG["article_order_reverse"] )
 	}
 	else {
 		echo $strFirstPage;
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo "<font color=gray>$strPreviousPage</font>";
 	}
 else
@@ -247,7 +240,7 @@ else
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strFirstPage</a>";
 
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strPreviousPage</a>";
@@ -256,11 +249,11 @@ else
 	}
 	else {
 		echo $strFirstPage;
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo "<font color=gray>$strPreviousPage</font>";
 	}
 
-echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 if( $CFG["article_order_reverse"] )
 	if( $show_from > $lowmark ) {
@@ -270,7 +263,7 @@ if( $CFG["article_order_reverse"] )
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strNextPage</a>";
 
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strLastPage</a>";
@@ -279,7 +272,7 @@ if( $CFG["article_order_reverse"] )
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
 		$totalpg = $page;
@@ -293,7 +286,7 @@ else
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strNextPage</a>";
 
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group\">$strLastPage</a>";
@@ -302,19 +295,17 @@ else
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
-		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
 		$totalpg = $page;
 	}
 
-echo "</td>";
-
-echo "<td bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+echo "</td><td class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 printf( $strPageNumber, $page, $totalpg );
 echo "</td>\n";
 
-echo "<td width=10% bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$post_restriction ) {
 	echo post_article( $server, $group, $strPost );
 }
@@ -323,7 +314,7 @@ else
 echo "</td>";
 
 echo <<<EOT
-    <td width=10% bgcolor=#FFDDEE align=center onMouseover='this.bgColor="#FFFFC0";' onMouseout='this.bgColor="#FFDDEE";'>
+    <td class=action onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
       <a href="javascript:reload()">$strRefresh</a>
     </td>
     </tr></table>

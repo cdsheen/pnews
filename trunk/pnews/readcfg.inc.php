@@ -26,7 +26,7 @@ require_once('config.inc.php');
 
 $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form' );
-$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'user' );
+$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'user' );
 
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
