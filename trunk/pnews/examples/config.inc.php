@@ -274,9 +274,9 @@ $CFG["title"] = "XXX News Service";
 // $CFG['articles_per_page'] = 30;
 
 
-# [article_order_reverse] reverse the order while showing articles list (default: off)
+# [show_newest_top] Whether to show the newest article as the top item (default: on)
 
-// $CFG["article_order_reverse"] = on;
+// $CFG["show_newest_top"] = off;
 
 
 # [show_article_popup] Show article in pupup window (default: off)
