@@ -20,17 +20,23 @@
 $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
 			'zh-cn'      => 'Chinese (GB)',
-			'unicode'    => 'Unicode (UTF-8)'    );
+			'unicode'    => 'Unicode (UTF-8)',
+			// FR by Pascal Aubry
+			'fr'         => 'Fran&ccedil;ais'    );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
-			'unicode'    => 'language/english.inc.php' );
+			'unicode'    => 'language/english.inc.php',
+			// FR by Pascal Aubry
+			'fr'         => 'language/french.inc.php' );
 
 $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
-			'unicode'    => 'UTF-8'       );
+			'unicode'    => 'UTF-8',
+			// FR by Pascal Aubry
+			'fr'         => 'fr-ascii'       );
 
 $charset_lang = array(  'big5'       => 'zh-tw',
 			'gb'         => 'zh-cn',
@@ -38,7 +44,9 @@ $charset_lang = array(  'big5'       => 'zh-tw',
 			'utf-8'      => 'unicode',
 			'iso-8859-1' => 'en',
 			'us-ascii'   => 'en',
-			'ascii'      => 'en' );
+			'ascii'      => 'en',
+			// FR by Pascal Aubry
+			'fr-ascii'    => 'fr' );
 
 $charset_alias = array( 'big5'       => 'big5',
 			'gb'         => 'gb2312',
@@ -46,7 +54,8 @@ $charset_alias = array( 'big5'       => 'big5',
 			'utf-8'      => 'utf-8',
 			'iso-8859-1' => 'us-ascii',
 			'us-ascii'   => 'us-ascii',
-			'ascii'      => 'us-ascii' );
+			'ascii'      => 'us-ascii',
+			'fr-ascii'   => 'fr-ascii' );
 
 if( isset($_SESSION['session_charset']) )
 	$curr_charset = $_SESSION['session_charset'];

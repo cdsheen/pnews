@@ -24,9 +24,12 @@ if( !file_exists('config.inc.php') )
 
 require_once('config.inc.php');
 
+// CAS: when using the CAS mechanism
+// $CFG['auth_prompt'] and $CFG['auth_method'] should be both set to 'cas'
+
 $valid_auth_type   = array( 'required', 'optional', 'open' );
-$valid_auth_prompt = array( 'http', 'form' );
-$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'user' );
+$valid_auth_prompt = array( 'http', 'form', 'cas' );
+$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'cas', 'user' );
 
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
@@ -43,6 +46,10 @@ if( $CFG['auth_type'] != 'open' ) {
 
 	if( !isset($CFG['auth_method']) || !in_array( $CFG['auth_method'], $valid_auth_method ) )
 		config_error( '$CFG["auth_method"]' );
+
+	// CAS
+	if( $CFG['auth_prompt'] == 'cas' && $CFG['auth_method'] != 'cas' )
+		show_error( 'when using CAS, $CFG["auth_prompt"] and $CFG["auth_method"] should be both set to "cas"' );
 
 	switch( $CFG['auth_method'] ) {
 	case 'pop3':
@@ -124,6 +131,14 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'NNTP authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'NNTP authentication module is invalid' );
+		break;
+	case 'cas':
+		if( !isset( $CFG['cas_server_hostname'] ) )
+			config_error( '$CFG["cas_server_hostname"]' );
+		if( !isset( $CFG['cas_server_port'] ) )
+			config_error( '$CFG["cas_server_port"]' );
+		if( !isset( $CFG['cas_server_base_uri'] ) )
+			config_error( '$CFG["cas_server_base_uri"]' );
 		break;
 	case 'user':
 		if( file_exists( $CFG['auth_user_module'] ) )
@@ -233,6 +248,15 @@ if( isset($CFG['log']) && !is_writable($CFG['log']) )
 
 if( !isset($CFG["links"]) )
 	$CFG["links"] = null;
+
+if( $CFG["auth_prompt"] == 'cas' ) {
+	if( !file_exists( 'CAS/CAS.php' ) )
+		show_error( 'You should installl phpCAS library in CAS/' );
+        // import phpCAS lib
+        include_once('CAS/CAS.php');
+	// initialize phpCAS
+	phpCAS::client(CAS_VERSION_2_0,$CFG['cas_server_hostname'],$CFG['cas_server_port'],$CFG['cas_server_base_uri']);
+}
 
 /* ------------------------------------------------------------------------ */
 

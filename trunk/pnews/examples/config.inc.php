@@ -62,6 +62,7 @@ $CFG["auth_http_realm"] = "XXX";
 #     "mysql" - authenticated via MySQL database,
 #     "pgsql" - authenticated via PostgreSQL database,
 #      "nntp" - authenticated via NNTP server,
+#       "cas" - authenticated via CAS (>=v2.3.0)
 #      "user" - authenticated via your self-defined method,
 
 // $CFG["auth_method"] = "ftp";
@@ -159,6 +160,16 @@ $CFG["db_variable"] = array( "%e" => "user_email" );
 #      [$auth_nntp_server] NNTP server address ( address:port )
 
 // $CFG["auth_nntp_server"]      = "news.domain.org";
+
+
+# CAS authetication parameters (REQUIRED if auth_method == 'cas')
+#   [$cas_server_hostname] CAS server FQDN
+#       [$cas_server_port] CAS server port
+#   [$cas_server_base_uri] CAS server base URI
+ 
+$CFG["cas_server_hostname"] = 'cas.domain.name';
+$CFG["cas_server_port"] = 8443;
+$CFG["cas_server_base_uri"] = 'cas';
 
 
 # [auth_expire_time] After this time in seconds, authentication is expired

@@ -197,8 +197,14 @@ if( $CFG['auth_type'] != 'open' ) {
 
 	if( isset($_GET['logout']) ) {
 		session_destroy();
-		if( $CFG['auth_prompt'] == 'http' )
+		if( $CFG['auth_prompt'] == 'http' ) {
 			http_logout();
+		}
+		// CAS
+		elseif( $CFG['auth_prompt'] == 'cas' ) {
+			phpCAS::logout();
+			exit;
+		}
 		else {
 			header("Location: $referal");
 			exit;
@@ -280,6 +286,23 @@ if( $CFG['auth_type'] != 'open' ) {
 					unset($_SESSION['auth_ticket']);
 					http_login_auth();
 				}
+				break;
+			// CAS
+			case 'cas':
+			        // check CAS authentication
+				phpCAS::authenticateIfNeeded();
+				// force expiration when ticket has expired
+				if( $is_expire ) {
+					unset($_SESSION['auth_ticket']);
+				        phpCAS::forceAuthentication();
+				}
+				$now = time();
+				$_SESSION['auth_time'] = $now;
+				$_SESSION['auth_name'] = phpCAS::getUser();
+				$_SESSION['auth_with'] = 'cas';
+				$_SESSION['auth_info']['%u'] = phpCAS::getUser();
+				$_SESSION['auth_ticket'] = md5( phpCAS::getUser() . session_id() . $now );
+				$auth_success = true;
 				break;
 			}
 		}

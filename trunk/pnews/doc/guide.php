@@ -141,7 +141,8 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
     <p>Specify the style of authentication prompt (default: &quot;form&quot;) 
       (used only if auth_type != 'open')</p>
     <p> &quot;http&quot; - authenticated user via HTTP login window<br>
-      &quot;form&quot; - authenticated user via HTML login form (default and is recommanded)</p>
+      &quot;form&quot; - authenticated user via HTML login form (default and is recommanded)<br>
+      &quot;cas&quot; - authenticated user via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0)</p>
   </blockquote>
 <a name=auth_http_realm></a>
   <p> <strong>$CFG[&quot;auth_http_realm&quot;]</strong></p>
@@ -162,8 +163,16 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
       &quot;mysql&quot; - authenticated via MySQL database,<br>
       &quot;pgsql&quot; - authenticated via PostgreSQL database,<br>
       &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.1),<br>
+      &quot;cas&quot; - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br>
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
+<p>
+<b>Notice for <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> users:</b>
+<blockquote>If you use CAS to authenticate your users,<br>
+both $CFG["auth_prompt"] and $CFG["auth_method"] should set to 'cas'.<br>
+Besides this, you should first install phpCAS in CAS/ for this method to run well.
+</blockquote>
+</p>
 <a name=auth_organization></a>
   <p><strong>$CFG[&quot;auth_organization&quot;]</strong></p>
   <blockquote> 
