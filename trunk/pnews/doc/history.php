@@ -55,7 +55,7 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li>Domain selector can be turned on by <a href=guide.php#mail_auth>\$CFG['domain_select']</a> for Mail authentication module.
 <li>Per-catalog readonly can be configured in newsgroups.lst.
 <li>Validate the correctness of the current session before performing authentication.
-<li>GB2312 translation is refined by Czz and does not depend on the BIG5 translation now.
+<li>GB2312 translation is refined by Czz and does not depend on the BIG5 translation any more.
 <li>Log verbose level can be tuned by changing <a href=guide.php#log_level>\$CFG["log_level"]</a>.
 <li>Fix the group verification bug when cross-posting article.
 <li>Organization header now correctly overrides the setting of news server.
