@@ -439,6 +439,7 @@ $CFG["show_sourceforge_logo"] = true;
 #        "fi" - Finnish                    ISO-8859-1
 #        "de" - German                     ISO-8859-1
 #        "it" - Italiano                   ISO-8859-1
+#        "sk" - Slovak                     ISO-8859-2
 
 # [interface_language] The language setting of interface (default: "en")
 

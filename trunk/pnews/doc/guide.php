@@ -767,12 +767,13 @@ You can download phpCAS from the following place:<br />
         <tr><td>Finnish</td><td>fi</td><td>ISO-8859-1</td></tr>
         <tr><td>German</td><td>de</td><td>ISO-8859-1</td></tr>
         <tr><td>Italiano</td><td>it</td><td>ISO-8859-1</td></tr>
+	<tr><td>Slovak</td><td>sk</td><td>ISO-8859-2</td></tr>
 	</table>
   </blockquote>
 <a name=interface_language></a>
   <p> <strong>$CFG["interface_language"]</strong></p>
   <blockquote>
-    <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi", "de", "it" )<br />
+    <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi", "de", "it", "sk" )<br />
      (default: <i>"en"</i> )</p>
     <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader<br />
        If not set in v2.3.0 or later, the default language used in interface is "en" - English</p>
