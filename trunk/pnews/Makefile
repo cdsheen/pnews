@@ -19,9 +19,9 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
-ZIPNAME=pnews231
+ZIPNAME=pnews240rc
 
-all:	html	pkg
+all:	pkg
 
 pkg:
 	rm -rf $(ZIPNAME)*
@@ -43,9 +43,10 @@ html:
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
 
-www:	html
+www:
 	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
-	cp -f doc/style.css doc/release.html doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f doc/style.css doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f doc/index.php /home/users/c/cd/cdsheen/groups/htdocs/pnews.php
 
 clean:
 	rm -f *~
