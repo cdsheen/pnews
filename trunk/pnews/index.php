@@ -26,7 +26,7 @@ html_head( $title );
 echo "<center>\n";
 
 if( $CFG['banner'] )
-	echo $CFG['banner'] . "<br>\n";
+	echo "<a href=index.php>" . $CFG['banner'] . "</a><br>\n";
 else
 	echo "<font color=black size=5 face=Georgia>$title</font><p>";
 
