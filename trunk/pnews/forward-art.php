@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $$strForward";
+$title .= " - $strForward";
 
 # -------------------------------------------------------------------
 
