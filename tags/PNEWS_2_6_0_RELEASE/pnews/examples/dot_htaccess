@@ -1,0 +1,53 @@
+#
+# dot_htaccess
+#
+
+# This access control must be enabled by turning on 'AllowOverride'.
+# The 'AccessFileName' directive should match this filename too.
+
+# Directly access to newsgroups.lst is prohibited
+<Files newsgroups.lst>
+	Deny from all
+</Files>
+
+#Options	-MultiViews
+
+# URL Rewriting Rules
+# The following directives are used when your $CFG['url_rewrite'] is true.
+
+RewriteEngine	on
+
+#RewriteBase	/
+
+RewriteRule	^test-fail.php$			test-ok.php		[L]
+
+RewriteRule	^/?login/?$			auth.php?login=1	[L]
+RewriteRule	^/?logout/?$			auth.php?logout=1	[L]
+
+RewriteRule	^section/?$					index.php	[L]
+RewriteRule	^section/([0-9]+)/?$				index.php?c=$1	[L]
+
+RewriteRule	^([0-9]+)/?$					index.php?c=$1	[L]
+
+RewriteRule	^group/?/?$					index.php	[L]
+RewriteRule	^group//?([^/]+)/?$				indexing.php?server=*&group=$1	[L]
+RewriteRule	^group//?([^/]+)/([0-9]+)/?$			indexing.php?server=*&group=$1&cursor=$2	[L]
+RewriteRule	^group//?([^/]+)/([0-9]+)r/?$			indexing.php?server=*&group=$1&cursor=$2	[L]
+RewriteRule	^group//?([^/]+)/p([0-9]+)/?$			indexing.php?server=*&group=$1&page=$2	[L]
+RewriteRule	^group//?([^/]+)/p([0-9]+)r/?$			indexing.php?server=*&group=$1&page=$2	[L]
+
+RewriteRule	^group/([^/]+)/([^/]+)/?$			indexing.php?server=$1&group=$2	[L]
+RewriteRule	^group/([^/]+)/([^/]+)/([0-9]+)/?$		indexing.php?server=$1&group=$2&cursor=$3	[L]
+RewriteRule	^group/([^/]+)/([^/]+)/([0-9]+)r/?$		indexing.php?server=$1&group=$2&cursor=$3	[L]
+RewriteRule	^group/([^/]+)/([^/]+)/p([0-9]+)/?$		indexing.php?server=$1&group=$2&page=$3	[L]
+RewriteRule	^group/([^/]+)/([^/]+)/p([0-9]+)r/?$		indexing.php?server=$1&group=$2&page=$3	[L]
+
+RewriteRule	^article//?([^/]+)/([0-9]+)/?$			read.php?server=*&group=$1&artnum=$2	[L]
+RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/?$		read.php?server=$1&group=$2&artnum=$3	[L]
+
+RewriteRule	^article//?([^/]+)/([0-9]+)h/?$			read.php?server=*&group=$1&artnum=$2&header	[L]
+RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)h/?$		read.php?server=$1&group=$2&artnum=$3&header	[L]
+
+RewriteRule	^dl//?([^/]+)/([0-9]+)/(.+)$			download.php?server=*&group=$1&artnum=$2&type=uuencode&filename=$3	[L]
+RewriteRule	^dl/([^/]+)/([^/]+)/([0-9]+)/(.+)$		download.php?server=$1&group=$2&artnum=$3&type=uuencode&filename=$4	[L]
+
