@@ -247,10 +247,10 @@ $CFG["organization"] = "XXX News Server";
 #          [interface] The initial language setting of interface
 #
 #    Natively supported languages and the codings are:
-#        "en" - Englush                    iso-8859-1     (default)
+#        "en" - Englush                    US-ASCII
 #     "zh-tw" - Traditional Chinese        BIG5
 #     "zh-cn" - Simplified Chinese         GB2312
-#   "unicode" - Unicode (Mainly Chinese)   UTF8
+#   "unicode" - Unicode (Mainly Chinese)   UTF-8    (default)
 
 $CFG["charset"]["config"]    = "big5";
 $CFG["charset"]["grouplst"]  = "big5";

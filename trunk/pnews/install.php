@@ -373,10 +373,10 @@ PHP News Reader - Installation and Configuration
     <p>
 	<table border=1 cellspacing=0 cellpadding=2>
 	<tr><td width=150>Language</td><td width=80>Locale</td><td width=150>Charset</td></tr>
-	<tr><td>English</td><td>en</td><td>us-ascii (default)</td></tr>
+	<tr><td>English</td><td>en</td><td>US-ASCII</td></tr>
  	<tr><td>Tranditional Chinese</td><td>zh-tw</td><td>BIG5</td></tr>
 	<tr><td>Simplified Chinese</td><td>zh-cn</td><td>GB2312</td></tr>
- 	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8</td></tr>
+ 	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
 	</table>
   </blockquote>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;config&quot;]</strong></p>
