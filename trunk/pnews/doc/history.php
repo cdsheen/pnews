@@ -48,6 +48,10 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.2.3 (2003/07/20)
+<ul>
+<li>Bug in replying if the quoted article have leading spaces.
+</ul>
 PHP News Reader v2.2.2 (2003/07/05)
 <ul>
 <li>Option to force using SSL(HTTPS) when performing login. (<a href=guide.php#https_login>\$CFG["https_login"]</a>)

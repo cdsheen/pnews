@@ -258,7 +258,7 @@ function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
 	}
 }
 
-function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null ) {
+function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
 	global $CFG;
 	send_command( $nhd, "BODY $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
@@ -297,7 +297,7 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 			$buf = $trans_func( $buf );
 
 		# replace the leading space as &nbsp;
-		if( preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
+		if( $leading_space && preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
 			$buf = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
 
 		echo $prepend . $buf . $postpend;
