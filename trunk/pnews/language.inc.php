@@ -91,7 +91,7 @@ function b2g( $instr ) {
 			if( $h == 161 && $l == 64 )
 				$gb = '  ';
 			else {
-				fseek( $fp, ($h-160)*510+($l-1)*2 );
+				fseek( $fp, (($h-160)*255+$l-1)*3 );
 				$gb = fread( $fp, 2 );
 			}
 			$instr[$i] = $gb[0];
@@ -113,7 +113,7 @@ function g2b( $instr ) {
 		if( $h > 160 && $h < 248 ) {
 			$l = ord($instr[$i+1]);
 			if( $l > 160 && $l < 255 ) {
-				fseek( $fp, (($h-161)*94+$l-161)*2 );
+				fseek( $fp, (($h-161)*94+$l-161)*3 );
 				$bg = fread( $fp, 2 );
 			}
 			else
