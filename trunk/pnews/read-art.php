@@ -176,7 +176,13 @@ if( isset($_GET['header']) )
 	$show_mode |= SHOW_HEADER;
 
 #if( $artconv['to'] )
-nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "download.php?server=$server&group=$group&artnum=$artnum" );
+
+$dlbase = str_replace( 'https://', 'http://', $urlbase );
+
+if( $CFG['url_rewrite'] )
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/dl/$server/$group/$artnum/%s" );
+else
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
 nnrp_close($nhd);
 

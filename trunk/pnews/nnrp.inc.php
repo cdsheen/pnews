@@ -444,8 +444,11 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		}
 
 		if( in_array( $i, $uu ) ) {
-			if( $show_hlink )
-				echo "$prepend &lt;&lt; <a href=\"$download_url&type=uuencode&filename={$body[$i]}\">{$body[$i]}</a> &gt;&gt; $postpend";
+			if( $show_hlink ) {
+				echo "$prepend &lt;&lt; <a href=\"";
+				printf( "$download_url", $body[$i] );
+				echo "\">{$body[$i]}</a> &gt;&gt; $postpend";
+			}
 			else
 				echo "$prepend &lt;&lt; {$body[$i]} &gt;&gt; $postpend";
 			continue;
