@@ -36,7 +36,7 @@ for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 		$nhd[$i] = $nhd[$news_server[$i]] = nnrp_open( $news_server[$i] );
 
 		if( ! $nhd[$i] ) {
-			echo "<p><font size=3>$strConnectServerError - " . $news_server[$i] . "</font><br>\n";
+			echo "<p><font size=3>$strConnectServerError<br><br>" . $news_server[$i] . "</font><br>\n";
 			html_foot();
 			html_tail();
 			exit;

@@ -21,7 +21,8 @@ $php_news_agent = "PHP News Reader $pnews_version (CDSHEEN)";
 
 function nnrp_open ( $nnrp_server ) {
 
-	$nhd = fsockopen( $nnrp_server, 119 );
+	$nhd = null;
+	$nhd = @fsockopen( $nnrp_server, 119 );
 
 	if( ! $nhd )
 		return(null);
@@ -318,12 +319,12 @@ function send_command( $nhd, $cmd ) {
 	global $nnrp_last_command;
 #	echo "[$cmd]<br>\n";
 	$nnrp_last_command = $cmd;
-	fwrite( $nhd, "$cmd\r\n");
+	@fwrite( $nhd, "$cmd\r\n");
 }
 
 function get_status( $nhd ) {
 	global $nnrp_last_result;
-	$responds = fgets( $nhd, 1024 );
+	$responds = @fgets( $nhd, 1024 );
 #	echo "[$responds]<br>\n";
 	$nnrp_last_result = $responds;
 	preg_match( '/^(\d+)\s(.+)$/', $responds, $match );
