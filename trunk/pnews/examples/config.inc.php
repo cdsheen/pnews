@@ -315,6 +315,18 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_list"] = "/somewhere/newsgroups.lst";
 
 
+# [confirm_post] The message prompted to confirm the posting
+#                (post/reply/crosspost) (default: false)
+
+// $CFG["confirm_post"] = "Really post the message ?"; 
+
+
+# [confirm_forward] The message prompted to confirm the forwarding
+#                   (default: false)
+
+// $CFG["confirm_forward"] = "Really forward the message ?";
+
+
 # [magic_tag] Use magic tag to indicate the unread state of newsgroup
 #             (default: flase)
 #
@@ -328,6 +340,20 @@ $CFG["title"] = "XXX News Service";
 #             user running PHP.
 
 // $CFG["cache_dir"] = "/tmp/pnews-cache";
+
+
+# [thread_enable] Enable threading (default: false)
+#   Articles in the same thread will be listed when you view one
+#     of the message in the thread).
+
+// $CFG["thread_enable"] = true;
+
+
+# [thread_db_format] Setting the dba handler used for storing threading data
+#    may be one of: dbm, ndbm, gdbm, db2, db3 or db4
+#    default: 'db3' prior to PHP 4.3.2, and 'db4' after PHP 4.3.2
+
+// $CFG["thread_db_format"] = 'db4';
 
 
 # [group_sorting] sort newsgroups in each category (default: false)

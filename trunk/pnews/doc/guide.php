@@ -86,23 +86,23 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     <p> <strong># unzip &nbsp;<? echo $pname; ?>.zip</strong></p>
   </blockquote>
 
-  <p> All source will be extracted into the directory "<? echo $pname; ?>/"</p>
-  <p> Now, you can copy all the source (including sub-directory) from pnews224/ to the directory where you 
+  <p> All source will be extracted into the directory <b><? echo $pname; ?>/</b></p>
+  <p> Now, you can copy all the source (including sub-directory) from <b><? echo $pname; ?>/</b> to the directory where you 
     want to<br />
-    provide web service. Supposed your web document directory is in /home/www/htdocs/,</p>
+    provide web service. Supposed your web document directory is in /usr/local/apache/htdocs/,</p>
   <blockquote> 
-    <p> <strong># mkdir &nbsp;/home/www/htdocs/news/<br />
+    <p> <strong># mkdir &nbsp;/usr/local/apache/htdocs/pnews<br />
       # cd &nbsp;<? echo $pname; ?>/<br />
-      # cp &nbsp;-R &nbsp;* &nbsp;/home/www/htdocs/news/</strong></p>
+      # cp &nbsp;-R &nbsp;* &nbsp;/usr/local/apache/htdocs/pnews/</strong></p>
   </blockquote>
   <p> The configuration of PHP News Reader contains two files, "config.inc.php" 
     and "newsgroups.lst"<br />
     You can refer the template of both files in the subdirectory "examples/".</p>
   <p> The config.inc.php should be put in the root directory of PHP News Reader, 
-    (such as /home/www/htdocs/news/)</p>
+    (such as /usr/local/apache/htdocs/pnews/)</p>
   <p> You can copy the file from the examples/ directory as a reference.</p>
   <blockquote> 
-    <p> <strong># cd &nbsp;/home/www/htdocs/news/<br />
+    <p> <strong># cd &nbsp;/usr/local/apache/htdocs/pnews/<br />
       # cp &nbsp;examples/config.inc.php&nbsp;&nbsp; .</strong></p>
   </blockquote>
   <p> The default location of "newsgroups.lst" is the same as config.inc.php,<br />
@@ -117,7 +117,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     browser to access your new born Web News,<br />
     for example:</p>
   <blockquote> 
-    <p>http://your.web.server/news/</p>
+    <p>http://your.web.server/pnews/</p>
   </blockquote>
   <p>Note that you should have started your web server and make sure that PHP module is enabled.</p>
   <p>If you have any problems, or find any errors in this document, please send 
@@ -308,7 +308,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=pop3s_auth></a>
   <p> <strong>POP3S (POP3 over SSL) authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'pop3s'</i>)</p>
@@ -319,7 +319,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=mail_auth></a>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'mail'</i>)</p>
@@ -342,7 +342,7 @@ You can download phpCAS from the following place:<br />
         ".bbs@pop3s.bbs.org" =&gt; "pop3s://pop3s.bbs.org/",
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
-    <p>OpenSSL support for PHP module should be enabled for <b>pop3s</b>, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
     </blockquote>
     <p> <strong>$CFG["domain_select"]</strong></p>
     <blockquote> 
@@ -376,7 +376,7 @@ You can download phpCAS from the following place:<br />
        it has nothing to do with the authentication perform by news server.
        Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
     <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
-    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=cas_auth></a>
   <p><strong>CAS authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'cas'</i>)</p>
@@ -636,14 +636,49 @@ You can download phpCAS from the following place:<br />
 <a name=cache_dir></a>
   <p><strong>$CFG["cache_dir"]</strong></p>
   <blockquote>
-    <p>Enable caching of indexing data (default: <i>false</i>)</p>
-    <p>Turning on the caching will relief the loading of news server,
+    <p>Enable cache mechanism of indexing data (default: <i>false</i>)</p>
+    <p>Turning on the cache mechanism will relief the loading of news server,
        and speed up the indexing process for large groups.<p>
     <p>To enable caching, set this to the directory of cache data.<br>
        You should grant write permission on this directory to the user running PHP.<p>
     <p>This function is used to cache indexing data (article number list) for each group,
-       it is not intend to cache all articles.
+       it does not cache the contents of articles.
     <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=thread_enable></a>
+  <p><strong>$CFG["thread_enable"]</strong></p>
+  <blockquote>
+    <p>Enable threading (default: <i>false</i>)</p>
+    <p>Articles in the same thread will be <u>listed</u> (when you view one of the message in the thread).<p>
+    <p>To enable threading, you must enable the cache mechanism by setting
+       <a href=#cache_dir>$CFG["cache_dir"]</a> and specify the correct <a href=#thread_db_format>$CFG["thread_db_format"]</a>.
+       The directroy specified by <a href=#cache_dir>$CFG["cache_dir"]</a> will be used for storing threading data.<p>
+    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> in PHP to use this feature.<p>
+    <p>If you enable threading, you may need to run 'clear-cache.php' regularly.<br /><br />
+       This is because that PHP News Reader store information of all articles in cache and thread database.
+       But, PHP News Reader does not clear the expired articles from these database,
+       which may cause these database too large after a long time.
+       So we suggest running 'clear-cache.php' script once a week or once a month, for example:
+       <blockquote>
+       # php clear-cache.php /usr/local/apache/htdocs/pnews/config.inc.php<br />
+       </blockquote>
+       Please specify the location of config.inc.php as the first command line argument.<br />
+       And the process must have the permission to delete files under <a href=#cache_dir>$CFG["cache_dir"]</a>.<br /><br />
+       You may want to put this script in your crontab for convenience.
+    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=thread_db_format></a>
+  <p><strong>$CFG["thread_db_format"]</strong></p>
+  <blockquote>
+    <p>Setting the dba handler used for storing threading data</p>
+    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> in PHP to use this feature.<p>
+    <p>The handler, depends on your DBA extension,
+       may be <i>dbm</i>, <i>ndbm</i>, <i>gdbm</i>, <i>db2</i>, <i>db3</i> or <i>db4</i>.<br />
+       Make sure that you already enable the handler in your DBA extension.<p>
+    <p>The default value for $CFG["thread_db_format"] is :<br />
+       &nbsp;&nbsp;'<i>db3</i>' if <b>PHP &lt; 4.3.2</b>,<br />
+       &nbsp;&nbsp;'<i>db4</i>' if <b>PHP &gt;= 4.3.2</b> .
+    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=image_inline></a>
   <p><strong>$CFG["image_inline"]</strong></p>
@@ -698,9 +733,9 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["show_latest_top"]</strong></p>
   <blockquote> 
     <p>Show the latest article as the top item (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
-    <p>It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b></p>
-    <p>This option is deprecated since <b>v2.6.0</b>.
+    <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader<br />
+    It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b><br />
+    This option is <b>deprecated</b> since <b>v2.6.0</b>.
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>

@@ -59,7 +59,7 @@ $show_mode        = 0;
 if( $CFG['filter_ansi_color'] )
 	$show_mode |= FILTER_ANSI;
 
-$nnrp = new pnews_nnrp( $CFG['debug_level'], $CFG['cache_dir'], $CFG['thread_enable'], $CFG['thread_db_handler'] );
+$nnrp = new pnews_nnrp( $CFG['debug_level'], $CFG['cache_dir'], $CFG['thread_enable'], $CFG['thread_db_format'] );
 
 #if( $referal == '' )
 #	$referal = 'index.php';

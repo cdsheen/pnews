@@ -42,14 +42,18 @@ echo <<<EOH
 <font size=3 face=Georgia>
 The requirement for PHP News Reader on the server side (news server) :
 <ul>
-<li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
+<li>Web Server with PHP support installed ( PHP 4.1.0 or greater )
 <li>News Server with full <a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a> Implementation
 <li>News Server with <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a> Extension
 </ul>
 The requirement for using NNTPS (SNEWS) News Server or using NNTP/FTP/POP3 over SSL as your authentication method:
 <ul>
 <li>PHP 4.3.0 or greater
-<li>PHP module with OpenSSL support
+<li>PHP with <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> enabled
+</ul>
+The requirement for enabling the threading support:
+<ul>
+<li>PHP with <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> enabled
 </ul>
 <p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br />
 The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.

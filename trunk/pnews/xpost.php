@@ -70,13 +70,12 @@ if( $content != '' && $postgroup != '' ) {
 		$nnrp->post_write( $article_convert['back']($content) );
 	}
 	else {
-		$nnrp_post_init( $nickname, $email, $subject, $postgroup, $CFG['organization'], null, $auth_email, $_POST['charset'] );
-		$nnrp_post_write( $content );
+		$nnrp->post_init( $nickname, $email, $subject, $postgroup, $CFG['organization'], null, $auth_email, $_POST['charset'] );
+		$nnrp->post_write( $content );
 	}
 
 	$nnrp->post_end();
 	$nnrp->close();
-
 
 	html_head( "$postgroup - $subject" );
 

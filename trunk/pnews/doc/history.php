@@ -41,7 +41,7 @@ echo <<<EOH
 <font face=Georgia>
 PHP News Reader v2.6.0 (2004/12/25)
 <ul>
-<li>read-art.php/post-art.php/reply-art.php/forward-art.php/delete-art.php are renamed as read.php/post.php/reply.php/forward.php/delete.php.
+<li>Experimental threading support (<a href=guide.php#thread_enable>\$CFG['thread_support']</a>)
 <li>Added <a href=guide.php#confirm_post>\$CFG['confirm_post']</a> and <a href=guide.php#confirm_forward>\$CFG['confirm_forward']</a> to enable the confirmation for message posting.
 <li>Fixed the wrong version-checking codes when enabling nntps.
 <li>The line length limit of 'newsgroups.lst' has been expanded from 512 to 4096.
@@ -50,11 +50,13 @@ PHP News Reader v2.6.0 (2004/12/25)
 <li>Bug fixed for posting article when a line begin with period. (by ogekuri)
 <li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is deprecated.
 <li>Fixed the problem of attachment uploading in PHP 5.
-<li>The long line will be wrapped when displaying the content of article.
+<li>The line which exceeds the page width will be wrapped.
 <li>Multiple 'group' directive are allowed in one category.
 <li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.
-<li>NNRP functions are collected as a class object.
+<li>read-art.php/post-art.php/reply-art.php/forward-art.php/delete-art.php
+    are renamed (trimming the '-art')
+<li>Rewrite NNRP functions as a class object.
 </ul>
 PHP News Reader v2.5.9 (2004/08/11)
 <ul>
