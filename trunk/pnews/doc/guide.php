@@ -630,6 +630,11 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>sort newsgroups in each catalog (default: <i>false</i>)</p>
   </blockquote>
+<a name=show_group_description></a>
+  <p><strong>$CFG["show_group_description"]</strong></p>
+  <blockquote> 
+    <p>Show newsgroups description or not (default: <i>true</i>)</p>
+  </blockquote>
 <a name=hide_email></a>
   <p><strong>$CFG["hide_email"]</strong></p>
   <blockquote> 

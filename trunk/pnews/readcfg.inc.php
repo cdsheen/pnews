@@ -240,6 +240,9 @@ if( !isset( $CFG['filter_ansi_color'] ) )
 if( !isset( $CFG['group_sorting'] ) )
 	$CFG['group_sorting'] = false;
 
+if( !isset( $CFG['show_group_description'] ) )
+	$CFG['show_group_description'] = true;
+
 if( !isset( $CFG['organization'] ) )
 	$CFG['organization'] = 'News Server';
 

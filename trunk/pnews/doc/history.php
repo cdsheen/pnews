@@ -39,6 +39,10 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+PHP News Reader v2.5.7 (2004/04/)
+<ul>
+<li>Group description can be eliminated by setting <a href=guide.php#show_group_description>\$CFG['show_group_description']</a> to <i>false</i>
+</ul>
 PHP News Reader v2.5.6 (2004/04/01)
 <ul>
 <li>New authentication module 'phpbb' for seamless integration with phpBB. (<a href=guide.php#auth_method>\$CFG['auth_method']</a>)

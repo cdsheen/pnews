@@ -123,15 +123,26 @@ if( $global_readonly ) {
 
 echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 
-$row = array( $strNumber, $strPostNumber, $strGroup, $strGroupDescription );
+// $row = array( $strNumber, $strPostNumber, $strGroup, $strGroupDescription );
 
-echo <<<EOH
+if( $CFG['show_group_description'] )
+	echo <<<EOH
 <table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
   <td>$strNumber</td>
   <td align=right>$strPostNumber</td>
   <td>$strGroup</td>
   <td>$strGroupDescription</td>
+</tr>
+
+EOH;
+else
+	echo <<<EOH
+<table border=0 cellspacing=2 cellpadding=2>
+<tr class=header height=25>
+  <td>$strNumber</td>
+  <td align=right>$strPostNumber</td>
+  <td>$strGroup</td>
 </tr>
 
 EOH;
@@ -179,12 +190,22 @@ while ( list ($group, $value) = each ($active) ) {
 	$num = $value[0] - $value[1] + 1;
 	if( $num < 0 ) $num = 0;
 
+if( $CFG['show_group_description'] )
 	echo <<<EOR
 <tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
   <td align=right><i>$i</i></td>
   <td align=right>$num</td>
   <td>$glink</td>
   <td>$value[2]</td>
+</tr>
+
+EOR;
+else
+	echo <<<EOR
+<tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
+  <td align=right><i>$i</i></td>
+  <td align=right>$num</td>
+  <td>$glink</td>
 </tr>
 
 EOR;
