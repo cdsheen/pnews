@@ -46,6 +46,10 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
+PHP News Reader v2.4.3 (2003/11/08)
+<ul>
+<li>Workaround for IE SSL bug for attachment downloads (<a href="http://support.microsoft.com/default.aspx?scid=kb%3Ben-us%3B323308" target=_blank>Q323308</a>)
+</ul>
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
 <li>Support the downloading of uuencoded attachment.
