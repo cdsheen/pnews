@@ -57,6 +57,7 @@ PHP News Reader v2.4.2 (2003/11/01)
 <li>Empty lines are deleted in the quoted article when replying.
 <li>Fix a bug of parsing Content-Type header.
 <li>Support the downloading of uuencoded attachment.
+<li>Added Finnish translation (by Markus Oversti)
 </ul>
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>

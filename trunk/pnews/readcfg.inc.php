@@ -239,7 +239,7 @@ if( !isset( $CFG['auth_user_email'] ) )
 $checks = array( 'config', 'grouplst', 'database', 'interface' );
 
 $valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii' );
-$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en' );
+$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi' );
 
 if( !isset($CFG['interface_language']) )
 	$default_language = 'en';

@@ -43,6 +43,7 @@ Acknowledgement
 <hr />
 <ul>
 <li>Pascal Aubry - French translation, CAS authentication and phpCAS library
+<li>Markus Oversti - Finnish translation
 </ul>
 <hr />
 <table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
