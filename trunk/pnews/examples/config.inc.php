@@ -62,6 +62,7 @@ $CFG["auth_http_realm"] = "XXX";
 #     "mysql" - authenticated via MySQL database,
 #     "pgsql" - authenticated via PostgreSQL database,
 #      "nntp" - authenticated via NNTP server,
+#     "nntps" - authenticated via NNTPS server, (>=v2.4.0)
 #       "cas" - authenticated via CAS (>=v2.3.0)
 #      "user" - authenticated via your self-defined method,
 
@@ -160,6 +161,12 @@ $CFG["db_variable"] = array( "%e" => "user_email" );
 #      [$auth_nntp_server] NNTP server address ( address:port )
 
 // $CFG["auth_nntp_server"]      = "news.domain.org";
+
+
+# NNTPS authentication parameters (REQUIRED if auth_method == 'nntps')
+#      [$auth_nntps_server] NNTPS server address ( address:port )
+
+// $CFG["auth_nntps_server"]      = "nntps.domain.org";
 
 
 # CAS authetication parameters (REQUIRED if auth_method == 'cas')

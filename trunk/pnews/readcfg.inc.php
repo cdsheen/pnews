@@ -29,7 +29,7 @@ require_once('config.inc.php');
 
 $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form', 'cas' );
-$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'cas', 'user' );
+$valid_auth_method = array( 'ldap', 'pop3', 'mail', 'ftp', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
 
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
@@ -131,6 +131,20 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'NNTP authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'NNTP authentication module is invalid' );
+		break;
+	case 'nntps':
+		if( !isset( $CFG['auth_nntps_server'] ) )
+			config_error( '$CFG["auth_nntps_server"]' );
+		if( file_exists('auth/nntps.inc.php') )
+			include('auth/nntps.inc.php');
+		else
+			show_error( 'NNTPS authentication module missed' );
+		if( !function_exists( 'check_user_password' ) )
+			show_error( 'NNTPS authentication module is invalid' );
+		if( version_check( '4.3.0' ) )
+			show_error( 'PHP 4.3.0 or greater is required for NNTPS support' );
+		if( !function_exists( 'openssl_get_publickey' ) )
+			show_error( 'OpenSSL is required for NNTPS support' );
 		break;
 	case 'cas':
 		if( !isset( $CFG['auth_cas_server'] ) )
@@ -338,5 +352,15 @@ EOE;
 	exit;
 }
 
+function version_check($vercheck) {
+	$minver = explode(".", $vercheck);
+	$curver = explode(".", phpversion());
+	if( ($curver[0] <= $minver[0]) && ($curver[1] <= $minver[1])
+			&& ($curver[1] <= $minver[1])
+			&& ($curver[2][0] < $minver[2][0]) )
+		return true;
+	else
+		return false;
+}
 
 ?>
