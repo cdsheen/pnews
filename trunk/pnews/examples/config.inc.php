@@ -30,6 +30,17 @@ define( 'off', false, true );
 # Section 1 - Authentication - Configure how users login your system
 ############################################################################
 
+# [url_rewrite] Turn on URL rewrite (Need Apache's mod_rewrite support)
+#               (default: false)
+
+# $CFG['url_rewrite'] = true;
+
+# [url_base] The base url of your PHP News Reader installation
+#            (REQUIRED if url_rewrite == true )
+# $CFG['url_base'] = 'http://webnews.foobar.com/news/';
+# $CFG['url_base'] = '/php-news/';
+
+
 # [auth_type] Specify the authentication type (REQUIRED)
 #  "required" - authentication is required to access the while system
 #  "optional" - authentication is only required for posting and forwarding

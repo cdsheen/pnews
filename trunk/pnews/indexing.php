@@ -76,7 +76,10 @@ echo "<table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 echo "<tr><td bgcolor=#DDFFDD onMouseOver='this.bgColor=\"#FFFF80\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
 
-echo "<font size=3 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
+if( $CFG['url_rewrite'] )
+	echo "<font size=3 face=Georgia><a href=group/$server/$group><i><b>$group</i></b></a></font>";
+else
+	echo "<font size=3 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
 
 echo "</td>";
 
@@ -143,21 +146,27 @@ for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
 		if( strlen( $id ) > $id_limit )
 			$id = substr( $id, 0, $id_limit ) . ' ..';
 		elseif( $id == '' )
-			$id = '<author>';
+			$id = '&lt;author&gt;';
 		$nick = $id;
 	}
 	$email = trim($xover[$i][5]);
 	$pos = strrpos( $xover[$i][3] , ':' );
 	$datestr = substr( $xover[$i][3], 0, $pos);
-	$onclick = "onClick='javascript:read_article( \"$server\", \"$group\", " . $xover[$i][0] . ");'";
+#	$onclick = "onClick='javascript:read_article( \"$server\", \"$group\", " . $xover[$i][0] . ");'";
 ?>
 <tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
-  <td <? echo $onclick; ?> class=index align=right><i><? echo $xover[$i][0]-$lowmark+1; ?></i></td>
+  <td class=index align=right><i>
+<?
+	if( $CFG['url_rewrite'] )
+		echo "<a href=\"article/$server/$group/" . $xover[$i][0] . '">' . ( $xover[$i][0]-$lowmark+1 ) . '</a>';
+	else
+		echo $xover[$i][0]-$lowmark+1; ?>
+</i></td>
   <td class=index>
   <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
   </td>
   <td class=index title="<? echo $email; ?>"><a href=mailto:<? echo $email; ?>><? echo $nick; ?></a></td>
-  <td <? echo $onclick; ?> class=index align=right><font face=serif><? echo $datestr; ?></font></td>
+  <td class=index align=right><font face=serif><? echo $datestr; ?></font></td>
 </tr>
 <?
 

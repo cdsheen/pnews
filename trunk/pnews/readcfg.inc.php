@@ -174,6 +174,12 @@ foreach( $checks as $section ) {
 
 $default_charset = $CFG['charset']['interface'];
 
+if( !isset( $CFG['url_rewrite'] ) ) 
+	$CFG['url_rewrite'] = false;
+
+if( $CFG['url_rewrite'] && !isset($CFG['url_base']) )
+	config_error( 'CFG["url_base"]' );
+
 if( !isset( $CFG['group_list'] ) )
 	$CFG['group_list'] = 'newsgroups.lst';
 

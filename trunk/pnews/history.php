@@ -22,6 +22,10 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.1.3 (2003/04/13)
+<ul>
+<li>Support URL rewrite function
+</ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
 <li>Do not strip whitespace from the beginning of each line in posted articles.

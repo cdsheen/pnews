@@ -71,14 +71,18 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 	echo "<tr>\n";
 	for( $j = 0 ; $j < $maxc ; $j++ ) {
 		$cn = $i + $j * $maxr ;
+		if( $CFG['url_rewrite'] )
+			$link = "section/$i";
+		else
+			$link = "$self?catalog=$i";
 		if( $cn >= $catalog_num )
 			echo "<td width=100 bgcolor=#EEFFEE>&nbsp;</td>";
 		elseif( $cn == $curr_catalog )
 			echo " <td width=100 bgcolor=#D0D0FF align=center>$news_catalog[$cn]</td>\n";
 		elseif( $news_authperm[$cn] )
-			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=cat href=$self?catalog=$i>$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=cat href=$link>$news_catalog[$cn]</a></td>\n";
 		else
-			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=cat href=$self?catalog=$i>$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=cat href=$link>$news_catalog[$cn]</a></td>\n";
 	}
 	echo "</tr>\n";
 }
@@ -124,7 +128,10 @@ while ( list ($group, $value) = each ($active) ) {
 	$i++;
 
 	$magic = $value[0];
-	$glink = "<a class=sub href=indexing.php?server=$server&group=$group&magic=$magic>$group</a>";
+	if( $CFG['url_rewrite'] )
+		$glink = "<a class=sub href=group/$server/$group>$group</a>";
+	else
+		$glink = "<a class=sub href=indexing.php?server=$server&group=$group&magic=$magic>$group</a>";
 
 	if( strlen( $value[2] ) > 50 )
 		$value[2] = substr( $value[2], 0, 50 ) . ' ..';

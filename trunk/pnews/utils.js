@@ -24,6 +24,11 @@ function read_article( server, group, artnum ) {
 	var openwin = window.open( "read-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "read" + artnum , winstyle );
 	openwin.focus();
 }
+function read_article_base( server, group, artnum, base ) {
+	var winstyle = "status=no,menubar=no,scrollbars=yes,height=350,width=550";
+	var openwin = window.open( base + "read-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "read" + artnum , winstyle );
+	openwin.focus();
+}
 function post_article( server, group ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=370,width=600";
 	var openwin = window.open( "post-art.php?server=" + server + "&group=" + group , "post", winstyle );

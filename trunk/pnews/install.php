@@ -99,6 +99,18 @@ PHP News Reader - Installation and Configuration
   </blockquote>
   <p> <strong>Section 1 - Authetication</strong></p>
   <p> This section controls how you authenticate your users.</p>
+  <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
+  <blockquote> 
+    <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
+    <p>You should enable Apache &quot;mod_rewrite&quot; module and <b>AllowOverride</b> for per-directory access (.htaccess)</p>
+    <p>This setting first appeared at PHP News Reader v2.1.3</p>
+  </blockquote>
+  <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
+  <blockquote> 
+    <p>Specify the base URL of your PHP News Reader installation</p>
+    <p>This setting is REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
+    <p>This setting first appeared at PHP News Reader v2.1.3</p>
+  </blockquote>
   <p><strong>$CFG[&quot;auth_type&quot;]</strong></p>
   <blockquote> 
     <p>Specify the authentication type (REQUIRED)</p>

@@ -20,17 +20,22 @@
 require_once('language.inc.php');
 
 function html_head($title, $redirect = null, $bodymod = '' ) {
-	global $lang_coding, $curr_language;
+	global $lang_coding, $curr_language, $CFG;
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
 	echo "<html>
 <head>
 <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=$coding\">
 <META HTTP-EQUIV=\"Content-Language\" CONTENT=\"$region\">
-<LINK REL=STYLESHEET TYPE=\"text/css\" HREF=\"style.css\">
+";
+	if( $CFG['url_rewrite'] )
+		echo '<base href="' . $CFG['url_base'] . '">';
+
+	echo "<LINK REL=STYLESHEET TYPE=\"text/css\" HREF=\"style.css\">
 <script language=\"javascript\" src=\"utils.js\">
 </script>
 ";
+
 	if( $redirect )
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">";
 
@@ -106,9 +111,12 @@ function html_tail() {
 }
 
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
 //	return "<a$class_text href=null onClick=\"close_window(); read_article( '$server', '$group', $artnum )\">$link_text</a>";
-	if( $close )
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:read_article_base( '$server', '$group', $artnum, '" . $CFG['url_base'] . "')\">$link_text</a>";
+	elseif( $close )
 		return "<a$class_text href=\"javascript:read_article( '$server', '$group', $artnum ); close_window();\">$link_text</a>";
 	else
 		return "<a$class_text href=\"javascript:read_article( '$server', '$group', $artnum )\">$link_text</a>";
