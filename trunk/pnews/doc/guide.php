@@ -172,7 +172,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       "pop3s" - authenticated via POP3S (POP3 over SSL) server (with version >= 2.4.1),<br />
       "ftp" - authenticated via FTP server,<br />
       "ftps" - authenticated via FTPS (FTP over SSL) server (with version >= 2.4.1),<br />
-      "mail" - authenticated via multiple POP3 server,<br />
+      "mail" - authenticated via multiple POP3/POP3S server,<br />
       "mysql" - authenticated via MySQL database,<br />
       "pgsql" - authenticated via PostgreSQL database,<br />
       "nntp" - authenticated via NNTP News Server (with version >= 2.2.1),<br />
@@ -315,7 +315,7 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p> <strong>$CFG["pop3_mapping"]</strong></p>
     <blockquote> 
-      <p>the mapping from E-Mail to POP3 server address</p>
+      <p>the mapping from E-Mail to POP3/POP3S server address</p>
       <p>User should login with full E-Mail address, and this module will
          use different POP3 server to authenticated user based on the domain part of supplied E-Mail</p>
       <p>The following example will use "pop3.foobar.com" to authenticate "xxx@foobar.com",
@@ -324,6 +324,13 @@ You can download phpCAS from the following place:<br />
         =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@mail.domain.org" =&gt; "pop3.domain.org" );</p>
+    <p>Since <b>v2.5.0</b>, this module support both <b>pop3</b> and <b>pop3s</b>. You can assign the server in URI syntax as follows:</p>
+      <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        "@pop3s.domain.org" =&gt; "pop3s://pop3s.domain.org/",
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
+    <p>OpenSSL support for PHP module should be enabled for <b>pop3s</b>, and the PHP should be v4.3.0 or greater</p>
     </blockquote>
   </blockquote>
 <a name=nntp_auth></a>
