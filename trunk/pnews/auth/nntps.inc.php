@@ -26,7 +26,7 @@ function check_user_password( $username, $password ) {
 
 	$server = $CFG['auth_nntps_server'];
 	if( strstr( $server, ':' ) )
-		list( $server, $port ) = split( '/:/', $server );
+		list( $server, $port ) = split( ':', $server );
 	else
 		$port = 563;
 

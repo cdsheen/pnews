@@ -326,7 +326,7 @@ if( $CFG["auth_prompt"] == 'cas' ) {
 
 	$cas_server = $CFG['auth_cas_server'];
 	if( strstr( $cas_server, ':' ) ) {
-		list( $cas_server, $cas_port ) = split( '/:/', $cas_server );
+		list( $cas_server, $cas_port ) = split( ':', $cas_server );
 		$cas_port = intval($cas_port);
 	}
 	else

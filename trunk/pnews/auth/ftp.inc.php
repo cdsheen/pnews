@@ -29,7 +29,7 @@ function check_user_password( $username, $password ) {
 
 	$server = $CFG['ftp_server'];
 	if( strstr( $server, ':' ) )
-		list( $server, $port ) = split( '/:/', $server );
+		list( $server, $port ) = split( ':', $server );
 	else
 		$port = 21;
 

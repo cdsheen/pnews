@@ -31,12 +31,27 @@ function check_user_password( $username, $password ) {
 	$popuser = preg_replace( '/@.+$/', "", $username );
 
 	$server = $CFG['pop3_mapping'][$domain];
-	if( strstr( $server, ':' ) )
-		list( $server, $port ) = split( '/:/', $server );
-	else
-		$port = 110;
 
-	$sock = @fsockopen( $server, $port );
+	if( preg_match( '/^(\w+):\/\/([^/]+)\/?$/', $server, $match ) ) {
+		$protocol = $match[1];
+		$server = $match[2];
+	}
+
+	if( $protocol == 'pop3s' )
+		$default_port = 995;
+	else
+		$default_port = 110;
+
+	if( strstr( $server, ':' ) )
+		list( $server, $port ) = split( ':', $server );
+	else
+		$port = $default_port;
+
+	if( $protocol == 'pop3s' )
+		$sock = @fsockopen( "ssl://$server", $port, $errno, $errstr, 5 );
+	else
+		$sock = @fsockopen( $server, $port );
+
 	if( !$sock )
 		return(null);
 
