@@ -48,7 +48,7 @@ PHP News Reader v2.1.2 (2003/04/05)
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>
 <li>The format of time displayed can be configured by <a href=guide.php#time_format>$CFG["time_format"]</a>.
-<li>Show only group name in the title of indexing page.
+<li>Only show the group name in the title of indexing page.
 <li>Add more error handling codes for invalid news server settting.
 <li>Several author name/mail parsing problems fixed.
 <li>Fix variable missing problem in \'open\' authentication type.

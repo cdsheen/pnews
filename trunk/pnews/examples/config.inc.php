@@ -49,7 +49,7 @@ define( 'off', false, true );
 $CFG["auth_type"] = "optional";
 
 
-# [auth_prompt] Specify the style of login prompt (default: "http")
+# [auth_prompt] Specify the style of login prompt (default: "form")
 #               (used when auth_type != 'open')
 #      "http" - authentication via HTTP login window    (default)
 #      "form" - authentication with login form
@@ -193,7 +193,7 @@ $CFG["auth_expire_time"] = 1800;
 #   The %u will be replaced by the username enter by authentication session
 #   Other variables are defined in the [db_variable] or [ldap_variable]
 #   (If you use 'mail' auth-method, %e will be the user's E-Mail,
-#    and %u will be the user name of the E-Mail - i.e: the strings before '@')
+#    and %u will be the user name of the E-Mail - i.e: the string before '@')
 
 // $CFG["auth_user_email"] = "%u@mail.domain.com";
 // $CFG["auth_user_email"] = "%e";

@@ -82,9 +82,9 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 		elseif( $cn == $curr_catalog )
 			echo " <td width=100 bgcolor=#D0D0FF align=center>$news_catalog[$cn]</td>\n";
 		elseif( $news_authperm[$cn] )
-			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=cat href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=catalog href=\"$link\">$news_catalog[$cn]</a></td>\n";
 		else
-			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=cat href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=catalog href=\"$link\">$news_catalog[$cn]</a></td>\n";
 	}
 	echo "</tr>\n";
 }

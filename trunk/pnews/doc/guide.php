@@ -71,7 +71,7 @@ PHP News Reader - Installation and Configuration
     <p> <strong># cp &nbsp;examples/newsgroups.lst&nbsp;&nbsp; .</strong></p>
   </blockquote>
   <p> Now, you can begin editing these two files.</p>
-  <p>If both files are finished configuration, you can then use your favorite 
+  <p>If the configuration of both files is finished, you can then use your favorite 
     browser to access this Web News,<br>
     for example:</p>
   <blockquote> 

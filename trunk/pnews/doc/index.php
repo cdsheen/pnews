@@ -77,7 +77,7 @@ while the selected charset of interface is different from the charset of the new
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
 The posted articles will also be converted to the original charset of the server.
 <p>
-PHP News Reader\'s development started around 2001/08.
+PHP News Reader\'s development started around August 2001.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
@@ -94,10 +94,10 @@ PHP News Reader v2.2.0 (2003/05/25)
 <li>Number of articles per page is configurable by <a href=guide.php#articles_per_page>$CFG["articles_per_page"]</a> (default is 20).
 <li>Fix a bug when post after timeout with "form" style login.
 </ul>
-You can view the history since 2002/06 <a href=history.php>here</a>.<p>
-PHP News Reader applies <a href=copying.php>GPL</a> license, please view the detail <a href=copying.php>here</a><br>
+You can view the history since June 2002 by <a href=history.php>clicking here</a>.<p>
+PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference<br>
 <p>
-Since 2003/01, PHP News Reader hosts on SourceForge:
+Since Jan 2003, PHP News Reader hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
