@@ -120,10 +120,10 @@ PHP News Reader v2.0 (expect to release on 2003/01/19)
 <li>Support private groups which only accessible by authenticated user
 <li>Fix the E-Mail parsing bug in XOVER command of NNRP library
 </ul>
-PHP News Reader is released 
-You can view the history since 2002/06 <a href=history.php>here</a>.
+You can view the history since 2002/06 <a href=history.php>here</a>.<p>
+PHP News Reader applies <a href=copying.php>GPL</a> license, please view the detail <a href=copying.php>here</a><br>
 <p>
-Since 2003/01, PHP News Reader was hosted on SourceForge:
+Since 2003/01, PHP News Reader hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/projects/pnews/" alt="http://sourceforge.net/projects/pnews/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo"><br>
