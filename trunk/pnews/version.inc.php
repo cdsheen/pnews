@@ -20,8 +20,8 @@
 # PHP News Reader - Version Information
 
 $pnews_name      = 'PHP News Reader';
-$pnews_version   = 'v2.5.3';
-$pnews_release   = '2004/02/22';
+$pnews_version   = 'v2.5.4';
+$pnews_release   = '2004/03/02';
 $pnews_copyright = '(C) 2001-2004 - Shen Cheng-Da';
 $pnews_claim     = "$pnews_name $pnews_version $pnews_copyright";
 
