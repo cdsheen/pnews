@@ -250,11 +250,11 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
 	if( $cache_file ) {
-		$fp = fopen( $cache_file, 'rb');
+		$fp = @fopen( $cache_file, 'rb');
 		if( $fp ) {
 			$cache_max = $lowmark;
 			$list_cache = @unserialize( fread( $fp, filesize($cache_file)) );
-			$fclose($fp);
+			fclose($fp);
 			if( $list_cache ) {
 				$artlist = $list_cache;
 				unset($list_cache);
