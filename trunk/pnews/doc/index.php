@@ -159,6 +159,11 @@ Installation Guide:
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
+CVS is also available:
+<blockquote>
+<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>PHP News Reader - View CVS Repository</a><br>
+<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.gz">PHP News Reader - Nightly CVS Tarball</a>
+</blockquote>
 Discussion Forum:
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
