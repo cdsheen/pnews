@@ -166,8 +166,8 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <p><strong>$CFG["global_readonly"]</strong></p>
   <blockquote> 
     <p>Prohibits the posting and forwarding of articles, even if user performs login. (default: <i>false</i>)</p>
-    <p>This is global setting for all catalogs,
-       if you want only one or two catalogs to be readonly,
+    <p>This is global setting for all categories,
+       if you want only one or two categories to be readonly,
        set it in <a href="#grouplst_option">newsgroups.lst</a></p>
     <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
     <p>It is to replace $CFG["post_restriction"] in the previous version.</p>
@@ -660,7 +660,7 @@ You can download phpCAS from the following place:<br />
 <a name=group_sorting></a>
   <p><strong>$CFG["group_sorting"]</strong></p>
   <blockquote> 
-    <p>sort newsgroups in each catalog (default: <i>false</i>)</p>
+    <p>sort newsgroups in each category (default: <i>false</i>)</p>
   </blockquote>
 <a name=show_group_description></a>
   <p><strong>$CFG["show_group_description"]</strong></p>
@@ -819,15 +819,15 @@ You can download phpCAS from the following place:<br />
   <p>newsgroups.lst list the news server / news groups to access</p>
   <p>The syntax of this file is different from that of config.inc.php</p>
   <p>All lines begin with the # is considered as comments</p>
-  <p>The newsgroups of PHP News Reader can be grouped by several catalogs.</p>
-  <p>Each catalogs is identified by a single line like this:</p>
+  <p>The newsgroups of PHP News Reader can be grouped by several categories.</p>
+  <p>Each category is identified by a single line like this:</p>
   <blockquote> 
     <p><strong>[Computer Science]</strong></p>
   </blockquote>
-  <p>This defined a catalog named as "Computer Science"</p>
-  <p>The newsgroups defined in the same catalog should be pulled from the same news 
+  <p>This defined a category named as "Computer Science"</p>
+  <p>The newsgroups defined in the same category should be pulled from the same news 
     server, and should be with the same charset. Also note that at least one 
-    catalog should be defined in newsgroups.lst.</p>
+    category should be defined in newsgroups.lst.</p>
   <p>The setting consists of multiple directives where each directive is a pair of key and value,
     which separated by tabs or spaces. The value part ends at end of line</p>
   <p>For example, the following line sets directive "foobar" as "value1 value2"</p>
@@ -838,7 +838,7 @@ You can download phpCAS from the following place:<br />
   <a name=grouplst_server></a>
   <p><strong>'server' directive</strong></p>
   <blockquote>
-  This directive defines the news server used to retrieve newsgroups in this catalog.
+  This directive defines the news server used to retrieve newsgroups in this category.
   <p>
   Since v2.5.5 of PHP News Reader, the address of the news server can be configured with port number.
   <p>
@@ -847,7 +847,7 @@ You can download phpCAS from the following place:<br />
   <a name=group_match></a>
   <p><strong>'group' directive</strong></p>
   <blockquote>
-  This directive defines the groups included in each catalog.<br />
+  This directive defines the groups included in each category.<br />
   Multiple groups can be separated by a comma ","<br />
   Groups can be specified in three kind of syntax:
   <ol>
@@ -870,12 +870,12 @@ You can download phpCAS from the following place:<br />
   <p>The following values are now recognized:</p>
   <p>default</p>
   <blockquote> 
-    <p>This catalog will become the default catalog when user first come in.</p>
-    <p>Only one catalog can be marked as "default".<br />If multiple catalogs are marked as "default", the last catalog will become the default.</p>
+    <p>This category will become the default category when user first come in.</p>
+    <p>Only one category can be marked as "default".<br />If multiple categories are marked as "default", the last category will become the default.</p>
   </blockquote>
   <p>private</p>
   <blockquote> 
-    <p>The reading access for this catalog is restricted by authentication,<br />
+    <p>The reading access for this category is restricted by authentication,<br />
       only used when the $CFG["auth_type"] is "optional"</p>
   </blockquote>
   <p>nntps</p>
@@ -886,14 +886,14 @@ You can download phpCAS from the following place:<br />
   </blockquote>
   <p>readonly</p>
   <blockquote> 
-    <p>This catalog is <b>readonly</b> even if user performs a login.</p>
+    <p>This category is <b>readonly</b> even if user performs a login.</p>
     <p>This option first appeared in v2.5.0 of PHP News Reader.</p>
   </blockquote>
   <p>hidden</p>
   <blockquote> 
-    <p>This catalog is <b>hidden</b> from index page.
-    This catalog can still be accessed as normal catalog,
-    if you know the corresponding catalog number.</p>
+    <p>This category is <b>hidden</b> from index page.
+    This category can still be accessed as normal category,
+    if you know the corresponding category number.</p>
     <p>This option first appeared in v2.5.2 of PHP News Reader.</p>
   </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
@@ -905,7 +905,7 @@ You can download phpCAS from the following place:<br />
   <a name=grouplst_auth></a>
   <p><strong>'auth' directive</strong></p>
   <blockquote>
-  <p>The access to the news server of this catalog require the authentication info
+  <p>The access to the news server of this category require the authentication info
   (username/password) to be specified.</p>
   <p>The username/password are separated by comma, ",", for example:</p>
   <blockquote>
@@ -926,48 +926,48 @@ You can download phpCAS from the following place:<br />
   <a name=grouplst_charset></a>
   <p><strong>'charset' directive</strong></p>
   <blockquote>
-  <p>The charset setting for this catalog. All newsgroups in this catalog should be with the same charset.</p>
+  <p>The charset setting for this category. All newsgroups in this category should be with the same charset.</p>
   <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
   </blockquote>
   <hr />
   <b>An example for <i>newsgroups.lst</i>:</b>
-  <p>The setting before any catalogs are <b>global</b> settings. Two global settings 
+  <p>The setting before any categories are <b>global</b> settings. Two global settings 
     are valid now: <b>charset</b> and <b>server</b></p>
   <blockquote> 
-    <p><strong># default charset for all catalog<br />
+    <p><strong># default charset for all categories<br />
       charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big5</strong></p>
-    <p><strong># default news server for all catalog<br />
+    <p><strong># default news server for all categories<br />
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org</strong></p>
   </blockquote>
-  <p>After these global settings, each catalogs are defined. For example, the 
-    following settings defined three catalogs,</p>
+  <p>After these global settings, each categories are defined. For example, the 
+    following settings defined three categories,</p>
   <blockquote> 
-    <p><strong>[catalog1]<br />
+    <p><strong>[X1]<br />
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org<br />
       group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.*,nopy.comp.network<br />
       option&nbsp;&nbsp;&nbsp;&nbsp;default</strong></p>
-    <p><strong>[catalog2]<br />
+    <p><strong>[X2]<br />
       # use the default news server<br />
       group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*<br />
       auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;none</strong></p>
-    <p><strong>[catalog3]<br />
+    <p><strong>[X3]<br />
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br />
       group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br />
       auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username,password<br />
       charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
   </blockquote>
-  <p>The first catalog "catalog1" contains all newsgroups matching "nopy.*" 
+  <p>The first category "X1" contains all newsgroups matching "nopy.*" 
     or "nopy.comp.network" from the news server "news1.domain.org", 
-    and the default charset is used in these groups. By the way, this catalog does not
+    and the default charset is used in these groups. By the way, this category does not
     require authentication to the news server (by default)</p>
-  <p>The second catalog "catalog2" contains all newsgroups matching 
+  <p>The second category "X2" contains all newsgroups matching 
     "nopy.test" or "nopy.talk.*" from the default news server 
     defined in the above global settings, and the default charset is used in 
-    these groups.  By the way, this catalog does not require authentication to the news server</p>
-  <p>The third catalog "catalog3" contains all newsgroups matching "nopy.comp.*" 
+    these groups.  By the way, this category does not require authentication to the news server</p>
+  <p>The third category "X3" contains all newsgroups matching "nopy.comp.*" 
     or "nopy.rec.*" from the news server "news2.domain.org", 
     and the "gb2312" charset is used in these groups.
-    This catalog does require explicily authentication to the news server by the supplied username/password</p>
+    This category does require explicily authentication to the news server by the supplied username/password</p>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>

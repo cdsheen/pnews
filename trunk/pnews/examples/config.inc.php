@@ -330,7 +330,7 @@ $CFG["title"] = "XXX News Service";
 // $CFG["cache_dir"] = "/tmp/pnews-cache";
 
 
-# [group_sorting] sort newsgroups in each catalog (default: false)
+# [group_sorting] sort newsgroups in each category (default: false)
 
 // $CFG["group_sorting"] = true;
 

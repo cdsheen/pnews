@@ -49,7 +49,7 @@ PHP News Reader v2.6.0 (2004/12/25)
 <li>Clear session variables and reload the config file when switching between different instance.
 <li>Bug fixed for posting article with line begin with a period. (Fixed by ogekuri)
 <li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is deprecated.
-<li>Multiple 'group' directive are allowed in one catalog.
+<li>Multiple 'group' directive are allowed in one category.
 <li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.
 <li>NNRP functions are collected as a class object.
@@ -127,7 +127,7 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li>References header in replied article now works exactly as defined in <a href="http://rfc.giga.net.tw/rfc2822" target=_blank>RFC 2822</a>.
 <li>The correct E-Mail domain is always used after login from Mail authentication module.
 <li>Domain selector can be turned on by <a href=guide.php#mail_auth>\$CFG['domain_select']</a> for Mail authentication module.
-<li>Per-catalog readonly can be configured in newsgroups.lst.
+<li>Per-category readonly can be configured in newsgroups.lst.
 <li>Validate the correctness of the current session before performing authentication.
 <li>GB2312 translation is refined by Czz and does not depend on the BIG5 translation any more.
 <li>Log verbose level can be tuned by changing <a href=guide.php#log_level>\$CFG["log_level"]</a>.
@@ -239,7 +239,7 @@ PHP News Reader v2.2.0 (2003/05/25)
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
 <li>Do not strip whitespace from the beginning of each line in the article posted.
-<li>Jump to the correct catalog when returning from indexing page.
+<li>Jump to the correct category when returning from indexing page.
 <li>Correct the problem of lost for POST variables when launching the login dialog.
 </ul>
 PHP News Reader v2.1.1 (2003/03/08)
@@ -294,7 +294,7 @@ PHP News Reader v2.0 (2003/01/19)
 <li>Support FORM style login process other than the original HTTP authentication
 <li>More flexible configuration based on a new config.inc.php syntax
 <li>Enable interface language to switch without cookie support
-<li>Different encodings can be used in different catalogs
+<li>Different encodings can be used in different categories
 <li>Support private groups which only accessible by authenticated user
 <li>Fix the E-Mail parsing bug in XOVER command of NNRP library
 </ul>
@@ -323,7 +323,7 @@ PHP News Reader v1.7 (2002/10/05)
 <p>
 PHP News Reader v1.6 (2002/08/10)
 <ul>
-<li>Support square-bracketed catalog in newsgroups.lst
+<li>Support square-bracketed category in newsgroups.lst
 <li>Couple of fixs for register_globals setting 'off'
 <li>HTML entities in Subject is now correctly escaped
 <li>Mail forwarding bug fixed

@@ -119,7 +119,7 @@ elseif( $artnum != '' ) {
 
 	list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
 
-	$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+	$artinfo = $nnrp->head( $artnum, $news_charset[$curr_category], $CFG['time_format'] );
 	if( !$artinfo )
 		kill_myself();
 

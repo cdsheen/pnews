@@ -51,7 +51,7 @@ forwarding and replying news articles.
 Features:
 <ul>
 <li>Read/Post/Reply/Crosspost/Forward/Delete articles to/from News server(s).
-<li>Multiple News server and multiple catalog of news groups.
+<li>Multiple News server and multiple categories of news groups.
 <li>Support NNTP over SSL (NNTPS) and NNTP authentication.
 <li>Posting and downloading for uuencoded attachment.
 <li>Easy to install, no database access and IMAP is not required.

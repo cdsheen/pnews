@@ -61,7 +61,7 @@ $lasturl = ($lastnum>0) ? $prefix . $lastnum : '';
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
-$artinfo = $nnrp->head( $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
+$artinfo = $nnrp->head( $artnum, $news_charset[$curr_category], $CFG['time_format'] );
 
 if( !$artinfo ) {
 	if( $CFG['show_article_popup'] )
@@ -196,7 +196,7 @@ else
 if( $CFG['thread_enable'] ) {
 	$thlist = $nnrp->get_thread( $group, $artinfo['subject'] );
 	if( count($thlist) > 1 ) {
-		echo "<hr /><table border=0 cellpadding=1 cellspacing=0><tr>\n";
+		echo "<hr /><table border=0 cellpadding=0 cellspacing=0><tr>\n";
 		$i = 0;
 		foreach( $thlist as $art ) {
 			$i++;

@@ -54,11 +54,11 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 		connect_error( $server );
 
 	if( $article_convert['back'] ) {
-		$nnrp->post_init( $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($CFG['organization']), null, $auth_email, $news_charset[$curr_catalog] );
+		$nnrp->post_init( $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($CFG['organization']), null, $auth_email, $news_charset[$curr_category] );
 		$nnrp->post_write( $article_convert['back']($content) );
 	}
 	else {
-		$nnrp->post_init( $nickname, $email, $subject, $group, $CFG['organization'], null, $auth_email, $news_charset[$curr_catalog] );
+		$nnrp->post_init( $nickname, $email, $subject, $group, $CFG['organization'], null, $auth_email, $news_charset[$curr_category] );
 		$nnrp->post_write( $content );
 	}
 

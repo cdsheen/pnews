@@ -32,7 +32,7 @@ elseif( $CFG['banner'] )
 else
 	echo "<font color=black size=5 face=Georgia>$title</font><br />";
 
-$nnrp->open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
+$nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 
 echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
@@ -41,23 +41,23 @@ $maxr = 100;
 echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 echo "<table border=0 cellpadding=2 cellspacing=1>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
-	if( $i >= $catalog_num )
+	if( $i >= $category_num )
 		break;
 	if( $news_hidden[$i] )
 		continue;
 	echo "<tr>\n";
 	if( $CFG['url_rewrite'] )
-		$link = "section/$i";
+		$link = $i+1;
 	else
-		$link = "$self?catalog=$i";
-	if( $i >= $catalog_num )
+		$link = "$self?category=" . ($i+1);
+	if( $i >= $category_num )
 		echo "<td class=menu align=center>&nbsp;</td>";
-	elseif( $i == $curr_catalog )
-		echo " <td class=menu_select align=center>$news_catalog[$i]</td>\n";
+	elseif( $i == $curr_category )
+		echo " <td class=menu_select align=center>$news_category[$i]</td>\n";
 	elseif( $news_authperm[$i] )
-		echo " <td class=menu_auth align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$i]</a></td>\n";
+		echo " <td class=menu_auth align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_category[$i]</a></td>\n";
 	else
-		echo " <td class=menu align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$i]</a></td>\n";
+		echo " <td class=menu align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_category[$i]</a></td>\n";
 	echo "</tr>\n";
 }
 
@@ -89,7 +89,7 @@ echo "</td></tr></table>\n";
 echo "</td><td valign=top align=left>";
 
 if( ! $nnrp->nhd ) {
-	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_category] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -97,10 +97,10 @@ if( ! $nnrp->nhd ) {
 
 nnrp_authenticate();
 
-$active = $nnrp->list_group( $news_groups[$curr_catalog], $article_convert['to'] );
+$active = $nnrp->list_group( $news_groups[$curr_category], $article_convert['to'] );
 
 if( $active == null ) {
-	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] &lt;" . $news_server[$curr_catalog] . "&gt;</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] &lt;" . $news_server[$curr_category] . "&gt;</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -147,7 +147,7 @@ reset( $active );
 
 $i = 0;
 
-$server = $news_server[$curr_catalog];
+$server = $news_server[$curr_category];
 
 while ( list ($group, $value) = each ($active) ) {
 

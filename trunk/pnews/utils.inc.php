@@ -35,7 +35,7 @@ require_once('nnrpclass.php');
 
 if( $_SESSION['rem_url_base'] != $CFG['url_base'] ) {
 	$_SESSION['rem_url_base'] = $CFG['url_base'];
-	unset($_SESSION['rem_catalog']);
+	unset($_SESSION['rem_category']);
 	unset($_SESSION['auth_time']);
 	unset($_SESSION['auth_expire_time']);
 	unset($_SESSION['auth_ticket']);
@@ -76,7 +76,7 @@ $lineppg          = $CFG['articles_per_page'];
 $subject_limit    = 60;	# Chars Limit for Subject
 $nick_limit       = 16;	# Chars Limit for Nickname
 $id_limit         = 18;	# Chars Limit for ID ( E-Mail before @ )
-$org_limit        = 22;	# Chars Limit for Organization
+$org_limit        = 24;	# Chars Limit for Organization
 
 $textcol          = 66;
 
@@ -88,12 +88,12 @@ $lst = fopen( $CFG['group_list'], 'r' );
 if( !$lst )
 	show_error( "Can not load " . $CFG['group_list'] . " . Copy examples/newsgroups.lst as a template.");
 
-$catalog_num = -1;
-$default_catalog = 0 ;
+$category_num = -1;
+$default_category = 0 ;
 
 $group_default_charset = $CFG['charset']['grouplst'];
 
-$private_catalogs = array();
+$private_categorys = array();
 
 while( $buf = fgets( $lst, 4096 ) ) {
 	$buf = chop( $buf );
@@ -101,20 +101,20 @@ while( $buf = fgets( $lst, 4096 ) ) {
 		continue;
 
 	if( preg_match( '/^\[(.+)\]$/', $buf, $match ) ) {
-		$catalog_num++;
-		$news_catalog[$catalog_num]  = $match[1];
-		$news_authinfo[$catalog_num] = 'none';
-		$news_charset[$catalog_num]  = $group_default_charset;
-		$news_server[$catalog_num]   = $group_default_server;
-		$news_nntps[$catalog_num]    = false;
-		$news_authperm[$catalog_num] = false;
-		$news_readonly[$catalog_num] = false;
-		$news_hidden[$catalog_num] = false;
+		$category_num++;
+		$news_category[$category_num]  = $match[1];
+		$news_authinfo[$category_num] = 'none';
+		$news_charset[$category_num]  = $group_default_charset;
+		$news_server[$category_num]   = $group_default_server;
+		$news_nntps[$category_num]    = false;
+		$news_authperm[$category_num] = false;
+		$news_readonly[$category_num] = false;
+		$news_hidden[$category_num] = false;
 		$options = array();
 		continue;
 	}
 
-	if( $catalog_num == -1 ) {
+	if( $category_num == -1 ) {
 		if( preg_match( '/^server\s+(.+)$/', $buf, $match ) )
 			$group_default_server = $match[1];
 		if( preg_match( '/^charset\s+(.+)$/', $buf, $match ) ) {
@@ -126,44 +126,44 @@ while( $buf = fgets( $lst, 4096 ) ) {
 	elseif( preg_match( '/^option\s+(.+)$/', $buf, $match ) ) {
 		$options = split( ',', $match[1] );
 		if( in_array( 'default', $options ) )
-			$default_catalog = $catalog_num;
+			$default_category = $category_num;
 		if( in_array( 'private', $options ) ) {
-			$news_authperm[$catalog_num] = true;
-			$private_catalogs[] = $catalog_num;
+			$news_authperm[$category_num] = true;
+			$private_categorys[] = $category_num;
 		}
 		if( in_array( 'nntps', $options ) || in_array( 'snews', $options ) ) {
-			$news_nntps[$catalog_num] = true;
+			$news_nntps[$category_num] = true;
 			if( !version_check( '4.3.0' ) )
 				show_error( 'PHP 4.3.0 or greater is required for NNTPS support' );
 			if( !function_exists( 'openssl_get_publickey' ) )
 				show_error( 'OpenSSL is required for NNTPS support' );
 		}
 		if( in_array( 'readonly', $options ) )
-			$news_readonly[$catalog_num] = true;
+			$news_readonly[$category_num] = true;
 		if( in_array( 'hidden', $options ) )
-			$news_hidden[$catalog_num] = true;
+			$news_hidden[$category_num] = true;
 	}
 	elseif( preg_match( '/^server\s+(\S+)$/', $buf, $match ) ) {
-		$news_server[$catalog_num] = $match[1];
+		$news_server[$category_num] = $match[1];
 	}
 	elseif( preg_match( '/^groups?\s+(.+)$/', $buf, $match ) ) {
-		if( isset($news_groups[$catalog_num]) )
-			$news_groups[$catalog_num] .= $match[1];
+		if( isset($news_groups[$category_num]) )
+			$news_groups[$category_num] .= $match[1];
 		else
-			$news_groups[$catalog_num] = $match[1];
+			$news_groups[$category_num] = $match[1];
 	}
 	elseif( preg_match( '/^charset\s+(.+)$/', $buf, $match ) ) {
 		$match[1] = strtolower( $match[1] );
 		if( in_array( $match[1], $valid_charsets ) )
-			$news_charset[$catalog_num] = $match[1];
+			$news_charset[$category_num] = $match[1];
 	}
 	elseif( preg_match( '/^auth\s+(.+)$/', $buf, $match ) ) {
-		$news_authinfo[$catalog_num] = $match[1];
+		$news_authinfo[$category_num] = $match[1];
 	}
 }
 fclose($lst);
 
-$catalog_num++;
+$category_num++;
 
 if( isset($_SESSION['save_postvar']) && $_SESSION['save_postvar'] ) {
 	$_POST = $_SESSION['POSTVAR'];
@@ -172,7 +172,7 @@ if( isset($_SESSION['save_postvar']) && $_SESSION['save_postvar'] ) {
 }
 
 ##############################################################################
-# Determine the $curr_catalog
+# Determine the $curr_category
 
 $server = isset($_GET['server']) ? $_GET['server'] : '';
 $group  = get_group();
@@ -184,29 +184,33 @@ if( $server == '*' && $group_default_server != '' )
 	$server = $group_default_server;
 
 if( $self_base == 'index.php' ) {
-	if( isset( $_GET['catalog'] ) )
-		$curr_catalog = $_GET['catalog'];
-	elseif( isset($_SESSION['rem_catalog']) )
-		$curr_catalog = $_SESSION['rem_catalog'];
+	if( isset( $_GET['c'] ) )
+		$curr_category = $_GET['c'] - 1;
+	elseif( isset( $_GET['category'] ) )
+		$curr_category = $_GET['category'] - 1;
+	elseif( isset( $_GET['catalog'] ) )
+		$curr_category = $_GET['catalog'];
+	elseif( isset($_SESSION['rem_category']) )
+		$curr_category = $_SESSION['rem_category'];
 	else
-		$curr_catalog = $default_catalog;
+		$curr_category = $default_category;
 }
 elseif( isset( $_GET['server'], $_GET['group'] ) ) {
-	$verify_catalog = verifying( $server, $group );
-	if( $verify_catalog >= 0 )
-		$curr_catalog = $verify_catalog;
-	elseif( isset($_SESSION['rem_catalog']) )
-		$curr_catalog = $_SESSION['rem_catalog'];
+	$verify_category = verifying( $server, $group );
+	if( $verify_category >= 0 )
+		$curr_category = $verify_category;
+	elseif( isset($_SESSION['rem_category']) )
+		$curr_category = $_SESSION['rem_category'];
 	else
-		$curr_catalog = $default_catalog;
+		$curr_category = $default_category;
 }
-elseif( isset($_SESSION['rem_catalog']) )
-	$curr_catalog = $_SESSION['rem_catalog'];
+elseif( isset($_SESSION['rem_category']) )
+	$curr_category = $_SESSION['rem_category'];
 else
-	$curr_catalog = $default_catalog;
+	$curr_category = $default_category;
 
-if( $curr_catalog == '' || $curr_catalog >= $catalog_num )
-	$curr_catalog = $default_catalog;
+if( $curr_category == '' || $curr_category >= $category_num )
+	$curr_category = $default_category;
 
 
 ##############################################################################
@@ -227,8 +231,8 @@ if( $config_convert['to'] ) {
 
 $title = $CFG['title'];
 if( $grouplst_convert['to'] ) {
-	for( $i = 0 ; $i < $catalog_num ; $i++ )
-		$news_catalog[$i] = $grouplst_convert['to']( $news_catalog[$i] );
+	for( $i = 0 ; $i < $category_num ; $i++ )
+		$news_category[$i] = $grouplst_convert['to']( $news_category[$i] );
 }
 
 ##############################################################################
@@ -266,21 +270,21 @@ if( $CFG['auth_type'] != 'open' ) {
 		if( isset($_GET['login']) )
 			$need_auth = true;
 		elseif( $self_base == 'indexing.php' || $self_base == 'read.php' || $self_base == 'download.php' ) {
-			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
+			if( $server == '' || $group == '' || $verify_category == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
 				exit;
 			}
-			foreach( $private_catalogs as $pc )
+			foreach( $private_categorys as $pc )
 				if( $server == $news_server[$pc] && match_group( $group, $news_groups[$pc] ) )
 					$need_auth = true;
 		}
-		elseif( need_postperm( $self_base ) || $news_authperm[$curr_catalog] )
+		elseif( need_postperm( $self_base ) || $news_authperm[$curr_category] )
 			$need_auth = true;
 	}
 	else {
 		if( $self_base == 'indexing.php' || $self_base == 'read.php' || $self_base == 'download.php' ) {
-			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
+			if( $server == '' || $group == '' || $verify_category == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
 				exit;
@@ -392,13 +396,13 @@ if( isset($info['%e']) )
 else
 	$auth_email = vars_convert( $CFG['auth_user_email'] );
 
-# After authentication, $curr_catalog is permitted to access
-$_SESSION['rem_catalog'] = $curr_catalog ;
+# After authentication, $curr_category is permitted to access
+$_SESSION['rem_category'] = $curr_category ;
 
 ##############################################################################
-# Language conversion - Dependent on $curr_catalog after authentication
+# Language conversion - Dependent on $curr_category after authentication
 
-$article_convert  = get_conversion( $news_charset[$curr_catalog], $curr_charset );
+$article_convert  = get_conversion( $news_charset[$curr_category], $curr_charset );
 
 #echo "<!-- curr: $curr_charset ({$article_convert['to']}) -->\n";
 
@@ -641,12 +645,12 @@ function need_postperm( $script_name ) {
 
 function verifying( $server, $group ) {
 
-	global $news_groups, $news_server, $catalog_num;
+	global $news_groups, $news_server, $category_num;
 
 	if( $server == '' || $group == '' )
 		return(-1);
 
-	for( $i = 0 ; $i < $catalog_num ; $i++ ) {
+	for( $i = 0 ; $i < $category_num ; $i++ ) {
 		if( $server == $news_server[$i]
 			&& match_group( $group, $news_groups[$i] ) )
 			return($i);
@@ -686,15 +690,15 @@ function match_group( $group, $pattern ) {
 function nnrp_authenticate() {
 	global  $CFG;
 	global	$nnrp;
-	global	$curr_catalog;
+	global	$curr_category;
 	global	$news_authinfo;
 
-	if( $curr_catalog < 0 ) {
+	if( $curr_category < 0 ) {
 		$nnrp->mode_reader();
 		return(true);
 	}
 
-	$authinfo = $news_authinfo[$curr_catalog];
+	$authinfo = $news_authinfo[$curr_category];
 
 	if( $authinfo == 'none' || $authinfo == '' ) {
 		$nnrp->mode_reader();
