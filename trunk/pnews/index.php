@@ -141,9 +141,9 @@ while ( list ($group, $value) = each ($active) ) {
 	$magic = $value[0];
 	if( $CFG['url_rewrite'] ) {
 		if( $server == $group_default_server )
-			$glink = "<a class=sub href=\"group//$group\">$group</a>";
+			$glink = "<a class=sub href=\"group//$group?$magic\">$group</a>";
 		else
-			$glink = "<a class=sub href=\"group/$server/$group\">$group</a>";
+			$glink = "<a class=sub href=\"group/$server/$group?$magic\">$group</a>";
 	}
 	else
 		$glink = "<a class=sub href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
