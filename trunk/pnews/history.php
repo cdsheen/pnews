@@ -25,6 +25,7 @@ echo '
 PHP News Reader v2.1.2 (2003/04/0?)
 <ul>
 <li>Do not strip whitespace from the beginning of each line in posted articles.
+<li>Jump to the correct catalog when returning from indexing page.
 </ul>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>

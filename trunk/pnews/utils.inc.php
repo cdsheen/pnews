@@ -116,12 +116,12 @@ $catalog_num++;
 ##############################################################################
 # Determine the $curr_catalog
 
-if( isset($_SESSION['rem_catalog']) )
-	$curr_catalog = $_SESSION['rem_catalog'];
 
 if( $self_base == 'index.php' ) {
 	if( isset( $_GET['catalog'] ) )
 		$curr_catalog = $_GET['catalog'];
+	elseif( isset($_SESSION['rem_catalog']) )
+		$curr_catalog = $_SESSION['rem_catalog'];
 	else
 		$curr_catalog = $default_catalog;
 }
@@ -129,9 +129,13 @@ elseif( isset( $_GET['server'], $_GET['group'] ) ) {
 	$verify_catalog = verifying( $_GET['server'], $_GET['group'] );
 	if( $verify_catalog >= 0 )
 		$curr_catalog = $verify_catalog;
+	elseif( isset($_SESSION['rem_catalog']) )
+		$curr_catalog = $_SESSION['rem_catalog'];
 	else
 		$curr_catalog = $default_catalog;
 }
+elseif( isset($_SESSION['rem_catalog']) )
+	$curr_catalog = $_SESSION['rem_catalog'];
 else
 	$curr_catalog = $default_catalog;
 
