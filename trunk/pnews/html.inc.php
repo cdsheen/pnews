@@ -82,7 +82,8 @@ function html_foot($langopt = true) {
 	global $lang_define, $CFG, $pnews_version, $sflogo;
 ?>
   <p>
-<hr><table width=100% border=0 cellpadding=0 cellspacing=0>
+<hr />
+<table width=100% border=0 cellpadding=0 cellspacing=0>
   <tr class=footbar><td>
      <i>
 <?
@@ -105,7 +106,8 @@ function html_foot($langopt = true) {
 EOL;
 	}
 ?>
-  </td><td align=right>
+  </td>
+  <td align=right>
 <?
 	if( $CFG['language_switch'] && $langopt ) {
 		echo "Language:";
@@ -114,6 +116,7 @@ EOL;
 ?>
   </td></tr>
   </table>
+</p>
 <?
 }
 

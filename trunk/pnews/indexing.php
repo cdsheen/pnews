@@ -142,7 +142,7 @@ for( $i = $higher+1 ; $i <= $highmark && $s < $lineppg ; $i++ ) {
 	}
 }
 
-if( !$CFG['article_order_reverse'] ) {
+if( !$CFG['show_newest_top'] ) {
 	sort($curlist);
 }
 
@@ -151,7 +151,7 @@ if( $ncount == 0 ) {
 	$show_from = $show_end = $cursor;
 }
 else {
-	if( $CFG['article_order_reverse'] ) {
+	if( $CFG['show_newest_top'] ) {
 		$show_from = $curlist[$ncount - 1];
 		$show_end  = $curlist[0];
 	}
@@ -223,7 +223,7 @@ $totalpg = ceil($artsize / $lineppg) ;
 
 if( $totalpg == 1 )
 	$page = 1;
-elseif( $CFG['article_order_reverse'] ) {
+elseif( $CFG['show_newest_top'] ) {
 	$page = floor( ( $artsize - array_search( $show_from, $artlist ) ) / $lineppg);
 	if( $page == 1 && $show_end < $highmark )
 		$page = 2;
@@ -249,7 +249,7 @@ echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG["article_order_reverse"] )
+if( $CFG['show_newest_top'] )
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
@@ -292,7 +292,7 @@ else
 
 echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG["article_order_reverse"] )
+if( $CFG['show_newest_top'] )
 	if( $show_from > $lowmark ) {
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$lower\">$strNextPage</a>";

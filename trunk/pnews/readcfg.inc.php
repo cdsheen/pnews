@@ -176,8 +176,8 @@ if( !isset( $CFG['banner'] ) )
 if( !isset( $CFG['title'] ) )
 	$CFG['title'] = 'Webnews';
 
-if( !isset( $CFG['article_order_reverse'] ) )
-	$CFG['article_order_reverse'] = false;
+if( !isset( $CFG['show_newest_top'] ) )
+	$CFG['show_newest_top'] = true;
 
 if( !isset( $CFG['show_article_popup'] ) )
 	$CFG['show_article_popup'] = false;
@@ -226,6 +226,9 @@ foreach( $checks as $section ) {
 }
 
 #$default_charset = $CFG['charset']['interface'];
+
+if( !isset( $CFG['cache_dir'] )
+	$CFG['cache_dir'] = false;
 
 if( !isset( $CFG['url_rewrite'] ) ) 
 	$CFG['url_rewrite'] = false;
@@ -341,11 +344,11 @@ a:hover { color: red }
 </style>
 </head>
 <body>
-<font size=4>PHP News Reader - Configuration Error</font><hr>
+<font size=4>PHP News Reader - Configuration Error</font><hr />
 <br /><font size=3>$err_string</font>\n<br /><p>
 <font color=cyan>For more information, please read the <a href=doc/guide.php>Installation Guide</a> for details.</font>
 <br /><br /><br />
-<hr>
+<hr />
 </body>
 </html>
 EOE;
