@@ -187,6 +187,8 @@ function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
 
 	if( $forward )
 		return( $overview );
+	elseif( $i == 0 )
+		return( null );
 	else
 		return( array_reverse($overview) );
 }
