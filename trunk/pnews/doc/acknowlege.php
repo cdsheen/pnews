@@ -47,6 +47,7 @@ Acknowledgement
 <tr><td align=left>Markus Oversti from Finland</td><td> - Finnish translation.</td></tr>
 <tr><td align=left>Czz from China</td><td> - Help to refine the Chinese (GB2312) translation.</td></tr>
 <tr><td align=left>Jochen Staerk from Germany</td><td> - German translation.</td></tr>
+<tr><td align=left>Francesco Rolando from Italian</td><td> - Italian translation.</td></tr>
 </table>
 </blockquote>
 <hr />

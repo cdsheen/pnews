@@ -59,6 +59,11 @@ PHP News Reader v2.5.2 (2004/01/22)
 <li>Debug information can be examined by setting <a href=guide.php#debug_level>\$CFG["debug_level"]</a>.
 <li>Documentation for newsgroups.lst is refined.
 </ul>
+PHP News Reader v2.5.3 (2004/01/28)
+<ul>
+<li>Added Italian translation (by Francesco Rolando)
+<li>Various fixes for the javascript errors for single quote problem.
+</ul>
 PHP News Reader v2.5.1 (2003/12/25)
 <ul>
 <li>Rewrite the `uudecode' codes to fix the bug which result in wrong outputs.
