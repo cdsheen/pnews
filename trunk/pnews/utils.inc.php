@@ -33,7 +33,7 @@ $self             = $_SERVER['PHP_SELF'];
 $ip_from          = $_SERVER['REMOTE_ADDR'];
 $self_base        = basename( $self );
 
-$auth_slash       = get_magic_quotes_gpc();
+$auto_slash       = get_magic_quotes_gpc();
 
 if( $CFG['url_rewrite'] )
 	$urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
