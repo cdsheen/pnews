@@ -4,6 +4,11 @@ require_once('../version.inc.php');
 
 $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
+if( $_SERVER['HTTPS'] )
+	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+else
+	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+
 echo <<<EOR
 <html>
 <head>
@@ -109,7 +114,7 @@ PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php
 Since January 2003, PHP News Reader hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" alt="SourceForge.net Logo">
 </a>
 </blockquote>
 Project Home:

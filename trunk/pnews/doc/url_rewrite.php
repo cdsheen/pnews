@@ -2,6 +2,11 @@
 
 require_once('../version.inc.php');
 
+if( $_SERVER['HTTPS'] )
+	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+else
+	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+
 echo '<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
@@ -50,7 +55,7 @@ echo "<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://source
 echo '
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" alt="SourceForge.net Logo">
 </a>
 </td></tr></table>
 </font>
