@@ -68,7 +68,7 @@ if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
 			header( "Location: $idxurl" );
 	}
 	elseif( $CFG['url_rewrite'] )
-		header( "Location: $urlbase/article/$reserver/$group/$artnum/" );
+		header( "Location: $urlbase/article/$reserver/$group/$artnum" );
 	else
 		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum" );
 
