@@ -113,59 +113,68 @@ function html_tail() {
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-//	return "<a$class_text href=null onClick=\"close_window(); read_article( '$server', '$group', $artnum )\">$link_text</a>";
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:read_article_base( '$server', '$group', $artnum, '" . $CFG['url_base'] . "')\">$link_text</a>";
+		return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
 	elseif( $close )
-		return "<a$class_text href=\"javascript:read_article( '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:read_article( '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum )\">$link_text</a>";
 }
 
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-//	return "<a$class_text href=null onClick=\"close_window(); post_article( '$server', '$group' )\">$link_text</a>";
-	if( $close )
-		return "<a$class_text href=\"javascript:post_article( '$server', '$group' ); close_window();\">$link_text</a>";
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' )\">$link_text</a>";
+	elseif( $close )
+		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:post_article( '$server', '$group' )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' )\">$link_text</a>";
 }
 
 function delete_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-//	return "<a$class_text href=null onClick=\"close_window(); delete_article( '$server', '$group', $artnum )\">$link_text</a>";
-	if( $close )
-		return "<a$class_text href=\"javascript:delete_article( '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:delete_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
+	elseif( $close )
+		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:delete_article( '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum )\">$link_text</a>";
 }
 
 function reply_article( $server, $group, $artnum, $link_text, $quote = false, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
 	$quote = ( $quote ? 1 : 0 );
-//	return "<a$class_text href=null onClick=\"close_window(); reply_article( '$server', '$group', $artnum, $quote )\">$link_text</a>";
-	if( $close )
-		return "<a$class_text href=\"javascript:reply_article( '$server', '$group', $artnum, $quote ); close_window();\">$link_text</a>";
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:reply_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum, $quote )\">$link_text</a>";
+	elseif( $close )
+		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:reply_article( '$server', '$group', $artnum, $quote )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote )\">$link_text</a>";
 }
 
 function xpost_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-//	return "<a$class_text href=null onClick=\"close_window(); xpost_article( '$server', '$group', $artnum )\">$link_text</a>";
-	if( $close )
-		return "<a$class_text href=\"javascript:xpost_article( '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:xpost_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
+	elseif( $close )
+		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:xpost_article( '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum )\">$link_text</a>";
 }
 
 function forward_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
+	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-//	return "<a$class_text href=null onClick=\"close_window(); forward_article( '$server', '$group', $artnum )\">$link_text</a>";
-	if( $close )
-		return "<a$class_text href=\"javascript:forward_article( '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+	if( $CFG['url_rewrite'] )
+		return "<a$class_text href=\"javascript:forward_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
+	elseif( $close )
+		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:forward_article( '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum )\">$link_text</a>";
 }
 
 function html_focus( $form, $field ) {
