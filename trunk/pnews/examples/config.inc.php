@@ -337,6 +337,13 @@ $CFG["title"] = "XXX News Service";
 // $CFG["email_editing"] = false;
 
 
+# [hide_email] Hide E-Mail - makes it difficult for SpamBots
+#              to automatically obtain email addresses
+#              when they scan webnews pages (default: true)
+
+// $CFG["hide_email"] = false;
+
+
 # [filter_ansi_color] Show article in pupup window (default: true)
 
 // $CFG["filter_ansi_color"] = false;

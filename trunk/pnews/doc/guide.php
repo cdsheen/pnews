@@ -592,6 +592,12 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>sort newsgroups in each catalog (default: <i>false</i>)</p>
   </blockquote>
+<a name=hide_email></a>
+  <p><strong>$CFG["hide_email"]</strong></p>
+  <blockquote> 
+    <p>Hide E-Mail by JavaScript - this makes it difficult for SpamBots to automatically obtain email addresses when they scan webnews pages (default: <i>true</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
+  </blockquote>
 <a name=email_editing></a>
   <p><strong>$CFG["email_editing"]</strong></p>
   <blockquote> 

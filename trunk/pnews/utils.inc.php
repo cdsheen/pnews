@@ -714,4 +714,27 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 		fwrite( $hld, "` \nend\n" );
 }
 
+function hide_mail( $email ) {
+	list( $id, $domain ) = explode( '@', $email );
+	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
+	return <<<EMAIL
+<script language="JavaScript">document.write( $hmail );</script>
+EMAIL;
+}
+
+function hide_mail_link( $email, $linktext = '' ) {
+	list( $id, $domain ) = explode( '@', $email );
+	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
+	if( $linktext == '' ) {
+		return <<<EMAIL
+<script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + $hmail + '</a>' );</script>
+EMAIL;
+	}
+	else {
+		return <<<EMAIL
+<script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + "$linktext" + '</a>' );</script>
+EMAIL;
+	}
+}
+
 ?>

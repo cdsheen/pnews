@@ -214,11 +214,15 @@ else {
 		$readlink = read_article( $server, $group, $artnum, $subject, false, 'sub' );
 
 		$artidx = $artnum - $lowmark + 1;
+		if( $CFG['hide_email'] )
+			$hmail = hide_mail_link( $email, $nick );
+		else
+			$hmail = "<a href=\"mailto:$email\">$nick</a>";
 		echo <<<ROW
 <tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
   <td align=right><i>$artidx</i></td>
   <td>$readlink</td>
-  <td title="$email"><a href="mailto:$email">$nick</a></td>
+  <td>$hmail</td>
   <td align=center><font face=serif>$datestr</font></td>
 </tr>
 

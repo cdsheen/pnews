@@ -161,7 +161,12 @@ echo "<table width=100% cellpadding=3 cellspacing=0>\n";
 
 echo "<tr><td class=subject align=left><a href=\"$uri\">$subject </a></td>\n";
 echo "<td class=date>$date</td></tr>\n";
-echo "<tr><td class=author>$from (<a href=\"mailto:$email\">$email</a>)</td>\n";
+if( $CFG['hide_email'] )
+	$hmail = hide_mail_link( $email );
+else
+	$hmail = "<a href=\"mailto:$email\">$email</a>";
+
+echo "<tr><td class=author>$from ($hmail)</td>\n";
 echo "<td class=server>$org</td></tr>\n";
 
 echo "<tr><td colspan=2 class=content>";

@@ -517,54 +517,54 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 #	$filename = trim($filename);
 
 	if( $type == 'uuencode' ) {
-		# http://www.drbob42.com/books/uucode.htm
+
+		function DEC( $char ) {
+			return( (ord($char[0]) - 32) & 077 );
+		}
+
 		$pass = 0;
 		while( $buf = fgets( $nhd, 4096 ) ) {
-			$buf = trim($buf);
-			if( $buf == '.' )
+			$tbuf = trim($buf);
+			if( $tbuf == '.' )
 				break;
 			if( $pass == 2 ) {	# Skip the rest
 				continue;
 			}
 			elseif( $pass == 1 ) {
-				if( strtolower($buf) == 'end' )
+				if( strtolower($tbuf) == 'end' )
 					$pass = 2;
 				else {
-					$len = ord($buf[0]);
-					$len -= 32;
-					$len &= 63;
-					if( $len <= 0 ) {
+					$i = DEC($buf[0]);
+
+					if( $i <= 0 ) {
 						continue;
 					}
-					if( $len < 3 ) {
-						$byte[0] = ( (ord($buf[1]) - 32) & 63);
-						$byte[1] = ( (ord($buf[2]) - 32) & 63);
-						$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
-						if( $len > 1 ) {
-							$byte[2] = ( (ord($buf[3]) - 32) & 63);
-							$tmp .= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
-						}
-						$binary .= $tmp;
-					}
-					else {
-						$sets = $len / 3;
-						for( $set = 0 ; $set < $sets ; $set++) {
-							$byte[0] = ( ord($buf[$set*4+1]) - 32) & 63;
-							$byte[1] = ( ord($buf[$set*4+2]) - 32) & 63;
-							$byte[2] = ( ord($buf[$set*4+3]) - 32) & 63;
-							$byte[3] = ( ord($buf[$set*4+4]) - 32) & 63;
+
+					for( $p = 1 ; $i > 0 ; $p += 4, $i -= 3 ) {
+						if( $i >= 3 ) {
+							$byte[0] = DEC($buf[$p]);
+							$byte[1] = DEC($buf[$p+1]);
+							$byte[2] = DEC($buf[$p+2]);
+							$byte[3] = DEC($buf[$p+3]);
 
 							$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
-							if( $set*3+2 <= $len )
-								$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
-							if( $set*3+3 <= $len )
-								$tmp.= chr(($byte[2] << 6 | $byte[3] >> 0) & 0xff);
-							$binary.= $tmp;
+							$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
+							$tmp.= chr(($byte[2] << 6 | $byte[3] ) & 0xff);
 						}
+						else {
+							$byte[0] = DEC($buf[$p]);
+							$byte[1] = DEC($buf[$p+1]);
+							$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
+							if( $i > 1 ) {
+								$byte[2] = DEC($buf[$p+2]);
+								$tmp .= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
+							}
+						}
+						$binary.= $tmp;
 					}
 				}
 			}
-			elseif( preg_match( '/^begin\s(\d+)\s'.$filename.'$/i', $buf, $match ) ) {
+			elseif( preg_match( '/^begin\s(\d+)\s'.$filename.'$/i', $tbuf, $match ) ) {
 				$pass = 1;
 			}
 		}

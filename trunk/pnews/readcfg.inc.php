@@ -279,6 +279,9 @@ if( !isset( $CFG['url_rewrite'] ) )
 if( !isset( $CFG['email_editing'] ) ) 
 	$CFG['email_editing'] = true;
 
+if( !isset( $CFG['hide_email'] ) )
+	$CFG['hide_email'] = true;
+
 if( !isset( $CFG['articles_per_page'] ) ) 
 	$CFG['articles_per_page'] = 20;
 
