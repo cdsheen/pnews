@@ -203,7 +203,10 @@ Author:
 <blockquote>
 Shen Cheng-Da<br />
 Taipei, Taiwan<br />
-cdsheen @ users . sourceforge . net<br />
+<script language="JavaScript">
+	document.write("cdsheen" + "&#64;" + "users&#46;sourceforge&#46;net");
+</script>
+<br />
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>

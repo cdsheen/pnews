@@ -49,11 +49,18 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.4.2 (2003/11/01)
+<ul>
+<li>Workaround for broken news server which expiration not work correctly.
+<li>Support command to show original article, inclding NNTP headers.
+<li>Blank lines can be stripped in the quoted reply.
+<li>Viewing and downloading UUENCODE attachment.
+</ul>
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>
 <li>Fix a potential bug which cause heavy loading if caching is enabled.
 <li>Fix a bug about indexing articles which cause execution timeout.
-<li>Login fail message is now displayed if using "form" style login
+<li>Login fail message is now displayed if using "form" style login.
 <li>Refined interface and style sheet.
 <li>Default value of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> is <i>false</i> now.
 <li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module
