@@ -19,11 +19,18 @@
 
 $php_news_agent = "PHP News Reader $pnews_version (CDSHEEN)";
 
+$nnrp_debug_level = 0;
+
 function nnrp_open ( $nnrp_server, $ssl_enable = false ) {
 	if( $ssl_enable )
 		return( open_nntps( $nnrp_server ) );
 	else
 		return( open_nntp( $nnrp_server ) );
+}
+
+function set_nnrp_debug_level( $level ) {
+	global $nnrp_debug_level;
+	$nnrp_debug_level = $level;
 }
 
 function open_nntp ( $nnrp_server ) {
@@ -700,16 +707,26 @@ function nnrp_close( $nhd ) {
 }
 
 function send_command( $nhd, $cmd ) {
-	global $nnrp_last_command;
-#	echo "[$cmd]<br />\n";
+	global $nnrp_last_command, $nnrp_debug_level;
+
 	$nnrp_last_command = $cmd;
 	@fwrite( $nhd, "$cmd\r\n");
+	if( strstr( $cmd, "AUTHINFO" ) )
+		$cmd = "AUTHINFO  <user>  <passwd>";
+	if( $nnrp_debug_level == 2 )
+		echo "C: [$cmd]<br />\n";
+	elseif( $nnrp_debug_level == 1 )
+		echo "<!-- C: [$cmd] -->\n";
 }
 
 function get_status( $nhd ) {
-	global $nnrp_last_result;
+	global $nnrp_last_result, $nnrp_debug_level;
 	$responds = @fgets( $nhd, 1024 );
-#	echo "[$responds]<br />\n";
+	$responds = chop($responds);
+	if( $nnrp_debug_level == 2 )
+		echo "S: [$responds]<br />\n";
+	elseif( $nnrp_debug_level == 1 )
+		echo "<!-- S: [$responds] -->\n";
 	$nnrp_last_result = $responds;
 	preg_match( '/^(\d+)\s*(.+)$/', $responds, $match );
 	return( array($match[1], $match[2]) );

@@ -49,6 +49,8 @@ $show_mode        = 0;
 if( $CFG['filter_ansi_color'] )
 	$show_mode |= FILTER_ANSI;
 
+set_nnrp_debug_level( $CFG['debug_level'] );
+
 #if( $referal == '' )
 #	$referal = 'index.php';
 

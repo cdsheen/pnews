@@ -56,6 +56,7 @@ PHP News Reader v2.5.2 (2004/01/22)
 <li>Various fixes for the javascript errors when <a href=guide.php#hide_email>\$CFG['hide_email']</a> is enabled.
 <li>HTTP authenticatin info can be used in NNTP authentication. (<a href=guide.php#grouplst_auth>%http_user</a>, <a href=guide.php#grouplst_auth>%http_pw</a>)
 <li>Catalog can be hided by 'hidden' in the <a href=guide.php#grouplst_option>option</a> directive.
+<li>Debug information can be examined by setting <a href=guide.php#debug_level>\$CFG["debug_level"]</a>.
 <li>Documentation for newsgroups.lst is refined.
 </ul>
 PHP News Reader v2.5.1 (2003/12/25)

@@ -323,6 +323,9 @@ if( !isset($CFG['log']) )
 if( !isset($CFG['log_level']) )
 	$CFG['log_level'] = 3;
 
+if( !isset($CFG['debug_level']) )
+	$CFG['debug_level'] = 0;
+
 if( $CFG['log'] && !is_writable($CFG['log']) )
 	show_error( '$CFG["log"]: You does not have write permission on ' . $CFG['log'] );
 

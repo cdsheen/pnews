@@ -243,6 +243,14 @@ $CFG["auth_expire_time"] = 1800;
 // $CFG["log_level"] = 1;
 
 
+# [debug_level] Debug verbose level (default: 0)
+#       0 - Turn off NNTP debug information
+#       1 - NNTP debug information will be embeded in HTML comments
+#       2 - NNTP debug information will be shown inline with HTML
+
+// $CFG["debug_level"] = 1;
+
+
 ############################################################################
 # Section 2 - Contents - Configure the contents
 ############################################################################

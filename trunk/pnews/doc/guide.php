@@ -496,6 +496,18 @@ You can download phpCAS from the following place:<br />
     <p>$CFG["log_level"] = 2;</p>
     <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=debug_level></a>
+  <p><strong>$CFG["debug_level"]</strong></p>
+  <blockquote>
+    <p>NNTP debug verbose level (default: <i>0</i>)</p>
+	<blockquote>
+        0 - Turn off NNTP debug information<br />
+        1 - NNTP debug information will be embeded in HTML comments<br />
+        2 - NNTP debug information will be shown inline with HTML page
+	</blockquote>
+    <p>$CFG["debug_level"] = 1;</p>
+    <p>This setting first appeared in the <b>v2.5.2</b> of PHP News Reader</p>
+  </blockquote>
   <p>&nbsp;</p>
 <a name=section2></a>
 <hr width=90% />
