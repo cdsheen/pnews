@@ -39,10 +39,12 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.5.7 (2004/04/)
+PHP News Reader v2.5.7 (2004/06/02)
 <ul>
 <li>Group description can be eliminated by setting <a href=guide.php#show_group_description>\$CFG['show_group_description']</a> to <i>false</i>
 <li>Support <a href=guide.php#html_header>\$CFG['html_header']</a> and <a href=guide.php#html_footer>\$CFG['html_footer']</a> to customize the header and the footer.
+<li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is renamed as <a href=guide.php#show_latest_top>\$CFG["show_latest_top"]</a>
+<li>The page number of group indexing is now displayed as a selector, which can be switched easily.
 </ul>
 PHP News Reader v2.5.6 (2004/04/01)
 <ul>

@@ -55,8 +55,20 @@ echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark  (count: $artsize)-->\n";
 
 $artsppg = $CFG['articles_per_page'];
 
-if( !isset($_GET['cursor']) )
-	$cursor = $highmark;
+$totalpg = ceil($artsize / $artsppg) ;
+
+if( !isset($_GET['cursor']) ) {
+	if( isset( $_GET['page'] ) ) {
+		$cpg = $_GET['page'];
+		if( $CFG['show_latest_top'] )
+			$tmpidx = $artsize - ($cpg-1)*$artsppg - 1;
+		else
+			$tmpidx = $artsize - ($totalpg-$cpg)*$artsppg - 1;
+		$cursor = $artlist[$tmpidx];
+	}
+	else
+		$cursor = $highmark;
+}
 else
 	$cursor = $_GET['cursor'];
 
@@ -154,11 +166,11 @@ while( $i >= $lowmark ) {
 		break;
 }
 
-if( !$CFG['show_newest_top'] ) {
+if( !$CFG['show_latest_top'] ) {
 	sort($curlist);
 }
 if( $ncount > 0 ) {
-	if( $CFG['show_newest_top'] ) {
+	if( $CFG['show_latest_top'] ) {
 		$show_from = $curlist[$ncount - 1];
 		$show_end  = $curlist[0];
 	}
@@ -177,7 +189,7 @@ if( $ncount == 0 ) {
 	$show_from = $show_end = $cursor;
 }
 else {
-	if( $CFG['show_newest_top'] )
+	if( $CFG['show_latest_top'] )
 		krsort($xover);
 
 	foreach( $xover as $artnum => $ov ) {
@@ -241,15 +253,14 @@ ROW;
 
 echo "</table>\n";
 
-$totalpg = ceil($artsize / $artsppg) ;
 
 echo "<!-- Total arts: $artsize   Arts/page: $artsppg   Total pages: $totalpg -->\n";
 
 if( $totalpg == 1 )
 	$page = 1;
-elseif( $CFG['show_newest_top'] ) {
+elseif( $CFG['show_latest_top'] ) {
 	$page = floor( ( $artsize - array_search( $show_from, $artlist ) + 1 ) / $artsppg);
-#	echo "<!-- show_newest_top: $page -->\n";
+#	echo "<!-- show_latest_top: $page -->\n";
 	if( $page == 1 && $show_end < $highmark )
 		$page = 2;
 	elseif( $page == $totalpg && $show_from > $lowmark )
@@ -274,7 +285,7 @@ echo "<table width=100% border=0 cellpadding=2 cellspacing=1>";
 
 echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG['show_newest_top'] )
+if( $CFG['show_latest_top'] )
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
@@ -317,7 +328,7 @@ else
 
 echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG['show_newest_top'] )
+if( $CFG['show_latest_top'] )
 	if( $show_from > $lowmark ) {
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$lower\">$strNextPage</a>";
@@ -362,22 +373,35 @@ else
 #		$totalpg = $page;
 	}
 
-$pg_str = sprintf( "<select name=pageidx onLoad='initPage(%s,%s)' onChange='changePage()'></select>", $totalpg, $page );
+$pg_str = sprintf( "<form style='display: inline;' name=select><select name=pgidx class=pgidx onLoad='initPage(document.select.pgidx)' onChange='changePage(document.select.pgidx)'></select></form>" );
 $pg_str = sprintf( $strPageNumber, $pg_str, $totalpg );
 
 echo <<<PG
 </td><td class=page align=center onMouseover='this.className="page_hover";' onMouseout='this.className="page";'>
 <script language=javascript>
-function initPage( totalpage, currpage ) {
-
+function initPage(pgidx) {
+	pgidx.length = $totalpg;
+	for( i = 0 ; i < $totalpg; i++ ) {
+		pg = i+1;
+		pgidx.options[i].text = pg;
+		pgidx.options[i].value = pg;
+	}
+	pgidx.selectedIndex = $page-1;
 }
-function changePage() {
+PG;
+if( $CFG['url_rewrite'] )
+	$pageurl = "group/$reserver/$group/p";
+else
+	$pageurl = "$self?server=$server&group=$group&page=";
+?>
+
+function changePage(pgidx) {
+	window.location = '<? echo $pageurl; ?>' + pgidx.options[pgidx.selectedIndex].value;
 }
 </script>
-$pg_str
+<? echo $pg_str; ?>
 </td>
-PG;
-
+<?
 echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$global_readonly && !$news_readonly[$c] ) {
 	if( !$auth_success && $CFG['auth_prompt'] == 'other' )
@@ -388,8 +412,10 @@ if( !$global_readonly && !$news_readonly[$c] ) {
 else
 	echo '&nbsp;';
 echo "</td>";
-
 echo <<<EOT
+<script language=javascript>
+  initPage(document.select.pgidx);
+</script>
     <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
       <a href="javascript:reload()">$strRefresh</a>
     </td>

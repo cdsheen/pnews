@@ -55,6 +55,7 @@ td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; 
 tr.footbar      { font-size: 12px }
 
 select.lang     { margin: 0pt; font-size: 12px; color: blue; background: #DDFFEE }
+select.pgidx    { margin: 0pt; font-size: 12px; color: black; background: #EEFFEE }
 
 input.login     { background: #EEDDFF; width: 110pt }
 input.normal    { vertical-align: top; background: #DDDDDD }
