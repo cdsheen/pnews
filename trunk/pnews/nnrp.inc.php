@@ -22,7 +22,7 @@ $php_news_agent = "PHP News Reader $pnews_version (CDSHEEN)";
 function nnrp_open ( $nnrp_server ) {
 
 	$nhd = null;
-	$nhd = @fsockopen( $nnrp_server, 119 );
+	$nhd = @fsockopen( $nnrp_server, 119, $errno, $errstr, 4 );
 
 	if( ! $nhd )
 		return(null);
