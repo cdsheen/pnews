@@ -62,6 +62,8 @@ $strPost               = '發表文章';
 
 $strCloseWindow        = '關閉視窗';
 
+$strShowHeader         = '顯示全部';
+
 $strFirstPage          = '第一頁';
 $strLastPage           = '最後一頁';
 $strNextPage           = '下一頁';

@@ -167,7 +167,8 @@ elseif( $artnum != '' ) {
 
 	printf("\n\n\n$strForwardFrom\n", "$from ($email)" );
 	printf( "$strPostStatus\n\n", $date, $group );
-	nnrp_body( $nhd, $artnum, '', "\n", false, false, $article_convert['to'] );
+	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
+	nnrp_show( $nhd, $artnum, $show_mode, '', "\n", $article_convert['to'] );
 	nnrp_close($nhd);
 
 	echo "\n</textarea>\n";

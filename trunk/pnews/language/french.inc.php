@@ -63,6 +63,8 @@ $strPost               = 'Poster';
 
 $strCloseWindow        = 'Fermer';
 
+$strShowHeader         = 'Show header';
+
 $strFirstPage          = 'Premier';
 $strLastPage           = 'Dernier';
 $strNextPage           = 'Suivant';

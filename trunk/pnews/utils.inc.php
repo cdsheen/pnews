@@ -37,6 +37,11 @@ $auto_slash       = get_magic_quotes_gpc();
 
 $referal          = $_SERVER['HTTP_REFERER'];
 
+$show_mode        = 0;
+
+if( $CFG['filter_ansi_color'] )
+	$show_mode |= FILTER_ANSI;
+
 #if( $referal == '' )
 #	$referal = 'index.php';
 

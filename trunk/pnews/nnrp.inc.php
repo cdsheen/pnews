@@ -356,38 +356,57 @@ function nnrp_last( $nhd, $artnum ) {
 	return( $lastart );
 }
 
-function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
-	nnrp_show ( $nhd, 'ARTICLE', $artnum, $prepend, $postpend, $urlquote, $grep_signature, $trans_func, $leading_space );
-}
+define( 'SHOW_HYPER_LINK',  1 );
+define( 'SHOW_SIGNATURE',   2 );
+define( 'SPACE_ASIS',       4 );
+define( 'SHOW_NULL_LINE',   8 );
+define( 'SHOW_HEADER',     16 );
+define( 'FILTER_ANSI',     32 );
 
-function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
-	nnrp_show ( $nhd, 'BODY', $artnum, $prepend, $postpend, $urlquote, $grep_signature, $trans_func, $leading_space );
-}
+function nnrp_show ( $nhd, $artnum, $mode, $prepend = '', $postpend = '', $trans_func = null ) {
 
-function nnrp_show ( $nhd, $cmd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
-	global $CFG;
-	send_command( $nhd, "$cmd $artnum" );
+	$mode = intval($mode);
+
+	$show_hlink     = ($mode & SHOW_HYPER_LINK) >0;
+	$show_sig       = ($mode & SHOW_SIGNATURE)  >0;
+	$space_asis     = ($mode & SPACE_ASIS)      >0;
+	$show_null_line = ($mode & SHOW_NULL_LINE)  >0;
+	$show_header    = ($mode & SHOW_HEADER)     >0;
+	$filter_ansi    = ($mode & FILTER_ANSI)     >0;
+
+	if( $show_header )
+		send_command( $nhd, "ARTICLE $artnum" );
+	else
+		send_command( $nhd, "BODY $artnum" );
+
 	list( $code, $msg ) = get_status( $nhd );
 
 	if( $code[0] != '2' )
 		return(null);
 
 	$n = 0 ;
+
+	$header = $show_header;
+
 	$skip = false;
 	while( $buf = fgets( $nhd, 4096 ) ) {
 		$buf = chop( $buf );
-		if( $buf == "." )
+		if( $buf == '.' )
 			break;
 		if( $skip )
 			continue;
-		if( $grep_signature && $buf == '--' ) {
+
+		if( $header && $buf == '' )
+			$header = false;
+
+		if( !$show_sig && $buf == '--' ) {
 			$skip = true;
 			continue;
 		}
 		# quote out special chars
 		$buf = htmlspecialchars($buf, ENT_NOQUOTES );
 
-		if( $urlquote ) {
+		if( !$header && $show_hlink ) {
 
 			# hyperlink/email auto-detection
 
@@ -398,14 +417,17 @@ function nnrp_show ( $nhd, $cmd, $artnum, $prepend = "", $postpend = "", $urlquo
 
 		}
 		# filter ANSI codes
-		if( $CFG['filter_ansi_color'] )
+		if( $filter_ansi )
 			$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
+
+		if( !$show_null_line && $buf == '' )
+			continue;
 
 		if( $trans_func )
 			$buf = $trans_func( $buf );
 
 		# replace the leading space as &nbsp;
-		if( $leading_space && preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
+		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
 			$buf = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
 
 		echo $prepend . $buf . $postpend;

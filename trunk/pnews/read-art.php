@@ -55,11 +55,13 @@ if( $CFG['url_rewrite'] ) {
 	$nexturl = ($nextnum>0) ? "$urlbase/article/$reserver/$group/$nextnum" : '';
 	$lasturl = ($lastnum>0) ? "$urlbase/article/$reserver/$group/$lastnum" : '';
 	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
+	$headerurl = "$urlbase/article/$reserver/$group/{$artnum}h";
 }
 else {
 	$nexturl = ($nextnum>0) ? "read-art.php?server=$server&group=$group&artnum=$nextnum" : '';
 	$lasturl = ($lastnum>0) ? "read-art.php?server=$server&group=$group&artnum=$lastnum" : '';
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
+	$headerurl = "read-art.php?server=$server&group=$group&artnum=$artnum&header";
 }
 
 #list( $from, $email, $subject, $date, $msgid, $org )
@@ -130,6 +132,13 @@ echo "<center>\n";
 	}
 
 	echo "</td>";
+
+	if( !isset($_GET['header']) ) {
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<a href=\"$headerurl\">$strShowHeader</a>";
+		echo "</td>\n";
+	}
+
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	if( $lasturl == '' )
 		echo $strLastArticle;
@@ -157,14 +166,20 @@ echo "<td class=server>$org</td></tr>\n";
 echo "<tr><td colspan=2 class=content>";
 
 echo "<hr />";
+
+$show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
+
+if( isset($_GET['header']) )
+	$show_mode |= SHOW_HEADER;
+
 if( $artconv['to'] )
-	nnrp_body( $nhd, $artnum, "", "<br />\n", true, false, $artconv['to'] );
+	nnrp_show( $nhd, $artnum, $show_mode, '', "<br />\n", $artconv['to'] );
 else
-	nnrp_body( $nhd, $artnum, "", "<br />\n" );
+	nnrp_show( $nhd, $artnum, $show_mode, '', "<br />\n" );
+
 nnrp_close($nhd);
 
 echo "</td></tr><tr><td align=center colspan=2>\n";
-
 
 echo "</td></tr>";
 echo "</table>";

@@ -241,7 +241,10 @@ elseif( $artnum != '' ) {
 	echo "</td></tr></table></center>\n";
 	echo "<textarea name=quote style='display: none' disabled>";
 	printf("\n$strQuoteFrom\n", "$from ($email)" );
-	nnrp_body( $nhd, $artnum, "&gt ", "\n", false, true, $artconv['to'], false );
+
+	$show_mode |= SPACE_ASIS;
+	nnrp_show( $nhd, $artnum, $show_mode, '&gt; ', "\n", $artconv['to'] );
+
 	nnrp_close($nhd);
 	echo "</textarea>";
 	echo "</form>\n";
