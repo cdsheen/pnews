@@ -21,7 +21,8 @@ echo '
 <hr>
 PHP News Reader v2.1.1 (2003/03/08?)
 <ul>
-<li>The format of time can be configured by $CFG["time_format"].
+<li>The format of time displayed can be configured by $CFG["time_format"].
+<li>The title of indexing shows group name only.
 </ul>
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
