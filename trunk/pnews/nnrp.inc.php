@@ -233,11 +233,13 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$ov[$n][1] = $from[1];
 			$ov[$n][3] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $xover[$ovfmt['From:']], $from ) ) {
+		elseif( preg_match( '/^(.+)? <(.+)>$/', $xover[$ovfmt['From:']], $from ) ) {
+			$from[1] = strip_quotes( $from[1] );
 			$ov[$n][1] = decode_subject($from[1]);
 			$ov[$n][3] = $from[2];
 		}
-		elseif( preg_match( '/^(\S+) \("?([^"]+)?"?\)$/', $xover[$ovfmt['From:']], $from ) ) {
+		elseif( preg_match( '/^(\S+) \((.+)?\)$/', $xover[$ovfmt['From:']], $from ) ) {
+			$from[2] = strip_quotes( $from[2] );
 			$ov[$n][1] = decode_subject($from[2]);
 			$ov[$n][3] = $from[1];
 		}
@@ -726,6 +728,13 @@ function mb_wordwrap($str)
 	return $str_conv;
 }
 
+function strip_quotes( $str ) {
+	if( preg_match( '/^"(.+)"$/', $str, $quotes ) )
+		return( $quotes[1] );
+	else
+		return( $str );
+}
+
 function get_mime_info( $headers, $def_charset, $time_format ) {
 
 	$artinfo['charset'] = $def_charset;
@@ -739,8 +748,7 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			array_shift( $ctype );
 			foreach( $ctype as $c_param ) {
 				if( preg_match( '/^(.+)\s*=\s*(.+)$/', $c_param, $match ) ) {
-					if( preg_match( '/^"(.+)"$/', $match[2], $quotes ) )
-						$match[2] = $quotes[1];
+					$match[2] = strip_quotes( $match[2] );
 					if( $match[1] == 'charset' )
 						$artinfo['charset'] = strtolower($match[2]);
 					elseif( $match[1] == 'boundary' )
@@ -769,11 +777,13 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^(.+)? <(.+)>$/', $headers['From'], $from ) ) {
+			$from[1] = strip_quotes( $from[1] );
 			$artinfo['name'] = decode_subject($from[1]);
 			$artinfo['mail'] = $from[2];
 		}
-		elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^(\S+@\S+) \((.+)?\)$/', $headers['From'], $from ) ) {
+			$from[2] = strip_quotes( $from[2] );
 			$artinfo['name'] = decode_subject($from[2]);
 			$artinfo['mail'] = $from[1];
 		}
