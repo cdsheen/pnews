@@ -232,6 +232,16 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = on;
 
 
+# [article_order_reverse] reverse the order while showing articles list (default: off)
+
+// $CFG["article_order_reverse"] = on;
+
+
+# [show_article_popup] Show article in pupup window (default: off)
+
+// $CFG["show_article_popup"] = on;
+
+
 # [time_format] The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")
 
 // $CFG["time_format"] = "%Y/%m/%d %H:%M:%S";

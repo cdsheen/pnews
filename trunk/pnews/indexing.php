@@ -54,6 +54,8 @@ $forward = isset($_GET['forward']);
 
 echo "<!-- cursor: $cursor    lineppg: $lineppg -->\n";
 
+#if( $CFG['article_order_reverse'] )
+
 if( $forward )
 	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $highmark );
 else
@@ -64,39 +66,21 @@ $ncount = sizeof($xover);
 $show_from = $xover[0][0];
 $show_end  = $xover[$ncount-1][0];
 
-$page = floor(($highmark - $show_from+1) / $lineppg);
 
-if( $page == 1 && $show_end < $highmark )
-	$page = 2;
-elseif( $page == $totalpg && $show_from > $lowmark )
-	$page = $totalpg - 1;
-
-/*
-	$page = $_GET['page'];
-
-	if( !isset($_GET['page']) || $page < 1 || $page > $totalpg )
-		$page = 1;
-
-	$prev_pg = $page - 1;
-	$next_pg = $page + 1;
-
-	if( $page == $totalpg ) {
-		$show_from = $lowmark;
-		$show_end = $show_from + ( ( $totalpst > $lineppg ) ? ($lineppg-1) : $totalpst );
-	}
-	else {
-		$show_from = $highmark - $lineppg*$page + 1 ;
-		$show_end  = $show_from + $lineppg - 1;
-	}
-
-	if( $show_from < $lowmark )
-		$show_from = $lowmark;
-
-#	$xover = nnrp_xover( $nhd, $show_from, $show_end );
-	$xover = nnrp_xover_limit( $nhd, $show_from, 20, $highmark );
-
-	$ncount = sizeof($xover);
-*/
+if( $CFG['article_order_reverse'] ) {
+	$page = floor(($highmark - $show_from+1) / $lineppg);
+	if( $page == 1 && $show_end < $highmark )
+		$page = 2;
+	elseif( $page == $totalpg && $show_from > $lowmark )
+		$page = $totalpg - 1;
+}
+else {
+	$page = floor(($show_end - $lowmark+1) / $lineppg);
+	if( $page == 1 && $show_from > $lowmark )
+		$page = 2;
+	elseif( $page == $totalpg && $show_end < $highmark )
+		$page = $totalpg - 1;
+}
 
 echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
 
@@ -146,7 +130,10 @@ echo "
 if( $ncount == 0 ) {
 	echo "<tr class=a><td colspan=4 class=x height=50>$strNoArticle</td></tr>\n";
 }
-for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
+
+$i = ( $CFG['article_order_reverse'] ) ? $ncount - 1 : 0 ;
+
+for( ; ; ) {
 	if( strlen( $xover[$i][1] ) > $subject_limit )
 		$subject = substr( $xover[$i][1], 0, $subject_limit ) . ' ..';
 	else
@@ -186,10 +173,10 @@ for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
 <tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
   <td class=index align=right><i>
 <?
-	if( $CFG['url_rewrite'] )
-		echo "<a href=\"article/$server/$group/" . $xover[$i][0] . '">' . ( $xover[$i][0]-$lowmark+1 ) . '</a>';
-	else
-		echo $xover[$i][0]-$lowmark+1; ?>
+#	if( $CFG['url_rewrite'] )
+#		echo "<a href=\"article/$server/$group/" . $xover[$i][0] . '">' . ( $xover[$i][0]-$lowmark+1 ) . '</a>';
+#	else
+	echo $xover[$i][0]-$lowmark+1; ?>
 </i></td>
   <td class=index>
   <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
@@ -198,56 +185,109 @@ for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
   <td class=index align=right><font face=serif><? echo $datestr; ?></font></td>
 </tr>
 <?
-
+	if( $CFG['article_order_reverse'] ) {
+		$i--;
+		if( $i < 0 ) break;
+	}
+	else {
+		$i++;
+		if( $i >= $ncount ) break;
+	}
 }
 echo "</table>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
 
-if( $show_end < $highmark ) {
-	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group>$strFirstPage</a>";
-	else
-		echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
-	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+if( $CFG["article_order_reverse"] )
+	if( $show_end < $highmark ) {
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group>$strFirstPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
-	$target = $show_end + 1 ;
+		$target = $show_end + 1 ;
 
-	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group/${target}r>$strPreviousPage</a>";
-	else
-		echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strPreviousPage</a>";
-}
-else {
-	echo $strFirstPage;
-	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-	echo "<font color=gray>$strPreviousPage</font>";
-}
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/${target}r>$strPreviousPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strPreviousPage</a>";
+	}
+	else {
+		echo $strFirstPage;
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "<font color=gray>$strPreviousPage</font>";
+	}
+else
+	if( $show_from > $lowmark ) {
+		$target = $show_from - 1;
+
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/${lowmark}r>$strFirstPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strFirstPage</a>";
+
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/$target>$strPreviousPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$target>$strPreviousPage</a>";
+	}
+	else {
+		echo $strFirstPage;
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "<font color=gray>$strPreviousPage</font>";
+	}
 
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
-if( $show_from > $lowmark ) {
-	$target = $show_from - 1;
-	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group/$target>$strNextPage</a>";
-	else
-		echo "<a href=$self?server=$server&group=$group&cursor=$target>$strNextPage</a>";
+if( $CFG["article_order_reverse"] )
+	if( $show_from > $lowmark ) {
+		$target = $show_from - 1;
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/$target>$strNextPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$target>$strNextPage</a>";
 
-	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
-	if( $CFG['url_rewrite'] )
-		echo "<a href=group/$server/$group/${lowmark}r>$strLastPage</a>";
-	else
-		echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
-}
-else {
-	echo "<font color=gray>$strNextPage</font>";
-	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-	echo $strLastPage;
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/${lowmark}r>$strLastPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
+	}
+	else {
+		echo "<font color=gray>$strNextPage</font>";
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo $strLastPage;
 
-	$totalpg = $page;
-}
+		$totalpg = $page;
+	}
+else
+	if( $show_end < $highmark ) {
+		$target = $show_end + 1 ;
+
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group/${target}r>$strNextPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strNextPage</a>";
+
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+
+		if( $CFG['url_rewrite'] )
+			echo "<a href=group/$server/$group>$strLastPage</a>";
+		else
+			echo "<a href=$self?server=$server&group=$group>$strLastPage</a>";
+	}
+	else {
+		echo "<font color=gray>$strNextPage</font>";
+		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+		echo $strLastPage;
+
+		$totalpg = $page;
+	}
 
 echo "</td>";
 

@@ -116,6 +116,7 @@ echo "<td align=right class=x>$org</td></tr>\n";
 #toolbar( $server, $group, $artnum, $subject );
 
 echo "<tr><td colspan=2 bgcolor=#EEFFEE>";
+
 echo "<hr><font size=2>";
 if( $artconv['to'] )
 	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $artconv['to'] );
@@ -141,7 +142,7 @@ function toolbar( $server, $group, $artnum, $title ) {
 	echo "<table border=1 cellspacing=0 cellpadding=2>\n";
 	if( !$post_restriction ) {
 		echo "<tr>";
-		if( ! $newwin ) {
+		if( ! $CFG['show_article_popup'] ) {
 			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
 			echo "<a href=\"$nexturl\">$strNextArticle</a>";
 			echo "</td>\n";
@@ -176,7 +177,7 @@ function toolbar( $server, $group, $artnum, $title ) {
 			echo "&nbsp;";
 		echo "</td>\n";
 	}
-#	echo "<tr>";
+
 	$host = $_SERVER['HTTP_HOST'];
 	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
 	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
@@ -184,9 +185,12 @@ function toolbar( $server, $group, $artnum, $title ) {
 	else
 		echo "&nbsp;";
 	echo "</td>\n";
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-	echo "<a href=\"javascript:close_window()\">$strCloseWindow</a>";
-	echo "</td>";
+
+	if( $CFG['show_article_popup'] ) {
+		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+		echo "<a href=\"javascript:close_window()\">$strCloseWindow</a>";
+		echo "</td>";
+	}
 	echo "<td bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
 #	echo "Language: ";
 	show_language_switch();

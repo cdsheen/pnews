@@ -149,6 +149,12 @@ if( !isset( $CFG['banner'] ) )
 if( !isset( $CFG['title'] ) )
 	$CFG['title'] = 'Webnews';
 
+if( !isset( $CFG['article_order_reverse'] ) )
+	$CFG['article_order_reverse'] = false;
+
+if( !isset( $CFG['show_article_popup'] ) )
+	$CFG['show_article_popup'] = false;
+
 if( !isset( $CFG['group_sorting'] ) )
 	$CFG['group_sorting'] = false;
 
