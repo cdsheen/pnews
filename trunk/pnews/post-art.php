@@ -181,18 +181,19 @@ echo <<<EOF
 EOF;
 	$an = intval($CFG['allow_attach_file']);
 	for( $i = 1; $i <= $an ; $i++ ) {
+		$ti = 4+$i;
 		if( $i % 2 == 1 ) {
 			echo <<<EOA
  <tr><td class=field>
  $strAttachment $i:</td>
- <td><input name="attach$i" type="file">
+ <td><input name="attach$i" type="file" tabindex="$ti">
  </td>
 EOA;
 		}
 		else {
 			echo <<<EOA
  <td class=field align=right>$strAttachment $i:
- <input name="attach$i" type="file">
+ <input name="attach$i" type="file" tabindex="$ti">
  </td></tr>
 EOA;
 		}
