@@ -177,6 +177,7 @@ while ( list ($group, $value) = each ($active) ) {
 		$value[2] = '&nbsp;';
 
 	$num = $value[0] - $value[1] + 1;
+	if( $num < 0 ) $num = 0;
 
 	echo <<<EOR
 <tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
