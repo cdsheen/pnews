@@ -390,11 +390,13 @@ $CFG["show_sourceforge_logo"] = true;
 ############################################################################
 #
 #    Natively supported languages and the codings are:
-#        "en" - Englush                    US-ASCII
+#        "en" - English                    US-ASCII
 #     "zh-tw" - Traditional Chinese        BIG5
 #     "zh-cn" - Simplified Chinese         GB2312
 #   "unicode" - Unicode                    UTF-8       (default)
+#        "de" - German                     ISO-8859-1
 #        "fr" - French                     ISO-8859-1
+#        "fi" - Finnish                    ISO-8859-1
 
 # [interface_language] The language setting of interface (default: "en")
 

@@ -23,6 +23,7 @@ $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
 			'zh-cn'      => 'Chinese (GB)',
 			'unicode'    => 'Unicode (UTF-8)',
+			'de'         => 'German',
 			'fr'         => 'Fran&ccedil;ais',
 			'fi'         => 'Finnish'    );
 
@@ -30,6 +31,7 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php',
+			'de'         => 'language/german.inc.php',
 			'fr'         => 'language/french.inc.php',
 			'fi'         => 'language/finnish.inc.php' );
 
@@ -37,6 +39,7 @@ $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
+			'de'         => 'iso-8859-1',
 			'fr'         => 'iso-8859-1',
 			'fi'         => 'iso-8859-1'     );
 #			'fr'         => 'fr-ascii'       );
@@ -46,6 +49,7 @@ $charset_alias = array( 'big5'       => 'big5',
 			'gb2312'     => 'gb2312',
 			'utf-8'      => 'utf-8',
 			'iso-8859-1' => 'iso-8859-1',
+			'de-ascii'   => 'iso-8859-1',
 			'us-ascii'   => 'iso-8859-1',
 			'fr-ascii'   => 'iso-8859-1',
 			'ascii'      => 'iso-8859-1' );
