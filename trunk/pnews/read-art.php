@@ -205,25 +205,27 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
 	global $CFG, $nexturl, $lasturl, $idxurl;
 	echo "<table width=100% border=0 cellspacing=2 cellpadding=2>\n";
+	echo "<tr>\n";
+
+	if( ! $CFG['show_article_popup'] ) {
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		if( $nexturl == '' )
+			echo $strNextArticle;
+		else
+			echo "<a href=\"$nexturl\">$strNextArticle</a>";
+		echo "</td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		if( $lasturl == '' )
+			echo $strLastArticle;
+		else
+			echo "<a href=\"$lasturl\">$strLastArticle</a>";
+		echo "</td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
+		echo "</td>\n";
+	}
+
 	if( !$global_readonly && !$news_readonly[$c] ) {
-		echo "<tr>";
-		if( ! $CFG['show_article_popup'] ) {
-			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			if( $nexturl == '' )
-				echo $strNextArticle;
-			else
-				echo "<a href=\"$nexturl\">$strNextArticle</a>";
-			echo "</td>\n";
-			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			if( $lasturl == '' )
-				echo $strLastArticle;
-			else
-				echo "<a href=\"$lasturl\">$strLastArticle</a>";
-			echo "</td>\n";
-			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
-			echo "</td>\n";
-		}
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo reply_article( $server, $group, $artnum, $strReply, false, $CFG['show_article_popup'] );
@@ -243,6 +245,12 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 		else
 			echo "&nbsp;";
 		echo "</td>\n";
+	}
+	else {
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>&nbsp;</td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>&nbsp;</td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>&nbsp;</td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>&nbsp;</td>\n";
 	}
 
 	$host = $_SERVER['HTTP_HOST'];
