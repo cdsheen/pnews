@@ -51,17 +51,17 @@ echo <<<EOH
 -->
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
-<li>Reading article with 'base64' or 'quoted-printable' encoded.
+<li>Reading article which encoded by "base64" or "quoted-printable".
 <li>Workaround for broken news server which expiration does not work correctly.
-<li>Support command to show article headers.
+<li>Article headers can be displayed if necessary.
 <li>Empty lines are deleted in the quoted article when replying.
-<li>Viewing and downloading UUENCODE attachment.
+<li>Allowing download of UUENCODE attachment.
 </ul>
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>
 <li>Fix a potential bug which cause heavy loading if caching is enabled.
 <li>Fix a bug about indexing articles which cause execution timeout.
-<li>Login fail message is now displayed if using "form" style login.
+<li>Login fail message is now displayed when "form" style login is used.
 <li>Refined interface and style sheet.
 <li>Default value of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> is <i>false</i> now.
 <li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module
