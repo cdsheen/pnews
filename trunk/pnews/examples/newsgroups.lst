@@ -12,16 +12,16 @@ server	news1.domain.org
 [catalog1]
 server	news1.domain.org
 group	nopy.*,nopy.comp.network
-auth	none
 option	default
 
 [catalog2]
 # use the default news server
 group	nopy.test,nopy.talk.*
+auth	none
 
 [catalog3]
 server	news2.domain.org
-auth	username,password
 group	nopy.comp.*,nopy.rec.*
+auth	username,password
 charset	gb
 

@@ -33,6 +33,11 @@ $self             = $_SERVER['PHP_SELF'];
 $ip_from          = $_SERVER['REMOTE_ADDR'];
 $self_base        = basename( $self );
 
+if( $CFG['url_rewrite'] )
+	$urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
+
+$referal          = $_SERVER['HTTP_REFERER'];
+
 $post_restriction = $CFG['post_restriction'];
 
 $mail_add_header  = "X-Mailer: $pnews_name $pnews_version (CDSHEEN)\n"; 
@@ -40,8 +45,9 @@ $mail_add_header .= "X-Source: $ip_from";
 
 # Limits definition
 
-$lineppg          = 20;	# Lines Per Page
-$subject_limit    = 55;	# Chars Limit for Subject
+$lineppg          = $CFG['articles_per_page'];
+
+$subject_limit    = 56;	# Chars Limit for Subject
 $nick_limit       = 15;	# Chars Limit for Nickname
 $id_limit         = 18;	# Chars Limit for ID ( E-Mail before @ )
 $org_limit        = 20;	# Chars Limit for Organization
@@ -54,7 +60,7 @@ $textcol          = 66;
 $lst = fopen( $CFG['group_list'], 'r' );
 
 if( !$lst )
-	show_error( "Can not loading " . $CFG['group_list'] . " . Copy examples/newsgroups.lst as a template.");
+	show_error( "Can not load " . $CFG['group_list'] . " . Copy examples/newsgroups.lst as a template.");
 
 $catalog_num = -1;
 $default_catalog = 0 ;
@@ -120,9 +126,10 @@ fclose($lst);
 
 $catalog_num++;
 
-if( isset($_SESSION['POSTVAR']) ) {
+if( $_SESSION['save_postvar'] ) {
 	$_POST = $_SESSION['POSTVAR'];
-	unset( $_SESSION['POSTVAR'] );
+	$_SESSION['POSTVAR'] = array();
+	$_SESSION['save_postvar'] = false;
 }
 
 ##############################################################################
@@ -189,13 +196,10 @@ if( $CFG['auth_type'] != 'open' ) {
 
 	if( isset($_GET['logout']) ) {
 		session_destroy();
-		$uri = str_replace( 'logout=1', '', $uri );
-		$uri = str_replace( '&&', '', $uri );
-		$uri = preg_replace( '/[\?&]$/', '', $uri );
 		if( $CFG['auth_prompt'] == 'http' )
 			http_logout();
 		else {
-			header("Location: $uri");
+			header("Location: $referal");
 			exit;
 		}
 	}
@@ -315,9 +319,15 @@ if( isset($CFG['log']) ) {
 # Functions
 
 function form_login_dialog( $is_expire ) {
-	global $CFG;
+	global $CFG, $referal, $uri;
 	global $strNeedLogin, $strLoginName, $strPassWord, $strUseYourAccountAt, $strLogin, $strAuthExpired;
 
+	if( isset($_GET['login']) )
+		$target = $referal;
+	else
+		$target = $uri;
+
+	$_SESSION['save_postvar'] = true;
 	$_SESSION['POSTVAR'] = $_POST;
 
 ?>
@@ -338,23 +348,26 @@ else
 echo "</td></tr><tr><td align=center bgcolor=#C0C0FF>";
 echo "<font size=2>";
 printf( $strUseYourAccountAt, $CFG['auth_organization'] );
-?>
+
+echo <<<EOF
 </font><p>
-<form name=login action="login.php" method="post">
+<form name=login action="form-login.php" method="post">
 <table>
 <tr>
-<td align=right><? echo $strLoginName; ?></td>
-<td align=left><input class=login name=loginName size=25></td>
+ <td align=right>$strLoginName</td>
+ <td align=left><input class=login name=loginName size=25></td>
 </tr>
 <tr>
-<td align=right><? echo $strPassWord; ?></td>
-<td align=left><input class=login name=passWord type=password size=25></td>
+ <td align=right>$strPassWord</td>
+ <td align=left><input class=login name=passWord type=password size=25></td>
 </tr>
 <tr>
-<td>&nbsp;<input name=target type=hidden value="<? echo $_SERVER['REQUEST_URI']; ?>"></td>
-<td align=left><input class=b type=submit value="<? echo $strLogin; ?>"></td>
+ <td>&nbsp;<input name=target type=hidden value="$target"></td>
+ <td align=left><input class=b type=submit value="$strLogin"></td>
 </tr>
-<?
+
+EOF;
+
 if( $CFG['auth_registration_info'] != '' ) {
 	echo "<tr><td colspan=2 align=center><font color=black size=2><i>";
 	echo '<br>' . $CFG['auth_registration_info'];
@@ -369,7 +382,6 @@ if( $CFG['auth_registration_info'] != '' ) {
 </td>
 </tr>
 <?
-	$referal = $_SERVER['REFERAL'];
 	if( !$is_expire && $referal != '' ) {
 		echo "<tr>\n<td bgcolor=#EEFFEE align=center>\n";
 		echo "<a href=\"$referal\">$strGoBack</a>";
@@ -417,7 +429,7 @@ if( $CFG['auth_registration_info'] != '' ) {
 
 function http_login_auth() {
 	global $CFG;
-	header( "WWW-Authenticate: Basic realm=\"${CFG['auth_http_realm']}\"");
+	header( "WWW-Authenticate: Basic realm=\"{$CFG['auth_http_realm']}\"");
 	header( "HTTP/1.0 401 Unauthorized");
 	http_login_error();
 }
@@ -449,24 +461,25 @@ function readonly_error( $server, $group ) {
 	global $strNoPostPermission, $strNewsServer, $strGroup, $strCloseWindow;
 
 	html_head($strNoPostPermission);
-?>
+	echo <<<ERR
 <center>
 <table border=1 cellspacing=0 cellpadding=10>
 <tr><td align=center bgcolor=#A0FF30>
-<? echo "<font size=3>$strNoPostPermission</font>"; ?>
-</td></tr>
+    <font size=3>$strNoPostPermission</font>
+    </td></tr>
 <tr><td height=80 bgcolor=#A0EEFF align=center>
-<table>
-<?
-	echo "<tr><td align=right>$strNewsServer:</td><td>$server</td></tr>\n";
-	echo "<tr><td align=right>$strGroup:</td><td>$group</td></tr>\n";
-?>
+    <table>
+    <tr><td align=right>$strNewsServer:</td><td>$server</td></tr>
+    <tr><td align=right>$strGroup:</td><td>$group</td></tr>
+    </table>
+    </td></tr>
 </table>
-</td></tr>
-</table>
-<form><input class=b type=button value="<? echo $strCloseWindow; ?>" onClick='close_window();'></form>
+<form>
+<input class=b type=button value="$strCloseWindow" onClick='close_window();'>
+</form>
 </center>
-<?
+
+ERR;
 	html_foot();
 	html_tail();
 	exit;
@@ -479,7 +492,6 @@ function vars_convert( $instr ) {
 			$instr = str_replace( $var, $value, $instr );
 	return($instr);
 }
-
 
 function need_postperm( $script_name ) {
 	$post_action = array( 'post-art.php', 'reply-art.php', 'forward-art.php', 'xpost.php', 'delete-art.php' );
@@ -542,22 +554,17 @@ function nnrp_authenticate( $nhd ) {
 		return(false);
 }
 
-/*
-function allow_testing( $server, $group ) {
-	global $testing_groups;
-	$ok = false;
-	$test_num = count( $testing_groups );
-	for( $i = 0 ; $i < $test_num ; $i++ ) {
-		list( $s, $g ) = split( '/', $testing_groups[$i] );
-		echo "<!-- $s / $g -->\n";
-		if( $s == $server && $g == $group ) {
-			$ok = true ;
-			break;
-		}
-	}
-	return($ok);
+function kill_myself() {
+	echo <<<END
+<html>
+<head>
+<script language="JavaScript">
+        window.close();
+</script>
+</head>
+</html>
+END;
+	exit;
 }
-*/
-
 
 ?>

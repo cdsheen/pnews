@@ -1,6 +1,6 @@
 <?
 
-require_once('version.inc.php');
+require_once('../version.inc.php');
 
 echo '<html>
 <head>
@@ -19,12 +19,14 @@ echo '
 <font size=3 color=black face="Georgia">
 Requirement
 <hr>
-The requirement for PHP News Reader on the server side:
+The requirement for PHP News Reader on the server side (news server) :
 <ul>
 <li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
-<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
+<li>News Server with full <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a> Implementation
+<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extension
 </ul>
-<p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.
+<p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.<br>
+The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
 <p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br>
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]

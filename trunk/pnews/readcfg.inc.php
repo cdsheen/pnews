@@ -196,6 +196,9 @@ $default_charset = $CFG['charset']['interface'];
 if( !isset( $CFG['url_rewrite'] ) ) 
 	$CFG['url_rewrite'] = false;
 
+if( !isset( $CFG['articles_per_page'] ) ) 
+	$CFG['articles_per_page'] = 20;
+
 if( $CFG['url_rewrite'] && !isset($CFG['url_base']) )
 	config_error( 'CFG["url_base"]' );
 
@@ -267,7 +270,7 @@ a:hover { color: red }
 <?
 	echo "<font size=4>PHP News Reader - Configuration Error</font><hr>";
 	echo "<br><font size=3>$err_string</font>\n<br><p>\n";
-	echo "<font color=cyan>For more information, please read the <a href=install.php>Installation Guide</a> for details.</font>\n";
+	echo "<font color=cyan>For more information, please read the <a href=doc/guide.php>Installation Guide</a> for details.</font>\n";
 	echo "<br><br><br><hr>\n";
 	echo "</body>\n</html>\n";
 	exit;

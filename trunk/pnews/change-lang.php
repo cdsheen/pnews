@@ -33,12 +33,14 @@ $referal = $_GET['from'];
 
 //header( "Location: $referal" );
 
-echo "<html>
+echo <<<EOH
+<html>
 <head>
-<META HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">
-<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL=$referal\">
-<LINK REL=STYLESHEET TYPE=\"text/css\" HREF=\"style.css\">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV=REFRESH CONTENT="0; URL=$referal">
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
 </head>
+<body>
 <center>
 <p>
 <br>
@@ -47,7 +49,10 @@ echo "<html>
 Changing Interface Language to <b>$to_language</b> ...
 </font>
 </center>
-</html>";
+</body>
+</html>
+
+EOH;
 
 exit;
 

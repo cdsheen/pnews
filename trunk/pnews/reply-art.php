@@ -72,7 +72,7 @@ if( $_POST['content'] != '' ) {
 		nnrp_close($nhd);
 	}
 
-	html_head( "$newsgroup - $subject" );
+	html_head( "$group - $subject" );
 
 	$content = str_replace( '\\"', '"', $content );
 	$content = str_replace( '\\\'', "'", $content );
@@ -85,7 +85,7 @@ if( $_POST['content'] != '' ) {
 
 	echo "<table width=100%><tr><td class=x>";
 	echo "<font size=2 color=navy>$strArticlePosted</font>\n";
-	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window()\" value=$strCloseWindow></td></tr></table><hr>\n";
+	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window()\" value=\"$strCloseWindow\"></td></tr></table><hr>\n";
 	echo "<table>";
 	echo "<tr><td align=right>$strAuthor: </td><td><font color=blue>$nickname ($email)</font></td></tr>\n";
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
@@ -130,6 +130,9 @@ elseif( $artnum != '' ) {
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
 	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	if( !$artinfo )
+		kill_myself();
 
 	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
 
@@ -200,15 +203,15 @@ elseif( $artnum != '' ) {
 </script>
 <?
 #	$subject = str_replace( '"', '\"', $subject );
-	echo "<form name=post action=$self method=post>\n";
+	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
 	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
 	echo " <td><input name=replymail type=checkbox>$strReplyToAuthor</td></tr>\n";
 	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td>\n";
 	echo " <td><input name=onlymail type=checkbox onClick='check_reply();'>$strNotPostToGroup</td></tr>\n";
 	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td>\n";
-	echo " <td><input class=b type=button value=$strFormConfirmPost onClick='verify()' tabindex=2>\n";
-	echo " <input class=b type=button value=$strFormCancelPost onClick='really()' tabindex=3></td></tr>\n";
+	echo " <td><input class=b type=button value=\"$strFormConfirmPost\" onClick='verify()' tabindex=2>\n";
+	echo " <input class=b type=button value=\"$strFormCancelPost\" onClick='really()' tabindex=3></td></tr>\n";
 	echo "<tr><td class=x align=right>$strSubject:</td><td colspan=2><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 #	echo "</table>\n<table>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>";

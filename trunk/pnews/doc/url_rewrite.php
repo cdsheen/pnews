@@ -35,7 +35,7 @@ To enable URL Rewrite, you need:
 </ul>
 For more information about Apache\'s mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
 <p>
-Check the <a href=../install.php>Installation Manual</a> for other configuration parameters.
+Check the <a href=guide.php>Installation Manual</a> for other configuration parameters.
 ';
 
 echo "<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>\n";

@@ -1,6 +1,6 @@
 <?
 
-require_once('version.inc.php');
+require_once('../version.inc.php');
 
 echo '<html>
 <head>
@@ -17,21 +17,23 @@ echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
 echo '
 </td></tr></table>
 <font size=3 color=black face="Georgia">
-<a href=release.php>PHP News Reader</a> Release histroy
+<a href=index.php>PHP News Reader</a> Release histroy
 <hr>
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
 PHP News Reader v2.2.0 (2003/05/24)
 <ul>
-<li>Support news server which requires providing username/password.
-<li>The ANSI coloring codes are filtered by default ($CFG["filter_ansi_color"]).
+<li>Support news server which requires authorization.
+<li>The ANSI coloring codes are filtered by default (<a href=guide.php#filter_ansi_color>$CFG["filter_ansi_color"]</a>).
 <li>Support links to Next and Previous articles.
-<li>Support URL rewrite function ($CFG["url_rewrite"] and $CFG["url_base"])
+<li>Support URL rewrite function (<a href=guide.php#url_rewrite>$CFG["url_rewrite"]</a> and <a href=guide.php#url_base>$CFG["url_base"]</a>)
 <li>Deleted articles are skipped and exactly 20 articles are displayed in one page
-<li>Add option ($CFG["article_order_reverse"]) to config the article numbering order.
-<li>Add option ($CFG["show_article_popup"]) to config the use of popup window.
+<li>Add option (<a href=guide.php#article_order_reverse>$CFG["article_order_reverse"]</a>) to config the article numbering order.
+<li>Add option (<a href=guide.php#show_article_popup>$CFG["show_article_popup"]</a>) to config the use of popup window.
 <li>Support NNTP authentication module for authenticate with News server.
+<li>Number of articles per page is configurable by <a href=guide.php#articles_per_page>$CFG["articles_per_page"]</a> (default is 20).
+<li>Fix a bug when post after timeout with "form" style login.
 </ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
@@ -41,7 +43,7 @@ PHP News Reader v2.1.2 (2003/04/05)
 </ul>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>
-<li>The format of time displayed can be configured by $CFG["time_format"].
+<li>The format of time displayed can be configured by <a href=guide.php#time_format>$CFG["time_format"]</a>.
 <li>Show only group name in the title of indexing page.
 <li>Add more error handling codes for invalid news server settting.
 <li>Several author name/mail parsing problems fixed.

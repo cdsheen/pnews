@@ -87,6 +87,9 @@ elseif( $artnum != '' ) {
 
 	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
 
+	if( !$artinfo )
+		kill_myself();
+
 	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
 
 	if( $artconv['to'] ) {
@@ -110,19 +113,19 @@ elseif( $artnum != '' ) {
 
 	echo "<hr>";
 
-	echo "<form class=x name=post action=$self method=post>";
+	echo "<form class=x name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
 	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
 	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input size=40 value=$group disabled></td></tr>\n";
+	echo "<tr><td class=x align=right>$strGroup:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
 	echo "<tr><td class=x align=right>$strSubject:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
 
 	echo "<tr><td align=right class=x>\n";
 	echo "<input name=confirm value=1 type=hidden>\n";
 	echo "<input name=msgid value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\" type=hidden>\n";
 	echo "<input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" type=hidden>\n";
-	echo "<input name=server value=$server type=hidden>\n";
-	echo "<input name=group value=$group type=hidden>\n";
+	echo "<input name=server value=\"$server\" type=hidden>\n";
+	echo "<input name=group value=\"$group\" type=hidden>\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";

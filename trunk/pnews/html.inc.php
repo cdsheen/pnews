@@ -23,24 +23,28 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 	global $lang_coding, $curr_language, $CFG;
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
-	echo "<html>
+	echo <<<EOH
+<html>
 <head>
-<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=$coding\">
-<META HTTP-EQUIV=\"Content-Language\" CONTENT=\"$region\">
-";
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding">
+<META HTTP-EQUIV="Content-Language" CONTENT="$region">
+
+EOH;
+
 	if( $CFG['url_rewrite'] )
 		echo '<base href="' . $CFG['url_base'] . '">';
-
-	echo "<LINK REL=STYLESHEET TYPE=\"text/css\" HREF=\"style.css\">
-<script language=\"javascript\" src=\"utils.js\">
-</script>
-";
-
 	if( $redirect )
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">";
 
-	echo "<title>$title </title>\n</head>\n";
-	echo "<body $bodymod>\n";
+	echo <<<EOX
+  <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+  <script language="javascript" src="utils.js"></script>
+  <title>$title </title>
+</head>
+<body $bodymod>
+
+EOX;
+
 }
 
 function show_language_switch() {
@@ -75,7 +79,7 @@ function html_foot() {
 	if( $CFG['author_link'] == false )
 		echo "PHP News Reader $pnews_version by Shen Cheng-Da";
 	else
-		echo '<a href="release.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
+		echo '<a href="doc/index.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
 ?>
 
        </font>
@@ -85,11 +89,12 @@ function html_foot() {
 <td align=right valign=center>
 <?
 	if( $CFG['show_sourceforge_logo'] ) {
-?>
+		echo <<<EOL
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" height=20 alt="SourceForge.net Logo">
 </a>
-<?
+
+EOL;
 	}
 ?>
   </td><td align=right>
@@ -107,10 +112,16 @@ function html_foot() {
 }
 
 function html_tail() {
-	echo "\n<!-- Copyright (C) 2001-2003 - All rights reserved -->\n";
-	echo "<!-- Shen Cheng-Da (cdsheen@users.sourceforge.net) -->\n";
-	echo "\n</body>\n";
-	echo "</html>\n";
+
+	echo <<<EOT
+
+<!-- Copyright (C) 2001-2003 - All rights reserved -->
+<!-- Shen Cheng-Da (cdsheen@users.sourceforge.net) -->
+</body>
+</html>
+
+EOT;
+
 }
 
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
@@ -132,8 +143,8 @@ function read_article( $server, $group, $artnum, $link_text, $close = false, $cl
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-#	$close_cmd = ( $close ) ? 'close_window();' : '';
-	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
+	$close_cmd = ( $close ) ? 'close_window();' : '';
+#	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
 		return "<a$class_text href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' ); $close_cmd\">$link_text</a>";
 	else

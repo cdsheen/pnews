@@ -232,6 +232,11 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = on;
 
 
+# [articles_per_page] Number of articles shown in one single page (default: 20)
+
+// $CFG['articles_per_page'] = 30;
+
+
 # [article_order_reverse] reverse the order while showing articles list (default: off)
 
 // $CFG["article_order_reverse"] = on;

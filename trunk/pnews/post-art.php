@@ -137,23 +137,26 @@ else {
 	}
 </script>
 <?
-	echo "<form name=post action=$self method=post>\n";
-	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
-	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
-	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=postgroup size=40 value=$group disabled></td></tr>\n";
-	echo "<tr><td class=x align=right>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>\n";
-
-	echo "<tr><td class=x align=right>$strContent:</td><td align=right>";
-	echo " <input class=b type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>\n";
-	echo " <input class=b type=button value='$strFormCancelPost' onClick='really()' tabindex=4></td></tr>\n";
-	echo "<tr><td colspan=2 class=x>";
-#	echo "<input name=newsgroup value=$group type=hidden>\n";
-	echo "<input name=server value=$server type=hidden>\n";
-	echo "<input name=group value=$group type=hidden>\n";
-	echo "<textarea name=content class=text rows=12 wrap=physical tabindex=2></textarea><br>\n";
-	echo "</td></tr></table></center>\n";
-	echo "</form>\n";
+echo <<<EOF
+<form name=post action="$self" method=post>
+<center>
+<table cellpadding=0 cellspacing=0 width=100%>
+ <tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td></tr>
+ <tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value="$auth_email"></td></tr>
+ <tr><td class=x align=right>$strGroup:</td><td><input name=postgroup size=40 value="$group" disabled></td></tr>
+ <tr><td class=x align=right>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>
+ <tr><td class=x align=right>$strContent:</td><td align=right>
+  <input class=b type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>
+  <input class=b type=button value='$strFormCancelPost' onClick='really()' tabindex=4></td></tr>
+ <tr><td colspan=2 class=x>
+  <input name=server value="$server" type=hidden>
+ <input name=group value="$group" type=hidden>
+ <textarea name=content class=text rows=12 wrap=physical tabindex=2></textarea><br>
+</td></tr>
+</table>
+</center>
+</form>
+EOF;
 	html_focus( 'post', 'subject' );
 	html_tail();
 }

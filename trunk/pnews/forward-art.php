@@ -48,7 +48,7 @@ if( $_POST['content'] != '' ) {
 
 	echo "<table width=100%><tr><td class=x>";
 	echo "<font size=2 color=navy>$strArticleIsForwarded</font>\n";
-	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=$strCloseWindow></td></tr></table><hr>\n";
+	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n";
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
@@ -99,6 +99,9 @@ elseif( $artnum != '' ) {
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
 	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+	if( !$artinfo )
+		kill_myself();
 
 	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
 
@@ -154,10 +157,10 @@ elseif( $artnum != '' ) {
 	}
 </script>
 <?
-	echo "<form name=post action=$self method=post>\n";
+	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% cellspacing=0 cellpadding=0>\n";
 	echo "<tr><td class=x align=right>$strReceiver:</td><td><input name=receiver size=50></td></tr>\n";
-	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=showgroup size=40 value=$group disabled></td></tr>\n";
+	echo "<tr><td class=x align=right>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
 	echo "<tr><td class=x align=right>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
 
 	echo "<tr><td class=x align=right>\n";
@@ -176,8 +179,8 @@ elseif( $artnum != '' ) {
 	echo "\n</textarea>\n";
 	echo "</td></tr></table></center>\n";
 
-	echo "<input name=server value=$server type=hidden>";
-	echo "<input name=group value=$group type=hidden>";
+	echo "<input name=server value=\"$server\" type=hidden>";
+	echo "<input name=group value=\"$group\" type=hidden>";
 	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
 
 	echo "</form>\n";

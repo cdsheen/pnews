@@ -26,16 +26,17 @@ all:	html	pkg
 pkg:
 	rm -rf pnews-$(VERSION)*
 	mkdir pnews-$(VERSION)
-	cp -r *.php *.css *.js *.html examples language auth pnews-$(VERSION)
+	cp -r *.php *.css *.js *.html examples doc language auth pnews-$(VERSION)
 	rm -rf pnews-$(VERSION)/examples/CVS
 	rm -rf pnews-$(VERSION)/language/CVS
 	rm -rf pnews-$(VERSION)/auth/CVS
+	rm -rf pnews-$(VERSION)/doc/CVS
 	tar zcvf pnews-$(VERSION).tgz pnews-$(VERSION)
 	rm -rf pnews-$(VERSION)
 	mv -f pnews-$(VERSION).tgz ..
 
 html:
-	php release.php | tail +4 > release.html
+	php doc/release.php | tail +4 > release.html
 
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php

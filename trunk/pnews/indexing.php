@@ -24,7 +24,7 @@ include('utils.inc.php');
 
 html_head( $group );
 
-echo "<center>";
+echo "<center>\n";
 
 if( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><p>\n";
@@ -66,8 +66,9 @@ $ncount = sizeof($xover);
 $show_from = $xover[0][0];
 $show_end  = $xover[$ncount-1][0];
 
-
-if( $CFG['article_order_reverse'] ) {
+if( $totalpg == 1 )
+	$page = 1;
+elseif( $CFG['article_order_reverse'] ) {
 	$page = floor(($highmark - $show_from+1) / $lineppg);
 	if( $page == 1 && $show_end < $highmark )
 		$page = 2;
@@ -84,10 +85,13 @@ else {
 
 echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
 
-echo "<table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td>";
+echo <<<EOH
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr><td>
+    <table width=100% border=1 cellpadding=2 cellspacing=0>
+    <tr><td bgcolor=#DDFFDD onMouseOver='this.bgColor="#FFFF80";' onMouseout='this.bgColor="#DDFFDD";'>
 
-echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
-echo "<tr><td bgcolor=#DDFFDD onMouseOver='this.bgColor=\"#FFFF80\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
+EOH;
 
 if( $CFG['url_rewrite'] )
 	echo "<font size=3 face=Georgia><a href=group/$server/$group><i><b>$group</i></b></a></font>";
@@ -96,31 +100,42 @@ else
 
 echo "</td>";
 
-$uri = str_replace( '&login=1', '', $uri );
-$uri = str_replace( '&logout=1', '', $uri );
 
-if( $auth_success )
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$uri&logout=1\">$strLogout</a></td>";
-elseif( $CFG['auth_type'] == 'optional' )
-	echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$uri&login=1\">$strLogin</a></td>";
-echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=index.php>$strReturnToGroupList</a></td>";
-echo "</tr></table>\n";
+if( $CFG['url_rewrite'] ) {
+	if( $auth_success )
+		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
+	elseif( $CFG['auth_type'] == 'optional' )
+		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
+}
+else {
+	if( $auth_success )
+		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
+	elseif( $CFG['auth_type'] == 'optional' )
+		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
+}
 
-#echo "</td></tr><tr><td align=center>\n";
+echo <<<EOH
+        <td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor="#FFFFC0";' onMouseout='this.bgColor="#FFDDEE";'>
+           <a href=index.php>$strReturnToGroupList</a></td>
+    </tr>
+    </table>
+    <table width=100% border=1 cellpadding=1 cellspacing=0>
 
-echo "<table width=100% border=1 cellpadding=1 cellspacing=0>\n";
+EOH;
+
 
 #$row = array( ':>:' . $strNumber, $strSubject, ':c2:' . $strAuthor, $strTime, $page_action );
 
 $span = $ncount+1;
-echo "
-<tr class=head height=25>
-  <td class=xhead align=right width=32pt>$strNumber</td>
-  <td class=xhead>$strSubject</td>
-  <td class=xhead align=center width=120pt>$strAuthor</td>
-  <td class=xhead align=center width=100pt>$strTime</td>
-</tr>
-";
+echo <<<EOR
+    <tr class=head height=25>
+        <td class=xhead align=right width=32pt>$strNumber</td>
+        <td class=xhead>$strSubject</td>
+        <td class=xhead align=center width=120pt>$strAuthor</td>
+        <td class=xhead align=center width=100pt>$strTime</td>
+    </tr>
+
+EOR;
 
 #table_head( $row, 'head', 'xhead', 25 );
 
@@ -171,17 +186,11 @@ for( ; ; ) {
 #	$onclick = "onClick='javascript:read_article( \"$server\", \"$group\", " . $xover[$i][0] . ");'";
 ?>
 <tr bgcolor=#EEFFFF onMouseover='this.bgColor="#FFFFA0";' onMouseout='this.bgColor="#EEFFFF";'>
-  <td class=index align=right><i>
-<?
-#	if( $CFG['url_rewrite'] )
-#		echo "<a href=\"article/$server/$group/" . $xover[$i][0] . '">' . ( $xover[$i][0]-$lowmark+1 ) . '</a>';
-#	else
-	echo $xover[$i][0]-$lowmark+1; ?>
-</i></td>
+  <td class=index align=right><i><? echo $xover[$i][0]-$lowmark+1; ?></i></td>
   <td class=index>
   <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
   </td>
-  <td class=index title="<? echo $email; ?>"><a href=mailto:<? echo $email; ?>><? echo $nick; ?></a></td>
+  <td class=index title="<? echo $email; ?>"><a href="mailto:<? echo $email; ?>"><? echo $nick; ?></a></td>
   <td class=index align=center><font face=serif><? echo $datestr; ?></font></td>
 </tr>
 <?
@@ -202,17 +211,17 @@ echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\
 if( $CFG["article_order_reverse"] )
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group>$strFirstPage</a>";
+			echo "<a href=\"group/$server/$group\">$strFirstPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		$target = $show_end + 1 ;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/${target}r>$strPreviousPage</a>";
+			echo "<a href=\"group/$server/$group/${target}r\">$strPreviousPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strPreviousPage</a>";
 	}
 	else {
 		echo $strFirstPage;
@@ -224,16 +233,16 @@ else
 		$target = $show_from - 1;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/${lowmark}r>$strFirstPage</a>";
+			echo "<a href=\"group/$server/$group/${lowmark}r\">$strFirstPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strFirstPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strFirstPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/$target>$strPreviousPage</a>";
+			echo "<a href=\"group/$server/$group/$target\">$strPreviousPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$target>$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strPreviousPage</a>";
 	}
 	else {
 		echo $strFirstPage;
@@ -247,16 +256,16 @@ if( $CFG["article_order_reverse"] )
 	if( $show_from > $lowmark ) {
 		$target = $show_from - 1;
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/$target>$strNextPage</a>";
+			echo "<a href=\"group/$server/$group/$target\">$strNextPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$target>$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strNextPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/${lowmark}r>$strLastPage</a>";
+			echo "<a href=\"group/$server/$group/${lowmark}r\">$strLastPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strLastPage</a>";
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
@@ -270,16 +279,16 @@ else
 		$target = $show_end + 1 ;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group/${target}r>$strNextPage</a>";
+			echo "<a href=\"group/$server/$group/${target}r\">$strNextPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strNextPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$server/$group>$strLastPage</a>";
+			echo "<a href=\"group/$server/$group\">$strLastPage</a>";
 		else
-			echo "<a href=$self?server=$server&group=$group>$strLastPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group\">$strLastPage</a>";
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
@@ -303,15 +312,16 @@ else
 	echo '&nbsp;';
 echo "</td>";
 
-echo "<td width=10% bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-echo '<a href="javascript:reload()">' . $strRefresh . '</a>';
+echo <<<EOT
+    <td width=10% bgcolor=#FFDDEE align=center onMouseover='this.bgColor="#FFFFC0";' onMouseout='this.bgColor="#FFDDEE";'>
+      <a href="javascript:reload()">$strRefresh</a>
+    </td>
+    </tr></table>
+</td></tr>
+</table>
+</center>
 
-echo "</td>";
-echo "</tr></table>\n";
-
-echo "</td></tr></table>";
-
-echo "</center>\n";
+EOT;
 
 html_foot();
 

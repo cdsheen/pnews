@@ -29,9 +29,9 @@ $artnum = $_GET['artnum'];
 #	$newwin = true;
 
 if( $CFG['url_rewrite'] ) {
-	$nexturl = $CFG['url_base'] . "article/$server/$group/$artnum/next";
-	$lasturl = $CFG['url_base'] . "article/$server/$group/$artnum/last";
-	$idxurl = $CFG['url_base'] . "group/$server/$group/$artnum/";
+	$nexturl = "$urlbase/article/$server/$group/$artnum/next";
+	$lasturl = "$urlbase/article/$server/$group/$artnum/last";
+	$idxurl  = "$urlbase/group/$server/$group/$artnum/";
 }
 else {
 	$nexturl = "read-art.php?server=$server&group=$group&artnum=$artnum&next=1";
@@ -57,33 +57,30 @@ if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
 	else
 		$artnum = nnrp_last( $nhd, $artnum );
 	if( $artnum < 0 ) {
-		if( $CFG['show_article_popup'] ) {
-			echo <<<END
-<html>
-<head>
-<script language="JavaScript">
-	window.close();
-</script>
-</head>
-</html>
-END;
-		}
+		if( $CFG['show_article_popup'] )
+			kill_myself();
 		else
 			header( "Location: $idxurl" );
 	}
 	elseif( $CFG['url_rewrite'] )
-		header( "Location: " . $CFG['url_base'] . "article/$server/$group/$artnum/" );
+		header( "Location: $urlbase/article/$server/$group/$artnum/" );
 	else
 		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum" );
-#	if( $newwin )
-#	else
-#		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum&orig=1" );
+
 	exit;
 }
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
 $artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+
+if( !$artinfo ) {
+	if( $CFG['show_article_popup'] )
+		kill_myself();
+	else
+		header( "Location: $idxurl" );
+	exit;
+}
 
 $artconv = get_conversion( $artinfo['charset'], $curr_charset );
 

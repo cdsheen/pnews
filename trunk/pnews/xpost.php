@@ -83,7 +83,7 @@ if( $content != '' && $postgroup != '' ) {
 
 	echo "<table width=100%><tr><td class=x>";
 	echo "<font size=2 color=navy>$strArticlePosted</font>\n";
-	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=$strCloseWindow></td></tr></table><hr>\n<table>\n";
+	echo "</td><td class=x align=right><input class=b type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n<table>\n";
 	echo "<tr><td align=right>$strAuthor: </td><td><font color=blue>$nickname ($email)</font></td></tr>\n";
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
 	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr>\n";
@@ -115,6 +115,8 @@ elseif( $artnum != '' ) {
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
 	$artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
+	if( !$artinfo )
+		kill_myself();
 
 	$artconv = get_conversion( $artinfo['charset'], $curr_charset );
 
@@ -181,7 +183,7 @@ elseif( $artnum != '' ) {
 	}
 </script>
 <?
-	echo "<form name=post action=$self method=post>\n";
+	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table cellspacing=0 cellpadding=0 width=100%>\n";
 	echo "<tr><td class=x align=right>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
 	echo "<tr><td class=x align=right>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td></tr>\n";

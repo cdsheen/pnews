@@ -1,6 +1,6 @@
 <?
 
-require_once('version.inc.php');
+require_once('../version.inc.php');
 
 $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
@@ -42,7 +42,7 @@ Conformed Standards:
 <li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=1036" target=_blank>RFC 1036 - Standard for Interchange of USENET Messages</a>
 </ul>
 <p>
-To install PHP News Reader, please check the <a href=requirement.php>requirement</a>, and then read the <a href=install.php>Installation Guide</a>.
+To install PHP News Reader, please check the <a href=requirement.php>requirement</a>, and then read the <a href=guide.php>Installation Guide</a>.
 <p>
 PHP News Reader has nothing to do with the user registration.
 It is designed to work with the EXISTING authentication system.
@@ -125,7 +125,8 @@ Sample running system:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<p>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5)<p>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/</a>&nbsp; (cn.bbs.*, in Chinese/BIG5, converted from GB2312)
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/</a>&nbsp; (cn.bbs.*, in Chinese/BIG5, converted from GB2312)<p>
+<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with url_rewrite turning on)
 </blockquote>
 <p>
 Download the latest version from SourceForge:
@@ -139,8 +140,8 @@ echo '
 Installation Guide:
 <blockquote>
 ';
-echo "<a href=\"install.php\"
-target=_blank>PHP News Reader - Installation and Configuration</a>";
+echo "<a href=\"guide.php\"
+target=_blank>PHP News Reader - Installation and Configuration Guide</a>";
 echo '
 </blockquote>
 <p>

@@ -82,9 +82,9 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 		elseif( $cn == $curr_catalog )
 			echo " <td width=100 bgcolor=#D0D0FF align=center>$news_catalog[$cn]</td>\n";
 		elseif( $news_authperm[$cn] )
-			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=cat href=$link>$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#DDFFDD\";'><a class=cat href=\"$link\">$news_catalog[$cn]</a></td>\n";
 		else
-			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=cat href=$link>$news_catalog[$cn]</a></td>\n";
+			echo " <td width=100 bgcolor=#EEFFEE align=center onMouseover='this.bgColor=\"#D0D0FF\";' onMouseout='this.bgColor=\"#EEFFEE\";'><a class=cat href=\"$link\">$news_catalog[$cn]</a></td>\n";
 	}
 	echo "</tr>\n";
 }
@@ -98,10 +98,19 @@ if( is_array($CFG['links']) )
 		echo "<tr><td colspan=$maxc width=100 bgcolor=#FFEEEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFEEEE\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
 	}
 #echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
-if( $CFG['auth_type'] != 'open' && $auth_success )
-	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
-if( $CFG['auth_type'] == 'optional' && !$auth_success )
-	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?login=1\">$strLogin</a></td></tr>";
+
+if( $CFG['url_rewrite'] ) {
+	if( $CFG['auth_type'] != 'open' && $auth_success )
+		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+	if( $CFG['auth_type'] == 'optional' && !$auth_success )
+		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$urlbase/login\">$strLogin</a></td></tr>";
+}
+else {
+	if( $CFG['auth_type'] != 'open' && $auth_success )
+		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+	if( $CFG['auth_type'] == 'optional' && !$auth_success )
+		echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"auth.php?login=1\">$strLogin</a></td></tr>";
+}
 
 echo "</table>\n";
 
@@ -131,9 +140,9 @@ while ( list ($group, $value) = each ($active) ) {
 
 	$magic = $value[0];
 	if( $CFG['url_rewrite'] )
-		$glink = "<a class=sub href=group/$server/$group>$group</a>";
+		$glink = "<a class=sub href=\"group/$server/$group\">$group</a>";
 	else
-		$glink = "<a class=sub href=indexing.php?server=$server&group=$group&magic=$magic>$group</a>";
+		$glink = "<a class=sub href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
 
 	if( strlen( $value[2] ) > 50 )
 		$value[2] = substr( $value[2], 0, 50 ) . ' ..';

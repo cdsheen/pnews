@@ -1,6 +1,6 @@
 <?
 
-require_once('version.inc.php');
+require_once('../version.inc.php');
 
 $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
@@ -8,7 +8,7 @@ echo '<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>PHP News Reader - Installation and Configuration</title>
+<title>PHP News Reader - Installation and Configuration Guide</title>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
@@ -93,26 +93,30 @@ PHP News Reader - Installation and Configuration
   <p> Each settings is well-documented in the example file.</p>
   <p> The configuration contains 3 sections:</p>
   <blockquote> 
-    <p> Section 1 - Authentication<br>
-      Section 2 - Contents<br>
-      Section 3 - Languages</p>
+    <p> <a href=#section1>Section 1</a> - Authentication<br>
+      <a href=#section2>Section 2</a> - Contents<br>
+      <a href=#section3>Section 3</a> - Languages</p>
   </blockquote>
+<a name=section1></a>
   <p> <strong>Section 1 - Authetication</strong></p>
   <p> This section controls how you authenticate your users.</p>
+<a name=url_rewrite></a>
   <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
   <blockquote> 
     <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
-    <p>Read more about this function <a href=doc/url_rewrite.php target=_blank>here</a>.
+    <p>Read more about this function <a href=url_rewrite.php target=_blank>here</a>.
     <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br>
     For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=url_base></a>
   <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
   <blockquote> 
     <p>Specify the base URL of your PHP News Reader installation</p>
     <p>This setting is REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=auth_type></a>
   <p><strong>$CFG[&quot;auth_type&quot;]</strong></p>
   <blockquote> 
     <p>Specify the authentication type (REQUIRED)</p>
@@ -121,19 +125,22 @@ PHP News Reader - Installation and Configuration
       &quot;optional&quot; - authentication is only required for posting and forwarding<br>
       &quot;open&quot; - authentication is not needed</p>
   </blockquote>
+<a name=auth_prompt></a>
   <p> <strong>$CFG[&quot;auth_prompt&quot;]</strong></p>
   <blockquote> 
-    <p>Specify the style of authentication prompt (default: &quot;http&quot;) 
+    <p>Specify the style of authentication prompt (default: &quot;form&quot;) 
       (used only if auth_type != 'open')</p>
-    <p> &quot;http&quot; - authenticated user via HTTP login window (default)<br>
-      &quot;form&quot; - authenticated user via HTML login form</p>
+    <p> &quot;http&quot; - authenticated user via HTTP login window<br>
+      &quot;form&quot; - authenticated user via HTML login form (default and is recommanded)</p>
   </blockquote>
+<a name=auth_http_realm></a>
   <p> <strong>$CFG[&quot;auth_http_realm&quot;]</strong></p>
   <blockquote> 
     <p>Specify the realm used in http authentication prompt (REQUIRED if auth_prompt 
       == 'http')</p>
     <p>This realm string will be displayed in the HTTP login window.</p>
   </blockquote>
+<a name=auth_method></a>
   <p> <strong>$CFG[&quot;auth_method&quot;]</strong></p>
   <blockquote> 
     <p>Specify the authentication method (REQUIRED if auth_type != &quot;open&quot; 
@@ -147,17 +154,20 @@ PHP News Reader - Installation and Configuration
       &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.0),<br>
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
+<a name=auth_organization></a>
   <p><strong>$CFG[&quot;auth_organization&quot;]</strong></p>
   <blockquote> 
     <p>Specify the organization of authentication source (REQUIRED if auth_type 
       != 'open')</p>
     <p>This is the organization name of your authentication source.</p>
   </blockquote>
+<a name=auth_registration_info></a>
   <p><strong>$CFG[&quot;auth_registration_info&quot;]</strong></p>
   <blockquote> 
     <p>Prompt users about how to get an account (default: &quot;&quot;)<br>
       This message will be displayed on login (FORM) or logout (HTTP) windows</p>
   </blockquote>
+<a name=auth_user_module></a>
   <p> <strong>$CFG[&quot;auth_user_module&quot;]</strong></p>
   <blockquote> 
     <p>Specify user-defined authentication module location (REQUIRED if auth_method 
@@ -168,6 +178,7 @@ PHP News Reader - Installation and Configuration
       <p>This function should verify the correctness of $username and $password,
       <br>and then return true for granting access, false otherwise.
   </blockquote>
+<a name=ldap_auth></a>
   <p> <strong>LDAP authentication parameters</strong> (REQUIRED if auth_method == 'ldap')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;ldap_server&quot;]</strong></p>
@@ -205,6 +216,7 @@ PHP News Reader - Installation and Configuration
          and be putted in variable %e for later use</p>
     </blockquote>
   </blockquote>
+<a name=ftp_auth></a>
   <p><br>
     <strong>FTP authentication parameters</strong> (REQUIRED if auth_method == 'ftp')</p>
   <blockquote> 
@@ -221,6 +233,7 @@ PHP News Reader - Installation and Configuration
       <p>$CFG["ftp_deny"] = array( 'anonymous', 'guest', 'ftp', 'root' );</p>
     </blockquote>
   </blockquote>
+<a name=pop3_auth></a>
   <p> <strong>POP3 authentication parameters</strong> (REQUIRED if auth_method == 'pop3')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;pop3_server&quot;]</strong></p>
@@ -235,6 +248,7 @@ PHP News Reader - Installation and Configuration
       <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
     </blockquote>
   </blockquote>
+<a name=mail_auth></a>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if auth_method == 'mail')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;pop3_mapping&quot;]</strong></p>
@@ -245,10 +259,12 @@ PHP News Reader - Installation and Configuration
       <p>The following example will use "pop3.csie.nctu.edu.tw" to authenticate "xxx@csie.nctu.edu.tw",
          and use "pop3.domain.org" to authenticate "yyy@mail.domain.org".</p>
       <p>$CFG[&quot;pop3_mapping&quot;] = array( &quot;@csie.nctu.edu.tw&quot; 
-        =&gt; &quot;pop3.csie.nctu.edu.tw&quot;, &quot;@mail.domain.org&quot; 
-        =&gt; &quot;pop3.domain.org&quot; );</p>
+        =&gt; &quot;pop3.csie.nctu.edu.tw&quot;,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &quot;@mail.domain.org&quot; =&gt; &quot;pop3.domain.org&quot; );</p>
     </blockquote>
   </blockquote>
+<a name=nntp_auth></a>
   <p><strong>NNTP authentication parameters</strong> (REQUIRED if auth_method == 'nntp')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;auth_nntp_server&quot;]</strong></p>
@@ -256,8 +272,12 @@ PHP News Reader - Installation and Configuration
       <p>News (NNTP) server address ( address:port )</p>
       <p>$CFG["auth_nntp_server"] = "news.domain.org";</p>
     </blockquote>
+    <p>Note that this option only deal with the authentication of PHP News Reader,
+       it has nothing to do with the authentication of news server.
+       Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=db_auth></a>
   <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
   <blockquote>
     <p>(REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )</p>
@@ -313,15 +333,18 @@ PHP News Reader - Installation and Configuration
         );</p>
     </blockquote>
   </blockquote>
+<a name=auth_expire_time></a>
   <p><strong>$CFG[&quot;auth_expire_time&quot;]</strong></p>
   <blockquote> 
     <p>After this time in seconds, authentication is expired<br>
       And login again is required. Zero means never expire (default: 3600 seconds)</p>
   </blockquote>
+<a name=post_restriction></a>
   <p><strong>$CFG[&quot;post_restriction&quot;]</strong></p>
   <blockquote> 
-    <p>Disallow the posting and forwarding of articles (default: off)</p>
+    <p>Disallow the posting and forwarding of articles (default: false)</p>
   </blockquote>
+<a name=auth_user_fullname></a>
   <p><strong>$CFG[&quot;auth_user_fullname]</strong></p>
   <blockquote> 
     <p>The full name of authenticated user (default: &quot;%u&quot;)</p>
@@ -330,6 +353,7 @@ PHP News Reader - Installation and Configuration
     <p>For example,</p>
     <p>$CFG["auth_user_fullname"] = "%n";</p>
   </blockquote>
+<a name=auth_user_email></a>
   <p> <strong>$CFG[&quot;auth_user_email&quot;]</strong></p>
   <blockquote> 
     <p>The E-Mail of authenticated user (REQUIRED)<br>
@@ -341,6 +365,7 @@ PHP News Reader - Installation and Configuration
       An exception is, if you use 'mail' auth-method, %e will be substituted with the user's E-Mail,<br>
       and %u will be substituted with the user name part of the E-Mail (the strings before '@')</p>
   </blockquote>
+<a name=log></a>
   <p><strong>$CFG[&quot;log&quot;]</strong></p>
   <blockquote> 
     <p>Enable access log (default: &quot;&quot; - no log)</p>
@@ -348,51 +373,74 @@ PHP News Reader - Installation and Configuration
     <p>You need to create this file with write permission granted to the user running httpd</p>
   </blockquote>
   <p>&nbsp;</p>
+<a name=section2></a>
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br>
   </p>
+<a name=title></a>
   <p> <strong>$CFG[&quot;title&quot;]</strong></p>
   <blockquote> 
     <p>The title for this webnews (default: &quot;Webnews&quot;)</p>
   </blockquote>
+<a name=banner></a>
   <p><strong>$CFG[&quot;banner&quot;]</strong></p>
   <blockquote> 
     <p>The banner text or images (default: &quot;&quot;)</p>
     <p>$CFG["banner"] = "&lt;img src=banner.jpg&gt;";
   </blockquote>
+<a name=group_list></a>
   <p><strong>$CFG[&quot;group_list&quot;]</strong></p>
   <blockquote> 
     <p>The group definition that show on this Web News<br>
       <br>
       You should get a copy from examples/newsgroups.lst (default: &quot;newsgroups.lst&quot;)</p>
   </blockquote>
+<a name=group_sorting></a>
   <p><strong>$CFG[&quot;group_sorting&quot;]</strong></p>
   <blockquote> 
-    <p>sort newsgroups in each catalog (default: off)</p>
+    <p>sort newsgroups in each catalog (default: false)</p>
   </blockquote>
+<a name=articles_per_page></a>
+  <p><strong>$CFG[&quot;articles_per_page&quot;]</strong></p>
+  <blockquote> 
+    <p>Setting the number of articles shown per page (default: 20)</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=article_order_reverse></a>
   <p><strong>$CFG[&quot;article_order_reverse&quot;]</strong></p>
   <blockquote> 
-    <p>Reverse the order of articles list (default: off)</p>
+    <p>Reverse the order of articles list (default: false)</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=show_article_popup></a>
   <p><strong>$CFG[&quot;show_article_popup&quot;]</strong></p>
   <blockquote> 
-    <p>Controlling the article to show in popup window or not (default: off)</p>
+    <p>Controlling the article to show in popup window or not (default: false)</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=filter_ansi_color></a>
+  <p><strong>$CFG[&quot;filter_ansi_color&quot;]</strong></p>
+  <blockquote> 
+    <p>Setting this option to true will cause filtering of ANSI coloring code from article (default: true)</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=organization></a>
   <p> <strong>$CFG[&quot;organization&quot;]</strong></p>
   <blockquote> 
     <p>The organization name of this site (default: &quot;News Server&quot;)</p>
   </blockquote>
+<a name=post_signature></a>
   <p> <strong>$CFG[&quot;post_signature&quot;]</strong></p>
   <blockquote> 
     <p>The signature to appended at each posted article (default: &quot;&quot;)</p>
     <p>Note: This is NOT a per-user setting!</p>
   </blockquote>
+<a name=show_sourceforge_logo></a>
   <p> <strong>$CFG[&quot;show_sourceforge_logo&quot;]</strong></p>
   <blockquote> 
-    <p>Show sourceforge logo (default: on)</p>
+    <p>Show sourceforge logo (default: true)</p>
   </blockquote>
+<a name=time_format></a>
   <p> <strong>$CFG[&quot;time_format&quot;]</strong></p>
   <blockquote> 
     <p>The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")</p>
@@ -400,6 +448,7 @@ PHP News Reader - Installation and Configuration
     <p>The conversion specifiers used in the format string is the same as PHP strftime().<br>
     You can refer <a href="http://www.php.net/manual/en/function.strftime.php" target=_blank>http://www.php.net/manual/en/function.strftime.php</a> for details.
   </blockquote>
+<a name=links></a>
   <p><strong>$CFG[&quot;links&quot;]</strong></p>
   <blockquote> 
     <p>The links referring to other pages, (default: null)<br>
@@ -407,6 +456,7 @@ PHP News Reader - Installation and Configuration
       $CFG[&quot;links&quot;] = array( &quot;Back Home&quot; =&gt; &quot;../index.php&quot;, 
       &quot;Tech News&quot; =&gt; &quot;http://foo.bar/technews/&quot; );</p>
   </blockquote>
+<a name=section3></a>
   <p><strong><br>
     Section 3 - Languages</strong></p>
   <p> This section controls the setting about languages and charsets</p>
@@ -421,24 +471,29 @@ PHP News Reader - Installation and Configuration
  	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
 	</table>
   </blockquote>
+<a name=charset_config></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;config&quot;]</strong></p>
   <blockquote> 
     <p>The charset setting used in this config.inc.php</p>
   </blockquote>
+<a name=charset_grouplst></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;grouplst&quot;]</strong></p>
   <blockquote> 
     <p>The charset setting used in newsgroups.lst</p>
   </blockquote>
+<a name=charset_database></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;database&quot;]</strong></p>
   <blockquote> 
     <p>The charset setting used in database or LDAP</p>
   </blockquote>
+<a name=charset_interface></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;interface&quot;]</strong></p>
   <blockquote> 
     <p>The initial charset setting of interface</p>
   </blockquote>
   <strong>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br>please use $CFG["charset"] section instead</strong>
 </blockquote>
+<a name=newsgroups_lst></a>
 <hr size="1">
 <strong><em><font color="#0000FF">Configuration for NEWSGROUPS.LST</font></em></strong> 
 <blockquote> 
@@ -478,22 +533,26 @@ PHP News Reader - Installation and Configuration
       option&nbsp;&nbsp;&nbsp;&nbsp;default</strong></p>
     <p><strong>[catalog2]<br>
       # use the default news server<br>
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*</strong></p>
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*<br>
+      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;none</strong></p>
     <p><strong>[catalog3]<br>
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br>
       group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br>
+      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username,password<br>
       charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
   </blockquote>
   <p>The first catalog &quot;catalog1&quot; contains all newsgroups matching &quot;nopy.*&quot; 
     or &quot;nopy.comp.network&quot; from the news server &quot;news1.domain.org&quot;, 
-    and the default charset is used in these groups.</p>
+    and the default charset is used in these groups. By the way, this catalog does not
+    require authentication to the news server (by default)</p>
   <p>The second catalog &quot;catalog2&quot; contains all newsgroups matching 
     &quot;nopy.test&quot; or &quot;nopy.talk.*&quot; from the default news server 
     defined in the above global settings, and the default charset is used in 
-    these groups. </p>
+    these groups.  By the way, this catalog does not require authentication to the news server</p>
   <p>The third catalog &quot;catalog3&quot; contains all newsgroups matching &quot;nopy.comp.*&quot; 
     or &quot;nopy.rec.*&quot; from the news server &quot;news2.domain.org&quot;, 
-    and the &quot;gb2312&quot; charset is used in these groups.</p>
+    and the &quot;gb2312&quot; charset is used in these groups.
+    This catalog does require explicily authentication to the news server by the supplied username/password</p>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
   <p>Two possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>

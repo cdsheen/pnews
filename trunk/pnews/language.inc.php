@@ -272,19 +272,6 @@ function u2g( $instr ) {
 	}
 }
 
-/*
-function get_conversion( $orig_lang, $pref_lang ) {
-
-	global	$lang_coding;
-
-	$original = strtolower($lang_coding[$orig_lang]);
-	$preferred = strtolower($lang_coding[$pref_lang]);
-*/
-
-function same($text) {
-	return($text);
-}
-
 function get_conversion( $original, $preferred ) {
 
 	global $charset_alias;
