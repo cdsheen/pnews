@@ -54,10 +54,16 @@ echo "<!-- cursor: $cursor    lineppg: $lineppg -->\n";
 
 #if( $CFG['article_order_reverse'] )
 
-if( $forward )
-	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $highmark );
-else
-	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $lowmark, false );
+if( $forward ) {
+	$limit = $cursor + $lineppg * 3;
+	if( $limit > $highmark ) $limit = $highmark;
+	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $limit );
+}
+else {
+	$limit = $cursor - $lineppg * 3;
+	if( $limit < $lowmark ) $limit = $lowmark;
+	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $limit, false );
+}
 
 $ncount = sizeof($xover);
 
