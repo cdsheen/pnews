@@ -222,6 +222,12 @@ if( $CFG['auth_type'] != 'open' ) {
 
 }
 
+if( !isset( $CFG['html_header'] ) || !file_exists( $CFG['html_header'] ) )
+	$CFG['html_header'] = false;
+
+if( !isset( $CFG['html_footer'] ) || !file_exists( $CFG['html_footer'] ) )
+	$CFG['html_footer'] = false;
+
 if( !isset( $CFG['banner'] ) )
 	$CFG['banner'] = false;
 

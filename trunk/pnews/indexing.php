@@ -25,7 +25,9 @@ html_head( $group );
 
 echo "<center>\n";
 
-if( $CFG['banner'] )
+if( $CFG['html_header'] )
+	readfile( $CFG['html_header'] );
+elseif( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><p>\n";
 
 $c = check_group( $server, $group );
@@ -389,6 +391,9 @@ EOT;
 html_foot();
 
 nnrp_close($nhd);
+
+if( isset($CFG['html_footer']) )
+	readfile( $CFG['html_footer'] );
 
 html_tail();
 

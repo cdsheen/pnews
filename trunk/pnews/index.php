@@ -25,7 +25,9 @@ html_head( $title );
 
 #echo "<center>\n";
 
-if( $CFG['banner'] )
+if( $CFG['html_header'] )
+	readfile( $CFG['html_header'] );
+elseif( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
 else
 	echo "<font color=black size=5 face=Georgia>$title</font><br />";
@@ -223,6 +225,9 @@ echo "</td></tr></table>\n";
 html_foot();
 
 if( $nhd ) nnrp_close($nhd);
+
+if( isset($CFG['html_footer']) )
+	readfile( $CFG['html_footer'] );
 
 html_tail();
 

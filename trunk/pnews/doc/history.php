@@ -42,6 +42,7 @@ echo <<<EOH
 PHP News Reader v2.5.7 (2004/04/)
 <ul>
 <li>Group description can be eliminated by setting <a href=guide.php#show_group_description>\$CFG['show_group_description']</a> to <i>false</i>
+<li>Support <a href=guide.php#html_header>\$CFG['html_header']</a> and <a href=guide.php#html_footer>\$CFG['html_footer']</a> to customize the header and the footer.
 </ul>
 PHP News Reader v2.5.6 (2004/04/01)
 <ul>

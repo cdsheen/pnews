@@ -298,6 +298,16 @@ $CFG["title"] = "XXX News Service";
 // $CFG["banner"] = "<img src=banner.jpg>";
 
 
+# [html_header] The file to be included as page header (default: false)
+
+// $CFG["header"] = "header.htm";
+
+
+# [html_footer] The file to be included as page footer (default: false)
+
+// $CFG["footer"] = "footer.htm";
+
+
 # [group_list] The group definition that show on this Web News
 #              You should get a copy from examples/newsgroups.lst
 #              (default: "newsgroups.lst")
