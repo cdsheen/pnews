@@ -6,8 +6,8 @@
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
-<font face="Georgia"><h3>PHP News Reader v2.1.0-beta</h3></font>
-</td><td align=right valign=bottum><font face="Georgia" size=1>Release Date: 2003/03/01</font>
+<font face="Georgia"><h3>PHP News Reader v2.1.0</h3></font>
+</td><td align=right valign=bottum><font face="Georgia" size=1>Release Date: 2003/03/02</font>
 
 </td></tr></table>
 <font size=3 color=black face="Georgia">
@@ -63,44 +63,13 @@ PHP News Reader's development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
-PHP News Reader v2.0.4 (2003/02/18)
+PHP News Reader v2.1.0 (2003/03/02)
 <ul>
-<li>Change the article numbering order (descent)
-</ul>
-<p>
-PHP News Reader v2.0.3 (2003/02/05)
-<ul>
-<li>Use UTF-8 for English locale
-</ul>
-<p>
-PHP News Reader v2.0.2 (2003/01/24)
-<ul>
-<li>Fix the bug of 'required' authentication model
-</ul>
-<p>
-PHP News Reader v2.0.1 (2003/01/22)
-<ul>
-<li>Correct the link of SourceForge logo
-</ul>
-<p>
-PHP News Reader v2.0 (2003/01/19)
-<ul>
-<li>First public release and hosts on SourceForge
-<li>Rewrite the authentication codes and the use of the ticket system
-<li>Logging out support
-<li>Support 'optional' authentication model for Read-Only access without authentication
-<li>Rewrite the LDAP and POP3 authentication modules
-<li>Support Mail authentication module for multiple POP3 server environment
-<li>Support MySQL and PostgreSQL authentication modules, easy to integrate with <a href="http://www.phpbb.com/" target=_blank>phpBB</a>
-<li>FTP authentication module support
-<li>User information can be extracted from LDAP attributes or Database table fields along with authentication
-<li>Standardize the requirements for writing an authentication module
-<li>Support FORM style login process other than the original HTTP authentication
-<li>More flexible configuration based on a new config.inc.php syntax
-<li>Enable interface language to switch without cookie support
-<li>Different encodings can be used in different catalogs
-<li>Support private groups which only accessible by authenticated user
-<li>Fix the E-Mail parsing bug in XOVER command of NNRP library
+<li>Installation Guide released.
+<li>Use 'charset' instead of 'language' in the configuration file
+<li>The correct charset of group is used while loading pages without session.
+<li>The MIME charset of article will be honored while processing news articles.
+<li>The article will be posted and mailed with correct MIME headers about charset information based on the RFC 2045 standard.
 </ul>
 You can view the history since 2002/06 <a href=history.php>here</a>.<p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, please view the detail <a href=copying.php>here</a><br>
@@ -127,8 +96,8 @@ Sample running system:
 <p>
 Download the latest version from SourceForge:
 <blockquote>
-<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.1.0-beta.tgz?download"
-target=_blank>pnews-2.1.0-beta.tgz</a>
+<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.1.0.tgz?download"
+target=_blank>pnews-2.1.0.tgz</a>
 </blockquote>
 <p>
 Installation Guide:
@@ -152,7 +121,7 @@ ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
 <hr>
-<font size=2>PHP News Reader v2.1.0-beta (C) 2001-2003 - Shen Cheng-Da</font>
+<font size=2>PHP News Reader v2.1.0 (C) 2001-2003 - Shen Cheng-Da</font>
 
 </font>
 </body>
