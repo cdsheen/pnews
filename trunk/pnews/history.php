@@ -25,7 +25,7 @@ PHP News Reader v2.1.1 (2003/03/08)
 <li>Show only group name in the title of indexing page.
 <li>Add more error handling codes for invalid news server settting.
 <li>Several author name/mail parsing problems fixed.
-<li>Fix variable missing problem in 'open' authentication type.
+<li>Fix variable missing problem in \'open\' authentication type.
 </ul>
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
