@@ -611,6 +611,20 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
     or &quot;nopy.rec.*&quot; from the news server &quot;news2.domain.org&quot;, 
     and the &quot;gb2312&quot; charset is used in these groups.
     This catalog does require explicily authentication to the news server by the supplied username/password</p>
+  <a name=group_match></a>
+  <p><strong>Syntax of 'group'</strong></p>
+  <ol>
+    <li>Full group name for inclusion, i.e: <b>tw.bbs.comp.hardware</b><br><br>
+    <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br>
+        Only the final class of group name can be used in pattern match<br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is NOT valid.<br>
+        Before v2.2.4, only all-sub-class patttern is allowed in the final class pattern of group name<br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is NOT valid before v2.2.4.<br>
+        After v2.2.5, the final class pattern is not restricted to a single <b>*</b>,<br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now valid in v2.2.5 and later.<br><br>
+    <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br>
+        Only full group name is allowed here, it is used to nagative the previously included group.
+  </ol>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
   <p>Two possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>
