@@ -48,9 +48,9 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.2.2 (2003/06/29)
+PHP News Reader v2.2.2 (2003/07/05)
 <ul>
-<li>Option to force using SSL(HTTPS) when performing login. (<a href=guide.php#https_login)\$CFG["https_login"]</a>)
+<li>Option to force using SSL(HTTPS) when performing login. (<a href=guide.php#https_login>)\$CFG["https_login"]</a>)
 <li><a href=guide.php#url_base>\$CFG["url_base"]</a> must be configured even if <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is off
 </ul>
 PHP News Reader v2.2.1 (2003/06/21)
