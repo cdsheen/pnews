@@ -243,6 +243,13 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$ov[$n][1] = decode_subject($from[2]);
 			$ov[$n][3] = $from[1];
 		}
+
+		$refs = trim($xover[$ovfmt['References']]);
+		if( $refs == '' )
+			$ov[$n][5] = array();
+		else
+			$ov[$n][5] = preg_split( '/\s+/', $refs );
+
 		$n++;
 	}
 #	print_r( $ov );
@@ -794,6 +801,12 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 	$artinfo['org'] = decode_subject($headers['Organization']);
 
 	$artinfo['subject'] = decode_subject($headers['Subject']);
+
+	$refs = trim($headers['References']);
+	if( $refs == '' )
+		$artinfo['ref'] = array();
+	else
+		$artinfo['ref'] = preg_split( '/\s+/', $refs );
 
 	return($artinfo);
 }
