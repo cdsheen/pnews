@@ -15,7 +15,7 @@ group	nopy.*,nopy.comp.network
 option	default
 
 [catalog2]
-#server	news1.domain.org	# use the default news server
+# use the default news server
 group	nopy.test,nopy.talk.*
 
 [catalog3]

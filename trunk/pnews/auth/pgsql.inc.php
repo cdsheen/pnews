@@ -62,8 +62,12 @@ function check_user_password( $username, $password ) {
 	@pg_free_result($result);
 	@pg_close($conn);
 
-	if( isset($CFG['db_password_crypt']) )
-		$password = $CFG['db_password_crypt']($password);
+	if( isset($CFG['db_password_crypt']) ) {
+		if( $CFG['db_password_crypt'] == 'md5' )
+			$password = md5($password);
+		elseif( $CFG['db_password_crypt'] == 'crypt' )
+			$password = crypt($password, $arr[1]);
+	}
 
 	if( $arr[1] != $password )
 		return(null);

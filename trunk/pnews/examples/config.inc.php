@@ -17,8 +17,6 @@
 define( 'on',  true,  true );
 define( 'off', false, true );
 
-# Let's go!
-
 # The configuration contains 3 sections:
 #
 #     Section 1 - Authentication
@@ -142,6 +140,7 @@ $CFG["auth_organization"] = "XXX Club";
 #  [db_field_username] The field name for username
 #  [db_field_password] The field name for password
 #  [db_password_crypt] The password encrypt method (default: "" - cleartext)
+#                      current supported are: "md5", "crypt"
 
 $CFG["db_server"]         = "database.domain.org";
 $CFG["db_name"]           = "phpbb";
