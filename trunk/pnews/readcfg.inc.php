@@ -262,8 +262,10 @@ if( $CFG["auth_prompt"] == 'cas' ) {
 		show_error( 'phpCAS was not found. Please install <a href="http://esup-phpcas.sourceforge.net" target="_blank">phpCAS</a> in '.dirname(__FILE__).'/auth or anywhere in the <a href="http://www.php.net/manual/en/configuration.directives.php#ini.include-path" target="_blank">PHP include path</a>.' );
 
 	$cas_server = $CFG['auth_cas_server'];
-	if( strstr( $cas_server, ':' ) )
+	if( strstr( $cas_server, ':' ) ) {
 		list( $cas_server, $cas_port ) = split( '/:/', $cas_server );
+		$cas_port = intval($cas_port);
+	}
 	else
 		show_error('The port on which the CAS server is running was not specified. $CFG[\'auth_cas_server\'] should look like \'hostname:port\'.');
 
