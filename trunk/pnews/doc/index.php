@@ -30,8 +30,8 @@ echo <<<EOR
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
- <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
- <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5" />
+ <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
  <title>PHP News Reader - A Web-based USENET News Client</title>
 </head>
 <body style="background-color: #EEFFFF">

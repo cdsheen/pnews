@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=us-ascii">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=us-ascii" />
 <title>PHP News Reader</title>
 </head>
 <body style="background-color: #EEFFFF">
