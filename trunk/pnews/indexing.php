@@ -45,8 +45,10 @@ else
 
 $artsize = count($artlist);
 
-$highmark = $artlist[$artsize-1];
-$lowmark  = $artlist[0];
+if( $artsize > 0 ) {
+	$highmark = $artlist[$artsize-1];
+	$lowmark  = $artlist[0];
+}
 
 echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark  (count: $artsize)-->\n";
 

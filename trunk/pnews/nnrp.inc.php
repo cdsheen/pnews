@@ -249,6 +249,8 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 
 function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
+	$artlist = array();
+
 	if( $cache_file ) {
 		$fp = @fopen( $cache_file, 'rb');
 		if( $fp ) {
@@ -278,7 +280,7 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 			send_command( $nhd, "XOVER $lowmark-$highmark" );
 		list( $code, $msg ) = get_status( $nhd );
 
-		echo "\n<!-- XOVER $lowmark-$highmark -->\n";
+		echo "\n<!-- XOVER $lowmark-$highmark   STATUS: $code -->\n";
 
 		if( $code[0] != '2' )
 			return($artlist);
@@ -306,7 +308,6 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 		}
 		@fclose($fp);
 	}
-
 	return( $artlist );
 }
 
@@ -360,7 +361,6 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 }
 
 function nnrp_show ( $nhd, $cmd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
-{
 	global $CFG;
 	send_command( $nhd, "$cmd $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
