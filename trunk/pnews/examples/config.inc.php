@@ -5,7 +5,7 @@
 #
 # PHP News Reader Configuration File
 #
-# Copyright (C) 2001-2003 - All rights reserved
+# Copyright (C) 2001-2004 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 # This is a sample configuration.
@@ -412,7 +412,7 @@ $CFG["charset"]["database"]  = "big5";
 
 ############################################################################
 # PHP News Reader
-# Copyright (C) 2001-2003 - All rights reserved
+# Copyright (C) 2001-2004 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 ############################################################################
 

@@ -5,7 +5,7 @@
 // Language: Chinese (Traditional)
 // Coding:   BIG5
 
-// Copyright (C) 2001-2003 - All rights reserved
+// Copyright (C) 2001-2004 - All rights reserved
 // Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 $strAuthentication     = 'ป{รา';

@@ -5,7 +5,7 @@
 // Language: French
 // Coding:   ISO-8859-1
 
-// Copyright (C) 2001-2003 - All rights reserved
+// Copyright (C) 2001-2004 - All rights reserved
 // Pascal Aubry (Pascal.Aubry at univ-rennes1.fr)
 
 $strAuthentication     = 'Authentification';
