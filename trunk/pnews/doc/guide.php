@@ -167,17 +167,17 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <p> <strong>$CFG["auth_method"]</strong></p>
   <blockquote> 
     <p>Specify the authentication method (REQUIRED if <a href="#auth_type">$CFG["auth_type"]</a> != <i>"open"</i> ) </p>
-    <p>"ldap" - authenticated via LDAP server,<br />
-      "pop3" - authenticated via POP3 server,<br />
-      "pop3s" - authenticated via POP3S (POP3 over SSL) server (with version >= 2.4.1),<br />
-      "ftp" - authenticated via FTP server,<br />
-      "ftps" - authenticated via FTPS (FTP over SSL) server (with version >= 2.4.1),<br />
-      "mail" - authenticated via multiple POP3/POP3S server,<br />
-      "mysql" - authenticated via MySQL database,<br />
-      "pgsql" - authenticated via PostgreSQL database,<br />
-      "nntp" - authenticated via NNTP News Server (with version >= 2.2.1),<br />
-      "nntps" - authenticated via NNTPS (NNTP over SSL) News Server (with version >= 2.4.0),<br />
-      "cas" - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br />
+    <p>"<a href=#ldap_auth>ldap</a>" - authenticated via LDAP server,<br />
+      "<a href=#pop3_auth>pop3</a>" - authenticated via POP3 server,<br />
+      "<a href=#pop3s_auth>pop3s</a>" - authenticated via POP3S (POP3 over SSL) server (with version >= 2.4.1),<br />
+      "<a href=#ftp_auth>ftp</a>" - authenticated via FTP server,<br />
+      "<a href=#ftps_auth>ftps</a>" - authenticated via FTPS (FTP over SSL) server (with version >= 2.4.1),<br />
+      "<a href=#mail_auth>mail</a>" - authenticated via multiple POP3/POP3S server,<br />
+      "<a href=#db_auth>mysql</a>" - authenticated via MySQL database,<br />
+      "<a href=#db_auth>pgsql</a>" - authenticated via PostgreSQL database,<br />
+      "<a href=#nntp_auth>nntp</a>" - authenticated via NNTP News Server (with version >= 2.2.1),<br />
+      "<a href=#nntps_auth>nntps</a>" - authenticated via NNTPS (NNTP over SSL) News Server (with version >= 2.4.0),<br />
+      "<a href=#cas_auth>cas</a>" - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br />
       "user" - authenticated via your self-defined method,</p>
   </blockquote>
 <p>

@@ -49,13 +49,13 @@ echo <<<EOH
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>
 <li>Mail authentication module now support pop3s.
-<li>Correct E-Mail domain is used after login from Mail authentication module.
-<li>Per-catalog readonly can be configured.
-<li>Check for valid session before performing authentication.
+<li>The correct E-Mail domain is used after login from Mail authentication module.
+<li>Per-catalog readonly can be configured in newsgroups.lst.
+<li>Validate the session before performing authentication.
 <li>GB2312 translation is refined (by Czz).
 <li>Crosspost verification bug is fixed.
 <li>Organization header now overrides the setting of news server.
-<li>Fix a bug of incorrect regular expression used in split().
+<li>Incorrect regular expression used in split() is now fixed.
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
 </ul>
 PHP News Reader v2.4.4 (2003/11/09)
@@ -218,14 +218,14 @@ PHP News Reader v2.0 (2003/01/19)
 <li>Fix the E-Mail parsing bug in XOVER command of NNRP library
 </ul>
 <p>
-PHP News Reader v1.9 (released on 2003/01/01)
+PHP News Reader v1.9 (2003/01/01)
 <ul>
 <li>LDAP authentication module support
 <li>Add X-User-Real-E-Mail: header for real E-Mail address
 <li>Fix a typo error of default language file loading
 </ul>
 <p>
-PHP News Reader v1.8 (released on 2002/10/26)
+PHP News Reader v1.8 (2002/10/26)
 <ul>
 <li>Support encodings including Unicode/Chinese (UTF-8), Simplified Chinese (GB2312) and Traditional Chinese (BIG5).
 <li>Code conversion between any two of the above three common Chinese encodings
@@ -233,14 +233,14 @@ PHP News Reader v1.8 (released on 2002/10/26)
 <li>Fix a bug of forwarding article in english interface
 </ul>
 <p>
-PHP News Reader v1.7 (released on 2002/10/05)
+PHP News Reader v1.7 (2002/10/05)
 <ul>
 <li>Support Chinese bi-directional coding conversion of BIG5/GB2312
 <li>Support Chinese on-the-fly coding conversion while posting articles
 <li>Fix the multiple MIME encoding problem of the subject
 </ul>
 <p>
-PHP News Reader v1.6 (released on 2002/08/10)
+PHP News Reader v1.6 (2002/08/10)
 <ul>
 <li>Support square-bracketed catalog in newsgroups.lst
 <li>Couple of fixs for register_globals setting 'off'
@@ -249,7 +249,7 @@ PHP News Reader v1.6 (released on 2002/08/10)
 <li>Check for valid E-Mail entered by user
 </ul>
 <p>
-PHP News Reader v1.5 (released on 2002/07/06)
+PHP News Reader v1.5 (2002/07/06)
 <ul>
 <li>Multiple news server
 <li>Run with PHP's register_globals setting turned off
@@ -257,7 +257,7 @@ PHP News Reader v1.5 (released on 2002/07/06)
 <li>Switch interface language on the fly
 </ul>
 <p>
-PHP News Reader v1.4 (released on 2002/06/09)
+PHP News Reader v1.4 (2002/06/09)
 <ul>
 <li>Dynamic highlight of selected item 
 <li>Correct the problem about author information of XOVER, HEAD

@@ -127,9 +127,13 @@ I wrote this software in my leisure time, mostly in the weekend.
 Although PHP News Reader still lacks many fancy features,
 it works fine to meet the basic requirements - Reading Netnews.
 <p>
-This is PHP News Reader <b>$pnews_version</b>. Here is the release notes since <b>v{$ver[1]}.{$ver[2]}.0</b>:
-<p>
+This is PHP News Reader <b>$pnews_version</b>.
 EOR;
+
+if( $ver[3] != 0 )
+	echo " Here is the release notes since <b>v{$ver[1]}.{$ver[2]}.0</b>:\n";
+
+echo "<p>\n";
 
 $fp = fopen('history.php', 'r');
 while( $buf = fgets( $fp, 255 ) ) {
