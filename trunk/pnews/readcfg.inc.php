@@ -275,6 +275,18 @@ if( !isset($CFG['interface_language']) || !in_array( $CFG['interface_language'],
 else
 	$default_language = $CFG['interface_language'];
 
+/*
+$default_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+if( isset($CFG['interface_language']) && $CFG['interface_language'] != 'auto' ) {
+	if( in_array( $CFG['interface_language'], $valid_language ) )
+		$default_language = $CFG['interface_language'];
+}
+
+if( !in_array( $default_language, $valid_language ) )
+	$default_language = 'en';
+*/
+
 #$CFG['charset']['interface'] = $lang_coding[$default_language];
 
 foreach( $checks as $section ) {

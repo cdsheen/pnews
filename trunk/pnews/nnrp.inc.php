@@ -473,6 +473,8 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 
 	$n = count($body);
 
+	$show_html = ( $artinfo['type'] == 'text' && $artinfo['subtype'] == 'html' );
+
 	$skip_sig = false;
 	for( $i = 0 ; $i < $n ; $i++ ) {
 
@@ -506,38 +508,40 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		if( $artinfo['encoding'] == 'quoted-printable' )
 			$body[$i] = quoted_printable_decode( $body[$i] );
 
-		$body[$i] = htmlspecialchars( $body[$i], ENT_NOQUOTES );
+		if( !$show_html ) {
 
-		# replace the space(s) as &nbsp;
-#		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $body[$i] , $match ) )
-#			$body[$i] = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
-		if( !$space_asis )
-			$body[$i] = preg_replace( '/\s/', '&nbsp;', $body[$i] );
+			$body[$i] = htmlspecialchars( $body[$i], ENT_NOQUOTES );
 
-		# hyperlink/email auto-detection
-		if( $show_hlink ) {
-			/* replace hyperlink */
-			$body[$i] = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#;]|(&amp;))+)/', '<a href="$1" target=_blank>$1</a>' , $body[$i] );
-			/* replace mail link */
-			if( $hide_email )
-				$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/e', '"$1".hide_mail_link("$2@$3")', $body[$i] );
-			else
-				$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/', '$1<a href="mailto:$2@$3">$2@$3</a>', $body[$i] );
+			# replace the space(s) as &nbsp;
+			if( !$space_asis )
+				$body[$i] = preg_replace( '/\s/', '&nbsp;', $body[$i] );
+
+			# hyperlink/email auto-detection
+			if( $show_hlink ) {
+				/* replace hyperlink */
+				$body[$i] = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#;]|(&amp;))+)/', '<a href="$1" target=_blank>$1</a>' , $body[$i] );
+				/* replace mail link */
+				if( $hide_email )
+					$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/e', '"$1".hide_mail_link("$2@$3")', $body[$i] );
+				else
+					$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/', '$1<a href="mailto:$2@$3">$2@$3</a>', $body[$i] );
+			}
+
+			# filter ANSI codes
+			if( $filter_ansi )
+				$body[$i] = preg_replace( '/\033\[[\d;]*m/', '', $body[$i] );
+
+			# filter null line
+			if( !$show_null_line && $body[$i] == '' )
+				continue;
 		}
-
-		# filter ANSI codes
-		if( $filter_ansi )
-			$body[$i] = preg_replace( '/\033\[[\d;]*m/', '', $body[$i] );
-
-		# filter null line
-		if( !$show_null_line && $body[$i] == '' )
-			continue;
-
 		# convert charset if required
 		if( $trans_func )
 			$body[$i] = $trans_func( $body[$i] );
-
-		echo $prepend . $body[$i] . $postpend;
+		if( !$space_asis && $show_html )
+			echo $body[$i] . "\n";
+		else
+			echo $prepend . $body[$i] . $postpend;
 	}
 }
 
