@@ -56,6 +56,7 @@ PHP News Reader v2.3.1 (2003/09/27)
 <li>Better error handling when news server is unavailable.
 <li>Remove the read-only indication when <a href=guide.php#post_restriction>\$CFG["post_restriction"]</a> is enabled.
 <li>Fix several missing style sheet errors.
+<li>Auto-correction for some invalid uri if <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is enabled.
 </ul>
 PHP News Reader v2.3.0 (2003/09/06)
 <ul>
