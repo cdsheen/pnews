@@ -54,10 +54,10 @@ function setCookie(sName, sValue, sPath) {
 	document.cookie = sName + "=" + escape(sValue) + "; path=" + sPath;
 }
 function change_language( lang, path, from ) {
-	window.location = "change-lang.php?charset=" + lang + "&path=" + path + "&from=" + escape(from);
+	window.location = "change-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
 }
 function change_language_base( base, lang, path, from ) {
-	window.location = base + "change-lang.php?charset=" + lang + "&path=" + path + "&from=" + escape(from);
+	window.location = base + "change-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
 }
 function myfavor( url, title ) {
 /*

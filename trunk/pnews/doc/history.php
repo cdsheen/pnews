@@ -57,6 +57,8 @@ PHP News Reader v2.3.0 (2003/08/23)
 <li>The character '#' is included in the uri of hyperlink auto-detection.
 <li>Support more flexible <a href=guide.php#group_match>group matching syntax</a> in newsgroup.lst.
 <li>Directly linking to the next/previous article
+<li>Language switching reworked, relation between charset and language is more clear.
+<li><a href=guide.php#interface_language>\$CFG["interface_language"]</a> makes the decision at the language used in interface.
 </ul>
 PHP News Reader v2.2.4 (2003/07/26)
 <ul>

@@ -60,7 +60,7 @@ EOX;
 }
 
 function show_language_switch() {
-	global $CFG, $lang_option, $curr_language, $lang_coding;
+	global $CFG, $lang_option, $curr_language;
 	if( $CFG['language_switch'] ) {
 		$uri = $_SERVER['REQUEST_URI'];
 		$path = preg_replace( '/\/([^\/]+)$/', '/', $uri );
@@ -69,11 +69,10 @@ function show_language_switch() {
 		else
 			echo "<select class=lang onChange='change_language(this.value, \"$path\", \"$uri\");'>\n";
 		foreach( $lang_option as $region => $desc ) {
-			$charset = $lang_coding[$region];
 			if( $region == $curr_language )
-				echo "<option value=\"$charset\" selected>$desc\n";
+				echo "<option value=\"$region\" selected>$desc\n";
 			else
-				echo "<option value=\"$charset\">$desc\n";
+				echo "<option value=\"$region\">$desc\n";
 		}
 		echo "</select>\n";
 	}

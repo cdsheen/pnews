@@ -564,8 +564,15 @@ You can download phpCAS from the following place:<br>
  	<tr><td>Tranditional Chinese</td><td>zh-tw</td><td>BIG5</td></tr>
 	<tr><td>Simplified Chinese</td><td>zh-cn</td><td>GB2312</td></tr>
  	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
-        <tr><td>Fran&ccedil;ais</td><td>fr</td><td>FR-ASCII</td></tr>
+        <tr><td>Fran&ccedil;ais</td><td>fr</td><td>ISO-8859-1</td></tr>
 	</table>
+  </blockquote>
+<a name=interface_language></a>
+  <p> <strong>$CFG[&quot;interface_language&quot;]</strong></p>
+  <blockquote>
+    <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr" )<br>
+     (default: "en" )</p>
+    <strong>Notice: This setting first appeared at v2.3.0</strong>
   </blockquote>
 <a name=charset_config></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;config&quot;]</strong></p>
@@ -581,11 +588,6 @@ You can download phpCAS from the following place:<br>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;database&quot;]</strong></p>
   <blockquote> 
     <p>The charset setting used in database or LDAP</p>
-  </blockquote>
-<a name=charset_interface></a>
-  <p> <strong>$CFG[&quot;charset&quot;][&quot;interface&quot;]</strong></p>
-  <blockquote> 
-    <p>The initial charset setting of interface</p>
   </blockquote>
   <strong>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br>please use $CFG["charset"] section instead</strong>
 </blockquote>

@@ -17,6 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+$default_language = 'en';
+
 $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
 			'zh-cn'      => 'Chinese (GB)',
@@ -36,7 +38,8 @@ $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
 			// FR by Pascal Aubry
-			'fr'         => 'fr-ascii'       );
+			'fr'         => 'iso-8859-1'     );
+#			'fr'         => 'fr-ascii'       );
 
 $charset_lang = array(  'big5'       => 'zh-tw',
 			'gb'         => 'zh-cn',
@@ -57,28 +60,33 @@ $charset_alias = array( 'big5'       => 'big5',
 			'ascii'      => 'us-ascii',
 			'fr-ascii'   => 'fr-ascii' );
 
-if( isset($_SESSION['session_charset']) )
-	$curr_charset = $_SESSION['session_charset'];
-elseif( isset($_COOKIE['cookie_charset']) ) {
-	$curr_charset = $_COOKIE['cookie_charset'];
-	$_SESSION['session_charset'] = $_COOKIE['cookie_charset'];
+if( isset($_SESSION['session_language']) )
+	$curr_language = $_SESSION['session_language'];
+elseif( isset($_COOKIE['cookie_language']) ) {
+	$curr_language = $_COOKIE['cookie_language'];
+	$_SESSION['session_language'] = $_COOKIE['cookie_language'];
 }
 else
-	$curr_charset = '';
+	$curr_language = '';
 
-if( $curr_charset == '' || $charset_lang[$curr_charset] == '' ) {
-	$curr_charset = $default_charset;
-	$_SESSION['session_charset'] = $default_charset;
+if( $curr_language == '' || $lang_option[$curr_language] == '' ) {
+	$curr_language = $default_language;
+	$_SESSION['session_language'] = $default_language;
 }
 
-setcookie( 'cookie_charset', $curr_charset, time()+86400*30 );
+setcookie( 'cookie_language', $curr_language, time()+86400*30 );
 
-$curr_language = $charset_lang[$curr_charset];
+$curr_charset = $lang_coding[$curr_language];
 
 /* Include the localized language definition resource */
 
-include($lang_define[$curr_language]);
+@include($lang_define[$curr_language]);
 
+if( !isset( $strLogin ) ) {
+	echo "Warning: language definition missed<br>\n";
+#	echo "Current language: $curr_language<br>\n";
+#	echo "Current charset:  $curr_charset<br>\n";
+}
 function b2g( $instr ) {
 
 	$fp = fopen( 'language/big5-gb.tab', 'r' );

@@ -197,6 +197,13 @@ $checks = array( 'config', 'grouplst', 'database', 'interface' );
 $valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii' );
 $valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en' );
 
+if( !isset($CFG['interface_language']) )
+	$default_language = 'en';
+else
+	$default_language = $CFG['interface_language'];
+
+$CFG['charset']['interface'] = $lang_coding[$default_language];
+
 foreach( $checks as $section ) {
 	if( !isset( $CFG['charset'][$section] ) )
 		$CFG['charset'][$section] = 'utf-8';
@@ -204,7 +211,7 @@ foreach( $checks as $section ) {
 		config_error( '$CFG["charset"]["' . $section . '"]' );
 }
 
-$default_charset = $CFG['charset']['interface'];
+#$default_charset = $CFG['charset']['interface'];
 
 if( !isset( $CFG['url_rewrite'] ) ) 
 	$CFG['url_rewrite'] = false;

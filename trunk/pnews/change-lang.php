@@ -19,17 +19,24 @@
 
 session_start();
 
-$to_charset = strtolower($_GET['charset']);
+$to_language = strtolower($_GET['language']);
 
-setcookie( 'cookie_charset', $to_charset, time()+86400*30 );
+setcookie( 'cookie_language', $to_language, time()+86400*30 );
 
-$_SESSION['session_charset'] = $to_charset;
+$_SESSION['session_language'] = $to_language;
 
 include('language.inc.php');
 
-$to_language = $lang_option[$charset_lang[$to_charset]];
+#$to_charset = $lang_coding[$to_language];
+
+#$_SESSION['session_charset'] = $to_charset;
 
 $referal = $_GET['from'];
+
+$lang_name = $lang_option[$to_language];
+
+if( $referal == '' )
+	$referal = 'index.php';
 
 //header( "Location: $referal" );
 
@@ -46,7 +53,7 @@ echo <<<EOH
 <br>
 <br>
 <font size=3 face=Georgia>
-Changing Interface Language to <b>$to_language</b> ...
+Changing Interface Language to <b>$lang_name</b> ...
 </font>
 </center>
 </body>
