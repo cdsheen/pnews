@@ -51,7 +51,7 @@ if( $CFG['url_rewrite'] ) {
 }
 else {
 	$prefix = "read.php?server=$server&group=$group&artnum=";
-	$threadurl = "read.php?server=$server&group=$group&show_all=1&artnum=";
+	$threadurl = "read.php?server=$server&group=$group&show_all=1&artnum=$artnum";
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
 	$headerurl = $prefix . $artnum . "&header";
 }
