@@ -248,7 +248,7 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 	fwrite( $nhd, "X-User-Real-E-Mail: $real_email\r\n" );
 	fwrite( $nhd, "User-Agent: $php_news_agent\r\n" );
 	fwrite( $nhd, "Mime-Version: 1.0\r\n" );
-	fwrite( $nhd, "Content-Type: text/plain; charset=\"%s\"\r\n", $art_charset );
+	fwrite( $nhd, sprintf("Content-Type: text/plain; charset=\"%s\"\r\n", $art_charset ) );
 	fwrite( $nhd, "Content-Transfer-Encoding: 8bit\r\n" );
 #	fwrite( $nhd, "X-User-Agent-URL: http://www.csie.nctu.edu.tw/~cdsheen/php-news/\r\n" );
 	fwrite( $nhd, "X-HTTP-Posting-Host: $client\r\n" );
