@@ -283,7 +283,7 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 
 		if( $urlquote ) {
 			# replace url as anchor
-			$buf = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w\d-_.:\/~+=?,]|(&amp;))+)/', ' <a href="\\1" target=_blank>\\1</a>', $buf );
+			$buf = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w\d-_.:\/~+=?,#]|(&amp;))+)/', ' <a href="\\1" target=_blank>\\1</a>', $buf );
 
 			# replace e-mail as anchor
 			$buf = preg_replace( '/([\w\d-_.]+)@([\w\d-_.]+)/', ' <a href="mailto:\\1@\\2" target=_blank>\\1@\\2</a>', $buf );
