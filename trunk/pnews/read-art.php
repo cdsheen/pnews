@@ -134,6 +134,9 @@ echo "<center>\n";
 			echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
 	}
 
+	if( $article_convert['to'] )
+		echo ' <font size=-1>(Convert from ' . $article_convert['source'] . ' to ' . $article_convert['result'] . ')</font>';
+
 	echo "</td>";
 
 	if( !isset($_GET['header']) ) {
