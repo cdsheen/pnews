@@ -19,6 +19,13 @@
 
 /* Read and check the configuration (config.inc.php) */
 
+$valid_auth_type   = array( 'required', 'optional', 'open' );
+$valid_auth_prompt = array( 'http', 'form', 'cas' );
+$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
+
+$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1' );
+$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi', 'de' );
+
 if( !file_exists('config.inc.php') )
 	show_error( "You should edit your 'config.inc.php'. Copy examples/config.inc.php as a template.");
 
@@ -27,13 +34,10 @@ require_once('config.inc.php');
 // CAS: when using the CAS mechanism
 // $CFG['auth_prompt'] and $CFG['auth_method'] should be both set to 'cas'
 
-$valid_auth_type   = array( 'required', 'optional', 'open' );
-$valid_auth_prompt = array( 'http', 'form', 'cas' );
-$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
-
 if( !in_array( $CFG['auth_type'], $valid_auth_type ) ) {
 	config_error( '$CFG["auth_type"]' );
 }
+
 if( $CFG['auth_type'] != 'open' ) {
 
 	if( !isset($CFG['auth_prompt']) )
@@ -245,10 +249,7 @@ if( !isset( $CFG['auth_user_fullname'] ) )
 
 $checks = array( 'config', 'grouplst', 'database', 'interface' );
 
-$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1' );
-$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'de', 'fr', 'fi' );
-
-if( !isset($CFG['interface_language']) )
+if( !isset($CFG['interface_language']) || !in_array( $CFG['interface_language'], $valid_language ) )
 	$default_language = 'en';
 else
 	$default_language = $CFG['interface_language'];

@@ -163,7 +163,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     <p>Prohibits the posting and forwarding of articles, even if user performs login. (default: <i>false</i>)</p>
     <p>This is global setting for all catalogs,
        if you want only one or two catalogs to be readonly,
-       set it in <a href="#option">newsgroups.lst</a></p>
+       set it in <a href="#grouplst_option">newsgroups.lst</a></p>
     <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
     <p>It is to replace $CFG["post_restriction"] in the previous version.</p>
   </blockquote>
@@ -734,18 +734,18 @@ You can download phpCAS from the following place:<br />
     <p><strong>[Computer Science]</strong></p>
   </blockquote>
   <p>This defined a catalog named as "Computer Science"</p>
-  <p>The newsgroups defined in the same catalog should comes from the same news 
-    server, and the encoding should be the same too. Also note that at least one 
+  <p>The newsgroups defined in the same catalog should be pulled from the same news 
+    server, and presented with the same charset. Also note that at least one 
     catalog should be defined in newsgroups.lst.</p>
-  <p>The settings consist of two parts, key and value, and are separated by tabs 
-    or spaces<br />
-    And the value part of setting ends at end of line</p>
-  <p>For example, the following line sets "foobar" as "value1 value2"</p>
+  <p>The setting consists of multiple directives. Each directive is a pair of key and value, which separated by tabs 
+     or spaces<br />
+    And the value part ends at end of line</p>
+  <p>For example, the following line sets directive "foobar" as "value1 value2"</p>
   <blockquote> 
     <p>foobar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value1 value2</p>
   </blockquote>
-  <p>The setting before any catalogs are global settings. Two global settings 
-    are valid now:</p>
+  <p>The setting before any catalogs are <b>global</b> settings. Two global settings 
+    are valid now: <b>charset</b> and <b>server</b></p>
   <blockquote> 
     <p><strong># default charset for all catalog<br />
       charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big5</strong></p>
@@ -782,10 +782,11 @@ You can download phpCAS from the following place:<br />
     and the "gb2312" charset is used in these groups.
     This catalog does require explicily authentication to the news server by the supplied username/password</p>
   <a name=group_match></a>
-  <p><strong>Syntax of 'group'</strong></p>
-  This setting defines the groups included in each catalog.<br />
+  <p><strong>'group' directive</strong></p>
+  <blockquote>
+  This directive defines the groups included in each catalog.<br />
   Multiple groups can be separated by a comma ","<br />
-  Groups can be specified in the following syntax:
+  Groups can be specified in three kind of syntax:
   <ol>
     <li>Full group name for inclusion, i.e: <b>tw.bbs.comp.hardware</b><br /><br />
     <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br /><br />
@@ -798,10 +799,12 @@ You can download phpCAS from the following place:<br />
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br />
         Only full group name is allowed here, it is used to nagative the previously included group.
   </ol>
-  <a name=option></a>
-  <p><strong>Syntax of 'option'</strong></p>
-  <p>In each section, an optional "option" setting can be defined.</p>
-  <p>Three possible settings of "option" are currently supported.</p>
+  </blockquote>
+  <a name=grouplst_option></a>
+  <p><strong>'option' directive</strong></p>
+  <blockquote>
+  <p>In each section, an optional "option" directive can be defined.</p>
+  <p>The following values are now recognized:</p>
   <p>default</p>
   <blockquote> 
     <p>This catalog will become the default catalog when user first come in.</p>
@@ -823,11 +826,43 @@ You can download phpCAS from the following place:<br />
     <p>This catalog is <b>readonly</b> even if user performs a login.</p>
     <p>This option first appeared in v2.5.0 of PHP News Reader.</p>
   </blockquote>
+  <p>hidden</p>
+  <blockquote> 
+    <p>This catalog is <b>hidden</b> from index page.
+    This catalog can still be accessed as normal catalog,
+    if you know the corresponding catalog number.</p>
+    <p>This option first appeared in v2.5.2 of PHP News Reader.</p>
+  </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 
     <p><strong>option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default,private</strong></p>
   </blockquote>
+  </blockquote>
+
+  <a name=grouplst_auth></a>
+  <p><strong>'auth' directive</strong></p>
+  <blockquote>
+  <p>The access to the news server of this catalog require the authentication info
+  (username/password) to be specified.</p>
+  <p>The username/password are separated by comma, ",".</p>
+  Since version 2.5.2 of PHP News Reader, if you use 'http' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
+  you can use the username and password in the http authentication as the authentication info requested by news server. For example:</p>
+  <blockquote>
+    <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
+  </blockquote>
+  <p>
+  The %http_user and %http_pw will be replaced by the username/password provided from http authentication.
+  This replacement does not work if you use 'form' as <a href=#auth_prompt>$CFG['auth_prompt']</a>.
+  This is because that the password does not available in session variable for the security reason.</p>
+  The replacement of %http_* is originally coded by Jochen Staerk.
+  </blockquote>
+
+  <a name=grouplst_charset></a>
+  <p><strong>'charset' directive</strong></p>
+  <blockquote>
+  <p>The charset setting for this catalog.</p>
   <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
+  </blockquote>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
