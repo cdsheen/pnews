@@ -56,7 +56,7 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li>Per-catalog readonly can be configured in newsgroups.lst.
 <li>Validate the correctness of the current session before performing authentication.
 <li>GB2312 translation is refined by Czz and does not depend on the BIG5 translation now.
-<li>Log verbose level can be adjusted by tuning <a href=guide.php#log_level>\$CFG["log_level"]</a>.
+<li>Log verbose level can be tuned by changing <a href=guide.php#log_level>\$CFG["log_level"]</a>.
 <li>Fix the group verification bug when cross-posting article.
 <li>Organization header now correctly overrides the setting of news server.
 <li>Incorrect regular expression used in split() is now fixed.
