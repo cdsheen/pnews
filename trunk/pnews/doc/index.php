@@ -159,20 +159,22 @@ Installation Guide:
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
-CVS is also available online:
+Anonymous access to CVS Repository (read only):
 <blockquote>
-<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>PHP News Reader - View CVS Repository on the Web</a><br>
-<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.gz">PHP News Reader - Nightly CVS Tarball</a>
-</blockquote>
-Direct access to CVS Repository:
-<blockquote>
-# <font color=blue>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><br>
+# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><br>
 Logging in to :pserver:anonymous@cvs.sourceforge.net:2401/cvsroot/pnews<br>
-CVS password: <font color=red>(Press Enter)</font><br>
-# <font color=blue>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br>
+CVS password: <font color=orange>(Press Enter)</font><br>
+# <font color=green>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br>
 cvs server: Updating pnews<br>
 ...
 </blockquote>
+<p>
+CVS is also available online:
+<blockquote>
+<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>View CVS Repository on the Web</a><br>
+<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.gz">Nightly CVS Tarball (pnews-cvsroot.tar.gz)</a>
+</blockquote>
+<p>
 Discussion Forum:
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
