@@ -358,6 +358,13 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>Show sourceforge logo (default: on)</p>
   </blockquote>
+  <p> <strong>$CFG[&quot;time_format&quot;]</strong></p>
+  <blockquote> 
+    <p>The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")</p>
+    <p>$CFG["time_format"] = "%Y/%m/%d %H:%M:%S";</p>
+    <p>The conversion specifiers used in the format string is the same as PHP strftime().<br>
+    You can refer <a href="http://www.php.net/manual/en/function.strftime.php" target=_blank>http://www.php.net/manual/en/function.strftime.php</a> for details.
+  </blockquote>
   <p><strong>$CFG[&quot;links&quot;]</strong></p>
   <blockquote> 
     <p>The links referring to other pages, (default: null)<br>
@@ -472,7 +479,8 @@ PHP News Reader - Installation and Configuration
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
-<font size=3><? echo $pnews_claim; ?></font>
+<font size=3><? echo $pnews_claim; ?></font><br>
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">

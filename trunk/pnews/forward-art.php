@@ -44,7 +44,7 @@ if( $_POST['content'] != '' ) {
 
 	html_head( "$newsgroup - $subject" );
 
-	$time = strftime("%Y/%m/%d %H:%M:%S");
+	$time = strftime($CFG['time_format']);
 
 	echo "<table width=100%><tr><td class=x>";
 	echo "<font size=2 color=navy>$strArticleIsForwarded</font>\n";

@@ -183,6 +183,9 @@ if( !file_exists( $CFG['group_list'] ) )
 if( !isset($CFG['show_sourceforge_logo']) )
 	$CFG['show_sourceforge_logo'] = true;
 
+if( !isset($CFG['time_format']) )
+	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';
+
 /* un-documented settings */
 
 if( !isset($CFG['language_switch']) )

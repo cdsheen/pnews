@@ -215,6 +215,11 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = on;
 
 
+# [time_format] The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")
+
+// $CFG["time_format"] = "%Y/%m/%d %H:%M:%S";
+
+
 # [organization] The organization name of this site (default: "News Server")
 
 $CFG["organization"] = "XXX News Server";

@@ -64,7 +64,7 @@ if( $_POST['content'] != '' ) {
 	$subject = str_replace( '\\\'', "'", $subject );
 	$subject = str_replace( '\\\\', '\\', $subject );
 
-	$time = strftime("%Y/%m/%d %H:%M:%S");
+	$time = strftime($CFG['time_format']);
 
 	echo "<table width=100%><tr><td class=x>";
 	echo "<font size=2 color=navy>$strArticlePosted</font>\n";

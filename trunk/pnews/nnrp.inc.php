@@ -100,6 +100,9 @@ function nnrp_group ( $nhd, $group ) {
 }
 
 function nnrp_xover ( $nhd, $from, $to=null ) {
+
+	global $CFG;
+
 	if( $to == null )
 		send_command( $nhd, "XOVER $from" );
 	else
@@ -135,7 +138,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$xover[$n][2] = decode_subject($from[2]);
 			$xover[$n][5] = $from[1];
 		}
-		$xover[$n][3] = strftime("%Y/%m/%d %H:%M:%S", strtotime( $xover[$n][3] ));
+		$xover[$n][3] = strftime( $CFG['time_format'], strtotime( $xover[$n][3] ));
 		$n++;
 	}
 	return( $xover );
@@ -380,6 +383,8 @@ function mb_wordwrap($str)
 
 function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 
+	global $CFG;
+
 	$artinfo['charset'] = $def_charset;
 
 	if( $headers['Content-Type'] ) {
@@ -403,7 +408,7 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 		$artinfo['encoding'] = '7bit';
 
 	if( $headers['Date'] )
-		$artinfo['date'] = strftime("%Y/%m/%d %H:%M:%S", strtotime($headers['Date']) );
+		$artinfo['date'] = strftime( $CFG['time_format'], strtotime($headers['Date']) );
 
 	$artinfo['msgid'] = $headers['Message-ID'];
 

@@ -6,7 +6,7 @@ echo '<html>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>PHP News Reader</title>
+<title>History of PHP News Reader</title>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
@@ -17,8 +17,12 @@ echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
 echo '
 </td></tr></table>
 <font size=3 color=black face="Georgia">
-Release histroy
+<a href=release.php>PHP News Reader</a> Release histroy
 <hr>
+PHP News Reader v2.1.1 (2003/03/08?)
+<ul>
+<li>The format of time can be configured by $CFG["time_format"].
+</ul>
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
@@ -120,7 +124,8 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <table cellspacing=0 cellpadding=0 width=100%>
 <tr><td>
 ';
-echo "<font size=2>$pnews_claim</font>\n";
+echo "<font size=2>$pnews_claim</font><br>\n";
+echo "<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>\n";
 echo '
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
