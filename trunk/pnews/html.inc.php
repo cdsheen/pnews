@@ -125,9 +125,15 @@ EOT;
 }
 
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
-	global $CFG;
+	global $CFG, $group_default_server;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = $close ? 'close_window();' : '';
+
+	if( $server == $group_default_server )
+		$reserver = '';
+	else
+		$reserver = $server;
+
 	if( $CFG['show_article_popup'] )
 		if( $CFG['url_rewrite'] )
 			return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
@@ -135,7 +141,7 @@ function read_article( $server, $group, $artnum, $link_text, $close = false, $cl
 			return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
 		if( $CFG['url_rewrite'] )
-			return "<a$class_text href=\"article/$server/$group/$artnum\">$link_text</a>";
+			return "<a$class_text href=\"article/$reserver/$group/$artnum\">$link_text</a>";
 		else
 			return "<a$class_text href=\"read-art.php?server=$server&group=$group&artnum=$artnum\">$link_text</a>";
 }

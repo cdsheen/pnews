@@ -22,6 +22,10 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.2.1 (2003/06/??)
+<ul>
+<li>The default news server address can be ignored when $CFG["url_rewrite"] is enabled
+</ul>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>
 <li>Support news server which requires authorization.

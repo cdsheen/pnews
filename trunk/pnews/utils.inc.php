@@ -135,6 +135,11 @@ if( $_SESSION['save_postvar'] ) {
 ##############################################################################
 # Determine the $curr_catalog
 
+$server = $_GET['server'];
+$group  = $_GET['group'];
+
+if( $server == '*' && $group_default_server != '' )
+	$server = $group_default_server;
 
 if( $self_base == 'index.php' ) {
 	if( isset( $_GET['catalog'] ) )
@@ -145,7 +150,7 @@ if( $self_base == 'index.php' ) {
 		$curr_catalog = $default_catalog;
 }
 elseif( isset( $_GET['server'], $_GET['group'] ) ) {
-	$verify_catalog = verifying( $_GET['server'], $_GET['group'] );
+	$verify_catalog = verifying( $server, $group );
 	if( $verify_catalog >= 0 )
 		$curr_catalog = $verify_catalog;
 	elseif( isset($_SESSION['rem_catalog']) )
@@ -188,9 +193,6 @@ if( $grouplst_convert['to'] ) {
 # Authentication
 
 $auth_success     = false;
-
-$server = $_GET['server'];
-$group  = $_GET['group'];
 
 if( $CFG['auth_type'] != 'open' ) {
 

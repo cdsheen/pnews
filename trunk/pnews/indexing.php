@@ -93,8 +93,14 @@ echo <<<EOH
 
 EOH;
 
+if( $server == $group_default_server )
+	$reserver = '';
+else
+	$reserver = $server;
+
+
 if( $CFG['url_rewrite'] )
-	echo "<font size=3 face=Georgia><a href=group/$server/$group><i><b>$group</i></b></a></font>";
+	echo "<font size=3 face=Georgia><a href=group/$reserver/$group><i><b>$group</i></b></a></font>";
 else
 	echo "<font size=3 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
 
@@ -215,7 +221,7 @@ echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\
 if( $CFG["article_order_reverse"] )
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group\">$strFirstPage</a>";
+			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
@@ -223,7 +229,7 @@ if( $CFG["article_order_reverse"] )
 		$target = $show_end + 1 ;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/${target}r\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/${target}r\">$strPreviousPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strPreviousPage</a>";
 	}
@@ -237,14 +243,14 @@ else
 		$target = $show_from - 1;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/${lowmark}r\">$strFirstPage</a>";
+			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strFirstPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strFirstPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/$target\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$strPreviousPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strPreviousPage</a>";
 	}
@@ -260,14 +266,14 @@ if( $CFG["article_order_reverse"] )
 	if( $show_from > $lowmark ) {
 		$target = $show_from - 1;
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/$target\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$strNextPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strNextPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/${lowmark}r\">$strLastPage</a>";
+			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strLastPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strLastPage</a>";
 	}
@@ -283,14 +289,14 @@ else
 		$target = $show_end + 1 ;
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group/${target}r\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/${target}r\">$strNextPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strNextPage</a>";
 
 		echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$server/$group\">$strLastPage</a>";
+			echo "<a href=\"group/$reserver/$group\">$strLastPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group\">$strLastPage</a>";
 	}
