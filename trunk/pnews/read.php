@@ -35,9 +35,7 @@ else
 
 $c = check_group( $server, $group );
 
-$nnrp->open( $server, $news_nntps[$c] );
-
-if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
+if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 	connect_error( $server );
 
 list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
@@ -157,9 +155,9 @@ echo "<center>\n";
 	echo "</tr></table>\n";
 #}
 
-echo "<table width=100% cellpadding=3 cellspacing=0>\n";
+echo "<table class=fixed width=100% cellpadding=3 cellspacing=0>\n";
 
-echo "<tr><td class=subject align=left><a href=\"$uri\">$subject </a></td>\n";
+echo "<tr><td class=subject align=left width=70%><a href=\"$uri\">$subject </a></td>\n";
 echo "<td class=date>$date</td></tr>\n";
 if( $CFG['hide_email'] )
 	$hmail = hide_mail_link( $email );

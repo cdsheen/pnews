@@ -13,6 +13,7 @@ a.menu:hover    { text-decoration:underline; color: #FF5020 }
 hr              { height: 1pt; color: #8080A0 }
 
 table           { empty-cells: show }
+table.fixed     { table-layout: fixed }
 
 table.shadow    { border-color: white black black white; empty-cells: show; background: white }
 
@@ -50,7 +51,7 @@ td.date         { background: #DDDDFF; font-size: 14px; text-align: right }
 td.author       { background: #FFFFEE; font-size: 12px; text-align: left }
 td.server       { background: #FFFFEE; font-size: 12px; text-align: right }
 
-td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; text-align: left }
+td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; text-align: left; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; word-break: bread-all }
 
 tr.footbar      { font-size: 12px }
 

@@ -93,11 +93,11 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <blockquote> 
     <p> <strong># mkdir &nbsp;/home/www/htdocs/news/<br />
       # cd &nbsp;<? echo $pname; ?>/<br />
-      # cp &nbsp;-a &nbsp;* &nbsp;/home/www/htdocs/news/</strong></p>
+      # cp &nbsp;-R &nbsp;* &nbsp;/home/www/htdocs/news/</strong></p>
   </blockquote>
   <p> The configuration of PHP News Reader contains two files, "config.inc.php" 
     and "newsgroups.lst"<br />
-    You can refer the template of these two files in the subdirectory "examples/".</p>
+    You can refer the template of both files in the subdirectory "examples/".</p>
   <p> The config.inc.php should be put in the root directory of PHP News Reader, 
     (such as /home/www/htdocs/news/)</p>
   <p> You can copy the file from the examples/ directory as a reference.</p>
@@ -112,9 +112,9 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <blockquote> 
     <p> <strong># cp &nbsp;examples/newsgroups.lst&nbsp;&nbsp; .</strong></p>
   </blockquote>
-  <p> Now, you can begin editing these two files.</p>
-  <p>If the configuration of both files is finished, you can then use your favorite 
-    browser to access this Web News,<br />
+  <p> Now, you can begin the editing of these two files.</p>
+  <p>If you finished the editing of both files, you can then use your favorite 
+    browser to access your new born Web News,<br />
     for example:</p>
   <blockquote> 
     <p>http://your.web.server/news/</p>
@@ -128,12 +128,12 @@ and the other is zip.<br />Please download your preferred format from SourceForg
 <strong><em><font color="#0000FF">3. Configuration for CONFIG.INC.PHP</font></em></strong> 
 <blockquote> 
   <p> config.inc.php controls how PHP News Reader works.</p>
-  <p> You can find the sample config.inc.php in the "example/" directory.</p>
+  <p> You can find the sample of config.inc.php in the "example/" directory.</p>
   <p> All configuration applies PHP syntax and should be in the form of:</p>
   <blockquote> 
     <p> $CFG["foo"] = "bar";</p>
   </blockquote>
-  <p> Each settings is well-documented in the example file.</p>
+  <p> Each setting is well-documented in the example file.</p>
   <p> The configuration contains 3 sections:</p>
   <blockquote> 
     <p> <a href=#section1>Section 1</a> - Authentication<br />
@@ -683,7 +683,7 @@ You can download phpCAS from the following place:<br />
 <a name=email_editing></a>
   <p><strong>$CFG["email_editing"]</strong></p>
   <blockquote> 
-    <p>Allow E-Mail editing when posting article (default: <i>true</i>)</p>
+    <p>Allow editing of E-Mail address when posting article (default: <i>true</i>)</p>
     <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=articles_per_page></a>
@@ -860,7 +860,8 @@ You can download phpCAS from the following place:<br />
         After v2.3.0, the last class pattern is not restricted to a single <b>*</b>,<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in v2.3.0 or later.<br /><br />
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br />
-        Only full group name is allowed here, it is used to nagative the previously included group.
+        Only full group name is allowed here, it is used to nagative the previously included group.<br /></br />
+    <li>Since v2.6.0 of PHP News Reader, multiple 'group' directives can be specified in one single category.
   </ol>
   </blockquote>
   <a name=grouplst_option></a>

@@ -48,9 +48,7 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 		$subject  = $_POST['subject'];
 	}
 
-	$nnrp->open( $server, $news_nntps[$c] );
-
-	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
+	if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 		connect_error( $server );
 
 	if( $article_convert['back'] ) {
@@ -64,9 +62,9 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 
 	$an = intval($CFG['allow_attach_file']);
 	for( $i = 1 ; $i <= $an ; $i++ ) {
-		if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
-			$filename = $HTTP_POST_FILES["attach$i"]['name'];
-			uuencode( $nnrp->nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
+		if( isset( $_FILES['attach'.$i]['name'] ) ) {
+			$filename = $_FILES['attach'.$i]['name'];
+			uuencode_file( $filename, $_FILES['attach'.$i]['tmp_name'] );
 		}
 	}
 

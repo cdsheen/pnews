@@ -26,9 +26,7 @@ $filename = $_GET['filename'];
 
 $c = check_group( $server, $group );
 
-$nnrp->open( $server, $news_nntps[$c] );
-
-if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
+if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 	connect_error( $server );
 
 list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );

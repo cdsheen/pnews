@@ -45,10 +45,12 @@ PHP News Reader v2.6.0 (2004/12/25)
 <li>Added <a href=guide.php#confirm_post>\$CFG['confirm_post']</a> and <a href=guide.php#confirm_forward>\$CFG['confirm_forward']</a> to enable the confirmation for message posting.
 <li>Fixed the wrong version-checking codes when enabling nntps.
 <li>The line length limit of 'newsgroups.lst' has been expanded from 512 to 4096.
-<li>Fixed the downloading of attachment with filename contains special characters. (Fixed by ogekuri)
+<li>Fixed the downloading of attachment with filename contains special characters. (by ogekuri)
 <li>Clear session variables and reload the config file when switching between different instance.
-<li>Bug fixed for posting article with line begin with a period. (Fixed by ogekuri)
+<li>Bug fixed for posting article when a line begin with period. (by ogekuri)
 <li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is deprecated.
+<li>Fixed the problem of attachment uploading in PHP 5.
+<li>The long line will be wrapped when displaying the content of article.
 <li>Multiple 'group' directive are allowed in one category.
 <li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.

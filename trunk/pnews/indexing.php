@@ -32,19 +32,10 @@ elseif( $CFG['banner'] )
 
 $c = check_group( $server, $group );
 
-$nnrp->open( $server, $news_nntps[$c] );
-
-if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
+if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 	connect_error( $server );
 
 list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
-
-#if( $CFG['cache_dir'] ) {
-#	$cachedir = $CFG['cache_dir'] . '/' . $server . '/' . str_replace( '.', '/', $group );
-#	mkdirs($cachedir);
-#	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $cachedir, $CFG['thread_enable'], $CFG['thread_db_format'] );
-#}
-#else
 
 $artlist = $nnrp->article_list( $lowmark, $highmark );
 

@@ -88,7 +88,7 @@ echo "</td></tr></table>\n";
 
 echo "</td><td valign=top align=left>";
 
-if( ! $nnrp->nhd ) {
+if( ! $nnrp->connected() ) {
 	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_category] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
@@ -122,7 +122,7 @@ if( $CFG['show_group_description'] )
 	echo <<<EOH
 <table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
-  <td>$pnews_msg[Number]</td>
+  <td align=right>$pnews_msg[Number]</td>
   <td align=right>$pnews_msg[PostNumber]</td>
   <td>$pnews_msg[Group]</td>
   <td>$pnews_msg[GroupDescription]</td>
@@ -215,7 +215,7 @@ echo "</td></tr></table>\n";
 
 html_foot();
 
-if( $nnrp->nhd ) $nnrp->close();
+$nnrp->close();
 
 if( $CFG['html_footer'] )
 	readfile( $CFG['html_footer'] );

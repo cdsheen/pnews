@@ -30,7 +30,7 @@ $php_news_agent = "PHP News Reader $pnews_version (CDSHEEN)";
 
 class pnews_nnrp {
 
-	var	$nhd;
+	var 	$nhd;
 	var	$nnrp_debug_level = 0;
 	var	$cache_dir;
 	var	$thread_enable;
@@ -46,6 +46,10 @@ class pnews_nnrp {
 		$this->cache_dir = $c;
 		$this->thread_enable = $t;
 		$this->db_handler = $d;
+	}
+
+	function connected() {
+		return( $this->nhd );
 	}
 
 	function open( $nnrp_server, $ssl_enable = false ) {
@@ -645,6 +649,8 @@ class pnews_nnrp {
 	}
 
 	function post_writeln( $buf ) {
+		if( $this->nnrp_debug_level == 2 )
+			echo "C: [$buf]<br />\n";
 		if( $buf[0] == '.' )
 			fwrite( $this->nhd, ".$buf\r\n" );
 		else
@@ -655,7 +661,7 @@ class pnews_nnrp {
 		$tok = strtok( $buf, "\n" );
 		while ($tok) {
 			$tok = rtrim($tok);
-			$this->nnrp_post_writeln( $this->nhd, $tok );
+			$this->post_writeln( $tok );
 			$tok = strtok ("\n");
 		}
 	}

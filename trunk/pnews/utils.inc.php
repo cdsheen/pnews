@@ -748,7 +748,9 @@ ERR;
 	exit;
 }
 
-function uuencode( $hld, $filename, $source, $mode = '644' ) {
+function uuencode_file( $filename, $source, $mode = '644' ) {
+
+	global	$nnrp;
 
 	if( !file_exists( $source ) )
 		return;
@@ -758,9 +760,10 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 		return;
 
 	$size = filesize( $source );
+
 #	fwrite( $hld, "$size\n");
 
-	fwrite( $hld, "\nbegin $mode $filename  \n" );
+	$nnrp->post_write( "\nbegin $mode $filename  \n" );
 
 	$ilen = $llen = 0;
 	$text = '';
@@ -777,7 +780,8 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 				$text .= chr($byte[$j] + 32);
 			$llen++;
 			if( $llen == 60 ) {
-				fwrite( $hld, chr(77) . $text . "  \n" );
+//				echo chr(77) . $text . "  <br />\n";
+				$nnrp->post_write( chr(77) . $text . "  \n" );
 				$ilen = $llen = 0;
 				$text = '';
 			}
@@ -785,12 +789,18 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 	}
 	fclose($fp);
 
+	if( $llen > 0 )
+		$nnrp->post_write( chr($ilen+32) .  $text . "  \n \nend\n" );
+	else
+		$nnrp->post_write( " \nend\n" );
+/*
 	if( $llen == 0 )
 		fwrite( $hld, "` \nend\n" );
-	else if( $ilen == 14 )
+	elseif( $ilen == 14 )
 		fwrite( $hld, '..' .  $text . "  \n` \nend\n" );
 	else
 		fwrite( $hld, chr($ilen+32) .  $text . "  \n` \nend\n" );
+*/
 }
 
 function hide_mail( $email ) {

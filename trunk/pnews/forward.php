@@ -85,9 +85,7 @@ elseif( $artnum != '' ) {
 	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
-	$nnrp->open( $server, $news_nntps[$c] );
-
-	if( ! ( $nnrp->nhd && nnrp_authenticate() ) )
+	if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 		connect_error( $server );
 
 	list( $code, $count, $lowmark, $highmark ) = $nnrp->group( $group );
