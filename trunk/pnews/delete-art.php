@@ -142,7 +142,7 @@ elseif( $artnum != '' ) {
 	echo " <input class=normal type=submit value='$strFormConfirmDelete'>\n";
 	echo " <input class=normal type=button value='$strFormCancelDelete' onClick='close_window();'></td></tr>\n";
 	echo "<tr><td colspan=2>";
-	echo "<textarea name=content class=content rows=10 wrap=physical disabled cols=82>";
+	echo "<textarea name=content class=content rows=10 wrap=hard disabled cols=82>";
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
 	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
 	nnrp_close($nhd);

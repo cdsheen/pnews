@@ -163,7 +163,7 @@ elseif( $artnum != '' ) {
 	echo "$strContent:</td><td align=right>\n";
 	echo " <input class=normal type=button value=\"$strFormConfirmForward\" onClick='verify();' tabindex=2>\n";
 	echo " <input class=normal type=button value=\"$strFormCancelForward\" onClick='really();' tabindex=3></td></tr>\n";
-	echo "<tr><td colspan=3><textarea name=content class=content wrap=physical tabindex=1 cols=82>";
+	echo "<tr><td colspan=3><textarea name=content class=content wrap=hard tabindex=1 cols=82>";
 
 	printf("\n\n\n$strForwardFrom\n", "$from ($email)" );
 	printf( "$strPostStatus\n\n", $date, $group );

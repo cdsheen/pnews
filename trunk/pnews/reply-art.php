@@ -253,7 +253,7 @@ elseif( $artnum != '' ) {
 <input class=normal type=button onClick='InsertQuote();' value="$strFormInsertQuote">
 </td></tr>
 <tr><td colspan=3>
-<textarea name=content class=content wrap=physical tabindex=1 cols=82>
+<textarea name=content class=content wrap=hard tabindex=1 cols=82>
 </textarea>
 </td></tr></table>
 

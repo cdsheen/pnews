@@ -174,7 +174,7 @@ echo <<<EOF
  <tr><td colspan=3>
  <input name=server value="$server" type=hidden>
  <input name=group value="$group" type=hidden>
- <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br /><br />
+ <textarea name=content class=content rows=12 wrap=hard tabindex=2></textarea><br /><br />
  </td></tr>
 EOF;
 	$an = intval($CFG['allow_attach_file']);
