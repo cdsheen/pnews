@@ -37,6 +37,9 @@ $auto_slash       = get_magic_quotes_gpc();
 
 $referal          = $_SERVER['HTTP_REFERER'];
 
+#if( $referal == '' )
+#	$referal = 'index.php';
+
 $post_restriction = $CFG['post_restriction'];
 
 $mail_add_header  = "X-Mailer: $pnews_name $pnews_version (CDSHEEN)\n"; 
