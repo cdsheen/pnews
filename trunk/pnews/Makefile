@@ -26,7 +26,7 @@ all:	pkg
 pkg:
 	rm -rf $(ZIPNAME)*
 	mkdir $(ZIPNAME)
-	cp -r .htaccess *.php *.js examples doc language auth css $(ZIPNAME)
+	cp -r .htaccess *.php *.js favicon.ico examples doc language auth css $(ZIPNAME)
 	rm -rf $(ZIPNAME)/examples/CVS
 	rm -rf $(ZIPNAME)/language/CVS
 	rm -rf $(ZIPNAME)/auth/CVS
@@ -41,7 +41,7 @@ gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_b2g.inc.php
 
 www:
-	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
+	cp -f favicon.ico version.inc.php /home/users/c/cd/cdsheen/groups/
 	cp -f doc/style.css doc/header.php doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php doc/download.php /home/users/c/cd/cdsheen/groups/htdocs/
 	cp -f doc/index.php /home/users/c/cd/cdsheen/groups/htdocs/index.php
 
