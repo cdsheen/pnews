@@ -19,7 +19,9 @@
 
 require_once('../version.inc.php');
 
-$dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
+preg_match( '/^v(\d+)\.(\d+)\.(\d+)$/', $pnews_version, $ver );
+
+$dname = 'pnews-' . $ver[1] . $ver[2] . $ver[3] . '.tgz' ;
 
 if( $_SERVER['HTTPS'] )
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
@@ -125,20 +127,22 @@ I wrote this software in my leisure time, mostly in the weekend.
 Although PHP News Reader still lacks many fancy features,
 it works fine to meet the basic requirements - Reading Netnews.
 <p>
-This is PHP News Reader <b>$pnews_version</b>, and the release notes here:
+This is PHP News Reader <b>$pnews_version</b>. Here is the release notes since <b>v{$ver[1]}.{$ver[2]}.0</b>:
 <p>
 EOR;
 
 $fp = fopen('history.php', 'r');
 while( $buf = fgets( $fp, 255 ) ) {
-	if( preg_match( "/^PHP News Reader/", $buf ) )
+	if( preg_match( "/^PHP News Reader v/", $buf ) )
 		break;
 }
 echo $buf;
 while( $buf = fgets( $fp, 255 ) ) {
+	if( preg_match( "/^PHP News Reader v/", $buf ) ) {
+		if( !strstr( $buf, 'v' . $ver[1] . '.' . $ver[2] . '.' ) )
+			break;
+	}
 	echo str_replace('\\$', '$', $buf);
-	if( rtrim($buf) == "</ul>" )
-		break;
 }
 fclose($fp);
 
@@ -172,7 +176,7 @@ Sample running system:
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<p>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5)<p>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/</a>&nbsp; (cn.bbs.*, in Chinese/BIG5, converted from GB2312)<p>
-<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with url_rewrite turning on)
+<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <b>url_rewrite</b> turning on)
 </blockquote>
 <p>
 Download the latest version from SourceForge:

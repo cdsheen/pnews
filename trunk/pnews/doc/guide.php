@@ -470,6 +470,7 @@ You can download phpCAS from the following place:<br />
   </blockquote>
   <p>&nbsp;</p>
 <a name=section2></a>
+<hr width=90% />
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br />
   </p>
@@ -486,7 +487,9 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>Enable or disable the URL rewrite function (default: <i>false</i>)</p>
     <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
-    <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br />
+    <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access control<br />
+    <p>And the directive <b>AccessFileName</b> must be <b>.htaccess</b>,<br />
+    otherwise you should change it, or rename <b>.htaccess</b> to match your setting.</p>
     For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/mod/mod_rewrite.html" target=_blank>http://httpd.apache.org/docs/mod/mod_rewrite.html</a> for details.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
@@ -533,7 +536,7 @@ You can download phpCAS from the following place:<br />
       The default is <i>false</i>. If you do like this feature, you can turn it on by:
     <blockquote>$CFG["magic_tag"] = <i>true</i>;</blockquote>
     <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
-    <p>The default value of $CFG["magic_tag"] has changed to <i>false</i> since <b>v2.4.1</b> of PHP News Reader</p>
+    <p>The default value of $CFG["magic_tag"] has been changed to <i>false</i> since <b>v2.4.1</b> of PHP News Reader</p>
   </blockquote>
 <a name=cache_dir></a>
   <p><strong>$CFG["cache_dir"]</strong></p>
@@ -621,6 +624,7 @@ You can download phpCAS from the following place:<br />
       "Tech News" =&gt; "http://foo.bar/technews/" );</p>
   </blockquote>
 <a name=section3></a>
+<hr width=90% />
   <p><strong><br />
     Section 3 - Languages</strong></p>
   <p> This section controls the setting about languages and charsets</p>
