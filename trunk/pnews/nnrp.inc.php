@@ -599,6 +599,8 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 
 #	$filename = trim($filename);
 
+	$binary = '';
+
 	if( $type == 'uuencode' ) {
 
 		function DEC( $char ) {
