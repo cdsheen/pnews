@@ -352,24 +352,17 @@ function nnrp_last( $nhd, $artnum ) {
 }
 
 function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
-	send_command( $nhd, "ARTICLE $artnum" );
-	list( $code, $msg ) = get_status( $nhd );
-
-	if( $code[0] != '2' )
-		return(null);
-
-	$n = 0 ;
-	while( $buf = fgets( $nhd, 4096 ) ) {
-		$buf = chop( $buf );
-		if( $buf == "." )
-			break;
-		echo $prepend . htmlspecialchars($buf, ENT_NOQUOTES ) . $postpend;
-	}
+	nnrp_show ( $nhd, 'ARTICLE', $artnum, $prepend, $postpend, $urlquote, $grep_signature, $trans_func, $leading_space );
 }
 
 function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
+	nnrp_show ( $nhd, 'BODY', $artnum, $prepend, $postpend, $urlquote, $grep_signature, $trans_func, $leading_space );
+}
+
+function nnrp_show ( $nhd, $cmd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null, $leading_space = true ) {
+{
 	global $CFG;
-	send_command( $nhd, "BODY $artnum" );
+	send_command( $nhd, "$cmd $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
 
 	if( $code[0] != '2' )

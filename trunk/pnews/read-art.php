@@ -42,8 +42,14 @@ if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-$nextnum = nnrp_next( $nhd, $artnum );
-$lastnum = nnrp_last( $nhd, $artnum );
+if( $CFG['show_newest_top'] ) {
+	$nextnum = nnrp_last( $nhd, $artnum );
+	$lastnum = nnrp_next( $nhd, $artnum );
+}
+else {
+	$nextnum = nnrp_next( $nhd, $artnum );
+	$lastnum = nnrp_last( $nhd, $artnum );
+}
 
 if( $CFG['url_rewrite'] ) {
 	$nexturl = ($nextnum>0) ? "$urlbase/article/$reserver/$group/$nextnum" : '';
