@@ -23,7 +23,7 @@ include('utils.inc.php');
 
 $page   = $_GET['page'];
 
-html_head( $group . ' - ' . $title );
+html_head( $group );
 
 echo "<center>";
 
