@@ -66,7 +66,7 @@ function html_foot() {
 	if( $CFG['author_link'] == false )
 		echo "PHP News Reader $pnews_version by Shen Cheng-Da";
 	else
-		echo '<a href="release.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by <a href="http://www.csie.nctu.edu.tw/~cdsheen/" target=_blank>Shen Cheng-Da</a>';
+		echo '<a href="release.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
 ?>
 
        </font>
