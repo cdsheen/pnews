@@ -37,17 +37,9 @@ echo <<<EOH
 <title>PHP News Reader - Installation and Configuration Guide</title>
 </head>
 <body style="background-color: #EEFFFF">
-<table width=100% cellpadding=0 cellspacing=0><tr><td>
-<font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
-</td><td align=right valign=bottum>
-<font face="Georgia" size=1>Release Date: $pnews_release</font>
-</td></tr>
-</table>
-<font size=3 color=black face="Georgia">
-PHP News Reader - Installation and Configuration
-</font>
-<hr />
 EOH;
+
+include('header.php');
 
 ?>
 <font size=3 color=black face="Georgia">

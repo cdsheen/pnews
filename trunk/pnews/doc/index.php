@@ -38,20 +38,11 @@ echo <<<EOR
 </head>
 <body style="background-color: #EEFFFF">
 
-<table width=100% cellpadding=0 cellspacing=0>
-<tr>
- <td>
- <font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
- </td>
- <td align=right valign=bottum>
- <font face="Georgia" size=1>Release Date: $pnews_release</font>
- </td></tr>
-</table>
+EOR;
 
-<font size=3 color=black face="Georgia">
-PHP News Reader
-</font>
-<hr />
+include('header.php');
+
+echo <<<EOR
 <font face="Georgia" size="3" color="black">
 PHP News Reader is a web based News Reader.
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
