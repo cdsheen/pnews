@@ -53,7 +53,7 @@ include('header.php');
 <hr />
 <a name=upgrade></a>
 <div>
-<strong><em><font color="#0000FF">1. Upgrade from previous version</font></em></strong> 
+<strong><em>1. Upgrade from previous version</em></strong> 
 <blockquote>
 To upgrade PHP News Reader from the previous version, please follow
 the following procedure:
@@ -67,7 +67,7 @@ the following procedure:
 </blockquote>
 <hr />
 <a name=newinstall></a>
-<strong><em><font color="#0000FF">2. New Installation</font></em></strong> 
+<strong><em>2. New Installation</em></strong> 
 <blockquote>
   <p> The installation of PHP News Reader is quite simple.<br />
     You can download the latest source of PHP News Reader from:</p>
@@ -76,24 +76,20 @@ the following procedure:
   </blockquote>
   <p> The source is packaged in two different format, one is tar+gzip (tgz),
 and the other is zip.<br />Please download your preferred format from SourceForge.</p>
-  <p> After downloaded the source, extract the source tarball in the temporary 
-    directory:</p>
-  <blockquote> 
-    <p> <strong># tar &nbsp;zxvf &nbsp;<? echo $pname; ?>.tgz</strong></p>
+  <p> After downloaded the source, extract the source tarball in the directory where your server want to provide News service.</p>
+      Supposed the DocumentRoot of your web is <b>/usr/local/apache/htdocs/</b>,</p>
+  <blockquote>
+    <p> <strong># cd &nbsp;/usr/local/apache/htdocs/<br />
+    # tar &nbsp;zxvf &nbsp;<? echo $pname; ?>.tgz</strong></p>
   </blockquote>
   or if you prefer the zip format,
   <blockquote> 
-    <p> <strong># unzip &nbsp;<? echo $pname; ?>.zip</strong></p>
+    <p> <strong># cd &nbsp;/usr/local/apache/htdocs/<br />
+    # unzip &nbsp;<? echo $pname; ?>.zip</strong></p>
   </blockquote>
-
-  <p> All source will be extracted into the directory <b><? echo $pname; ?>/</b></p>
-  <p> Now, you can copy all the source (including sub-directory) from <b><? echo $pname; ?>/</b> to the directory where you 
-    want to<br />
-    provide web service. Supposed your web document directory is in /usr/local/apache/htdocs/,</p>
+  <p> You may want to change the directory name, for example:</p>
   <blockquote> 
-    <p> <strong># mkdir &nbsp;/usr/local/apache/htdocs/pnews<br />
-      # cd &nbsp;<? echo $pname; ?>/<br />
-      # cp &nbsp;-R &nbsp;* &nbsp;/usr/local/apache/htdocs/pnews/</strong></p>
+    <p> <strong># mv &nbsp;<? echo $pname; ?> &nbsp;pnews</strong>
   </blockquote>
   <p> The configuration of PHP News Reader contains two files, "config.inc.php" 
     and "newsgroups.lst"<br />
@@ -117,15 +113,15 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     browser to access your new born Web News,<br />
     for example:</p>
   <blockquote> 
-    <p>http://your.web.server/pnews/</p>
+    <p><b>http://your.web.server/pnews/</b></p>
   </blockquote>
   <p>Note that you should have started your web server and make sure that PHP module is enabled.</p>
-  <p>If you have any problems, or find any errors in this document, please send 
+  <p>If you have any problems, or find any errors in this document,<br />please send 
     your comments to cdsheen@users.sourceforge.net, any suggestion is appreciated.</p>
 </blockquote>
 <hr size="1">
 <a name=config_inc_php></a>
-<strong><em><font color="#0000FF">3. Configuration for CONFIG.INC.PHP</font></em></strong> 
+<strong><em>3. Configuration for CONFIG.INC.PHP</em></strong> 
 <blockquote> 
   <p> config.inc.php controls how PHP News Reader works.</p>
   <p> You can find the sample of config.inc.php in the "example/" directory.</p>
@@ -308,7 +304,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=pop3s_auth></a>
   <p> <strong>POP3S (POP3 over SSL) authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'pop3s'</i>)</p>
@@ -319,7 +315,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=mail_auth></a>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'mail'</i>)</p>
@@ -342,7 +338,7 @@ You can download phpCAS from the following place:<br />
         ".bbs@pop3s.bbs.org" =&gt; "pop3s://pop3s.bbs.org/",
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
     </blockquote>
     <p> <strong>$CFG["domain_select"]</strong></p>
     <blockquote> 
@@ -376,7 +372,7 @@ You can download phpCAS from the following place:<br />
        it has nothing to do with the authentication perform by news server.
        Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
     <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be v4.3.0 or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=cas_auth></a>
   <p><strong>CAS authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'cas'</i>)</p>
@@ -470,7 +466,7 @@ You can download phpCAS from the following place:<br />
         $CFG["db_password_crypt"] = "md5";<br />
         $CFG["db_variable"] = array( "%e" =&gt; "user_email" 
         );</p>
-      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
+      <p>Since <b>v2.5.6</b>, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
       With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     </blockquote>
   </blockquote>
@@ -569,7 +565,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p>Setting the style sheet used for all html (default: <i>"standard.css"</i>)</p>
     <p>This setting first appeared in the <b>v2.2.1</b> of PHP News Reader</p>
-    <p>After v2.2.4, the configured style sheet should be placed in the css/ subdirectory.</p>
+    <p>After <b>v2.2.4</b>, the configured style sheet should be placed in the css/ subdirectory.</p>
   </blockquote>
 <a name=title></a>
   <p> <strong>$CFG["title"]</strong></p>
@@ -649,7 +645,7 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["thread_enable"]</strong></p>
   <blockquote>
     <p>Enable threading (default: <i>false</i>)</p>
-    <p>We only support the simplest type of threading now.
+    <p>We only support the simplest type of threading now.<br />
        Articles in the same thread will be <u>listed</u> in the bottum of the page
        when you view one of the message in the thread.<p>
     <p>To enable threading, you must enable the cache mechanism by setting
@@ -678,8 +674,10 @@ You can download phpCAS from the following place:<br />
        may be <i>dbm</i>, <i>ndbm</i>, <i>gdbm</i>, <i>db2</i>, <i>db3</i> or <i>db4</i>.<br />
        Make sure that you already enable the handler in your DBA extension.<p>
     <p>The default value for $CFG["thread_db_format"] is :<br />
-       &nbsp;&nbsp;'<i>db3</i>' if <b>PHP &lt; 4.3.2</b>,<br />
-       &nbsp;&nbsp;'<i>db4</i>' if <b>PHP &gt;= 4.3.2</b> .
+       <blockquote>
+       '<i>db3</i>' &nbsp;if&nbsp; <b>PHP &lt; 4.3.2</b>,<br />
+       '<i>db4</i>' &nbsp;if&nbsp; <b>PHP &gt;= 4.3.2</b> .
+       </blockquote>
     <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=image_inline></a>
@@ -828,8 +826,8 @@ You can download phpCAS from the following place:<br />
     <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi", "de", "it", "sk" )<br />
      (default: <i>"en"</i> )</p>
     <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader<br />
-       If not set in v2.3.0 or later, the default language used in interface is "en" - English</p>
-    <p>Notice: the original $CFG["charset"]["interface"] is deprecated since v2.3.0,<br />please use $CFG["interface_language"] instead</p>
+       If not set in <b>v2.3.0</b> or later, the default language used in interface is "en" - English</p>
+    <p>Notice: the original $CFG["charset"]["interface"] is deprecated since <b>v2.3.0</b>,<br />please use $CFG["interface_language"] instead</p>
   </blockquote>
 <a name=charset_config></a>
   <p> <strong>$CFG["charset"]["config"]</strong></p>
@@ -847,11 +845,11 @@ You can download phpCAS from the following place:<br />
     <p>The charset setting used in database or LDAP.<br />
        If you do not enable database or ldap authentication module, this setting will be ignored</p>
   </blockquote>
-  <p>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br />please use $CFG["charset"] section instead</p>
+  <p>Notice: the original $CFG["language"] section is deprecated since <b>v2.1.0</b>,<br />please use $CFG["charset"] section instead</p>
 </blockquote>
 <a name=newsgroups_lst></a>
 <hr size="1">
-<strong><em><font color="#0000FF">4. Configuration for NEWSGROUPS.LST</font></em></strong> 
+<strong><em>4. Configuration for NEWSGROUPS.LST</em></strong> 
 <blockquote> 
   <p>newsgroups.lst list the news server / news groups to access</p>
   <p>The syntax of this file is different from that of config.inc.php</p>
@@ -877,7 +875,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
   This directive defines the news server used to retrieve newsgroups in this category.
   <p>
-  Since v2.5.5 of PHP News Reader, the address of the news server can be configured with port number.
+  Since <b>v2.5.5</b> of PHP News Reader, the address of the news server can be configured with port number.
   <p>
   For example: <i>news.pnews-test.com:12345</i>
   </blockquote>
@@ -892,13 +890,13 @@ You can download phpCAS from the following place:<br />
     <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br /><br />
         Only the last class of group name can be used in pattern match<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is INVALID.<br /><br />
-        Before v2.2.4, only 'all-match' patttern (a single <b>*</b> ) is allowed in the last class pattern of group name<br />
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in v2.2.4, while <b>tw.bbs.comp.*</b> is VALID.<br /><br />
-        After v2.3.0, the last class pattern is not restricted to a single <b>*</b>,<br />
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in v2.3.0 or later.<br /><br />
+        Before <b>v2.2.4</b>, only 'all-match' patttern (a single <b>*</b> ) is allowed in the last class pattern of group name<br />
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in <b>v2.2.4</b>, while <b>tw.bbs.comp.*</b> is VALID.<br /><br />
+        After <b>v2.3.0</b>, the last class pattern is not restricted to a single <b>*</b>,<br />
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in <b>v2.3.0</b> or later.<br /><br />
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br />
         Only full group name is allowed here, it is used to nagative the previously included group.<br /></br />
-    <li>Since v2.6.0 of PHP News Reader, multiple 'group' directives can be specified in one single category.
+    <li>Since <b>v2.6.0</b> of PHP News Reader, multiple 'group' directives can be specified in one single category.
   </ol>
   </blockquote>
   <a name=grouplst_option></a>
@@ -919,20 +917,20 @@ You can download phpCAS from the following place:<br />
   <p>nntps</p>
   <blockquote> 
     <p>With this option, the connection to news server will be NNTP over SSL,
-       also known as NNTPS. This option first appeared in v2.4.0, and require
-       PHP with v4.3.0 or greater and be compiled with OpenSSL support.</p>
+       also known as NNTPS. This option first appeared in <b>v2.4.0</b>, and require
+       PHP with <b>v4.3.0</b> or greater and be compiled with OpenSSL support.</p>
   </blockquote>
   <p>readonly</p>
   <blockquote> 
     <p>This category is <b>readonly</b> even if user performs a login.</p>
-    <p>This option first appeared in v2.5.0 of PHP News Reader.</p>
+    <p>This option first appeared in <b>v2.5.0</b> of PHP News Reader.</p>
   </blockquote>
   <p>hidden</p>
   <blockquote> 
     <p>This category is <b>hidden</b> from index page.
     This category can still be accessed as normal category,
     if you know the corresponding category number.</p>
-    <p>This option first appeared in v2.5.2 of PHP News Reader.</p>
+    <p>This option first appeared in <b>v2.5.2</b> of PHP News Reader.</p>
   </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 
@@ -949,7 +947,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myname,mypasswd</strong></p>
   </blockquote>
-  Since PHP News Reader v2.5.2, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
+  Since PHP News Reader <b>v2.5.2</b>, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
   you can use the username and password in the http authentication as the authentication info requested by Web server. For example:</p>
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
@@ -965,7 +963,7 @@ You can download phpCAS from the following place:<br />
   <p><strong>'charset' directive</strong></p>
   <blockquote>
   <p>The charset setting for this category. All newsgroups in this category should be with the same charset.</p>
-  <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
+  <p>Notice: the original 'lang' setting is deprecated since <b>v2.1.0</b>, please use 'charset' instead.</p>
   </blockquote>
   <hr />
   <b>An example for <i>newsgroups.lst</i>:</b>
