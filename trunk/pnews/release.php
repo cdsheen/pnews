@@ -124,7 +124,8 @@ http://sourceforge.net/projects/pnews/
 Sample running system:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<p>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (in Chinese)
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (in Chinese/BIG5)<p>
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/cnbbs/</a>&nbsp; (in Chinese/GB2312)
 </blockquote>
 <p>
 Download the latest version from SourceForge:
