@@ -115,6 +115,16 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'PostgreSQL authentication module is invalid' );
 		check_db_settings();
 		break;
+	case 'nntp':
+		if( !isset( $CFG['auth_nntp_server'] ) )
+			config_error( '$CFG["auth_nntp_server"]' );
+		if( file_exists('auth/nntp.inc.php') )
+			include('auth/nntp.inc.php');
+		else
+			show_error( 'NNTP authentication module missed' );
+		if( !function_exists( 'check_user_password' ) )
+			show_error( 'NNTP authentication module is invalid' );
+		break;
 	case 'user':
 		if( file_exists( $CFG['auth_user_module'] ) )
 			include( $CFG['auth_user_module'] );

@@ -176,6 +176,47 @@ function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
 		return( array_reverse($overview) );
 }
 
+function nnrp_stat( $nhd, $artnum ) {
+	send_command( $nhd, "STAT $artnum" );
+	list( $code, $msg ) = get_status( $nhd );
+
+	return( $code[0] == '2' );
+}
+
+function nnrp_next( $nhd, $artnum ) {
+
+	send_command( $nhd, "STAT $artnum" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(-1);
+
+	send_command( $nhd, "NEXT $artnum" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(-1);
+
+	list( $nextart, $artid, $rest ) = split( ' ', $msg );
+
+	return( $nextart );
+}
+
+function nnrp_last( $nhd, $artnum ) {
+
+	send_command( $nhd, "STAT $artnum" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(-1);
+
+	send_command( $nhd, "LAST $artnum" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(-1);
+
+	list( $lastart, $artid, $rest ) = split( ' ', $msg );
+
+	return( $lastart );
+}
+
 function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
 	send_command( $nhd, "ARTICLE $artnum" );
 	list( $code, $msg ) = get_status( $nhd );

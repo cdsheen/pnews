@@ -23,6 +23,11 @@ include('utils.inc.php');
 
 $artnum = $_GET['artnum'];
 
+if( isset( $_GET['newwin'] ) )
+	$newwin = ($_GET['newwin']==1);
+else
+	$newwin = true;
+
 $nhd = nnrp_open( $server );
 
 if( ! $nhd ) {
@@ -56,8 +61,10 @@ else {
 $date = $artinfo['date'];
 $msgid = $artinfo['msgid'];
 
-html_head( "$subject ($group)", null, 'topmargin=0 leftmargin=0' );
-#html_head( "$group - $subject", null, 'topmargin=0' );
+if( $newwin )
+	html_head( "$subject ($group)", null, 'topmargin=0 leftmargin=0' );
+else
+	html_head( "$subject ($group)" );
 
 #if( strlen( $subject ) > $subject_limit + 6 )
 #	$subject = substr( $subject, 0, $subject_limit + 6 ) . ' ..';
@@ -71,7 +78,8 @@ $subject = htmlspecialchars( $subject );
 if( strlen( $org ) > $org_limit )
 	$org = substr( $org, 0, $org_limit ) . ' ..';
 
-echo "<center>\n<table width=100% cellpadding=3 cellspacing=0>\n";
+echo "<center>\n";
+echo "<table width=100% cellpadding=3 cellspacing=0>\n";
 
 echo "<tr bgcolor=#DDDDFF><td class=x align=left><font size=2><b><a href=\"$uri\">$subject</a></b></font></td>\n";
 echo "<td align=right>$date</td></tr>\n";
@@ -98,15 +106,24 @@ echo "</td></tr></table></center>";
 html_tail();
 
 function toolbar( $server, $group, $artnum, $title ) {
-	global $post_restriction, $email, $auth_email;
+	global $post_restriction, $email, $auth_email, $newwin;
 	global $strCloseWindow, $strReplyDetail, $strReplyQuoteDetail;
 	global $strCrossPostDetail, $strForwardDetail, $strDeleteDetail;
-	global $strMyFavor;
+	global $strMyFavor, $strReturnToIndexing, $CFG;
 	echo "<table border=1 cellspacing=0 cellpadding=2>\n";
 	if( !$post_restriction ) {
 		echo "<tr>";
+		if( ! $newwin ) {
+			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			if( $CFG['url_rewrite'] )
+				echo '<a href="' . $CFG['url_base'] . "group/$server/$group/$artnum/\">$strReturnToIndexing</a>";
+			else
+				echo "<a href=\"indexing.php?server=$server&group=$group&cursor=$artnum\">$strReturnToIndexing</a>";
+			echo "</td>\n";
+		}
+
 		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-		echo reply_article( $server, $group, $artnum, $strReplyDetail, false, true );
+		echo reply_article( $server, $group, $artnum, $strReplyDetail, false, $newwin );
 		echo "</td>\n";
 
 #		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
@@ -114,16 +131,16 @@ function toolbar( $server, $group, $artnum, $title ) {
 #		echo "</td>\n";
 
 		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-		echo xpost_article( $server, $group, $artnum, $strCrossPostDetail, true );
+		echo xpost_article( $server, $group, $artnum, $strCrossPostDetail, $newwin );
 		echo "</td>\n";
 
 		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-		echo forward_article( $server, $group, $artnum, $strForwardDetail, true );
+		echo forward_article( $server, $group, $artnum, $strForwardDetail, $newwin );
 		echo "</td>\n";
 
 		echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
 		if( $email == $auth_email )
-			echo delete_article( $server, $group, $artnum, $strDeleteDetail, true );
+			echo delete_article( $server, $group, $artnum, $strDeleteDetail, $newwin );
 		else
 			echo "&nbsp;";
 		echo "</td>\n";

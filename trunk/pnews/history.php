@@ -22,10 +22,12 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.1.3 (2003/04/13)
+PHP News Reader v2.2.0 (2003/05/20)
 <ul>
-<li>ANSI coloring codes is filtered.
-<li>Support URL rewrite function.
+<li>The ANSI coloring codes are filtered.
+<li>Support links to Next and Previous articles.
+<li>Support URL rewrite function (worked with Apache's mod_rewrite).
+<li>Deleted articles are skipped and exactly 20 articles are displayed in one page
 </ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>

@@ -24,7 +24,7 @@ define( 'off', false, true );
 #     Section 3 - Languages
 
 # The setting with 'REQUIRED' mark and do not come with a default value
-# should be explicitly configured
+# and should be explicitly configured
 
 ############################################################################
 # Section 1 - Authentication - Configure how users login your system
@@ -37,8 +37,8 @@ define( 'off', false, true );
 
 # [url_base] The base url of your PHP News Reader installation
 #            (REQUIRED if url_rewrite == true )
+
 # $CFG['url_base'] = 'http://webnews.foobar.com/news/';
-# $CFG['url_base'] = '/php-news/';
 
 
 # [auth_type] Specify the authentication type (REQUIRED)
@@ -71,6 +71,7 @@ $CFG["auth_http_realm"] = "XXX";
 #      "mail" - authenticated via multiple POP3 server,
 #     "mysql" - authenticated via MySQL database,
 #     "pgsql" - authenticated via PostgreSQL database,
+#      "nntp" - authenticated via NNTP server,
 #      "user" - authenticated via your self-defined method,
 
 // $CFG["auth_method"] = "ftp";
@@ -163,6 +164,11 @@ $CFG["db_field_password"] = "user_password";
 $CFG["db_password_crypt"] = "md5";
 
 $CFG["db_variable"] = array( "%e" => "user_email" );
+
+# NNTP authentication parameters (REQUIRED if auth_method == 'nntp')
+#      [$auth_nntp_server] NNTP server address ( address:port )
+
+// $CFG["auth_nntp_server"]      = "news.domain.org";
 
 
 # [auth_expire_time] After this time in seconds, authentication is expired

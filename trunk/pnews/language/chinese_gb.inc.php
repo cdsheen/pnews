@@ -73,6 +73,7 @@ $strPreviousPage       = '上一页';
 $strPageNumber         = '这是第 %s 页（共 %s 页）';
 
 $strReturnToGroupList  = '回讨论区列表';
+$strReturnToIndexing   = '回文章列表';
 $strNoPostPermission   = '您没有在此讨论区发表文章的权限';
 $strNoArticle          = '本讨论区目前没有文章';
 

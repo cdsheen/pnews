@@ -103,13 +103,14 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
     <p>You should enable Apache &quot;mod_rewrite&quot; module and <b>AllowOverride</b> for per-directory access (.htaccess)</p>
-    <p>This setting first appeared at PHP News Reader v2.1.3</p>
+    <p>For more information, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
+    <p>This setting first appeared in the v2.2.0 of PHP News Reader</p>
   </blockquote>
   <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
   <blockquote> 
     <p>Specify the base URL of your PHP News Reader installation</p>
     <p>This setting is REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
-    <p>This setting first appeared at PHP News Reader v2.1.3</p>
+    <p>This setting first appeared in the v2.2.0 of PHP News Reader</p>
   </blockquote>
   <p><strong>$CFG[&quot;auth_type&quot;]</strong></p>
   <blockquote> 
@@ -179,12 +180,12 @@ PHP News Reader - Installation and Configuration
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_bind_rdn&quot;]</strong></p>
     <blockquote> 
-      <p>LDAP bind RDN, %u replaced by username (default: &quot;%u&quot;)</p>
+      <p>LDAP bind RDN, %u is substituted by username (default: &quot;%u&quot;)</p>
       <p>$CFG["ldap_bind_rdn"] = "cn=%u,ou=members,o=root";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_bind_pwd&quot;]</strong></p>
     <blockquote> 
-      <p>LDAP bind password, %p replaced by password (default: &quot;%p&quot;)</p>
+      <p>LDAP bind password, %p is substituted by password (default: &quot;%p&quot;)</p>
       <p>$CFG["ldap_bind_pwd"] = "%p";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_filter&quot;]</strong></p>
@@ -227,7 +228,7 @@ PHP News Reader - Installation and Configuration
     </blockquote>
     <p> <strong>$CFG[&quot;pop3_user_modify&quot;]</strong></p>
     <blockquote> 
-      <p>fix the username used for POP3, %u replaced by username (default: &quot;%u&quot;)</p>
+      <p>fix the username used for POP3, %u is substituted by username (default: &quot;%u&quot;)</p>
       <p>Normally, you did not need this parameter. But on some BBS systems, a little modification is needed, such as:</p>
       <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
     </blockquote>
@@ -322,12 +323,12 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>The E-Mail of authenticated user (REQUIRED)<br>
       <br>
-      The %u will be replaced by the username enter by authentication session<br>
+      The %u will be substituted by the username enter by authentication session<br>
       <br>
       Other variables are defined in the [db_variable] or [ldap_variable]<br>
       <br>
-      An exception is, if you use 'mail' auth-method, %e will be replaced with the user's E-Mail,<br>
-      and %u will be replaced with the user name part of the E-Mail (the strings before '@')</p>
+      An exception is, if you use 'mail' auth-method, %e will be substituted with the user's E-Mail,<br>
+      and %u will be substituted with the user name part of the E-Mail (the strings before '@')</p>
   </blockquote>
   <p><strong>$CFG[&quot;log&quot;]</strong></p>
   <blockquote> 

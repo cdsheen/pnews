@@ -48,7 +48,10 @@ function show_language_switch() {
 	if( $CFG['language_switch'] ) {
 		$uri = $_SERVER['REQUEST_URI'];
 		$path = preg_replace( '/\/([^\/]+)$/', '/', $uri );
-		echo "<select class=lang onChange='change_language(this.value, \"$path\", \"$uri\");'>\n";
+		if( $CFG['url_rewrite'] )
+			echo "<select class=lang onChange='change_language_base( \"" . $CFG['url_base'] . "\", this.value, \"$path\", \"$uri\");'>\n";
+		else
+			echo "<select class=lang onChange='change_language(this.value, \"$path\", \"$uri\");'>\n";
 		foreach( $lang_option as $region => $desc ) {
 			$charset = $lang_coding[$region];
 			if( $region == $curr_language )
@@ -113,68 +116,62 @@ function html_tail() {
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' ); $close_cmd\">$link_text</a>";
 }
 
 function delete_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:delete_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:delete_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function reply_article( $server, $group, $artnum, $link_text, $quote = false, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	$quote = ( $quote ? 1 : 0 );
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:reply_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum, $quote )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:reply_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
 }
 
 function xpost_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:xpost_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:xpost_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function forward_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$close_cmd = ( $close ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:forward_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum )\">$link_text</a>";
-	elseif( $close )
-		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum ); close_window();\">$link_text</a>";
+		return "<a$class_text href=\"javascript:forward_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum )\">$link_text</a>";
+		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function html_focus( $form, $field ) {

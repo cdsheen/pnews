@@ -74,6 +74,7 @@ $strPreviousPage       = 'Prev.';
 $strPageNumber         = 'Page %s of totaling %s page(s)';
 
 $strReturnToGroupList  = 'Group List';
+$strReturnToIndexing   = 'Article List';
 $strNoPostPermission   = 'You have no permission for posting article in this group';
 $strNoArticle          = 'There\'s no article in this newsgroup';
 
