@@ -392,7 +392,7 @@ PG;
 if( $CFG['url_rewrite'] )
 	$pageurl = $CFG['url_base'] . "group/$reserver/$group/p";
 else
-	$pageurl = $CFG['url_base'] . "$self?server=$server&group=$group&page=";
+	$pageurl = "$self?server=$server&group=$group&page=";
 ?>
 
 function changePage(pgidx) {
