@@ -344,7 +344,7 @@ $CFG["organization"] = "XXX News Server";
 
 # [show_sourceforge_logo] Show SourceForge logo (default: true)
 
-// $CFG["show_sourceforge_logo"] = false;
+$CFG["show_sourceforge_logo"] = false;
 
 # [links] The links referring to other pages, (default: null)
 
