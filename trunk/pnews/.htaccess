@@ -23,4 +23,4 @@ RewriteRule	^group/([^/]+)/([^/]+)/([0-9]+)r/?$		indexing.php?server=$1&group=$2
 RewriteRule	^article//?([^/]+)/([0-9]+)/?$			read-art.php?server=*&group=$1&artnum=$2	[L]
 RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/?$		read-art.php?server=$1&group=$2&artnum=$3	[L]
 
-RewriteRule	^newsgroups.lst$				index.php	[L]
+RewriteRule	^newsgroups\.lst$				index.php	[L]
