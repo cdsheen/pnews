@@ -41,15 +41,12 @@ if( $confirm == 1 ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$nhd = nnrp_open( $server );
+	$c = $check_group( $server, $group );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-		html_head('ERROR');
-		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-		html_foot();
-		html_tail();
-		exit;
-	}
+	$nhd = nnrp_open( $server, $news_nntps[$c] );
+
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+		connect_error( $server );
 
 	if( $artconv['back'] )
 		nnrp_cancel( $nhd, $artconv['back']($auth_user), $auth_email, $msgid, $group, $artconv['back']($subject) );
@@ -89,15 +86,12 @@ elseif( $artnum != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$nhd = nnrp_open( $server );
+	$c = check_group( $server, $group );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-		html_head('ERROR');
-		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-		html_foot();
-		html_tail();
-		exit;
-	}
+	$nhd = nnrp_open( $server, $news_nntps[$c] );
+
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+		connect_error( $server );
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

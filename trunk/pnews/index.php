@@ -39,7 +39,7 @@ for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 }
 */
 
-$nhd = nnrp_open( $news_server[$curr_catalog] );
+$nhd = nnrp_open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
 
 echo "<br><table width=95%><tr><td valign=top width=120>\n";
 

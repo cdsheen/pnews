@@ -29,14 +29,12 @@ echo "<center>\n";
 if( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><p>\n";
 
-$nhd = nnrp_open( $server );
+$c = check_group( $server, $group );
 
-if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-	echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-	html_foot();
-	html_tail();
-	exit;
-}
+$nhd = nnrp_open( $server, $news_nntps[$c] );
+
+if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	connect_error( $server );
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

@@ -49,6 +49,12 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.4.0 (2003/10/04)
+<ul>
+<li>NNTPS/SNEWS support
+<li>Check for the invalid access to groups not listed in newsgroups.lst
+<li>
+</ul>
 PHP News Reader v2.3.1 (2003/09/27)
 <ul>
 <li>Reading article with invalid artnum will be redirected into indexing page.

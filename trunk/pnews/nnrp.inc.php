@@ -19,7 +19,14 @@
 
 $php_news_agent = "PHP News Reader $pnews_version (CDSHEEN)";
 
-function nnrp_open ( $nnrp_server ) {
+function nnrp_open ( $nnrp_server, $ssl_enable = false ) {
+	if( $ssl_enable )
+		return( open_nntps( $nnrp_server ) );
+	else
+		return( open_nntp( $nnrp_server ) );
+}
+
+function open_nntp ( $nnrp_server ) {
 
 	$nhd = null;
 	$nhd = @fsockopen( $nnrp_server, 119, $errno, $errstr, 5 );
@@ -38,7 +45,36 @@ function nnrp_open ( $nnrp_server ) {
 		return(null);
 
 	return( $nhd );
+}
 
+function open_nntps ( $nnrp_server ) {
+
+	$nhd = null;
+	$nhd = fsockopen( "ssl://$nnrp_server", 563, $errno, $errstr, 5 );
+
+	if( ! $nhd )
+		return(null);
+
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(null);
+
+	send_command( $nhd, "MODE READER" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(null);
+
+	return( $nhd );
+}
+
+function nnrp_help( $nhd ) {
+	send_command( $nhd, "HELP" );
+	while( $buf = fgets( $nhd, 4096 ) ) {
+		echo "$buf<br>";
+		$buf = chop($buf);
+		if( $buf == '.' )
+			break;
+	}
 }
 
 function nnrp_auth( $nhd, $username, $password ) {
@@ -87,9 +123,9 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 #		echo "$re_match,$re_group,$re_filter<br>";
 
 		if( $re_match == '*' )
-			send_command( $nhd, "LIST active $group");
+			send_command( $nhd, "LIST ACTIVE $group");
 		else
-			send_command( $nhd, "LIST active $re_group" );
+			send_command( $nhd, "LIST ACTIVE $re_group" );
 		list( $code, $msg ) = get_status( $nhd );
 
 		if( $code[0] != '2' )

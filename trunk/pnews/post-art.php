@@ -28,8 +28,7 @@ if( $_POST['content'] != '' ) {
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
-	if( verifying( $server, $group ) == -1 )
-		session_error( $server, $group );
+	$c = check_group( $server, $group );
 
 	if( $post_restriction )
 		readonly_error( $server, $group );
@@ -50,15 +49,10 @@ if( $_POST['content'] != '' ) {
 		$subject  = $_POST['subject'];
 	}
 
-	$nhd = nnrp_open( $server );
+	$nhd = nnrp_open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-		html_head('ERROR');
-		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-		html_foot();
-		html_tail();
-		exit;
-	}
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+		connect_error( $server );
 
 	if( $article_convert['back'] ) {
 		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($organization), null, $auth_email, $news_charset[$curr_catalog] );

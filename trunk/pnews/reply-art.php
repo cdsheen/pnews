@@ -30,8 +30,7 @@ if( $_POST['content'] != '' ) {
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
-	if( verifying( $server, $group ) == -1 )
-		session_error( $server, $group );
+	$c = check_group( $server, $group );
 
 	if( $post_restriction )
 		readonly_error( $server, $group );
@@ -59,15 +58,10 @@ if( $_POST['content'] != '' ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$nhd = nnrp_open( $server );
+	$nhd = nnrp_open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-		html_head('ERROR');
-		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-		html_foot();
-		html_tail();
-		exit;
-	}
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+		connect_error($server);
 
 	if( ! $onlymail ) {
 		if( $artconv['back'] ) {
@@ -128,21 +122,15 @@ elseif( $artnum != '' ) {
 
 #	echo "server[$server] group[$group]<br>\n";
 
-	if( verifying( $server, $group ) == -1 )
-		session_error( $server, $group );
+	$c = check_group( $server, $group );
 
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$nhd = nnrp_open( $server );
+	$nhd = nnrp_open( $server, $news_nntps[$c] );
 
-	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-		html_head('ERROR');
-		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-		html_foot();
-		html_tail();
-		exit;
-	}
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+		connect_error( $server );
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

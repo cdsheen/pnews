@@ -33,15 +33,12 @@ if( $server == $group_default_server )
 else
 	$reserver = $server;
 
-$nhd = nnrp_open( $server );
+$c = check_group( $server, $group );
 
-if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
-	html_head('Reading Error');
-	echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
-	html_foot();
-	html_tail();
-	exit;
-}
+$nhd = nnrp_open( $server, $news_nntps[$c] );
+
+if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
+	connect_error( $server );
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

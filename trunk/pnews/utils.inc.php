@@ -80,8 +80,9 @@ while( $buf = fgets( $lst, 512) ) {
 		$catalog_num++;
 		$news_catalog[$catalog_num]  = $match[1];
 		$news_authinfo[$catalog_num] = 'none';
-		$news_charset[$catalog_num] = $group_default_charset;
+		$news_charset[$catalog_num]  = $group_default_charset;
 		$news_server[$catalog_num]   = $group_default_server;
+		$news_nntps[$catalog_num]    = false;
 		$news_authperm[$catalog_num] = false;
 		$options = array();
 		continue;
@@ -104,6 +105,8 @@ while( $buf = fgets( $lst, 512) ) {
 			$news_authperm[$catalog_num] = true;
 			$private_catalogs[] = $catalog_num;
 		}
+		if( in_array( 'nntps', $options ) || in_array( 'snews', $options ) )
+			$news_nntps[$catalog_num] = true;
 	}
 	elseif( preg_match( '/^server\s+(\S+)$/', $buf, $match ) ) {
 		$news_server[$catalog_num] = $match[1];
@@ -556,6 +559,12 @@ function verifying( $server, $group ) {
 	return(-1);
 }
 
+function check_group( $server, $group ) {
+	if( ($c = verifying( $server, $group )) == -1 )
+		session_error( $server, $group );
+	return($c);
+}
+
 function match_group( $group, $pattern ) {
 
 	if( $pattern == '*' ) {
@@ -603,6 +612,20 @@ function kill_myself() {
 </head>
 </html>
 END;
+	exit;
+}
+
+function connect_error( $server ) {
+	global $strConnectServerError;
+	html_head('ERROR');
+	echo <<<ERR
+<br />
+<br />
+<font size=3>$strConnectServerError ($server)</font>
+<br />
+ERR;
+	html_foot();
+	html_tail();
 	exit;
 }
 
