@@ -32,7 +32,11 @@ $pass = $_POST['passWord'];
 
 $xref = $_POST['target'];
 
-$info = check_user_password( $user, $pass );
+/* Check for valid session before performing authentication */
+if( $_SESSION['current_session_id'] == session_id() )
+	$info = check_user_password( $user, $pass );
+else
+	$info = false;
 
 if( $info ) {
 	$now = time();
@@ -74,6 +78,7 @@ hr         { height: 1pt; color: #8080A0 }
 </center>
 </body>
 </html>
+
 EOM;
 }
 

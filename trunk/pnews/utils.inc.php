@@ -378,6 +378,7 @@ function form_login_dialog( $is_expire ) {
 	if( $_SERVER['HTTPS'] )
 		$target = str_replace( 'http://', 'https://', $target );
 
+	$_SESSION['current_session_id'] = session_id();
 	$_SESSION['save_postvar'] = true;
 	$_SESSION['POSTVAR'] = $_POST;
 
