@@ -37,7 +37,7 @@ if( $_POST['content'] != '' ) {
 		readonly_error( $server, $group );
 
 	$receiver   = $_POST['receiver'];
-	$refid      = $_POST['refid'];
+#	$refid      = $_POST['refid'];
 
 	if( $auto_slash ) {
 		$content  = stripslashes($_POST['content']);
@@ -174,9 +174,9 @@ elseif( $artnum != '' ) {
 	echo "\n</textarea>\n";
 	echo "</td></tr></table></center>\n";
 
-	echo "<input name=server value=\"$server\" type=hidden>";
-	echo "<input name=group value=\"$group\" type=hidden>";
-	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
+	echo "<input name=server value=\"$server\" type=hidden>\n";
+	echo "<input name=group value=\"$group\" type=hidden>\n";
+#	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
 
 	echo "</form>\n";
 	html_focus( 'post', 'content' );

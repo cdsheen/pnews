@@ -155,6 +155,10 @@ elseif( $artnum != '' ) {
 	}
 	$date = $artinfo['date'];
 	$msgid = $artinfo['msgid'];
+	if( $artinfo['ref'] )
+		$refid = implode( ' ', $artinfo['ref'] ) . ' ' . $msgid;
+	else
+		$refid = $msgid;
 
 	if( !preg_match( '/^Re: /i', $subject ) )
 		$subject = 'Re: ' . $subject ;
@@ -224,7 +228,7 @@ elseif( $artnum != '' ) {
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 	echo "<input name=server value=\"$server\" type=hidden>";
 	echo "<input name=group value=\"$group\" type=hidden>\n";
-	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
+	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($refid, ENT_NOQUOTES ) . "\">\n";
 ?>
 <script language=javascript>
 	function InsertQuote() {

@@ -42,7 +42,7 @@ if( $content != '' && $postgroup != '' ) {
 	$nickname   = $_POST['nickname'];
 	$content    = $_POST['content'];
 	$subject    = $_POST['subject'];
-	$refid      = $_POST['refid'];
+#	$refid      = $_POST['refid'];
 
 	if( $CFG['email_editing'] )
 		$email = $_POST['email'];
@@ -68,11 +68,11 @@ if( $content != '' && $postgroup != '' ) {
 		connect_error( $server );
 
 	if( $artconv['back'] ) {
-		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
+		nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $postgroup, $artconv['back']($CFG['organization']), null, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
 	}
 	else {
-		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
+		nnrp_post_begin( $nhd, $nickname, $email, $subject, $postgroup, $CFG['organization'], null, $auth_email, $_POST['charset'] );
 		nnrp_post_write( $nhd, $content );
 	}
 
@@ -201,7 +201,7 @@ elseif( $artnum != '' ) {
 	echo "<input name=authormail value=\"$email\" type=hidden>\n";
 	echo "<input name=server value=\"$server\" type=hidden>\n";
 	echo "<input name=group value=\"$group\" type=hidden>\n";
-	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
+#	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
 	echo "$strContent:</td><td align=right>";
