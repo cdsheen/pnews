@@ -102,7 +102,8 @@ There are various built-in authentication modules.
 <li>FTPS - authenticate user using FTP over SSL server. (version >= 2.4.1)
 </ul>
 <p>
-The support for MySQL and PostgreSQL also makes it possible to authenticate through the <a href=guide.php#phpbb>phpBB</a> accounts.
+The support for MySQL and PostgreSQL also makes it possible to authenticate through
+the accounts of many PHP products, for example: <a href=guide.php#phpbb>phpBB</a>.
 <p>
 And it is easy to write your authentication module to be used by PHP News Reader.
 <p>
