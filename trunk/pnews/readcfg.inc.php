@@ -133,12 +133,10 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'NNTP authentication module is invalid' );
 		break;
 	case 'cas':
-		if( !isset( $CFG['cas_server_hostname'] ) )
-			config_error( '$CFG["cas_server_hostname"]' );
-		if( !isset( $CFG['cas_server_port'] ) )
-			config_error( '$CFG["cas_server_port"]' );
-		if( !isset( $CFG['cas_server_base_uri'] ) )
-			config_error( '$CFG["cas_server_base_uri"]' );
+		if( !isset( $CFG['auth_cas_server'] ) )
+			config_error( '$CFG["auth_cas_server"]' );
+		if( !isset( $CFG['auth_cas_base_uri'] ) )
+			config_error( '$CFG["auth_cas_base_uri"]' );
 		break;
 	case 'user':
 		if( file_exists( $CFG['auth_user_module'] ) )
@@ -253,12 +251,30 @@ if( !isset($CFG["links"]) )
 	$CFG["links"] = null;
 
 if( $CFG["auth_prompt"] == 'cas' ) {
-	if( !file_exists( 'CAS/CAS.php' ) )
-		show_error( 'You should installl phpCAS library in CAS/' );
-        // import phpCAS lib
-        include_once('CAS/CAS.php');
-	// initialize phpCAS
-	phpCAS::client(CAS_VERSION_2_0,$CFG['cas_server_hostname'],$CFG['cas_server_port'],$CFG['cas_server_base_uri']);
+
+	/* The following codes were contributed by Pascal Aubry */
+
+	/* Import phpCAS library */
+	@include_once('CAS/CAS.php');
+
+	/* Check that phpCAS was correctly installed */
+	if( !class_exists( 'phpCAS' ) )
+		show_error( 'phpCAS was not found. Please install <a href="http://esup-phpcas.sourceforge.net" target="_blank">phpCAS</a> in '.dirname(__FILE__).'/auth or anywhere in the <a href="http://www.php.net/manual/en/configuration.directives.php#ini.include-path" target="_blank">PHP include path</a>.' );
+
+	$cas_server = $CFG['auth_cas_server'];
+	if( strstr( $cas_server, ':' ) )
+		list( $cas_server, $cas_port ) = split( '/:/', $cas_server );
+	else
+		show_error('The port on which the CAS server is running was not specified. $CFG[\'auth_cas_server\'] should look like \'hostname:port\'.');
+
+	if( !isset($auth_cas_server) )
+		$auth_cas_server = false;
+
+	/* Set phpCAS debug mode if needed */
+	phpCAS::setDebug($CFG['auth_cas_debug']);
+
+	/* Initialize phpCAS */
+	phpCAS::client( CAS_VERSION_2_0, $cas_server, $cas_port, $CFG['auth_cas_base_uri']);
 }
 
 /* ------------------------------------------------------------------------ */
@@ -287,7 +303,9 @@ function config_error( $error_var ) {
 }
 
 function show_error( $err_string ) {
-?>
+
+	echo <<<EOE
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>Configuration Error</title>
@@ -300,12 +318,14 @@ a:hover { color: red }
 </style>
 </head>
 <body>
-<?
-	echo "<font size=4>PHP News Reader - Configuration Error</font><hr>";
-	echo "<br><font size=3>$err_string</font>\n<br><p>\n";
-	echo "<font color=cyan>For more information, please read the <a href=doc/guide.php>Installation Guide</a> for details.</font>\n";
-	echo "<br><br><br><hr>\n";
-	echo "</body>\n</html>\n";
+<font size=4>PHP News Reader - Configuration Error</font><hr>
+<br><font size=3>$err_string</font>\n<br><p>
+<font color=cyan>For more information, please read the <a href=doc/guide.php>Installation Guide</a> for details.</font>
+<br><br><br>
+<hr>
+</body>
+</html>
+EOE;
 	exit;
 }
 

@@ -19,7 +19,7 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
-ZIPNAME=pnews224
+ZIPNAME=pnews230-rc1
 
 all:	html	pkg
 
@@ -45,7 +45,7 @@ gb:
 
 www:	html
 	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
-	cp -f doc/style.css doc/release.html doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f doc/style.css doc/release.html doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
 
 clean:
 	rm -f *~

@@ -112,7 +112,7 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
 <blockquote> 
   <p> config.inc.php controls how PHP News Reader works.</p>
   <p> You can find the sample config.inc.php in the "example/" directory.</p>
-  <p> All configuration applies PHP syntax and match the form of:</p>
+  <p> All configuration applies PHP syntax and should be in the form of:</p>
   <blockquote> 
     <p> $CFG[&quot;foo&quot;] = &quot;bar&quot;;</p>
   </blockquote>
@@ -167,10 +167,12 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
 <p>
-<b>Notice for <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> users:</b>
-<blockquote>If you use CAS to authenticate your users,<br>
+<b>Notice for <a href="http://www.yale.edu/tp/auth/" target="_blank">CAS</a> users:</b>
+<blockquote>If you use <a href="http://www.yale.edu/tp/auth/" target="_blank">CAS</a> to authenticate your users,<br>
 both $CFG["auth_prompt"] and $CFG["auth_method"] should set to 'cas'.<br>
-Besides this, you should first install phpCAS in CAS/ for this method to run well.
+Besides this, you should first install <a href="http://esup-phpcas.sourceforge.net" target="_blank">phpCAS</a> in your PHP include_path or CAS/ for this method to run well.<br>
+You can download phpCAS from the following place:<br>
+&nbsp;&nbsp;&nbsp; <a href="http://esup-phpcas.sourceforge.net" target="_blank">http://esup-phpcas.sourceforge.net</a>
 </blockquote>
 </p>
 <a name=auth_organization></a>
@@ -288,7 +290,7 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
   <blockquote> 
     <p> <strong>$CFG[&quot;auth_nntp_server&quot;]</strong></p>
     <blockquote> 
-      <p>News (NNTP) server address ( address:port )</p>
+      <p>News (NNTP) server address and port ( address:port ), default port is 119</p>
       <p>$CFG["auth_nntp_server"] = "news.domain.org";</p>
     </blockquote>
     <p>Note that this option only deal with the authentication of PHP News Reader,
@@ -296,10 +298,30 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
        Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=cas_auth></a>
+  <p><strong>CAS authentication parameters</strong> (REQUIRED if auth_method == 'cas')</p>
+  <blockquote> 
+    <p> <strong>$CFG[&quot;auth_cas_server&quot;]</strong></p>
+    <blockquote> 
+      <p>CAS server address and port ( address:port ), the port part should <b>not</b> be omitted.</p>
+      <p>$CFG["auth_cas_server"] = "cas.domain.org:1234";</p>
+    </blockquote>
+    <p> <strong>$CFG[&quot;auth_cas_base_uri&quot;]</strong></p>
+    <blockquote> 
+      <p>CAS Server Base URI</p>
+      <p>$CFG["auth_cas_base_uri"] = "cas";</p>
+    </blockquote>
+    <p> <strong>$CFG[&quot;auth_cas_debug&quot;]</strong></p>
+    <blockquote> 
+      <p>The filename for outputing debug log, or <b>false</b> to turn off debug mode (default: false)</p>
+      <p>$CFG["auth_cas_debug"] = "/tmp/phpcas.log";</p>
+    </blockquote>
+    <p>The above settings first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
+  </blockquote>
 <a name=db_auth></a>
   <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
   <blockquote>
-    <p>(REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )</p>
+    <p>(REQUIRED if auth_method == 'mysql' or auth_method == 'pgsql' )</p>
     <p>These parameters are used in both MySQL and PostgreSQL database authentication module.</p>
     <p><strong>$CFG[&quot;db_server&quot;]</strong></p>
     <blockquote> 
@@ -466,6 +488,7 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
   <p><strong>$CFG[&quot;email_editing&quot;]</strong></p>
   <blockquote> 
     <p>Allow E-Mail editing when posting article (default: true)</p>
+    <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=articles_per_page></a>
   <p><strong>$CFG[&quot;articles_per_page&quot;]</strong></p>
@@ -541,6 +564,7 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
  	<tr><td>Tranditional Chinese</td><td>zh-tw</td><td>BIG5</td></tr>
 	<tr><td>Simplified Chinese</td><td>zh-cn</td><td>GB2312</td></tr>
  	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
+        <tr><td>Fran&ccedil;ais</td><td>fr</td><td>FR-ASCII</td></tr>
 	</table>
   </blockquote>
 <a name=charset_config></a>
@@ -571,7 +595,7 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
 <blockquote> 
   <p>newsgroups.lst list the news server / news groups to access</p>
   <p>The syntax of this file is different from that of config.inc.php</p>
-  <p>All lines begin with the # is consider as comments</p>
+  <p>All lines begin with the # is considered as comments</p>
   <p>The newsgroups of PHP News Reader can be grouped by several catalogs.</p>
   <p>Each catalogs is identified by a single line like this:</p>
   <blockquote> 
@@ -581,7 +605,7 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
   <p>The newsgroups defined in the same catalog should comes from the same news 
     server, and the encoding should be the same too. Also note that at least one 
     catalog should be defined in newsgroups.lst.</p>
-  <p>The settings consist of two parts, key and value, and are separated by tab 
+  <p>The settings consist of two parts, key and value, and are separated by tabs 
     or spaces<br>
     And the value part of setting ends at end of line</p>
   <p>For example, the following line sets "foobar" as &quot;value1 value2&quot;</p>

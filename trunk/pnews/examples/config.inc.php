@@ -163,14 +163,15 @@ $CFG["db_variable"] = array( "%e" => "user_email" );
 
 
 # CAS authetication parameters (REQUIRED if auth_method == 'cas')
-#   [$cas_server_hostname] CAS server FQDN
-#       [$cas_server_port] CAS server port
-#   [$cas_server_base_uri] CAS server base URI
- 
-$CFG["cas_server_hostname"] = 'cas.domain.name';
-$CFG["cas_server_port"] = 8443;
-$CFG["cas_server_base_uri"] = 'cas';
+#   [$auth_cas_server] CAS server FQDN and port ( address:port )
+#   [$auth_cas_base_uri] CAS server base URI
+#   [$auth_cas_debug] a file to debug phpCAS or FALSE to turn debugging off
+#                     (default: false)
 
+$CFG["auth_cas_server"] = 'cas.domain.name:8443';
+$CFG["auth_cas_base_uri"] = 'cas';
+
+// $CFG["auth_cas_debug"] = '/var/log/phpcas.log';
 
 # [auth_expire_time] After this time in seconds, authentication is expired
 #                    And login again is required. Zero means never expire

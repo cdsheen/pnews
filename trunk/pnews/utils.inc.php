@@ -287,13 +287,13 @@ if( $CFG['auth_type'] != 'open' ) {
 					http_login_auth();
 				}
 				break;
-			// CAS
+			/* CAS - by Pascal Aubry */
 			case 'cas':
-			        // check CAS authentication
+				/* Check CAS authentication */
 				phpCAS::authenticateIfNeeded();
-				// force expiration when ticket has expired
+				/* Force expiration when ticket has expired */
 				if( $is_expire ) {
-					unset($_SESSION['auth_ticket']);
+					unset($_SESSION['auth_ticket'],$_SESSION['auth_time'],$_SESSION['auth_name'],$_SESSION['auth_with'],$_SESSION['auth_info']);
 				        phpCAS::forceAuthentication();
 				}
 				$now = time();

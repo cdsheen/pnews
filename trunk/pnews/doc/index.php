@@ -132,6 +132,10 @@ echo <<<EOR
 You can view the history since June 2002 by <a href=history.php>clicking here</a>.<p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference<br>
 <p>
+Acknowledgement
+<blockquote>
+Many people help the development of PHP News Reader, <a href=acknowlege.php>clicking here</a> to know their contributions.
+</blockquote>
 Since January 2003, PHP News Reader hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>

@@ -56,7 +56,6 @@ PHP News Reader v2.3.0 (2003/08/23)
 <li>E-Mail editing can be disabled by setting <a href=guide.php#email_editing>\$CFG["email_editing"]</a> as off
 <li>The character '#' is included in the uri of hyperlink auto-detection.
 <li>Support more flexible <a href=guide.php#group_match>group matching syntax</a> in newsgroup.lst.
-<li>
 </ul>
 PHP News Reader v2.2.4 (2003/07/26)
 <ul>
