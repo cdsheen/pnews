@@ -234,8 +234,12 @@ if( !isset( $CFG['banner'] ) )
 if( !isset( $CFG['title'] ) )
 	$CFG['title'] = 'Webnews';
 
-if( !isset( $CFG['show_newest_top'] ) )
-	$CFG['show_newest_top'] = true;
+if( !isset( $CFG['show_latest_top'] ) ) {
+	if( isset($CFG['show_newest_top']) )
+		$CFG['show_latest_top'] = $CFG['show_newest_top'];
+	else
+		$CFG['show_latest_top'] = true;
+}
 
 if( !isset( $CFG['show_article_popup'] ) )
 	$CFG['show_article_popup'] = false;

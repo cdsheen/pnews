@@ -362,9 +362,21 @@ else
 #		$totalpg = $page;
 	}
 
-echo "</td><td class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-printf( $strPageNumber, $page, $totalpg );
-echo "</td>\n";
+$pg_str = sprintf( "<select name=pageidx onLoad='initPage(%s,%s)' onChange='changePage()'></select>", $totalpg, $page );
+$pg_str = sprintf( $strPageNumber, $pg_str, $totalpg );
+
+echo <<<PG
+</td><td class=page align=center onMouseover='this.className="page_hover";' onMouseout='this.className="page";'>
+<script language=javascript>
+function initPage( totalpage, currpage ) {
+
+}
+function changePage() {
+}
+</script>
+$pg_str
+</td>
+PG;
 
 echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$global_readonly && !$news_readonly[$c] ) {

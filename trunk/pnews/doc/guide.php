@@ -627,6 +627,8 @@ You can download phpCAS from the following place:<br />
        and speed up the indexing process for large groups.<p>
     <p>To enable caching, set this to the directory of cache data.<br>
        You should grant write permission on this directory to the user running PHP.<p>
+    <p>This function is used to cache indexing data (article number list) for each group,
+       it is not intend to cache all articles.
     <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=image_inline></a>
@@ -676,13 +678,14 @@ You can download phpCAS from the following place:<br />
     <p>Setting the number of articles shown per page (default: <i>20</i>)</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=show_latest_top></a>
 <a name=show_newest_top></a>
 <a name=article_order_reverse></a>
-  <p><strong>$CFG["show_newest_top"]</strong></p>
+  <p><strong>$CFG["show_latest_top"]</strong></p>
   <blockquote> 
-    <p>Show the newest article as the top item (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
-    <p>It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b></p>
+    <p>Show the latest article as the top item (default: <i>true</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.6</b> of PHP News Reader</p>
+    <p>It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b></p>
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>

@@ -351,9 +351,9 @@ $CFG["title"] = "XXX News Service";
 // $CFG['articles_per_page'] = 30;
 
 
-# [show_newest_top] Whether to show the newest article as the top item (default: true)
+# [show_latest_top] Whether to show the latest article as the top item (default: true)
 
-// $CFG["show_newest_top"] = false;
+// $CFG["show_latest_top"] = false;
 
 
 # [show_article_popup] Show article in pupup window (default: false)
