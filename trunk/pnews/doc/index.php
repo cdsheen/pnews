@@ -57,20 +57,20 @@ PHP News Reader is a web based News Reader.
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
-Main features:
+Features:
 <ul>
-<li>Reading/Posting/Replying/Crossposting/Forwarding/Deleting News articles.
+<li>Read/Post/Reply/Crosspost/Forward/Delete articles to/from News server(s).
 <li>Multiple News server and multiple catalog of news groups.
 <li>Support NNTP over SSL (NNTPS) and NNTP authentication.
 <li>Posting and downloading for uuencoded attachment.
 <li>No database access, no IMAP-enabled PHP module.
 <li>Authentication is easily configured to work with your existing system.
-<li>Multiple language interface and chinese coding conversion.
+<li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>
 <p>
 PHP News Reader does not support threading of News articles. It is in my to-do list.
 <p>
-Conformed Standards:
+Technical Standards:
 <ul>
 <li><a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
 <li><a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980 - Common NNTP Extensions</a>
@@ -175,7 +175,7 @@ http://sourceforge.net/projects/pnews/
 </a>
 </blockquote>
 <p>
-Sample running system:
+Demonstration:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<p>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5)<p>

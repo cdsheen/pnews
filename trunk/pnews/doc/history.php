@@ -46,10 +46,11 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
-PHP News Reader v2.5.1 (2003/11/22)
+PHP News Reader v2.5.1 (2003/11/29)
 <ul>
+<li>Image attachment can be displayed inline by setting <a href=guide.php#image_inline>\$CFG['image_inline']</a>
 <li>Fix the charset information in the login-failed page.
-<li>Correct many regular words used in GB to BIG5 coding conversion.
+<li>Correct many words used for GB to BIG5 coding conversion.
 </ul>
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>
