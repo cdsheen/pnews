@@ -250,9 +250,11 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 
 	if( $cache_file ) {
-		$cache_max = $lowmark;
-		if( file_exists( $cache_file ) ) {
-			$list_cache = @unserialize( implode('',file( $cache_file )) );
+		$fp = fopen( $cache_file, 'rb');
+		if( $fp ) {
+			$cache_max = $lowmark;
+			$list_cache = @unserialize( fread( $fp, filesize($cache_file)) );
+			$fclose($fp);
 			if( $list_cache ) {
 				$artlist = $list_cache;
 				unset($list_cache);
@@ -265,8 +267,8 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 					}
 				}
 			}
+			$lowmark = $cache_max + 1;
 		}
-		$lowmark = $cache_max + 1;
 	}
 
 	if( $lowmark <= $highmark ) {
