@@ -155,6 +155,9 @@ if( !isset( $CFG['article_order_reverse'] ) )
 if( !isset( $CFG['show_article_popup'] ) )
 	$CFG['show_article_popup'] = false;
 
+if( !isset( $CFG['filter_ansi_color'] ) )
+	$CFG['filter_ansi_color'] = true;
+
 if( !isset( $CFG['group_sorting'] ) )
 	$CFG['group_sorting'] = false;
 

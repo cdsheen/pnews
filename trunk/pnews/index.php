@@ -23,12 +23,12 @@ require_once('utils.inc.php');
 
 html_head( $title );
 
-echo "<center>\n";
+#echo "<center>\n";
 
 if( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><br>\n";
 else
-	echo "<font color=black size=5 face=Georgia>$title</font><p>";
+	echo "<font color=black size=5 face=Georgia>$title</font><br>";
 
 for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 	if( ! $nhd[$news_server[$i]] ) {
@@ -62,7 +62,7 @@ if( $post_restriction ) {
 $maxr = 30;
 $maxc = $catalog_num / $maxr;
 
-echo "<br><table><tr><td valign=top width=120>\n";
+echo "<br><table width=95%><tr><td valign=top width=120>\n";
 
 echo "<table border=1 cellpadding=2 cellspacing=0>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
@@ -103,10 +103,10 @@ if( $CFG['auth_type'] == 'optional' && !$auth_success )
 
 echo "</table>\n";
 
-echo "</td><td valign=top>";
+echo "</td><td valign=top align=left>";
 
 
-echo "<table border=1 cellpadding=1 cellspacing=0>\n";
+echo "<table width=100% border=1 cellpadding=1 cellspacing=0>\n";
 
 $row = array( $strNumber, $strPostNumber, $strGroup, $strGroupDescription );
 
@@ -151,7 +151,7 @@ echo "</table>";
 
 echo "</td></tr></table>\n";
 
-echo "</center>\n";
+#echo "</center>\n";
 
 html_foot();
 

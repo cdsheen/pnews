@@ -45,7 +45,7 @@ PHP News Reader - Installation and Configuration
     <p> <strong># tar &nbsp;zxvf &nbsp;pnews-x.y.z.tgz</strong></p>
   </blockquote>
   <p> All source will be extracted into the directory &quot;pnews-x.y.z/&quot;</p>
-  <p> Now, you can copy all the source from pnews-x.y.z/ to the directory you 
+  <p> Now, you can copy all the source (including sub-directory) from pnews-x.y.z/ to the directory where you 
     want to<br>
     provide web service. Supposed your web document directory is in /home/www/htdocs/,</p>
   <blockquote> 
@@ -77,7 +77,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>http://your.web.server/news/</p>
   </blockquote>
-  <p>Note you should have started your web server and make sure that PHP module is enabled.</p>
+  <p>Note that you should have started your web server and make sure that PHP module is enabled.</p>
   <p>If you have any problems, or find any errors in this document, please send 
     your comments to cdsheen@users.sourceforge.net, any suggestion is appreciated.</p>
 </blockquote>
@@ -102,15 +102,16 @@ PHP News Reader - Installation and Configuration
   <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
   <blockquote> 
     <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
-    <p>You should enable Apache &quot;mod_rewrite&quot; module and <b>AllowOverride</b> for per-directory access (.htaccess)</p>
-    <p>For more information, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
-    <p>This setting first appeared in the v2.2.0 of PHP News Reader</p>
+    <p>Read more about this function <a href=doc/url_rewrite.php target=_blank>here</a>.
+    <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br>
+    For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
   <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
   <blockquote> 
     <p>Specify the base URL of your PHP News Reader installation</p>
     <p>This setting is REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
-    <p>This setting first appeared in the v2.2.0 of PHP News Reader</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
   <p><strong>$CFG[&quot;auth_type&quot;]</strong></p>
   <blockquote> 
@@ -143,6 +144,7 @@ PHP News Reader - Installation and Configuration
       &quot;mail&quot; - authenticated via multiple POP3 server,<br>
       &quot;mysql&quot; - authenticated via MySQL database,<br>
       &quot;pgsql&quot; - authenticated via PostgreSQL database,<br>
+      &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.0),<br>
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
   <p><strong>$CFG[&quot;auth_organization&quot;]</strong></p>
@@ -247,8 +249,17 @@ PHP News Reader - Installation and Configuration
         =&gt; &quot;pop3.domain.org&quot; );</p>
     </blockquote>
   </blockquote>
-  <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
+  <p><strong>NNTP authentication parameters</strong> (REQUIRED if auth_method == 'nntp')</p>
   <blockquote> 
+    <p> <strong>$CFG[&quot;auth_nntp_server&quot;]</strong></p>
+    <blockquote> 
+      <p>News (NNTP) server address ( address:port )</p>
+      <p>$CFG["auth_nntp_server"] = "news.domain.org";</p>
+    </blockquote>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+  <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
+  <blockquote>
     <p>(REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )</p>
     <p>These parameters are used in both MySQL and PostgreSQL database authentication module.</p>
     <p><strong>$CFG[&quot;db_server&quot;]</strong></p>
@@ -344,7 +355,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>The title for this webnews (default: &quot;Webnews&quot;)</p>
   </blockquote>
-  <p> <strong>$CFG[&quot;banner&quot;]</strong></p>
+  <p><strong>$CFG[&quot;banner&quot;]</strong></p>
   <blockquote> 
     <p>The banner text or images (default: &quot;&quot;)</p>
     <p>$CFG["banner"] = "&lt;img src=banner.jpg&gt;";
@@ -359,6 +370,16 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>sort newsgroups in each catalog (default: off)</p>
   </blockquote>
+  <p><strong>$CFG[&quot;article_order_reverse&quot;]</strong></p>
+  <blockquote> 
+    <p>Reverse the order of articles list (default: off)</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+  <p><strong>$CFG[&quot;show_article_popup&quot;]</strong></p>
+  <blockquote> 
+    <p>Controlling the article to show in popup window or not (default: off)</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
   <p> <strong>$CFG[&quot;organization&quot;]</strong></p>
   <blockquote> 
     <p>The organization name of this site (default: &quot;News Server&quot;)</p>
@@ -366,6 +387,7 @@ PHP News Reader - Installation and Configuration
   <p> <strong>$CFG[&quot;post_signature&quot;]</strong></p>
   <blockquote> 
     <p>The signature to appended at each posted article (default: &quot;&quot;)</p>
+    <p>Note: This is NOT a per-user setting!</p>
   </blockquote>
   <p> <strong>$CFG[&quot;show_sourceforge_logo&quot;]</strong></p>
   <blockquote> 

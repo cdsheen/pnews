@@ -182,7 +182,7 @@ for( ; ; ) {
   <? echo read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' ); ?>
   </td>
   <td class=index title="<? echo $email; ?>"><a href=mailto:<? echo $email; ?>><? echo $nick; ?></a></td>
-  <td class=index align=right><font face=serif><? echo $datestr; ?></font></td>
+  <td class=index align=center><font face=serif><? echo $datestr; ?></font></td>
 </tr>
 <?
 	if( $CFG['article_order_reverse'] ) {

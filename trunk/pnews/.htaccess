@@ -4,6 +4,6 @@ RewriteRule	^section/([0-9]+)/?$			index.php?catalog=$1
 RewriteRule	^group/([^/]+)/([^/]+)/?$		indexing.php?server=$1&group=$2	[L]
 RewriteRule	^group/([^/]+)/([^/]+)/([0-9]+)/?$	indexing.php?server=$1&group=$2&cursor=$3	[L]
 RewriteRule	^group/([^/]+)/([^/]+)/([0-9]+)r/?$	indexing.php?server=$1&group=$2&cursor=$3&forward=1	[L]
-RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/?$	read-art.php?server=$1&group=$2&artnum=$3&orig=1	[L]
+RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/?$	read-art.php?server=$1&group=$2&artnum=$3	[L]
 RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/next/?$	read-art.php?server=$1&group=$2&artnum=$3&orig=1&next=1	[L]
 RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/last/?$	read-art.php?server=$1&group=$2&artnum=$3&orig=1&last=1	[L]

@@ -22,20 +22,20 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.2.0 (2003/05/22)
+PHP News Reader v2.2.0 (2003/05/24)
 <ul>
-<li>The ANSI coloring codes are filtered.
+<li>The ANSI coloring codes are filtered by default ($CFG["filter_ansi_color"]).
 <li>Support links to Next and Previous articles.
-<li>Support URL rewrite function (worked with Apache's mod_rewrite).
+<li>Support URL rewrite function ($CFG["url_rewrite"] and $CFG["url_base"])
 <li>Deleted articles are skipped and exactly 20 articles are displayed in one page
-<li>Add option ($CFG["article_order_reverse"]) to config the indexing order.
+<li>Add option ($CFG["article_order_reverse"]) to config the article numbering order.
 <li>Add option ($CFG["show_article_popup"]) to config the use of popup window.
 </ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
-<li>Do not strip whitespace from the beginning of each line in posted articles.
+<li>Do not strip whitespace from the beginning of each line in the article posted.
 <li>Jump to the correct catalog when returning from indexing page.
-<li>Correct the problem of losting POST variables when launching the login dialog.
+<li>Correct the problem of lost for POST variables when launching the login dialog.
 </ul>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>

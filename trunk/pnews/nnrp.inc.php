@@ -234,6 +234,7 @@ function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
 }
 
 function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = true, $grep_signature = false, $trans_func = null ) {
+	global $CFG;
 	send_command( $nhd, "BODY $artnum" );
 	list( $code, $msg ) = get_status( $nhd );
 
@@ -263,7 +264,8 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 			$buf = preg_replace( '/([\w\d-_.]+)@([\w\d-_.]+)/', ' <a href="mailto:\\1@\\2" target=_blank>\\1@\\2</a>', $buf );
 
 			# filter ANSI codes
-			$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
+			if( $CFG['filter_ansi_color'] )
+				$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
 		}
 
 		if( $trans_func )

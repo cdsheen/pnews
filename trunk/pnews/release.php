@@ -30,8 +30,9 @@ forwarding and replying news articles.
 <p>
 PHP News Reader does not need your PHP installation to be compiled with \'--with-imap\'.
 PHP News Reader use a self-written NNRP Library to access news server via NNTP.
+And it works just fine without any database installation.
 <p>
-PHP News Reader does not support threading of News articles and newsgroup subscription.
+PHP News Reader does not support threading of News articles and per-user newsgroup subscription.
 <p>
 Conformed Standards:
 <ul>
@@ -43,7 +44,7 @@ Conformed Standards:
 <p>
 To install PHP News Reader, please check the <a href=requirement.php>requirement</a>, and then read the <a href=install.php>Installation Guide</a>.
 <p>
-PHP News Reader has nothing to do with user registration.
+PHP News Reader has nothing to do with the user registration.
 It is designed to work with the EXISTING authentication system.
 PHP News Reader supports several flexible authentication interface modules,
 which let administrator easy to control how to authenticate users.
@@ -58,6 +59,7 @@ There are various handy authentication modules availabled.
 <li>FTP - authenticate user with the existing FTP server
 <li>MySQL - authenticate user existing in MySQL database.
 <li>PostgreSQL - authenticate user existing in PostgreSQL database.
+<li>NNTP - authenticate user using NNTP server. (version >= 2.2.0)
 </ul>
 <p>
 The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.

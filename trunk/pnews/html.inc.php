@@ -116,7 +116,7 @@ function html_tail() {
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
 	$class_text = ( $class == null ) ? '' : " class=$class" ;
-	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
+	$close_cmd = $close ? 'close_window();' : '';
 	if( $CFG['show_article_popup'] )
 		if( $CFG['url_rewrite'] )
 			return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";

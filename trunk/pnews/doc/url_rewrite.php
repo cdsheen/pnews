@@ -17,44 +17,27 @@ echo "<font face=\"Georgia\" size=1>Release Date: $pnews_release</font>\n";
 echo '
 </td></tr></table>
 <font size=3 color=black face="Georgia">
-URL Rewrite
+URL Rewrite Function
 <hr>
-To enabling url rewrite, 
+URL Rewrite is a cool function that make the link more readable.
+For example, the link to read an article is:
 <ul>
-<li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
-<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
+http://webnews.domain.net/news/read-art.php?server=news.nopy.com&group=nopy.test&artnum=21012
 </ul>
-<p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.
-<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br>
+If you enable the URL rewriting, the link will become:
 <ul>
-<li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
-<li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
-<li>XOVER &nbsp;[range]
+http://webnews.domain.net/news/article/news.nopy.com/nopy.test/21012
 </ul>
-The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
- (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
+To enable URL Rewrite, you need:
+<ul>
+<li>Apache web server with "mod_rewrite" enabled
+<li>Correct setting for AllowOverride of the program\'s directory in httpd.conf
+</ul>
+For more information about Apache\'s mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
 <p>
-If your server is operated by INN, you should check about the NNRP access permission.
-For example, when you telnet to an INN News server at port 119, you must get response like this: (the <b>NNRP</b> in bold)
-<ul>
-200 nopy.com InterNetNews <b>NNRP</b> server INN 2.3.2 ready (posting ok).
-</ul>
-instead of,
-<ul>
-200 nopy.com InterNetNews server INN 2.3.2 ready<br>
--or-<br>
-502 You have no permission to talk.  Goodbye.
-</ul>
-<p>
-The requirement for PHP News Reader on the client side (web browser) :
-<ul>
-<li>Support Cascade Style Sheet 1.0
-<li>Support Javascript >= 1.2
-<li>Support Document Object Model
-<li>Accept Cookies (not necessary)
-</ul>
-The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
+Check the <a href=../install.php>Installation Manual</a> for other configuration parameters.
 ';
+
 echo "<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>\n";
 echo "<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>\n";
 echo '

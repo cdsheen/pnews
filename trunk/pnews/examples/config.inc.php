@@ -242,6 +242,11 @@ $CFG["title"] = "XXX News Service";
 // $CFG["show_article_popup"] = on;
 
 
+# [filter_ansi_color] Show article in pupup window (default: on)
+
+// $CFG["filter_ansi_color"] = off;
+
+
 # [time_format] The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")
 
 // $CFG["time_format"] = "%Y/%m/%d %H:%M:%S";
