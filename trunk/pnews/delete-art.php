@@ -38,6 +38,15 @@ if( $confirm == 1 ) {
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
 	$nhd = nnrp_open( $server );
+
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
+		html_head('ERROR');
+		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
+		html_foot();
+		html_tail();
+		exit;
+	}
+
 	if( $artconv['back'] )
 		nnrp_cancel( $nhd, $artconv['back']($auth_user), $auth_email, $msgid, $group, $artconv['back']($subject) );
 	else
@@ -65,6 +74,14 @@ elseif( $artnum != '' ) {
 		readonly_error( $server, $group );
 
 	$nhd = nnrp_open( $server );
+
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
+		html_head('ERROR');
+		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
+		html_foot();
+		html_tail();
+		exit;
+	}
 
 	list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 

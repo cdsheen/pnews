@@ -50,7 +50,7 @@ if( $content != '' && $postgroup != '' ) {
 
 	$nhd = nnrp_open( $server );
 
-	if( ! $nhd ) {
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
 		html_head('ERROR');
 		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
 		html_foot();
@@ -104,7 +104,7 @@ elseif( $artnum != '' ) {
 
 	$nhd = nnrp_open( $server );
 
-	if( ! $nhd ) {
+	if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
 		html_head('ERROR');
 		echo "<p><font size=3>$strConnectServerError - " . $server . "</font><br>\n";
 		html_foot();
