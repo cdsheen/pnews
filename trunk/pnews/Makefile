@@ -26,7 +26,7 @@ all:	html	pkg
 pkg:
 	rm -rf pnews-$(VERSION)*
 	mkdir pnews-$(VERSION)
-	cp -r *.php *.css *.js *.html examples doc language auth pnews-$(VERSION)
+	cp -r *.php *.css *.js examples doc language auth pnews-$(VERSION)
 	rm -rf pnews-$(VERSION)/examples/CVS
 	rm -rf pnews-$(VERSION)/language/CVS
 	rm -rf pnews-$(VERSION)/auth/CVS

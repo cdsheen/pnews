@@ -81,29 +81,18 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
-PHP News Reader v2.1.2 (2003/04/05)
+PHP News Reader v2.2.0 (2003/05/25)
 <ul>
-<li>Do not strip whitespace from the beginning of each line in posted articles.
-<li>Jump to the correct catalog when returning from indexing page.
-<li>Correct the problem of losting POST variables when launching the login dialog.
-</ul>
-<p>
-PHP News Reader v2.1.1 (2003/03/08)
-<ul>
-<li>The format of time displayed can be configured by $CFG["time_format"].
-<li>Show only group name in the title of indexing page.
-<li>Add more error handling codes for invalid news server settting.
-<li>Several author name/mail parsing problems fixed.
-<li>Fix variable missing problem in \'open\' authentication type.
-</ul>
-<p>
-PHP News Reader v2.1.0 (2003/03/02)
-<ul>
-<li>Installation Guide released.
-<li>Use \'charset\' instead of \'language\' in the configuration file
-<li>The correct charset of group is used while loading pages without session.
-<li>The MIME charset of article will be honored while processing news articles.
-<li>The article will be posted and mailed with correct MIME headers about charset information based on the RFC 2045 standard.
+<li>Support news server which requires authorization.
+<li>The ANSI coloring codes are filtered by default (<a href=guide.php#filter_ansi_color>$CFG["filter_ansi_color"]</a>).
+<li>Support links to Next and Previous articles.
+<li>Support URL rewrite function (<a href=guide.php#url_rewrite>$CFG["url_rewrite"]</a> and <a href=guide.php#url_base>$CFG["url_base"]</a>)
+<li>Deleted articles are skipped and exactly 20 articles are displayed in one page
+<li>Add option (<a href=guide.php#article_order_reverse>$CFG["article_order_reverse"]</a>) to config the article numbering order.
+<li>Add option (<a href=guide.php#show_article_popup>$CFG["show_article_popup"]</a>) to config the use of popup window.
+<li>Support NNTP authentication module for authenticate with News server.
+<li>Number of articles per page is configurable by <a href=guide.php#articles_per_page>$CFG["articles_per_page"]</a> (default is 20).
+<li>Fix a bug when post after timeout with "form" style login.
 </ul>
 You can view the history since 2002/06 <a href=history.php>here</a>.<p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, please view the detail <a href=copying.php>here</a><br>

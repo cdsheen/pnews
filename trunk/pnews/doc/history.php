@@ -22,7 +22,7 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.2.0 (2003/05/24)
+PHP News Reader v2.2.0 (2003/05/25)
 <ul>
 <li>Support news server which requires authorization.
 <li>The ANSI coloring codes are filtered by default (<a href=guide.php#filter_ansi_color>$CFG["filter_ansi_color"]</a>).
