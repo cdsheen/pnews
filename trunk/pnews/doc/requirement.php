@@ -55,10 +55,10 @@ The requirement for using NNTPS (SNEWS) News Server or using NNTP/FTP/POP3 over 
 The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
 <p>As for <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br />
 <ul>
-<li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
-<li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
-<li>XOVER &nbsp;[range]
-<li>LIST &nbsp;OVERVIEW.FMT  (recommended)
+<li>LIST &nbsp;ACTIVE &nbsp;[wildmat] &nbsp;&nbsp;<i>(required)</i>
+<li>XOVER &nbsp;[range] &nbsp;&nbsp;<i>(required)</i>
+<li>LIST &nbsp;OVERVIEW.FMT  &nbsp;&nbsp;<i>(optional but recommended)</i>
+<li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat] &nbsp;&nbsp;<i>(optional)</i>
 </ul>
 The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.

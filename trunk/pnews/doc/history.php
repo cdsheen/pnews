@@ -39,7 +39,7 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.5.6 (2004/03/30)
+PHP News Reader v2.5.6 (2004/03/31)
 <ul>
 <li>New authentication module for integration with phpBB. (<a href=guide.php#auth_method>\$CFG['auth_method']</a>)
 <li>Fix the word wrapping bug in textarea.
