@@ -19,7 +19,7 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
 
-VERSION=2.0.1
+VERSION=2.0.2
 
 all:	html	pkg
 
@@ -33,6 +33,7 @@ pkg:
 	rm -f  pnews-$(VERSION)/examples/newsgroups-giga.lst
 	tar zcvf pnews-$(VERSION).tgz pnews-$(VERSION)
 	rm -rf pnews-$(VERSION)
+	mv -f pnews-$(VERSION).tgz ..
 
 html:
 	php release.php | tail +4 > release.html

@@ -68,6 +68,16 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
+PHP News Reader v2.0.2 (2003/01/24)
+<ul>
+<li>Fix the bug of \'required\' authentication model
+</ul>
+<p>
+PHP News Reader v2.0.1 (2003/01/22)
+<ul>
+<li>Correct the link of SourceForge logo
+</ul>
+<p>
 PHP News Reader v2.0 (2003/01/19)
 <ul>
 <li>First public release and hosts on SourceForge

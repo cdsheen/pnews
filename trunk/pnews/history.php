@@ -19,6 +19,16 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
+PHP News Reader v2.0.2
+<ul>
+<li>Fix the bug of \'required\' authentication model
+</ul>
+<p>
+PHP News Reader v2.0.1
+<ul>
+<li>Correct the link of SourceForge logo
+</ul>
+<p>
 PHP News Reader v2.0
 <ul>
 <li>First public release and hosts on SourceForge

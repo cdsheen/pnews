@@ -200,7 +200,18 @@ if( $CFG['auth_type'] != 'open' ) {
 		elseif( need_postperm( $self_base ) || $news_authperm[$curr_catalog] )
 			$need_auth = true;
 	}
-
+	else {
+		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
+			$server = $_GET['server'];
+			$group  = $_GET['group'];
+			if( $server == '' || $group == '' || !verifying( $server, $group ) ) {
+				html_head( $title, 'index.php' );
+				html_tail();
+				exit;
+			}
+		}
+		$need_auth = true;
+	}
 	$is_expire = false;
 
 	if( $CFG['auth_expire_time'] > 0 && isset( $_SESSION['auth_time']) && $_SESSION['auth_time'] + $CFG['auth_expire_time'] < time() ) {
