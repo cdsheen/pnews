@@ -46,17 +46,14 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
-<!--
-<li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
--->
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
+<li>Support the downloading of uuencoded attachment.
 <li>Reading article which encoded by "base64" or "quoted-printable".
 <li>Workaround for broken news server which expiration does not work correctly.
 <li>Article headers can be displayed if necessary.
 <li>Empty lines are deleted in the quoted article when replying.
 <li>Fix a bug of parsing Content-Type header.
-<li>Support the downloading of uuencoded attachment.
 <li>Added Finnish translation (by Markus Oversti)
 </ul>
 PHP News Reader v2.4.1 (2003/10/25)
