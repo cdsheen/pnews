@@ -59,8 +59,6 @@ Features:
 <li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>
 <p>
-PHP News Reader does not support threading of News articles. It is in my to-do list.
-<p>
 Technical Standards:
 <ul>
 <li><a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
@@ -87,10 +85,10 @@ There are various built-in authentication modules.
 <li>MySQL - authenticate user existing in MySQL database.
 <li>PostgreSQL - authenticate user existing in PostgreSQL database.
 <li>NNTP - authenticate user using NNTP server. (version >= 2.2.1)
-<li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
 <li>NNTPS - authenticate user using NNTP over SSL server. (version >= 2.4.0)
 <li>POP3S - authenticate user using POP3 over SSL server. (version >= 2.4.1)
 <li>FTPS - authenticate user using FTP over SSL server. (version >= 2.4.1)
+<li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
 </ul>
 <p>
 The support for MySQL and PostgreSQL also makes it possible to authenticate through
@@ -98,15 +96,15 @@ the accounts of many PHP products, for example: <a href=guide.php#phpbb>phpBB</a
 <p>
 And it is easy to write your authentication module to be used by PHP News Reader.
 <p>
-The login prompt can be configured as HTTP authentication or FORM style.
-Since v2.5.6, you can even utilize the session if you already login on phpBB.
+The login prompt can be configured as <u>HTTP</u> (as a popup window) or <u>FORM</u> style.<br />
+Besides, if you already login on <u>phpBB</u>, one can also utilize the session without login again.
 <p>
 PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais, Finnish, German, Italiano and Slovak.
 The preferred language can be switched any time and any where.
 <p>
 PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in China).
 <p>
-But unfortunately, the PHP iconv() function does not work on some systems
+But the PHP iconv() function may not work on some old systems
 and it also has problems of handling Chinese words.
 So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
@@ -172,8 +170,8 @@ Demonstration:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<br />
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5)<br />
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/cnbbs/</a>&nbsp; (cn.bbs.*, in Chinese/BIG5, converted from GB2312)<br />
-<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)
+<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
+<a href="http://webnews.giga.net.tw/group//soc.culture.taiwan" target=_blank>http://webnews.giga.net.tw/group//soc.culture.taiwan</a>&nbsp; (threading support)
 </blockquote>
 <p>
 Download the latest version from SourceForge:

@@ -649,7 +649,9 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["thread_enable"]</strong></p>
   <blockquote>
     <p>Enable threading (default: <i>false</i>)</p>
-    <p>Articles in the same thread will be <u>listed</u> (when you view one of the message in the thread).<p>
+    <p>We only support the simplest type of threading now.
+       Articles in the same thread will be <u>listed</u> in the bottum of the page
+       when you view one of the message in the thread.<p>
     <p>To enable threading, you must enable the cache mechanism by setting
        <a href=#cache_dir>$CFG["cache_dir"]</a> and specify the correct <a href=#thread_db_format>$CFG["thread_db_format"]</a>.
        The directroy specified by <a href=#cache_dir>$CFG["cache_dir"]</a> will be used for storing threading data.<p>
