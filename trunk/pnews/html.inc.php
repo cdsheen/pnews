@@ -19,8 +19,19 @@
 
 require_once('language.inc.php');
 
+if( $_SERVER['HTTPS'] ) {
+	$CFG['url_base'] = str_replace( 'http://', 'https://', $CFG['url_base'] );
+	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+}
+else
+	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+
+#if( $CFG['url_rewrite'] )
+
+$urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
+
 function html_head($title, $redirect = null, $bodymod = '' ) {
-	global $lang_coding, $curr_language, $CFG;
+	global $lang_coding, $curr_language, $urlbase;
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
 	echo <<<EOH
@@ -31,8 +42,8 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 
 EOH;
 
-	if( $CFG['url_rewrite'] )
-		echo '<base href="' . $CFG['url_base'] . '">';
+	echo '<base href="' . $urlbase . '/">';
+
 	if( $redirect )
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">";
 
@@ -68,7 +79,7 @@ function show_language_switch() {
 }
 
 function html_foot($langopt = true) {
-	global $lang_define, $CFG, $pnews_version;
+	global $lang_define, $CFG, $pnews_version, $sflogo;
 ?>
   <p>
 <hr><table width=100% border=0 cellpadding=0 cellspacing=0>
@@ -88,7 +99,7 @@ function html_foot($langopt = true) {
 	if( $CFG['show_sourceforge_logo'] ) {
 		echo <<<EOL
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" height=20 alt="SourceForge.net Logo">
+<img src="$sflogo" border="0" height=20 alt="SourceForge.net Logo">
 </a>
 
 EOL;

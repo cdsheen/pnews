@@ -100,22 +100,6 @@ PHP News Reader - Installation and Configuration
 <a name=section1></a>
   <p> <strong>Section 1 - Authetication</strong></p>
   <p> This section controls how you authenticate your users.</p>
-<a name=url_rewrite></a>
-  <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
-  <blockquote> 
-    <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
-    <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
-    <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br>
-    For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
-  </blockquote>
-<a name=url_base></a>
-  <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
-  <blockquote> 
-    <p>Specify the base URL of your PHP News Reader installation</p>
-    <p>This setting is REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
-  </blockquote>
 <a name=auth_type></a>
   <p><strong>$CFG[&quot;auth_type&quot;]</strong></p>
   <blockquote> 
@@ -377,6 +361,29 @@ PHP News Reader - Installation and Configuration
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br>
   </p>
+<a name=url_base></a>
+  <p> <strong>$CFG[&quot;url_base&quot;]</strong></p>
+  <blockquote> 
+    <p>Specify the base URL of your PHP News Reader installation (REQUIRED)</p>
+    <p>Prior to <b>v2.2.1</b>, this setting is only REQUIRED if $CFG[&quot;url_rewrite&quot;] = true</p>
+    <p>After to <b>v2.2.2</b>, this setting is always REQUIRED</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=url_rewrite></a>
+  <p> <strong>$CFG[&quot;url_rewrite&quot;]</strong></p>
+  <blockquote> 
+    <p>Enable or disable the URL rewrite function (default: &quot;false&quot;)</p>
+    <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
+    <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br>
+    For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
+    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=https_login></a>
+  <p> <strong>$CFG[&quot;https_login&quot;]</strong></p>
+  <blockquote> 
+    <p>Whether to use SSL(HTTPS) after authentication (default: off)</p>
+    <p>This setting first appeared in the <b>v2.2.2</b> of PHP News Reader</p>
+  </blockquote>
 <a name=style_sheet></a>
   <p><strong>$CFG[&quot;style_sheet&quot;]</strong></p>
   <blockquote> 

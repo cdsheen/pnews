@@ -199,7 +199,7 @@ if( !isset( $CFG['url_rewrite'] ) )
 if( !isset( $CFG['articles_per_page'] ) ) 
 	$CFG['articles_per_page'] = 20;
 
-if( $CFG['url_rewrite'] && !isset($CFG['url_base']) )
+if( !isset($CFG['url_base']) )
 	config_error( 'CFG["url_base"]' );
 
 if( !isset( $CFG['group_list'] ) )

@@ -35,9 +35,6 @@ $self_base        = basename( $self );
 
 $auto_slash       = get_magic_quotes_gpc();
 
-if( $CFG['url_rewrite'] )
-	$urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
-
 $referal          = $_SERVER['HTTP_REFERER'];
 
 $post_restriction = $CFG['post_restriction'];
@@ -250,34 +247,43 @@ if( $CFG['auth_type'] != 'open' ) {
 #		echo "<!-- authentication ticket is acknowledged -->\n";
 		$auth_success = true;
 	}
-	elseif( $need_auth )
-		switch($CFG['auth_prompt']) {
-		case 'form':
-			html_head( $title . ' - ' . $strAuthentication );
-			form_login_dialog( $is_expire );
-			html_foot();
-			html_tail();
+	elseif( $need_auth ) {
+		if( $CFG['https_login'] && !$_SERVER['HTTPS'] ) {
+			$_SESSION['save_postvar'] = true;
+			$_SESSION['POSTVAR'] = $_POST;
+			header( 'Location: https://' . $_SERVER['HTTP_HOST'] . $uri );
 			exit;
-			break;
-		case 'http':
-			if( !$is_expire && isset( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) ) {
-				$info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
-				if( !$info )
-					http_login_auth();
-				$now = time();
-				$_SESSION['auth_time'] = $now;
-				$_SESSION['auth_name'] = $_SERVER['PHP_AUTH_USER'];
-				$_SESSION['auth_with'] = 'http';
-				$_SESSION['auth_info'] = $info;
-				$_SESSION['auth_ticket'] = md5( $_SERVER['PHP_AUTH_USER'] . session_id() . $now );
-				$auth_success = true;
-			}
-			else {
-				unset($_SESSION['auth_ticket']);
-				http_login_auth();
-			}
-			break;
 		}
+		else {
+			switch($CFG['auth_prompt']) {
+			case 'form':
+				html_head( $title . ' - ' . $strAuthentication );
+				form_login_dialog( $is_expire );
+				html_foot();
+				html_tail();
+				exit;
+				break;
+			case 'http':
+				if( !$is_expire && isset( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) ) {
+					$info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
+					if( !$info )
+						http_login_auth();
+					$now = time();
+					$_SESSION['auth_time'] = $now;
+					$_SESSION['auth_name'] = $_SERVER['PHP_AUTH_USER'];
+					$_SESSION['auth_with'] = 'http';
+					$_SESSION['auth_info'] = $info;
+					$_SESSION['auth_ticket'] = md5( $_SERVER['PHP_AUTH_USER'] . session_id() . $now );
+					$auth_success = true;
+				}
+				else {
+					unset($_SESSION['auth_ticket']);
+					http_login_auth();
+				}
+				break;
+			}
+		}
+	}
 }
 
 $info = $_SESSION['auth_info'];
@@ -330,6 +336,9 @@ function form_login_dialog( $is_expire ) {
 		$target = $referal;
 	else
 		$target = $uri;
+
+	if( $_SERVER['HTTPS'] )
+		$target = str_replace( 'http://', 'https://', $target );
 
 	$_SESSION['save_postvar'] = true;
 	$_SESSION['POSTVAR'] = $_POST;

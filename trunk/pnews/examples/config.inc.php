@@ -30,16 +30,6 @@ define( 'off', false, true );
 # Section 1 - Authentication - Configure how users login your system
 ############################################################################
 
-# [url_rewrite] Turn on URL rewrite (Need Apache's mod_rewrite support)
-#               (default: false)
-
-# $CFG['url_rewrite'] = true;
-
-# [url_base] The base url of your PHP News Reader installation
-#            (REQUIRED if url_rewrite == true )
-
-# $CFG['url_base'] = 'http://webnews.foobar.com/news/';
-
 
 # [auth_type] Specify the authentication type (REQUIRED)
 #  "required" - authentication is required to access the while system
@@ -208,6 +198,21 @@ $CFG["auth_expire_time"] = 1800;
 ############################################################################
 # Section 2 - Contents - Configure the contents
 ############################################################################
+
+# [url_base] The base url of your PHP News Reader installation (REQUIRED)
+
+# $CFG['url_base'] = 'http://webnews.foobar.com/news/';
+
+
+# [url_rewrite] Turn on URL rewrite (Need Apache's mod_rewrite support)
+#               (default: false)
+
+# $CFG['url_rewrite'] = true;
+
+
+# [https_login] Whether to use SSL(HTTPS) after authentication (default: off)
+
+# $CFG['https_login'] = true;
 
 
 # [title] The title for this webnews (default: "Webnews")
