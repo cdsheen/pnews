@@ -70,8 +70,8 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p> <strong># cp &nbsp;examples/newsgroups.lst&nbsp;&nbsp; .</strong></p>
   </blockquote>
-  <p> Now, you can begin to edit these two files.</p>
-  <p>If the configuration of both files are finished, you can then use your favorite 
+  <p> Now, you can begin editing these two files.</p>
+  <p>If both files are finished configuration, you can then use your favorite 
     browser to access this Web News,<br>
     for example:</p>
   <blockquote> 
@@ -85,6 +85,7 @@ PHP News Reader - Installation and Configuration
 <strong><em><font color="#0000FF"> Configuration for CONFIG.INC.PHP</font></em></strong> 
 <blockquote> 
   <p> config.inc.php controls how PHP News Reader works.</p>
+  <p> You can find the sample config.inc.php in the "example/" directory.</p>
   <p> All configuration applies PHP syntax and match the form of:</p>
   <blockquote> 
     <p> $CFG[&quot;foo&quot;] = &quot;bar&quot;;</p>
@@ -109,14 +110,15 @@ PHP News Reader - Installation and Configuration
   <p> <strong>$CFG[&quot;auth_prompt&quot;]</strong></p>
   <blockquote> 
     <p>Specify the style of authentication prompt (default: &quot;http&quot;) 
-      (used when auth_type != 'open')</p>
-    <p> &quot;http&quot; - authentication via HTTP login window (default)<br>
-      &quot;form&quot; - authentication with login form</p>
+      (used only if auth_type != 'open')</p>
+    <p> &quot;http&quot; - authenticated user via HTTP login window (default)<br>
+      &quot;form&quot; - authenticated user via HTML login form</p>
   </blockquote>
   <p> <strong>$CFG[&quot;auth_http_realm&quot;]</strong></p>
   <blockquote> 
     <p>Specify the realm used in http authentication prompt (REQUIRED if auth_prompt 
       == 'http')</p>
+    <p>This realm string will be displayed in the HTTP login window.</p>
   </blockquote>
   <p> <strong>$CFG[&quot;auth_method&quot;]</strong></p>
   <blockquote> 
@@ -134,6 +136,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>Specify the organization of authentication source (REQUIRED if auth_type 
       != 'open')</p>
+    <p>This is the organization name of your authentication source.</p>
   </blockquote>
   <p><strong>$CFG[&quot;auth_registration_info&quot;]</strong></p>
   <blockquote> 
@@ -147,48 +150,58 @@ PHP News Reader - Installation and Configuration
       You should implement a function with this prototype in your module:<br>
       <br>
       function check_user_password( $username, $password )</p>
+      <p>This function should verify the correctness of $username and $password,
+      <br>and then return true for granting access, false otherwise.
   </blockquote>
-  <p> LDAP authentication parameters (REQUIRED if auth_method == 'ldap')</p>
+  <p> <strong>LDAP authentication parameters</strong> (REQUIRED if auth_method == 'ldap')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;ldap_server&quot;]</strong></p>
     <blockquote> 
       <p>LDAP server address ( address:port )</p>
+      <p>$CFG[&quot;ldap_server&quot;] = &quot;ldap.domain.org:189&quot;;
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_dn&quot;]</strong></p>
     <blockquote> 
       <p>LDAP distinguish name</p>
+      <p>$CFG["ldap_dn"] = "ou=members, o=root";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_bind_rdn&quot;]</strong></p>
     <blockquote> 
       <p>LDAP bind RDN, %u replaced by username (default: &quot;%u&quot;)</p>
+      <p>$CFG["ldap_bind_rdn"] = "cn=%u,ou=members,o=root";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_bind_pwd&quot;]</strong></p>
     <blockquote> 
       <p>LDAP bind password, %p replaced by password (default: &quot;%p&quot;)</p>
+      <p>$CFG["ldap_bind_pwd"] = "%p";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_filter&quot;]</strong></p>
     <blockquote> 
       <p>LDAP search filter (default: &quot;(cn=%u)&quot;)</p>
+      <p>$CFG["ldap_filter"]   = "(&(cn=%u)(accountStatus=1)(MailStatus=1))";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_variable&quot;]</strong></p>
     <blockquote> 
       <p>The attributes extract from this LDAP search for later use (default: 
         null)<br>
         ( %u can not be used here )</p>
+      <p>$CFG["ldap_variable"] = array( "%e" => "Email", "%n" => "Fullname" );</p>
     </blockquote>
   </blockquote>
   <p><br>
-    FTP authentication parameters (REQUIRED if auth_method == 'ftp')</p>
+    <strong>FTP authentication parameters</strong> (REQUIRED if auth_method == 'ftp')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;$ftp_server&quot;]</strong></p>
     <blockquote> 
       <p>FTP server address ( address:port )</p>
+      <p>$CFG["ftp_server"] = "ftp.domain.org";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;$ftp_deny&quot;]</strong></p>
     <blockquote> 
       <p> The user list which is denied for FTP authentication<br>
         (default:<em><strong> array( 'anonymous', 'guest', 'ftp' )</strong></em> 
         )</p>
+      <p>$CFG["ftp_deny"] = array( 'anonymous', 'guest', 'ftp', 'root' );</p>
     </blockquote>
   </blockquote>
   <p> POP3 authentication parameters (REQUIRED if auth_method == 'pop3')</p>
@@ -196,25 +209,33 @@ PHP News Reader - Installation and Configuration
     <p> <strong>$CFG[&quot;pop3_server&quot;]</strong></p>
     <blockquote> 
       <p>POP3 server address ( address:port )</p>
+      <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;pop3_user_modify&quot;]</strong></p>
     <blockquote> 
       <p>fix the username used for POP3, %u replaced by username (default: &quot;%u&quot;)</p>
+      <p>Normally, you did not need this parameter. But on some BBS systems, a little modification is needed, such as:</p>
+      <p>$CFG["pop3_user_modify"] = "%u.bbs";</p>
     </blockquote>
   </blockquote>
-  <p> Mail authentication parameters (REQUIRED if auth_method == 'mail')</p>
+  <p> <strong>Mail authentication parameters</strong> (REQUIRED if auth_method == 'mail')</p>
   <blockquote> 
     <p> <strong>$CFG[&quot;pop3_mapping]</strong></p>
     <blockquote> 
       <p>the mapping from E-Mail to POP3 server address</p>
+      <p>User should login with full E-Mail address, and this module will
+         use different POP3 server to authenticated user based on the domain part of supplied E-Mail</p>
+      <p>The following example will use "pop3.csie.nctu.edu.tw" to authenticate "xxx@csie.nctu.edu.tw",
+         and use "pop3.domain.org" to authenticate "yyy@mail.domain.org".</p>
       <p>$CFG[&quot;pop3_mapping&quot;] = array( &quot;@csie.nctu.edu.tw&quot; 
         =&gt; &quot;pop3.csie.nctu.edu.tw&quot;, &quot;@mail.domain.org&quot; 
         =&gt; &quot;pop3.domain.org&quot; );</p>
     </blockquote>
   </blockquote>
-  <p>MySQL/PostgreSQL Database authentication parameters<br>
-    (REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )</p>
+  <p><strong>MySQL/PostgreSQL Database authentication parameters</strong><p>
   <blockquote> 
+    <p>(REQUIRED if auth_method == 'mysql' || auth_method == 'pgsql' )</p>
+    <p>These parameters are used in both MySQL and PostgreSQL database authentication module.</p>
     <p><strong>$CFG[&quot;db_server&quot;]</strong></p>
     <blockquote> 
       <p>The database server address (address:port)</p>
@@ -245,11 +266,14 @@ PHP News Reader - Installation and Configuration
     </blockquote>
     <p> <strong>$CFG[&quot;db_password_crypt&quot;]</strong></p>
     <blockquote> 
-      <p>The password encrypt method (default: &quot;&quot; - cleartext)<br>
-        current supported are: &quot;md5&quot;, &quot;crypt&quot;</p>
+      <p>The password hashing method (default: &quot;&quot; - cleartext)<br>
+        current supported hashing are: &quot;md5&quot; and &quot;crypt&quot;</p>
+      <p>If your password does not saved as cleartext in the database,
+      <br>this parameter defined the hashing method used to hash password.</p>
     </blockquote>
+    <p>The support for database authentication module make it easy to integrate with the existing phpBB system.</p>
     <p>For example, to enable PHP News Reader to authenticate with the existing 
-      users of your phpBB system, use the following settings:</p>
+      users of your phpBB 2.0, use the following settings:</p>
     <blockquote> 
       <p>$CFG[&quot;db_server&quot;] = &quot;database.domain.org&quot;;<br>
         $CFG[&quot;db_name&quot;] = &quot;phpbb&quot;;<br>
@@ -275,6 +299,10 @@ PHP News Reader - Installation and Configuration
   <p><strong>$CFG[&quot;auth_user_fullname]</strong></p>
   <blockquote> 
     <p>The full name of authenticated user (default: &quot;%u&quot;)</p>
+    <p>The default is the username supplied for authentication</p>
+    <p>You can customize this based on the variable defined in the [db_variable] or [ldap_variable]</p>
+    <p>For example,</p>
+    <p>$CFG["auth_user_fullname"] = "%n";</p>
   </blockquote>
   <p> <strong>$CFG[&quot;auth_user_email&quot;]</strong></p>
   <blockquote> 
@@ -284,15 +312,14 @@ PHP News Reader - Installation and Configuration
       <br>
       Other variables are defined in the [db_variable] or [ldap_variable]<br>
       <br>
-      If you use 'mail' auth-method, %e will be replaced with the user's E-Mail,<br>
-      and %u will be replaced with the user name of the E-Mail (the strings before 
-      '@')</p>
+      An exception is, if you use 'mail' auth-method, %e will be replaced with the user's E-Mail,<br>
+      and %u will be replaced with the user name part of the E-Mail (the strings before '@')</p>
   </blockquote>
   <p><strong>$CFG[&quot;log&quot;]</strong></p>
   <blockquote> 
-    <p>Enable access log (default: &quot;&quot; - no log)<br>
-      <br>
-      You need to create this file with write permission to the user running httpd</p>
+    <p>Enable access log (default: &quot;&quot; - no log)</p>
+    <p>$CFG["log"] = "/var/log/pnews.log";</p>
+    <p>You need to create this file with write permission granted to the user running httpd</p>
   </blockquote>
   <p>&nbsp;</p>
   <p><strong>Section 2 - Contents</strong></p>
@@ -329,7 +356,7 @@ PHP News Reader - Installation and Configuration
   <blockquote> 
     <p>The links referring to other pages, (default: null), ex:<br>
       <br>
-      $CFG[&quot;links&quot;&quot;] = array( &quot;Back Home&quot; =&gt; &quot;../index.php&quot;, 
+      $CFG[&quot;links&quot;] = array( &quot;Back Home&quot; =&gt; &quot;../index.php&quot;, 
       &quot;Tech News&quot; =&gt; &quot;http://foo.bar/technews/&quot; );</p>
   </blockquote>
   <p><strong><br>
@@ -377,7 +404,7 @@ PHP News Reader - Installation and Configuration
   <p>The settings consist of two parts, key and value, and are separated by tab 
     or spaces<br>
     And the value part of setting ends at end of line</p>
-  <p>For example, the following line sets the foobar as &quot;value1 value2&quot;</p>
+  <p>For example, the following line sets "foobar" as &quot;value1 value2&quot;</p>
   <blockquote> 
     <p>foobar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value1 value2</p>
   </blockquote>
@@ -419,6 +446,7 @@ PHP News Reader - Installation and Configuration
   <p>default</p>
   <blockquote> 
     <p>This catalog will become the default catalog when user first come in.</p>
+    <p>Only one catalog can be marked as "default".<br>If multiple catalogs are marked as "default", the last catalog will become the default.</p>
   </blockquote>
   <p>private</p>
   <blockquote> 
