@@ -25,10 +25,11 @@ The requirement for PHP News Reader on the server side:
 <li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
 </ul>
 <p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.
-<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader only requires the News Server to have the following extensions:<br>
+<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br>
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
 <li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
+<li>XOVER &nbsp;[range]
 </ul>
 The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.

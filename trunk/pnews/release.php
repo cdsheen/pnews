@@ -33,11 +33,12 @@ PHP News Reader use a self-written NNRP Library to access news server via NNTP.
 <p>
 PHP News Reader does not support threading of News articles and newsgroup subscription.
 <p>
-Standards:
+Conformed Standards:
 <ul>
 <li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
 <li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980 - Common NNTP Extensions</a>
 <li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2822" target=_blank>RFC 2822 - Internet Message Format</a>
+<li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=1036" target=_blank>RFC 1036 - Standard for Interchange of USENET Messages</a>
 </ul>
 <p>
 To install PHP News Reader, please check the <a href=requirement.php>requirement</a>, and then read the <a href=install.php>Installation Guide</a>.
