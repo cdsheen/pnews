@@ -440,7 +440,9 @@ EOH;
     <blockquote>http://webnews.host/indexing.php?server=*&group=news.test<font color=red>&magic=23479</font></blockquote>
       or while url_rewrite is on,
     <blockquote>http://webnews.host/group//news.help<font color=red>?23479</font></blockquote>
-      PHP News Reader use the above magic number in <font color=red>red</font> to indicate that the group has been visited by user (with the help of browser's history).
+      PHP News Reader use the above magic number in <font color=red>red</font> to indicate that the group has been visited by user (with the help of browser's history).<br>
+      The default is on, you can turn it off by:
+    <blockquote>$CFG[&quot;magic_tag&quot;] = off;</blockquote>
     <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
   </blockquote>
 <a name=group_sorting></a>

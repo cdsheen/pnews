@@ -39,9 +39,10 @@ echo <<<EOH
 <font face="Georgia" size=1>Release Date: $pnews_release</font>
 </td></tr></table>
 <font size=3 color=black face="Georgia">
-URL Rewrite Function
+URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
 <hr>
-URL Rewrite is a cool function that make the link more readable.
+URL Rewrite is a cool function that make the link more readable.<br>
+<br>
 For example, the link to read an article is:
 <ul><font color=blue>
 http://webnews.domain.net/news/read-art.php?server=news.nopy.com&group=nopy.test&artnum=21012
@@ -52,7 +53,7 @@ If you enable the URL rewriting, the link will become:
 http://webnews.domain.net/news/article/news.nopy.com/nopy.test/21012
 </font>
 </ul>
-If <i><b>news.nopy.com</b></i> is your default news server, the link even becomes shorter (v2.2.1):
+With pnews version greater than v2.2.1 and if <i><b>news.nopy.com</b></i> is your default news server, the link even becomes shorter:
 <ul><font color=blue>
 http://webnews.domain.net/news/article//nopy.test/21012
 </font>
