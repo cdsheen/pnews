@@ -78,6 +78,9 @@ if( !$artinfo ) {
 	exit;
 }
 
+#if( $curr_charset == 'big5' || $curr_charset == 'gb2312' )
+#	$artinfo['charset'] = $curr_charset;
+
 $artconv = get_conversion( $artinfo['charset'], $curr_charset );
 
 if( $artconv['to'] ) {
@@ -173,7 +176,7 @@ if( isset($_GET['header']) )
 	$show_mode |= SHOW_HEADER;
 
 #if( $artconv['to'] )
-nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n", $artconv['to'], "download.php?server=$server&group=$group&artnum=$artnum" );
+nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "download.php?server=$server&group=$group&artnum=$artnum" );
 
 nnrp_close($nhd);
 
