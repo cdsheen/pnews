@@ -1,0 +1,211 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+<title>PHP News Reader</title>
+</head>
+<body style="background-color: #EEFFFF">
+<table width=100% cellpadding=0 cellspacing=0><tr><td>
+<font face="Georgia"><h3>PHP News Reader v2.0-beta</h3></font>
+</td><td align=right valign=bottum><font face="Georgia" size=1>Release Date: 2003/01/13</font>
+
+</td></tr></table>
+<font size=3 color=black face="Georgia">
+PHP News Reader / NNRP Library
+</font>
+<hr>
+<font face="Georgia" size="3" color="black">
+PHP News Reader is a Web-based News Reader. It supports the 
+standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=971" target=_blank>RFC 971</a>) for reading, posting, deleting,
+forwarding and replying news articles.
+In fact, PHP News Reader contains various useful functions to communicate
+with News Server, which are collected as a NNRP Library.
+NNRP Library provides a friendly API for accessing news server via NNTP.
+<p>
+PHP News Reader does not support threading of News articles and newsgroup subscription.
+<p>
+<a name=server_requirement></a>
+The requirement for PHP News Reader on the server side:
+<ul>
+<li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
+<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
+</ul>
+<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader only requires the News Server to have the following extensions:<br>
+<ul>
+<li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
+<li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
+</ul>
+The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
+ (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
+<p>
+If your server is operated by INN, you should check about the NNRP access permission.
+For example, when you telnet to an INN News server at port 119, you must get response like this: (the <b>NNRP</b> in bold)
+<ul>
+200 nopy.com InterNetNews <b>NNRP</b> server INN 2.3.2 ready (posting ok).
+</ul>
+instead of,
+<ul>
+200 nopy.com InterNetNews server INN 2.3.2 ready<br>
+-or-<br>
+502 You have no permission to talk.  Goodbye.
+</ul>
+<p>
+The requirement for PHP News Reader on the client side (web browser) :
+<ul>
+<li>Support Cascade Style Sheet 1.0
+<li>Support Javascript >= 1.2
+<li>Support Document Object Model
+<li>Accept Cookies (not necessary)
+</ul>
+The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
+<p>
+PHP News Reader has nothing to do with user registration.
+It is designed to work with the EXISTING authentication system.
+PHP News Reader supports flexible authentication interface modules,
+which let administrator easy to control how to authenticate users.
+There are various handy authentication modules availabled.
+<ul>
+<li>POP3 - authenticate user using the existing POP3 server.
+<li>Mail - authenticate user using multiple POP3 server.
+<!--
+<li>Firebird BBS - authenticate user with the existing Firebird Bulletin Board System.
+-->
+<li>LDAP - authenticate user using LDAP server.
+<li>FTP - authenticate user with the existing FTP server
+<li>MySQL - authenticate user existing in MySQL database.
+<li>PostgreSQL - authenticate user existing in PostgreSQL database.
+</ul>
+<p>
+The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.
+<p>
+The login prompt can be configured as HTTP authentication or FORM style.
+<p>
+PHP News Reader contains three interface languages (English, Traditional Chinese and Simplified Chinese).
+The preferred encoding can be switched any time and any where.
+<p>
+Since the PHP iconv() function may not work on some systems and it also has problems of handling Chinese words.
+PHP News Reader use a self-written conversion system.
+The conversion between Chinese (BIG5, GB2312 and UTF-8) encodings is supported.
+The encoding of article is auto-converted to the preferred one
+while the selected encoding of interface is different from the encoding of the news articles.
+This conversion also effectives while posting, replying, forwarding and cross-posting articles.
+The posted articles will also be converted to the original encoding of the server.
+<p>
+PHP News Reader's development is started around 2001/08.
+I wrote this software in my leisure time. Although PHP News Reader still
+lacks many fancy features, it works fine to meet the most requirements.
+The following is the history since 2002/06.
+<p>
+PHP News Reader v2.0 (expect to release on 2003/01/19)
+<ul>
+<li>First public release
+<li>!! Basic Documentation
+<li>Rewrite the authentication codes and the use of the ticket system
+<li>Logging out support
+<li>Support 'optional' authentication model for Read-Only access without authentication
+<li>Rewrite the LDAP and POP3 authentication modules
+<li>Support Mail authentication module for multiple POP3 server environment
+<li>Support MySQL and PostgreSQL authentication modules, easy to integrate with <a href="http://www.phpbb.com/" target=_blank>phpBB</a>
+<li>FTP authentication module support
+<li>User information can be extracted from LDAP attributes or Database table fields along with authentication
+<li>Standardize the requirements for writing an authentication module
+<li>Support FORM style login process other than the original HTTP authentication
+<li>More flexible configuration based on a new config.inc.php syntax
+<li>Enable interface language to switch without cookie support
+<li>Different encodings can be used in different catalogs
+<li>Support private groups which only accessible by authenticated user
+<li>Fix the E-Mail parsing bug in XOVER command of NNRP library
+</ul>
+<p>
+PHP News Reader v1.9 (released on 2003/01/01)
+<ul>
+<li>LDAP authentication module support
+<li>Add X-User-Real-E-Mail: header for real E-Mail address
+<li>Fix a typo error of default language file loading
+</ul>
+<p>
+PHP News Reader v1.8 (released on 2002/10/26)
+<ul>
+<li>Support encodings including Unicode/Chinese (UTF-8), Simplified Chinese (GB2312) and Traditional Chinese (BIG5).
+<li>Code conversion between any two of the above three common Chinese encodings
+<li>Interface re-formatting for various action
+<li>Fix a bug of forwarding article in english interface
+</ul>
+<p>
+PHP News Reader v1.7 (released on 2002/10/05)
+<ul>
+<li>Support Chinese bi-directional coding conversion of BIG5/GB2312
+<li>Support Chinese on-the-fly coding conversion while posting articles
+<li>Fix the multiple MIME encoding problem of the subject
+</ul>
+<p>
+PHP News Reader v1.6 (released on 2002/08/10)
+<ul>
+<li>Support square-bracketed catalog in newsgroups.lst
+<li>Couple of fixs for register_globals setting 'off'
+<li>HTML entities in Subject is now correctly escaped
+<li>Mail forwarding bug fixed
+<li>Check for valid E-Mail entered by user
+</ul>
+<p>
+PHP News Reader v1.5 (released on 2002/07/06)
+<ul>
+<li>Multiple news server
+<li>Run with PHP's register_globals setting turned off
+<li>Security enhancement for newsgroup verification
+<li>Switch interface language on the fly
+</ul>
+<p>
+PHP News Reader v1.4 (released on 2002/06/09)
+<ul>
+<li>Dynamic highlight of selected item 
+<li>Correct the problem about author information of XOVER, HEAD
+<li>Fix a bug of checking both "Not post to newsgroup" and "Reply to author"
+</ul>
+<p>
+Future works:
+<ul>
+<li>Article search functionality
+<li>Cross post with smart group selection
+<li>MIME content support
+</ul>
+<p>
+The source code of PHP News Reader v2.0 will be released soon.
+I think I need to write some documents before make it public.
+If you really need this program, you are welcomed to write a mail to me,
+telling me your plan, I'll see how I can help.
+<p>
+Any bug report or functional suggestion is appreciated. Please send your
+requests by mail or leave a messages on the web.
+<p>
+PHP News Reader official site:
+<blockquote>
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/php-news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/php-news/</a>
+</blockquote>
+<p>
+Demo:
+<blockquote>
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>
+</blockquote>
+<p>
+Suggestion Board:
+<blockquote>
+<a href="http://www.csie.nctu.edu.tw/~cdsheen/php-news/board.php" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/php-news/board.php</a>
+</blockquote>
+<p>
+Author:
+<blockquote>
+Shen Cheng-Da<br>
+Taipei, Taiwan<br>
++886-926-356815<br>
+ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">73013633</a><br>
+<a href="mailto:cdsheen@csie.nctu.edu.tw">cdsheen@csie.nctu.edu.tw</a><br>
+<a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
+http://www.csie.nctu.edu.tw/~cdsheen/</a>
+</blockquote>
+<hr>
+<font size=2>PHP News Reader v2.0-beta (C) 2001-2003 - Shen Cheng-Da</font>
+
+</font>
+</body>
+</html>
