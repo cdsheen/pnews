@@ -46,13 +46,15 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
-PHP News Reader v2.5.0 (2003/11/16)
+PHP News Reader v2.5.0 (2003/11/15)
 <ul>
 <li>Mail authentication module now support pop3s.
 <li>Per-catalog readonly can be configured.
+<li>Check for valid session before performing authentication.
+<li>GB2312 translation is refined (by Czz).
 <li>Crosspost verification bug is fixed.
-<li>Organization header bug is fixed.
-<li>Fix a bug of wrong regular expression in split().
+<li>Organization header now overrides the setting of news server.
+<li>Fix a bug of incorrect regular expression used in split().
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
 </ul>
 PHP News Reader v2.4.4 (2003/11/09)
