@@ -19,11 +19,13 @@ echo '
 <font size=3 color=black face="Georgia">
 <a href=release.php>PHP News Reader</a> Release histroy
 <hr>
-PHP News Reader v2.1.1 (2003/03/08?)
+PHP News Reader v2.1.1 (2003/03/08)
 <ul>
 <li>The format of time displayed can be configured by $CFG["time_format"].
 <li>Show only group name in the title of indexing page.
 <li>Add more error handling codes for invalid news server settting.
+<li>Several author name/mail parsing problems fixed.
+<li>Fix variable missing problem in 'open' authentication type.
 </ul>
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)

@@ -166,6 +166,9 @@ if( $grouplst_convert['to'] ) {
 
 $auth_success     = false;
 
+$server = $_GET['server'];
+$group  = $_GET['group'];
+
 if( $CFG['auth_type'] != 'open' ) {
 
 	if( isset($_GET['logout']) ) {
@@ -189,8 +192,6 @@ if( $CFG['auth_type'] != 'open' ) {
 		if( isset($_GET['login']) )
 			$need_auth = true;
 		elseif( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
-			$server = $_GET['server'];
-			$group  = $_GET['group'];
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
@@ -205,8 +206,6 @@ if( $CFG['auth_type'] != 'open' ) {
 	}
 	else {
 		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
-			$server = $_GET['server'];
-			$group  = $_GET['group'];
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
