@@ -114,8 +114,8 @@ Sample running system:
 Download the latest version from SourceForge:
 <blockquote>
 ';
-echo "<a href=\"http://prdownloads.sourceforge.net/pnews/$dname?download\"
-target=_blank>$dname</a>";
+echo "<a href=\"http://sourceforge.net/project/showfiles.php?group_id=71412\"
+target=_blank>Source downloads</a>";
 echo '
 </blockquote>
 <p>
