@@ -169,7 +169,7 @@ echo "</table>";
 toolbar( $server, $group, $artnum, $subject );
 
 echo "</center>";
-
+html_foot(false);
 html_tail();
 
 function toolbar( $server, $group, $artnum, $title ) {

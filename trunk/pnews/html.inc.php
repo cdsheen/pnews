@@ -67,7 +67,7 @@ function show_language_switch() {
 	}
 }
 
-function html_foot() {
+function html_foot($langopt = true) {
 	global $lang_define, $CFG, $pnews_version;
 ?>
   <p>
@@ -77,7 +77,7 @@ function html_foot() {
        <font size=2>
 <?
 	if( $CFG['author_link'] == false )
-		echo "PHP News Reader $pnews_version by Shen Cheng-Da";
+		echo "<a href=\"http://sourceforge.net/projects/pnews/\" target=_blank>PHP News Reader</a> $pnews_version by Shen Cheng-Da";
 	else
 		echo '<a href="doc/index.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
 ?>
@@ -100,7 +100,7 @@ EOL;
   </td><td align=right>
      <font size=2>
 <?
-	if( $CFG['language_switch'] ) {
+	if( $CFG['language_switch'] && $langopt ) {
 		echo "<i>Language:</i>";
 		show_language_switch();
 	}
