@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $strForward";
+$title .= " - $pnews_str[Forward]";
 
 # -------------------------------------------------------------------
 
@@ -52,15 +52,15 @@ if( $_POST['content'] != '' ) {
 
 	$time = strftime($CFG['time_format']);
 
-	echo "<table width=100%><tr><td class=status>$strArticleIsForwarded</td>\n";
-	echo "<td class=field><input class=normal type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr />\n";
+	echo "<table width=100%><tr><td class=status>$pnews_str[ArticleIsForwarded]</td>\n";
+	echo "<td class=field><input class=normal type=button onClick=\"close_window();\" value=\"$pnews_str[CloseWindow]\"></td></tr></table><hr />\n";
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
 	echo "<table>\n";
-	echo "<tr><td class=field>$strReceiver: </td><td class=value>$receiver</td></tr>\n";
-	echo "<tr><td class=field>$strTime: </td><td class=value>$time</td></tr>\n";
-	echo "<tr><td class=field>$strSubject: </td><td class=value>" . htmlspecialchars( $subject ) . "</td></tr></table>\n";
+	echo "<tr><td class=field>$pnews_str[Receiver]: </td><td class=value>$receiver</td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Time]: </td><td class=value>$time</td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Subject]: </td><td class=value>" . htmlspecialchars( $subject ) . "</td></tr></table>\n";
 	echo '<hr />
 	<pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</pre>\n";
 	echo "<hr />\n";
@@ -124,7 +124,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($strRealyQuit); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_str['RealyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -132,17 +132,17 @@ elseif( $artnum != '' ) {
 	}
 	function verify() {
 		if( document.post.receiver.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.receiver.value)) {
-			alert('<? echo addslashes($strPleaseEnterReceiver); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterReceiver']); ?>');
 			document.post.receiver.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterSubject); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterSubject']); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterContent); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterContent']); ?>');
 			document.post.content.focus();
 			return(false);
 		}
@@ -153,20 +153,20 @@ elseif( $artnum != '' ) {
 <?
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% cellspacing=0 cellpadding=0>\n";
-	echo "<tr><td class=field>$strReceiver:</td><td><input name=receiver size=50></td></tr>\n";
-	echo "<tr><td class=field>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Receiver]:</td><td><input name=receiver size=50></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Group]:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Subject]:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
-	echo "$strContent:</td><td align=right>\n";
-	echo " <input class=normal type=button value=\"$strFormConfirmForward\" onClick='verify();' tabindex=2>\n";
-	echo " <input class=normal type=button value=\"$strFormCancelForward\" onClick='really();' tabindex=3></td></tr>\n";
+	echo "$pnews_str[Content]:</td><td align=right>\n";
+	echo " <input class=normal type=button value=\"$pnews_str[FormConfirmForward]\" onClick='verify();' tabindex=2>\n";
+	echo " <input class=normal type=button value=\"$pnews_str[FormCancelForward]\" onClick='really();' tabindex=3></td></tr>\n";
 	echo "<tr><td colspan=3><textarea name=content class=content wrap=hard tabindex=1 cols=82>";
 
-	printf("\n\n\n$strForwardFrom\n", "$from ($email)" );
-	printf( "$strPostStatus\n\n", $date, $group );
+	printf("\n\n\n$pnews_str[ForwardFrom]\n", "$from ($email)" );
+	printf( "$pnews_str[PostStatus]\n\n", $date, $group );
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
 	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
 	nnrp_close($nhd);

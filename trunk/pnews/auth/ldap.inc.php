@@ -38,7 +38,7 @@ function check_user_password( $username, $password ) {
 				sprintf( str_replace( '%u', '%s', $CFG['ldap_bind_rdn'] ), $username ),
 				sprintf( str_replace( '%p', '%s', $CFG['ldap_bind_pwd'] ), $password ) ) == true ) {
 			$attrs = array();
-			if( is_array($CFG['ldap_variable']) )
+			if( isset($CFG['ldap_variable']) )
 				foreach( $CFG['ldap_variable'] as $var => $attr )
 					$attrs[] = $attr;
 			$filter_str = sprintf( str_replace( '%u', '%s', $CFG['ldap_filter'] ), $username );

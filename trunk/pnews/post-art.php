@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $strPost";
+$title .= " - $pnews_str[Post]";
 
 # -------------------------------------------------------------------
 if( $_POST['content'] != '' ) {
@@ -87,16 +87,16 @@ if( $_POST['content'] != '' ) {
 
 	echo <<<EOT
 <table width=100%>
- <tr><td class=status>$strArticlePosted</td>
-     <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
+ <tr><td class=status>$pnews_str[ArticlePosted]</td>
+     <td class=field><input class=normal type=button onClick="close_window()" value="$pnews_str[CloseWindow]"></td>
 </tr>
 </table>
 <hr />
 <table>
- <tr><td class=field>$strAuthor: </td><td class=value>$nickname ($email)</td></tr>
- <tr><td class=field>$strTime: </td><td class=value>$time</td></tr>
- <tr><td class=field>$strSubject: </td><td class=value>$subject</font></td></tr>
- <tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
+ <tr><td class=field>$pnews_str[Author]: </td><td class=value>$nickname ($email)</td></tr>
+ <tr><td class=field>$pnews_str[Time]: </td><td class=value>$time</td></tr>
+ <tr><td class=field>$pnews_str[Subject]: </td><td class=value>$subject</font></td></tr>
+ <tr><td class=field>$pnews_str[Group]: </td><td class=value>$group</td></tr>
 </table>
 <hr />
 
@@ -123,7 +123,7 @@ else {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($strRealyQuit); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_str['RealyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -131,22 +131,22 @@ else {
 	}
 	function verify() {
 		if( document.post.nickname.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterName); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterName']); ?>');
 			document.post.nickname.focus();
 			return(false);
 		}
 		if( document.post.email.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.email.value) ) {
-			alert('<? echo addslashes($strPleaseEnterEmail); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterEmail']); ?>');
 			document.post.email.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterSubject); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterSubject']); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterContent); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterContent']); ?>');
 			document.post.content.focus();
 			return(false);
 		}
@@ -160,16 +160,16 @@ echo <<<EOF
 <form name=post action="$self" method=post enctype="multipart/form-data">
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td>
+ <tr><td class=field>$pnews_str[Name]:</td><td><input name=nickname size=20 value="$auth_user"></td>
  <td class=field align=right>
-  <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>
-  <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=4>
+  <input class=normal type=button value='$pnews_str[FormConfirmPost]' onClick='verify()' tabindex=3>
+  <input class=normal type=button value='$pnews_str[FormCancelPost]' onClick='really()' tabindex=4>
  </td>
  </tr>
- <tr><td class=field>$strEmail:</td><td colspan=2><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
- <tr><td class=field>$strGroup:</td><td colspan=2><input name=postgroup size=40 value="$group" disabled></td></tr>
- <tr><td class=field>$strSubject:</td><td colspan=2><input name=subject size=56 tabindex=1></td></tr>
- <tr><td class=field>$strContent:</td>
+ <tr><td class=field>$pnews_str[Email]:</td><td colspan=2><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
+ <tr><td class=field>$pnews_str[Group]:</td><td colspan=2><input name=postgroup size=40 value="$group" disabled></td></tr>
+ <tr><td class=field>$pnews_str[Subject]:</td><td colspan=2><input name=subject size=56 tabindex=1></td></tr>
+ <tr><td class=field>$pnews_str[Content]:</td>
  <td colspan=2 align=right></td></tr>
  <tr><td colspan=3>
  <input name=server value="$server" type=hidden>
@@ -183,14 +183,14 @@ EOF;
 		if( $i % 2 == 1 ) {
 			echo <<<EOA
  <tr><td class=field>
- $strAttachment $i:</td>
+ $pnews_str[Attachment] $i:</td>
  <td><input name="attach$i" type="file" tabindex="$ti">
  </td>
 EOA;
 		}
 		else {
 			echo <<<EOA
- <td class=field align=right>$strAttachment $i:
+ <td class=field align=right>$pnews_str[Attachment] $i:
  <input name="attach$i" type="file" tabindex="$ti">
  </td></tr>
 EOA;

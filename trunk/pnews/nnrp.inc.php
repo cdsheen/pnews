@@ -281,13 +281,16 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 	return( $ov );
 }
 
-function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false, $thread_enable = false, $db_handler = 'db4' ) {
+function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_dir = false, $thread_enable = false, $db_handler = 'db4' ) {
 
 	$new_art = $lowmark;
 
 	$artlist = array();
 
-	if( $cache_file ) {
+	if( $cache_dir ) {
+
+		$cache_file = $cache_dir . '/artnum.idx';
+
 		$fp = @fopen( $cache_file, 'rb');
 		if( $fp ) {
 			$cache_max = -1;
@@ -312,8 +315,8 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false, $th
 	if( $thread_enable ) {
 		$field_subject = 1;
 
-		$file_subject = $cache_file . '-subject.db';
-		$file_thread  = $cache_file . '-thread.db';
+		$file_subject = $cache_dir . '/subject.db';
+		$file_thread  = $cache_dir . '/thread.db';
 		// PHP 4.3+ (for 'd' mode flag)
 		if( file_exists( $file_subject ) )
 			$db_subject = dba_open( $file_subject, 'wd', $db_handler );
@@ -375,7 +378,7 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false, $th
 		}
 	}
 
-	if( $cache_file ) {
+	if( $cache_dir ) {
 		$artlist = array_values( $artlist );
 #		$artlist = sort( $artlist );
 		$fp = @fopen( $cache_file, 'w' );
@@ -680,7 +683,7 @@ function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8', $time_format = '%Y/%
 
 		preg_match( '/^([^:]+): (.+)$/', $nowline, $match );
 
-		$headers[$match[1]] = $match[2];
+		$headers[strtolower($match[1])] = $match[2];
 
 		$nowline = $nextline;
 	}
@@ -755,7 +758,7 @@ function nnrp_cancel( $nhd, $name, $email, $msgid, $newsgroup, $subject = null )
 	fwrite( $nhd, "Control: cancel $msgid\r\n" );
 	fwrite( $nhd, "\r\n" );
 	if( $subject )
-		fwrite( $nhd, "$subject deleted from $newsgroups\r\n");
+		fwrite( $nhd, "'$subject' deleted from $newsgroups by $email\r\n");
 	fwrite( $nhd, ".\r\n");
 	list( $code, $msg ) = get_status( $nhd );
 }
@@ -787,8 +790,10 @@ function get_status( $nhd ) {
 	elseif( $nnrp_debug_level == 1 )
 		echo "<!-- S: [$responds] -->\n";
 	$nnrp_last_result = $responds;
-	preg_match( '/^(\d+)\s*(.+)$/', $responds, $match );
-	return( array($match[1], $match[2]) );
+	if( preg_match( '/^(\d+)\s*(.+)$/', $responds, $match ) )
+		return( array($match[1], $match[2]) );
+	else
+		return( array( '400','' ) );
 }
 
 function decode_subject( $instr ) {
@@ -854,8 +859,8 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 	$artinfo['charset'] = $def_charset;
 	$artinfo['type'] = $artinfo['subtype'] = '';
 
-	if( isset($headers['Content-Type']) ) {
-		$ctype = preg_split( '/[;\s]+/', strtolower($headers['Content-Type']) );
+	if( isset($headers['content-type']) ) {
+		$ctype = preg_split( '/[;\s]+/', strtolower($headers['content-type']) );
 		if( is_array( $ctype ) ) {
 			list( $type, $subtype ) = split( '/', $ctype[0]);
 			$artinfo['type'] = $type;
@@ -863,6 +868,7 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			array_shift( $ctype );
 			foreach( $ctype as $c_param ) {
 				if( preg_match( '/^(.+)\s*=\s*(.+)$/', $c_param, $match ) ) {
+					$match[1] = strtolower($match[1]);
 					$match[2] = strip_quotes( $match[2] );
 					if( $match[1] == 'charset' )
 						$artinfo['charset'] = strtolower($match[2]);
@@ -873,45 +879,45 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 		}
 	}
 
-	if( isset($headers['Content-Transfer-Encoding']) )
-		$artinfo['encoding'] = $headers['Content-Transfer-Encoding'];
+	if( isset($headers['content-transfer-encoding']) )
+		$artinfo['encoding'] = $headers['content-transfer-encoding'];
 	else
 		$artinfo['encoding'] = '7bit';
 
-	if( isset($headers['Date']) )
-		$artinfo['date'] = strftime( $time_format, strtotime($headers['Date']) );
+	if( isset($headers['date']) )
+		$artinfo['date'] = strftime( $time_format, strtotime($headers['date']) );
 	else
 		$artinfo['date'] = '';
 
-	$artinfo['msgid'] = $headers['Message-ID'];
+	$artinfo['msgid'] = $headers['message-id'];
 	$artinfo['name'] = $artinfo['mail'] = '';
-	if( isset($headers['From']) ) {
-		if( preg_match( '/^<([^@]+)@([\w-_.]+)>$/', $headers['From'], $from ) ) {
+	if( isset($headers['from']) ) {
+		if( preg_match( '/^<([^@]+)@([\w-_.]+)>$/', $headers['from'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^([^@]+)@([\w-_.]+)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^([^@]+)@([\w-_.]+)$/', $headers['from'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^(.+)? <(.+)>$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^(.+)? <(.+)>$/', $headers['from'], $from ) ) {
 			$from[1] = strip_quotes( $from[1] );
 			$artinfo['name'] = decode_subject($from[1]);
 			$artinfo['mail'] = $from[2];
 		}
-		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $headers['from'], $from ) ) {
 			$from[4] = isset( $from[4] ) ? strip_quotes( $from[4] ) : '' ;
 			$artinfo['name'] = decode_subject($from[4]);
 			$artinfo['mail'] = $from[1];
 		}
 	}
 
-	$artinfo['org'] = isset($headers['Organization']) ? decode_subject($headers['Organization']) : '';
+	$artinfo['org'] = isset($headers['organization']) ? decode_subject($headers['organization']) : '';
 
-	$artinfo['subject'] = decode_subject($headers['Subject']);
+	$artinfo['subject'] = decode_subject($headers['subject']);
 
-	if( isset($headers['References']) )
-		$artinfo['ref'] = preg_split( '/\s+/', trim($headers['References']) );
+	if( isset($headers['references']) )
+		$artinfo['ref'] = preg_split( '/\s+/', trim($headers['references']) );
 	else
 		$artinfo['ref'] = array();
 

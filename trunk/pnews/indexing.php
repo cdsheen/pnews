@@ -39,8 +39,11 @@ if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
-if( $CFG['cache_dir'] )
-	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $CFG['cache_dir'] . "/$server-$group", $CFG['thread_enable'], $CFG['thread_db_format'] );
+if( $CFG['cache_dir'] ) {
+	$cachedir = $CFG['cache_dir'] . '/' . $server . '/' . str_replace( '.', '/', $group );
+	mkdirs($cachedir);
+	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $cachedir, $CFG['thread_enable'], $CFG['thread_db_format'] );
+}
 else
 	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark );
 
@@ -99,20 +102,20 @@ echo "</td>\n";
 
 if( $CFG['url_rewrite'] ) {
 	if( $auth_success )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$pnews_str[Logout]</a></td>\n";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/login\">$strLogin</a></td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/login\">$pnews_str[Login]</a></td>\n";
 }
 else {
 	if( $auth_success )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$pnews_str[Logout]</a></td>\n";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>\n";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$pnews_str[Login]</a></td>\n";
 }
 
 echo <<<EOH
         <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
-           <a href=index.php>$strReturnToGroupList</a></td>
+           <a href=index.php>$pnews_str[ReturnToGroupList]</a></td>
     </tr>
     </table>
     <table width=100% border=0 cellpadding=1 cellspacing=1>
@@ -121,10 +124,10 @@ EOH;
 
 echo <<<EOR
     <tr class=header height=25>
-        <td align=right width=32pt>$strNumber</td>
-        <td width=70%>$strSubject</td>
-        <td align=center width=120pt>$strAuthor</td>
-        <td align=center width=110pt>$strTime</td>
+        <td align=right width=32pt>$pnews_str[Number]</td>
+        <td width=70%>$pnews_str[Subject]</td>
+        <td align=center width=120pt>$pnews_str[Author]</td>
+        <td align=center width=110pt>$pnews_str[Time]</td>
     </tr>
 
 EOR;
@@ -187,7 +190,7 @@ if( $ncount > 0 ) {
 }
 
 if( $ncount == 0 ) {
-	echo "<tr><td colspan=4 class=empty_group height=50>$strNoArticle</td></tr>\n";
+	echo "<tr><td colspan=4 class=empty_group height=50>$pnews_str[NoArticle]</td></tr>\n";
 	$show_from = $show_end = $cursor;
 }
 else {
@@ -209,7 +212,7 @@ else {
 		}
 
 		if( trim($subject) == '' )
-			$subject = $strNoSubject;
+			$subject = $pnews_str['NoSubject'];
 
 		$subject = htmlspecialchars( $subject );
 
@@ -290,20 +293,20 @@ echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"pa
 if( $CFG['show_latest_top'] )
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
+			echo "<a href=\"group/$reserver/$group\">$pnews_str[FirstPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group\">$pnews_str[FirstPage]</a>";
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$higher\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/$higher\">$pnews_str[PreviousPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$pnews_str[PreviousPage]</a>";
 	}
 	else {
-		echo $strFirstPage;
+		echo $pnews_str['FirstPage'];
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo "<font color=gray>$strPreviousPage</font>";
+		echo "<font color=gray>$pnews_str[PreviousPage]</font>";
 	}
 else
 	if( $show_from > $lowmark ) {
@@ -311,21 +314,21 @@ else
 		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$strFirstPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$pnews_str[FirstPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strFirstPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$pnews_str[FirstPage]</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$lower\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/$lower\">$pnews_str[PreviousPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$pnews_str[PreviousPage]</a>";
 	}
 	else {
-		echo $strFirstPage;
+		echo $pnews_str['FirstPage'];
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo "<font color=gray>$strPreviousPage</font>";
+		echo "<font color=gray>$pnews_str[PreviousPage]</font>";
 	}
 
 echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
@@ -333,50 +336,50 @@ echo "</td><td width=10% class=page align=center onMouseover='this.className=\"p
 if( $CFG['show_latest_top'] )
 	if( $show_from > $lowmark ) {
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$lower\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/$lower\">$pnews_str[NextPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$pnews_str[NextPage]</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$strLastPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$pnews_str[LastPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strLastPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$pnews_str[LastPage]</a>";
 	}
 	else {
-		echo "<font color=gray>$strNextPage</font>";
+		echo "<font color=gray>$pnews_str[NextPage]</font>";
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo $strLastPage;
+		echo $pnews_str['LastPage'];
 
 #		$totalpg = $page;
 	}
 else
 	if( $show_end < $highmark ) {
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$higher\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/$higher\">$pnews_str[NextPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$pnews_str[NextPage]</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group\">$strLastPage</a>";
+			echo "<a href=\"group/$reserver/$group\">$pnews_str[LastPage]</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group\">$strLastPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group\">$pnews_str[LastPage]</a>";
 	}
 	else {
-		echo "<font color=gray>$strNextPage</font>";
+		echo "<font color=gray>$pnews_str[NextPage]</font>";
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo $strLastPage;
+		echo $pnews_str['LastPage'];
 
 #		$totalpg = $page;
 	}
 
 $pg_str = sprintf( "<form style='display: inline;' name=select><select name=pgidx class=pgidx onLoad='initPage(document.select.pgidx)' onChange='changePage(document.select.pgidx)'></select></form>" );
-$pg_str = sprintf( $strPageNumber, $pg_str, $totalpg );
+$pg_str = sprintf( $pnews_str['PageNumber'], $pg_str, $totalpg );
 
 echo <<<PG
 </td><td class=page align=center onMouseover='this.className="page_hover";' onMouseout='this.className="page";'>
@@ -407,9 +410,9 @@ function changePage(pgidx) {
 echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$global_readonly && !$news_readonly[$c] ) {
 	if( !$auth_success && $CFG['auth_prompt'] == 'other' )
-		echo $strPost;
+		echo $pnews_str['Post'];
 	else
-		echo post_article( $server, $group, $strPost );
+		echo post_article( $server, $group, $pnews_str['Post'] );
 }
 else
 	echo '&nbsp;';
@@ -419,7 +422,7 @@ echo <<<EOT
   initPage(document.select.pgidx);
 </script>
     <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
-      <a href="javascript:reload()">$strRefresh</a>
+      <a href="javascript:reload()">$pnews_str['Refresh']</a>
     </td>
     </tr></table>
 </td></tr>

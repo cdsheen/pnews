@@ -86,6 +86,7 @@ if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timesta
 $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form', 'cas', 'other' );
 $valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user', 'phpbb' );
+$valid_method_for_other = array( 'phpbb' );
 
 require_once('config.inc.php');
 
@@ -105,6 +106,9 @@ if( $CFG['auth_type'] != 'open' ) {
 
 	if( $CFG['auth_prompt'] == 'http' && !isset($CFG['auth_http_realm']) )
 		config_error( '$CFG["auth_http_realm"]' );
+
+	if( $CFG['auth_prompt'] == 'other' && !in_array( $CFG['auth_method'], $valid_method_for_other ) )
+		show_error( '$CFG["auth_method"] is invalid if $CFG["auth_prompt"] = "other"' );
 
 	if( !isset($CFG['auth_method']) || !in_array( $CFG['auth_method'], $valid_auth_method ) )
 		config_error( '$CFG["auth_method"]' );
@@ -319,6 +323,9 @@ if( !isset( $CFG['auth_registration_info'] ) )
 
 if( !isset( $CFG['domain_select'] ) )
 	$CFG['domain_select'] = true;
+
+if( !isset( $CFG['show_article_header'] ) )
+	$CFG['show_article_header'] = true;
 
 if( !isset( $CFG['global_readonly'] ) ) {
 	if( isset( $CFG['post_restriction'] ) )

@@ -299,7 +299,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		else {
 			switch($CFG['auth_prompt']) {
 			case 'form':
-				html_head( $title . ' - ' . $strAuthentication );
+				html_head( $title . ' - ' . $pnews_str['Authentication'] );
 				form_login_dialog( $is_expire );
 				html_foot();
 				html_tail();
@@ -428,7 +428,7 @@ if( $CFG['log'] && $CFG['log_level'] > 0
 
 function form_login_dialog( $is_expire ) {
 	global $CFG, $referal, $uri;
-	global $strNeedLogin, $strLoginName, $strPassWord, $strUseYourAccountAt, $strLogin, $strAuthExpired, $strGoBack;
+	global $pnews_str;
 
 	if( isset($_GET['login']) )
 		$target = $referal;
@@ -454,19 +454,19 @@ function form_login_dialog( $is_expire ) {
 <tr><td align=center bgcolor=#DDFFDD>
 <?
 if( $is_expire )
-	echo "<font size=2 color=black>$strAuthExpired</font>";
+	echo "<font size=2 color=black>$pnews_str[AuthExpired]</font>";
 else
-	echo "<font size=2 color=black>$strNeedLogin</font>";
+	echo "<font size=2 color=black>$pnews_str[NeedLogin]</font>";
 echo "</td></tr><tr><td align=center bgcolor=#C0C0FF>";
 echo "<font size=2>";
-printf( $strUseYourAccountAt, $CFG['auth_organization'] );
+printf( $pnews_str['UseYourAccountAt'], $CFG['auth_organization'] );
 
 echo <<<EOF
 </font><p>
 <form name=login action="form-login.php" method="post">
 <table>
 <tr>
- <td class=field>$strLoginName</td>
+ <td class=field>$pnews_str[LoginName]</td>
  <td class=value>
 EOF;
 
@@ -485,12 +485,12 @@ echo <<<EOF
 </td>
 </tr>
 <tr>
- <td class=field>$strPassWord</td>
+ <td class=field>$pnews_str[PassWord]</td>
  <td class=value><input class=login name=passWord type=password size=25></td>
 </tr>
 <tr>
  <td>&nbsp;<input name=target type=hidden value="$target"></td>
- <td align=left><input class=normal type=submit value="$strLogin"></td>
+ <td align=left><input class=normal type=submit value="$pnews_str[Login]"></td>
 </tr>
 
 EOF;
@@ -511,7 +511,7 @@ if( $CFG['auth_registration_info'] != '' ) {
 <?
 	if( !$is_expire && $referal != '' ) {
 		echo "<tr>\n<td bgcolor=#EEFFEE align=center>\n";
-		echo "<a href=\"$referal\">$strGoBack</a>";
+		echo "<a href=\"$referal\">$pnews_str[GoBack]</a>";
 		echo "</td>\n</tr>\n";
 	}
 ?>
@@ -524,7 +524,7 @@ if( $CFG['auth_registration_info'] != '' ) {
 
 function http_login_error() {
 	global $CFG;
-	global $strPasswordRetryFail, $strReLogin;
+	global $pnews_str;
 	session_destroy();
 	html_head( $CFG['title'] );
 ?>
@@ -534,9 +534,9 @@ function http_login_error() {
 </td></tr>
 <tr><td align=center bgcolor=#C0A0FF height=100>
 <font size=2>
-<? echo $strPasswordRetryFail; ?>
+<? echo $pnews_str['PasswordRetryFail']; ?>
 </font><p>
-<form><input class=normal type=button value="<? echo $strReLogin; ?>" onClick='reload();'></form>
+<form><input class=normal type=button value="<? echo $pnews_str['ReLogin']; ?>" onClick='reload();'></form>
 </td>
 </tr>
 <?
@@ -562,47 +562,47 @@ function http_login_auth() {
 }
 
 function http_logout() {
-	global $title, $strLogout, $strHTTPlogoutInfo, $strCloseWindow;
+	global $title, $pnews_str;
 
-	html_head( "$title - $strLogout" );
-	echo "<font size=2><b>$title - $strLogout</b></font><hr />";
-	echo "<font size=3 color=black>$strHTTPlogoutInfo</font><p>\n";
-	echo "<form><input type=button class=normal value=\"$strCloseWindow\" onClick='close_window();'></form>\n";
+	html_head( "$title - $pnews_str[Logout]" );
+	echo "<font size=2><b>$title - $pnews_str[Logout]</b></font><hr />";
+	echo "<font size=3 color=black>$pnews_str[HTTPlogoutInfo]</font><p>\n";
+	echo "<form><input type=button class=normal value=\"$pnews_str[CloseWindow]\" onClick='close_window();'></form>\n";
 	html_foot();
 	html_tail();
 	exit;
 }
 
 function session_error( $server, $group ) {
-	global $strSessionError, $strSessionErrorReason, $strGroupList, $strSessionErrorReturn;
-	html_head($strSessionError);
+	global $pnews_str;
+	html_head($pnews_str['SessionError']);
 	echo "<font size=2>\n";
-	printf( $strSessionErrorReason . "<p>\n", "$server/$group" );
-	printf( $strSessionErrorReturn, "<a href=index.php>$strGroupList</a>" );
+	printf( $pnews_str['SessionErrorReason'] . "<p>\n", "$server/$group" );
+	printf( $pnews_str['SessionErrorReturn'], "<a href=index.php>$pnews_str[GroupList]</a>" );
 	echo "</font>";
 	html_tail();
 	exit;
 }
 
 function readonly_error( $server, $group ) {
-	global $strNoPostPermission, $strNewsServer, $strGroup, $strCloseWindow;
+	global $pnews_str;
 
-	html_head($strNoPostPermission);
+	html_head($pnews_str['NoPostPermission']);
 	echo <<<ERR
 <center>
 <table border=1 cellspacing=0 cellpadding=10>
 <tr><td align=center bgcolor=#A0FF30>
-    <font size=3>$strNoPostPermission</font>
+    <font size=3>$pnews_str[NoPostPermission]</font>
     </td></tr>
 <tr><td height=80 bgcolor=#A0EEFF align=center>
     <table>
-    <tr><td align=right>$strNewsServer:</td><td>$server</td></tr>
-    <tr><td align=right>$strGroup:</td><td>$group</td></tr>
+    <tr><td align=right>$pnews_str[NewsServer]:</td><td>$server</td></tr>
+    <tr><td align=right>$pnews_str[Group]:</td><td>$group</td></tr>
     </table>
     </td></tr>
 </table>
 <form>
-<input class=normal type=button value="$strCloseWindow" onClick='close_window();'>
+<input class=normal type=button value="$pnews_str[CloseWindow]" onClick='close_window();'>
 </form>
 </center>
 
@@ -719,12 +719,12 @@ END;
 }
 
 function connect_error( $server ) {
-	global $strConnectServerError;
+	global $pnews_str;
 	html_head('ERROR');
 	echo <<<ERR
 <br />
 <br />
-<font size=3>$strConnectServerError ($server)</font>
+<font size=3>$pnews_str[ConnectServerError] ($server)</font>
 <br />
 ERR;
 	html_foot();
@@ -822,6 +822,15 @@ function get_group() {
 			return(rawurldecode($match[1]));
 	}
 	return('');
+}
+
+function mkdirs( $path, $mode ) {
+	if( is_dir($path) )
+		return true;
+	$ppath = dirname($path);
+        if( !mkdirs($ppath, $mode) )
+        	return false;
+	return mkdir($path);
 }
 
 ?>

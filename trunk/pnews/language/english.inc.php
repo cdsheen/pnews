@@ -8,115 +8,115 @@
 // Copyright (C) 2001-2004 - All rights reserved
 // Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
-$strAuthentication     = 'Login';
-$strLoginName          = 'Login Name';
-$strPassWord           = 'Password';
-$strNeedLogin          = 'The page you requested needs authentication';
-$strUseYourAccountAt   = 'Please use your account at <b>%s</b> to login:';
-$strLogin              = 'Login';
-$strLogout             = 'Logout';
+$pnews_str['Authentication']     = 'Login';
+$pnews_str['LoginName']          = 'Login Name';
+$pnews_str['PassWord']           = 'Password';
+$pnews_str['NeedLogin']          = 'The page you requested needs authentication';
+$pnews_str['UseYourAccountAt']   = 'Please use your account at <b>%s</b> to login:';
+$pnews_str['Login']              = 'Login';
+$pnews_str['Logout']             = 'Logout';
 
-$strHTTPlogoutInfo     = 'Please close all browser windows to prevent unauthorized access.';
+$pnews_str['HTTPlogoutInfo']     = 'Please close all browser windows to prevent unauthorized access.';
 
-$strAuthExpired        = 'Time expired! You should login again!';
+$pnews_str['AuthExpired']        = 'Time expired! You should login again!';
 
-$strAuthFail           = 'Authentication failed';
-$strReadyReturn        = 'Ready to return the original page, or press <a href="%s">here</a> to return now';
-$strPasswordRetryFail  = 'Supplied login name and password are incorrect';
-$strReLogin            = 'Login Again';
+$pnews_str['AuthFail']           = 'Authentication failed';
+$pnews_str['ReadyReturn']        = 'Ready to return the original page, or press <a href="%s">here</a> to return now';
+$pnews_str['PasswordRetryFail']  = 'Supplied login name and password are incorrect';
+$pnews_str['ReLogin']            = 'Login Again';
 
-$strGoBack             = 'Go Back';
+$pnews_str['GoBack']             = 'Go Back';
 
-$strNewsServer         = 'News Server';
-$strConnectServerError = 'Connect to news server failed.';
-$strReadonlyNotify     = 'Read Only Mode';
+$pnews_str['NewsServer']         = 'News Server';
+$pnews_str['ConnectServerError'] = 'Connect to news server failed.';
+$pnews_str['ReadonlyNotify']     = 'Read Only Mode';
 
-$strGroupList          = 'Group List';
+$pnews_str['GroupList']          = 'Group List';
 
-$strSessionError       = 'Access Error';
-$strSessionErrorReason = 'Access %s error - read only restrition or timeout problem';
-$strSessionErrorReturn = 'Please return to %s and retry again';
+$pnews_str['SessionError']       = 'Access Error';
+$pnews_str['SessionErrorReason'] = 'Access %s error - read only restrition or timeout problem';
+$pnews_str['SessionErrorReturn'] = 'Please return to %s and retry again';
 
-$strNumber             = 'Num';
-$strPostNumber         = 'Arts #';
-$strGroup              = 'Newsgroup';
-$strGroupDescription   = 'Description';
-$strSubject            = 'Subject';
-$strAuthor             = 'Author';
-$strTime               = 'Time';
-$strAction             = 'Action';
-$strReceiver           = 'Receiver';
-$strName               = 'Name';
-$strEmail              = 'E-Mail';
-$strContent            = 'Content';
-$strAttachment         = 'Attachment';
+$pnews_str['Number']             = 'Num';
+$pnews_str['PostNumber']         = 'Arts #';
+$pnews_str['Group']              = 'Newsgroup';
+$pnews_str['GroupDescription']   = 'Description';
+$pnews_str['Subject']            = 'Subject';
+$pnews_str['Author']             = 'Author';
+$pnews_str['Time']               = 'Time';
+$pnews_str['Action']             = 'Action';
+$pnews_str['Receiver']           = 'Receiver';
+$pnews_str['Name']               = 'Name';
+$pnews_str['Email']              = 'E-Mail';
+$pnews_str['Content']            = 'Content';
+$pnews_str['Attachment']         = 'Attachment';
 
-$strNoSubject          = '<no subject>';
+$pnews_str['NoSubject']          = '<no subject>';
 
-$strRefresh            = 'Refresh';
+$pnews_str['Refresh']            = 'Refresh';
 
-$strReply              = 'Reply';
-$strDelete             = 'Delete';
-$strCrossPost          = 'Crosspost';
-$strForward            = 'Forward';
+$pnews_str['Reply']              = 'Reply';
+$pnews_str['Delete']             = 'Delete';
+$pnews_str['CrossPost']          = 'Crosspost';
+$pnews_str['Forward']            = 'Forward';
 
-$strPost               = 'Post';
+$pnews_str['Post']               = 'Post';
 
-$strCloseWindow        = 'Close';
+$pnews_str['CloseWindow']        = 'Close';
 
-$strShowHeader         = 'Show header';
+$pnews_str['ShowHeader']         = 'Show header';
 
-$strFirstPage          = 'First';
-$strLastPage           = 'Last';
-$strNextPage           = 'Next';
-$strPreviousPage       = 'Prev.';
+$pnews_str['FirstPage']          = 'First';
+$pnews_str['LastPage']           = 'Last';
+$pnews_str['NextPage']           = 'Next';
+$pnews_str['PreviousPage']       = 'Prev.';
 
-$strNextArticle        = 'Next';
-$strLastArticle        = 'Prev.'; 
+$pnews_str['NextArticle']        = 'Next';
+$pnews_str['LastArticle']        = 'Prev.'; 
 
-$strPageNumber         = 'Page %s of totaling %s page(s)';
+$pnews_str['PageNumber']         = 'Page %s of totaling %s page(s)';
 
-$strReturnToGroupList  = 'Group List';
-$strReturnToIndexing   = 'Article List';
-$strNoPostPermission   = 'You have no permission for posting article in this group';
-$strNoArticle          = 'There\'s no article in this newsgroup';
+$pnews_str['ReturnToGroupList']  = 'Group List';
+$pnews_str['ReturnToIndexing']   = 'Article List';
+$pnews_str['NoPostPermission']   = 'You have no permission for posting article in this group';
+$pnews_str['NoArticle']          = 'There\'s no article in this newsgroup';
 
-$strArticlePosted      = 'The following article is posted';
-$strArticleIsDeleted   = 'The following article is deleted';
-$strArticleIsForwarded = 'The following article is forwarded';
+$pnews_str['ArticlePosted']      = 'The following article is posted';
+$pnews_str['ArticleIsDeleted']   = 'The following article is deleted';
+$pnews_str['ArticleIsForwarded'] = 'The following article is forwarded';
 
-$strRealyQuit          = 'Really to quit editing ?';
-$strRealyDelete        = 'Really delete this article ?';
+$pnews_str['RealyQuit']          = 'Really to quit editing ?';
+$pnews_str['RealyDelete']        = 'Really delete this article ?';
 
-$strFormConfirmPost    = 'Post';
-$strFormCancelPost     = 'Cancel';
+$pnews_str['FormConfirmPost']    = 'Post';
+$pnews_str['FormCancelPost']     = 'Cancel';
 
-$strFormConfirmDelete  = 'Delete';
-$strFormCancelDelete   = 'Cancel';
+$pnews_str['FormConfirmDelete']  = 'Delete';
+$pnews_str['FormCancelDelete']   = 'Cancel';
 
-$strFormConfirmForward = 'Forward';
-$strFormCancelForward  = 'Cancel';
+$pnews_str['FormConfirmForward'] = 'Forward';
+$pnews_str['FormCancelForward']  = 'Cancel';
 
-$strFormInsertQuote    = 'Copy Text';
+$pnews_str['FormInsertQuote']    = 'Copy Text';
 
-$strPleaseEnterName    = 'Please input your name!';
-$strPleaseEnterEmail   = 'Please input your E-Mail!';
-$strPleaseEnterGroup   = 'Please specify the newsgroup!';
-$strPleaseEnterSubject = 'Please specify the subject!';
-$strPleaseEnterContent = 'Please input the content!';
-$strPleaseEnterReceiver= 'Please input receiver\\\'s E-Mail!';
+$pnews_str['PleaseEnterName']    = 'Please input your name!';
+$pnews_str['PleaseEnterEmail']   = 'Please input your E-Mail!';
+$pnews_str['PleaseEnterGroup']   = 'Please specify the newsgroup!';
+$pnews_str['PleaseEnterSubject'] = 'Please specify the subject!';
+$pnews_str['PleaseEnterContent'] = 'Please input the content!';
+$pnews_str['PleaseEnterReceiver='] 'Please input receiver\\\'s E-Mail!';
 
-$strNoPostJustMail     = 'Do you want to reply mail without posting ?';
+$pnews_str['NoPostJustMail']     = 'Do you want to reply mail without posting ?';
 
-$strReplyToAuthor      = 'Reply to author';
-$strNotPostToGroup     = 'Do not post';
+$pnews_str['ReplyToAuthor']      = 'Reply to author';
+$pnews_str['NotPostToGroup']     = 'Do not post';
 
-$strQuoteFrom          = '== Quote from %s\'s article';
-$strForwardFrom        = '== Forward by %s';
-$strCrossPostAuthor    = '== Repost the article of %s';
+$pnews_str['QuoteFrom']          = '== Quote from %s\'s article';
+$pnews_str['ForwardFrom']        = '== Forward by %s';
+$pnews_str['CrossPostAuthor']    = '== Repost the article of %s';
 
-$strPostStatus         = '== Posted at %s to %s';
+$pnews_str['PostStatus']         = '== Posted at %s to %s';
 
-$strMyFavor            = 'Favorite';
+$pnews_str['MyFavor']            = 'Favorite';
 
 ?>

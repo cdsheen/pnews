@@ -19,7 +19,7 @@
 
 include('utils.inc.php');
 
-$title .= " - $strCrossPost";
+$title .= " - $pnews_str[CrossPost]";
 
 # -------------------------------------------------------------------
 
@@ -86,15 +86,15 @@ if( $content != '' && $postgroup != '' ) {
 	$subject = htmlspecialchars( $subject );
 	echo <<<EOT
 <table width=100%>
- <tr><td class=status>$strArticlePosted</td>
- <td class=field><input class=normal type=button onClick="close_window();" value="$strCloseWindow"></td></tr>
+ <tr><td class=status>$pnews_str[ArticlePosted]</td>
+ <td class=field><input class=normal type=button onClick="close_window();" value="$pnews_str[CloseWindow]"></td></tr>
 </table>
 <hr />
 <table>
- <tr><td class=field>$strAuthor: </td><td class=value>$nickname ($email)</td></tr>
- <tr><td class=field>$strTime: </td><td class=value>$time</td></tr>
- <tr><td class=field>$strSubject: </td><td class=value>$subject</td></tr>
- <tr><td class=field>$strGroup: </td><td class=value>$postgroup</td></tr>
+ <tr><td class=field>$pnews_str[Author]: </td><td class=value>$nickname ($email)</td></tr>
+ <tr><td class=field>$pnews_str[Time]: </td><td class=value>$time</td></tr>
+ <tr><td class=field>$pnews_str[Subject]: </td><td class=value>$subject</td></tr>
+ <tr><td class=field>$pnews_str[Group]: </td><td class=value>$postgroup</td></tr>
 </table>
 <hr />
 
@@ -151,7 +151,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($strRealyQuit); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_str['RealyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -159,27 +159,27 @@ elseif( $artnum != '' ) {
 	}
 	function verify() {
 		if( document.post.nickname.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterName); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterName']); ?>');
 			document.post.nickname.focus();
 			return(false);
 		}
 		if( document.post.email.value == "" || ! /^[_.\d\w-]+@([\d\w][\d\w-]+\.)+[\w]{2,3}$/.test(document.post.email.value) ) {
-			alert('<? echo addslashes($strPleaseEnterEmail); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterEmail']); ?>');
 			document.post.email.focus();
 			return(false);
 		}
 		if( document.post.postgroup.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterGroup); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterGroup']); ?>');
 			document.post.postgroup.focus();
 			return(false);
 		}
 		if( document.post.subject.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterSubject); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterSubject']); ?>');
 			document.post.subject.focus();
 			return(false);
 		}
 		if( document.post.content.value == "" ) {
-			alert('<? echo addslashes($strPleaseEnterContent); ?>');
+			alert('<? echo addslashes($pnews_str['PleaseEnterContent']); ?>');
 			document.post.content.focus();
 			return(false);
 		}
@@ -192,10 +192,10 @@ elseif( $artnum != '' ) {
 
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table cellspacing=0 cellpadding=0 width=100%>\n";
-	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
-	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td></tr>\n";
-	echo "<tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
-	echo "<tr><td class=field>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Email]:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Group]:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Subject]:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>\n";
@@ -204,14 +204,14 @@ elseif( $artnum != '' ) {
 #	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($msgid, ENT_NOQUOTES ) . "\">\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
-	echo "$strContent:</td><td align=right>";
-	echo " <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=2>\n";
-	echo " <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=3></td></tr>\n";
+	echo "$pnews_str[Content]:</td><td align=right>";
+	echo " <input class=normal type=button value='$pnews_str[FormConfirmPost]' onClick='verify()' tabindex=2>\n";
+	echo " <input class=normal type=button value='$pnews_str[FormCancelPost]' onClick='really()' tabindex=3></td></tr>\n";
 	echo "<tr><td colspan=2>";
 	echo "<textarea name=content class=content wrap=hard tabindex=1 cols=82>";
 
-	printf("\n$strCrossPostAuthor\n", "$from ($email)" );
-	printf("$strPostStatus\n\n", $date, $group );
+	printf("\n$pnews_str[CrossPostAuthor]\n", "$from ($email)" );
+	printf("$pnews_str[PostStatus]\n\n", $date, $group );
 #	echo "-------------------------------------------------------------\n";
 
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;

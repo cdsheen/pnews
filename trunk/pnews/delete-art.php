@@ -54,21 +54,21 @@ if( $confirm == 1 ) {
 		nnrp_cancel( $nhd, $auth_user, $auth_email, $msgid, $group, $subject );
 	nnrp_close($nhd);
 
-	html_head( $strDelete );
+	html_head( $pnews_str['Delete'] );
 
 	$subject = htmlspecialchars( $subject );
 
 	echo <<<EOT
 <table width=100%>
-<tr><td class=status>$strArticleIsDeleted</td>
-    <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
+<tr><td class=status>$pnews_str[ArticleIsDeleted]</td>
+    <td class=field><input class=normal type=button onClick="close_window()" value="$pnews_str[CloseWindow]"></td>
 </tr>
 </table>
 <hr />
 <table>
-<tr><td class=field>$strAuthor: </td><td class=value>$auth_user ($auth_email)</td></tr>
-<tr><td class=field>$strSubject: </td><td class=value>$subject</td></tr>
-<tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
+<tr><td class=field>$pnews_str[Author]: </td><td class=value>$auth_user ($auth_email)</td></tr>
+<tr><td class=field>$pnews_str[Subject]: </td><td class=value>$subject</td></tr>
+<tr><td class=field>$pnews_str[Group]: </td><td class=value>$group</td></tr>
 </table>
 <hr />
 
@@ -117,18 +117,18 @@ elseif( $artnum != '' ) {
 	$date = $artinfo['date'];
 	$msgid = $artinfo['msgid'];
 
-	html_head( "$strDelete - $subject" );
+	html_head( "$pnews_str[Delete] - $subject" );
 
-	echo $strRealyDelete ;
+	echo $pnews_str['RealyDelete'] ;
 
 	echo "<hr />";
 
 	echo "<form style='margin-top: 0' name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
-	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$strGroup:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$strSubject:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Email]:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Group]:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_str[Subject]:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=confirm value=1 type=hidden>\n";
@@ -138,9 +138,9 @@ elseif( $artnum != '' ) {
 	echo "<input name=group value=\"$group\" type=hidden>\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";
 
-	echo "$strContent:</td><td align=right>";
-	echo " <input class=normal type=submit value='$strFormConfirmDelete'>\n";
-	echo " <input class=normal type=button value='$strFormCancelDelete' onClick='close_window();'></td></tr>\n";
+	echo "$pnews_str[Content]:</td><td align=right>";
+	echo " <input class=normal type=submit value='$pnews_str[FormConfirmDelete]'>\n";
+	echo " <input class=normal type=button value='$pnews_str[FormCancelDelete]' onClick='close_window();'></td></tr>\n";
 	echo "<tr><td colspan=2>";
 	echo "<textarea name=content class=content rows=10 wrap=hard disabled cols=82>";
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;

@@ -86,7 +86,7 @@ $curr_charset = $lang_coding[$curr_language];
 
 @include($lang_define[$curr_language]);
 
-if( !isset( $strLogin ) ) {
+if( !isset( $pnews_str['Login'] ) ) {
 	echo "<font face=Georgia>Warning: language definition missed ({$lang_define[$curr_language]})</font><br>\n";
 	echo "<!-- Current language: $curr_language -->\n";
 	echo "<!-- Current charset:  $curr_charset  -->\n";

@@ -39,6 +39,11 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+PHP News Reader v2.6.0 (2004/10/)
+<ul>
+<li>All language strings (\$strXXX) are renamed as \$pnews_str array.
+<li>Hierarchical directories are used for storing cache and thread data.
+</ul>
 PHP News Reader v2.5.9 (2004/08/11)
 <ul>
 <li>Fix the login-fail bug which introduced by the configuration cache support.

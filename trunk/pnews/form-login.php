@@ -54,7 +54,7 @@ if( $info ) {
 }
 else {
 	unset($_SESSION['auth_ticket']);
-	$retmsg = sprintf( $strReadyReturn, $xref );
+	$retmsg = sprintf( $pnews_str['ReadyReturn'], $xref );
 
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
@@ -74,13 +74,13 @@ a:visited  { color: blue }
 a:hover    { text-decoration:underline; color:red }
 hr         { height: 1pt; color: #8080A0 }
 </STYLE>
-<title>$strAuthFail</title>
+<title>$pnews_str[AuthFail]</title>
 </head>
 <body>
 <center>
 <br />
 <br />
-<font size=+1 face=Georgia>$strAuthFail</font>
+<font size=+1 face=Georgia>$pnews_str[AuthFail]</font>
 <br />
 <br />
 <br />

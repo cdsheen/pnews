@@ -139,25 +139,25 @@ echo "<center>\n";
 
 	echo "</td>";
 
-	if( !isset($_GET['header']) ) {
+	if( !isset($_GET['header']) && $CFG['show_article_header'] ) {
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-#		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$strShowHeader</span>";
-#		echo "<a href=\"$uri#\" onClick='window.location=\"$headerurl\"'>$strShowHeader</a>";
-		echo "<a href=\"$headerurl\">$strShowHeader</a>";
+#		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$pnews_str[ShowHeader]</span>";
+#		echo "<a href=\"$uri#\" onClick='window.location=\"$headerurl\"'>$pnews_str[ShowHeader]</a>";
+		echo "<a href=\"$headerurl\">$pnews_str[ShowHeader]</a>";
 		echo "</td>\n";
 	}
 
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	if( $lasturl == '' )
-		echo $strLastArticle;
+		echo $pnews_str['LastArticle'];
 	else
-		echo "<a href=\"$lasturl\">$strLastArticle</a>";
+		echo "<a href=\"$lasturl\">$pnews_str[LastArticle]</a>";
 	echo "</td>\n";
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	if( $nexturl == '' )
-		echo $strNextArticle;
+		echo $pnews_str['NextArticle'];
 	else
-		echo "<a href=\"$nexturl\">$strNextArticle</a>";
+		echo "<a href=\"$nexturl\">$pnews_str[NextArticle]</a>";
 	echo "</td>\n";
 	echo "</tr></table>\n";
 #}
@@ -180,7 +180,7 @@ echo "<hr />";
 
 $show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
 
-if( isset($_GET['header']) )
+if( isset($_GET['header']) && $CFG['show_article_header'] )
 	$show_mode |= SHOW_HEADER;
 
 if( $CFG['image_inline'] )
@@ -216,9 +216,7 @@ html_tail();
 
 function toolbar( $server, $group, $c, $artnum, $title ) {
 	global $global_readonly, $email, $auth_email, $news_readonly;
-	global $strCloseWindow, $strReply, $auth_success, $uri;
-	global $strCrossPost, $strForward, $strDelete;
-	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
+	global $pnews_str, $auth_success, $uri;
 	global $CFG, $nexturl, $lasturl, $idxurl;
 	echo "<table width=100% border=0 cellspacing=2 cellpadding=2>\n";
 	echo "<tr>\n";
@@ -226,48 +224,48 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 	if( ! $CFG['show_article_popup'] ) {
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $nexturl == '' )
-			echo $strNextArticle;
+			echo $pnews_str['NextArticle'];
 		else
-			echo "<a href=\"$nexturl\">$strNextArticle</a>";
+			echo "<a href=\"$nexturl\">$pnews_str[NextArticle]</a>";
 		echo "</td>\n";
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $lasturl == '' )
-			echo $strLastArticle;
+			echo $pnews_str['LastArticle'];
 		else
-			echo "<a href=\"$lasturl\">$strLastArticle</a>";
+			echo "<a href=\"$lasturl\">$pnews_str[LastArticle]</a>";
 		echo "</td>\n";
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
+		echo "<a href=\"$idxurl\">$pnews_str[ReturnToIndexing]</a>";
 		echo "</td>\n";
 	}
 
 	if( !$global_readonly && !$news_readonly[$c] ) {
 
 		if( !$auth_success && $CFG['auth_prompt'] == 'other' ) {
-			echo "<td class=action align=center>$strReply</td>\n";
-			echo "<td class=action align=center>$strCrossPost</td>\n";
-			echo "<td class=action align=center>$strForward</td>\n";
+			echo "<td class=action align=center>$pnews_str[Reply]</td>\n";
+			echo "<td class=action align=center>$pnews_str[CrossPost]</td>\n";
+			echo "<td class=action align=center>$pnews_str[Forward]</td>\n";
 		}
 		else {
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo reply_article( $server, $group, $artnum, $strReply, false, $CFG['show_article_popup'] );
+			echo reply_article( $server, $group, $artnum, $pnews_str['Reply'], false, $CFG['show_article_popup'] );
 			echo "</td>\n";
 
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo xpost_article( $server, $group, $artnum, $strCrossPost, $CFG['show_article_popup'] );
+			echo xpost_article( $server, $group, $artnum, $pnews_str['CrossPost'], $CFG['show_article_popup'] );
 			echo "</td>\n";
 
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo forward_article( $server, $group, $artnum, $strForward, $CFG['show_article_popup'] );
+			echo forward_article( $server, $group, $artnum, $pnews_str['Forward'], $CFG['show_article_popup'] );
 			echo "</td>\n";
 		}
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email ) {
 			if( !$auth_success && $CFG['auth_prompt'] == 'other' )
-				echo $strDelete;
+				echo $pnews_str['Delete'];
 			else
-				echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
+				echo delete_article( $server, $group, $artnum, $pnews_str['Delete'], $CFG['show_article_popup'] );
 		}
 		else
 			echo "&nbsp;";
@@ -283,14 +281,14 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 	$host = $_SERVER['HTTP_HOST'];
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 #	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
-		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$strMyFavor</a>\n";
+		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$pnews_str[MyFavor]</a>\n";
 #	else
 #		echo "&nbsp;";
 	echo "</td>\n";
 
 	if( $CFG['show_article_popup'] ) {
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<a href=\"javascript:close_window()\">$strCloseWindow</a>";
+		echo "<a href=\"javascript:close_window()\">$pnews_str[CloseWindow]</a>";
 		echo "</td>";
 	}
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";

@@ -8,115 +8,115 @@
 // Copyright (C) 2001-2004 - All rights reserved
 // Markus Översti (markus.oversti at edu.haapavesi.fi)
 
-$strAuthentication     = 'Kirjaudu';
-$strLoginName          = 'Käyttäjänimi';
-$strPassWord           = 'Salasana';
-$strNeedLogin          = 'Haluamasi sivu vaatii sisäänkirjautumista';
-$strUseYourAccountAt   = 'Käytä palvelun <b>%s</b> tunnusta!';
-$strLogin              = 'Kirjaudu';
-$strLogout             = 'Kirjaudu ulos';
+$pnews_str['Authentication']     = 'Kirjaudu';
+$pnews_str['LoginName']          = 'Käyttäjänimi';
+$pnews_str['PassWord']           = 'Salasana';
+$pnews_str['NeedLogin']          = 'Haluamasi sivu vaatii sisäänkirjautumista';
+$pnews_str['UseYourAccountAt']   = 'Käytä palvelun <b>%s</b> tunnusta!';
+$pnews_str['Login']              = 'Kirjaudu';
+$pnews_str['Logout']             = 'Kirjaudu ulos';
 
-$strHTTPlogoutInfo     = 'Sulje kaikki selainikkunat estääksesi luvattoman käytön.';
+$pnews_str['HTTPlogoutInfo']     = 'Sulje kaikki selainikkunat estääksesi luvattoman käytön.';
 
-$strAuthExpired        = 'Sisäänkirjautuminen on vanhentunut! Kirjaudu sisään uudelleen!';
+$pnews_str['AuthExpired']        = 'Sisäänkirjautuminen on vanhentunut! Kirjaudu sisään uudelleen!';
 
-$strAuthFail           = 'Väärä salasana!';
-$strReadyReturn        = 'Valmis palaamaan edelliselle sivulle, tai paina <a href="%s">tästä</a> palataksesi heti.';
-$strPasswordRetryFail  = 'Käyttäjänimi ja/tai salasana ovat vääriä!';
-$strReLogin            = 'Kirjaudu uudestaan';
+$pnews_str['AuthFail']           = 'Väärä salasana!';
+$pnews_str['ReadyReturn']        = 'Valmis palaamaan edelliselle sivulle, tai paina <a href="%s">tästä</a> palataksesi heti.';
+$pnews_str['PasswordRetryFail']  = 'Käyttäjänimi ja/tai salasana ovat vääriä!';
+$pnews_str['ReLogin']            = 'Kirjaudu uudestaan';
 
-$strGoBack             = 'Palaa takaisin';
+$pnews_str['GoBack']             = 'Palaa takaisin';
 
-$strNewsServer         = 'Uutispalvelin';
-$strConnectServerError = 'Uutispalvelimelle kirjautuminen epäonnistui.';
-$strReadonlyNotify     = 'Vain luku';
+$pnews_str['NewsServer']         = 'Uutispalvelin';
+$pnews_str['ConnectServerError'] = 'Uutispalvelimelle kirjautuminen epäonnistui.';
+$pnews_str['ReadonlyNotify']     = 'Vain luku';
 
-$strGroupList          = 'Ryhmälista';
+$pnews_str['GroupList']          = 'Ryhmälista';
 
-$strSessionError       = 'Lukuvirhe';
-$strSessionErrorReason = 'Tapahtui %s virhe - vain luku tai aikarajoitus';
-$strSessionErrorReturn = 'Palaa sivulle %s ja yritä uudelleen';
+$pnews_str['SessionError']       = 'Lukuvirhe';
+$pnews_str['SessionErrorReason'] = 'Tapahtui %s virhe - vain luku tai aikarajoitus';
+$pnews_str['SessionErrorReturn'] = 'Palaa sivulle %s ja yritä uudelleen';
 
-$strNumber             = 'Numero';
-$strPostNumber         = 'Lkm #';
-$strGroup              = 'Uutisryhmä';
-$strGroupDescription   = 'Kuvaus';
-$strSubject            = 'Aihe';
-$strAuthor             = 'Kirjoittaja';
-$strTime               = 'Aika';
-$strAction             = 'Toiminto';
-$strReceiver           = 'Vastaanottaja';
-$strName               = 'Nimi';
-$strEmail              = 'Sähköposti';
-$strContent            = 'Sisältö';
-$strAttachment         = 'Liite';
+$pnews_str['Number']             = 'Numero';
+$pnews_str['PostNumber']         = 'Lkm #';
+$pnews_str['Group']              = 'Uutisryhmä';
+$pnews_str['GroupDescription']   = 'Kuvaus';
+$pnews_str['Subject']            = 'Aihe';
+$pnews_str['Author']             = 'Kirjoittaja';
+$pnews_str['Time']               = 'Aika';
+$pnews_str['Action']             = 'Toiminto';
+$pnews_str['Receiver']           = 'Vastaanottaja';
+$pnews_str['Name']               = 'Nimi';
+$pnews_str['Email']              = 'Sähköposti';
+$pnews_str['Content']            = 'Sisältö';
+$pnews_str['Attachment']         = 'Liite';
 
-$strNoSubject          = '<ei otsikkoa>';
+$pnews_str['NoSubject']          = '<ei otsikkoa>';
 
-$strRefresh            = 'Päivitä';
+$pnews_str['Refresh']            = 'Päivitä';
 
-$strReply              = 'Vastaa';
-$strDelete             = 'Poista';
-$strCrossPost          = 'Lähetä useaan ryhmään';
-$strForward            = 'Lähetä edelleen';
+$pnews_str['Reply']              = 'Vastaa';
+$pnews_str['Delete']             = 'Poista';
+$pnews_str['CrossPost']          = 'Lähetä useaan ryhmään';
+$pnews_str['Forward']            = 'Lähetä edelleen';
 
-$strPost               = 'Lähetä artikkeli';
+$pnews_str['Post']               = 'Lähetä artikkeli';
 
-$strCloseWindow        = 'Sulje';
+$pnews_str['CloseWindow']        = 'Sulje';
 
-$strShowHeader         = 'Näytä otsakkeet';
+$pnews_str['ShowHeader']         = 'Näytä otsakkeet';
 
-$strFirstPage          = 'Ensimmäinen';
-$strLastPage           = 'Viimeinen';
-$strNextPage           = 'Seuraava';
-$strPreviousPage       = 'Edellinen';
+$pnews_str['FirstPage']          = 'Ensimmäinen';
+$pnews_str['LastPage']           = 'Viimeinen';
+$pnews_str['NextPage']           = 'Seuraava';
+$pnews_str['PreviousPage']       = 'Edellinen';
 
-$strNextArticle        = 'Seuraava';
-$strLastArticle        = 'Edellinen'; 
+$pnews_str['NextArticle']        = 'Seuraava';
+$pnews_str['LastArticle']        = 'Edellinen'; 
 
-$strPageNumber         = 'Sivu %s kaikkiaan %s sivusta';
+$pnews_str['PageNumber']         = 'Sivu %s kaikkiaan %s sivusta';
 
-$strReturnToGroupList  = 'Ryhmien luettelo';
-$strReturnToIndexing   = 'Artikkelilista';
-$strNoPostPermission   = 'Sinulla ei ole oikeuksia lähettää artikkelia tähän ryhmään!';
-$strNoArticle          = 'Uutisryhmässä ei ole artikkeleita';
+$pnews_str['ReturnToGroupList']  = 'Ryhmien luettelo';
+$pnews_str['ReturnToIndexing']   = 'Artikkelilista';
+$pnews_str['NoPostPermission']   = 'Sinulla ei ole oikeuksia lähettää artikkelia tähän ryhmään!';
+$pnews_str['NoArticle']          = 'Uutisryhmässä ei ole artikkeleita';
 
-$strArticlePosted      = 'Artikkeli on lähetetty uutisryhmiin';
-$strArticleIsDeleted   = 'Artikkeli on poistettu';
-$strArticleIsForwarded = 'Artikkeli on lähetetty edelleen';
+$pnews_str['ArticlePosted']      = 'Artikkeli on lähetetty uutisryhmiin';
+$pnews_str['ArticleIsDeleted']   = 'Artikkeli on poistettu';
+$pnews_str['ArticleIsForwarded'] = 'Artikkeli on lähetetty edelleen';
 
-$strRealyQuit          = 'Tahdotko lopettaa muokkaamisen?';
-$strRealyDelete        = 'Tahdotko todella tuhota artikkelin?';
+$pnews_str['RealyQuit']          = 'Tahdotko lopettaa muokkaamisen?';
+$pnews_str['RealyDelete']        = 'Tahdotko todella tuhota artikkelin?';
 
-$strFormConfirmPost    = 'Lähetä uutisryhmiin';
-$strFormCancelPost     = 'Peru uutisryhmiin lähetys';
+$pnews_str['FormConfirmPost']    = 'Lähetä uutisryhmiin';
+$pnews_str['FormCancelPost']     = 'Peru uutisryhmiin lähetys';
 
-$strFormConfirmDelete  = 'Poista';
-$strFormCancelDelete   = 'Peru';
+$pnews_str['FormConfirmDelete']  = 'Poista';
+$pnews_str['FormCancelDelete']   = 'Peru';
 
-$strFormConfirmForward = 'Jatka';
-$strFormCancelForward  = 'Peru';
+$pnews_str['FormConfirmForward'] = 'Jatka';
+$pnews_str['FormCancelForward']  = 'Peru';
 
-$strFormInsertQuote    = 'Kopioi teksti';
+$pnews_str['FormInsertQuote']    = 'Kopioi teksti';
 
-$strPleaseEnterName    = 'Kirjoita nimesi!';
-$strPleaseEnterEmail   = 'Kirjoita sähköpostiosoitteesi!';
-$strPleaseEnterGroup   = 'Anna uutisryhmä!';
-$strPleaseEnterSubject = 'Kirjoita otsikko!';
-$strPleaseEnterContent = 'Kirjoita viestiin sisältöä!';
-$strPleaseEnterReceiver= 'Anna vastaanottajan sähköpostiosoite!';
+$pnews_str['PleaseEnterName']    = 'Kirjoita nimesi!';
+$pnews_str['PleaseEnterEmail']   = 'Kirjoita sähköpostiosoitteesi!';
+$pnews_str['PleaseEnterGroup']   = 'Anna uutisryhmä!';
+$pnews_str['PleaseEnterSubject'] = 'Kirjoita otsikko!';
+$pnews_str['PleaseEnterContent'] = 'Kirjoita viestiin sisältöä!';
+$pnews_str['PleaseEnterReceiver='] 'Anna vastaanottajan sähköpostiosoite!';
 
-$strNoPostJustMail     = 'Tahdotko lähettää vastausviestin ilman viestin lähetystä uutisryhmiin?';
+$pnews_str['NoPostJustMail']     = 'Tahdotko lähettää vastausviestin ilman viestin lähetystä uutisryhmiin?';
 
-$strReplyToAuthor      = 'Vastaa kirjoittajalle sähköpostitse';
-$strNotPostToGroup     = 'Älä lähetä uutisryhmiin';
+$pnews_str['ReplyToAuthor']      = 'Vastaa kirjoittajalle sähköpostitse';
+$pnews_str['NotPostToGroup']     = 'Älä lähetä uutisryhmiin';
 
-$strQuoteFrom          = '== Lainaus %s\:lta';
-$strForwardFrom        = '== Lähetetty edelleen %s toimesta';
-$strCrossPostAuthor    = '== Vastausviesti %s:lta';
+$pnews_str['QuoteFrom']          = '== Lainaus %s\:lta';
+$pnews_str['ForwardFrom']        = '== Lähetetty edelleen %s toimesta';
+$pnews_str['CrossPostAuthor']    = '== Vastausviesti %s:lta';
 
-$strPostStatus         = '== Lähetetty %s vastaanottajalle %s';
+$pnews_str['PostStatus']         = '== Lähetetty %s vastaanottajalle %s';
 
-$strMyFavor            = 'Lisää suosikkeihin';
+$pnews_str['MyFavor']            = 'Lisää suosikkeihin';
 
 ?>
