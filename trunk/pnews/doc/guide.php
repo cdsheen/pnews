@@ -772,6 +772,10 @@ You can download phpCAS from the following place:<br />
        also known as NNTPS. This option first appeared in v2.4.0, and require
        PHP with v4.3.0 or greater and be compiled with OpenSSL support.</p>
   </blockquote>
+  <p>readonly</p>
+  <blockquote> 
+    <p>This catalog is <b>readonly</b> even if user performs a login.</p>
+  </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 
     <p><strong>option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default,private</strong></p>
