@@ -291,8 +291,9 @@ $article_convert  = get_conversion( $news_charset[$curr_catalog], $curr_charset 
 if( isset($CFG['log']) ) {
 	$fp = fopen( $CFG['log'], 'a' );
 	if( $fp ) {
-		$log_uri = substr( strrchr( $uri, '/' ), 1 );
-		if( $log_uri == '' )
+		$log_uri = $uri;
+#		$log_uri = substr( strrchr( $uri, '/' ), 1 );
+		if( $log_uri == '/' )
 			$log_uri = 'index.php';
 
 		if( $auth_success )
