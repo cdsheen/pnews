@@ -99,10 +99,7 @@ function b2g( $instr ) {
 	for( $i = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h >= 160 ) {
-			if( $i < $len-1 )
-				$l = ord($instr[$i+1]);
-			else
-				$l = 32;
+			$l = ($i+1 >= $len) ? 32 : ord($instr[$i+1]);
 			if( $h == 161 && $l == 64 )
 				$gb = '  ';
 			else {
@@ -126,10 +123,7 @@ function g2b( $instr ) {
 	for( $i = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h > 160 && $h < 248 ) {
-			if( $i < $len-1 )
-				$l = ord($instr[$i+1]);
-			else
-				$l = 32;
+			$l = ($i+1 >= $len) ? 32 : ord($instr[$i+1]);
 			if( $l > 160 && $l < 255 ) {
 				fseek( $fp, (($h-161)*94+$l-161)*3 );
 				$bg = fread( $fp, 2 );
@@ -152,7 +146,7 @@ function b2u( $instr ) {
 	for( $i = $x = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h >= 160 ) {
-			$l = ord($instr[$i+1]);
+			$l = ( $i+1 >= $len ) ? 32 : ord($instr[$i+1]);
 			if( $h == 161 && $l == 64 )
 				$uni = '  ';
 			else {
@@ -231,7 +225,7 @@ function g2u( $instr ) {
 	for( $i = $x = 0 ; $i < $len ; $i++ ) {
 		$h = ord($instr[$i]);
 		if( $h > 160 ) {
-			$l = ord($instr[$i+1]);
+			$l = ( $i+1 >= $len ) ? 32 : ord($instr[$i+1]);
 			fseek( $fp, ($h-161)*188+($l-161)*2 );
 			$uni = fread( $fp, 2 );
 			$codenum = ord($uni[0])*256 + ord($uni[1]);
@@ -269,8 +263,8 @@ function u2g( $instr ) {
 		}
 		elseif( $b1 >= 224 ) {	# 3 bytes UTF-8
 			$b1 -= 224;
-			$b2 = ord($instr[$i+1]) - 128;
-			$b3 = ord($instr[$i+2]) - 128;
+			$b2 = ($i+1 >= $len) ? 0 : ord($instr[$i+1]) - 128;
+			$b3 = ($i+2 >= $len) ? 0 : ord($instr[$i+2]) - 128;
 			$i += 2;
 			$uc = $b1 * 4096 + $b2 * 64 + $b3 ;
 			fseek( $fp, $uc * 2 );
@@ -282,7 +276,7 @@ function u2g( $instr ) {
 		elseif( $b1 >= 192 ) {	# 2 bytes UTF-8
 			printf( "[%02X%02X]", $b1, ord($instr[$i+1]) );
 			$b1 -= 192;
-			$b2 = ord($instr[$i]) - 128;
+			$b2 = ($i+1>=$len) ? 0 : ord($instr[$i+1]) - 128;
 			$i++;
 			$uc = $b1 * 64 + $b2 ;
 			fseek( $fp, $uc * 2 );

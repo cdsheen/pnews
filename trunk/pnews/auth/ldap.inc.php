@@ -48,7 +48,7 @@ function check_user_password( $username, $password ) {
 				$ldapentry = ldap_get_entries( $ds, $sr);
 				if( $ldapentry['count'] > 0 ) {
 					$auth_ok = 1;
-					if( $CFG['ldap_variable'] )
+					if( isset($CFG['ldap_variable']) )
 						foreach( $CFG['ldap_variable'] as $var => $attr )
 							$userinfo[$var] = $ldapentry[0][strtolower($attr)][0];
 				}
