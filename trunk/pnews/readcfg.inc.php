@@ -259,8 +259,10 @@ foreach( $checks as $section ) {
 
 if( !isset( $CFG['cache_dir'] ) )
 	$CFG['cache_dir'] = false;
-elseif( !is_dir( $CFG['cache_dir'] ) )
-	show_error( '$CFG["cache_dir"] is not a directory' );
+elseif( !is_dir( $CFG['cache_dir'] ) ) {
+	if( !mkdir( $CFG['cache_dir'] ) || !is_writeable( $CFG['cache_dir'] ) )
+		show_error( '$CFG["cache_dir"] can not be created' );
+}
 elseif( !is_writeable( $CFG['cache_dir'] ) )
 	show_error( '$CFG["cache_dir"] is not a write-able directory' );
 
