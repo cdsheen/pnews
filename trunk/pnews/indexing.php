@@ -125,7 +125,7 @@ for( $i = $ncount-1 ; $i >= 0 ; $i-- ) {
 		$xover[$i][2] = $article_convert['to']( $xover[$i][2] );
 	}
 
-	if( $subject == '' )
+	if( trim($subject) == '' )
 		$subject = $strNoSubject;
 
 	$subject = htmlspecialchars( $subject );

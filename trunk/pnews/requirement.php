@@ -24,6 +24,7 @@ The requirement for PHP News Reader on the server side:
 <li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
 <li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
 </ul>
+<p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.
 <p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader only requires the News Server to have the following extensions:<br>
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
