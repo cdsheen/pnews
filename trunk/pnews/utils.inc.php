@@ -731,6 +731,7 @@ function hide_mail_link( $email, $linktext = '' ) {
 EMAIL;
 	}
 	else {
+		$linktext = str_replace( '"', '\\"', $linktext );
 		return <<<EMAIL
 <script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + "$linktext" + '</a>' );</script>
 EMAIL;
