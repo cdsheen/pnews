@@ -40,5 +40,8 @@ html:
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
 
+www:	html
+	cp -f release.html history.php copying.php requirement.php /home/users/c/cd/cdsheen/groups/htdocs/
+
 clean:
 	rm -f *~
