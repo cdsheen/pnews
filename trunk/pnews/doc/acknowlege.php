@@ -41,11 +41,14 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 Acknowledgement
 <hr />
-<ul>
-<li>Pascal Aubry - French translation, CAS authentication and phpCAS library.
-<li>Markus Oversti - Finnish translation.
-<li>Czz - Help to refine the Chinese (GB2312) translation.
-</ul>
+<blockquote>
+<table>
+<tr><td align=left>Pascal Aubry from France</td><td> - French translation, CAS authentication and phpCAS library.</td></tr>
+<tr><td align=left>Markus Oversti from Finland</td><td> - Finnish translation.</td></tr>
+<tr><td align=left>Czz from China</td><td> - Help to refine the Chinese (GB2312) translation.</td></tr>
+<tr><td align=left>Jochen Staerk from Germany</td><td> - German translation.</td></tr>
+</table>
+</blockquote>
 <hr />
 <table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>

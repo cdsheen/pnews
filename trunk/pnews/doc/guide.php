@@ -645,7 +645,7 @@ You can download phpCAS from the following place:<br />
 <a name=post_signature></a>
   <p> <strong>$CFG["post_signature"]</strong></p>
   <blockquote> 
-    <p>The signature to appended at each posted article (default: <i>""</i>)</p>
+    <p>The signature which been appended at each posted article (default: <i>""</i>)</p>
     <p>Note: This is NOT a per-user setting!</p>
   </blockquote>
 <a name=show_sourceforge_logo></a>
@@ -691,12 +691,13 @@ You can download phpCAS from the following place:<br />
  	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
         <tr><td>Fran&ccedil;ais</td><td>fr</td><td>ISO-8859-1</td></tr>
         <tr><td>Finnish</td><td>fi</td><td>ISO-8859-1</td></tr>
+        <tr><td>German</td><td>de</td><td>ISO-8859-1</td></tr>
 	</table>
   </blockquote>
 <a name=interface_language></a>
   <p> <strong>$CFG["interface_language"]</strong></p>
   <blockquote>
-    <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi" )<br />
+    <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi", "de" )<br />
      (default: <i>"en"</i> )</p>
     <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader<br />
        If not set in v2.3.0 or later, the default language used in interface is "en" - English</p>

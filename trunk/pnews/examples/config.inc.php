@@ -369,7 +369,7 @@ $CFG["title"] = "XXX News Service";
 $CFG["organization"] = "XXX News Server";
 
 
-# [post_signature] The signature to appended at each posted article
+# [post_signature] The signature which been appended at each posted article
 #                  (default: "")
 
 // $CFG["post_signature"] = "\n-- \nPOST BY: PHP News Reader\n";
@@ -394,9 +394,9 @@ $CFG["show_sourceforge_logo"] = true;
 #     "zh-tw" - Traditional Chinese        BIG5
 #     "zh-cn" - Simplified Chinese         GB2312
 #   "unicode" - Unicode                    UTF-8       (default)
-#        "de" - German                     ISO-8859-1
 #        "fr" - French                     ISO-8859-1
 #        "fi" - Finnish                    ISO-8859-1
+#        "de" - German                     ISO-8859-1
 
 # [interface_language] The language setting of interface (default: "en")
 

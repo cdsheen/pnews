@@ -628,6 +628,7 @@ function match_group( $group, $pattern ) {
 }
 
 function nnrp_authenticate( $nhd ) {
+	global  $CFG;
 	global	$curr_catalog;
 	global	$news_authinfo;
 
@@ -641,8 +642,10 @@ function nnrp_authenticate( $nhd ) {
 
 	list( $user, $pass ) = explode( ',', $authinfo );
 
-	$user = str_replace( '%http_user', $_SERVER['PHP_AUTH_USER'], $user);
-	$pass = str_replace( '%http_pw', $_SERVER['PHP_AUTH_PW'], $pass);
+	if( $CFG['auth_prompt'] == 'http' ) {
+		$user = str_replace( '%http_user', $_SERVER['PHP_AUTH_USER'], $user);
+		$pass = str_replace( '%http_pw', $_SERVER['PHP_AUTH_PW'], $pass);
+	}
 
 	if( nnrp_auth( $nhd, $user, $pass ) )
 		return(true);
