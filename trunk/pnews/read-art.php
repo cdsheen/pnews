@@ -23,10 +23,21 @@ include('utils.inc.php');
 
 $artnum = $_GET['artnum'];
 
-if( isset( $_GET['newwin'] ) )
-	$newwin = ($_GET['newwin']==1);
+if( isset( $_GET['orig'] ) )
+	$newwin = ($_GET['orig']==0);
 else
 	$newwin = true;
+
+if( $CFG['url_rewrite'] ) {
+	$nexturl = $CFG['url_base'] . "article/$server/$group/$artnum/next";
+	$lasturl = $CFG['url_base'] . "article/$server/$group/$artnum/last";
+	$idxurl = $CFG['url_base'] . "group/$server/$group/$artnum/";
+}
+else {
+	$nexturl = "read-art.php?server=$server&group=$group&artnum=$artnum&next=1";
+	$lasturl = "read-art.php?server=$server&group=$group&artnum=$artnum&last=1";
+	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
+}
 
 $nhd = nnrp_open( $server );
 
@@ -39,6 +50,22 @@ if( ! $nhd ) {
 }
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
+
+if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
+	if( isset( $_GET['next'] ) )
+		$artnum = nnrp_next( $nhd, $artnum );
+	else
+		$artnum = nnrp_last( $nhd, $artnum );
+	if( $artnum < 0 )
+		header( "Location: $idxurl" );
+	elseif( $CFG['url_rewrite'] )
+		header( "Location: " . $CFG['url_base'] . "article/$server/$group/$artnum/" );
+	elseif( $newwin )
+		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum" );
+	else
+		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum&orig=1" );
+	exit;
+}
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
@@ -109,16 +136,20 @@ function toolbar( $server, $group, $artnum, $title ) {
 	global $post_restriction, $email, $auth_email, $newwin;
 	global $strCloseWindow, $strReplyDetail, $strReplyQuoteDetail;
 	global $strCrossPostDetail, $strForwardDetail, $strDeleteDetail;
-	global $strMyFavor, $strReturnToIndexing, $CFG;
+	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
+	global $CFG, $nexturl, $lasturl, $idxurl;
 	echo "<table border=1 cellspacing=0 cellpadding=2>\n";
 	if( !$post_restriction ) {
 		echo "<tr>";
 		if( ! $newwin ) {
 			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
-			if( $CFG['url_rewrite'] )
-				echo '<a href="' . $CFG['url_base'] . "group/$server/$group/$artnum/\">$strReturnToIndexing</a>";
-			else
-				echo "<a href=\"indexing.php?server=$server&group=$group&cursor=$artnum\">$strReturnToIndexing</a>";
+			echo "<a href=\"$nexturl\">$strNextArticle</a>";
+			echo "</td>\n";
+			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			echo "<a href=\"$lasturl\">$strLastArticle</a>";
+			echo "</td>\n";
+			echo "<td width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'>";
+			echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
 			echo "</td>\n";
 		}
 

@@ -71,6 +71,9 @@ $strLastPage           = 'Last';
 $strNextPage           = 'Next';
 $strPreviousPage       = 'Prev.';
 
+$strNextArticle        = 'Next';
+$strLastArticle        = 'Prev.'; 
+
 $strPageNumber         = 'Page %s of totaling %s page(s)';
 
 $strReturnToGroupList  = 'Group List';

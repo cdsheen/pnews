@@ -71,6 +71,7 @@ while( $buf = fgets( $lst, 512) ) {
 	if( preg_match( '/^\[(.+)\]$/', $buf, $match ) ) {
 		$catalog_num++;
 		$news_catalog[$catalog_num]  = $match[1];
+		$news_authinfo[$catalog_num] = 'none';
 		$news_charset[$catalog_num] = $group_default_charset;
 		$news_server[$catalog_num]   = $group_default_server;
 		$news_authperm[$catalog_num] = false;
@@ -106,6 +107,13 @@ while( $buf = fgets( $lst, 512) ) {
 		$match[1] = strtolower( $match[1] );
 		if( in_array( $match[1], $valid_charsets ) )
 			$news_charset[$catalog_num] = $match[1];
+	}
+	elseif( preg_match( '/^auth\s+(\S+)\s*(\S*)\s*(\S*)$/', $buf, $match ) ) {
+		$match[1] = strtolower( $match[1] );
+		if( $match[1] == 'login' )
+			$news_authinfo[$catalog_num] = 'login';
+		elseif( $match[1] == 'user' )
+			$news_authinfo[$catalog_num] = $match[2] . ':' . $match[3];
 	}
 }
 fclose($lst);

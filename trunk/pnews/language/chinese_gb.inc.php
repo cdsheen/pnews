@@ -70,6 +70,9 @@ $strLastPage           = '最後一页';
 $strNextPage           = '下一页';
 $strPreviousPage       = '上一页';
 
+$strNextArticle        = '下一篇';
+$strLastArticle        = '上一篇';
+
 $strPageNumber         = '这是第 %s 页（共 %s 页）';
 
 $strReturnToGroupList  = '回讨论区列表';

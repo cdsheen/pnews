@@ -190,7 +190,7 @@ function nnrp_next( $nhd, $artnum ) {
 	if( $code[0] != '2' )
 		return(-1);
 
-	send_command( $nhd, "NEXT $artnum" );
+	send_command( $nhd, "NEXT" );
 	list( $code, $msg ) = get_status( $nhd );
 	if( $code[0] != '2' )
 		return(-1);
@@ -207,7 +207,7 @@ function nnrp_last( $nhd, $artnum ) {
 	if( $code[0] != '2' )
 		return(-1);
 
-	send_command( $nhd, "LAST $artnum" );
+	send_command( $nhd, "LAST" );
 	list( $code, $msg ) = get_status( $nhd );
 	if( $code[0] != '2' )
 		return(-1);
