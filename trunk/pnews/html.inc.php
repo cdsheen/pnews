@@ -87,9 +87,9 @@ function html_foot($langopt = true) {
      <i>
 <?
 	if( $CFG['author_link'] == false )
-		echo "<a href=\"http://sourceforge.net/projects/pnews/\" target=_blank>PHP News Reader</a> $pnews_version by Shen Cheng-Da";
+		echo "<a href=\"http://sourceforge.net/projects/pnews/\" target=_blank>PHP News Reader</a> $pnews_version";
 	else
-		echo '<a href="doc/index.php" target=_blank>PHP News Reader</a> ' . $pnews_version . ' by Shen Cheng-Da';
+		echo '<a href="doc/index.php" target=_blank>PHP News Reader</a> ' . $pnews_version;
 ?>
      </i>
      &nbsp;
