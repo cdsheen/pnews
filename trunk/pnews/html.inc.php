@@ -34,7 +34,7 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 	if( $redirect )
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">";
 
-	echo "<title>$title</title>\n</head>\n";
+	echo "<title>$title </title>\n</head>\n";
 	echo "<body $bodymod>\n";
 }
 
