@@ -214,7 +214,7 @@ elseif( $artnum != '' ) {
 #	echo "-------------------------------------------------------------\n";
 
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
-	nnrp_show( $nhd, $artnum, $show_mode, '', "\n", $article_convert['to'] );
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
 	nnrp_close($nhd);
 
 	echo "\n</textarea>\n";

@@ -363,7 +363,7 @@ define( 'SHOW_NULL_LINE',   8 );
 define( 'SHOW_HEADER',     16 );
 define( 'FILTER_ANSI',     32 );
 
-function nnrp_show ( $nhd, $artnum, $mode, $prepend = '', $postpend = '', $trans_func = null ) {
+function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null ) {
 
 	$mode = intval($mode);
 
@@ -384,53 +384,91 @@ function nnrp_show ( $nhd, $artnum, $mode, $prepend = '', $postpend = '', $trans
 	if( $code[0] != '2' )
 		return(null);
 
-	$n = 0 ;
+	if( $show_header ) {
+		while( $buf = fgets( $nhd, 4096 ) ) {
+			$buf = chop($buf);
+			if( $buf == '.' || $buf == '' )
+				break;
 
-	$header = $show_header;
+			$buf = htmlspecialchars( $buf, ENT_NOQUOTES );
 
-	$skip = false;
+			# convert charset if required
+			if( $trans_func )
+				$buf = $trans_func( $buf );
+
+			# replace the leading space as &nbsp;
+			if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
+				$buf = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
+
+			echo $prepend . $buf . $postpend;
+		}
+		echo $prepend . $postpend;
+	}
+
+	$uuencode_skip = false;
 	while( $buf = fgets( $nhd, 4096 ) ) {
-		$buf = chop( $buf );
+		$buf = chop($buf);
 		if( $buf == '.' )
 			break;
-		if( $skip )
+		if( $uuencode_skip ) {
+			if( $buf == 'end' )
+				$uuencode_skip = false;
+		}
+		elseif( $buf[0] == '.' )
+			$body[] = substr( $buf, 1 );
+		elseif( preg_match( '/^begin\s(\d+)\s(\S+)$/', $buf, $match ) ) {
+			$uuencode_skip = true;
+			$body[] = '<' . $match[2] . '>';
+		}
+		else
+			$body[] = $buf;
+	}
+
+	if( $artinfo['encoding'] == 'base64' )
+		$body = preg_split( '/[\r\n]+/', base64_decode( implode( '', $body ) ) );
+
+	$n = count($body);
+
+	$skip_sig = false;
+	for( $i = 0 ; $i < $n ; $i++ ) {
+
+		if( $skip_sig )
 			continue;
 
-		if( $header && $buf == '' )
-			$header = false;
-
-		if( !$show_sig && $buf == '--' ) {
-			$skip = true;
+		if( !$show_sig && $body[$i] == '--' ) {
+			$skip_sig = true;
 			continue;
 		}
-		# quote out special chars
-		$buf = htmlspecialchars($buf, ENT_NOQUOTES );
 
-		if( !$header && $show_hlink ) {
+		if( $artinfo['encoding'] == 'quoted-printable' )
+			$body[$i] = quoted_printable_decode( $body[$i] );
 
-			# hyperlink/email auto-detection
+		$body[$i] = htmlspecialchars( $body[$i], ENT_NOQUOTES );
 
+		# hyperlink/email auto-detection
+		if( $show_hlink ) {
 			$pattern = array( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#]|(&amp;))+)/', '/\b([\w-.]+)@([\w-.]+)/' );
 			$replacement = array( '<a href="$1" target=_blank>$1</a>', ' <a href="mailto:$0" target=_blank>$0</a>' );
-
-			$buf = preg_replace( $pattern, $replacement , $buf );
-
+			$body[$i] = preg_replace( $pattern, $replacement , $body[$i] );
 		}
+
 		# filter ANSI codes
 		if( $filter_ansi )
-			$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
+			$body[$i] = preg_replace( '/\033\[[\d;]*m/', '', $body[$i] );
 
-		if( !$show_null_line && $buf == '' )
+		# filter null line
+		if( !$show_null_line && $body[$i] == '' )
 			continue;
 
+		# convert charset if required
 		if( $trans_func )
-			$buf = $trans_func( $buf );
+			$body[$i] = $trans_func( $body[$i] );
 
 		# replace the leading space as &nbsp;
-		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
-			$buf = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
+		if( !$space_asis && preg_match( '/^(\s+)(.+)$/', $body[$i] , $match ) )
+			$body[$i] = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
 
-		echo $prepend . $buf . $postpend;
+		echo $prepend . $body[$i] . $postpend;
 	}
 }
 

@@ -51,6 +51,7 @@ echo <<<EOH
 -->
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
+<li>Reading article with 'base64' or 'quoted-printable' encoded.
 <li>Workaround for broken news server which expiration does not work correctly.
 <li>Support command to show article headers.
 <li>Empty lines are deleted in the quoted article when replying.

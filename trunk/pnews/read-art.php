@@ -173,9 +173,9 @@ if( isset($_GET['header']) )
 	$show_mode |= SHOW_HEADER;
 
 if( $artconv['to'] )
-	nnrp_show( $nhd, $artnum, $show_mode, '', "<br />\n", $artconv['to'] );
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n", $artconv['to'] );
 else
-	nnrp_show( $nhd, $artnum, $show_mode, '', "<br />\n" );
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n" );
 
 nnrp_close($nhd);
 

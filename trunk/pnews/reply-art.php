@@ -243,7 +243,7 @@ elseif( $artnum != '' ) {
 	printf("\n$strQuoteFrom\n", "$from ($email)" );
 
 	$show_mode |= SPACE_ASIS;
-	nnrp_show( $nhd, $artnum, $show_mode, '&gt; ', "\n", $artconv['to'] );
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '&gt; ', "\n", $artconv['to'] );
 
 	nnrp_close($nhd);
 	echo "</textarea>";

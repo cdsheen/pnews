@@ -144,7 +144,7 @@ elseif( $artnum != '' ) {
 	echo "<tr><td colspan=2>";
 	echo "<textarea name=content class=content rows=10 wrap=physical disabled>";
 	$show_mode |= SHOW_SIGNATURE|SHOW_NULL_LINE;
-	nnrp_show( $nhd, $artnum, $show_mode, '', "\n", $article_convert['to'] );
+	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "\n", $article_convert['to'] );
 	nnrp_close($nhd);
 	echo "\n</textarea></td></tr>\n";
 	echo "</table></center>\n";
