@@ -411,14 +411,17 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		if( $buf == '.' )
 			break;
 		if( $uuencode_skip ) {
-			if( $buf == 'end' )
+			if( strtolower($buf) == 'end' )
 				$uuencode_skip = false;
 		}
 		elseif( $buf[0] == '.' )
 			$body[] = substr( $buf, 1 );
-		elseif( preg_match( '/^begin\s(\d+)\s(\S+)$/', $buf, $match ) ) {
+		elseif( preg_match( '/^begin\s(\d+)\s(\S+)$/i', $buf, $match ) ) {
 			$uuencode_skip = true;
-			$body[] = '<' . $match[2] . '>';
+			if( $show_hlink )
+				$body[] = ' << ' . $match[2] . ' >> ';
+			else
+				$body[] = ' << ' . $match[2] . ' >> ';
 		}
 		else
 			$body[] = $buf;
@@ -471,6 +474,73 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		echo $prepend . $body[$i] . $postpend;
 	}
 }
+
+function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
+
+	send_command( $nhd, "BODY $artnum" );
+
+	list( $code, $msg ) = get_status( $nhd );
+
+	if( $code[0] != '2' )
+		return(null);
+
+#	$filename = trim($filename);
+
+	if( $type == 'uuencode' ) {
+		# http://www.drbob42.com/books/uucode.htm
+		$pass = 0;
+		while( $buf = fgets( $nhd, 4096 ) ) {
+			$buf = trim($buf);
+			if( $buf == '.' )
+				break;
+			if( $pass == 2 ) {	# Skip the rest
+				continue;
+			}
+			elseif( $pass == 1 ) {
+				if( strtolower($buf) == 'end' )
+					$pass = 2;
+				else {
+					$len = ord($buf[0]);
+					$len -= 32;
+					$len &= 63;
+					if( $len <= 0 ) {
+						continue;
+					}
+					if( $len < 3 ) {
+						$byte[0] = ( (ord($buf[1]) - 32) & 63);
+						$byte[1] = ( (ord($buf[2]) - 32) & 63);
+						$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
+						if( $len > 1 ) {
+							$byte[2] = ( (ord($buf[3]) - 32) & 63);
+							$tmp .= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
+						}
+						$binary .= $tmp;
+					}
+					else {
+						$sets = $len / 3;
+						for( $set = 0 ; $set < $sets ; $set++) {
+							$byte[0] = ( ord($buf[$set*4+1]) - 32) & 63;
+							$byte[1] = ( ord($buf[$set*4+2]) - 32) & 63;
+							$byte[2] = ( ord($buf[$set*4+3]) - 32) & 63;
+							$byte[3] = ( ord($buf[$set*4+4]) - 32) & 63;
+
+							$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
+							$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
+							$tmp.= chr(($byte[2] << 6 | $byte[3] >> 0) & 0xff);
+							$binary.= $tmp;
+						}
+					}
+				}
+			}
+			elseif( preg_match( '/^begin\s(\d+)\s'.$filename.'$/i', $buf, $match ) ) {
+				$pass = 1;
+			}
+		}
+	}
+
+	return($binary);
+}
+
 
 function nnrp_head ( $nhd, $artnum, $def_charset = 'utf-8', $time_format = '%Y/%m/%d %H:%M:%S' ) {
 	send_command( $nhd, "HEAD $artnum" );

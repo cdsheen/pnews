@@ -230,7 +230,7 @@ if( $CFG['auth_type'] != 'open' ) {
 
 		if( isset($_GET['login']) )
 			$need_auth = true;
-		elseif( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
+		elseif( $self_base == 'indexing.php' || $self_base == 'read-art.php' || $self_base == 'download.php' ) {
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
@@ -244,7 +244,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			$need_auth = true;
 	}
 	else {
-		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' ) {
+		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' || $self_base == 'download.php' ) {
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
