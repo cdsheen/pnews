@@ -5,7 +5,7 @@
 <title>PHP News Reader</title>
 </head>
 <body style="background-color: #EEFFFF">
-<font size=3 color=black face="Georgia">
+<div>
 <H2>GNU GENERAL PUBLIC LICENSE</H2>
 <P>
 Version 2, June 1991
@@ -474,6 +474,6 @@ Public License instead of this License.
 </P>
 
 <HR />
-</pre>
+</div>
 </body>
 </html>

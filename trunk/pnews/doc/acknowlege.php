@@ -39,7 +39,7 @@ EOH;
 include('header.php');
 
 echo <<<EOH
-<font size=3 face=Georgia>
+<div>
 <blockquote>
 <table>
 <tr><td align=left>Pascal Aubry from France</td><td> - French translation, CAS authentication and phpCAS library.</td></tr>
@@ -50,15 +50,15 @@ echo <<<EOH
 <tr><td align=left>Tichu from Slovakia</td><td> - Slovak translation.</td></tr>
 </table>
 </blockquote>
+</div>
 <hr />
-<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
+<table width=100% cellspacing=0 cellpadding=0><tr><td><div class=small>$pnews_claim<br />
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
-</font>
 </body>
 </html>
 

@@ -43,8 +43,8 @@ EOR;
 include('header.php');
 
 echo <<<EOR
-<font face="Georgia" size="3" color="black">
-PHP News Reader is a web based News Reader.
+<div>
+PHP News Reader is a web based News Reader.<br /><br />
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
@@ -223,9 +223,9 @@ Taipei, Taiwan<br />
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
+</div>
 <hr />
-<font size=2>$pnews_claim</font>
-</font>
+<div class=small>$pnews_claim</font></div>
 </body>
 </html>
 

@@ -39,7 +39,7 @@ EOH;
 include('header.php');
 
 echo <<<EOH
-<font size=3 face=Georgia>
+<div>
 The requirement for PHP News Reader on the server side (news server) :
 <ul>
 <li>Web Server with PHP support installed ( PHP 4.1.0 or greater )
@@ -67,7 +67,7 @@ The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the
 The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
 <p>
-If your server is operated by INN, you can verify the NNRP access permission by hand.
+If your server is operated by INN, you can verify the NNRP access permission by hand.<br />
 For example, when you telnet to an INN News server at port 119, you must get response like this:
 <ul>
 200 nopy.com InterNetNews NNRP server INN 2.3.2 ready (posting ok).
@@ -85,15 +85,15 @@ The requirement for PHP News Reader on the client side (web browser) :
 <li>Accept Cookies (not necessary)
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
+</div>
 <hr />
-<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
+<table width=100% cellspacing=0 cellpadding=0><tr><td><div class=small>$pnews_claim<br />
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
-</font>
 </body>
 </html>
 

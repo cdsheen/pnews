@@ -42,17 +42,17 @@ EOH;
 include('header.php');
 
 ?>
-<font size=3 color=black face="Georgia">
+<div>
 <ol>
 <li><a href=#upgrade>Upgrade from previous version</a>
 <li><a href=#newinstall>New installation</a>
 <li><a href=#config_inc_php>Configuration of <b>config.inc.php</b></a>
 <li><a href=#newsgroups_lst>Configuration of <b>newsgroups.lst</b></a>
 </ol>
-</font>
+</div>
 <hr />
 <a name=upgrade></a>
-<font size=3 color=black face="Georgia">
+<div>
 <strong><em><font color="#0000FF">1. Upgrade from previous version</font></em></strong> 
 <blockquote>
 To upgrade PHP News Reader from the previous version, please follow
@@ -1008,14 +1008,14 @@ You can download phpCAS from the following place:<br />
     This category does require explicily authentication to the news server by the supplied username/password</p>
 </blockquote>
 <hr size="1">
+</div>
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
-<font size=3><? echo $pnews_claim; ?></font><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
+<div class=small><? echo $pnews_claim; ?><br />
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="<? echo $sflogo; ?>" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
-</font>
 </body>
 </html>

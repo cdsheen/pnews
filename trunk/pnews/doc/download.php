@@ -43,7 +43,7 @@ EOR;
 include('header.php');
 
 echo <<<EOR
-<font face=Georgia size=3>
+<div>
 Project Home:
 <blockquote>
 <a href="http://sourceforge.net/projects/pnews/" title="SourceForge Project: PHP News Reader" target=_blank>
@@ -81,9 +81,9 @@ Forum:
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
 </blockquote>
+</div>
 <hr />
-<font size=2>$pnews_claim</font>
-</font>
+<div class=small>$pnews_claim</div>
 </body>
 </html>
 

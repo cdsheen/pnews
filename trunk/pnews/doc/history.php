@@ -351,14 +351,13 @@ PHP News Reader v1.4 (2002/06/09)
 <hr />
 <table cellspacing=0 cellpadding=0 width=100%>
 <tr><td>
-<font size=2>$pnews_claim</font><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
+<div class=small>$pnews_claim<br />
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
-</font>
 </body>
 </html>
 

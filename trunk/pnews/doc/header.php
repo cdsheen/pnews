@@ -4,7 +4,7 @@ include_once('../version.inc.php');
 
 $menus = array( 'index.php' => 'Introduction',
 		'guide.php' => 'Documentation',
-		'history.php' => 'Changes',
+		'history.php' => 'Changes and History',
 		'download.php' => 'Download' );
 
 $titles = array( 'index.php' => 'PHP News Reader - Introduction',

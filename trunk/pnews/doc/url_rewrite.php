@@ -39,24 +39,24 @@ EOH;
 include('header.php');
 
 echo <<<EOH
-<font size=3 color=black face="Georgia">
+<div>
 URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
 <hr />
 URL Rewrite is a cool function that make the link more readable.<br />
 <br />
 For example, the link to read an article is:
 <ul><font color=blue>
-http://webnews.domain.net/news/article.php?server=news.nopy.com&group=nopy.test&artnum=21012
+http://webnews.domain.net/pnews/read.php?server=news.nopy.com&group=nopy.test&artnum=21012
 </font>
 </ul>
 If you enable the URL rewriting, the link will become:
 <ul><font color=blue>
-http://webnews.domain.net/news/article/news.nopy.com/nopy.test/21012
+http://webnews.domain.net/pnews/article/news.nopy.com/nopy.test/21012
 </font>
 </ul>
-With pnews version greater than v2.2.1 and if <i><b>news.nopy.com</b></i> is your default news server, the link even becomes shorter:
+With pnews version greater than v2.2.1 and if <i><b>news.nopy.com</b></i> is your <u>default</u> news server, the link even becomes shorter:
 <ul><font color=blue>
-http://webnews.domain.net/news/article//nopy.test/21012
+http://webnews.domain.net/pnews/article//nopy.test/21012
 </font>
 </ul>
 <p>PHP News Reader includes an access control file ".htaccess" to do the transformation for you.</p>
@@ -64,21 +64,20 @@ To enable URL Rewrite, you need:
 <ul>
 <li>Apache web server with "mod_rewrite" enabled
 <li>Valid setting for AllowOverride at the program's directory in httpd.conf
-<li>Setting \$CFG["url_rewrite"] to <b>true</b> in <b>config.inc.php</b>
+<li>Setting <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> to <b>true</b> in <b>config.inc.php</b>
 </ul>
 For more information about Apache's mod_rewrite, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.
 <p>
 Check the <a href=guide.php>Installation Manual</a> for other configuration parameters.
-
+</div>
 <hr />
-<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
+<table width=100% cellspacing=0 cellpadding=0><tr><td><div class=small>$pnews_claim<br />
+<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </td></tr></table>
-</font>
 </body>
 </html>
 
