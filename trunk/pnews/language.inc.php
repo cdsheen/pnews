@@ -27,7 +27,7 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php' );
 
-$lang_coding = array(	'en'         => 'BIG5', #'iso-8859-1' ,
+$lang_coding = array(	'en'         => 'UTF-8',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8'       );
