@@ -267,8 +267,8 @@ if( $CFG["auth_prompt"] == 'cas' ) {
 	else
 		show_error('The port on which the CAS server is running was not specified. $CFG[\'auth_cas_server\'] should look like \'hostname:port\'.');
 
-	if( !isset($auth_cas_server) )
-		$auth_cas_server = false;
+	if( !isset($CFG['auth_cas_debug']) )
+		$CFG['auth_cas_debug'] = false;
 
 	/* Set phpCAS debug mode if needed */
 	phpCAS::setDebug($CFG['auth_cas_debug']);
