@@ -226,7 +226,7 @@ html_foot();
 
 if( $nhd ) nnrp_close($nhd);
 
-if( isset($CFG['html_footer']) )
+if( $CFG['html_footer'] )
 	readfile( $CFG['html_footer'] );
 
 html_tail();

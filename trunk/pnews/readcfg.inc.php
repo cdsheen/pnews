@@ -23,8 +23,8 @@ $valid_auth_type   = array( 'required', 'optional', 'open' );
 $valid_auth_prompt = array( 'http', 'form', 'cas', 'other' );
 $valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user', 'phpbb' );
 
-$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1', 'iso-8859-15' );
-$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi', 'de', 'it' );
+$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1', 'iso-8859-2', 'iso-8859-15' );
+$valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi', 'de', 'it', 'sk' );
 
 if( !file_exists('config.inc.php') )
 	show_error( "You should edit your 'config.inc.php'. Copy examples/config.inc.php as a template.");
@@ -334,6 +334,9 @@ if( !isset( $CFG['articles_per_page'] ) )
 
 if( !isset($CFG['url_base']) )
 	config_error( '$CFG["url_base"]' );
+
+if( !preg_match( '/^https?:\/\//', $CFG['url_base'] ) )
+	show_error( '$CFG["url_base"] should begin with http:// or https://' );
 
 if( !isset( $CFG['group_list'] ) )
 	$CFG['group_list'] = 'newsgroups.lst';

@@ -40,7 +40,7 @@ if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
 if( $CFG['cache_dir'] )
-	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $CFG['cache_dir'] . "/$server-$group" );
+	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $CFG['cache_dir'] . "/$server-$group", $CFG['thread_enable'], $CFG['thread_db_format'] );
 else
 	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark );
 
@@ -430,7 +430,7 @@ html_foot();
 
 nnrp_close($nhd);
 
-if( isset($CFG['html_footer']) )
+if( $CFG['html_footer'] )
 	readfile( $CFG['html_footer'] );
 
 html_tail();

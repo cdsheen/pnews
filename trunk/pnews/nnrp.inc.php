@@ -279,7 +279,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 	return( $ov );
 }
 
-function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
+function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false, $thread_enable = false, $db_handler = 'db4' ) {
 
 	$new_art = $lowmark;
 
@@ -307,6 +307,29 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 		}
 	}
 
+	if( $thread_enable ) {
+		$field_subject = 1;
+
+		$file_subject = $cache_file . '-subject.db';
+		$file_thread  = $cache_file . '-thread.db';
+		// PHP 4.3+ (for 'd' mode flag)
+		if( file_exists( $file_subject ) )
+			$db_subject = @dba_open( $file_subject, 'wd', $db_handler );
+		else
+			$db_subject = @dba_open( $file_subject, 'nd', $db_handler );
+
+		if( file_exists( $file_thread ) )
+			$db_thread = @dba_open( $file_thread, 'wd', $db_handler );
+		else
+			$db_thread = @dba_open( $file_thread, 'nd', $db_handler );
+
+		if( !$db_subject || !$db_thread ) {
+			if( $db_subject )
+				dba_close($db_subject);
+			$thread_enable = false;
+		}
+	}
+
 	if( $new_art <= $highmark ) {
 		if( $new_art == $highmark )
 			send_command( $nhd, "XOVER $new_art" );
@@ -326,11 +349,28 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 				break;
 
 			$artinfo = split( "\t", $buf );
+			$artnum = intval($artinfo[0]);
+			if( $thread_enable ) {
+				$subject = preg_replace( '/^((RE|FW):\s*)+/i', '', trim(decode_subject($artinfo[$field_subject])));
 
-			$artlist[] = intval($artinfo[0]);
+				$thread_artnum = @dba_fetch( $subject, $db_subject );
+				if( $thread_artnum ) {
+					if( $thread_artnum < $lowmark || $thread_artnum > $highmark )
+						dba_replace( $subject, ($thread_artnum = $artnum), $db_subject );
+				}
+				else
+					dba_insert( $subject, ($thread_artnum = $artnum), $db_subject );
+
+				$thread_data = @dba_fetch( $thread_artnum, $db_thread );
+				if( $thread_data ) {
+					dba_replace( $thread_artnum, $artnum.','.$thread_data, $db_subject );
+				}
+				else
+					dba_insert( $thread_artnum.','.$subject, $db_thread );
+			}
+			$artlist[] = $artnum;
 		}
 	}
-
 
 	if( $cache_file ) {
 		$artlist = array_values( $artlist );
@@ -344,6 +384,12 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 			@fclose($fp);
 		}
 	}
+
+	if( $db_subject )
+		@dba_close($db_subject);
+	if( $db_thread )
+		@dba_close($db_thread);
+
 	return( $artlist );
 }
 

@@ -19,7 +19,7 @@
 
 require_once('language.inc.php');
 
-if( $_SERVER['HTTPS'] ) {
+if( isset($_SERVER['HTTPS']) ) {
 	$CFG['url_base'] = str_replace( 'http://', 'https://', $CFG['url_base'] );
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 }

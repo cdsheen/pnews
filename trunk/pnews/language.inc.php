@@ -26,7 +26,8 @@ $lang_option = array(	'en'         => 'English',
 			'fr'         => 'Fran&ccedil;ais',
 			'fi'         => 'Finnish',
 			'de'         => 'German',
-			'it'         => 'Italiano' );
+			'it'         => 'Italiano',
+			'sk'         => 'Slovak' );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
@@ -35,7 +36,8 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'fr'         => 'language/french.inc.php',
 			'fi'         => 'language/finnish.inc.php',
 			'de'         => 'language/german.inc.php',
-			'it'         => 'language/italian.inc.php' );
+			'it'         => 'language/italian.inc.php',
+			'sk'         => 'language/slovak.inc.php' );
 
 $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
@@ -44,13 +46,15 @@ $lang_coding = array(	'en'         => 'us-ascii',
 			'fr'         => 'iso-8859-15',
 			'fi'         => 'iso-8859-15',
 			'de'         => 'iso-8859-15',
-			'it'         => 'iso-8859-15' );
+			'it'         => 'iso-8859-15',
+			'sk'         => 'iso-8859-2' );
 
 $charset_alias = array( 'big5'       => 'big5',
 			'gb'         => 'gb2312',
 			'gb2312'     => 'gb2312',
 			'utf-8'      => 'utf-8',
 			'iso-8859-1' => 'iso-8859-1',
+			'iso-8859-2' => 'iso-8859-2',
 			'iso-8859-15'=> 'iso-8859-15',
 			'de-ascii'   => 'iso-8859-15',
 			'us-ascii'   => 'iso-8859-15',
