@@ -99,14 +99,15 @@ The login prompt can be configured as HTTP authentication or FORM style.
 PHP News Reader supports multi interface languages, including English, Traditional Chinese, Simplified Chinese and Fran&ccedil;ais.
 The preferred language can be switched any time and any where.
 <p>
-PHP News Reader supports the on-the-fly coding conversion between Traditional Chinese and Simplified Chinese.
-Unfortunately, the PHP iconv() function does not work on some systems and it also has problems of handling Chinese words.
+PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese and Simplified Chinese.
+<p>
+But unfortunately, the PHP iconv() function does not work on some systems and it also has problems of handling Chinese words.
 So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
 The charset of article is auto-converted to the preferred one
 while the selected charset of interface is different from the charset of the news articles.
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
-The posted articles will also be converted to the charset of the original article in the server.
+The posted articles will also be converted to the charset of the original article in the news server.
 <p>
 PHP News Reader's development started around August 2001.
 I wrote this software in my leisure time, mostly in the weekend.

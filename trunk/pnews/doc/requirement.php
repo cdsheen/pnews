@@ -34,6 +34,7 @@ echo <<<EOH
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0><tr><td>
+<font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
 </td><td align=right valign=bottum>
 <font face="Georgia" size=1>Release Date: $pnews_release</font>
 </td></tr></table>
@@ -58,7 +59,7 @@ The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a>
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
 <p>
 If your server is operated by INN, you should check about the NNRP access permission.
-For example, when you telnet to an INN News server at port 119, you must get response like this: (the <b>NNRP</b> in bold)
+For example, when you telnet to an INN News server at port 119, you must get response like this: (note the <b>NNRP</b> in bold)
 <ul>
 200 nopy.com InterNetNews <b>NNRP</b> server INN 2.3.2 ready (posting ok).
 </ul>
