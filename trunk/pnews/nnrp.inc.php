@@ -200,46 +200,48 @@ function nnrp_head ( $nhd, $artnum, $func = null ) {
 
 	if( $code[0] != '2' )
 		return(null);
-
 	$n = 0 ;
-	while( $buf = fgets( $nhd, 4096 ) ) {
-		$buf = chop( $buf );
-		if( $buf == "." )
-			break;
-		preg_match( '/^([^:]+): (.+)$/', $buf, $match );
-		if( $match[1] == 'Subject' ) {
-			$head[2] = decode_subject($match[2]);
-			if( $func )
-				$head[2] = $func( $head[2] );
+	$nowline = fgets( $nhd, 4096 );
+	$nowline = chop($nowline);
+	while( $nowline && $nowline != '.' ) {
+		$nextline = fgets( $nhd, 4096 );
+		$nextline = chop($nextline);
+		if( preg_match( '/^\s/', $nextline ) ) {
+			$nowline .= trim($nextline);
+			$nextline = fgets( $nhd, 4096 );
+			$nextline = chop($nextline);
 		}
-		else {
-			if( $func )
-				$match[2] = $func( $match[2] );
-			if( $match[1] == 'From' ) {
-				if( preg_match( '/^<(\S+)@(\S+)>$/', $match[2], $from ) ) {
-					$head[0] = $from[1];
-					$head[1] = $from[1] . '@' . $from[2];
-				}
-				elseif( preg_match( '/^(\S+)@(\S+)$/', $match[2], $from ) ) {
-					$head[0] = $from[1];
-					$head[1] = $from[0];
-				}
-				elseif( preg_match( '/^"?([^"]+)?"? <(\S+@\S+)>$/', $match[2], $from ) ) {
-					$head[0] = decode_subject($from[1]);
-					$head[1] = $from[2];
-				}
-				elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $match[2], $from ) ) {
-					$head[0] = decode_subject($from[2]);
-					$head[1] = $from[1];
-				}
+		preg_match( '/^([^:]+): (.+)$/', $nowline, $match );
+		$match[2] = decode_subject($match[2]);
+		if( $func )
+			$match[2] = $func( $match[2] );
+		if( $match[1] == 'From' ) {
+			if( preg_match( '/^<(\S+)@(\S+)>$/', $match[2], $from ) ) {
+				$head[0] = $from[1];
+				$head[1] = $from[1] . '@' . $from[2];
 			}
-			elseif( $match[1] == 'Date' )
-				$head[3] = strftime("%Y/%m/%d %H:%M:%S", strtotime($match[2]));
-			elseif( $match[1] == 'Message-ID' )
-				$head[4] = $match[2];
-			elseif( $match[1] == 'Organization' )
-				$head[5] = $match[2];
+			elseif( preg_match( '/^(\S+)@(\S+)$/', $match[2], $from ) ) {
+				$head[0] = $from[1];
+				$head[1] = $from[0];
+			}
+			elseif( preg_match( '/^"?([^"]+)?"? <(\S+@\S+)>$/', $match[2], $from ) ) {
+				$head[0] = decode_subject($from[1]);
+				$head[1] = $from[2];
+			}
+			elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $match[2], $from ) ) {
+				$head[0] = decode_subject($from[2]);
+				$head[1] = $from[1];
+			}
 		}
+		elseif( $match[1] == 'Date' )
+			$head[3] = strftime("%Y/%m/%d %H:%M:%S", strtotime($match[2]));
+		elseif( $match[1] == 'Message-ID' )
+			$head[4] = $match[2];
+		elseif( $match[1] == 'Organization' )
+			$head[5] = $match[2];
+		elseif( $match[1] == 'Subject' )
+			$head[2] = decode_subject($match[2]);
+		$nowline = $nextline;
 	}
 	return($head);
 }
