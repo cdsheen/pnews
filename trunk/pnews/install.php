@@ -415,7 +415,7 @@ PHP News Reader - Installation and Configuration
     or &quot;nopy.rec.*&quot; from the news server &quot;news2.domain.org&quot;, 
     and the &quot;zh-cn&quot; encoding is used in these groups.</p>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
-  <p>Two possible settings of &quot;option&quot; is currently supported.</p>
+  <p>Two possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>
   <blockquote> 
     <p>This catalog will become the default catalog when user first come in.</p>
