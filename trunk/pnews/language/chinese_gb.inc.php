@@ -62,7 +62,7 @@ $strPost               = '发表文章';
 
 $strCloseWindow        = '关闭视窗';
 
-$strShowHeader         = '显示全部';
+$strShowHeader         = '文章资讯';
 
 $strFirstPage          = '第一页';
 $strLastPage           = '最後一页';

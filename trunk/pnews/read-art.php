@@ -177,9 +177,10 @@ nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n", $artconv['to'], 
 
 nnrp_close($nhd);
 
-echo "</td></tr><tr><td align=center colspan=2>\n";
+echo "</td></tr>"
 
-echo "</td></tr>";
+#echo "<tr><td align=center colspan=2></td></tr>\n";
+
 echo "</table>";
 
 toolbar( $server, $group, $artnum, $subject );

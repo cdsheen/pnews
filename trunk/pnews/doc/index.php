@@ -55,11 +55,18 @@ PHP News Reader is a web based News Reader.
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
-PHP News Reader does not require your PHP installation to be compiled with IMAP support.
-PHP News Reader use a self-written NNRP Library to access news server via NNTP.
-And it works just fine without any database installation.
+Main features:
+<ul>
+<li>Reading/Posting/Replying/Crossposting/Forwarding/Deleting News articles.
+<li>Multiple News server and multiple catalog of news groups.
+<li>Support NNTP over SSL (NNTPS) and NNTP authentication.
+<li>Downloading of uuencoded attachment.
+<li>No database access, no IMAP-enabled PHP module.
+<li>Authentication is easily configured to work with your existing system.
+<li>Multiple language interface and chinese coding conversion.
+</ul>
 <p>
-PHP News Reader does not support threading of News articles and per-user newsgroups subscription.
+PHP News Reader does not support threading of News articles. It is in my to-do list.
 <p>
 Conformed Standards:
 <ul>
