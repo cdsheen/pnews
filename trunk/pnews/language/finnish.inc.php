@@ -63,6 +63,8 @@ $strPost               = 'Lähetä artikkeli';
 
 $strCloseWindow        = 'Sulje';
 
+$strShowHeader         = 'Näyt? otsakkeet';
+
 $strFirstPage          = 'Ensimmäinen';
 $strLastPage           = 'Viimeinen';
 $strNextPage           = 'Seuraava';
