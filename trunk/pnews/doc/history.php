@@ -30,7 +30,7 @@ echo <<<EOH
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>PHP News Reader - Changelog / History</title>
+<title>PHP News Reader - Release notes and History</title>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0>
@@ -44,7 +44,7 @@ echo <<<EOH
 </tr>
 </table>
 <font size=3 color=black face="Georgia">
-<a href=index.php>PHP News Reader</a> Release histroy
+<a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
