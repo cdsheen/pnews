@@ -134,7 +134,7 @@ echo <<<EOR
         <td align=right width=32pt>$strNumber</td>
         <td width=70%>$strSubject</td>
         <td align=center width=120pt>$strAuthor</td>
-        <td align=center width=100pt>$strTime</td>
+        <td align=center width=110pt>$strTime</td>
     </tr>
 
 EOR;
