@@ -69,7 +69,8 @@ EOX;
 function show_language_switch() {
 	global $CFG, $lang_option, $curr_language;
 	if( $CFG['language_switch'] ) {
-		$uri = $_SERVER['REQUEST_URI'];
+		$uri = isset($_SERVER['REQUEST_URI']) ?
+			$_SERVER['REQUEST_URI'] : $_SERVER['SCRIPT_NAME'] . (( isset($_SERVER['QUERY_STRING']) ) ? '?' . $_SERVER['QUERY_STRING'] : '');
 		$path = preg_replace( '/\/([^\/]+)$/', '/', $uri );
 		if( $CFG['url_rewrite'] )
 			echo "<select class=lang onChange='change_language_base( \"" . $CFG['url_base'] . "\", this.value, \"$path\", \"$uri\");'>\n";

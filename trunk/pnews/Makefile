@@ -19,7 +19,7 @@
 # Copyright (C) 2001-2004 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
-ZIPNAME=pnews252-p1
+ZIPNAME=pnews253
 
 all:	pkg
 
@@ -42,7 +42,7 @@ gb:
 
 www:
 	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
-	cp -f doc/style.css doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f doc/style.css doc/header.php doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
 	cp -f doc/index.php /home/users/c/cd/cdsheen/groups/htdocs/pnews.php
 
 clean:

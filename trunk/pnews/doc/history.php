@@ -39,12 +39,13 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.5.3 (2004/02/20)
+PHP News Reader v2.5.3 (2004/02/22)
 <ul>
 <li>Added Italian translation (by Francesco Rolando)
 <li>Various fixes for the javascript errors for single quote problem.
 <li>Fix for the showing of the first article in a new newsgroup.
 <li>Support for the configuration of HTML META description and keywords (<a href=guide.php#meta_description>\$CFG['meta_description']</a>,<a href=guide.php#meta_keywords>\$CFG['meta_keywords']</a>)
+<li>All articles will be listed when the number of articles is less than one page.
 </ul>
 PHP News Reader v2.5.2 (2004/01/22)
 <ul>

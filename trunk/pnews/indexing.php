@@ -125,9 +125,15 @@ while( $i >= $lowmark ) {
 	$cut_end = array_search( $i, $artlist );
 	if( $cut_end !== false ) {
 		echo "<!-- found $i at $cut_end -->\n";
-		$cut_from = $cut_end - $artsppg + 1;
-		if( $cut_from < 0 )
+		if( $artsize <= $artsppg ) {
 			$cut_from = 0;
+			$cut_end = $artsize-1;
+		}
+		else {
+			$cut_from = $cut_end - $artsppg + 1;
+			if( $cut_from < 0 )
+				$cut_from = 0;
+		}
 		$ncount = $cut_end - $cut_from + 1;
 		for( $j = $cut_end ; $j >= $cut_from ; $j-- )
 			$curlist[] = $artlist[$j];

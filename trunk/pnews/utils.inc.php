@@ -35,14 +35,16 @@ require_once('nnrp.inc.php');
 
 # Global variables
 
-$uri              = $_SERVER['REQUEST_URI'];
+$uri = isset($_SERVER['REQUEST_URI']) ?
+	$_SERVER['REQUEST_URI'] : $_SERVER['SCRIPT_NAME'] . (( isset($_SERVER['QUERY_STRING']) ) ? '?' . $_SERVER['QUERY_STRING'] : '');
+
 $self             = $_SERVER['PHP_SELF'];
 $ip_from          = $_SERVER['REMOTE_ADDR'];
 $self_base        = basename( $self );
 
 $auto_slash       = get_magic_quotes_gpc();
 
-$referal          = $_SERVER['HTTP_REFERER'];
+$referal          = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 
 $show_mode        = 0;
 
@@ -87,7 +89,7 @@ $private_catalogs = array();
 
 while( $buf = fgets( $lst, 512) ) {
 	$buf = chop( $buf );
-	if( $buf[0] == '#' || strlen( $buf ) == 0 )
+	if( strlen( $buf ) == 0 || $buf[0] == '#' )
 		continue;
 
 	if( preg_match( '/^\[(.+)\]$/', $buf, $match ) ) {
@@ -152,7 +154,7 @@ fclose($lst);
 
 $catalog_num++;
 
-if( $_SESSION['save_postvar'] ) {
+if( isset($_SESSION['save_postvar']) ) {
 	$_POST = $_SESSION['POSTVAR'];
 	$_SESSION['POSTVAR'] = array();
 	$_SESSION['save_postvar'] = false;
@@ -161,7 +163,7 @@ if( $_SESSION['save_postvar'] ) {
 ##############################################################################
 # Determine the $curr_catalog
 
-$server = $_GET['server'];
+$server = isset($_GET['server']) ? $_GET['server'] : '';
 $group  = get_group();
 #echo "$server/haha/";
 #echo $_GET['server'];
@@ -340,7 +342,7 @@ if( $CFG['auth_type'] != 'open' ) {
 	}
 }
 
-$info = $_SESSION['auth_info'];
+$info = isset($_SESSION['auth_info']) ? $_SESSION['auth_info'] : '';
 if( is_array($info) && $database_convert['to'] )
 	foreach( $info as $var => $value )
 		$_SESSION['auth_info'][$var] = $database_convert['to']($value);
@@ -584,7 +586,7 @@ ERR;
 }
 
 function vars_convert( $instr ) {
-	$info = $_SESSION['auth_info'];
+	$info = isset($_SESSION['auth_info']) ? $_SESSION['auth_info'] : '';
 	if( is_array($info) )
 		foreach( $info as $var => $value )
 			$instr = str_replace( $var, $value, $instr );
@@ -781,7 +783,7 @@ EMAIL;
 }
 
 function get_group() {
-	$qstr = $_SERVER['QUERY_STRING'];
+	$qstr = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 	$vars = explode( '&', $qstr );
 	foreach( $vars as $var ) {
 		if( preg_match( '/^group=(.+)$/', $var, $match ) )

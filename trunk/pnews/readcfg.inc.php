@@ -260,7 +260,7 @@ if( !isset($CFG['interface_language']) || !in_array( $CFG['interface_language'],
 else
 	$default_language = $CFG['interface_language'];
 
-$CFG['charset']['interface'] = $lang_coding[$default_language];
+#$CFG['charset']['interface'] = $lang_coding[$default_language];
 
 foreach( $checks as $section ) {
 	if( !isset( $CFG['charset'][$section] ) )
