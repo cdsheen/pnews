@@ -138,7 +138,7 @@ echo "<center>\n";
 
 	if( !isset($_GET['header']) ) {
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<a href=\"$headerurl\">$strShowHeader</a>";
+		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$strShowHeader</span>";
 		echo "</td>\n";
 	}
 
@@ -180,6 +180,9 @@ if( isset($_GET['header']) )
 
 if( $CFG['image_inline'] )
 	$show_mode |= IMAGE_INLINE;
+
+if( $CFG['hide_email'] )
+	$show_mode |= HIDE_EMAIL;
 
 #if( $artconv['to'] )
 

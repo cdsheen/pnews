@@ -372,6 +372,7 @@ define( 'SHOW_NULL_LINE',   8 );
 define( 'SHOW_HEADER',     16 );
 define( 'FILTER_ANSI',     32 );
 define( 'IMAGE_INLINE',    64 );
+define( 'HIDE_EMAIL',     128 );
 
 function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null, $download_url = '' ) {
 
@@ -384,6 +385,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 	$show_header    = ($mode & SHOW_HEADER)     >0;
 	$filter_ansi    = ($mode & FILTER_ANSI)     >0;
 	$image_inline   = ($mode & IMAGE_INLINE)    >0;
+	$hide_email     = ($mode & HIDE_EMAIL)      >0;
 
 	if( $show_header )
 		send_command( $nhd, "ARTICLE $artnum" );
@@ -400,6 +402,11 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 			$buf = chop($buf);
 			if( $buf == '.' || $buf == '' )
 				break;
+
+			list($field, $value) = explode( ':', $buf );
+
+			if( $hide_email && !strstr( $buf, $artinfo['msgid'] ) )
+				$buf = preg_replace( '/\b([\w-_.]+)@([\w-_.]+)/', '$1 at $2' , $buf );
 
 			$buf = htmlspecialchars( $buf, ENT_NOQUOTES );
 

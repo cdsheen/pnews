@@ -74,3 +74,4 @@ textarea.content{ vertical-align: top; background: #202020; width: 100%; height:
 
 pre.content     { font-size: 12px; font-family: monospace; color: white }
 
+span.link       { color: yellow; cursor: hand }
