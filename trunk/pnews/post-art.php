@@ -84,7 +84,7 @@ if( $_POST['content'] != '' ) {
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
 	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr>\n";
 	echo "<tr><td align=right>$strGroup: </td><td><font color=blue>$group</font></td></tr></table><hr>\n";
-	echo '<font size=2 color=black>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</font>\n";
+	echo '<font size=2 color=black face=monospace>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</font>\n";
 	html_delay_close( 2000 );
 	echo "<hr>\n";
 	html_tail();

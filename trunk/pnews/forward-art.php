@@ -62,7 +62,7 @@ if( $_POST['content'] != '' ) {
 	echo "<tr><td align=right>$strReceiver: </td><td><font color=blue>$receiver</font></td></tr>\n";
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
 	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr></table>\n";
-	echo '<hr><pre><font size=3 color=black>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
+	echo '<hr><pre><font size=3 color=black face=monospace>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
 	echo "<hr>\n";
 
 	$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";

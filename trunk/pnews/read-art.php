@@ -155,7 +155,7 @@ echo "<td align=right class=x>$org</td></tr>\n";
 
 echo "<tr><td colspan=2 bgcolor=#EEFFEE>";
 
-echo "<hr><font size=2>";
+echo "<hr><font size=2 face=monospace>";
 if( $artconv['to'] )
 	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $artconv['to'] );
 else

@@ -288,6 +288,10 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 		if( $trans_func )
 			$buf = $trans_func( $buf );
 
+		# replace the leading space as &nbsp;
+		if( preg_match( '/^(\s+)(.+)$/', $buf , $match ) )
+			$buf = str_repeat( '&nbsp;', strlen($match[1]) ) . $match[2];
+
 		echo $prepend . $buf . $postpend;
 	}
 }

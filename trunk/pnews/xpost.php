@@ -93,7 +93,7 @@ if( $content != '' && $postgroup != '' ) {
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";
 	echo "<tr><td align=right>$strSubject: </td><td><font color=blue>" . htmlspecialchars( $subject ) . "</font></td></tr>\n";
 	echo "<tr><td align=right>$strGroup: </td><td><font color=blue>$postgroup</font></td></tr></table><hr>\n";
-	echo '<pre><font size=3 color=black>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
+	echo '<pre><font size=3 color=black face=monospace>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</font></pre>\n";
 	echo "<hr>\n";
 
 	html_delay_close( 2000 );

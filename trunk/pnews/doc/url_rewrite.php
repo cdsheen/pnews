@@ -28,6 +28,10 @@ If you enable the URL rewriting, the link will become:
 <ul>
 http://webnews.domain.net/news/article/news.nopy.com/nopy.test/21012
 </ul>
+If <i>news.nopy.com</i> is your default news server, the link becomes shorter (v2.0.1):
+<ul>
+http://webnews.domain.net/news/article//nopy.test/21012
+</ul>
 To enable URL Rewrite, you need:
 <ul>
 <li>Apache web server with "mod_rewrite" enabled

@@ -26,6 +26,8 @@ PHP News Reader v2.2.1 (2003/06/??) - not released yet
 <ul>
 <li>The default news server address can be ignored when $CFG["url_rewrite"] is enabled
 <li>Handling quotes correctly with the <i>magic_quotes_gpc</i> state of PHP.
+<li>The leading spaces are displayed as-is while reading articles.
+<li>Article is displayed in \'mono-space\' font.
 </ul>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>
