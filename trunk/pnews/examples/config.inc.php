@@ -383,6 +383,18 @@ $CFG["organization"] = "XXX News Server";
 // $CFG["post_signature"] = "\n-- \nPOST BY: PHP News Reader\n";
 
 
+# [meta_description] The META desctiption embeded in HTML header
+#                    (default: "PHP News Reader")
+
+// $CFG["meta_desciption"] = "Web-based News Reader";
+
+
+# [meta_keywords] The META keywords embeded in HTML header
+#                 (default: "news,pnews,webnews,nntp")
+
+// $CFG["meta_keywords"] = "news,computer,network";
+
+
 # [show_sourceforge_logo] Show SourceForge logo (default: false)
 
 $CFG["show_sourceforge_logo"] = true;

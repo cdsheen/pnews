@@ -33,11 +33,12 @@ echo <<<EOH
 <title>PHP News Reader - URL Rewrite</title>
 </head>
 <body style="background-color: #EEFFFF">
-<table width=100% cellpadding=0 cellspacing=0><tr><td>
-<font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
-</td><td align=right valign=bottum>
-<font face="Georgia" size=1>Release Date: $pnews_release</font>
-</td></tr></table>
+
+EOH;
+
+include('header.php');
+
+echo <<<EOH
 <font size=3 color=black face="Georgia">
 URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
 <hr />

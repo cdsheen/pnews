@@ -1,17 +1,21 @@
 <?
-	include_once('../version.inc.php');
 
-	$menus = array( 'index.php' => 'Introduction',
-			'guide.php' => 'Documentation',
-			'history.php' => 'Changes',
-			'download.php' => 'Download' );
+include_once('../version.inc.php');
 
-	$titles = array( 'index.php' => 'PHP News Reader - Introduction',
-			'guide.php' => 'PHP News Reader - Installation and Configuration Documentation',
-			'history.php' => 'PHP News Reader - Release notes and Histroy',
-			'download.php' => 'PHP News Reader - Download' );
+$menus = array( 'index.php' => 'Introduction',
+		'guide.php' => 'Documentation',
+		'history.php' => 'Changes',
+		'download.php' => 'Download' );
 
-	echo <<<REL
+$titles = array( 'index.php' => 'PHP News Reader - Introduction',
+		'guide.php' => 'PHP News Reader - Installation and Configuration Documentation',
+		'history.php' => 'PHP News Reader - Release notes and Histroy',
+		'download.php' => 'PHP News Reader - Download',
+		'requirement.php' => 'PHP News Reader - Requirement',
+		'acknowlege.php' => 'PHP News Reader - Acknowlegement',
+		'url_rewrite.php' => 'PHP News Reader - URL Rewriting with Apache/mod_rewrite' );
+
+echo <<<REL
 <table width=100% cellpadding=0 cellspacing=0>
 <tr>
  <td>
@@ -36,7 +40,7 @@ REL;
 		if( $curr_scr == $scr )
 			echo "<td align=25% bgcolor=black><font size=3 color=white>$menu</font></td>\n";
 		else
-			echo "<td align=25%><a href=$scr><font size=3>$menu</font></a></td>\n";
+			echo "<td align=25% bgcolor=#FFFFA0 onMouseover='this.bgColor=\"#D0E0D0\"' onMouseout='this.bgColor=\"#FFFFA0\"'><a href=$scr><font size=3>$menu</font></a></td>\n";
 	}
 	echo "</tr>\n";
 	echo "</table>\n";

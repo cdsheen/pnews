@@ -43,7 +43,8 @@ PHP News Reader v2.5.3 (2004/02/20)
 <ul>
 <li>Added Italian translation (by Francesco Rolando)
 <li>Various fixes for the javascript errors for single quote problem.
-<li>The first article in the new newsgroup is now shown correctly.
+<li>Fix for the showing of the first article in a new newsgroup.
+<li>Support for the configuration of HTML META description and keywords (<a href=guide.php#meta_description>\$CFG['meta_description']</a>,<a href=guide.php#meta_keywords>\$CFG['meta_keywords']</a>)
 </ul>
 PHP News Reader v2.5.2 (2004/01/22)
 <ul>

@@ -653,6 +653,18 @@ You can download phpCAS from the following place:<br />
     <p>The signature which been appended at each posted article (default: <i>""</i>)</p>
     <p>Note: This is NOT a per-user setting!</p>
   </blockquote>
+<a name=meta_description></a>
+  <p> <strong>$CFG["meta_description"]</strong></p>
+  <blockquote> 
+    <p>The META description embeded in HTML header (default: <i>"PHP News Server"</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.3</b> of PHP News Reader</p>
+  </blockquote>
+<a name=meta_keywords></a>
+  <p> <strong>$CFG["meta_keywords"]</strong></p>
+  <blockquote> 
+    <p>The META keywords embeded in HTML header (default: <i>"news,pnews,webnews,nntp"</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.3</b> of PHP News Reader</p>
+  </blockquote>
 <a name=show_sourceforge_logo></a>
   <p> <strong>$CFG["show_sourceforge_logo"]</strong></p>
   <blockquote> 
