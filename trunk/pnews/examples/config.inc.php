@@ -276,6 +276,11 @@ $CFG["title"] = "XXX News Service";
 // $CFG["show_article_popup"] = on;
 
 
+# [email_editing] Allow E-Mail editing when posting article (default: on)
+
+// $CFG["email_editing"] = off;
+
+
 # [filter_ansi_color] Show article in pupup window (default: on)
 
 // $CFG["filter_ansi_color"] = off;

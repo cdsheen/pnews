@@ -462,6 +462,11 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
   <blockquote> 
     <p>sort newsgroups in each catalog (default: false)</p>
   </blockquote>
+<a name=email_editing></a>
+  <p><strong>$CFG[&quot;email_editing&quot;]</strong></p>
+  <blockquote> 
+    <p>Allow E-Mail editing when posting article (default: true)</p>
+  </blockquote>
 <a name=articles_per_page></a>
   <p><strong>$CFG[&quot;articles_per_page&quot;]</strong></p>
   <blockquote> 
@@ -627,13 +632,13 @@ Besides this, you should first install phpCAS in CAS/ for this method to run wel
   Groups can be specified in the following syntax:
   <ol>
     <li>Full group name for inclusion, i.e: <b>tw.bbs.comp.hardware</b><br><br>
-    <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br>
+    <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br><br>
         Only the final class of group name can be used in pattern match<br>
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is NOT valid.<br>
-        Before v2.2.4, only all-sub-class patttern is allowed in the final class pattern of group name<br>
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is NOT valid before v2.2.4.<br>
-        After v2.2.5, the final class pattern is not restricted to a single <b>*</b>,<br>
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now valid in v2.2.5 and later.<br><br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is INVALID.<br><br>
+        Before v2.2.4, only 'all-match' patttern (a single <b>*</b> ) is allowed in the final class pattern of group name<br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in v2.2.4, while <b>tw.bbs.comp.*</b> is VALID.<br><br>
+        After v2.3.0, the final class pattern is not restricted to a single <b>*</b>,<br>
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in v2.3.0 or later.<br><br>
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br>
         Only full group name is allowed here, it is used to nagative the previously included group.
   </ol>

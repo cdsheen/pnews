@@ -211,6 +211,9 @@ $default_charset = $CFG['charset']['interface'];
 if( !isset( $CFG['url_rewrite'] ) ) 
 	$CFG['url_rewrite'] = false;
 
+if( !isset( $CFG['email_editing'] ) ) 
+	$CFG['email_editing'] = true;
+
 if( !isset( $CFG['articles_per_page'] ) ) 
 	$CFG['articles_per_page'] = 20;
 

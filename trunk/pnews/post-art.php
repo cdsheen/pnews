@@ -34,7 +34,10 @@ if( $_POST['content'] != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$email = $_POST['email'];
+	if( $CFG['email_editing'] )
+		$email = $_POST['email'];
+	else
+		$email = $auth_email;
 
 	if( $auto_slash ) {
 		$nickname = stripslashes($_POST['nickname']);
@@ -147,12 +150,13 @@ else {
 	}
 </script>
 <?
+$mail_disable = $CFG['email_editing'] ? '' : ' disabled';
 echo <<<EOF
 <form name=post action="$self" method=post>
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
  <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td></tr>
- <tr><td class=field>$strEmail:</td><td><input name=email size=40 value="$auth_email"></td></tr>
+ <tr><td class=field>$strEmail:</td><td><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
  <tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value="$group" disabled></td></tr>
  <tr><td class=field>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>
  <tr><td class=field>$strContent:</td><td align=right>

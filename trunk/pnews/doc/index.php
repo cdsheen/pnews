@@ -87,6 +87,7 @@ There are various handy authentication modules availabled.
 <li>MySQL - authenticate user existing in MySQL database.
 <li>PostgreSQL - authenticate user existing in PostgreSQL database.
 <li>NNTP - authenticate user using NNTP server. (version >= 2.2.1)
+<li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
 </ul>
 <p>
 The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.

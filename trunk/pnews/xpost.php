@@ -40,11 +40,14 @@ if( $content != '' && $postgroup != '' ) {
 		session_error();
 
 	$nickname   = $_POST['nickname'];
-	$email      = $_POST['email'];
 	$content    = $_POST['content'];
 	$subject    = $_POST['subject'];
 	$refid      = $_POST['refid'];
-#	$authormail = $_POST['authormail'];
+
+	if( $CFG['email_editing'] )
+		$email = $_POST['email'];
+	else
+		$email = $auth_email;
 
 	if( $auto_slash ) {
 		$subject  = stripslashes( $_POST['subject'] );
@@ -196,10 +199,12 @@ elseif( $artnum != '' ) {
 	}
 </script>
 <?
+	$mail_disable = $CFG['email_editing'] ? '' : ' disabled';
+
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table cellspacing=0 cellpadding=0 width=100%>\n";
 	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
-	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td></tr>\n";
+	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td></tr>\n";
 	echo "<tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
 	echo "<tr><td class=field>$strSubject:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
 

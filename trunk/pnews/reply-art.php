@@ -36,7 +36,11 @@ if( $_POST['content'] != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$email      = $_POST['email'];
+	if( $CFG['email_editing'] )
+		$email = $_POST['email'];
+	else
+		$email = $auth_email;
+
 	$refid      = $_POST['refid'];
 	$authormail = $_POST['authormail'];
 
@@ -213,12 +217,13 @@ elseif( $artnum != '' ) {
 	}
 </script>
 <?
+	$mail_disable = $CFG['email_editing'] ? '' : ' disabled';
 #	$subject = str_replace( '"', '\"', $subject );
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
 	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
 	echo " <td class=text><input name=replymail type=checkbox>$strReplyToAuthor</td></tr>\n";
-	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\"></td>\n";
+	echo "<tr><td class=field>$strEmail:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td>\n";
 	echo " <td class=text><input name=onlymail type=checkbox onClick='check_reply();'>$strNotPostToGroup</td></tr>\n";
 	echo "<tr><td class=field>$strGroup:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td>\n";
 	echo " <td class=text><input class=normal type=button value=\"$strFormConfirmPost\" onClick='verify()' tabindex=2>\n";
