@@ -49,9 +49,12 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.3.0 (2003/09/06)
+PHP News Reader v2.3.1 (2003/09/28)
 <ul>
-<li>Reading article with invalid artnum will be redirected into indexing page
+<li>Reading article with invalid artnum will be redirected into indexing page.
+<li>Better error handling when news server is unavailable.
+<li>Remove the read-only indication.
+<li>Fix several missing style sheet errors.
 </ul>
 PHP News Reader v2.3.0 (2003/09/06)
 <ul>

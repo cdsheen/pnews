@@ -34,37 +34,23 @@ for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 	if( ! $nhd[$news_server[$i]] ) {
 #		echo "open " . $news_server[$i] . " as $i<br>\n";
 		$nhd[$i] = $nhd[$news_server[$i]] = nnrp_open( $news_server[$i] );
-
+/*
 		if( ! $nhd[$i] ) {
-			echo "<p><font size=3>$strConnectServerError<br><br>" . $news_server[$i] . "</font><br>\n";
+			echo "<p><font size=3>$strConnectServerError (" . $news_server[$i] . ")</font><br>\n";
 			html_foot();
 			html_tail();
 			exit;
 		}
+*/
 	}
 	else
 		$nhd[$i] = $nhd[$news_server[$i]];
 }
 
-nnrp_authenticate( $nhd[$curr_catalog] );
+echo "<br><table width=95%><tr><td valign=top width=120>\n";
 
-$active = nnrp_list_group( $nhd[$curr_catalog], $news_groups[$curr_catalog], $article_convert['to'] );
-
-if( $active == null ) {
-	echo "<p><font size=3 color=black>$strConnectServerError</font>\n";
-	html_foot();
-	html_tail();
-	exit;
-}
-
-if( $post_restriction ) {
-	echo "<font color=red>* $strReadonlyNotify</font>\n";
-	echo '<p>';
-}
 $maxr = 30;
 $maxc = $catalog_num / $maxr;
-
-echo "<br><table width=95%><tr><td valign=top width=120>\n";
 
 echo "<table border=1 cellpadding=2 cellspacing=0>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
@@ -114,6 +100,31 @@ else {
 echo "</table>\n";
 
 echo "</td><td valign=top align=left>";
+
+if( ! $nhd[$curr_catalog] ) {
+	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	html_foot();
+	html_tail();
+	exit;
+}
+
+nnrp_authenticate( $nhd[$curr_catalog] );
+
+$active = nnrp_list_group( $nhd[$curr_catalog], $news_groups[$curr_catalog], $article_convert['to'] );
+
+if( $active == null ) {
+	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	html_foot();
+	html_tail();
+	exit;
+}
+
+/*
+if( $post_restriction ) {
+	echo "<font color=red>* $strReadonlyNotify</font>\n";
+	echo '<p>';
+}
+*/
 
 
 echo "<table width=100% border=1 cellpadding=1 cellspacing=0>\n";
