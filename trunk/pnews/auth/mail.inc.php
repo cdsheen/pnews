@@ -38,9 +38,9 @@ function check_user_password( $username, $password ) {
 	}
 
 	if( $protocol == 'pop3s' )
-		$default_port = 995;
+		$default_port = 995;	/* POP3 over SSL */
 	else
-		$default_port = 110;
+		$default_port = 110;	/* POP3 */
 
 	if( strstr( $server, ':' ) )
 		list( $server, $port ) = split( ':', $server );
