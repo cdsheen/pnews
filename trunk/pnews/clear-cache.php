@@ -53,6 +53,8 @@ function clear_cache( $dir ) {
 	while( $f = readdir($d) ) {
 		if( is_dir("$dir/$f") && $f[0] != '.' )
 			clear_cache( "$dir/$f");
+		elseif( preg_match( '/^attach-\d+-/', $f ) )
+			unlink( "$dir/$f" );
 	}
 	closedir($d);
 }

@@ -542,7 +542,7 @@ class pnews_nnrp {
 		if( $this->cache_dir ) {
 			$gdir = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $this->curr_group );
 			mkdirs($gdir);
-			$cache_file = $gdir . "/art$artnum-$filename";
+			$cache_file = $gdir . "/attach-$artnum-$filename";
 			if( file_exists( $cache_file ) && ( $fsize=filesize($cache_file) ) > 0 ) {
 				return( array( $cache_file, $fsize ) );
 			}
