@@ -89,9 +89,9 @@ if( is_array($CFG['links']) )
 			$text = $config_convert['to']($text);
 			$link = $config_convert['to']($link);
 		}
-		echo "<tr><td colspan=$maxc width=100 bgcolor=#FFDDEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
+		echo "<tr><td colspan=$maxc width=100 bgcolor=#FFEEEE align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFEEEE\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
 	}
-echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
+#echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
 if( $CFG['auth_type'] != 'open' && $auth_success )
 	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?logout=1\">$strLogout</a></td></tr>";
 if( $CFG['auth_type'] == 'optional' && !$auth_success )
