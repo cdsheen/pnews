@@ -30,7 +30,7 @@ function check_user_password( $username, $password ) {
 	else
 		$port = 119;
 
-	$sock = fsockopen( $server, $port );
+	$sock = @fsockopen( $server, $port );
 
 	if( !$sock )
 		return(null);

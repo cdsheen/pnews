@@ -32,7 +32,7 @@ function check_user_password( $username, $password ) {
 	else
 		$port = 995;
 
-	@fsockopen( "ssl://$server", $port, $errno, $errstr, 5 );
+	$sock = @fsockopen( "ssl://$server", $port, $errno, $errstr, 5 );
 	if( !$sock )
 		return(null);
 
