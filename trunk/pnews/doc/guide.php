@@ -511,12 +511,12 @@ You can download phpCAS from the following place:<br />
 <a name=title></a>
   <p> <strong>$CFG[&quot;title&quot;]</strong></p>
   <blockquote> 
-    <p>The title for this webnews (default: &quot;Webnews&quot;)</p>
+    <p>The title for this webnews, no HTML tag is allowed here. (default: &quot;Webnews&quot;)</p>
   </blockquote>
 <a name=banner></a>
   <p><strong>$CFG[&quot;banner&quot;]</strong></p>
   <blockquote> 
-    <p>The banner text or images (default: &quot;&quot;)</p>
+    <p>The banner text or images, HTML tags are allowed here. (default: &quot;&quot;)</p>
     <p>$CFG["banner"] = "&lt;img src=banner.jpg&gt;";
   </blockquote>
 <a name=group_list></a>
