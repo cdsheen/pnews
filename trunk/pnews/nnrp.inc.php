@@ -76,7 +76,20 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 			continue;
 		}
 
-		send_command( $nhd, "LIST active $group");
+		if( strchr( $group, '*' ) && preg_match( '/\.((_-\w\*)+)$/', $group, $match ) ) {
+			$re_match = $match[1];
+			$re_group = str_replace( $re_match, '*', $group );
+			$re_filter = str_replace( '*', '[^\.]*', $re_match );
+		}
+		else
+			$re_match = '*';
+
+#		echo "$re_match,$re_group,$re_filter<br>";
+
+		if( $re_match == '*' )
+			send_command( $nhd, "LIST active $group");
+		else
+			send_command( $nhd, "LIST active $re_group" );
 		list( $code, $msg ) = get_status( $nhd );
 
 		if( $code[0] != '2' )
@@ -88,6 +101,10 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 			if( $buf == '.' )
 				break;
 			$entry = split( " ", $buf );
+
+			if( $re_match != '*' && !preg_match( "/\.$re_filter\$/i", $entry[0] ) )
+				continue;
+#			echo "$buf<br>";
 			$active[$entry[0]] = array( (int)$entry[1], (int)$entry[2] );
 		}
 
@@ -110,6 +127,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 					array_push( $active[$match[1]], $match[2] );
 			}
 		}
+
 	}
 
 	return( $active );

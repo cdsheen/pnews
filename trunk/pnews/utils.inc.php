@@ -540,8 +540,8 @@ function match_group( $group, $pattern ) {
 	$groups = split( ',', $pattern );
 
 	foreach ( $groups as $reg ) {
-		$reg = ereg_replace( '\.', '\\.', $reg );
-		$reg = ereg_replace( '\*', '.+', $reg );
+		$reg = str_replace( '.', '\\.', $reg );
+		$reg = str_replace( '*', '.*', $reg );
 		if( eregi( "^$reg\$", $group ) )
 			return(true);
 	}

@@ -49,9 +49,10 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.2.5 (2003/08/09)
+PHP News Reader v2.2.5 (2003/08/16)
 <ul>
 <li>The character '#' is included in the uri of hyperlink auto-detection.
+<li>
 </ul>
 PHP News Reader v2.2.4 (2003/07/26)
 <ul>
