@@ -411,7 +411,22 @@ echo <<<EOF
 <table>
 <tr>
  <td class=field>$strLoginName</td>
- <td class=value><input class=login name=loginName size=25></td>
+ <td class=value>
+EOF;
+
+if( $CFG['auth_method'] == 'mail' ) {
+	echo "<input class=login name=loginName size=15>\n";
+	echo "<select name=domain class=login>\n";
+	foreach( $CFG['pop3_mapping'] as $d => $s ) {
+		echo "<option value=\"$d\">$d\n";
+	}
+	echo "</select>";
+}
+else
+	echo "<input class=login name=loginName size=25>\n";
+
+echo <<<EOF
+</td>
 </tr>
 <tr>
  <td class=field>$strPassWord</td>

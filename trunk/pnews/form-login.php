@@ -30,6 +30,9 @@ if( !isset($_POST['target'], $_POST['loginName'], $_POST['passWord'] )   ) {
 $user = $_POST['loginName'];
 $pass = $_POST['passWord'];
 
+if( isset( $_POST['domain'] ) )
+	$user .= $_POST['domain'];
+
 $xref = $_POST['target'];
 
 /* Check for valid session before performing authentication */
