@@ -93,7 +93,7 @@ if( is_array($CFG['links']) )
 	}
 #echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"javascript:reload()\">$strRefresh</a></td></tr>";
 if( $CFG['auth_type'] != 'open' && $auth_success )
-	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?logout=1\">$strLogout</a></td></tr>";
+	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 if( $CFG['auth_type'] == 'optional' && !$auth_success )
 	echo "<tr><td colspan=$maxc width=100 bgcolor=#EEFFFF align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#EEFFFF\";'><a href=\"$self?login=1\">$strLogin</a></td></tr>";
 
