@@ -237,6 +237,10 @@ if( $CFG['auth_type'] != 'open' ) {
 			phpCAS::logout();
 			exit;
 		}
+		elseif( $CFG['auth_prompt'] == 'other' ) {
+			auth_logout();
+#			exit;
+		}
 		else {
 			header("Location: $referal");
 			exit;
@@ -337,10 +341,33 @@ if( $CFG['auth_type'] != 'open' ) {
 				$_SESSION['auth_ticket'] = md5( phpCAS::getUser() . session_id() . $now );
 				$auth_success = true;
 				break;
+			case 'other':
+				$_SESSION['auth_referal'] = $referal;
+				if( !auth_already_login() ) {
+					auth_show_login_page( $CFG['url_base'] );
+					exit;
+				}
+				$_SESSION['auth_time'] = time();
+				$_SESSION['auth_name'] = auth_get_name();
+				$_SESSION['auth_with'] = 'other';
+				$_SESSION['auth_info']['%u'] = auth_get_name();
+				$_SESSION['auth_info']['%e'] = auth_get_email();
+				$_SESSION['auth_ticket'] = md5( auth_get_name() . session_id() . $now );
+				break;
 			}
 		}
 	}
 }
+
+if( $CFG['auth_prompt'] == 'other' && auth_already_login() ) {
+	$auth_success = true;
+}
+
+if( isset($_SESSION['%u']) )
+	$_SESSION['%name'] = $_SESSION['%u'];
+
+if( isset($_SESSION['%e']) )
+	$_SESSION['%email'] = $_SESSION['%e'];
 
 $info = isset($_SESSION['auth_info']) ? $_SESSION['auth_info'] : '';
 if( is_array($info) && $database_convert['to'] )

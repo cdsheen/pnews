@@ -20,8 +20,8 @@
 /* Read and check the configuration (config.inc.php) */
 
 $valid_auth_type   = array( 'required', 'optional', 'open' );
-$valid_auth_prompt = array( 'http', 'form', 'cas' );
-$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user' );
+$valid_auth_prompt = array( 'http', 'form', 'cas', 'other' );
+$valid_auth_method = array( 'ldap', 'pop3', 'pop3s', 'mail', 'ftp', 'ftps', 'mysql', 'pgsql', 'nntp', 'nntps', 'cas', 'user', 'phpbb' );
 
 $valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1', 'iso-8859-15' );
 $valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'fr', 'fi', 'de', 'it' );
@@ -197,6 +197,19 @@ if( $CFG['auth_type'] != 'open' ) {
 
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'User-defined authentication module is invalid' );
+		break;
+	case 'phpbb':
+		if( file_exists('auth/phpbb.inc.php') )
+			include('auth/phpbb.inc.php');
+		else
+			show_error( 'PHPBB authentication module missed' );
+		if( !function_exists( 'auth_already_login' ) )
+			show_error( 'PHPBB authentication module is invalid' );
+		if( !isset( $CFG['auth_phpbb_url_base'] ) )
+			config_error( '$CFG["auth_phpbb_url_base"]' );
+		if( !isset( $CFG['auth_phpbb_path'] ) )
+			config_error( '$CFG["auth_phpbb_path"]' );
+		break;
 	}
 
 	if( !isset($CFG['auth_organization']) )

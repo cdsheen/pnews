@@ -1,4 +1,4 @@
-body            { font-size: 12px; color: black; background: #EEEEFF; font-family: arial }
+body            { font-size: 12px; color: black; background: white; font-family: arial }
 
 img             { border: 0px }
 
@@ -17,21 +17,21 @@ table           { empty-cells: show }
 table.shadow    { border-color: white black black white; empty-cells: show; background: white }
 
 td.bg           { background: #A0A0F0 }
-td.menu         { border-color: white; border: 2pt; width: 100px; font-size: 12px; background: #DDFFDD }
+td.menu         { border-color: white; border: 2pt; width: 100px; font-size: 12px; background: #EEEEF8 }
 td.menu_hover   { width: 100px; font-size: 12px; background: #D0D0FF }
 td.menu_select  { width: 100px; font-size: 12px; color: black; background: #D0D0FF }
 td.menu_auth    { width: 100px; font-size: 12px; background: #EEFFEE }
-td.menu_link    { width: 100px; font-size: 12px; background: #FFEEEE }
-td.menu_null    { width: 100px; font-size: 12px; background: #EEFFEE }
+td.menu_link    { width: 100px; font-size: 12px; background: #F0EEEE }
+td.menu_null    { width: 100px; font-size: 12px; background: #EEEEEE }
 
-td.login        { width: 100px; font-size: 12px; background: #EEFFFF }
+td.login        { width: 100px; font-size: 12px; background: #FFFFEE }
 td.login_hover  { width: 100px; font-size: 12px; background: #FFFFC0 }
-td.logout       { width: 100px; font-size: 12px; background: #EEFFFF }
+td.logout       { width: 100px; font-size: 12px; background: #FFFFEE }
 td.logout_hover { width: 100px; font-size: 12px; background: #FFFFC0 }
 
 tr.header       { background: #EEDDFF; color: black; font-size: 12px }
 
-td.group        { background: #DDFFDD; font-family: Georgia; font-size: 16px; font-style: italic; font-weight: bold }
+td.group        { background: #EEFFEE; font-family: Georgia; font-size: 16px; font-style: italic; font-weight: bold }
 td.group_hover  { background: #FFFF80; font-family: Georgia; font-size: 16px; font-style: italic; font-weight: bold }
 
 td.action       { width: 100px; font-size: 12px; background: #FFDDEE }
@@ -39,8 +39,8 @@ td.action_hover { width: 100px; font-size: 12px; background: #FFFFC0 }
 
 td.empty_group	{ font-size: 14px; color: black }
 
-tr.list         { background: #EEFFFF; font-size: 12px }
-tr.list_hover   { background: #FFFFA0; font-size: 12px }
+tr.list         { background: #F0EEEE; font-size: 12px }
+tr.list_hover   { background: #FFDDEE; font-size: 12px }
 
 td.page         { background: #DDFFDD; font-size: 12px }
 td.page_hover   { background: #FFFFC0; font-size: 12px }
