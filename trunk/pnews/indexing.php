@@ -109,19 +109,19 @@ echo "</td>";
 
 if( $CFG['url_rewrite'] ) {
 	if( $auth_success )
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"$urlbase/logout\">$strLogout</a></td>";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
+		echo "<td class=action align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#FFDDEE\";'><a href=\"$urlbase/login\">$strLogin</a></td>";
 }
 else {
 	if( $auth_success )
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?logout=1\">$strLogout</a></td>";
 	elseif( $CFG['auth_type'] == 'optional' )
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'><a href=\"auth.php?login=1\">$strLogin</a></td>";
 }
 
 echo <<<EOH
-        <td class=action onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
+        <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
            <a href=index.php>$strReturnToGroupList</a></td>
     </tr>
     </table>
@@ -209,7 +209,7 @@ ROW;
 echo "</table>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
-echo "<tr><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 if( $CFG["article_order_reverse"] )
 	if( $show_end < $highmark ) {
@@ -217,7 +217,7 @@ if( $CFG["article_order_reverse"] )
 			echo "<a href=\"group/$reserver/$group\">$strFirstPage</a>";
 		else
 			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		$target = $show_end + 1 ;
 
@@ -228,7 +228,7 @@ if( $CFG["article_order_reverse"] )
 	}
 	else {
 		echo $strFirstPage;
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo "<font color=gray>$strPreviousPage</font>";
 	}
 else
@@ -240,7 +240,7 @@ else
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strFirstPage</a>";
 
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/$target\">$strPreviousPage</a>";
@@ -249,11 +249,11 @@ else
 	}
 	else {
 		echo $strFirstPage;
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo "<font color=gray>$strPreviousPage</font>";
 	}
 
-echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 if( $CFG["article_order_reverse"] )
 	if( $show_from > $lowmark ) {
@@ -263,7 +263,7 @@ if( $CFG["article_order_reverse"] )
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strNextPage</a>";
 
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strLastPage</a>";
@@ -272,7 +272,7 @@ if( $CFG["article_order_reverse"] )
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
 		$totalpg = $page;
@@ -286,7 +286,7 @@ else
 		else
 			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strNextPage</a>";
 
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
 			echo "<a href=\"group/$reserver/$group\">$strLastPage</a>";
@@ -295,17 +295,17 @@ else
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
-		echo "</td><td width=10% class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
 		$totalpg = $page;
 	}
 
-echo "</td><td class=page onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+echo "</td><td class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 printf( $strPageNumber, $page, $totalpg );
 echo "</td>\n";
 
-echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
+echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$post_restriction ) {
 	echo post_article( $server, $group, $strPost );
 }
@@ -314,7 +314,7 @@ else
 echo "</td>";
 
 echo <<<EOT
-    <td class=action onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
+    <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
       <a href="javascript:reload()">$strRefresh</a>
     </td>
     </tr></table>

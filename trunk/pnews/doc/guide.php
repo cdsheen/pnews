@@ -410,9 +410,10 @@ EOH;
   </blockquote>
 <a name=style_sheet></a>
   <p><strong>$CFG[&quot;style_sheet&quot;]</strong></p>
-  <blockquote> 
-    <p>Setting the style sheet used for all html (default: &quot;style.css&quot;)</p>
+  <blockquote>
+    <p>Setting the style sheet used for all html (default: &quot;standard.css&quot;)</p>
     <p>This setting first appeared in the <b>v2.2.1</b> of PHP News Reader</p>
+    <p>After v2.2.4, the configured style sheet should be placed in the css/ subdirectory.</p>
   </blockquote>
 <a name=title></a>
   <p> <strong>$CFG[&quot;title&quot;]</strong></p>

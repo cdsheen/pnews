@@ -31,7 +31,7 @@ else
 $urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
 
 function html_head($title, $redirect = null, $bodymod = '' ) {
-	global $lang_coding, $curr_language, $urlbase;
+	global $lang_coding, $curr_language, $urlbase, $CFG;
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
 	echo <<<EOH
@@ -49,7 +49,7 @@ EOH;
 		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">\n";
 
 	echo <<<EOX
-  <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+  <LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}">
   <script language="javascript" src="utils.js"></script>
   <title>$title </title>
 </head>

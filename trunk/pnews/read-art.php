@@ -139,10 +139,10 @@ echo "<center>\n";
 	}
 
 	echo "</td>";
-	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	echo "<a href=\"$lasturl\">$strLastArticle</a>";
 	echo "</td>\n";
-	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	echo "<a href=\"$nexturl\">$strNextArticle</a>";
 	echo "</td>\n";
 	echo "</tr></table>\n";
@@ -188,34 +188,34 @@ function toolbar( $server, $group, $artnum, $title ) {
 	if( !$post_restriction ) {
 		echo "<tr>";
 		if( ! $CFG['show_article_popup'] ) {
-			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$nexturl\">$strNextArticle</a>";
 			echo "</td>\n";
-			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$lasturl\">$strLastArticle</a>";
 			echo "</td>\n";
-			echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
 			echo "</td>\n";
 		}
 
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo reply_article( $server, $group, $artnum, $strReplyDetail, false, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-#		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+#		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 #		echo reply_article( $server, $group, $artnum, $strReplyQuoteDetail, true, true );
 #		echo "</td>\n";
 
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo xpost_article( $server, $group, $artnum, $strCrossPostDetail, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo forward_article( $server, $group, $artnum, $strForwardDetail, $CFG['show_article_popup'] );
 		echo "</td>\n";
 
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email )
 			echo delete_article( $server, $group, $artnum, $strDeleteDetail, $CFG['show_article_popup'] );
 		else
@@ -224,7 +224,7 @@ function toolbar( $server, $group, $artnum, $title ) {
 	}
 
 	$host = $_SERVER['HTTP_HOST'];
-	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
 		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$strMyFavor</a>\n";
 	else
@@ -232,11 +232,11 @@ function toolbar( $server, $group, $artnum, $title ) {
 	echo "</td>\n";
 
 	if( $CFG['show_article_popup'] ) {
-		echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		echo "<a href=\"javascript:close_window()\">$strCloseWindow</a>";
 		echo "</td>";
 	}
-	echo "<td class=action onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 #	echo "Language: ";
 	show_language_switch();
 	echo "</td></tr></table>\n";

@@ -215,6 +215,12 @@ $CFG["auth_expire_time"] = 1800;
 # $CFG['https_login'] = true;
 
 
+# [style_sheet] Configure the style sheet (default: "standard.css")
+#               this style sheet must be reside in the css/ subdirectory.
+
+# $CFG['style_sheet'] = "fancy.css";
+
+
 # [title] The title for this webnews (default: "Webnews")
 
 $CFG["title"] = "XXX News Service";

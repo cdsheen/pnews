@@ -78,13 +78,13 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 		else
 			$link = "$self?catalog=$i";
 		if( $cn >= $catalog_num )
-			echo "<td class=menu>&nbsp;</td>";
+			echo "<td class=menu align=center>&nbsp;</td>";
 		elseif( $cn == $curr_catalog )
 			echo " <td class=menu_select align=center>$news_catalog[$cn]</td>\n";
 		elseif( $news_authperm[$cn] )
-			echo " <td class=menu_auth onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td class=menu_auth align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
 		else
-			echo " <td class=menu onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
+			echo " <td class=menu align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
 	}
 	echo "</tr>\n";
 }
@@ -100,15 +100,15 @@ if( is_array($CFG['links']) )
 
 if( $CFG['url_rewrite'] ) {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc class=logout onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc class=login onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$strLogin</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$strLogin</a></td></tr>";
 }
 else {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc class=logout onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc class=login onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$strLogin</a></td></tr>";
+		echo "<tr><td colspan=$maxc class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$strLogin</a></td></tr>";
 }
 
 echo "</table>\n";
@@ -176,7 +176,7 @@ while ( list ($group, $value) = each ($active) ) {
 	echo <<<EOR
 <tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
   <td align=right><i>$i</i></td>
-  <td align=right><font color=#202020>$num</font></td>
+  <td align=right>$num</td>
   <td>$glink</td>
   <td>$value[2]</td>
 </tr>
