@@ -46,6 +46,10 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
+PHP News Reader v2.4.4 (2003/11/09)
+<ul>
+<li>Fix a bug of parsing NNTP headers, which may cause coding conversion fail to work.
+</ul>
 PHP News Reader v2.4.3 (2003/11/08)
 <ul>
 <li>Workaround for MSIE SSL bug about attachment downloads (<a href="http://support.microsoft.com/default.aspx?scid=kb%3Ben-us%3B323308" target=_blank>Q323308</a>)
