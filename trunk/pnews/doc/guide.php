@@ -157,6 +157,16 @@ and the other is zip.<br />Please download your preferred format from SourceForg
       "form" - authenticated user via HTML login form (default and is recommanded)<br />
       "cas" - authenticated user via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0)</p>
   </blockquote>
+<a name=post_restriction></a><a name=global_readonly></a>
+  <p><strong>$CFG["global_readonly"]</strong></p>
+  <blockquote> 
+    <p>Prohibits the posting and forwarding of articles, even if user performs login. (default: <i>false</i>)</p>
+    <p>This is global setting for all catalogs,
+       if you want only one or two catalogs to be readonly,
+       set it in <a href="#option">newsgroups.lst</a></p>
+    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+    <p>It is to replace $CFG["post_restriction"] in the previous version.</p>
+  </blockquote>
 <a name=auth_http_realm></a>
   <p> <strong>$CFG["auth_http_realm"]</strong></p>
   <blockquote> 
@@ -318,7 +328,7 @@ You can download phpCAS from the following place:<br />
         =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@mail.domain.org" =&gt; "pop3.domain.org" );</p>
-    <p>Since <b>v2.5.0</b>, this module support both <b>pop3</b> and <b>pop3s</b>. You can assign the server in URI syntax as follows:</p>
+    <p>Since <b>v2.5.0</b>, this module support both <b>pop3</b> and <b>pop3s</b>.<br /> You can assign the server in URI syntax as follows:</p>
       <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3s.domain.org" =&gt; "pop3s://pop3s.domain.org/",
@@ -440,11 +450,6 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>After this time in seconds, authentication is expired<br />
       And login again is required. Zero means never expire (default: <i>3600</i> seconds)</p>
-  </blockquote>
-<a name=post_restriction></a>
-  <p><strong>$CFG["post_restriction"]</strong></p>
-  <blockquote> 
-    <p>Disallow the posting and forwarding of articles (default: <i>false</i>)</p>
   </blockquote>
 <a name=auth_user_fullname></a>
   <p><strong>$CFG["auth_user_fullname]</strong></p>
@@ -774,6 +779,7 @@ You can download phpCAS from the following place:<br />
   <p>readonly</p>
   <blockquote> 
     <p>This catalog is <b>readonly</b> even if user performs a login.</p>
+    <p>This option first appeared in v2.5.0 of PHP News Reader.</p>
   </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 

@@ -230,8 +230,12 @@ if( !isset( $CFG['auth_registration_info'] ) )
 if( !isset( $CFG['domain_select'] ) )
 	$CFG['domain_select'] = true;
 
-if( !isset( $CFG['post_restriction'] ) )
-	$CFG['post_restriction'] = false;
+if( !isset( $CFG['global_readonly'] ) ) {
+	if( isset( $CFG['post_restriction'] ) )
+		$CFG['global_readonly'] = $CFG['post_restriction'];
+	else
+		$CFG['global_readonly'] = false;
+}
 
 if( !isset( $CFG['post_signature'] ) )
 	$CFG['post_signature'] = '';

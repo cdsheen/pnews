@@ -59,6 +59,7 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li>Organization header now overrides the setting of news server.
 <li>Incorrect regular expression used in split() is now fixed.
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
+<li><a href=guide.php#post_restriction>\$CFG["post_restriction"]</a> is deprecated, and replaced by <a href=guide.php#global_readonly>\$CFG["global_readonly"]</a>
 </ul>
 PHP News Reader v2.4.4 (2003/11/09)
 <ul>

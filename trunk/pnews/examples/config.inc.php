@@ -47,6 +47,12 @@ $CFG["auth_type"] = "optional";
 $CFG["auth_prompt"] = "form";
 
 
+# [global_readonly] Prohibits the posting and forwarding of articles,
+#                   even if user performs login. (default: false)
+
+// $CFG["global_readonly"] = true;
+
+
 # [auth_http_realm] Specify the realm used in http authentication prompt
 #                   (REQUIRED if auth_prompt == 'http')
 
@@ -202,12 +208,6 @@ $CFG["auth_cas_base_uri"] = 'cas';
 #                    (default: 3600 seconds)
 
 $CFG["auth_expire_time"] = 1800;
-
-
-# [post_restriction] Disallow the posting and forwarding of articles
-#                    (default: false)
-
-// $CFG["post_restriction"] = true;
 
 
 # [auth_user_fullname]  The full name of authenticated user (default: "%u")

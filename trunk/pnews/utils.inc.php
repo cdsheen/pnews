@@ -45,7 +45,7 @@ if( $CFG['filter_ansi_color'] )
 #if( $referal == '' )
 #	$referal = 'index.php';
 
-$global_readonly = $CFG['post_restriction'];
+$global_readonly = $CFG['global_readonly'];
 
 $mail_add_header  = "X-Mailer: $pnews_name $pnews_version (CDSHEEN)\n"; 
 $mail_add_header .= "X-Source: $ip_from";
