@@ -323,10 +323,10 @@ You can download phpCAS from the following place:<br />
       <p>the mapping from E-Mail to POP3 server address</p>
       <p>User should login with full E-Mail address, and this module will
          use different POP3 server to authenticated user based on the domain part of supplied E-Mail</p>
-      <p>The following example will use "pop3.csie.nctu.edu.tw" to authenticate "xxx@csie.nctu.edu.tw",
+      <p>The following example will use "pop3.foobar.com" to authenticate "xxx@foobar.com",
          and use "pop3.domain.org" to authenticate "yyy@mail.domain.org".</p>
-      <p>$CFG[&quot;pop3_mapping&quot;] = array( &quot;@csie.nctu.edu.tw&quot; 
-        =&gt; &quot;pop3.csie.nctu.edu.tw&quot;,<br />
+      <p>$CFG[&quot;pop3_mapping&quot;] = array( &quot;@foobar.com&quot; 
+        =&gt; &quot;pop3.foobar.com&quot;,<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &quot;@mail.domain.org&quot; =&gt; &quot;pop3.domain.org&quot; );</p>
     </blockquote>

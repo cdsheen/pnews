@@ -144,7 +144,7 @@ $CFG["auth_organization"] = "XXX Club";
 # Mail authentication parameters (REQUIRED if auth_method == 'mail')
 #     [pop3_mapping] the mapping from E-Mail to POP3 server address
 
-// $CFG["pop3_mapping"] = array( "@csie.nctu.edu.tw" => "pop3.csie.nctu.edu.tw",
+// $CFG["pop3_mapping"] = array( "@foobar.com"       => "pop3.foobar.com",
 //				 "@mail.domain.org"  => "pop3.domain.org" );
 
 # MySQL/PostgreSQL Database authentication parameters
@@ -202,9 +202,9 @@ $CFG["auth_expire_time"] = 1800;
 
 
 # [post_restriction] Disallow the posting and forwarding of articles
-#                    (default: off)
+#                    (default: false)
 
-// $CFG["post_restriction"] = on;
+// $CFG["post_restriction"] = true;
 
 
 # [auth_user_fullname]  The full name of authenticated user (default: "%u")
@@ -243,7 +243,7 @@ $CFG["auth_expire_time"] = 1800;
 # $CFG['url_rewrite'] = true;
 
 
-# [https_login] Whether to use SSL(HTTPS) after authentication (default: off)
+# [https_login] Whether to use SSL(HTTPS) after authentication (default: false)
 
 # $CFG['https_login'] = true;
 
@@ -259,7 +259,7 @@ $CFG["auth_expire_time"] = 1800;
 $CFG["title"] = "XXX News Service";
 
 
-# [banner] The banner text or images, ex: "<img src=banner.jpg>" (default: "")
+# [banner] The banner text or images, ex: "<img src=banner.jpg>" (default: false)
 
 // $CFG["banner"] = "<img src=banner.jpg>";
 
@@ -286,9 +286,9 @@ $CFG["title"] = "XXX News Service";
 // $CFG["cache_dir"] = "/tmp/pnews-cache";
 
 
-# [group_sorting] sort newsgroups in each catalog (default: off)
+# [group_sorting] sort newsgroups in each catalog (default: false)
 
-// $CFG["group_sorting"] = on;
+// $CFG["group_sorting"] = true;
 
 
 # [articles_per_page] Number of articles shown in one single page (default: 20)
@@ -296,24 +296,24 @@ $CFG["title"] = "XXX News Service";
 // $CFG['articles_per_page'] = 30;
 
 
-# [show_newest_top] Whether to show the newest article as the top item (default: on)
+# [show_newest_top] Whether to show the newest article as the top item (default: true)
 
-// $CFG["show_newest_top"] = off;
-
-
-# [show_article_popup] Show article in pupup window (default: off)
-
-// $CFG["show_article_popup"] = on;
+// $CFG["show_newest_top"] = false;
 
 
-# [email_editing] Allow E-Mail editing when posting article (default: on)
+# [show_article_popup] Show article in pupup window (default: false)
 
-// $CFG["email_editing"] = off;
+// $CFG["show_article_popup"] = true;
 
 
-# [filter_ansi_color] Show article in pupup window (default: on)
+# [email_editing] Allow E-Mail editing when posting article (default: true)
 
-// $CFG["filter_ansi_color"] = off;
+// $CFG["email_editing"] = false;
+
+
+# [filter_ansi_color] Show article in pupup window (default: true)
+
+// $CFG["filter_ansi_color"] = false;
 
 
 # [time_format] The format used to displaying time (default: "%Y/%m/%d %H:%M:%S")
@@ -326,9 +326,9 @@ $CFG["title"] = "XXX News Service";
 // $CFG["style_sheet"] = 'my_style.css';
 
 
-# [language_switch] Show language switch or not (default: on)
+# [language_switch] Show language switch or not (default: true)
 
-// $CFG["language_switch"] = off;
+// $CFG["language_switch"] = false;
 
 
 # [organization] The organization name of this site (default: "News Server")
@@ -380,7 +380,7 @@ $CFG["charset"]["database"]  = "big5";
 ############################################################################
 # PHP News Reader
 # Copyright (C) 2001-2003 - All rights reserved
-# Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
+# Shen Cheng-Da (cdsheen@users.sourceforge.net)
 ############################################################################
 
 ?>
