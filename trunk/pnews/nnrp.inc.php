@@ -738,6 +738,8 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 				if( preg_match( '/^(.+)\s*="?\s*(.+)"?$/', $c_param, $match ) ) {
 					if( $match[1] == 'charset' )
 						$artinfo['charset'] = strtolower($match[2]);
+					elseif( $match[1] == 'boundary' )
+						$artinfo['boundary'] = $match[2];
 				}
 			}
 		}

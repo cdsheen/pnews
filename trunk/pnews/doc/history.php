@@ -55,7 +55,7 @@ PHP News Reader v2.4.2 (2003/11/01)
 <li>Workaround for broken news server which expiration does not work correctly.
 <li>Article headers can be displayed if necessary.
 <li>Empty lines are deleted in the quoted article when replying.
-<li>Fix a bug of retrieving charset from Content-Type header.
+<li>Fix a bug of parsing Content-Type header.
 <li>Support the downloading of uuencoded attachment.
 </ul>
 PHP News Reader v2.4.1 (2003/10/25)
