@@ -605,6 +605,7 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 		return(null);
 
 #	$filename = trim($filename);
+	$filename = preg_quote($filename);
 
 	$binary = '';
 
@@ -656,7 +657,7 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 					}
 				}
 			}
-			elseif( preg_match( '/^begin\s(\d+)\s'.$filename.'$/i', $tbuf, $match ) ) {
+			elseif( preg_match( '/^begin\s(\d+)\s+'.$filename.'$/i', $tbuf, $match ) ) {
 				$pass = 1;
 			}
 		}

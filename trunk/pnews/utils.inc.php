@@ -87,7 +87,7 @@ $group_default_charset = $CFG['charset']['grouplst'];
 
 $private_catalogs = array();
 
-while( $buf = fgets( $lst, 2048 ) ) {
+while( $buf = fgets( $lst, 4096 ) ) {
 	$buf = chop( $buf );
 	if( strlen( $buf ) == 0 || $buf[0] == '#' )
 		continue;

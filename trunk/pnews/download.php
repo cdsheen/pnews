@@ -69,7 +69,7 @@ $mimetype = array( 'doc'  => 'application/msword',
 		   'xls'  => 'application/vnd.ms-excel' ); 
 
 if( $binary ) {
-	$ext = substr( $filename, strrpos( $filename, '.') + 1);
+	$ext = strtolower(substr( $filename, strrpos( $filename, '.') + 1));
 
 #	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
 #	header( 'Expires: 0' );
