@@ -89,7 +89,7 @@ There are various handy authentication modules availabled.
 <li>NNTP - authenticate user using NNTP server. (version >= 2.2.1)
 <li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
 <li>NNTPS - authenticate user using NNTP over SSL server. (version >= 2.4.0)
-<li>POP33 - authenticate user using POP3 over SSL server. (version >= 2.4.1)
+<li>POP3S - authenticate user using POP3 over SSL server. (version >= 2.4.1)
 <li>FTPS - authenticate user using FTP over SSL server. (version >= 2.4.1)
 </ul>
 <p>
