@@ -22,6 +22,9 @@ session_start();
 require_once('readcfg.inc.php');
 require_once('utils.inc.php');
 
-header("Location: $referal");
+if( $_SESSION['auth_with'] == 'cas' )
+	header('Location: '. $_SESSION['auth_referal']);
+else
+	header("Location: $referal");
 
 ?>

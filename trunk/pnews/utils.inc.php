@@ -305,6 +305,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			/* CAS - by Pascal Aubry */
 			case 'cas':
 				/* Check CAS authentication */
+				$_SESSION['auth_referal'] = $referal;
 				phpCAS::authenticateIfNeeded();
 				/* Force expiration when ticket has expired */
 				if( $is_expire ) {
