@@ -1,9 +1,20 @@
+#
+# dot_htaccess
+#
 
+# This access control must be enabled by turning on 'AllowOverride'.
+# The 'AccessFileName' directive should match this filename too.
+
+# Directly access to newsgroups.lst is prohibited
 <Files newsgroups.lst>
 	Deny from all
 </Files>
 
+# Turn off MultiViews
 Options		-MultiViews
+
+# URL Rewriting Rules
+# The following directives are used when your $CFG['url_rewrite'] is true.
 
 RewriteEngine	on
 
