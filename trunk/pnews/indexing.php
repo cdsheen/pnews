@@ -178,12 +178,7 @@ for( $i = $higher+1 ; $i <= $highmark && $s < $artsppg ; $i++ ) {
 if( !$CFG['show_newest_top'] ) {
 	sort($curlist);
 }
-
-if( $ncount == 0 ) {
-	echo "<tr><td colspan=4 class=empty_group height=50>$strNoArticle</td></tr>\n";
-	$show_from = $show_end = $cursor;
-}
-else {
+if( $ncount > 0 ) {
 	if( $CFG['show_newest_top'] ) {
 		$show_from = $curlist[$ncount - 1];
 		$show_end  = $curlist[0];
@@ -195,6 +190,14 @@ else {
 	echo "<!-- XOVER: $show_from-$show_end -->\n";
 	$xover = nnrp_xover( $nhd, $show_from, $show_end );
 
+	$ncount = count($xover);
+}
+
+if( $ncount == 0 ) {
+	echo "<tr><td colspan=4 class=empty_group height=50>$strNoArticle</td></tr>\n";
+	$show_from = $show_end = $cursor;
+}
+else {
 	if( $CFG['show_newest_top'] )
 		krsort($xover);
 
