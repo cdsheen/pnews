@@ -613,6 +613,9 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
     This catalog does require explicily authentication to the news server by the supplied username/password</p>
   <a name=group_match></a>
   <p><strong>Syntax of 'group'</strong></p>
+  This setting defines the groups included in each catalog.<br>
+  Multiple groups can be separated by a comma ","<br>
+  Groups can be specified in the following syntax:
   <ol>
     <li>Full group name for inclusion, i.e: <b>tw.bbs.comp.hardware</b><br><br>
     <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br>
