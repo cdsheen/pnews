@@ -19,9 +19,9 @@
 # Copyright (C) 2001-2003 - All rights reserved
 # Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
 
-VERSION=2.0
+VERSION=2.0-beta
 
-all:	gb	html	pkg
+all:	html	pkg
 
 pkg:
 	rm -rf pnews-$(VERSION)*
@@ -35,7 +35,7 @@ pkg:
 	rm -rf pnews-$(VERSION)
 
 html:
-	/usr/local/bin/php release.php | tail +4 > release.html
+	php release.php | tail +4 > release.html
 
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
