@@ -52,7 +52,7 @@ PHP News Reader
 <hr />
 <font face="Georgia" size="3" color="black">
 PHP News Reader is a web based News Reader.
-It supports the standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a>) for reading, posting, deleting,
+It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
 PHP News Reader does not require your PHP installation to be compiled with IMAP support.
@@ -63,10 +63,10 @@ PHP News Reader does not support threading of News articles and per-user newsgro
 <p>
 Conformed Standards:
 <ul>
-<li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
-<li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980 - Common NNTP Extensions</a>
-<li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2822" target=_blank>RFC 2822 - Internet Message Format</a>
-<li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=1036" target=_blank>RFC 1036 - Standard for Interchange of USENET Messages</a>
+<li><a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
+<li><a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980 - Common NNTP Extensions</a>
+<li><a href="http://rfc.giga.net.tw/rfc2822" target=_blank>RFC 2822 - Internet Message Format</a>
+<li><a href="http://rfc.giga.net.tw/rfc1036" target=_blank>RFC 1036 - Standard for Interchange of USENET Messages</a>
 </ul>
 <p>
 To install PHP News Reader, please check the <a href=requirement.php>Requirements</a>, and then read the <a href=guide.php>Installation Guide</a>.

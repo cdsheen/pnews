@@ -44,8 +44,8 @@ Requirement
 The requirement for PHP News Reader on the server side (news server) :
 <ul>
 <li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
-<li>News Server with full <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a> Implementation
-<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extension
+<li>News Server with full <a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a> Implementation
+<li>News Server with <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a> Extension
 </ul>
 The requirement for using NNTPS (SNEWS) News Server or using NNTPS as authentication method:
 <ul>
@@ -54,7 +54,7 @@ The requirement for using NNTPS (SNEWS) News Server or using NNTPS as authentica
 </ul>
 <p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br />
 The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
-<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br />
+<p>As for <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br />
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
 <li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]

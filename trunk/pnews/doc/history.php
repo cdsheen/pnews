@@ -58,7 +58,7 @@ PHP News Reader v2.4.0 (2003/10/04)
 <ul>
 <li>Support News Server with NNTP over SSL connection (also known as NNTPS or SNEWS)
 <li>Support <a href=guide.php#nntps_auth>NNTPS</a> (NNTP over SSL) authentication module
-<li>Overview format is confirmed by <b>LIST OVERVIEW.FMT</b>
+<li>Overview format is confirmed by <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a> (<b>LIST OVERVIEW.FMT</b>)
 <li>Caching can be enabled to accelerate the indexing process. (<a href=guide.php#cache_dir>\$CFG["cache_dir"]</a>)
 <li>Check for the invalid access to groups not listed in newsgroups.lst
 <li><a href=guide.php#article_order_reverse>\$CFG["article_order_reverse"]</a> is deprecated, and replaced by <a href=guide.php#show_newest_top>\$CFG["show_newest_top"]</a>
