@@ -507,9 +507,9 @@ class pnews_nnrp {
 #					$body[$i] = preg_replace( '/(((http)|(ftp)|(https)):\/\/([\w-_.]+)(\/([\w-.:\/~+=?,#;]|(&amp;))+)?)/', '<a href="$3://$4" target=_blank>$3://$4</a>' , $body[$i] );
 					/* replace mail link */
 					if( $hide_email )
-						$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/e', '"$1".hide_mail_link("$2@$3")', $body[$i] );
+						$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_]\.[\w-_.]+)/e', '"$1".hide_mail_link("$2@$3")', $body[$i] );
 					else
-						$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_.]+)/', '$1<a href="mailto:$2@$3">$2@$3</a>', $body[$i] );
+						$body[$i] = preg_replace( '/(\A|\s|[:;*+&"<{\/\(\[\'])([\w-_.]+)@([\w-_]\.[\w-_.]+)/', '$1<a href="mailto:$2@$3">$2@$3</a>', $body[$i] );
 				}
 				# filter ANSI codes
 				if( $filter_ansi )
