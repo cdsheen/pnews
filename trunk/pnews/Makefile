@@ -17,7 +17,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 # Copyright (C) 2001-2003 - All rights reserved
-# Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
+# Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
 VERSION=2.0.4
 

@@ -6,7 +6,7 @@
 // Coding:   GB2312
 
 // Copyright (C) 2001-2003 - All rights reserved
-// Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
+// Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
 $strAuthentication     = '认证';
 $strLoginName          = '登入帐号';

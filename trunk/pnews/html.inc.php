@@ -93,7 +93,7 @@ function html_foot() {
 
 function html_tail() {
 	echo "\n<!-- Copyright (C) 2001-2003 - All rights reserved -->\n";
-	echo "<!-- Shen Cheng-Da (cdsheen@csie.nctu.edu.tw) -->\n";
+	echo "<!-- Shen Cheng-Da (cdsheen@users.sourceforge.net) -->\n";
 	echo "\n</body>\n";
 	echo "</html>\n";
 }

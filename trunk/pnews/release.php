@@ -159,7 +159,7 @@ Author:
 Shen Cheng-Da<br>
 Taipei, Taiwan<br>
 ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">73013633</a><br>
-<a href="mailto:cdsheen@csie.nctu.edu.tw">cdsheen@csie.nctu.edu.tw</a><br>
+<a href="mailto:cdsheen@users.sourceforge.net">cdsheen@users.sourceforge.net</a><br>
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>

@@ -6,7 +6,7 @@
 // Coding:   BIG5
 
 // Copyright (C) 2001-2003 - All rights reserved
-// Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
+// Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
 $strAuthentication     = '認證';
 $strLoginName          = '登入帳號';

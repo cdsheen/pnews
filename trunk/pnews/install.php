@@ -79,7 +79,7 @@ PHP News Reader - Installation and Configuration
   </blockquote>
   <p>Note you should have started your web server and make sure that PHP module is enabled.</p>
   <p>If you have any problems, or find any errors in this document, please send 
-    your comments to cdsheen@csie.nctu.edu.tw, any suggestion is appreciated.</p>
+    your comments to cdsheen@users.sourceforge.net, any suggestion is appreciated.</p>
 </blockquote>
 <hr size="1">
 <strong><em><font color="#0000FF"> Configuration for CONFIG.INC.PHP</font></em></strong> 
