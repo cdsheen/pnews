@@ -103,7 +103,7 @@ $pnews_str['PleaseEnterEmail']   = '請輸入電子郵件帳號！';
 $pnews_str['PleaseEnterGroup']   = '請輸入討論群組！';
 $pnews_str['PleaseEnterSubject'] = '請輸入文章的標題！';
 $pnews_str['PleaseEnterContent'] = '請輸入所要發表的文章內容！';
-$pnews_str['PleaseEnterReceiver='] '請輸入收信者郵件帳號！';
+$pnews_str['PleaseEnterReceiver']= '請輸入收信者郵件帳號！';
 
 $pnews_str['NoPostJustMail']     = '不張貼至討論區，只回覆給作者';
 

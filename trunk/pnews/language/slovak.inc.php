@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = 'Nezadali ste svoj e-mailovú adresu!';
 $pnews_str['PleaseEnterGroup']   = 'Neurèili ste skupinu!';
 $pnews_str['PleaseEnterSubject'] = 'Nezadali ste tému!';
 $pnews_str['PleaseEnterContent'] = 'Príspevok je prázdny!';
-$pnews_str['PleaseEnterReceiver='] 'Nezadali ste e-mailovú adresu príjemcu!';
+$pnews_str['PleaseEnterReceiver']= 'Nezadali ste e-mailovú adresu príjemcu!';
 
 $pnews_str['NoPostJustMail']     = 'Naozaj chcete posla» len email autorovi ?';
 

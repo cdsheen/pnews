@@ -422,7 +422,7 @@ echo <<<EOT
   initPage(document.select.pgidx);
 </script>
     <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>
-      <a href="javascript:reload()">$pnews_str['Refresh']</a>
+      <a href="javascript:reload()">$pnews_str[Refresh]</a>
     </td>
     </tr></table>
 </td></tr>

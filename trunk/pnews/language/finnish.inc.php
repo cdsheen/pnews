@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = 'Kirjoita sähköpostiosoitteesi!';
 $pnews_str['PleaseEnterGroup']   = 'Anna uutisryhmä!';
 $pnews_str['PleaseEnterSubject'] = 'Kirjoita otsikko!';
 $pnews_str['PleaseEnterContent'] = 'Kirjoita viestiin sisältöä!';
-$pnews_str['PleaseEnterReceiver='] 'Anna vastaanottajan sähköpostiosoite!';
+$pnews_str['PleaseEnterReceiver']= 'Anna vastaanottajan sähköpostiosoite!';
 
 $pnews_str['NoPostJustMail']     = 'Tahdotko lähettää vastausviestin ilman viestin lähetystä uutisryhmiin?';
 

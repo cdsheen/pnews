@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = 'Please input your E-Mail!';
 $pnews_str['PleaseEnterGroup']   = 'Please specify the newsgroup!';
 $pnews_str['PleaseEnterSubject'] = 'Please specify the subject!';
 $pnews_str['PleaseEnterContent'] = 'Please input the content!';
-$pnews_str['PleaseEnterReceiver='] 'Please input receiver\\\'s E-Mail!';
+$pnews_str['PleaseEnterReceiver']= 'Please input receiver\\\'s E-Mail!';
 
 $pnews_str['NoPostJustMail']     = 'Do you want to reply mail without posting ?';
 

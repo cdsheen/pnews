@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = '请输入电子邮件帐号！';
 $pnews_str['PleaseEnterGroup']   = '请输入新闻组名！';
 $pnews_str['PleaseEnterSubject'] = '请输入文章的标题！';
 $pnews_str['PleaseEnterContent'] = '请输入所要发表的文章内容！';
-$pnews_str['PleaseEnterReceiver='] '请输入收信者邮件帐号！';
+$pnews_str['PleaseEnterReceiver']= '请输入收信者邮件帐号！';
 
 $pnews_str['NoPostJustMail']     = '不张贴至新闻组，只回覆给作者';
 

@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = 'Veuillez entrer votre mél&nbsp;!';
 $pnews_str['PleaseEnterGroup']   = 'Veuillez spécifier le groupe&nbsp;!';
 $pnews_str['PleaseEnterSubject'] = 'Veuillez indiquer le sujet&nbsp;!';
 $pnews_str['PleaseEnterContent'] = 'Veuillez remplir le corps du message&nbsp;!';
-$pnews_str['PleaseEnterReceiver='] 'Veuillez indiquer le destinataire&nbsp;!';
+$pnews_str['PleaseEnterReceiver']= 'Veuillez indiquer le destinataire&nbsp;!';
 
 $pnews_str['NoPostJustMail']     = 'Voulez-vous répondre par courrier sans poster&nbsp;?';
 

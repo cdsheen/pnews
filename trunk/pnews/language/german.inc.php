@@ -104,7 +104,7 @@ $pnews_str['PleaseEnterEmail']   = 'Bitte geben Sie Ihre E-Mail-Adresse an!';
 $pnews_str['PleaseEnterGroup']   = 'Bitte geben Sie die Newsgroup an!';
 $pnews_str['PleaseEnterSubject'] = 'Bitte geben Sie den Betreff an!';
 $pnews_str['PleaseEnterContent'] = 'Bitte geben Sie Inhalt ein!';
-$pnews_str['PleaseEnterReceiver='] 'Bitte geben Sie die E-Mail-Adresse des Empf&auml;ngers an!';
+$pnews_str['PleaseEnterReceiver']= 'Bitte geben Sie die E-Mail-Adresse des Empf&auml;ngers an!';
 
 $pnews_str['NoPostJustMail']     = 'M&ouml;chten Sie nur mit Mail ohne zu Posten antworten ?';
 
