@@ -121,10 +121,10 @@ elseif( $artnum != '' ) {
 
 	echo "<form style='margin-top: 0' name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
-	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input class=input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input class=input size=40 value=\"$group\" disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input class=input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=confirm value=1 type=hidden>\n";

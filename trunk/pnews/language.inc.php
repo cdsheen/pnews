@@ -68,10 +68,21 @@ elseif( isset($_COOKIE['cookie_language']) ) {
 	$curr_language = $_COOKIE['cookie_language'];
 	$_SESSION['session_language'] = $_COOKIE['cookie_language'];
 }
+elseif( isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ) {
+	$ml = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
+	if( isset($lang_option[$ml]) ) {
+		$curr_language = $ml;
+		$_SESSION['session_language'] = $ml;
+	}
+	else {
+		$curr_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		$_SESSION['session_language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+	}
+}
 else
 	$curr_language = '';
 
-if( $curr_language == '' || $lang_option[$curr_language] == '' ) {
+if( $curr_language == '' || !isset($lang_option[$curr_language]) ) {
 	$curr_language = $CFG['default_language'];
 	$_SESSION['session_language'] = $CFG['default_language'];
 }

@@ -170,15 +170,15 @@ echo <<<EOF
 <form name=post action="$self" method=post enctype="multipart/form-data">
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value="$auth_user"></td>
+ <tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value="$auth_user"></td>
  <td class=field align=right>
   <input class=normal type=button value='$pnews_msg[FormConfirmPost]' onClick='verify()' tabindex=3>
   <input class=normal type=button value='$pnews_msg[FormCancelPost]' onClick='really()' tabindex=4>
  </td>
  </tr>
- <tr><td class=field>$pnews_msg[Email]:</td><td colspan=2><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
- <tr><td class=field>$pnews_msg[Group]:</td><td colspan=2><input name=postgroup size=40 value="$group" disabled></td></tr>
- <tr><td class=field>$pnews_msg[Subject]:</td><td colspan=2><input name=subject size=56 tabindex=1></td></tr>
+ <tr><td class=field>$pnews_msg[Email]:</td><td colspan=2><input class=input name=email size=40 value="$auth_email" $mail_disable></td></tr>
+ <tr><td class=field>$pnews_msg[Group]:</td><td colspan=2><input class=input name=postgroup size=40 value="$group" disabled></td></tr>
+ <tr><td class=field>$pnews_msg[Subject]:</td><td colspan=2><input class=input name=subject size=56 tabindex=1></td></tr>
  <tr><td class=field>$pnews_msg[Content]:</td>
  <td colspan=2 align=right></td></tr>
  <tr><td colspan=3>
@@ -194,14 +194,14 @@ EOF;
 			echo <<<EOA
  <tr><td class=field>
  $pnews_msg[Attachment] $i:</td>
- <td><input name="attach$i" type="file" tabindex="$ti">
+ <td><input class=input name="attach$i" type="file" tabindex="$ti">
  </td>
 EOA;
 		}
 		else {
 			echo <<<EOA
  <td class=field align=right>$pnews_msg[Attachment] $i:
- <input name="attach$i" type="file" tabindex="$ti">
+ <input class=input name="attach$i" type="file" tabindex="$ti">
  </td></tr>
 EOA;
 		}
