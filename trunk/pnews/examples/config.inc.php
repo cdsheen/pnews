@@ -152,6 +152,7 @@ $CFG["auth_organization"] = "XXX Club";
 #  [domain_select] Show domain-list selector in login dialog (default: true)
 
 // $CFG["pop3_mapping"] = array( "@foobar.com"       => "pop3.foobar.com",
+//				 ".bbs@bbs.haha.com" => "bbs.haha.com",
 //				 "@mail.domain.org"  => "pop3.domain.org" );
 
 // $CFG["domain_select"] = false;

@@ -324,14 +324,15 @@ You can download phpCAS from the following place:<br />
          use different POP3 server to authenticated user based on the domain part of supplied E-Mail</p>
       <p>The following example will use "pop3.foobar.com" to authenticate "xxx@foobar.com",
          and use "pop3.domain.org" to authenticate "yyy@mail.domain.org".</p>
-      <p>$CFG["pop3_mapping"] = array( "@foobar.com" 
-        =&gt; "pop3.foobar.com",<br />
+      <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@mail.domain.org" =&gt; "pop3.domain.org" );</p>
     <p>Since <b>v2.5.0</b>, this module support both <b>pop3</b> and <b>pop3s</b>.<br /> You can assign the server in URI syntax as follows:</p>
       <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3s.domain.org" =&gt; "pop3s://pop3s.domain.org/",
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ".bbs@pop3s.bbs.org" =&gt; "pop3s://pop3s.bbs.org/",
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
     <p>OpenSSL support for PHP module should be enabled for <b>pop3s</b>, and the PHP should be v4.3.0 or greater</p>

@@ -44,7 +44,7 @@ Acknowledgement
 <ul>
 <li>Pascal Aubry - French translation, CAS authentication and phpCAS library.
 <li>Markus Oversti - Finnish translation.
-<li>Czz - Help to refine the Chinese GB2312 translation.
+<li>Czz - Help to refine the Chinese (GB2312) translation.
 </ul>
 <hr />
 <table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
