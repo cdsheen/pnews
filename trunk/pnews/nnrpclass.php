@@ -86,7 +86,7 @@ class pnews_nnrp {
 		if( ! $this->nhd )
 			return(null);
 		list( $code, $msg ) = $this->get_status();
-		if( $code[0] != '2' )
+		if( $code[0] != '2' || $code[0] != '3' )
 			return(null);
 #		$this->send_command( 'MODE READER' );
 #		list( $code, $msg ) = $this->get_status();
@@ -112,7 +112,7 @@ class pnews_nnrp {
 		if( ! $this->nhd )
 			return(null);
 		list( $code, $msg ) = $this->get_status();
-		if( $code[0] != '2' )
+		if( $code[0] != '2' || $code[0] != '3' )
 			return(null);
 #		$this->send_command( 'MODE READER' );
 #		list( $code, $msg ) = $this->get_status();

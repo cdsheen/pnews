@@ -694,15 +694,14 @@ function nnrp_authenticate() {
 	global	$curr_category;
 	global	$news_authinfo;
 
+	$nnrp->mode_reader();
 	if( $curr_category < 0 ) {
-		$nnrp->mode_reader();
 		return(true);
 	}
 
 	$authinfo = $news_authinfo[$curr_category];
 
 	if( $authinfo == 'none' || $authinfo == '' ) {
-		$nnrp->mode_reader();
 		return(true);
 	}
 
