@@ -8,7 +8,7 @@
 // Copyright (C) 2001-2003 - All rights reserved
 // Shen Cheng-Da (cdsheen@users.sourceforge.net)
 
-$strAuthentication     = 'Authentication';
+$strAuthentication     = 'Login';
 $strLoginName          = 'Login Name';
 $strPassWord           = 'Password';
 $strNeedLogin          = 'The page you requested needs authentication';
