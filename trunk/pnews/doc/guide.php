@@ -162,7 +162,8 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
       &quot;mail&quot; - authenticated via multiple POP3 server,<br>
       &quot;mysql&quot; - authenticated via MySQL database,<br>
       &quot;pgsql&quot; - authenticated via PostgreSQL database,<br>
-      &quot;nntp&quot; - authenticated via News Server (with version >= 2.2.1),<br>
+      &quot;nntp&quot; - authenticated via NNTP News Server (with version >= 2.2.1),<br>
+      &quot;nntps&quot; - authenticated via NNTPS News Server (with version >= 2.4.0),<br>
       &quot;cas&quot; - authenticated via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0),<br>
       &quot;user&quot; - authenticated via your self-defined method,</p>
   </blockquote>
@@ -294,9 +295,23 @@ You can download phpCAS from the following place:<br>
       <p>$CFG["auth_nntp_server"] = "news.domain.org";</p>
     </blockquote>
     <p>Note that this option only deal with the authentication of PHP News Reader,
-       it has nothing to do with the authentication of news server.
+       it has nothing to do with the authentication perform by news server.
        Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=nntps_auth></a>
+  <p><strong>NNTPS authentication parameters</strong> (REQUIRED if auth_method == 'nntps')</p>
+  <blockquote> 
+    <p> <strong>$CFG[&quot;auth_nntps_server&quot;]</strong></p>
+    <blockquote> 
+      <p>News (NNTPS) server address and port ( address:port ), default port is 563</p>
+      <p>$CFG["auth_nntps_server"] = "nntps.domain.org";</p>
+    </blockquote>
+    <p>Note that this option only deal with the authentication of PHP News Reader,
+       it has nothing to do with the authentication perform by news server.
+       Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
+    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+    <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
 <a name=cas_auth></a>
   <p><strong>CAS authentication parameters</strong> (REQUIRED if auth_method == 'cas')</p>
@@ -675,7 +690,7 @@ You can download phpCAS from the following place:<br>
   <a name=option></a>
   <p><strong>Syntax of 'option'</strong></p>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
-  <p>Two possible settings of &quot;option&quot; are currently supported.</p>
+  <p>Three possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>
   <blockquote> 
     <p>This catalog will become the default catalog when user first come in.</p>
@@ -685,6 +700,12 @@ You can download phpCAS from the following place:<br>
   <blockquote> 
     <p>The reading access for this catalog is restricted by authentication,<br>
       only used when the $CFG[&quot;auth_type&quot;] is &quot;optional&quot;</p>
+  </blockquote>
+  <p>nntps</p>
+  <blockquote> 
+    <p>With this option, the connection to news server will be NNTP over SSL,
+       also known as NNTPS. This option first appeared in v2.4.0, and require
+       PHP with v4.3.0 or greater and be compiled with OpenSSL support.</p>
   </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 

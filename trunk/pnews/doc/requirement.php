@@ -47,7 +47,12 @@ The requirement for PHP News Reader on the server side (news server) :
 <li>News Server with full <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a> Implementation
 <li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extension
 </ul>
-<p>The standard PHP module works just fine, IMAP or ICONV support is NOT necessary.<br>
+The requirement for using NNTPS (SNEWS) News Server or using NNTPS as authentication method:
+<ul>
+<li>PHP 4.3.0 or greater
+<li>PHP module with OpenSSL support
+</ul>
+<p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br>
 The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
 <p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br>
 <ul>
