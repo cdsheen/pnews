@@ -341,6 +341,7 @@ You can download phpCAS from the following place:<br />
     <blockquote> 
       <p>Show domain-list selector in login dialog (default: <i>true</i>)</p>
       <p>Note that domain-list selector only appear if <a href="#auth_prompt">$CFG["auth_prompt"]</a> is <i>'form'</i></p>
+      <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
     </blockquote>
   </blockquote>
 <a name=nntp_auth></a>
