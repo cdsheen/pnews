@@ -243,7 +243,7 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 	if( !$global_readonly && !$news_readonly[$c] ) {
 
-		if( !$login_success && $CFG['auth_prompt'] == 'other' ) {
+		if( !$auth_success && $CFG['auth_prompt'] == 'other' ) {
 			echo "<td class=action align=center>$strReply</td>\n";
 			echo "<td class=action align=center>$strCrossPost</td>\n";
 			echo "<td class=action align=center>$strForward</td>\n";
@@ -264,7 +264,7 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email ) {
-			if( !$login_success && $CFG['auth_prompt'] == 'other' )
+			if( !$auth_success && $CFG['auth_prompt'] == 'other' )
 				echo $strDelete;
 			else
 				echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
