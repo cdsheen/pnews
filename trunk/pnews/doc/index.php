@@ -108,7 +108,7 @@ And it is easy to write your authentication module to be used by PHP News Reader
 <p>
 The login prompt can be configured as HTTP authentication or FORM style.
 <p>
-PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais and Finnish.
+PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais, Finnish and German.
 The preferred language can be switched any time and any where.
 <p>
 PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in China).
@@ -216,7 +216,7 @@ Forum:
 <p>
 Donation:
 <blockquote>
-If you like PHP News Reader, and think it useful for your work, or even making profit from PHP News Reader, you can support me by denating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
+If you like PHP News Reader, and think it useful for your work, or even making profit from PHP News Reader, you can support me by donating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
 <br />
 Make a donation: <a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank>http://sourceforge.net/donate/index.php?group_id=71412</a>
 </blockquote>

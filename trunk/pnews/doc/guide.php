@@ -866,7 +866,7 @@ You can download phpCAS from the following place:<br />
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
   </blockquote>
   <p>
-  The %http_user and %http_pw will be replaced by the username/password provided from http authentication.
+  The %http_user and %http_pw will be replaced by the username/password provided in http authentication.
   This replacement does not work if you use '<i>form</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>.
   This is because that the password does not available in session variable for the security reason.</p>
   The replacement of %http_* is originally coded by Jochen Staerk.
