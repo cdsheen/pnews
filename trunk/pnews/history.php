@@ -21,7 +21,7 @@ Release histroy
 <hr>
 PHP News Reader v2.0.4 (2003/02/18)
 <ul>
-<li>Change the article number order (from ascent to descent)
+<li>Change the article numbering order (descent)
 </ul>
 <p>
 PHP News Reader v2.0.3 (2003/02/05)
