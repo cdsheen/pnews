@@ -51,6 +51,10 @@ echo <<<EOH
 -->
 PHP News Reader v2.3.0 (2003/09/06)
 <ul>
+<li>Reading article with invalid artnum will be redirected into indexing page
+</ul>
+PHP News Reader v2.3.0 (2003/09/06)
+<ul>
 <li>Added French translation (by Pascal Aubry)
 <li>Support <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a> authentication module (by Pascal Aubry)
 <li>E-Mail editing can be disabled by setting <a href=guide.php#email_editing>\$CFG["email_editing"]</a> as off

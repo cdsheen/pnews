@@ -45,7 +45,7 @@ echo <<<EOH
 <head>
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV=REFRESH CONTENT="0; URL=$referal">
-<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
+<LINK REL=STYLESHEET TYPE="text/css" HREF="css/standard.css">
 </head>
 <body>
 <center>
