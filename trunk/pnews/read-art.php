@@ -28,10 +28,15 @@ $artnum = $_GET['artnum'];
 #else
 #	$newwin = true;
 
+if( $server == $group_default_server )
+	$reserver = '';
+else
+	$reserver = $server;
+
 if( $CFG['url_rewrite'] ) {
-	$nexturl = "$urlbase/article/$server/$group/$artnum/next";
-	$lasturl = "$urlbase/article/$server/$group/$artnum/last";
-	$idxurl  = "$urlbase/group/$server/$group/$artnum/";
+	$nexturl = "$urlbase/article/$reserver/$group/$artnum/next";
+	$lasturl = "$urlbase/article/$reserver/$group/$artnum/last";
+	$idxurl  = "$urlbase/group/$reserver/$group/$artnum/";
 }
 else {
 	$nexturl = "read-art.php?server=$server&group=$group&artnum=$artnum&next=1";
@@ -63,7 +68,7 @@ if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
 			header( "Location: $idxurl" );
 	}
 	elseif( $CFG['url_rewrite'] )
-		header( "Location: $urlbase/article/$server/$group/$artnum/" );
+		header( "Location: $urlbase/article/$reserver/$group/$artnum/" );
 	else
 		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum" );
 
@@ -125,7 +130,7 @@ echo "<center>\n";
 	if( $CFG['show_article_popup'] )
 		echo "<font size=2 face=Georgia><i><b>$group</i></b></font>";
 	elseif( $CFG['url_rewrite'] )
-		echo "<font size=2 face=Georgia><a href=group/$server/$group><i><b>$group</i></b></a></font>";
+		echo "<font size=2 face=Georgia><a href=group/$reserver/$group><i><b>$group</i></b></a></font>";
 	else
 		echo "<font size=2 face=Georgia><a href=indexing.php?server=$server&group=$group><i><b>$group</i></b></a></font>";
 
