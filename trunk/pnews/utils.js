@@ -35,7 +35,7 @@ function delete_article( base, server, group, artnum ) {
 	openwin.focus();
 }
 function reply_article( base, server, group, artnum, quote ) {
-	var winstyle = "status=no,menubar=no,scrollbars=yes,height=370,width=600";
+	var winstyle = "status=no,menubar=no,scrollbars=yes,height=400,width=600";
 	var quote_text = "&quote=" + quote ;
 	var openwin = window.open( base + "reply-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum + quote_text, "reply" + artnum , winstyle );
 	openwin.focus();
