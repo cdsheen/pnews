@@ -145,6 +145,7 @@ EOR;
 if( $ncount == 0 ) {
 	echo "<tr class=a><td colspan=4 class=x height=50>$strNoArticle</td></tr>\n";
 }
+else {
 
 $i = ( $CFG['article_order_reverse'] ) ? $ncount - 1 : 0 ;
 
@@ -203,6 +204,9 @@ for( ; ; ) {
 		if( $i >= $ncount ) break;
 	}
 }
+
+}
+
 echo "</table>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
