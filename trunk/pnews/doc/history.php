@@ -49,7 +49,7 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.3.0 (2003/08/23)
+PHP News Reader v2.3.0 (2003/09/06)
 <ul>
 <li>Added French translation (by Pascal Aubry)
 <li>Support <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a> authentication module (by Pascal Aubry)
