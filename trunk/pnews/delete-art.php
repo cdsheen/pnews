@@ -41,7 +41,7 @@ if( $confirm == 1 ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$c = $check_group( $server, $group );
+	$c = check_group( $server, $group );
 
 	$nhd = nnrp_open( $server, $news_nntps[$c] );
 
