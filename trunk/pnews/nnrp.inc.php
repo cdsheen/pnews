@@ -123,15 +123,15 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 #		print "<!-- " . $xover[$n][1] . " -->\n";
 		$xover[$n][1] = decode_subject($xover[$n][1]);
 #		print "<!-- " . $xover[$n][2] . " -->\n";
-		if( preg_match( '/^<(\S+)@(\S+)>$/', $xover[$n][2], $from ) ) {
+		if( preg_match( '/^<([ \S]+)@([ \S]+)>$/', $xover[$n][2], $from ) ) {
 			$xover[$n][2] = $from[1];
 			$xover[$n][5] = $from[1] . '@' . $from[2];
 		}
-		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$n][2], $from ) ) {
+		elseif( preg_match( '/^([ \S]+)@([ \S]+)$/', $xover[$n][2], $from ) ) {
 			$xover[$n][2] = $from[1];
 			$xover[$n][5] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <(\S+)>$/', $xover[$n][2], $from ) ) {
+		elseif( preg_match( '/^"?([^"]+)?"? <([ \S]+)>$/', $xover[$n][2], $from ) ) {
 			$xover[$n][2] = decode_subject($from[1]);
 			$xover[$n][5] = $from[2];
 		}
@@ -414,15 +414,15 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 	$artinfo['msgid'] = $headers['Message-ID'];
 
 	if( $headers['From'] ) {
-		if( preg_match( '/^<(\S+)@(\S+)>$/', $headers['From'], $from ) ) {
+		if( preg_match( '/^<([ \S]+)@([ \S]+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[1] . '@' . $from[2];
 		}
-		elseif( preg_match( '/^(\S+)@(\S+)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^([ \S]+)@([ \S]+)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <(\S+@\S+)>$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^"?([^"]+)?"? <([ \S+]@[ \S]+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = decode_subject($from[1]);
 			$artinfo['mail'] = $from[2];
 		}

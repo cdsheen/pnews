@@ -41,7 +41,7 @@ $mail_add_header .= "X-Source: $ip_from";
 # Limits definition
 
 $lineppg          = 20;	# Lines Per Page
-$subject_limit    = 45;	# Chars Limit for Subject
+$subject_limit    = 55;	# Chars Limit for Subject
 $nick_limit       = 15;	# Chars Limit for Nickname
 $id_limit         = 18;	# Chars Limit for ID ( E-Mail before @ )
 $org_limit        = 20;	# Chars Limit for Organization
