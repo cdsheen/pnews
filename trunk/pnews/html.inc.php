@@ -152,7 +152,7 @@ function read_article( $server, $group, $artnum, $link_text, $close = false, $cl
 		if( $CFG['url_rewrite'] )
 			return "<a$class_text href=\"article/$reserver/$group/$artnum\">$link_text</a>";
 		else
-			return "<a$class_text href=\"article.php?server=$server&group=$group&artnum=$artnum\">$link_text</a>";
+			return "<a$class_text href=\"read-art.php?server=$server&group=$group&artnum=$artnum\">$link_text</a>";
 }
 
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {
