@@ -264,7 +264,7 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 		if( $email == $auth_email ) {
-			if( !$login_success && $CFG['auth_prompt'] == 'other' ) {
+			if( !$login_success && $CFG['auth_prompt'] == 'other' )
 				echo $strDelete;
 			else
 				echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
