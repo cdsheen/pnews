@@ -63,7 +63,7 @@ Features:
 <li>Multiple News server and multiple catalog of news groups.
 <li>Support NNTP over SSL (NNTPS) and NNTP authentication.
 <li>Posting and downloading for uuencoded attachment.
-<li>No database access, no IMAP-enabled PHP module.
+<li>Easy to install, no database access and IMAP is not required.
 <li>Authentication is easily configured to work with your existing system.
 <li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>

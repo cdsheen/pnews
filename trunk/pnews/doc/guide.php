@@ -219,7 +219,8 @@ You can download phpCAS from the following place:<br />
       <br />
       function check_user_password( $username, $password )</p>
       <p>This function should verify the correctness of $username and $password,
-      <br />and then return <i>true</i> for granting access, <i>false</i> otherwise.
+      <br />and then return something for granting access, <i>null</i> otherwise.</p>
+      <p>There's a sample authentication module in <i>auth/sample.inc.php</i>. You can begin the work from here.</p>
   </blockquote>
 <a name=ldap_auth></a>
   <p> <strong>LDAP authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'ldap'</i>)</p>
@@ -735,11 +736,10 @@ You can download phpCAS from the following place:<br />
   </blockquote>
   <p>This defined a catalog named as "Computer Science"</p>
   <p>The newsgroups defined in the same catalog should be pulled from the same news 
-    server, and presented with the same charset. Also note that at least one 
+    server, and should be with the same charset. Also note that at least one 
     catalog should be defined in newsgroups.lst.</p>
-  <p>The setting consists of multiple directives. Each directive is a pair of key and value, which separated by tabs 
-     or spaces<br />
-    And the value part ends at end of line</p>
+  <p>The setting consists of multiple directives where each directive is a pair of key and value,
+    which separated by tabs or spaces. The value part ends at end of line</p>
   <p>For example, the following line sets directive "foobar" as "value1 value2"</p>
   <blockquote> 
     <p>foobar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value1 value2</p>
@@ -844,15 +844,18 @@ You can download phpCAS from the following place:<br />
   <blockquote>
   <p>The access to the news server of this catalog require the authentication info
   (username/password) to be specified.</p>
-  <p>The username/password are separated by comma, ",".</p>
-  Since version 2.5.2 of PHP News Reader, if you use 'http' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
+  <p>The username/password are separated by comma, ",", for example:</p>
+  <blockquote>
+    <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myname,mypasswd</strong></p>
+  </blockquote>
+  Since PHP News Reader v2.5.2, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
   you can use the username and password in the http authentication as the authentication info requested by news server. For example:</p>
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
   </blockquote>
   <p>
   The %http_user and %http_pw will be replaced by the username/password provided from http authentication.
-  This replacement does not work if you use 'form' as <a href=#auth_prompt>$CFG['auth_prompt']</a>.
+  This replacement does not work if you use '<i>form</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>.
   This is because that the password does not available in session variable for the security reason.</p>
   The replacement of %http_* is originally coded by Jochen Staerk.
   </blockquote>
@@ -860,7 +863,7 @@ You can download phpCAS from the following place:<br />
   <a name=grouplst_charset></a>
   <p><strong>'charset' directive</strong></p>
   <blockquote>
-  <p>The charset setting for this catalog.</p>
+  <p>The charset setting for this catalog. All newsgroups in this catalog should be with the same charset.</p>
   <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
   </blockquote>
 </blockquote>

@@ -46,17 +46,16 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
-PHP News Reader v2.5.2 (2003/01/22)
+PHP News Reader v2.5.2 (2004/01/22)
 <ul>
-<li>Happy Lunar New Year!
 <li>MODE READER is now performed after NNTP authentication.
 <li>Added German translation (by Jochen Staerk)
 <li>Newsgroups whose name contains plus (+) is now handled without problem.
 <li>Fix the IE download problem which related to cache control headers.
 <li>The name of uuencoded file may contain space now.
 <li>Various fixes for the javascript errors when <a href=guide.php#hide_email>\$CFG['hide_email']</a> is enabled.
-<li>HTTP authenticatin info can be used in NNTP authentication. (<a href=guide.php#grouplst_auth>%http_user, %http_pw</a>)
-<li>Catalog can be hided by 'hidden' in <a href=guide.php#grouplst_option>option</a> directive.
+<li>HTTP authenticatin info can be used in NNTP authentication. (<a href=guide.php#grouplst_auth>%http_user</a>, <a href=guide.php#grouplst_auth>%http_pw</a>)
+<li>Catalog can be hided by 'hidden' in the <a href=guide.php#grouplst_option>option</a> directive.
 <li>Documentation for newsgroups.lst is refined.
 </ul>
 PHP News Reader v2.5.1 (2003/12/25)

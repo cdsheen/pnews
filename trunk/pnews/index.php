@@ -45,7 +45,6 @@ echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
 $maxr = 100;
 
-$maxc = $catalog_num / $maxr;
 echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 echo "<table border=0 cellpadding=2 cellspacing=1>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
@@ -54,21 +53,18 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 	if( $news_hidden[$i] )
 		continue;
 	echo "<tr>\n";
-	for( $j = 0 ; $j < $maxc ; $j++ ) {
-		$cn = $i + $j * $maxr ;
-		if( $CFG['url_rewrite'] )
-			$link = "section/$cn";
-		else
-			$link = "$self?catalog=$cn";
-		if( $cn >= $catalog_num )
-			echo "<td class=menu align=center>&nbsp;</td>";
-		elseif( $cn == $curr_catalog )
-			echo " <td class=menu_select align=center>$news_catalog[$cn]</td>\n";
-		elseif( $news_authperm[$cn] )
-			echo " <td class=menu_auth align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
-		else
-			echo " <td class=menu align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$cn]</a></td>\n";
-	}
+	if( $CFG['url_rewrite'] )
+		$link = "section/$i";
+	else
+		$link = "$self?catalog=$i";
+	if( $i >= $catalog_num )
+		echo "<td class=menu align=center>&nbsp;</td>";
+	elseif( $i == $curr_catalog )
+		echo " <td class=menu_select align=center>$news_catalog[$i]</td>\n";
+	elseif( $news_authperm[$i] )
+		echo " <td class=menu_auth align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_auth\";'><a class=menu href=\"$link\">$news_catalog[$i]</a></td>\n";
+	else
+		echo " <td class=menu align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu\";'><a class=menu href=\"$link\">$news_catalog[$i]</a></td>\n";
 	echo "</tr>\n";
 }
 
@@ -78,20 +74,20 @@ if( is_array($CFG['links']) )
 			$text = $config_convert['to']($text);
 			$link = $config_convert['to']($link);
 		}
-		echo "<tr><td class=menu_link colspan=$maxc width=100 align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_link\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
+		echo "<tr><td class=menu_link width=100 align=center onMouseover='this.className=\"menu_hover\";' onMouseout='this.className=\"menu_link\";'><a href=\"" . $link . '">' . $text . '</a></td></tr>';
 	}
 
 if( $CFG['url_rewrite'] ) {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"$urlbase/logout\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$strLogin</a></td></tr>";
+		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"$urlbase/login\">$strLogin</a></td></tr>";
 }
 else {
 	if( $CFG['auth_type'] != 'open' && $auth_success )
-		echo "<tr><td colspan=$maxc class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
+		echo "<tr><td class=logout align=center onMouseover='this.className=\"logout_hover\";' onMouseout='this.className=\"logout\";'><a class=menu href=\"auth.php?logout=1\" title=\"$strLogout: $auth_user\">$strLogout</a></td></tr>";
 	if( $CFG['auth_type'] == 'optional' && !$auth_success )
-		echo "<tr><td colspan=$maxc class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$strLogin</a></td></tr>";
+		echo "<tr><td class=login align=center onMouseover='this.className=\"login_hover\";' onMouseout='this.className=\"login\";'><a class=menu href=\"auth.php?login=1\">$strLogin</a></td></tr>";
 }
 
 echo "</table>\n";

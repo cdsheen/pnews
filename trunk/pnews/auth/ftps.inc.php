@@ -1,6 +1,6 @@
 <?
 
-# PHP News Reader / FTP Authentication Module
+# PHP News Reader / FTP over SSL Authentication Module
 # Copyright (C) 2001-2004 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
