@@ -411,6 +411,7 @@ You can download phpCAS from the following place:<br />
       <p>The relative path of absolute path of your phpBB installation</p>
       <p>$CFG["auth_phpbb_path"] = "../phpbb/";</p>
     </blockquote>
+    <p>With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     <p>Notice: Your <a href="#auth_prompt">$CFG["auth_prompt"]</a> must be <i>'other'</i> if you want to use phpBB authtication module.
     <p>The above settings first appeared in the <b>v2.5.6</b> of PHP News Reader</p>
   </blockquote>
@@ -469,7 +470,8 @@ You can download phpCAS from the following place:<br />
         $CFG["db_password_crypt"] = "md5";<br />
         $CFG["db_variable"] = array( "%e" =&gt; "user_email" 
         );</p>
-      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
+      <p>Since v2.5.6, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.<p>
+      <p>With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     </blockquote>
   </blockquote>
 <a name=auth_expire_time></a>
