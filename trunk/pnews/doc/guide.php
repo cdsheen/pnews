@@ -546,7 +546,8 @@ You can download phpCAS from the following place:<br>
 <a name=links></a>
   <p><strong>$CFG[&quot;links&quot;]</strong></p>
   <blockquote> 
-    <p>The links referring to other pages, (default: null)<br>
+    <p>The links referring to other pages. (default: null)<br>
+    <p>This is an associate array, the key is link text and the value is the url.<p>
       <br>
       $CFG[&quot;links&quot;] = array( &quot;Back Home&quot; =&gt; &quot;../index.php&quot;, 
       &quot;Tech News&quot; =&gt; &quot;http://foo.bar/technews/&quot; );</p>
@@ -572,7 +573,9 @@ You can download phpCAS from the following place:<br>
   <blockquote>
     <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr" )<br>
      (default: "en" )</p>
-    <strong>Notice: This setting first appeared at v2.3.0</strong>
+    <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader<br>
+       If not set in v2.3.0 or later, the default language used in interface is "en" - English</p>
+    <p>Notice: the original $CFG["charset"]["interface"] is deprecated since v2.3.0,<br>please use $CFG["interface_language"] instead</p>
   </blockquote>
 <a name=charset_config></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;config&quot;]</strong></p>
@@ -587,9 +590,10 @@ You can download phpCAS from the following place:<br>
 <a name=charset_database></a>
   <p> <strong>$CFG[&quot;charset&quot;][&quot;database&quot;]</strong></p>
   <blockquote> 
-    <p>The charset setting used in database or LDAP</p>
+    <p>The charset setting used in database or LDAP.<br>
+       If you do not enable database or ldap authentication module, this setting will be ignored</p>
   </blockquote>
-  <strong>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br>please use $CFG["charset"] section instead</strong>
+  <p>Notice: the original $CFG["language"] section is deprecated since v2.1.0,<br>please use $CFG["charset"] section instead</p>
 </blockquote>
 <a name=newsgroups_lst></a>
 <hr size="1">
@@ -686,7 +690,7 @@ You can download phpCAS from the following place:<br>
   <blockquote> 
     <p><strong>option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default,private</strong></p>
   </blockquote>
-  <strong>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</strong>
+  <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
