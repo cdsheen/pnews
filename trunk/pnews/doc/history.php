@@ -22,9 +22,10 @@ echo '
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
-PHP News Reader v2.2.1 (2003/06/??)
+PHP News Reader v2.2.1 (2003/06/??) - not released yet
 <ul>
 <li>The default news server address can be ignored when $CFG["url_rewrite"] is enabled
+<li>Handling quotes correctly with the <i>magic_quotes_gpc</i> state of PHP.
 </ul>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>
