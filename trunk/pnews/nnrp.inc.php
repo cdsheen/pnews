@@ -344,10 +344,10 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 
 			$buf = preg_replace( $pattern, $replacement , $buf );
 
-			# filter ANSI codes
-			if( $CFG['filter_ansi_color'] )
-				$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
 		}
+		# filter ANSI codes
+		if( $CFG['filter_ansi_color'] )
+			$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
 
 		if( $trans_func )
 			$buf = $trans_func( $buf );

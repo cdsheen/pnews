@@ -51,9 +51,10 @@ echo <<<EOH
 -->
 PHP News Reader v2.4.0 (2003/10/04)
 <ul>
-<li>NNTPS/SNEWS support
+<li>Support News Server with NNTP over SSL (NNTPS/SNEWS) connection
+<li>Support <a href=guide#auth_nntps>NNTPS</a> authentication module
 <li>Check for the invalid access to groups not listed in newsgroups.lst
-<li>
+<li>Fix the problem of filtering for ANSI coloring codes.
 </ul>
 PHP News Reader v2.3.1 (2003/09/27)
 <ul>
