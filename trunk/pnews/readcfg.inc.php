@@ -88,7 +88,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'POP3S authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'POP3S authentication module is invalid' );
-		if( version_check( '4.3.0' ) )
+		if( !version_check( '4.3.0' ) )
 			show_error( 'PHP 4.3.0 or greater is required for POP3 over SSL support' );
 		if( !function_exists( 'openssl_get_publickey' ) )
 			show_error( 'OpenSSL is required for POP3 over SSL support' );
@@ -140,7 +140,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'FTPS authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'FTPS authentication module is invalid' );
-		if( version_check( '4.3.0' ) )
+		if( !version_check( '4.3.0' ) )
 			show_error( 'PHP 4.3.0 or greater is required for FTP over SSL support' );
 		if( !function_exists( 'openssl_get_publickey' ) )
 			show_error( 'OpenSSL is required for FTP over SSL support' );
@@ -186,7 +186,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			show_error( 'NNTPS authentication module missed' );
 		if( !function_exists( 'check_user_password' ) )
 			show_error( 'NNTPS authentication module is invalid' );
-		if( version_check( '4.3.0' ) )
+		if( !version_check( '4.3.0' ) )
 			show_error( 'PHP 4.3.0 or greater is required for NNTPS support' );
 		if( !function_exists( 'openssl_get_publickey' ) )
 			show_error( 'OpenSSL is required for NNTPS support' );
@@ -511,8 +511,8 @@ EOE;
 function version_check($check) {
 	$minver = explode( '.', $check );
 	$curver = explode( '.', phpversion() );
-	if( ($curver[0] <= $minver[0]) && ($curver[1] <= $minver[1])
-			&& ($curver[2][0] < $minver[2][0]) )
+	if( $curver[0]*10000+$curver[1]*100+$curver[2]
+			>= $minver[0]*10000+$minver[1]*100+$minver[2] )
 		return true;
 	else
 		return false;
