@@ -123,8 +123,7 @@ echo "<!-- cursor = $cursor   lowmark = $lowmark -->\n";
 $i = $cursor;
 while( $i >= $lowmark ) {
 	$cut_end = array_search( $i, $artlist );
-
-	if( $cut_end != false ) {
+	if( $cut_end !== false ) {
 		echo "<!-- found $i at $cut_end -->\n";
 		$cut_from = $cut_end - $artsppg + 1;
 		if( $cut_from < 0 )

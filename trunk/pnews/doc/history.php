@@ -46,6 +46,12 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
+PHP News Reader v2.5.3 (2004/02/20)
+<ul>
+<li>Added Italian translation (by Francesco Rolando)
+<li>Various fixes for the javascript errors for single quote problem.
+<li>The first article in the new newsgroup is now shown correctly.
+</ul>
 PHP News Reader v2.5.2 (2004/01/22)
 <ul>
 <li>MODE READER is now performed after NNTP authentication.
@@ -58,11 +64,6 @@ PHP News Reader v2.5.2 (2004/01/22)
 <li>Catalog can be hided by 'hidden' in the <a href=guide.php#grouplst_option>option</a> directive.
 <li>Debug information can be examined by setting <a href=guide.php#debug_level>\$CFG["debug_level"]</a>.
 <li>Documentation for newsgroups.lst is refined.
-</ul>
-PHP News Reader v2.5.3 (2004/01/28)
-<ul>
-<li>Added Italian translation (by Francesco Rolando)
-<li>Various fixes for the javascript errors for single quote problem.
 </ul>
 PHP News Reader v2.5.1 (2003/12/25)
 <ul>
