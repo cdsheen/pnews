@@ -289,7 +289,7 @@ function nnrp_post_write( $nhd, $buf ) {
 	$buf = str_replace( '\\\\', '\\', $buf );
 	$tok = strtok( $buf, "\n" );
 	while ($tok) {
-		$tok = trim($tok);
+		$tok = rtrim($tok);
 		nnrp_post_writeln( $nhd, $tok );
 		$tok = strtok ("\n");
 	}

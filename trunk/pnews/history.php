@@ -19,6 +19,13 @@ echo '
 <font size=3 color=black face="Georgia">
 <a href=release.php>PHP News Reader</a> Release histroy
 <hr>
+<!--
+<li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
+-->
+PHP News Reader v2.1.2 (2003/04/0?)
+<ul>
+<li>Do not strip whitespace from the beginning of each line in posted articles.
+</ul>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>
 <li>The format of time displayed can be configured by $CFG["time_format"].
@@ -27,9 +34,6 @@ PHP News Reader v2.1.1 (2003/03/08)
 <li>Several author name/mail parsing problems fixed.
 <li>Fix variable missing problem in \'open\' authentication type.
 </ul>
-<!--
-<li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
--->
 PHP News Reader v2.1.0 (2003/03/02)
 <ul>
 <li>Installation Guide released.
