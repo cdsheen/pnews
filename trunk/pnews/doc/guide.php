@@ -355,7 +355,7 @@ You can download phpCAS from the following place:<br />
     </blockquote>
     <p>Note that this option only deal with the authentication of PHP News Reader,
        it has nothing to do with the authentication perform by news server.
-       Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
+       Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=nntps_auth></a>
@@ -368,7 +368,7 @@ You can download phpCAS from the following place:<br />
     </blockquote>
     <p>Note that this option only deal with the authentication of PHP News Reader,
        it has nothing to do with the authentication perform by news server.
-       Add <b>auth</b> option to your newsgroups.lst if your news server requires authentication.</p>
+       Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
     <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
     <p>OpenSSL support for PHP module should be enabled, and the PHP should be v4.3.0 or greater</p>
   </blockquote>
@@ -433,9 +433,9 @@ You can download phpCAS from the following place:<br />
       <br />this parameter defined the hashing method used to hash password.</p>
     </blockquote>
     <a name=phpbb></a>
-    <p>The support for database authentication module make it easy to integrate with the existing <a href=http://www.phpbb.com/ target=_blank>phpBB</a> system.</p>
-    <p>For example, to enable PHP News Reader to authenticate with the existing 
-      users of your phpBB 2.0, use the following settings:</p>
+    <p>The support for database authentication module make it easy to integrate with many PHP products.</p>
+    <p>For example, to enable PHP News Reader authenticating with the existing 
+      users of your <a href=http://www.phpbb.com/ target=_blank>phpBB</a> 2.0, use the following settings:</p>
     <blockquote> 
       <p>$CFG["db_server"] = "database.domain.org";<br />
         $CFG["db_name"] = "phpbb";<br />
@@ -756,43 +756,12 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>foobar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value1 value2</p>
   </blockquote>
-  <p>The setting before any catalogs are <b>global</b> settings. Two global settings 
-    are valid now: <b>charset</b> and <b>server</b></p>
-  <blockquote> 
-    <p><strong># default charset for all catalog<br />
-      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big5</strong></p>
-    <p><strong># default news server for all catalog<br />
-      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org</strong></p>
+  Valid directives recognized by PHP News Reader are:<br />
+  <a name=grouplst_server></a>
+  <p><strong>'server' directive</strong></p>
+  <blockquote>
+  This directive defines the news server used to retrieve newsgroups in this catalog.
   </blockquote>
-  <p>After these global settings, each catalogs are defined. For example, the 
-    following settings defined three catalogs,</p>
-  <blockquote> 
-    <p><strong>[catalog1]<br />
-      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.*,nopy.comp.network<br />
-      option&nbsp;&nbsp;&nbsp;&nbsp;default</strong></p>
-    <p><strong>[catalog2]<br />
-      # use the default news server<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*<br />
-      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;none</strong></p>
-    <p><strong>[catalog3]<br />
-      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br />
-      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username,password<br />
-      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
-  </blockquote>
-  <p>The first catalog "catalog1" contains all newsgroups matching "nopy.*" 
-    or "nopy.comp.network" from the news server "news1.domain.org", 
-    and the default charset is used in these groups. By the way, this catalog does not
-    require authentication to the news server (by default)</p>
-  <p>The second catalog "catalog2" contains all newsgroups matching 
-    "nopy.test" or "nopy.talk.*" from the default news server 
-    defined in the above global settings, and the default charset is used in 
-    these groups.  By the way, this catalog does not require authentication to the news server</p>
-  <p>The third catalog "catalog3" contains all newsgroups matching "nopy.comp.*" 
-    or "nopy.rec.*" from the news server "news2.domain.org", 
-    and the "gb2312" charset is used in these groups.
-    This catalog does require explicily authentication to the news server by the supplied username/password</p>
   <a name=group_match></a>
   <p><strong>'group' directive</strong></p>
   <blockquote>
@@ -878,6 +847,45 @@ You can download phpCAS from the following place:<br />
   <p>The charset setting for this catalog. All newsgroups in this catalog should be with the same charset.</p>
   <p>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</p>
   </blockquote>
+  <hr />
+  <b>An example for <i>newsgroups.lst</i>:</b>
+  <p>The setting before any catalogs are <b>global</b> settings. Two global settings 
+    are valid now: <b>charset</b> and <b>server</b></p>
+  <blockquote> 
+    <p><strong># default charset for all catalog<br />
+      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big5</strong></p>
+    <p><strong># default news server for all catalog<br />
+      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org</strong></p>
+  </blockquote>
+  <p>After these global settings, each catalogs are defined. For example, the 
+    following settings defined three catalogs,</p>
+  <blockquote> 
+    <p><strong>[catalog1]<br />
+      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.*,nopy.comp.network<br />
+      option&nbsp;&nbsp;&nbsp;&nbsp;default</strong></p>
+    <p><strong>[catalog2]<br />
+      # use the default news server<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*<br />
+      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;none</strong></p>
+    <p><strong>[catalog3]<br />
+      server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br />
+      auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username,password<br />
+      charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
+  </blockquote>
+  <p>The first catalog "catalog1" contains all newsgroups matching "nopy.*" 
+    or "nopy.comp.network" from the news server "news1.domain.org", 
+    and the default charset is used in these groups. By the way, this catalog does not
+    require authentication to the news server (by default)</p>
+  <p>The second catalog "catalog2" contains all newsgroups matching 
+    "nopy.test" or "nopy.talk.*" from the default news server 
+    defined in the above global settings, and the default charset is used in 
+    these groups.  By the way, this catalog does not require authentication to the news server</p>
+  <p>The third catalog "catalog3" contains all newsgroups matching "nopy.comp.*" 
+    or "nopy.rec.*" from the news server "news2.domain.org", 
+    and the "gb2312" charset is used in these groups.
+    This catalog does require explicily authentication to the news server by the supplied username/password</p>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
