@@ -73,7 +73,7 @@ if( $binary ) {
 	header( 'Cache-Control: no-store, no-cache, must-revalidate' );
 	if( isset($mimetype[$ext]) ) {
 		header( 'Content-Type: ' . $mimetype[$ext] );
-		header( "Content-Disposition: attachment; filename=\"$filename\"" );
+		header( "Content-Disposition: inline; filename=\"$filename\"" );
 	}
 	else {
 		header( 'Content-Type: application/octet-stream' );

@@ -546,7 +546,7 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 		}
 	}
 
-	return($binary . "haha" );
+	return($binary);
 }
 
 

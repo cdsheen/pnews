@@ -487,7 +487,7 @@ You can download phpCAS from the following place:<br />
     <p>Enable or disable the URL rewrite function (default: <i>false</i>)</p>
     <p>Read more about <a href=url_rewrite.php>URL rewriting</a> by <a href=url_rewrite.php>clicking here</a>.
     <p>You should enable Apache <b>mod_rewrite</b> module and <b>AllowOverride</b> for per-directory access (.htaccess)<br />
-    For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/misc/rewriteguide.html" target=_blank>http://httpd.apache.org/docs/misc/rewriteguide.html</a> for details.</p>
+    For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/mod/mod_rewrite.html" target=_blank>http://httpd.apache.org/docs/mod/mod_rewrite.html</a> for details.</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=https_login></a>
