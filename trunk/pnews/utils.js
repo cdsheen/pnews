@@ -60,7 +60,7 @@ function change_language_base( base, lang, path, from ) {
 	window.location = base + "change-lang.php?language=" + lang + "&path=" + path + "&from=" + escape(from);
 }
 function myfavor( url, title ) {
-/*
+
 	if( window.sidebar && window.sidebar.addPanel ) {
 		// Gecko (Netscape 6)
 		window.sidebar.addPanel( title, url, '' );
@@ -77,9 +77,9 @@ function myfavor( url, title ) {
 		// Other browsers
 		window.alert( 'Please use your browsers\' bookmarking facility to create a bookmark' );
 	}
-*/
+/*
 	if ( navigator.appName != "Netscape" ) {
 		window.external.AddFavorite( url, title );
 	}
-
+*/
 }

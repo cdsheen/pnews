@@ -255,10 +255,10 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 	$host = $_SERVER['HTTP_HOST'];
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
+#	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
 		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$strMyFavor</a>\n";
-	else
-		echo "&nbsp;";
+#	else
+#		echo "&nbsp;";
 	echo "</td>\n";
 
 	if( $CFG['show_article_popup'] ) {
