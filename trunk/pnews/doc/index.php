@@ -216,7 +216,7 @@ Forum:
 <p>
 Donation:
 <blockquote>
-If you like PHP News Reader, and/or think it useful for your work, you can support me by denating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
+If you like PHP News Reader, and think it useful for your work, or even making profit from PHP News Reader, you can support me by denating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
 <br />
 Make a donation: <a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank>http://sourceforge.net/donate/index.php?group_id=71412</a>
 </blockquote>
