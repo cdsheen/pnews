@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=us-ascii">
 <title>PHP News Reader</title>
 </head>
 <body style="background-color: #EEFFFF">
