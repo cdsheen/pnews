@@ -88,8 +88,8 @@ $strArticleIsForwarded = 'The following article is forwarded';
 $strRealyQuit          = 'Really to quit editing ?';
 $strRealyDelete        = 'Really delete this article ?';
 
-$strFormConfirmPost    = 'Confirm Post';
-$strFormCancelPost     = 'Cancel Post';
+$strFormConfirmPost    = 'Post';
+$strFormCancelPost     = 'Cancel';
 
 $strFormConfirmDelete  = 'Delete';
 $strFormCancelDelete   = 'Cancel';

@@ -17,6 +17,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+ini_set('session.cache_limiter', '');
+// the following 3 lines are what would have been sent
+//     if session.cache_limiter was 'nocache'
+header('Expires: Thu, 19 Nov 1981 08:52:00 GMT');
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Pragma: no-cache');
+
 session_start();
 
 # Read and check the configuration (config.inc.php)
@@ -153,7 +160,10 @@ if( $_SESSION['save_postvar'] ) {
 # Determine the $curr_catalog
 
 $server = $_GET['server'];
-$group  = $_GET['group'];
+$group  = get_group();
+#echo "$server/haha/";
+#echo $_GET['server'];
+//$group  = $_GET['group'];
 
 if( $server == '*' && $group_default_server != '' )
 	$server = $group_default_server;
@@ -621,9 +631,13 @@ function match_group( $group, $pattern ) {
 	foreach ( $groups as $reg ) {
 		$reg = str_replace( '.', '\\.', $reg );
 		$reg = str_replace( '*', '.*', $reg );
-		if( eregi( "^$reg\$", $group ) )
+		$reg = str_replace( '+', '\\+', $reg );
+//		echo "<!-- $reg vs $group -->\n";
+		if( @eregi( "^$reg\$", $group ) )
 			return(true);
 	}
+#	echo $_SERVER['QUERY_STRING'];
+#	exit;
 	return(false);
 }
 
@@ -632,13 +646,17 @@ function nnrp_authenticate( $nhd ) {
 	global	$curr_catalog;
 	global	$news_authinfo;
 
-	if( $curr_catalog < 0 )
+	if( $curr_catalog < 0 ) {
+		nnrp_mode_reader($nhd);
 		return(true);
+	}
 
 	$authinfo = $news_authinfo[$curr_catalog];
 
-	if( $authinfo == 'none' || $authinfo == '' )
+	if( $authinfo == 'none' || $authinfo == '' ) {
+		nnrp_mode_reader($nhd);
 		return(true);
+	}
 
 	list( $user, $pass ) = explode( ',', $authinfo );
 
@@ -647,8 +665,10 @@ function nnrp_authenticate( $nhd ) {
 		$pass = str_replace( '%http_pw', $_SERVER['PHP_AUTH_PW'], $pass);
 	}
 
-	if( nnrp_auth( $nhd, $user, $pass ) )
+	if( nnrp_auth( $nhd, $user, $pass ) ) {
+		nnrp_mode_reader($nhd);
 		return(true);
+	}
 	else
 		return(false);
 }
@@ -726,6 +746,10 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 
 function hide_mail( $email ) {
 	list( $id, $domain ) = explode( '@', $email );
+	$id = str_replace( '\\', '\\\\', $id );
+	$id = str_replace( '"', '\\"', $id );
+	$domain = str_replace( '\\', '\\\\', $domain );
+	$domain = str_replace( '"', '\\"', $domain );
 	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
 	return <<<EMAIL
 <script language="JavaScript">document.write( $hmail );</script>
@@ -734,6 +758,10 @@ EMAIL;
 
 function hide_mail_link( $email, $linktext = '' ) {
 	list( $id, $domain ) = explode( '@', $email );
+	$id = str_replace( '\\', '\\\\', $id );
+	$id = str_replace( '"', '\\"', $id );
+	$domain = str_replace( '\\', '\\\\', $domain );
+	$domain = str_replace( '"', '\\"', $domain );
 	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
 	if( $linktext == '' ) {
 		return <<<EMAIL
@@ -741,11 +769,23 @@ function hide_mail_link( $email, $linktext = '' ) {
 EMAIL;
 	}
 	else {
+		$linktext = str_replace( '\\', '\\\\', $linktext );
 		$linktext = str_replace( '"', '\\"', $linktext );
+#		$linktext = htmlspecialchars( $linktext );
 		return <<<EMAIL
 <script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + "$linktext" + '</a>' );</script>
 EMAIL;
 	}
+}
+
+function get_group() {
+	$qstr = $_SERVER['QUERY_STRING'];
+	$vars = explode( '&', $qstr );
+	foreach( $vars as $var ) {
+		if( preg_match( '/^group=(.+)$/', $var, $match ) )
+			return(rawurldecode($match[1]));
+	}
+	return('');
 }
 
 ?>

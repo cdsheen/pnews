@@ -23,25 +23,25 @@ $lang_option = array(	'en'         => 'English',
 			'zh-tw'      => 'Chinese (BIG5)',
 			'zh-cn'      => 'Chinese (GB)',
 			'unicode'    => 'Unicode (UTF-8)',
-			'de'         => 'German',
 			'fr'         => 'Fran&ccedil;ais',
-			'fi'         => 'Finnish'    );
+			'fi'         => 'Finnish',
+			'de'         => 'German' );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php',
-			'de'         => 'language/german.inc.php',
 			'fr'         => 'language/french.inc.php',
-			'fi'         => 'language/finnish.inc.php' );
+			'fi'         => 'language/finnish.inc.php',
+			'de'         => 'language/german.inc.php' );
 
 $lang_coding = array(	'en'         => 'us-ascii',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8',
-			'de'         => 'iso-8859-1',
 			'fr'         => 'iso-8859-1',
-			'fi'         => 'iso-8859-1'     );
+			'fi'         => 'iso-8859-1',
+			'de'         => 'iso-8859-1'  );
 #			'fr'         => 'fr-ascii'       );
 
 $charset_alias = array( 'big5'       => 'big5',

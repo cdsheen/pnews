@@ -46,6 +46,16 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release notes and Histroy
 <hr />
+PHP News Reader v2.5.2 (2003/01/20)
+<ul>
+<li>MODE READER is now correctly performed after NNRP authentication.
+<li>Added German translation (by Jochen Staerk)
+<li>Newsgroups whose name contains plus (+) is now handled without problem.
+<li>Fix for IE download problem about cache control headers.
+<li>The name of uuencoded file may contain spaces now.
+<li>Various fixes for the javascript errors when <a href=guide.php#hide_email>\$CFG['hide_email']</a> is enabled.
+<li>
+</ul>
 PHP News Reader v2.5.1 (2003/12/25)
 <ul>
 <li>Rewrite the `uudecode' codes to fix the bug which result in wrong outputs.

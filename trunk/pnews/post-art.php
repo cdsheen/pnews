@@ -109,8 +109,8 @@ EOT;
 }
 else {
 
-	$server = $_GET['server'];
-	$group  = $_GET['group'];
+#	$server = $_GET['server'];
+#	$group  = $_GET['group'];
 
 	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );

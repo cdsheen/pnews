@@ -245,7 +245,7 @@ if( !isset( $CFG['auth_user_fullname'] ) )
 
 $checks = array( 'config', 'grouplst', 'database', 'interface' );
 
-$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii' );
+$valid_charsets = array( 'big5', 'gb', 'gb2312', 'utf-8', 'ascii', 'iso-8859-1' );
 $valid_language = array( 'zh-tw', 'zh-cn', 'unicode', 'en', 'de', 'fr', 'fi' );
 
 if( !isset($CFG['interface_language']) )

@@ -31,12 +31,22 @@ include('language.inc.php');
 
 #$_SESSION['session_charset'] = $to_charset;
 
-$referal = $_GET['from'];
+$referal = 'index.php';
+
+$qstr = $_SERVER['QUERY_STRING'];
+$vars = explode( '&', $qstr );
+foreach( $vars as $var ) {
+	$x = explode( '=', $var );
+	if( $x[0] == 'from' )
+		$referal = rawurldecode($x[1]);
+}
+
+//$referal = $_GET['from'];
 
 $lang_name = $lang_option[$to_language];
 
-if( $referal == '' )
-	$referal = 'index.php';
+//if( $referal == '' )
+//	$referal = 'index.php';
 
 //header( "Location: $referal" );
 

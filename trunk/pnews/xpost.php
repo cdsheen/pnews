@@ -108,7 +108,7 @@ EOT;
 elseif( $artnum != '' ) {
 
 	$server = $_GET['server'];
-	$group  = $_GET['group'];
+#	$group  = $_GET['group'];
 
 	$c = check_group( $server, $group );
 
@@ -208,7 +208,7 @@ elseif( $artnum != '' ) {
 	echo " <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=2>\n";
 	echo " <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=3></td></tr>\n";
 	echo "<tr><td colspan=2>";
-	echo "<textarea name=content class=content wrap=physical tabindex=1>";
+	echo "<textarea name=content class=content wrap=physical tabindex=1 cols=82>";
 
 	printf("\n$strCrossPostAuthor\n", "$from ($email)" );
 	printf("$strPostStatus\n\n", $date, $group );

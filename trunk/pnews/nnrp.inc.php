@@ -47,6 +47,12 @@ function open_nntp ( $nnrp_server ) {
 	return( $nhd );
 }
 
+function nnrp_mode_reader ( $nhd ) {
+	send_command( $nhd, "MODE READER" );
+	list( $code, $msg ) = get_status( $nhd );
+	return( $code[0] == '2' );
+}
+
 function open_nntps ( $nnrp_server ) {
 
 	$nhd = null;
@@ -225,11 +231,11 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 						'',
 						$xover[$ovfmt['Message-ID:']] );
 
-		if( preg_match( '/^<(.+)@(.+)>$/', $xover[$ovfmt['From:']], $from ) ) {
+		if( preg_match( '/^<([^@]+)@([\w-_.]+)>$/', $xover[$ovfmt['From:']], $from ) ) {
 			$ov[$n][1] = $from[1];
 			$ov[$n][3] = $from[0];
 		}
-		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$ovfmt['From:']], $from ) ) {
+		elseif( preg_match( '/^([^@]+)@([\w-_.]+)$/', $xover[$ovfmt['From:']], $from ) ) {
 			$ov[$n][1] = $from[1];
 			$ov[$n][3] = $from[0];
 		}
@@ -238,9 +244,9 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 			$ov[$n][1] = decode_subject($from[1]);
 			$ov[$n][3] = $from[2];
 		}
-		elseif( preg_match( '/^(\S+) \((.+)?\)$/', $xover[$ovfmt['From:']], $from ) ) {
-			$from[2] = strip_quotes( $from[2] );
-			$ov[$n][1] = decode_subject($from[2]);
+		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $xover[$ovfmt['From:']], $from ) ) {
+			$from[4] = strip_quotes( $from[4] );
+			$ov[$n][1] = decode_subject($from[4]);
 			$ov[$n][3] = $from[1];
 		}
 
@@ -801,11 +807,11 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 	$artinfo['msgid'] = $headers['Message-ID'];
 
 	if( $headers['From'] ) {
-		if( preg_match( '/^<(.+)@(.+)>$/', $headers['From'], $from ) ) {
+		if( preg_match( '/^<([^@]+)@([\w-_.]+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^(\S+)@(\S+)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^([^@]+)@([\w-_.]+)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
@@ -814,9 +820,9 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			$artinfo['name'] = decode_subject($from[1]);
 			$artinfo['mail'] = $from[2];
 		}
-		elseif( preg_match( '/^(\S+@\S+) \((.+)?\)$/', $headers['From'], $from ) ) {
-			$from[2] = strip_quotes( $from[2] );
-			$artinfo['name'] = decode_subject($from[2]);
+		elseif( preg_match( '/^(([^@]+)@([\w-_.]+))\s*\((.+)?\)$/', $headers['From'], $from ) ) {
+			$from[4] = strip_quotes( $from[4] );
+			$artinfo['name'] = decode_subject($from[4]);
 			$artinfo['mail'] = $from[1];
 		}
 	}

@@ -127,8 +127,9 @@ EOT;
 }
 elseif( $artnum != '' ) {
 
-	$server   = $_GET['server'];
-	$group    = $_GET['group'];
+#	$server   = $_GET['server'];
+#	$group    = $_GET['group'];
+#	$group    = get_group();
 
 #	echo "server[$server] group[$group]<br />\n";
 
@@ -252,7 +253,7 @@ elseif( $artnum != '' ) {
 <input class=normal type=button onClick='InsertQuote();' value="$strFormInsertQuote">
 </td></tr>
 <tr><td colspan=3>
-<textarea name=content class=content wrap=physical tabindex=1>
+<textarea name=content class=content wrap=physical tabindex=1 cols=82>
 </textarea>
 </td></tr></table>
 

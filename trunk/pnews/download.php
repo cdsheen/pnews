@@ -71,19 +71,19 @@ $mimetype = array( 'doc'  => 'application/msword',
 if( $binary ) {
 	$ext = substr( $filename, strrpos( $filename, '.') + 1);
 
-	if( ini_get('zlib.output_compression') )
-		ini_set( 'zlib.output_compression', 'Off' );
-
-	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
-	header( 'Expires: 0' );
+#	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
+#	header( 'Expires: 0' );
 	header( 'Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 #	header( 'Cache-Control: no-store, no-cache, must-revalidate');	// HTTP/1.1
-	header( 'Cache-Control: post-check=0, pre-check=0', false);
+#	header( 'Cache-Control: post-check=0, pre-check=0', false);
 #	header( 'Pragma: no-cache' );		// HTTP/1.0
-	header( 'Cache-Control: private' );
+#	header( 'Cache-Control: private' );
 	header( 'Accept-Ranges: bytes' );
 	header( 'Content-Length: ' . $size );
 	header( 'Content-Transfer-Encoding: binary' );
+
+	if( ini_get('zlib.output_compression') )
+		ini_set( 'zlib.output_compression', 'Off' );
 
 #	if( strstr( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) )
 #		$dtype = 'inline';

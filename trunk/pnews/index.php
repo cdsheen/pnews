@@ -21,9 +21,6 @@ require_once('utils.inc.php');
 
 # ---------------------------------------------------------------------
 
-header( 'Cache-Control: no-store, no-cache, must-revalidate');
-header( 'Pragma: no-cache' );
-        
 html_head( $title );
 
 #echo "<center>\n";
@@ -46,7 +43,8 @@ $nhd = nnrp_open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
 
 echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
-$maxr = 30;
+$maxr = 100;
+
 $maxc = $catalog_num / $maxr;
 echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 echo "<table border=0 cellpadding=2 cellspacing=1>\n";
@@ -59,9 +57,9 @@ for( $i = 0 ; $i < $maxr ; $i++ ) {
 	for( $j = 0 ; $j < $maxc ; $j++ ) {
 		$cn = $i + $j * $maxr ;
 		if( $CFG['url_rewrite'] )
-			$link = "section/$i";
+			$link = "section/$cn";
 		else
-			$link = "$self?catalog=$i";
+			$link = "$self?catalog=$cn";
 		if( $cn >= $catalog_num )
 			echo "<td class=menu align=center>&nbsp;</td>";
 		elseif( $cn == $curr_catalog )
@@ -113,7 +111,7 @@ nnrp_authenticate( $nhd );
 $active = nnrp_list_group( $nhd, $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {
-	echo "<br /><br /><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$strConnectServerError &lt;" . $news_server[$curr_catalog] . "&gt;</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
