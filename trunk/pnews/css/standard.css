@@ -47,9 +47,9 @@ td.page         { background: #DDFFDD; font-size: 12px }
 td.page_hover   { background: #FFFFC0; font-size: 12px }
 
 td.subject      { background: #DDDDFF; font-size: 14px; font-weight: bold; text-align: left }
-td.date         { background: #DDDDFF; font-size: 14px; text-align: right }
+td.date         { background: #FFFFEE; font-size: 12px; text-align: right }
 td.author       { background: #FFFFEE; font-size: 12px; text-align: left }
-td.server       { background: #FFFFEE; font-size: 12px; text-align: right }
+td.server       { background: #DDDDFF; font-size: 12px; text-align: right }
 
 td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; text-align: left }
 

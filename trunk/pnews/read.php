@@ -59,17 +59,31 @@ $lasturl = ($lastnum>0) ? $prefix . $lastnum : '';
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
+if( isset($_GET['show_all']) ) {
+}
+else {
+}
+
 $artinfo = $nnrp->head( $artnum, $news_charset[$curr_category], $CFG['time_format'] );
 
 if( !$artinfo ) {
-	if( $CFG['show_article_popup'] )
-		kill_myself();
-	elseif( $CFG['url_rewrite'] )
+	if( $CFG['url_rewrite'] )
 		header( "Location: $urlbase/group/$reserver/$group/" );
 	else
 		header( "Location: indexing.php?server=$server&group=$group" );
 	exit;
 }
+
+$show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
+
+if( isset($_GET['header']) && $CFG['show_article_header'] )
+	$show_mode |= SHOW_HEADER;
+if( $CFG['image_inline'] )
+	$show_mode |= IMAGE_INLINE;
+if( $CFG['hide_email'] )
+	$show_mode |= HIDE_EMAIL;
+
+$dlbase = str_replace( 'https://', 'http://', $urlbase );
 
 #if( $curr_charset == 'big5' || $curr_charset == 'gb2312' )
 #	$artinfo['charset'] = $curr_charset;
@@ -90,101 +104,78 @@ else {
 }
 $date = $artinfo['date'];
 $msgid = $artinfo['msgid'];
-
-if( $CFG['show_article_popup'] )
-	html_head( "$subject ($group)", null, 'topmargin=0 leftmargin=0' );
-else
-	html_head( "$subject ($group)" );
-
-#if( strlen( $subject ) > $subject_limit + 6 )
-#	$subject = substr( $subject, 0, $subject_limit + 6 ) . ' ..';
-#else
-#	$subject = $subject;
-
-$subject = htmlspecialchars( $subject );
-
-#$date = str_replace( ' ', '<br />', $date );
-
 if( strlen( $org ) > $org_limit )
 	$org = substr( $org, 0, $org_limit ) . ' ..';
 
+html_head( "$subject ($group)" );
+
+$subject = htmlspecialchars( $subject );
+
 echo "<center>\n";
 
+echo "<table class=shadow border=0 width=100% cellpadding=0 cellspacing=0>\n";
+echo "<tr><td class=bg>\n";
+echo "<table width=100% border=0 cellpadding=2 cellspacing=2>";
 
-	echo "<table class=shadow border=0 width=100% cellpadding=0 cellspacing=0>\n";
-	echo "<tr><td class=bg>\n";
-	echo "<table width=100% border=0 cellpadding=2 cellspacing=2>";
+echo "<tr><td class=group onMouseover='this.className=\"group_hover\";' onMouseout='this.className=\"group\";'>\n";
+if( $CFG['url_rewrite'] )
+	echo "<a href=group/$reserver/$group>$group</a>";
+else
+	echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
 
-	if( $CFG['show_article_popup'] ) {
-		echo "<tr><td class=group>\n";
-		echo "$group";
-	}
-	else {
-		echo "<tr><td class=group onMouseover='this.className=\"group_hover\";' onMouseout='this.className=\"group\";'>\n";
-		if( $CFG['url_rewrite'] )
-			echo "<a href=group/$reserver/$group>$group</a>";
-		else
-			echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
-	}
+# dada - do not show group level conversion
+#if( $article_convert['to'] )
+#	echo ' <font size=-1>(Convert from ' . $article_convert['source'] . ' to ' . $article_convert['result'] . ')</font>';
 
-	if( $article_convert['to'] )
-		echo ' <font size=-1>(Convert from ' . $article_convert['source'] . ' to ' . $article_convert['result'] . ')</font>';
+echo "</td>";
 
-	echo "</td>";
-
-	if( !isset($_GET['header']) && $CFG['show_article_header'] ) {
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-#		echo "<span class=link onClick='window.location = \"$headerurl\";'\">$pnews_msg[ShowHeader]</span>";
-#		echo "<a href=\"$uri#\" onClick='window.location=\"$headerurl\"'>$pnews_msg[ShowHeader]</a>";
-		echo "<a href=\"$headerurl\">$pnews_msg[ShowHeader]</a>";
-		echo "</td>\n";
-	}
-
+if( !isset($_GET['header']) && $CFG['show_article_header'] ) {
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-	if( $lasturl == '' )
-		echo $pnews_msg['LastArticle'];
-	else
-		echo "<a href=\"$lasturl\">$pnews_msg[LastArticle]</a>";
+	echo "<a href=\"$headerurl\">$pnews_msg[ShowHeader]</a>";
 	echo "</td>\n";
-	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-	if( $nexturl == '' )
-		echo $pnews_msg['NextArticle'];
-	else
-		echo "<a href=\"$nexturl\">$pnews_msg[NextArticle]</a>";
-	echo "</td>\n";
-	echo "</tr></table>\n";
-#}
+}
+
+echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+
+if( $lasturl == '' )
+	echo $pnews_msg['LastArticle'];
+else
+	echo "<a href=\"$lasturl\">$pnews_msg[LastArticle]</a>";
+
+echo "</td>\n";
+
+echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+
+if( $nexturl == '' )
+	echo $pnews_msg['NextArticle'];
+else
+	echo "<a href=\"$nexturl\">$pnews_msg[NextArticle]</a>";
+
+echo "</td>\n";
+echo "</tr></table>\n";
 
 echo "<table class=fixed width=100% cellpadding=3 cellspacing=0>\n";
 
-echo "<tr><td class=subject align=left width=70%><a href=\"$uri\">$subject </a></td>\n";
-echo "<td class=date>$date</td></tr>\n";
+echo <<<ARTINFO
+<tr><td class=subject align=left width=70%><a href="$uri">$subject </a></td>
+<td class=server>$org</td></tr>\n
+ARTINFO;
+
+if( $CFG['thread_enable'] ) {
+	$thlist = $nnrp->get_thread( $group, $artinfo['subject'] );
+}
+
 if( $CFG['hide_email'] )
 	$hmail = hide_mail_link( $email );
 else
 	$hmail = "<a href=\"mailto:$email\">$email</a>";
 
-echo "<tr><td class=author>$from ($hmail)</td>\n";
-echo "<td class=server>$org</td></tr>\n";
-
-echo "<tr><td colspan=2 class=content>";
-
-echo "<hr />";
-
-$show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
-
-if( isset($_GET['header']) && $CFG['show_article_header'] )
-	$show_mode |= SHOW_HEADER;
-
-if( $CFG['image_inline'] )
-	$show_mode |= IMAGE_INLINE;
-
-if( $CFG['hide_email'] )
-	$show_mode |= HIDE_EMAIL;
-
-#if( $artconv['to'] )
-
-$dlbase = str_replace( 'https://', 'http://', $urlbase );
+echo <<<ARTINFO
+<tr><td class=author>$from ($hmail)</td>
+<td class=date>$date</td></tr>
+<tr><td colspan=2 class=content>
+<hr />\n
+ARTINFO;
 
 if( $CFG['url_rewrite'] )
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/dl/$server/$group/$artnum/%s" );
@@ -192,7 +183,6 @@ else
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
 if( $CFG['thread_enable'] ) {
-	$thlist = $nnrp->get_thread( $group, $artinfo['subject'] );
 	if( count($thlist) > 1 ) {
 		echo "<hr /><table border=0 cellpadding=0 cellspacing=0><tr>\n";
 		$i = 0;
@@ -213,8 +203,6 @@ $nnrp->close();
 
 echo "</td></tr>";
 
-#echo "<tr><td align=center colspan=2></td></tr>\n";
-
 echo "</table>";
 
 toolbar( $server, $group, $c, $artnum, $subject );
@@ -232,23 +220,21 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 	echo "<table width=100% border=0 cellspacing=2 cellpadding=2>\n";
 	echo "<tr>\n";
 
-	if( ! $CFG['show_article_popup'] ) {
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		if( $nexturl == '' )
-			echo $pnews_msg['NextArticle'];
-		else
-			echo "<a href=\"$nexturl\">$pnews_msg[NextArticle]</a>";
-		echo "</td>\n";
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		if( $lasturl == '' )
-			echo $pnews_msg['LastArticle'];
-		else
-			echo "<a href=\"$lasturl\">$pnews_msg[LastArticle]</a>";
-		echo "</td>\n";
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<a href=\"$idxurl\">$pnews_msg[ReturnToIndexing]</a>";
-		echo "</td>\n";
-	}
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	if( $nexturl == '' )
+		echo $pnews_msg['NextArticle'];
+	else
+		echo "<a href=\"$nexturl\">$pnews_msg[NextArticle]</a>";
+	echo "</td>\n";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	if( $lasturl == '' )
+		echo $pnews_msg['LastArticle'];
+	else
+		echo "<a href=\"$lasturl\">$pnews_msg[LastArticle]</a>";
+	echo "</td>\n";
+	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+	echo "<a href=\"$idxurl\">$pnews_msg[ReturnToIndexing]</a>";
+	echo "</td>\n";
 
 	if( !$global_readonly && !$news_readonly[$c] ) {
 
@@ -259,15 +245,15 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 		}
 		else {
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo reply_article( $server, $group, $artnum, $pnews_msg['Reply'], false, $CFG['show_article_popup'] );
+			echo reply_article( $server, $group, $artnum, $pnews_msg['Reply'], false );
 			echo "</td>\n";
 
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo xpost_article( $server, $group, $artnum, $pnews_msg['CrossPost'], $CFG['show_article_popup'] );
+			echo xpost_article( $server, $group, $artnum, $pnews_msg['CrossPost'] );
 			echo "</td>\n";
 
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo forward_article( $server, $group, $artnum, $pnews_msg['Forward'], $CFG['show_article_popup'] );
+			echo forward_article( $server, $group, $artnum, $pnews_msg['Forward'] );
 			echo "</td>\n";
 		}
 
@@ -276,7 +262,7 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 			if( !$auth_success && $CFG['auth_prompt'] == 'other' )
 				echo $pnews_msg['Delete'];
 			else
-				echo delete_article( $server, $group, $artnum, $pnews_msg['Delete'], $CFG['show_article_popup'] );
+				echo delete_article( $server, $group, $artnum, $pnews_msg['Delete'] );
 		}
 		else
 			echo "&nbsp;";
@@ -291,19 +277,13 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 	$host = $_SERVER['HTTP_HOST'];
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-#	if( strstr( $_SERVER["HTTP_USER_AGENT"], 'MSIE' ) )
-		echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$pnews_msg[MyFavor]</a>\n";
-#	else
-#		echo "&nbsp;";
+
+	echo "<a href=\"javascript:myfavor('http://$host$uri', '$title')\">$pnews_msg[MyFavor]</a>\n";
+
 	echo "</td>\n";
 
-	if( $CFG['show_article_popup'] ) {
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo "<a href=\"javascript:close_window()\">$pnews_msg[CloseWindow]</a>";
-		echo "</td>";
-	}
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-#	echo "Language: ";
+
 	show_language_switch();
 	echo "</td></tr></table>\n";
 }

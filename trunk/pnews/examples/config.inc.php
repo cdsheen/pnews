@@ -377,16 +377,6 @@ $CFG["title"] = "XXX News Service";
 // $CFG['articles_per_page'] = 30;
 
 
-# [show_latest_top] Whether to show the latest article as the top item (default: true)
-
-// $CFG["show_latest_top"] = false;
-
-
-# [show_article_popup] Show article in pupup window (default: false)
-
-// $CFG["show_article_popup"] = true;
-
-
 # [email_editing] Allow E-Mail editing when posting article (default: true)
 
 // $CFG["email_editing"] = false;

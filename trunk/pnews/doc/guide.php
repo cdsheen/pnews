@@ -736,13 +736,14 @@ You can download phpCAS from the following place:<br />
     <p>Show the latest article as the top item (default: <i>true</i>)</p>
     <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader<br />
     It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b><br />
-    This option is <b>deprecated</b> since <b>v2.6.0</b>.
+    <p>This setting is <b>deprecated</b> since <b>v2.6.0</b> of PHP News Reader.</p>
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>
   <blockquote> 
     <p>Controlling the article to show in popup window or not (default: <i>false</i>)</p>
     <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>This setting is <b>deprecated</b> since <b>v2.6.1</b> of PHP News Reader.</p>
   </blockquote>
 <a name=filter_ansi_color></a>
   <p><strong>$CFG["filter_ansi_color"]</strong></p>
