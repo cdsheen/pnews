@@ -219,7 +219,7 @@ if( !isset($CFG['time_format']) )
 
 /* un-documented settings */
 
-if( !isset($CFG['style_sheet']) )
+if( !isset($CFG['style_sheet']) || !file_exists( 'css/' . $CFG['style_sheet'] ))
 	$CFG['style_sheet'] = 'standard.css';
 
 if( !isset($CFG['language_switch']) )
