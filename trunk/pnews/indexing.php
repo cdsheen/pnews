@@ -21,7 +21,6 @@ include('utils.inc.php');
 
 # ---------------------------------------------------------------------
 
-$page   = $_GET['page'];
 
 html_head( $group );
 
@@ -46,31 +45,58 @@ echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark -->\n";
 $totalpst = $highmark - $lowmark + 1 ;
 $totalpg = ceil($totalpst / $lineppg) ;
 
-if( !isset($page) || $page < 1 || $page > $totalpg ) {
-	$page = 1;
-}
+if( !isset($_GET['cursor']) )
+	$cursor = $highmark;
+else
+	$cursor = $_GET['cursor'];
+
+$forward = isset($_GET['forward']);
+
+echo "<!-- cursor: $cursor    lineppg: $lineppg -->\n";
+
+if( $forward )
+	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $highmark );
+else
+	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $lowmark, false );
+
+$ncount = sizeof($xover);
+
+$show_from = $xover[0][0];
+$show_end  = $xover[$ncount-1][0];
+
+$page = floor(($highmark - $show_from) / $lineppg);
 
 $prev_pg = $page - 1;
 $next_pg = $page + 1;
 
-if( $page == $totalpg ) {
-	$show_from = $lowmark;
-	$show_end = $show_from + ( ( $totalpst > 20 ) ? 19 : $totalpst );
-}
-else {
-	$show_from = $highmark - $lineppg*$page + 1 ;
-	$show_end  = $show_from + $lineppg - 1;
-}
+/*
+	$page = $_GET['page'];
 
-if( $show_from < $lowmark )
-	$show_from = $lowmark;
+	if( !isset($_GET['page']) || $page < 1 || $page > $totalpg )
+		$page = 1;
 
-#$xover = nnrp_xover( $nhd, $show_from, $show_end );
-$xover = nnrp_xover_limit( $nhd, $show_from, 20, $highmark );
+	$prev_pg = $page - 1;
+	$next_pg = $page + 1;
+
+	if( $page == $totalpg ) {
+		$show_from = $lowmark;
+		$show_end = $show_from + ( ( $totalpst > $lineppg ) ? ($lineppg-1) : $totalpst );
+	}
+	else {
+		$show_from = $highmark - $lineppg*$page + 1 ;
+		$show_end  = $show_from + $lineppg - 1;
+	}
+
+	if( $show_from < $lowmark )
+		$show_from = $lowmark;
+
+#	$xover = nnrp_xover( $nhd, $show_from, $show_end );
+	$xover = nnrp_xover_limit( $nhd, $show_from, 20, $highmark );
+
+	$ncount = sizeof($xover);
+*/
 
 echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
-
-$ncount = sizeof($xover);
 
 echo "<table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 
@@ -177,22 +203,22 @@ echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
 if( $page != 1 )
-	echo "<a href=$self?server=$server&group=$group&page=1>$strFirstPage</a>";
+	echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
 else
 	echo $strFirstPage;
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 if( $prev_pg > 0 )
-	echo "<a href=$self?server=$server&group=$group&page=$prev_pg>$strPreviousPage</a>";
+	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_end+1) . "&forward=1>$strPreviousPage</a>";
 else
 	echo "<font color=gray>$strPreviousPage</font>";
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 if( $next_pg <= $totalpg )
-	echo "<a href=$self?server=$server&group=$group&page=$next_pg>$strNextPage</a>";
+	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_from-1) . ">$strNextPage</a>";
 else
 	echo "<font color=gray>$strNextPage</font>";
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 if( $page != $totalpg )
-	echo "<a href=$self?server=$server&group=$group&page=$totalpg>$strLastPage</a>";
+	echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
 else
 	echo $strLastPage;
 echo "</td>";

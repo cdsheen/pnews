@@ -155,24 +155,25 @@ function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
 
 	$artnum = $from;
 
-	for( $i = 0 ; $i < $count ; $i++ ) {
+	for( $i = 0 ; $i < $count ;  ) {
 
 		$xover = nnrp_xover( $nhd, $artnum );
-		if( sizeof($xover) == 0 )
-			continue;
 
-#		print_r( $xover );
-
-		$overview[$i] = $xover[0];
+		if( sizeof($xover) > 0 )
+			$overview[$i++] = $xover[0];
 
 		$artnum += $next;
+
 		if( $forward && $artnum > $limit )
 			break;
 		if( !$forward && $artnum < $limit )
 			break;
 	}
 
-	return( $overview );
+	if( $forward )
+		return( $overview );
+	else
+		return( array_reverse($overview) );
 }
 
 function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
