@@ -96,7 +96,7 @@ And it is easy to write your authentication module to be used by PHP News Reader
 <p>
 The login prompt can be configured as HTTP authentication or FORM style.
 <p>
-PHP News Reader supports multi interface languages, including English, Traditional Chinese, Simplified Chinese and Fran&ccedil;ais.
+PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese and Fran&ccedil;ais.
 The preferred language can be switched any time and any where.
 <p>
 PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese and Simplified Chinese.
