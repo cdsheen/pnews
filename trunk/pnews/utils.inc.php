@@ -344,7 +344,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			case 'other':
 				$_SESSION['auth_referal'] = $referal;
 				if( !auth_already_login() ) {
-					auth_show_login_page( $CFG['url_base'] );
+					auth_show_login_page( 'index.php' );
 					exit;
 				}
 				$_SESSION['auth_time'] = time();

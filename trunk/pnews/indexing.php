@@ -366,7 +366,10 @@ echo "</td>\n";
 
 echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>\n";
 if( !$global_readonly && !$news_readonly[$c] ) {
-	echo post_article( $server, $group, $strPost );
+	if( !$login_success && $CFG['auth_prompt'] == 'other' )
+		echo $strPost;
+	else
+		echo post_article( $server, $group, $strPost );
 }
 else
 	echo '&nbsp;';

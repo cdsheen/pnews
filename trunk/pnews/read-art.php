@@ -243,21 +243,32 @@ function toolbar( $server, $group, $c, $artnum, $title ) {
 
 	if( !$global_readonly && !$news_readonly[$c] ) {
 
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo reply_article( $server, $group, $artnum, $strReply, false, $CFG['show_article_popup'] );
-		echo "</td>\n";
+		if( !$login_success && $CFG['auth_prompt'] == 'other' ) {
+			echo "<td class=action align=center>$strReply</td>\n";
+			echo "<td class=action align=center>$strCrossPost</td>\n";
+			echo "<td class=action align=center>$strForward</td>\n";
+		}
+		else {
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo reply_article( $server, $group, $artnum, $strReply, false, $CFG['show_article_popup'] );
+			echo "</td>\n";
+
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo xpost_article( $server, $group, $artnum, $strCrossPost, $CFG['show_article_popup'] );
+			echo "</td>\n";
+
+			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
+			echo forward_article( $server, $group, $artnum, $strForward, $CFG['show_article_popup'] );
+			echo "</td>\n";
+		}
 
 		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo xpost_article( $server, $group, $artnum, $strCrossPost, $CFG['show_article_popup'] );
-		echo "</td>\n";
-
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		echo forward_article( $server, $group, $artnum, $strForward, $CFG['show_article_popup'] );
-		echo "</td>\n";
-
-		echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-		if( $email == $auth_email )
-			echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
+		if( $email == $auth_email ) {
+			if( !$login_success && $CFG['auth_prompt'] == 'other' ) {
+				echo $strDelete;
+			else
+				echo delete_article( $server, $group, $artnum, $strDelete, $CFG['show_article_popup'] );
+		}
 		else
 			echo "&nbsp;";
 		echo "</td>\n";
