@@ -20,6 +20,8 @@ $strHTTPlogoutInfo     = 'Please close all browser windows to prevent unauthoriz
 
 $strAuthExpired        = 'Time expired! You should login again!';
 
+$strAuthFail           = 'Authentication failed';
+$strReadyReturn        = 'Ready to return the original page, or press <a href="%s">here</a> to return now';
 $strPasswordRetryFail  = 'Supplied login name and password are incorrect';
 $strReLogin            = 'Login Again';
 

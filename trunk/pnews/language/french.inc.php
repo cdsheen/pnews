@@ -20,6 +20,8 @@ $strHTTPlogoutInfo     = 'Veuillez fermer toutes les fentres de votre navigateur
 
 $strAuthExpired        = 'Expiration de votre authentification. Vous devez vous reconnecter&nbsp;!';
 
+$strAuthFail           = 'Authentication failed';
+$strReadyReturn        = 'Ready to return the original page, or press <a href="%s">here</a> to return now';
 $strPasswordRetryFail  = 'L\'utilisateur et le mot de passe fournis sont incorrects';
 $strReLogin            = 'Reconnexion';
 

@@ -201,7 +201,7 @@ if( $CFG['auth_type'] != 'open' ) {
 }
 
 if( !isset( $CFG['banner'] ) )
-	$CFG['banner'] = '';
+	$CFG['banner'] = false;
 
 if( !isset( $CFG['title'] ) )
 	$CFG['title'] = 'Webnews';
@@ -304,7 +304,10 @@ if( !isset($CFG['language_switch']) )
 if( !isset($CFG['author_link']) )
 	$CFG['author_link'] = true;
 
-if( isset($CFG['log']) && !is_writable($CFG['log']) )
+if( !isset($CFG['log']) )
+	$CFG['log'] = false;
+
+if( $CFG['log'] && !is_writable($CFG['log']) )
 	show_error( '$CFG["log"]: You does not have write permission on ' . $CFG['log'] );
 
 if( !isset($CFG["links"]) )
@@ -356,7 +359,9 @@ function check_db_settings() {
 		config_error( '$CFG["db_field_username"]' );
 	if( !isset( $CFG['db_field_password'] ) )
 		config_error( '$CFG["db_field_password"]' );
-	if( isset( $CFG['db_password_crypt'] ) && !function_exists( $CFG['db_password_crypt'] ) )
+	if( !isset($CFG['db_password_crypt']) )
+		$CFG['db_password_crypt'] = false;
+	if( $CFG['db_password_crypt'] && !function_exists( $CFG['db_password_crypt'] ) )
 		config_error( '$CFG["db_password_crypt"]' );
 }
 

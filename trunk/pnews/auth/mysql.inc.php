@@ -59,7 +59,7 @@ function check_user_password( $username, $password ) {
 	@mysql_free_result($result);
 	@mysql_close($conn);
 
-	if( isset($CFG['db_password_crypt']) ) {
+	if( $CFG['db_password_crypt'] ) {
 		if( $CFG['db_password_crypt'] == 'md5' )
 			$password = md5($password);
 		elseif( $CFG['db_password_crypt'] == 'crypt' )

@@ -52,6 +52,7 @@ echo <<<EOH
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>
 <li>Fix a potential bug which cause heavy loading if caching is enabled.
+<li>Login fail message is now displayed if using "form" style login
 <li>Refined interface and style sheet.
 <li>Default value of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> is <i>false</i> now.
 <li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module

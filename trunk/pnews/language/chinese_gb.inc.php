@@ -19,6 +19,8 @@ $strHTTPlogoutInfo     = '您已经登出网页，请关闭所有浏览器视窗，以避免其他人盗用
 
 $strAuthExpired        = '使用时间超过设定，请重新登入一次';
 
+$strAuthFail           = '认证错误';
+$strReadyReturn        = '将返回原来的网页，如果没有反应，请按<a href="%s">这里</a>直接返回';
 $strPasswordRetryFail  = '您输入的帐号密码错误，请重新登入';
 $strReLogin            = '重新登入';
 

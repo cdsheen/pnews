@@ -73,9 +73,9 @@ $curr_charset = $lang_coding[$curr_language];
 @include($lang_define[$curr_language]);
 
 if( !isset( $strLogin ) ) {
-	echo "Warning: language definition missed<br>\n";
-#	echo "Current language: $curr_language<br>\n";
-#	echo "Current charset:  $curr_charset<br>\n";
+	echo "<font face=Georgia>Warning: language definition missed ({$lang_define[$curr_language]})</font><br>\n";
+	echo "<!-- Current language: $curr_language -->\n";
+	echo "<!-- Current charset:  $curr_charset  -->\n";
 }
 function b2g( $instr ) {
 

@@ -42,10 +42,39 @@ if( $info ) {
 	$_SESSION['auth_with']   = 'form';
 	$_SESSION['auth_info']   = $info;
 	$_SESSION['auth_ticket'] = md5( $user . session_id() . $now );
-}
-else
-	unset($_SESSION['auth_ticket']);
 
-header("Location: $xref");
+	header("Location: $xref");
+}
+else {
+	unset($_SESSION['auth_ticket']);
+	$retmsg = sprintf( $strReadyReturn, $xref );
+	echo <<<EOM
+<html>
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV=REFRESH CONTENT="3; URL=$xref">
+<STYLE>
+body       { font-size: 12px; color: black; background: #EEEEFF; font-family: arial }
+a          { text-decoration:none; color: blue }
+a:visited  { color: blue }
+a:hover    { text-decoration:underline; color:red }
+hr         { height: 1pt; color: #8080A0 }
+</STYLE>
+<title>$strAuthFail</title>
+</head>
+<body>
+<center>
+<br />
+<br />
+<font size=+1 face=Georgia>$strAuthFail</font>
+<br />
+<br />
+<br />
+<font face=face=Georgia>$retmsg</font>
+</center>
+</body>
+</html>
+EOM;
+}
 
 ?>
