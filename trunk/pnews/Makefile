@@ -53,3 +53,9 @@ clean:
 update:
 	cvs update -dP
 
+commit:
+	cvs ci
+
+ci:
+	cvs ci
+
