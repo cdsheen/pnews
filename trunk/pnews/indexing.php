@@ -67,8 +67,13 @@ else {
 
 $ncount = sizeof($xover);
 
-$show_from = $xover[0][0];
-$show_end  = $xover[$ncount-1][0];
+if( $ncount == 0 ) {
+	$show_from = $show_end = $cursor;
+}
+else {
+	$show_from = $xover[0][0];
+	$show_end  = $xover[$ncount-1][0];
+}
 
 if( $totalpg == 1 )
 	$page = 1;
