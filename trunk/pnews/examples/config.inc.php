@@ -303,6 +303,11 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = true;
 
 
+# [allow_attach_file] Max. number of allowed attachment in posting (default: 2)
+
+// $CFG["allow_attach_file"] = 0;
+
+
 # [articles_per_page] Number of articles shown in one single page (default: 20)
 
 // $CFG['articles_per_page'] = 30;

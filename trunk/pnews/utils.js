@@ -25,7 +25,7 @@ function read_article( base, server, group, artnum ) {
 	openwin.focus();
 }
 function post_article( base, server, group ) {
-	var winstyle = "status=no,menubar=no,scrollbars=yes,height=370,width=600";
+	var winstyle = "status=no,menubar=no,scrollbars=yes,height=400,width=600";
 	var openwin = window.open( base + "post-art.php?server=" + server + "&group=" + group , "post", winstyle );
 	openwin.focus();
 }

@@ -573,6 +573,12 @@ You can download phpCAS from the following place:<br />
        You should grant write permission on this directory to the user running PHP.<p>
     <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=allow_attach_file></a>
+  <p><strong>$CFG["allow_attach_file"]</strong></p>
+  <blockquote>
+    <p>Setting the allowed attachment(s) when posting article (default: <i>2</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+  </blockquote>
 <a name=group_sorting></a>
   <p><strong>$CFG["group_sorting"]</strong></p>
   <blockquote> 

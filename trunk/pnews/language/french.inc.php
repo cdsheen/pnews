@@ -49,7 +49,7 @@ $strReceiver           = 'Destinataire';
 $strName               = 'Nom';
 $strEmail              = 'Mél';
 $strContent            = 'Corps du message';
-$strAttachment         = 'Attachment';
+$strAttachment         = 'Pièce attachée';
 
 $strNoSubject          = '<pas de sujet>';
 
@@ -64,7 +64,7 @@ $strPost               = 'Poster';
 
 $strCloseWindow        = 'Fermer';
 
-$strShowHeader         = 'Show header';
+$strShowHeader         = 'Entête';
 
 $strFirstPage          = 'Premier';
 $strLastPage           = 'Dernier';

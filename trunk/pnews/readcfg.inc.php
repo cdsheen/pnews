@@ -300,16 +300,14 @@ if( !isset($CFG['show_sourceforge_logo']) )
 if( !isset($CFG['time_format']) )
 	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';
 
-/* un-documented settings */
-
 if( !isset($CFG['style_sheet']) || !file_exists( 'css/' . $CFG['style_sheet'] ))
 	$CFG['style_sheet'] = 'standard.css';
 
+if( !isset($CFG['allow_attach_file']) )
+	$CFG['allow_attach_file'] = 2;
+
 if( !isset($CFG['language_switch']) )
 	$CFG['language_switch'] = true;
-
-if( !isset($CFG['author_link']) )
-	$CFG['author_link'] = true;
 
 if( !isset($CFG['log']) )
 	$CFG['log'] = false;
@@ -322,6 +320,10 @@ if( $CFG['log'] && !is_writable($CFG['log']) )
 
 if( !isset($CFG["links"]) )
 	$CFG["links"] = null;
+
+/* un-documented settings */
+if( !isset($CFG['author_link']) )
+	$CFG['author_link'] = true;
 
 if( $CFG["auth_prompt"] == 'cas' ) {
 

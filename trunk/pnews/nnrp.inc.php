@@ -545,8 +545,10 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 							$byte[3] = ( ord($buf[$set*4+4]) - 32) & 63;
 
 							$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
-							$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
-							$tmp.= chr(($byte[2] << 6 | $byte[3] >> 0) & 0xff);
+							if( $set*3+2 <= $len )
+								$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
+							if( $set*3+3 <= $len )
+								$tmp.= chr(($byte[2] << 6 | $byte[3] >> 0) & 0xff);
 							$binary.= $tmp;
 						}
 					}

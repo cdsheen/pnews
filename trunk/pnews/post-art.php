@@ -57,15 +57,28 @@ if( $_POST['content'] != '' ) {
 	if( $article_convert['back'] ) {
 		nnrp_post_begin( $nhd, $article_convert['back']($nickname), $email, $article_convert['back']($subject), $group, $article_convert['back']($CFG['organization']), null, $auth_email, $news_charset[$curr_catalog] );
 		nnrp_post_write( $nhd, $article_convert['back']($content) );
-		if( $CFG['post_signature'] )
-			nnrp_post_write( $nhd, $article_convert['back']($CFG['post_signature']) );
 	}
 	else {
 		nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $CFG['organization'], null, $auth_email, $news_charset[$curr_catalog] );
 		nnrp_post_write( $nhd, $content );
-		if( $CFG['post_signature'] )
+	}
+
+	$an = intval($CFG['allow_attach_file']);
+	for( $i = 1 ; $i <= $an ; $i++ ) {
+#		echo "attach$i [" .$HTTP_POST_FILES["attach$i"]['name']. "]<br>\n";
+		if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
+			$filename = $HTTP_POST_FILES["attach$i"]['name'];
+			uuencode( $nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
+		}
+	}
+
+	if( $CFG['post_signature'] ) {
+		if( $article_convert['back'] )
+			nnrp_post_write( $nhd, $article_convert['back']($CFG['post_signature']) );
+		else
 			nnrp_post_write( $nhd, $CFG['post_signature'] );
 	}
+
 	nnrp_post_finish( $nhd );
 	nnrp_close($nhd);
 
@@ -146,7 +159,7 @@ else {
 <?
 $mail_disable = $CFG['email_editing'] ? '' : ' disabled';
 echo <<<EOF
-<form name=post action="$self" method=post>
+<form name=post action="$self" method=post enctype="multipart/form-data">
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
  <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td>
@@ -163,20 +176,81 @@ echo <<<EOF
  <tr><td colspan=3>
  <input name=server value="$server" type=hidden>
  <input name=group value="$group" type=hidden>
- <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br />
+ <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br /><br />
  </td></tr>
+EOF;
+	$an = intval($CFG['allow_attach_file']);
+	for( $i = 1; $i <= $an ; $i++ ) {
+		if( $i % 2 == 1 ) {
+			echo <<<EOA
+ <tr><td class=field>
+ $strAttachment $i:</td>
+ <td><input name="attach$i" type="file">
+ </td>
+EOA;
+		}
+		else {
+			echo <<<EOA
+ <td class=field align=right>$strAttachment $i:
+ <input name="attach$i" type="file">
+ </td></tr>
+EOA;
+		}
+	}
+
+	if( $i % 2 == 0 )
+		echo "</tr>\n";
+
+	echo <<<EOF
 </table>
 </center>
 </form>
 EOF;
-# <tr><td class=field colspan=3>
-# Attachment: <input name="userfile1" type="file"><br />
-# Attachment: <input name="userfile2" type="file"><br />
-# Attachment: <input name="userfile3" type="file"><br />
-# </td></tr>
 	html_focus( 'post', 'subject' );
 	html_tail();
 }
 
+function uuencode( $hld, $filename, $source, $mode = '644' ) {
+
+	if( !file_exists( $source ) )
+		return;
+
+	$fp = fopen( $source, 'r' );
+	if( ! $fp )
+		return;
+
+	$size = filesize( $source );
+#	fwrite( $hld, "$size\n");
+
+	fwrite( $hld, "\nbegin $mode $filename  \n" );
+
+	$ilen = $llen = 0;
+	$text = '';
+	while( $stuff = fread( $fp, 3 ) ) {
+		$byte[0] = (ord($stuff[0]) >> 2) & 0x3F;
+		$byte[1] = (((ord($stuff[0]) & 0x03 ) << 4) | ((ord($stuff[1]) >> 4) & 0x0F)) & 0x3F;
+		$byte[2] = (((ord($stuff[1]) & 0x0F ) << 2) | ((ord($stuff[2]) >> 6) & 0x03)) & 0x3F;
+		$byte[3] = ord($stuff[2]) & 0x3F;
+		$ilen += strlen($stuff);
+		for ($j = 0; $j < 4; $j++) {
+			if( $byte[$j] == 0 )
+				$text .= '`';
+			else
+				$text .= chr($byte[$j] + 32);
+			$llen++;
+			if( $llen == 60 ) {
+				fwrite( $hld, chr(77) . $text . "  \n" );
+				$ilen = $llen = 0;
+				$text = '';
+			}
+		}
+	}
+	fclose($fp);
+
+	if( $llen > 0 )
+		fwrite( $hld, chr($ilen+32) .  $text . "  \n` \nend\n" );
+	else
+		fwrite( $hld, "` \nend\n" );
+}
 
 ?>

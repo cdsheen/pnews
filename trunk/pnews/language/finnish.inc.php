@@ -49,7 +49,7 @@ $strReceiver           = 'Vastaanottaja';
 $strName               = 'Nimi';
 $strEmail              = 'Sähköposti';
 $strContent            = 'Sisältö';
-$strAttachment         = 'Attachment';
+$strAttachment         = 'Liite';
 
 $strNoSubject          = '<ei otsikkoa>';
 
