@@ -37,9 +37,6 @@ pkg:
 	rm -rf $(ZIPNAME)
 	mv -f $(ZIPNAME).tgz $(ZIPNAME).zip ..
 
-html:
-	php doc/index.php | tail +4 > doc/release.html
-
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
 
