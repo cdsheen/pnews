@@ -300,12 +300,12 @@ $CFG["title"] = "XXX News Service";
 
 # [html_header] The file to be included as page header (default: false)
 
-// $CFG["header"] = "header.htm";
+// $CFG["html_header"] = "header.htm";
 
 
 # [html_footer] The file to be included as page footer (default: false)
 
-// $CFG["footer"] = "footer.htm";
+// $CFG["html_footer"] = "footer.htm";
 
 
 # [group_list] The group definition that show on this Web News
