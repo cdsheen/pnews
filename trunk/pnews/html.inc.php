@@ -71,6 +71,12 @@ function html_foot() {
 
        </font>
      </i>
+     &nbsp;
+</td>
+<td align=right valign=center>
+<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
+<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" height=20 alt="SourceForge.net Logo">
+</a>
   </td><td align=right>
      <font size=2>
 <?
