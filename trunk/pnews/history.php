@@ -19,9 +19,9 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
-PHP News Reader v2.0-beta
+PHP News Reader v2.0
 <ul>
-<li>First public release
+<li>First public release and hosts on SourceForge
 <li>Rewrite the authentication codes and the use of the ticket system
 <li>Logging out support
 <li>Support \'optional\' authentication model for Read-Only access without authentication

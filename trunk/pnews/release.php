@@ -101,9 +101,9 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
-PHP News Reader v2.0 (expect to release on 2003/01/19)
+PHP News Reader v2.0 (2003/01/19)
 <ul>
-<li>First public release
+<li>First public release and hosts on SourceForge
 <li>Rewrite the authentication codes and the use of the ticket system
 <li>Logging out support
 <li>Support \'optional\' authentication model for Read-Only access without authentication
@@ -134,6 +134,11 @@ http://sourceforge.net/projects/pnews/
 Sample running system:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>
+</blockquote>
+<p>
+Download from SourceForge:
+<blockquote>
+<a href="http://prdownloads.sourceforge.net/pnews/pnews-2.0.tgz?download" target=_blank>pnews-2.0.tgz</a>
 </blockquote>
 <p>
 Discussion Forum:
