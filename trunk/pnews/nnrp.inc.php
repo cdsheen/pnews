@@ -735,9 +735,10 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 			$artinfo['subtype'] = $subtype;
 			array_shift( $ctype );
 			foreach( $ctype as $c_param ) {
-				list( $param, $value ) = preg_split( '/=/', $c_param );
-				if( $param == 'charset' )
-					$artinfo['charset'] = str_replace( '"', '', $value );
+				if( preg_match( '/^(.+)\s*="?\s*(.+)"?$/', $c_param, $match ) ) {
+					if( $match[1] == 'charset' )
+						$artinfo['charset'] = strtolower($match[2]);
+				}
 			}
 		}
 	}
