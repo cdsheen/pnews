@@ -64,13 +64,13 @@ if( $confirm == 1 ) {
     <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
 </tr>
 </table>
-<hr>
+<hr />
 <table>
 <tr><td class=field>$strAuthor: </td><td class=value>$auth_user ($auth_email)</td></tr>
 <tr><td class=field>$strSubject: </td><td class=value>$subject</td></tr>
 <tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
 </table>
-<hr>
+<hr />
 
 EOT;
 
@@ -121,7 +121,7 @@ elseif( $artnum != '' ) {
 
 	echo $strRealyDelete ;
 
-	echo "<hr>";
+	echo "<hr />";
 
 	echo "<form style='margin-top: 0' name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";

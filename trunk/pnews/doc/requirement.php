@@ -40,7 +40,7 @@ echo <<<EOH
 </td></tr></table>
 <font size=3 color=black face="Georgia">
 Requirement
-<hr>
+<hr />
 The requirement for PHP News Reader on the server side (news server) :
 <ul>
 <li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
@@ -81,7 +81,8 @@ The requirement for PHP News Reader on the client side (web browser) :
 <li>Accept Cookies (not necessary)
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
-<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
+<hr />
+<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>

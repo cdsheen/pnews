@@ -481,7 +481,7 @@ function http_logout() {
 	global $title, $strLogout, $strHTTPlogoutInfo, $strCloseWindow;
 
 	html_head( "$title - $strLogout" );
-	echo "<font size=2><b>$title - $strLogout</b></font><hr>";
+	echo "<font size=2><b>$title - $strLogout</b></font><hr />";
 	echo "<font size=3 color=black>$strHTTPlogoutInfo</font><p>\n";
 	echo "<form><input type=button class=normal value=\"$strCloseWindow\" onClick='close_window();'></form>\n";
 	html_foot();

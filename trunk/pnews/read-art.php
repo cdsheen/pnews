@@ -148,7 +148,7 @@ echo "<td class=server>$org</td></tr>\n";
 
 echo "<tr><td colspan=2 class=content>";
 
-echo "<hr>";
+echo "<hr />";
 if( $artconv['to'] )
 	nnrp_body( $nhd, $artnum, "", "<br />\n", true, false, $artconv['to'] );
 else

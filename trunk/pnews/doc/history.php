@@ -45,16 +45,16 @@ echo <<<EOH
 </table>
 <font size=3 color=black face="Georgia">
 <a href=index.php>PHP News Reader</a> Release histroy
-<hr>
+<hr />
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
 PHP News Reader v2.4.0 (2003/10/04)
 <ul>
-<li>Support News Server with NNTP over SSL (NNTPS/SNEWS) connection
-<li>Support <a href=guide#auth_nntps>NNTPS</a> authentication module
-<li>Overview format
-<li>Cache
+<li>Support News Server with NNTP over SSL connection (also known as NNTPS or SNEWS)
+<li>Support <a href=guide.php#auth_nntps>NNTPS</a> authentication module
+<li>Overview format is confirmed by <b>LIST OVERVIEW.FMT</b>
+<li>Caching can be enabled to accerlate the indexing. (<a href=guide.php#cache_dir>\$CFG["cache_dir"]</a>)
 <li>Check for the invalid access to groups not listed in newsgroups.lst
 <li>Fix the problem of filtering for ANSI coloring codes.
 </ul>
@@ -225,7 +225,7 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <li>Correct the problem about author information of XOVER, HEAD
 <li>Fix a bug of checking both "Not post to newsgroup" and "Reply to author"
 </ul>
-<hr>
+<hr />
 <table cellspacing=0 cellpadding=0 width=100%>
 <tr><td>
 <font size=2>$pnews_claim</font><br />

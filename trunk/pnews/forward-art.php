@@ -53,7 +53,7 @@ if( $_POST['content'] != '' ) {
 	$time = strftime($CFG['time_format']);
 
 	echo "<table width=100%><tr><td class=status>$strArticleIsForwarded</td>\n";
-	echo "<td class=field><input class=normal type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr>\n";
+	echo "<td class=field><input class=normal type=button onClick=\"close_window();\" value=\"$strCloseWindow\"></td></tr></table><hr />\n";
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
@@ -61,8 +61,9 @@ if( $_POST['content'] != '' ) {
 	echo "<tr><td class=field>$strReceiver: </td><td class=value>$receiver</td></tr>\n";
 	echo "<tr><td class=field>$strTime: </td><td class=value>$time</td></tr>\n";
 	echo "<tr><td class=field>$strSubject: </td><td class=value>" . htmlspecialchars( $subject ) . "</td></tr></table>\n";
-	echo '<hr><pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</pre>\n";
-	echo "<hr>\n";
+	echo '<hr />
+	<pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</pre>\n";
+	echo "<hr />\n";
 
 	$mime_headers = "Mime-Version: 1.0\nContent-Type: text/plain; charset=\"" . $_POST['charset'] . "\"\nContent-Transfer-Encoding: 8bit\n";
 

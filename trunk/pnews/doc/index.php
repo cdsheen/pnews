@@ -49,7 +49,7 @@ echo <<<EOR
 <font size=3 color=black face="Georgia">
 PHP News Reader
 </font>
-<hr>
+<hr />
 <font face="Georgia" size="3" color="black">
 PHP News Reader is a web based News Reader.
 It supports the standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a>) for reading, posting, deleting,
@@ -205,7 +205,7 @@ ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
-<hr>
+<hr />
 <font size=2>$pnews_claim</font>
 </font>
 </body>

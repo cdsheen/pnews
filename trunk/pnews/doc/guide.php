@@ -46,7 +46,7 @@ echo <<<EOH
 <font size=3 color=black face="Georgia">
 PHP News Reader - Installation and Configuration
 </font>
-<hr>
+<hr />
 EOH;
 
 ?>

@@ -40,7 +40,7 @@ echo <<<EOH
 </td></tr></table>
 <font size=3 color=black face="Georgia">
 URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
-<hr>
+<hr />
 URL Rewrite is a cool function that make the link more readable.<br />
 <br />
 For example, the link to read an article is:
@@ -67,7 +67,8 @@ For more information about Apache's mod_rewrite, visit <a href="http://httpd.apa
 <p>
 Check the <a href=guide.php>Installation Manual</a> for other configuration parameters.
 
-<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
+<hr />
+<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>

@@ -80,19 +80,19 @@ if( $_POST['content'] != '' ) {
      <td class=field><input class=normal type=button onClick="close_window()" value="$strCloseWindow"></td>
 </tr>
 </table>
-<hr>
+<hr />
 <table>
  <tr><td class=field>$strAuthor: </td><td class=value>$nickname ($email)</td></tr>
  <tr><td class=field>$strTime: </td><td class=value>$time</td></tr>
  <tr><td class=field>$strSubject: </td><td class=value>$subject</font></td></tr>
  <tr><td class=field>$strGroup: </td><td class=value>$group</td></tr>
 </table>
-<hr>
+<hr />
 
 EOT;
 	echo '<pre class=content>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</div>\n";
 	html_delay_close( 2000 );
-	echo "<hr>\n";
+	echo "<hr />\n";
 	html_tail();
 }
 else {

@@ -40,11 +40,12 @@ echo <<<EOH
 </td></tr></table>
 <font size=3 color=black face="Georgia">
 Acknowledgement
-<hr>
+<hr />
 <ul>
 <li>Pascal Aubry - French translation, CAS authentication and phpCAS library
 </ul>
-<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
+<hr />
+<table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
