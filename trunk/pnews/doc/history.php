@@ -36,6 +36,7 @@ PHP News Reader v2.2.1 (2003/06/21)
 <li>Fix the bug of the configuration checking about NNTP authentication module.
 <li>Fix the group verification error while forwarding article.
 <li>Language switch can be turned off by setting <a href=guide.php#language_switch>\$CFG["language_switch"]</a> as false.
+<li>Fix the lower-case problem of nnrp authentication parameter in newsgroups.lst
 </ul>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>
