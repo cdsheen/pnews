@@ -29,6 +29,14 @@ function nnrp_open ( $nnrp_server ) {
 
 	list( $code, $msg ) = get_status( $nhd );
 
+	if( $code[0] != '2' )
+		return(null);
+
+	send_command( $nhd, "MODE READER" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] != '2' )
+		return(null);
+
 	return( $nhd );
 
 }
