@@ -216,7 +216,7 @@ html_tail();
 
 function toolbar( $server, $group, $c, $artnum, $title ) {
 	global $global_readonly, $email, $auth_email, $news_readonly;
-	global $strCloseWindow, $strReply;
+	global $strCloseWindow, $strReply, $auth_success;
 	global $strCrossPost, $strForward, $strDelete;
 	global $strMyFavor, $strReturnToIndexing, $strNextArticle, $strLastArticle;
 	global $CFG, $nexturl, $lasturl, $idxurl;
