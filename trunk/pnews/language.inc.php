@@ -44,7 +44,7 @@ $lang_coding = array(	'en'         => 'us-ascii',
 			'fr'         => 'iso-8859-15',
 			'fi'         => 'iso-8859-15',
 			'de'         => 'iso-8859-15',
-			'it'         => 'ISO-8859-15' );
+			'it'         => 'iso-8859-15' );
 
 $charset_alias = array( 'big5'       => 'big5',
 			'gb'         => 'gb2312',
