@@ -37,7 +37,7 @@ To install PHP News Reader, please check the <a href=requirement.php>requirement
 <p>
 PHP News Reader has nothing to do with user registration.
 It is designed to work with the EXISTING authentication system.
-PHP News Reader supports flexible authentication interface modules,
+PHP News Reader supports several flexible authentication interface modules,
 which let administrator easy to control how to authenticate users.
 There are various handy authentication modules availabled.
 <ul>
@@ -56,16 +56,16 @@ The support for MySQL and PostgreSQL also makes it easy to integrate with the po
 <p>
 The login prompt can be configured as HTTP authentication or FORM style.
 <p>
-PHP News Reader contains three interface languages (English, Traditional Chinese and Simplified Chinese).
-The preferred encoding can be switched any time and any where.
+PHP News Reader supports three interface languages (English, Traditional Chinese and Simplified Chinese).
+The preferred language can be switched any time and any where.
 <p>
 Since the PHP iconv() function may not work on some systems and it also has problems of handling Chinese words.
 PHP News Reader use a self-written conversion system.
-The conversion between Chinese (BIG5, GB2312 and Unicode/UTF-8) encodings is supported.
-The encoding of article is auto-converted to the preferred one
-while the selected encoding of interface is different from the encoding of the news articles.
+The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
+The charset of article is auto-converted to the preferred one
+while the selected charset of interface is different from the charset of the news articles.
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
-The posted articles will also be converted to the original encoding of the server.
+The posted articles will also be converted to the original charset of the server.
 <p>
 PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
