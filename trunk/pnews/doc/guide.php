@@ -896,7 +896,7 @@ You can download phpCAS from the following place:<br />
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myname,mypasswd</strong></p>
   </blockquote>
   Since PHP News Reader v2.5.2, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
-  you can use the username and password in the http authentication as the authentication info requested by news server. For example:</p>
+  you can use the username and password in the http authentication as the authentication info requested by Web server. For example:</p>
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
   </blockquote>
