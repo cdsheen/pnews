@@ -21,7 +21,7 @@
 
 $pnews_name      = 'PHP News Reader';
 $pnews_version   = 'v2.3.0';
-$pnews_release   = '2003/08/26';
+$pnews_release   = '2003/09/06';
 $pnews_copyright = '(C) 2001-2003 - Shen Cheng-Da';
 $pnews_claim     = "$pnews_name $pnews_version $pnews_copyright";
 

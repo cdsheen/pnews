@@ -33,17 +33,6 @@ if( $server == $group_default_server )
 else
 	$reserver = $server;
 
-if( $CFG['url_rewrite'] ) {
-	$nexturl = "$urlbase/article/$reserver/$group/$artnum/next";
-	$lasturl = "$urlbase/article/$reserver/$group/$artnum/last";
-	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
-}
-else {
-	$nexturl = "read-art.php?server=$server&group=$group&artnum=$artnum&next=1";
-	$lasturl = "read-art.php?server=$server&group=$group&artnum=$artnum&last=1";
-	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
-}
-
 $nhd = nnrp_open( $server );
 
 if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
@@ -56,6 +45,21 @@ if( ! ( $nhd && nnrp_authenticate( $nhd ) ) ) {
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
+$nextnum = nnrp_next( $nhd, $artnum );
+$lastnum = nnrp_last( $nhd, $artnum );
+
+if( $CFG['url_rewrite'] ) {
+	$nexturl = ($nextnum>0) ? "$urlbase/article/$reserver/$group/$nextnum" : '';
+	$lasturl = ($lastnum>0) ? "$urlbase/article/$reserver/$group/$lastnum" : '';
+	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
+}
+else {
+	$nexturl = ($nextnum>0) ? "read-art.php?server=$server&group=$group&artnum=$nextnum" : '';
+	$lasturl = ($lastnum>0) ? "read-art.php?server=$server&group=$group&artnum=$lastnum" : '';
+	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
+}
+
+/*
 if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
 	if( isset( $_GET['next'] ) )
 		$artnum = nnrp_next( $nhd, $artnum );
@@ -74,6 +78,7 @@ if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
 
 	exit;
 }
+*/
 
 #list( $from, $email, $subject, $date, $msgid, $org )
 
@@ -140,10 +145,16 @@ echo "<center>\n";
 
 	echo "</td>";
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-	echo "<a href=\"$lasturl\">$strLastArticle</a>";
+	if( $lasturl == '' )
+		echo $strLastArticle;
+	else
+		echo "<a href=\"$lasturl\">$strLastArticle</a>";
 	echo "</td>\n";
 	echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-	echo "<a href=\"$nexturl\">$strNextArticle</a>";
+	if( $nexturl == '' )
+		echo $strNextArticle;
+	else
+		echo "<a href=\"$nexturl\">$strNextArticle</a>";
 	echo "</td>\n";
 	echo "</tr></table>\n";
 #}
@@ -189,10 +200,16 @@ function toolbar( $server, $group, $artnum, $title ) {
 		echo "<tr>";
 		if( ! $CFG['show_article_popup'] ) {
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo "<a href=\"$nexturl\">$strNextArticle</a>";
+			if( $nexturl == '' )
+				echo $strNextArticle;
+			else
+				echo "<a href=\"$nexturl\">$strNextArticle</a>";
 			echo "</td>\n";
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
-			echo "<a href=\"$lasturl\">$strLastArticle</a>";
+			if( $lasturl == '' )
+				echo $strLastArticle;
+			else
+				echo "<a href=\"$lasturl\">$strLastArticle</a>";
 			echo "</td>\n";
 			echo "<td class=action align=center onMouseover='this.className=\"action_hover\";' onMouseout='this.className=\"action\";'>";
 			echo "<a href=\"$idxurl\">$strReturnToIndexing</a>";
