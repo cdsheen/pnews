@@ -48,9 +48,9 @@ echo <<<EOH
 <hr />
 PHP News Reader v2.5.1 (2003/11/29)
 <ul>
-<li>Image attachment can be displayed inline by setting <a href=guide.php#image_inline>\$CFG['image_inline']</a>
+<li>Uuencoded image attachment is shown inline by default, or turning off by setting <a href=guide.php#image_inline>\$CFG['image_inline']</a> to <i>false</i>.
 <li>Fix the charset information in the login-failed page.
-<li>Correct many words used for GB to BIG5 coding conversion.
+<li>Correct many words used for GB to/from BIG5 coding conversion.
 </ul>
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>

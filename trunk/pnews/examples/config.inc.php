@@ -306,6 +306,12 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = true;
 
 
+# [image_inline] The uuencoded image attachment will be shown
+#                inline along with article (default: true)
+
+// $CFG['image_inline'] = false;
+
+
 # [allow_attach_file] Max. number of allowed attachment in posting (default: 2)
 
 // $CFG["allow_attach_file"] = 0;

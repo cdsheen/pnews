@@ -371,6 +371,7 @@ define( 'SPACE_ASIS',       4 );
 define( 'SHOW_NULL_LINE',   8 );
 define( 'SHOW_HEADER',     16 );
 define( 'FILTER_ANSI',     32 );
+define( 'IMAGE_INLINE',    64 );
 
 function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null, $download_url = '' ) {
 
@@ -382,6 +383,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 	$show_null_line = ($mode & SHOW_NULL_LINE)  >0;
 	$show_header    = ($mode & SHOW_HEADER)     >0;
 	$filter_ansi    = ($mode & FILTER_ANSI)     >0;
+	$image_inline   = ($mode & IMAGE_INLINE)    >0;
 
 	if( $show_header )
 		send_command( $nhd, "ARTICLE $artnum" );
@@ -454,9 +456,17 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 
 		if( in_array( $i, $uu ) ) {
 			if( $show_hlink ) {
-				echo "$prepend &lt;&lt; <a href=\"";
-				printf( "$download_url", $body[$i] );
-				echo "\">{$body[$i]}</a> &gt;&gt; $postpend";
+				$ext = substr( $body[$i], strrpos( $body[$i], '.') + 1);
+				if( $image_inline && strstr( 'jpg.gif.bmp.png', strtolower($ext) ) ) {
+					echo "$prepend<img src=\"";
+					printf( "$download_url", $body[$i] );
+					echo "\" alt=\"{$body[$i]}\" />$postpend";
+				}
+				else {
+					echo "$prepend &lt;&lt; <a href=\"";
+					printf( "$download_url", $body[$i] );
+					echo "\">{$body[$i]}</a> &gt;&gt; $postpend";
+				}
 			}
 			else
 				echo "$prepend &lt;&lt; {$body[$i]} &gt;&gt; $postpend";

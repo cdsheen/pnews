@@ -303,6 +303,9 @@ if( !isset($CFG['time_format']) )
 if( !isset($CFG['style_sheet']) || !file_exists( 'css/' . $CFG['style_sheet'] ))
 	$CFG['style_sheet'] = 'standard.css';
 
+if( !isset($CFG['image_inline']) )
+	$CFG['image_inline'] = true;
+
 if( !isset($CFG['allow_attach_file']) )
 	$CFG['allow_attach_file'] = 2;
 

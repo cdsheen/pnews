@@ -575,6 +575,12 @@ You can download phpCAS from the following place:<br />
        You should grant write permission on this directory to the user running PHP.<p>
     <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
   </blockquote>
+<a name=image_inline></a>
+  <p><strong>$CFG["image_inline"]</strong></p>
+  <blockquote>
+    <p>The uuencoded image attachment will be shown inline along with article (default: <i>true</i>)</p>
+    <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
+  </blockquote>
 <a name=allow_attach_file></a>
   <p><strong>$CFG["allow_attach_file"]</strong></p>
   <blockquote>

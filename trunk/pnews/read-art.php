@@ -173,6 +173,9 @@ $show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
 if( isset($_GET['header']) )
 	$show_mode |= SHOW_HEADER;
 
+if( $CFG['image_inline'] )
+	$show_mode |= IMAGE_INLINE;
+
 #if( $artconv['to'] )
 
 $dlbase = str_replace( 'https://', 'http://', $urlbase );
