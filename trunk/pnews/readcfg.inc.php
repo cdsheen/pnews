@@ -283,7 +283,7 @@ if( !isset( $CFG['articles_per_page'] ) )
 	$CFG['articles_per_page'] = 20;
 
 if( !isset($CFG['url_base']) )
-	config_error( 'CFG["url_base"]' );
+	config_error( '$CFG["url_base"]' );
 
 if( !isset( $CFG['group_list'] ) )
 	$CFG['group_list'] = 'newsgroups.lst';

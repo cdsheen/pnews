@@ -345,6 +345,8 @@ $_SESSION['rem_catalog'] = $curr_catalog ;
 
 $article_convert  = get_conversion( $news_charset[$curr_catalog], $curr_charset );
 
+#echo "<!-- curr: $curr_charset ({$article_convert['to']}) -->\n";
+
 #if( $article_convert['to'] ) {
 #	$read_claim = '// Article auto-converted from ' . $article_convert['source'] . ' to ' . $article_convert['result'];
 #	$post_claim = '// Article original posted with ' . $article_convert['result'] . ' encoding';

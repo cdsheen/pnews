@@ -70,6 +70,8 @@ $curr_charset = $lang_coding[$curr_language];
 
 /* Include the localized language definition resource */
 
+// echo "<!-- include {$lang_define[$curr_language]} -->\n";
+
 @include($lang_define[$curr_language]);
 
 if( !isset( $strLogin ) ) {

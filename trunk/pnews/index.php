@@ -21,6 +21,9 @@ require_once('utils.inc.php');
 
 # ---------------------------------------------------------------------
 
+header( 'Cache-Control: no-store, no-cache, must-revalidate');
+header( 'Pragma: no-cache' );
+        
 html_head( $title );
 
 #echo "<center>\n";
