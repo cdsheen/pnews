@@ -25,7 +25,7 @@ $title .= " - $pnews_msg[Reply]";
 
 $artnum   = $_GET['artnum'];
 
-if( $_POST['content'] != '' ) {
+if( isset($_POST['content']) && $_POST['content'] != '' ) {
 
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];

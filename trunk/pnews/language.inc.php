@@ -297,8 +297,8 @@ function get_conversion( $original, $preferred ) {
 
 	global $charset_alias;
 
-	$original = $charset_alias[strtolower($original)];
-	$preferred = $charset_alias[strtolower($preferred)];
+	$original = $charset_alias[trim(strtolower($original))];
+	$preferred = $charset_alias[trim(strtolower($preferred))];
 
 	if ( ( $preferred == 'big5' ) && ( $original == 'gb2312' ) ) {
 		$convert['to'] = 'g2b';

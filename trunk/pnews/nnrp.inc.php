@@ -34,6 +34,7 @@ function set_nnrp_debug_level( $level ) {
 }
 
 function open_nntp ( $nnrp_server ) {
+	global $nnrp_debug_level;
 
 	if( strstr( $nnrp_server, ':' ) )
 		list( $nnrp_server, $port ) = split( ':', $nnrp_server );
@@ -41,7 +42,13 @@ function open_nntp ( $nnrp_server ) {
 		$port = 119;
 
 	$nhd = null;
-	$nhd = @fsockopen( $nnrp_server, $port, $errno, $errstr, 5 );
+	if( $nnrp_debug_level ) {
+		$nhd = fsockopen( $nnrp_server, $port, $errno, $errstr, 5 );
+		if( ! $nhd )
+			echo "ERROR: $errstr ($errno)<br />\n";
+	}
+	else
+		$nhd = @fsockopen( $nnrp_server, $port, $errno, $errstr, 5 );
 
 	if( ! $nhd )
 		return(null);
