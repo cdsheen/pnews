@@ -46,6 +46,17 @@ if( $content != '' && $postgroup != '' ) {
 	$refid      = $_POST['refid'];
 #	$authormail = $_POST['authormail'];
 
+	if( $auto_slash ) {
+		$subject  = stripslashes( $_POST['subject'] );
+		$content  = stripslashes( $_POST['content'] );
+		$nickname = stripslashes( $_POST['nickname'] );
+	}
+	else {
+		$subject  = $_POST['subject'];
+		$content  = $_POST['content'];
+		$nickname = $_POST['nickname'];
+	}
+
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
 	$nhd = nnrp_open( $server );
@@ -70,14 +81,8 @@ if( $content != '' && $postgroup != '' ) {
 	nnrp_post_finish( $nhd );
 	nnrp_close($nhd);
 
-	html_head( "$postgroup - $subject" );
 
-	$content = str_replace( '\\"', '"', $content );
-	$content = str_replace( '\\\'', "'", $content );
-	$content = str_replace( '\\\\', '\\', $content );
-	$subject = str_replace( '\\"', '"', $subject );
-	$subject = str_replace( '\\\'', "'", $subject );
-	$subject = str_replace( '\\\\', '\\', $subject );
+	html_head( "$postgroup - $subject" );
 
 	$time = strftime($CFG['time_format']);
 

@@ -25,8 +25,6 @@ $title .= " - $strPost";
 
 if( $_POST['content'] != '' ) {
 
-	html_head( "$group - $subject" );
-
 	$server   = $_POST['server'];
 	$group    = $_POST['group'];
 
@@ -36,10 +34,18 @@ if( $_POST['content'] != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$nickname = $_POST['nickname'];
-	$email    = $_POST['email'];
-	$content  = $_POST['content'];
-	$subject  = $_POST['subject'];
+	$email = $_POST['email'];
+
+	if( $auto_slash ) {
+		$nickname = stripslashes($_POST['nickname']);
+		$content  = stripslashes($_POST['content']);
+		$subject  = stripslashes($_POST['subject']);
+	}
+	else {
+		$nickname = $_POST['nickname'];
+		$content  = $_POST['content'];
+		$subject  = $_POST['subject'];
+	}
 
 	$nhd = nnrp_open( $server );
 
@@ -66,12 +72,7 @@ if( $_POST['content'] != '' ) {
 	nnrp_post_finish( $nhd );
 	nnrp_close($nhd);
 
-	$content = str_replace( '\\"', '"', $content );
-	$content = str_replace( '\\\'', "'", $content );
-	$content = str_replace( '\\\\', '\\', $content );
-	$subject = str_replace( '\\"', '"', $subject );
-	$subject = str_replace( '\\\'', "'", $subject );
-	$subject = str_replace( '\\\\', '\\', $subject );
+	html_head( "$group - $subject" );
 
 	$time = strftime($CFG['time_format']);
 

@@ -29,7 +29,6 @@ $artnum   = $_GET['artnum'];
 if( $_POST['content'] != '' ) {
 
 	$server   = $_POST['server'];
-	$group    = $_POST['group'];
 
 	if( $post_restriction )
 		readonly_error( $server, $group );
@@ -38,9 +37,16 @@ if( $_POST['content'] != '' ) {
 		session_error( $server, $group );
 
 	$receiver   = $_POST['receiver'];
-	$content    = $_POST['content'];
-	$subject    = $_POST['subject'];
 	$refid      = $_POST['refid'];
+
+	if( $auto_slash ) {
+		$content  = stripslashes($_POST['content']);
+		$subject  = stripslashes($_POST['subject']);
+	}
+	else {
+		$content  = $_POST['content'];
+		$subject  = $_POST['subject'];
+	}
 
 	html_head( "$newsgroup - $subject" );
 
@@ -52,12 +58,6 @@ if( $_POST['content'] != '' ) {
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
-	$content = str_replace( '\\"', '"', $content );
-	$content = str_replace( '\\\'', "'", $content );
-	$content = str_replace( '\\\\', '\\', $content );
-	$subject = str_replace( '\\"', '"', $subject );
-	$subject = str_replace( '\\\'', "'", $subject );
-	$subject = str_replace( '\\\\', '\\', $subject );
 	echo "<table>\n";
 	echo "<tr><td align=right>$strReceiver: </td><td><font color=blue>$receiver</font></td></tr>\n";
 	echo "<tr><td align=right>$strTime: </td><td><font color=blue>$time</font></td></tr>\n";

@@ -36,12 +36,20 @@ if( $_POST['content'] != '' ) {
 	if( $post_restriction )
 		readonly_error( $server, $group );
 
-	$nickname   = $_POST['nickname'];
 	$email      = $_POST['email'];
-	$content    = $_POST['content'];
-	$subject    = $_POST['subject'];
 	$refid      = $_POST['refid'];
 	$authormail = $_POST['authormail'];
+
+	if( $auto_slash ) {
+		$nickname = stripslashes($_POST['nickname']);
+		$content  = stripslashes($_POST['content']);
+		$subject  = stripslashes($_POST['subject']);
+	}
+	else {
+		$nickname = $_POST['nickname'];
+		$content  = $_POST['content'];
+		$subject  = $_POST['subject'];
+	}
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
@@ -73,13 +81,6 @@ if( $_POST['content'] != '' ) {
 	}
 
 	html_head( "$group - $subject" );
-
-	$content = str_replace( '\\"', '"', $content );
-	$content = str_replace( '\\\'', "'", $content );
-	$content = str_replace( '\\\\', '\\', $content );
-	$subject = str_replace( '\\"', '"', $subject );
-	$subject = str_replace( '\\\'', "'", $subject );
-	$subject = str_replace( '\\\\', '\\', $subject );
 
 	$time = strftime($CFG['time_format']);
 

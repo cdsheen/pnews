@@ -33,7 +33,11 @@ if( $confirm == 1 ) {
 		readonly_error( $server, $group );
 
 	$msgid   = $_POST['msgid'];
-	$subject = $_POST['subject'];
+
+	if( $auto_slash )
+		$content  = stripslashes($_POST['content']);
+	else
+		$subject  = $_POST['subject'];
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 

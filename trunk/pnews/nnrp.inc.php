@@ -338,9 +338,9 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 	list( $code, $msg ) = get_status( $nhd );
 	fwrite( $nhd, "From: $name <$email>\r\n" );
 	fwrite( $nhd, "Newsgroups: $newsgroups\r\n" );
-	$subject = str_replace( '\\"', '"', $subject );
-	$subject = str_replace( '\\\'', "'", $subject );
-	$subject = str_replace( '\\\\', '\\', $subject );
+#	$subject = str_replace( '\\"', '"', $subject );
+#	$subject = str_replace( '\\\'', "'", $subject );
+#	$subject = str_replace( '\\\\', '\\', $subject );
 	fwrite( $nhd, "Subject: $subject\r\n" );
 	fwrite( $nhd, "Organization: $organization\r\n" );
 	fwrite( $nhd, "X-User-Real-E-Mail: $real_email\r\n" );
@@ -365,18 +365,18 @@ function nnrp_post_writeln( $nhd, $buf ) {
 	if( $buf == '.' )
 		fwrite( $nhd, "..\r\n" );
 	else {
-		$buf = str_replace( '\\"', '"', $buf );
-		$buf = str_replace( '\\\'', "'", $buf );
-		$buf = str_replace( '\\\\', '\\', $buf );
+#		$buf = str_replace( '\\"', '"', $buf );
+#		$buf = str_replace( '\\\'', "'", $buf );
+#		$buf = str_replace( '\\\\', '\\', $buf );
 
 		fwrite( $nhd, $buf . "\r\n" );
 	}
 }
 
 function nnrp_post_write( $nhd, $buf ) {
-	$buf = str_replace( '\\"', '"', $buf );
-	$buf = str_replace( '\\\'', "'", $buf );
-	$buf = str_replace( '\\\\', '\\', $buf );
+#	$buf = str_replace( '\\"', '"', $buf );
+#	$buf = str_replace( '\\\'', "'", $buf );
+#	$buf = str_replace( '\\\\', '\\', $buf );
 	$tok = strtok( $buf, "\n" );
 	while ($tok) {
 		$tok = rtrim($tok);
