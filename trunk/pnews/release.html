@@ -24,40 +24,7 @@ NNRP Library provides a friendly API for accessing news server via NNTP.
 <p>
 PHP News Reader does not support threading of News articles and newsgroup subscription.
 <p>
-<a name=server_requirement></a>
-The requirement for PHP News Reader on the server side:
-<ul>
-<li>Web Server with PHP modules installed ( PHP 4.1.0 or greater )
-<li>News Server with <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a> Extensions
-</ul>
-<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader only requires the News Server to have the following extensions:<br>
-<ul>
-<li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
-<li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
-</ul>
-The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
- (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
-<p>
-If your server is operated by INN, you should check about the NNRP access permission.
-For example, when you telnet to an INN News server at port 119, you must get response like this: (the <b>NNRP</b> in bold)
-<ul>
-200 nopy.com InterNetNews <b>NNRP</b> server INN 2.3.2 ready (posting ok).
-</ul>
-instead of,
-<ul>
-200 nopy.com InterNetNews server INN 2.3.2 ready<br>
--or-<br>
-502 You have no permission to talk.  Goodbye.
-</ul>
-<p>
-The requirement for PHP News Reader on the client side (web browser) :
-<ul>
-<li>Support Cascade Style Sheet 1.0
-<li>Support Javascript >= 1.2
-<li>Support Document Object Model
-<li>Accept Cookies (not necessary)
-</ul>
-The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
+To install PHP News Reader, please check the requirements <a href=requirement.php>here</a>.
 <p>
 PHP News Reader has nothing to do with user registration.
 It is designed to work with the EXISTING authentication system.
@@ -119,8 +86,13 @@ PHP News Reader applies <a href=copying.php>GPL</a> license, please view the det
 <p>
 Since 2003/01, PHP News Reader hosts on SourceForge:
 <blockquote>
+<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
+<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo">
+</a>
+</blockquote>
+Project Home:
+<blockquote>
 <a href="http://sourceforge.net/projects/pnews/" alt="http://sourceforge.net/projects/pnews/" target=_blank>
-<img src="http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1" border="0" alt="SourceForge.net Logo"><br>
 http://sourceforge.net/projects/pnews/
 </a>
 </blockquote>
