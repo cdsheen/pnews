@@ -207,7 +207,7 @@ function nnrp_head ( $nhd, $artnum, $func = null ) {
 		$nextline = fgets( $nhd, 4096 );
 		$nextline = chop($nextline);
 		if( preg_match( '/^\s/', $nextline ) ) {
-			$nowline .= trim($nextline);
+			$nowline .= ' ' . trim($nextline);
 			$nextline = fgets( $nhd, 4096 );
 			$nextline = chop($nextline);
 		}

@@ -19,7 +19,7 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
-PHP News Reader v2.0 (not released yet)
+PHP News Reader v2.0-beta
 <ul>
 <li>First public release
 <li>Rewrite the authentication codes and the use of the ticket system

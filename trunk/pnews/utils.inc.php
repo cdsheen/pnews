@@ -279,7 +279,7 @@ if( isset($CFG['log']) ) {
 		if( $auth_success )
 			fwrite( $fp, sprintf( "%s %s(%s) from %s - %s\n", strftime("%Y/%m/%d %H:%M:%S"), $auth_user, $auth_email, $ip_from, $log_uri ) );
 		else
-			fwrite( $fp, sprintf( "%s someone from %s - %s\n", strftime("%Y/%m/%d %H:%M:%S"), $ip_from, $log_uri ) );
+			fwrite( $fp, sprintf( "%s guest from %s - %s\n", strftime("%Y/%m/%d %H:%M:%S"), $ip_from, $log_uri ) );
 	}
 }
 
