@@ -133,7 +133,7 @@ echo <<<EOH
 <table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
   <td>$strNumber</td>
-  <td>$strPostNumber</td>
+  <td align=right>$strPostNumber</td>
   <td>$strGroup</td>
   <td>$strGroupDescription</td>
 </tr>
