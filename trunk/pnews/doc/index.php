@@ -101,7 +101,7 @@ And it is easy to write your authentication module to be used by PHP News Reader
 The login prompt can be configured as HTTP authentication or FORM style.
 Since v2.5.6, you can even utilize the session if you already login on phpBB.
 <p>
-PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais, Finnish and German.
+PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais, Finnish, German, Italiano and Slovak.
 The preferred language can be switched any time and any where.
 <p>
 PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in China).

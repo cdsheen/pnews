@@ -39,6 +39,11 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+PHP News Reader v2.5.9 (2004/08/11)
+<ul>
+<li>Fix the login-fail bug which intruduced by the configuration cache support.
+<li>Cleaning for most PHP Notice warnings.
+</ul>
 PHP News Reader v2.5.8 (2004/08/05)
 <ul>
 <li>Fix the paging bug while <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is disabled.
