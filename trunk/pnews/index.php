@@ -144,15 +144,27 @@ while ( list ($group, $value) = each ($active) ) {
 
 	$i++;
 
-	$magic = $value[0];
-	if( $CFG['url_rewrite'] ) {
-		if( $server == $group_default_server )
-			$glink = "<a href=\"group//$group?$magic\">$group</a>";
+	if( $CFG['magic_tag'] ) {
+		$magic = $value[0];
+		if( $CFG['url_rewrite'] ) {
+			if( $server == $group_default_server )
+				$glink = "<a href=\"group//$group?$magic\">$group</a>";
+			else
+				$glink = "<a href=\"group/$server/$group?$magic\">$group</a>";
+		}
 		else
-			$glink = "<a href=\"group/$server/$group?$magic\">$group</a>";
+			$glink = "<a href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
 	}
-	else
-		$glink = "<a href=\"indexing.php?server=$server&group=$group&magic=$magic\">$group</a>";
+	else {
+		if( $CFG['url_rewrite'] ) {
+			if( $server == $group_default_server )
+				$glink = "<a href=\"group//$group\">$group</a>";
+			else
+				$glink = "<a href=\"group/$server/$group\">$group</a>";
+		}
+		else
+			$glink = "<a href=\"indexing.php?server=$server&group=$group\">$group</a>";
+	}
 
 	if( strlen( $value[2] ) > 50 )
 		$value[2] = substr( $value[2], 0, 50 ) . ' ..';

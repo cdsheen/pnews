@@ -49,9 +49,14 @@ echo <<<EOH
 <!--
 <li>RFC 2046 - MIME multipart document and attachment download support. (not yet)
 -->
+PHP News Reader v2.2.4 (2003/07/26)
+<ul>
+<li>Fix the bug in MySQL authentication module.
+<li>Use of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> to indicate the visit state of newsgroup
+</ul>
 PHP News Reader v2.2.3 (2003/07/20)
 <ul>
-<li>Bug at replying if the quoted article has leading spaces.
+<li>Fix the bug at replying if the quoted article has leading spaces.
 </ul>
 PHP News Reader v2.2.2 (2003/07/05)
 <ul>

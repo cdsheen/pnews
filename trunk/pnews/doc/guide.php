@@ -432,6 +432,17 @@ EOH;
       <br>
       You should get a copy from examples/newsgroups.lst (default: &quot;newsgroups.lst&quot;)</p>
   </blockquote>
+<a name=magic_tag></a>
+  <p><strong>$CFG[&quot;magic_tag&quot;]</strong></p>
+  <blockquote> 
+    <p>Use magic tag to indicate the visit state of newsgroup (default: on)</p>
+      While magic_tag is on, the url for each newsgroup will become:
+    <blockquote>http://webnews.host/indexing.php?server=*&group=news.test<font color=red>&magic=23479</font></blockquote>
+      or while url_rewrite is on,
+    <blockquote>http://webnews.host/group//news.help<font color=red>?23479</font></blockquote>
+      PHP News Reader use the above magic number in <font color=red>red</font> to indicate that the group has been visited by user (with the help of browser's history).
+    <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
+  </blockquote>
 <a name=group_sorting></a>
   <p><strong>$CFG[&quot;group_sorting&quot;]</strong></p>
   <blockquote> 

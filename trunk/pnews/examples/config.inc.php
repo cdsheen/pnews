@@ -232,6 +232,13 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_list"] = "/somewhere/newsgroups.lst";
 
 
+# [magic_tag] Use magic tag to indicate the unread state of newsgroup
+#             (default: true)
+#
+
+// $CFG["magic_tag"] = false;
+
+
 # [group_sorting] sort newsgroups in each catalog (default: off)
 
 // $CFG["group_sorting"] = on;
