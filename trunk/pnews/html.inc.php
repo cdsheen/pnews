@@ -146,14 +146,14 @@ function read_article( $server, $group, $artnum, $link_text, $close = false, $cl
 
 	if( $CFG['show_article_popup'] )
 		if( $CFG['url_rewrite'] )
-			return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+			return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
 		else
-			return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+			return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
 	else
 		if( $CFG['url_rewrite'] )
-			return "<a$class_text href=\"article/$reserver/$group/$artnum\">$link_text</a>";
+			return "<a$class_text href=\"article/$reserver/$group/$artnum\">$link_text </a>";
 		else
-			return "<a$class_text href=\"read-art.php?server=$server&group=$group&artnum=$artnum\">$link_text</a>";
+			return "<a$class_text href=\"read-art.php?server=$server&group=$group&artnum=$artnum\">$link_text </a>";
 }
 
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {

@@ -159,7 +159,7 @@ echo "<center>\n";
 
 echo "<table width=100% cellpadding=3 cellspacing=0>\n";
 
-echo "<tr><td class=subject align=left><a href=\"$uri\">$subject</a></td>\n";
+echo "<tr><td class=subject align=left><a href=\"$uri\">$subject </a></td>\n";
 echo "<td class=date>$date</td></tr>\n";
 echo "<tr><td class=author>$from (<a href=\"mailto:$email\">$email</a>)</td>\n";
 echo "<td class=server>$org</td></tr>\n";
