@@ -42,8 +42,8 @@ gb:
 
 www:
 	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/
-	cp -f doc/style.css doc/header.php doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php /home/users/c/cd/cdsheen/groups/htdocs/
-	cp -f doc/index.php /home/users/c/cd/cdsheen/groups/htdocs/pnews.php
+	cp -f doc/style.css doc/header.php doc/history.php doc/copying.php doc/requirement.php doc/guide.php doc/url_rewrite.php doc/acknowlege.php doc/download.php /home/users/c/cd/cdsheen/groups/htdocs/
+	cp -f doc/index.php /home/users/c/cd/cdsheen/groups/htdocs/index.php
 
 clean:
 	rm -f *~
