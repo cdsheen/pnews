@@ -48,9 +48,9 @@ echo <<<EOH
 <hr />
 PHP News Reader v2.5.1 (2003/12/24)
 <ul>
-<li>Fix the invalid result when decoding uuencoded-attachment
+<li>Rewrite the `uudecode' codes to fix the bug which result in wrong outputs.
 <li>E-Mail address is now encoded by default to prevent from spamlist collection (<a href=guide.php#hide_email>\$CFG['hide_email']</a>)
-<li>Uuencoded image attachment is shown inline unless setting <a href=guide.php#image_inline>\$CFG['image_inline']</a> to <i>false</i>.
+<li>Uuencoded image attachment is shown inline unless explicitly setting <a href=guide.php#image_inline>\$CFG['image_inline']</a> to <i>false</i>.
 <li>Fix the charset information in the login-failed page.
 <li>Correct many words used for GB to/from BIG5 coding conversion.
 </ul>

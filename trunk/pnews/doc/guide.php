@@ -466,7 +466,7 @@ You can download phpCAS from the following place:<br />
 <a name=auth_user_email></a>
   <p> <strong>$CFG["auth_user_email"]</strong></p>
   <blockquote> 
-    <p>The E-Mail of authenticated user (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <b>not</b> <i>'mail')<br />
+    <p>The E-Mail of authenticated user (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <b>not</b> <i>'mail'</i>)<br />
       <br />
       The %u will be substituted by the username enter by authentication session<br />
       <br />
@@ -595,7 +595,8 @@ You can download phpCAS from the following place:<br />
 <a name=hide_email></a>
   <p><strong>$CFG["hide_email"]</strong></p>
   <blockquote> 
-    <p>Hide E-Mail by JavaScript - this makes it difficult for SpamBots to automatically obtain email addresses when they scan webnews pages (default: <i>true</i>)</p>
+    <p>Hide E-Mail by JavaScript (default: <i>true</i>)</p>
+    <p>This makes it difficult for Spamlist collector to automatically obtain email addresses from PHP News Reader</p>
     <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
   </blockquote>
 <a name=email_editing></a>
