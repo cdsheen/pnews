@@ -90,6 +90,7 @@ while( $buf = fgets( $lst, 512) ) {
 		$news_nntps[$catalog_num]    = false;
 		$news_authperm[$catalog_num] = false;
 		$news_readonly[$catalog_num] = false;
+		$news_hidden[$catalog_num] = false;
 		$options = array();
 		continue;
 	}
@@ -120,6 +121,8 @@ while( $buf = fgets( $lst, 512) ) {
 		}
 		if( in_array( 'readonly', $options ) )
 			$news_readonly[$catalog_num] = true;
+		if( in_array( 'hidden', $options ) )
+			$news_hidden[$catalog_num] = true;
 	}
 	elseif( preg_match( '/^server\s+(\S+)$/', $buf, $match ) ) {
 		$news_server[$catalog_num] = $match[1];

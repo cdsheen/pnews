@@ -53,6 +53,8 @@ echo "<table border=0 cellpadding=2 cellspacing=1>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
 	if( $i >= $catalog_num )
 		break;
+	if( $news_hidden[$i] )
+		continue;
 	echo "<tr>\n";
 	for( $j = 0 ; $j < $maxc ; $j++ ) {
 		$cn = $i + $j * $maxr ;

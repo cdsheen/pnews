@@ -436,7 +436,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		}
 		elseif( $buf[0] == '.' )
 			$body[$i++] = substr( $buf, 1 );
-		elseif( preg_match( '/^begin\s(\d+)\s(\S+)$/i', $buf, $match ) ) {
+		elseif( preg_match( '/^begin\s+(\d+)\s+(.+)\s*$/i', $buf, $match ) ) {
 			$uuencode_skip = true;
 			$body[$i] = $match[2];
 			$uu[] = $i++;
