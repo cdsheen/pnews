@@ -692,7 +692,7 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 
 	global $php_news_agent;
 
-	$client = $_SERVER['HTTP_X_FORWARDED_FOR'] ;
+	$client = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : '' ;
 
 	if( $client == '' ) {
 		$proxy = '';

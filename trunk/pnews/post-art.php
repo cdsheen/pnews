@@ -111,6 +111,8 @@ else {
 #	$server = $_GET['server'];
 #	$group  = $_GET['group'];
 
+	$c = check_group( $server, $group );
+
 	if( $global_readonly || $news_readonly[$c] )
 		readonly_error( $server, $group );
 
