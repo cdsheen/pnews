@@ -64,10 +64,12 @@ $ncount = sizeof($xover);
 $show_from = $xover[0][0];
 $show_end  = $xover[$ncount-1][0];
 
-$page = floor(($highmark - $show_from) / $lineppg);
+$page = floor(($highmark - $show_from+1) / $lineppg);
 
-$prev_pg = $page - 1;
-$next_pg = $page + 1;
+if( $page == 1 && $show_end < $highmark )
+	$page = 2;
+elseif( $page == $totalpg && $show_from > $lowmark )
+	$page = $totalpg - 1;
 
 /*
 	$page = $_GET['page'];
@@ -202,25 +204,31 @@ echo "</table>";
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
-if( $page != 1 )
+
+if( $show_end < $highmark )
 	echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
 else
 	echo $strFirstPage;
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-if( $prev_pg > 0 )
+
+if( $show_end < $highmark )
 	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_end+1) . "&forward=1>$strPreviousPage</a>";
 else
 	echo "<font color=gray>$strPreviousPage</font>";
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-if( $next_pg <= $totalpg )
+
+if( $show_from > $lowmark )
 	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_from-1) . ">$strNextPage</a>";
 else
 	echo "<font color=gray>$strNextPage</font>";
 echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-if( $page != $totalpg )
+
+if( $show_from > $lowmark )
 	echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
-else
+else {
+	$totalpg = $page;
 	echo $strLastPage;
+}
 echo "</td>";
 
 echo "<td bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
