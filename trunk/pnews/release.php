@@ -71,6 +71,13 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
+PHP News Reader v2.1.2 (2003/04/05)
+<ul>
+<li>Do not strip whitespace from the beginning of each line in posted articles.
+<li>Jump to the correct catalog when returning from indexing page.
+<li>Correct the problem of losting POST variables when launching the login dialog.
+</ul>
+<p>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>
 <li>The format of time displayed can be configured by $CFG["time_format"].
