@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'The following article is posted';
 $pnews_msg['ArticleIsDeleted']   = 'The following article is deleted';
 $pnews_msg['ArticleIsForwarded'] = 'The following article is forwarded';
 
-$pnews_msg['RealyQuit']          = 'Really to quit editing ?';
-$pnews_msg['RealyDelete']        = 'Really delete this article ?';
+$pnews_msg['ReallyQuit']          = 'Really to quit editing ?';
+$pnews_msg['ReallyDelete']        = 'Really delete this article ?';
 
 $pnews_msg['FormConfirmPost']    = 'Post';
 $pnews_msg['FormCancelPost']     = 'Cancel';

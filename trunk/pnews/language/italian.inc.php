@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'L`articolo e` stato postato';
 $pnews_msg['ArticleIsDeleted']   = 'L`articolo e` stato cancellato';
 $pnews_msg['ArticleIsForwarded'] = 'L`articolo e` stato inoltrato';
 
-$pnews_msg['RealyQuit']          = 'Vuoi uscire dall`editazione ?';
-$pnews_msg['RealyDelete']        = 'Vuoi cancellare questo articolo ?';
+$pnews_msg['ReallyQuit']          = 'Vuoi uscire dall`editazione ?';
+$pnews_msg['ReallyDelete']        = 'Vuoi cancellare questo articolo ?';
 
 $pnews_msg['FormConfirmPost']    = 'Posta';
 $pnews_msg['FormCancelPost']     = 'Annulla';

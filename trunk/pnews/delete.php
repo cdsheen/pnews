@@ -115,13 +115,13 @@ elseif( $artnum != '' ) {
 
 	html_head( "$pnews_msg[Delete] - $subject" );
 
-	echo $pnews_msg['RealyDelete'] ;
+	echo $pnews_msg['ReallyDelete'] ;
 
 	echo "<hr />";
 
 	echo "<form style='margin-top: 0' name=post action=\"$self\" method=post>";
 	echo "<center><table cellpadding=0 cellspacing=0 width=100%>\n";
-	echo "<tr><td class=field>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input size=40 value=\"$group\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";

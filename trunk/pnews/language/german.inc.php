@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'Der folgende Artikel wurde versandt';
 $pnews_msg['ArticleIsDeleted']   = 'Der folgende Artikel wurde gel&ouml;scht';
 $pnews_msg['ArticleIsForwarded'] = 'Der folgende Artikel wurde weiter geleitet';
 
-$pnews_msg['RealyQuit']          = 'Bearbeiten wirklich beenden ?';
-$pnews_msg['RealyDelete']        = 'Diesen Artikel wirklich l&ouml;schen ?';
+$pnews_msg['ReallyQuit']          = 'Bearbeiten wirklich beenden ?';
+$pnews_msg['ReallyDelete']        = 'Diesen Artikel wirklich l&ouml;schen ?';
 
 $pnews_msg['FormConfirmPost']    = 'Best&auml;tigen';
 $pnews_msg['FormCancelPost']     = 'Senden abbrechen';

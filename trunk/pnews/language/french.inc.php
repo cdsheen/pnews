@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'L\'article suivant a &eacute;t&eacute; post&
 $pnews_msg['ArticleIsDeleted']   = 'L\'article suivant a &eacute;t&eacute; effac&eacute;';
 $pnews_msg['ArticleIsForwarded'] = 'L\'article suivant a &eacute;t&eacute; envoy&eacute; ';
 
-$pnews_msg['RealyQuit']          = 'Voulez-vous vraiment arr&ecirc;ter l\'&eacute;dition&nbsp;';
-$pnews_msg['RealyDelete']        = 'Voulez-vous vraiment effacer cet article&nbsp;?';
+$pnews_msg['ReallyQuit']          = 'Voulez-vous vraiment arr&ecirc;ter l\'&eacute;dition&nbsp;';
+$pnews_msg['ReallyDelete']        = 'Voulez-vous vraiment effacer cet article&nbsp;?';
 
 $pnews_msg['FormConfirmPost']    = 'Poster';
 $pnews_msg['FormCancelPost']     = 'Annuler';

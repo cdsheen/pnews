@@ -123,7 +123,7 @@ else {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($pnews_msg['RealyQuit']); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_msg['ReallyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -170,7 +170,7 @@ echo <<<EOF
 <form name=post action="$self" method=post enctype="multipart/form-data">
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=field>$pnews_msg[Name]:</td><td><input name=nickname size=20 value="$auth_user"></td>
+ <tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value="$auth_user"></td>
  <td class=field align=right>
   <input class=normal type=button value='$pnews_msg[FormConfirmPost]' onClick='verify()' tabindex=3>
   <input class=normal type=button value='$pnews_msg[FormCancelPost]' onClick='really()' tabindex=4>

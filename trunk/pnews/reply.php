@@ -178,7 +178,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($pnews_msg['RealyQuit']); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_msg['ReallyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -232,7 +232,7 @@ CONFIRM;
 #	$subject = str_replace( '"', '\"', $subject );
 	echo "<form name=post action=\"$self\" method=post enctype=\"multipart/form-data\">\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
-	echo "<tr><td class=field>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
 	echo " <td class=text><input name=replymail type=checkbox>$pnews_msg[ReplyToAuthor]</td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td>\n";
 	echo " <td class=text><input name=onlymail type=checkbox onClick='check_reply();'>$pnews_msg[NotPostToGroup]</td></tr>\n";

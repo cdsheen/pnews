@@ -146,7 +146,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($pnews_msg['RealyQuit']); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_msg['ReallyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -197,7 +197,7 @@ CONFIRM;
 
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table cellspacing=0 cellpadding=0 width=100%>\n";
-	echo "<tr><td class=field>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input name=nickname size=20 value=\"$auth_user\"></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input name=email size=40 value=\"$auth_email\" $mail_disable></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input name=postgroup size=40 value=\"\"></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";

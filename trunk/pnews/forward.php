@@ -122,7 +122,7 @@ elseif( $artnum != '' ) {
 			window.close();
 			return(true);
 		}
-		if( confirm('<? echo addslashes($pnews_msg['RealyQuit']); ?>') ) {
+		if( confirm('<? echo addslashes($pnews_msg['ReallyQuit']); ?>') ) {
 			window.close();
 			return(true);
 		}
@@ -161,7 +161,7 @@ CONFIRM;
 <?
 	echo "<form name=post action=\"$self\" method=post>\n";
 	echo "<center><table width=100% cellspacing=0 cellpadding=0>\n";
-	echo "<tr><td class=field>$pnews_msg[Receiver]:</td><td><input name=receiver size=50></td></tr>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Receiver]:</td><td><input name=receiver size=50></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
 

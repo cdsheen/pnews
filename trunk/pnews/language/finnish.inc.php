@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'Artikkeli on lähetetty uutisryhmiin';
 $pnews_msg['ArticleIsDeleted']   = 'Artikkeli on poistettu';
 $pnews_msg['ArticleIsForwarded'] = 'Artikkeli on lähetetty edelleen';
 
-$pnews_msg['RealyQuit']          = 'Tahdotko lopettaa muokkaamisen?';
-$pnews_msg['RealyDelete']        = 'Tahdotko todella tuhota artikkelin?';
+$pnews_msg['ReallyQuit']          = 'Tahdotko lopettaa muokkaamisen?';
+$pnews_msg['ReallyDelete']        = 'Tahdotko todella tuhota artikkelin?';
 
 $pnews_msg['FormConfirmPost']    = 'Lähetä uutisryhmiin';
 $pnews_msg['FormCancelPost']     = 'Peru uutisryhmiin lähetys';

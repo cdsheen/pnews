@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = '下列文章已发表';
 $pnews_msg['ArticleIsDeleted']   = '下列文章已删除';
 $pnews_msg['ArticleIsForwarded'] = '下列文章已转寄';
 
-$pnews_msg['RealyQuit']          = '确定放弃编辑？';
-$pnews_msg['RealyDelete']        = '您确定要删除这篇文章吗？';
+$pnews_msg['ReallyQuit']          = '确定放弃编辑？';
+$pnews_msg['ReallyDelete']        = '您确定要删除这篇文章吗？';
 
 $pnews_msg['FormConfirmPost']    = '确定发表';
 $pnews_msg['FormCancelPost']     = '取消发表';

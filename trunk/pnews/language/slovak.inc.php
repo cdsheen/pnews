@@ -85,8 +85,8 @@ $pnews_msg['ArticlePosted']      = 'Bol odoslaný nasledujúci príspevok';
 $pnews_msg['ArticleIsDeleted']   = 'Bol zmazaný nasledujúci príspevok';
 $pnews_msg['ArticleIsForwarded'] = 'Bol preposlaný nasledujúci príspevok';
 
-$pnews_msg['RealyQuit']          = 'Naozaj chcete ukonèi» úpravu ?';
-$pnews_msg['RealyDelete']        = 'Naozaj chcete zmaza» tento príspevok ?';
+$pnews_msg['ReallyQuit']          = 'Naozaj chcete ukonèi» úpravu ?';
+$pnews_msg['ReallyDelete']        = 'Naozaj chcete zmaza» tento príspevok ?';
 
 $pnews_msg['FormConfirmPost']    = 'Odosla»';
 $pnews_msg['FormCancelPost']     = 'Zru¹i»';
