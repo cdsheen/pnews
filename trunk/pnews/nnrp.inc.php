@@ -119,30 +119,34 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 		$buf = chop( $buf );
 		if( $buf == "." )
 			break;
-		$xover[$n] = split( "\t", $buf );
-#		print "<!-- " . $xover[$n][1] . " -->\n";
-		$xover[$n][1] = decode_subject($xover[$n][1]);
-#		print "<!-- " . $xover[$n][2] . " -->\n";
-		if( preg_match( '/^<([ \S]+)@([ \S]+)>$/', $xover[$n][2], $from ) ) {
-			$xover[$n][2] = $from[1];
-			$xover[$n][5] = $from[1] . '@' . $from[2];
+		$xover[$n] = preg_split( '/\t/', $buf );
+
+#		$overview[$n] = array();
+		$overview[$n][0] = $xover[$n][0];
+		$overview[$n][1] = decode_subject($xover[$n][1]);
+		$overview[$n][3] = strftime( $CFG['time_format'], strtotime( $xover[$n][3] ));
+		$overview[$n][4] = $xover[$n][4];	/* Message-ID */
+		$overview[$n][2] = $overview[$n][5] = '';
+
+		if( preg_match( '/^<(.+)@(.+)>$/', $xover[$n][2], $from ) ) {
+			$overview[$n][2] = $from[1];
+			$overview[$n][5] = str_repleace( ' ', '', $from[0]);
 		}
-		elseif( preg_match( '/^([ \S]+)@([ \S]+)$/', $xover[$n][2], $from ) ) {
-			$xover[$n][2] = $from[1];
-			$xover[$n][5] = $from[0];
+		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$n][2], $from ) ) {
+			$overview[$n][2] = $from[1];
+			$overview[$n][5] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <([ \S]+)>$/', $xover[$n][2], $from ) ) {
-			$xover[$n][2] = decode_subject($from[1]);
-			$xover[$n][5] = $from[2];
+		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $xover[$n][2], $from ) ) {
+			$overview[$n][2] = decode_subject($from[1]);
+			$overview[$n][5] = str_replace( ' ', '', $from[2] );
 		}
 		elseif( preg_match( '/^(\S+) \("?([^"]+)?"?\)$/', $xover[$n][2], $from ) ) {
-			$xover[$n][2] = decode_subject($from[2]);
-			$xover[$n][5] = $from[1];
+			$overview[$n][2] = decode_subject($from[2]);
+			$overview[$n][5] = $from[1];
 		}
-		$xover[$n][3] = strftime( $CFG['time_format'], strtotime( $xover[$n][3] ));
 		$n++;
 	}
-	return( $xover );
+	return( $overview );
 }
 
 function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
@@ -414,17 +418,17 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 	$artinfo['msgid'] = $headers['Message-ID'];
 
 	if( $headers['From'] ) {
-		if( preg_match( '/^<([ \S]+)@([ \S]+)>$/', $headers['From'], $from ) ) {
+		if( preg_match( '/^<(.+)@(.+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
-			$artinfo['mail'] = $from[1] . '@' . $from[2];
+			$artinfo['mail'] = str_replace( ' ', '', $from[0] );
 		}
-		elseif( preg_match( '/^([ \S]+)@([ \S]+)$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^(\S+)@(\S+)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
 			$artinfo['mail'] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <([ \S+]@[ \S]+)>$/', $headers['From'], $from ) ) {
+		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = decode_subject($from[1]);
-			$artinfo['mail'] = $from[2];
+			$artinfo['mail'] = str_replace( ' ', '', $from[2]);
 		}
 		elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = decode_subject($from[2]);
