@@ -281,7 +281,7 @@ if( !isset( $CFG['meta_keywords'] ) )
 if( !isset( $CFG['auth_user_fullname'] ) )
 	$CFG['auth_user_fullname'] = '%u';
 
-$checks = array( 'config', 'grouplst', 'database', 'interface' );
+$checks = array( 'config', 'grouplst', 'database' );
 
 if( !isset($CFG['interface_language']) || !in_array( $CFG['interface_language'], $valid_language ) )
 	$default_language = 'en';
@@ -348,7 +348,7 @@ if( !isset($CFG['show_sourceforge_logo']) )
 	$CFG['show_sourceforge_logo'] = false;
 
 if( !isset($CFG['time_format']) )
-	$CFG['time_format'] = '%m/%d %H:%M';
+	$CFG['time_format'] = '%Y/%m/%d %H:%M';
 #	$CFG['time_format'] = '%Y/%m/%d %H:%M:%S';
 
 if( !isset($CFG['style_sheet']) || !file_exists( 'css/' . $CFG['style_sheet'] ))

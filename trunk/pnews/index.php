@@ -185,7 +185,7 @@ while ( list ($group, $value) = each ($active) ) {
 	}
 
 	if( strlen( $value[2] ) > 50 )
-		$value[2] = substr( $value[2], 0, 50 ) . ' ..';
+		$value[2] = htmlspecialchars(substr( $value[2], 0, 50 )) . ' ..';
 	elseif( $value[2] == '' )
 		$value[2] = '&nbsp;';
 
