@@ -211,47 +211,4 @@ EOF;
 	html_tail();
 }
 
-function uuencode( $hld, $filename, $source, $mode = '644' ) {
-
-	if( !file_exists( $source ) )
-		return;
-
-	$fp = fopen( $source, 'r' );
-	if( ! $fp )
-		return;
-
-	$size = filesize( $source );
-#	fwrite( $hld, "$size\n");
-
-	fwrite( $hld, "\nbegin $mode $filename  \n" );
-
-	$ilen = $llen = 0;
-	$text = '';
-	while( $stuff = fread( $fp, 3 ) ) {
-		$byte[0] = (ord($stuff[0]) >> 2) & 0x3F;
-		$byte[1] = (((ord($stuff[0]) & 0x03 ) << 4) | ((ord($stuff[1]) >> 4) & 0x0F)) & 0x3F;
-		$byte[2] = (((ord($stuff[1]) & 0x0F ) << 2) | ((ord($stuff[2]) >> 6) & 0x03)) & 0x3F;
-		$byte[3] = ord($stuff[2]) & 0x3F;
-		$ilen += strlen($stuff);
-		for ($j = 0; $j < 4; $j++) {
-			if( $byte[$j] == 0 )
-				$text .= '`';
-			else
-				$text .= chr($byte[$j] + 32);
-			$llen++;
-			if( $llen == 60 ) {
-				fwrite( $hld, chr(77) . $text . "  \n" );
-				$ilen = $llen = 0;
-				$text = '';
-			}
-		}
-	}
-	fclose($fp);
-
-	if( $llen > 0 )
-		fwrite( $hld, chr($ilen+32) .  $text . "  \n` \nend\n" );
-	else
-		fwrite( $hld, "` \nend\n" );
-}
-
 ?>
