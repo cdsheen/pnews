@@ -45,6 +45,7 @@ PHP News Reader v2.6.0 (2004/10/)
 <li>Fix the wrong version-checking codes when enabling nntps.
 <li>The line length limit has been expanded from 512 to 2048.
 <li>Bug fixed for posting article with line begin with a period.
+<li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is deprecated.
 <li>Multiple 'group' directive are allowed in one catalog.
 <li>All language strings (\$strXXX) are renamed as \$pnews_msg array.
 <li>Hierarchical directories are used for storing cache and thread data.

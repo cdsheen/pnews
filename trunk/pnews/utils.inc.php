@@ -772,10 +772,12 @@ function uuencode( $hld, $filename, $source, $mode = '644' ) {
 	}
 	fclose($fp);
 
-	if( $llen > 0 )
-		fwrite( $hld, chr($ilen+32) .  $text . "  \n` \nend\n" );
-	else
+	if( $llen == 0 )
 		fwrite( $hld, "` \nend\n" );
+	else if( $ilen == 14 )
+		fwrite( $hld, '..' .  $text . "  \n` \nend\n" );
+	else
+		fwrite( $hld, chr($ilen+32) .  $text . "  \n` \nend\n" );
 }
 
 function hide_mail( $email ) {

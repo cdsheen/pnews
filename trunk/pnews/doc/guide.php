@@ -700,6 +700,7 @@ You can download phpCAS from the following place:<br />
     <p>Show the latest article as the top item (default: <i>true</i>)</p>
     <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
     <p>It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b></p>
+    <p>This option is deprecated since <b>v2.6.0</b>.
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>
@@ -758,7 +759,7 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["links"]</strong></p>
   <blockquote> 
     <p>The links referring to other pages. (default: <i>null</i>)<br />
-    <p>This is an associate array, the key is link text and the value is the url.<p>
+    <p>This is an associate array, the key is the link text and the value is the url.<p>
       <br />
       $CFG["links"] = array( "Back Home" =&gt; "../index.php", 
       "Tech News" =&gt; "http://foo.bar/technews/" );</p>

@@ -63,10 +63,7 @@ $totalpg = ceil($artsize / $artsppg) ;
 if( !isset($_GET['cursor']) ) {
 	if( isset( $_GET['page'] ) ) {
 		$cpg = $_GET['page'];
-		if( $CFG['show_latest_top'] )
-			$tmpidx = $artsize - ($cpg-1)*$artsppg - 1;
-		else
-			$tmpidx = $artsize - ($totalpg-$cpg)*$artsppg - 1;
+		$tmpidx = $artsize - ($cpg-1)*$artsppg - 1;
 		$cursor = $artlist[$tmpidx];
 	}
 	else
@@ -171,18 +168,9 @@ while( $i >= $lowmark ) {
 		break;
 }
 
-if( !$CFG['show_latest_top'] ) {
-	sort($curlist);
-}
 if( $ncount > 0 ) {
-	if( $CFG['show_latest_top'] ) {
-		$show_from = $curlist[$ncount - 1];
-		$show_end  = $curlist[0];
-	}
-	else {
-		$show_from = $curlist[0];
-		$show_end  = $curlist[$ncount - 1];
-	}
+	$show_from = $curlist[$ncount - 1];
+	$show_end  = $curlist[0];
 	echo "<!-- XOVER: $show_from-$show_end -->\n";
 	$xover = nnrp_xover( $nhd, $show_from, $show_end );
 
@@ -194,8 +182,7 @@ if( $ncount == 0 ) {
 	$show_from = $show_end = $cursor;
 }
 else {
-	if( $CFG['show_latest_top'] )
-		krsort($xover);
+	krsort($xover);
 
 	foreach( $xover as $artnum => $ov ) {
 
@@ -263,24 +250,13 @@ echo "<!-- Total arts: $artsize   Arts/page: $artsppg   Total pages: $totalpg --
 
 if( $totalpg == 1 )
 	$page = 1;
-elseif( $CFG['show_latest_top'] ) {
+else {
 	$page = floor( ( $artsize - array_search( $show_from, $artlist ) + 1 ) / $artsppg);
-#	echo "<!-- show_latest_top: $page -->\n";
 	if( $page == 1 && $show_end < $highmark )
 		$page = 2;
 	elseif( $page == $totalpg && $show_from > $lowmark )
 		$page = $totalpg - 1;
 	elseif( $page > $totalpg || $show_from == $lowmark )
-		$page = $totalpg;
-}
-else {
-	$page = floor( (array_search( $show_end, $artlist ) + $artsppg -1 ) / $artsppg);
-
-	if( $page == 1 && $show_from > $lowmark )
-		$page = 2;
-	elseif( $page == $totalpg && $show_end < $highmark )
-		$page = $totalpg - 1;
-	elseif( $page > $totalpg || $show_end == $highmark )
 		$page = $totalpg;
 }
 
@@ -290,93 +266,47 @@ echo "<table width=100% border=0 cellpadding=2 cellspacing=1>";
 
 echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG['show_latest_top'] )
-	if( $show_end < $highmark ) {
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group\">$pnews_msg[FirstPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group\">$pnews_msg[FirstPage]</a>";
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+if( $show_end < $highmark ) {
+	if( $CFG['url_rewrite'] )
+		echo "<a href=\"group/$reserver/$group\">$pnews_msg[FirstPage]</a>";
+	else
+		echo "<a href=\"$self?server=$server&group=$group\">$pnews_msg[FirstPage]</a>";
+	echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$higher\">$pnews_msg[PreviousPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$pnews_msg[PreviousPage]</a>";
-	}
-	else {
-		echo $pnews_msg['FirstPage'];
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo "<font color=gray>$pnews_msg[PreviousPage]</font>";
-	}
-else
-	if( $show_from > $lowmark ) {
-
-		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
-
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$pnews_msg[FirstPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$pnews_msg[FirstPage]</a>";
-
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$lower\">$pnews_msg[PreviousPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$pnews_msg[PreviousPage]</a>";
-	}
-	else {
-		echo $pnews_msg['FirstPage'];
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo "<font color=gray>$pnews_msg[PreviousPage]</font>";
-	}
+	if( $CFG['url_rewrite'] )
+		echo "<a href=\"group/$reserver/$group/$higher\">$pnews_msg[PreviousPage]</a>";
+	else
+		echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$pnews_msg[PreviousPage]</a>";
+}
+else {
+	echo $pnews_msg['FirstPage'];
+	echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+	echo "<font color=gray>$pnews_msg[PreviousPage]</font>";
+}
 
 echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-if( $CFG['show_latest_top'] )
-	if( $show_from > $lowmark ) {
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$lower\">$pnews_msg[NextPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$pnews_msg[NextPage]</a>";
+if( $show_from > $lowmark ) {
+	if( $CFG['url_rewrite'] )
+		echo "<a href=\"group/$reserver/$group/$lower\">$pnews_msg[NextPage]</a>";
+	else
+		echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$pnews_msg[NextPage]</a>";
 
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+	echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-		$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
+	$target = isset($artlist[$artsppg-1])?$artlist[$artsppg-1]:$artlist[$artsize-1];
 
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$pnews_msg[LastPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$pnews_msg[LastPage]</a>";
-	}
-	else {
-		echo "<font color=gray>$pnews_msg[NextPage]</font>";
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo $pnews_msg['LastPage'];
-
+	if( $CFG['url_rewrite'] )
+		echo "<a href=\"group/$reserver/$group/$target\">$pnews_msg[LastPage]</a>";
+	else
+		echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$pnews_msg[LastPage]</a>";
+}
+else {
+	echo "<font color=gray>$pnews_msg[NextPage]</font>";
+	echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
+	echo $pnews_msg['LastPage'];
 #		$totalpg = $page;
-	}
-else
-	if( $show_end < $highmark ) {
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$higher\">$pnews_msg[NextPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$pnews_msg[NextPage]</a>";
-
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-
-		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group\">$pnews_msg[LastPage]</a>";
-		else
-			echo "<a href=\"$self?server=$server&group=$group\">$pnews_msg[LastPage]</a>";
-	}
-	else {
-		echo "<font color=gray>$pnews_msg[NextPage]</font>";
-		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
-		echo $pnews_msg['LastPage'];
-
-#		$totalpg = $page;
-	}
+}
 
 $pg_str = sprintf( "<form style='display: inline;' name=select><select name=pgidx class=pgidx onLoad='initPage(document.select.pgidx)' onChange='changePage(document.select.pgidx)'></select></form>" );
 $pg_str = sprintf( $pnews_msg['PageNumber'], $pg_str, $totalpg );
