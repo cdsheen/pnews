@@ -42,6 +42,7 @@ echo <<<EOH
 PHP News Reader v2.5.6 (2004/03/20)
 <ul>
 <li>Fix the word wrapping bug in textarea.
+<li>Workaround for the news server which does not support <b>LIST NEWSGROUPS [wildmat]</b> of RFC 2980
 </ul>
 PHP News Reader v2.5.5 (2004/03/14)
 <ul>

@@ -170,7 +170,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 		send_command( $nhd, "LIST newsgroups $group");
 		list( $code, $msg ) = get_status( $nhd );
 		if( $code[0] != '2' )
-			break;
+			continue;
 
 		while( $buf = fgets( $nhd, 4096 ) ) {
 #			echo "$buf<br />";
