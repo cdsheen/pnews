@@ -226,7 +226,7 @@ PHP News Reader v1.4 (released on 2002/06/09)
 <hr>
 <table cellspacing=0 cellpadding=0 width=100%>
 <tr><td>
-<font size=2>$pnews_claim</font><br>
+<font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>

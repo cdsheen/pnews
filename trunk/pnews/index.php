@@ -26,9 +26,9 @@ html_head( $title );
 #echo "<center>\n";
 
 if( $CFG['banner'] )
-	echo "<a href=index.php>" . $CFG['banner'] . "</a><br>\n";
+	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
 else
-	echo "<font color=black size=5 face=Georgia>$title</font><br>";
+	echo "<font color=black size=5 face=Georgia>$title</font><br />";
 
 /*
 for( $i = 0 ; $i < $catalog_num ; $i++ ) {
@@ -41,7 +41,7 @@ for( $i = 0 ; $i < $catalog_num ; $i++ ) {
 
 $nhd = nnrp_open( $news_server[$curr_catalog], $news_nntps[$curr_catalog] );
 
-echo "<br><table width=95%><tr><td valign=top width=120>\n";
+echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
 $maxr = 30;
 $maxc = $catalog_num / $maxr;
@@ -96,7 +96,7 @@ echo "</table>\n";
 echo "</td><td valign=top align=left>";
 
 if( ! $nhd ) {
-	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;
@@ -107,7 +107,7 @@ nnrp_authenticate( $nhd );
 $active = nnrp_list_group( $nhd, $news_groups[$curr_catalog], $article_convert['to'] );
 
 if( $active == null ) {
-	echo "<br><br><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
+	echo "<br /><br /><font size=3>$strConnectServerError (" . $news_server[$curr_catalog] . ")</font></td></tr></table>\n";
 	html_foot();
 	html_tail();
 	exit;

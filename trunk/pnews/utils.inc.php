@@ -413,7 +413,7 @@ EOF;
 
 if( $CFG['auth_registration_info'] != '' ) {
 	echo "<tr><td colspan=2 align=center class=text><i>";
-	echo '<br>' . $CFG['auth_registration_info'];
+	echo '<br />' . $CFG['auth_registration_info'];
 	echo "</i></td></tr>\n";
 }
 ?>

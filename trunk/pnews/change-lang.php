@@ -56,8 +56,8 @@ hr         { height: 1pt; color: #8080A0 }
 <body>
 <center>
 <p>
-<br>
-<br>
+<br />
+<br />
 <font size=3 face=Georgia>
 Changing Interface Language to <b>$lang_name</b> ...
 </font>

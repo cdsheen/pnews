@@ -342,9 +342,9 @@ a:hover { color: red }
 </head>
 <body>
 <font size=4>PHP News Reader - Configuration Error</font><hr>
-<br><font size=3>$err_string</font>\n<br><p>
+<br /><font size=3>$err_string</font>\n<br /><p>
 <font color=cyan>For more information, please read the <a href=doc/guide.php>Installation Guide</a> for details.</font>
-<br><br><br>
+<br /><br /><br />
 <hr>
 </body>
 </html>

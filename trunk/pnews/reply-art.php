@@ -120,7 +120,7 @@ elseif( $artnum != '' ) {
 	$server   = $_GET['server'];
 	$group    = $_GET['group'];
 
-#	echo "server[$server] group[$group]<br>\n";
+#	echo "server[$server] group[$group]<br />\n";
 
 	$c = check_group( $server, $group );
 

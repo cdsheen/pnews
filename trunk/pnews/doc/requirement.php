@@ -52,9 +52,9 @@ The requirement for using NNTPS (SNEWS) News Server or using NNTPS as authentica
 <li>PHP 4.3.0 or greater
 <li>PHP module with OpenSSL support
 </ul>
-<p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br>
+<p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br />
 The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
-<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br>
+<p>As for <a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br />
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
 <li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
@@ -81,7 +81,7 @@ The requirement for PHP News Reader on the client side (web browser) :
 <li>Accept Cookies (not necessary)
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
-<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br>
+<hr><table width=100% cellspacing=0 cellpadding=0><tr><td><font size=2>$pnews_claim</font><br />
 <a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a>
 </td><td align=right>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>

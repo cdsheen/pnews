@@ -159,7 +159,7 @@ echo <<<EOF
  <tr><td colspan=2>
   <input name=server value="$server" type=hidden>
  <input name=group value="$group" type=hidden>
- <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br>
+ <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br />
 </td></tr>
 </table>
 </center>

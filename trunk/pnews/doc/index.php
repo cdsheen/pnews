@@ -135,9 +135,9 @@ fclose($fp);
 echo <<<EOR
 You can view the history since June 2002 by <a href=history.php>clicking here</a>.
 <p>
-PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference.<br>
+PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>clicking here</a> for a reference.<br />
 <p>
-You are free to use or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br>
+You are free to use or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br />
 And I will be very appreciate if you can share your comments and modification with me.
 <p>
 Acknowledgement
@@ -177,17 +177,17 @@ Installation Guide:
 <p>
 Anonymous access to CVS Repository (read only):
 <blockquote>
-# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><br>
-Logging in to :pserver:anonymous@cvs.sourceforge.net:2401/cvsroot/pnews<br>
-CVS password: <font color=orange>(Press Enter)</font><br>
-# <font color=green>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br>
-cvs server: Updating pnews<br>
+# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><br />
+Logging in to :pserver:anonymous@cvs.sourceforge.net:2401/cvsroot/pnews<br />
+CVS password: <font color=orange>(Press Enter)</font><br />
+# <font color=green>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br />
+cvs server: Updating pnews<br />
 ...
 </blockquote>
 <p>
 CVS is also available online:
 <blockquote>
-<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>View CVS Repository on the Web</a><br>
+<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>View CVS Repository on the Web</a><br />
 <a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.bz2">Nightly CVS Tarball (pnews-cvsroot.tar.bz2)</a>
 </blockquote>
 <p>
@@ -198,10 +198,10 @@ Forum:
 <p>
 Author:
 <blockquote>
-Shen Cheng-Da<br>
-Taipei, Taiwan<br>
-ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">73013633</a><br>
-<a href="mailto:cdsheen@users.sourceforge.net">cdsheen@users.sourceforge.net</a><br>
+Shen Cheng-Da<br />
+Taipei, Taiwan<br />
+ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">73013633</a><br />
+<a href="mailto:cdsheen@users.sourceforge.net">cdsheen@users.sourceforge.net</a><br />
 <a target="_blank" href="http://www.csie.nctu.edu.tw/~cdsheen/">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>

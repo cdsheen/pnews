@@ -99,7 +99,7 @@ else
 
 $subject = htmlspecialchars( $subject );
 
-#$date = str_replace( ' ', '<br>', $date );
+#$date = str_replace( ' ', '<br />', $date );
 
 if( strlen( $org ) > $org_limit )
 	$org = substr( $org, 0, $org_limit ) . ' ..';
@@ -150,9 +150,9 @@ echo "<tr><td colspan=2 class=content>";
 
 echo "<hr>";
 if( $artconv['to'] )
-	nnrp_body( $nhd, $artnum, "", "<br>\n", true, false, $artconv['to'] );
+	nnrp_body( $nhd, $artnum, "", "<br />\n", true, false, $artconv['to'] );
 else
-	nnrp_body( $nhd, $artnum, "", "<br>\n" );
+	nnrp_body( $nhd, $artnum, "", "<br />\n" );
 nnrp_close($nhd);
 
 echo "</td></tr><tr><td align=center colspan=2>\n";

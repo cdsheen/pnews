@@ -70,7 +70,7 @@ function open_nntps ( $nnrp_server ) {
 function nnrp_help( $nhd ) {
 	send_command( $nhd, "HELP" );
 	while( $buf = fgets( $nhd, 4096 ) ) {
-		echo "$buf<br>";
+		echo "$buf<br />";
 		$buf = chop($buf);
 		if( $buf == '.' )
 			break;
@@ -120,7 +120,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 		else
 			$re_match = '*';
 
-#		echo "$re_match,$re_group,$re_filter<br>";
+#		echo "$re_match,$re_group,$re_filter<br />";
 
 		if( $re_match == '*' )
 			send_command( $nhd, "LIST ACTIVE $group");
@@ -132,7 +132,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 			break;
 
 		while( $buf = fgets( $nhd, 4096 ) ) {
-#			echo "$buf<br>";
+#			echo "$buf<br />";
 			$buf = chop($buf);
 			if( $buf == '.' )
 				break;
@@ -140,7 +140,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 
 			if( $re_match != '*' && !preg_match( "/\.$re_filter\$/i", $entry[0] ) )
 				continue;
-#			echo "$buf<br>";
+#			echo "$buf<br />";
 			$active[$entry[0]] = array( (int)$entry[1], (int)$entry[2] );
 		}
 
@@ -150,12 +150,12 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 			break;
 
 		while( $buf = fgets( $nhd, 4096 ) ) {
-#			echo "$buf<br>";
+#			echo "$buf<br />";
 			$buf = chop( $buf );
 			if( $buf == '.' )
 				break;
 			preg_match( '/^(\S+)\s+(.+)$/', $buf, $match );
-#			echo "$match[1] $match[2]<br>\n";
+#			echo "$match[1] $match[2]<br />\n";
 			if( is_array( $active[$match[1]] ) ) {
 				if( $func )
 					array_push( $active[$match[1]], $func($match[2]) );
@@ -192,7 +192,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 
 	$n = 0 ;
 	while( $buf = fgets( $nhd, 4096 ) ) {
-#		echo "$buf<br>";
+#		echo "$buf<br />";
 		$buf = chop( $buf );
 		if( $buf == "." )
 			break;
@@ -418,9 +418,9 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 	if( $proxy != '' )
 		fwrite( $nhd, "X-HTTP-Proxy-Server: $proxy\r\n" );
 #	fwrite( $nhd, "NNTP-Posting-Host: unknown@$remote\r\n" );
-#	echo( "From: $name [$email]<br>\n" );
-#	echo( "Newsgroups: $newsgroups<br>\n" );
-#	echo( "Subject: $subject<br>\n" );
+#	echo( "From: $name [$email]<br />\n" );
+#	echo( "Newsgroups: $newsgroups<br />\n" );
+#	echo( "Subject: $subject<br />\n" );
 	if( $ref )
 		fwrite( $nhd, "References: $ref\r\n" );
 	fwrite( $nhd, "\r\n" );
@@ -468,7 +468,7 @@ function nnrp_close( $nhd ) {
 
 function send_command( $nhd, $cmd ) {
 	global $nnrp_last_command;
-#	echo "[$cmd]<br>\n";
+#	echo "[$cmd]<br />\n";
 	$nnrp_last_command = $cmd;
 	@fwrite( $nhd, "$cmd\r\n");
 }
@@ -476,7 +476,7 @@ function send_command( $nhd, $cmd ) {
 function get_status( $nhd ) {
 	global $nnrp_last_result;
 	$responds = @fgets( $nhd, 1024 );
-#	echo "[$responds]<br>\n";
+#	echo "[$responds]<br />\n";
 	$nnrp_last_result = $responds;
 	preg_match( '/^(\d+)\s(.+)$/', $responds, $match );
 	return( array($match[1], $match[2]) );
