@@ -24,7 +24,7 @@ function check_user_password( $username, $password ) {
 	if( !isset( $CFG['db_server'], $CFG['db_name'], $CFG['db_table'], $CFG['db_username'], $CFG['db_password'], $CFG['db_field_username'] ) )
 		return(null);
 
-	$conn = @mysql_connect( $CFG['db_server'], $CFG['db_field_username'], $CFG['db_field_password'] );
+	$conn = @mysql_connect( $CFG['db_server'], $CFG['db_username'], $CFG['db_password'] );
 	if( !$conn )
 		return(null);
 
