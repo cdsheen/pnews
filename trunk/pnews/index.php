@@ -23,8 +23,6 @@ require_once('utils.inc.php');
 
 html_head( $title );
 
-#echo "<center>\n";
-
 if( $CFG['html_header'] ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
@@ -34,7 +32,7 @@ if( $CFG['html_header'] ) {
 elseif( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
 else
-	echo "<font color=black size=5 face=Georgia>$title</font><br />";
+	echo "<a href=index.php><span class=title>$title</span><br />";
 
 $nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 

@@ -2,6 +2,8 @@ body            { font-size: 12px; color: black; background: white; font-family:
 
 img             { border: 0px }
 
+.title          { font-size: 14px color: black; font-family: Georgia }
+
 a               { text-decoration:none; color: blue }
 a:visited       { color: blue }
 a:hover         { text-decoration:underline; color:red }

@@ -117,6 +117,17 @@ $subject = htmlspecialchars( $subject );
 
 echo "<center>\n";
 
+if( $CFG['html_header'] ) {
+	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
+		include( $CFG['html_header'] );
+	else
+		readfile( $CFG['html_header'] );
+}
+elseif( $CFG['banner'] )
+	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
+else
+	echo "<a href=index.php><span class=title>$title</span><br />";
+
 echo "<table class=shadow border=0 width=100% cellpadding=0 cellspacing=0>\n";
 echo "<tr><td class=bg>\n";
 echo "<table width=100% border=0 cellpadding=2 cellspacing=2>";
@@ -320,6 +331,14 @@ echo "</td></tr></table>\n";
 echo "</center>";
 
 html_foot(false);
+
+if( $CFG['html_footer'] ) {
+	if( preg_match( '/\.php$/', $CFG['html_footer'] ) )
+		include( $CFG['html_footer'] );
+	else
+		readfile( $CFG['html_footer'] );
+}
+
 html_tail();
 
 ?>

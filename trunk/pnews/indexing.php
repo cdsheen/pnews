@@ -32,7 +32,9 @@ if( $CFG['html_header'] ) {
 		readfile( $CFG['html_header'] );
 }
 elseif( $CFG['banner'] )
-	echo "<a href=index.php>" . $CFG['banner'] . "</a><p>\n";
+	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
+else
+	echo "<a href=index.php><span class=title>$title</span></a><br />";
 
 $c = check_group( $server, $group );
 
