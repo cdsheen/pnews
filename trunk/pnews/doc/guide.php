@@ -480,6 +480,19 @@ You can download phpCAS from the following place:<br />
     <p>$CFG["log"] = "/var/log/pnews.log";</p>
     <p>You need to create this file with write permission granted to the user running httpd</p>
   </blockquote>
+<a name=log_level></a>
+  <p><strong>$CFG["log_level"]</strong></p>
+  <blockquote> 
+    <p>Log verbose level (default: <i>3</i>)</p>
+	<blockquote>
+	0 - no log<br />
+	1 - log only post/reply/xpost/forward/delete actions.<br />
+	2 - log all actions for authenticated users.<br />
+	3 - log all actions for all users.
+	</blockquote>
+    <p>$CFG["log_level"] = 2;</p>
+    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+  </blockquote>
   <p>&nbsp;</p>
 <a name=section2></a>
 <hr width=90% />

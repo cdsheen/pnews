@@ -49,6 +49,7 @@ $strReceiver           = 'Receiver';
 $strName               = 'Name';
 $strEmail              = 'E-Mail';
 $strContent            = 'Content';
+$strAttachment         = 'Attachment';
 
 $strNoSubject          = '<no subject>';
 

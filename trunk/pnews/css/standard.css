@@ -60,6 +60,7 @@ select.lang     { margin: 0pt; font-size: 12px; color: blue; background: #DDFFEE
 input.login     { background: #EEDDFF; width: 110pt }
 input.normal    { vertical-align: top; background: #DDDDDD }
 
+input.login2    { background: #EEDDFF; width: 50pt }
 select.login    { background: #EEDDFF }
 
 td.field        { color: black; font-size: 12px; text-align: right }

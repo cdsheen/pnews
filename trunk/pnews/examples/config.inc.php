@@ -231,6 +231,15 @@ $CFG["auth_expire_time"] = 1800;
 // $CFG["log"] = "/var/log/webnews.log";
 
 
+# [log_level] Log verbose level (default: 3)
+#       0 - no log
+#       1 - log only post/reply/xpost/forward/delete actions.
+#       2 - log all actions for authenticated users.
+#       3 - log all actions for all users.
+
+// $CFG["log_level"] = 1;
+
+
 ############################################################################
 # Section 2 - Contents - Configure the contents
 ############################################################################

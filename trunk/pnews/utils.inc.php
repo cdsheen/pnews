@@ -352,7 +352,16 @@ $article_convert  = get_conversion( $news_charset[$curr_catalog], $curr_charset 
 #############################################################################
 # Write access log 
 
-if( $CFG['log'] ) {
+# $CFG['log_level']
+#	0 - no log
+#	1 - log only post/reply/xpost/forward/delete actions.
+#	2 - log all actions for authenticated users.
+#	3 - log all actions for all users.
+
+if( $CFG['log'] && $CFG['log_level'] > 0
+	&& !( $CFG['log_level'] == 1 && !need_postperm($self_base) )
+	&& !( $CFG['log_level'] == 2 && !$auth_success ) ) {
+
 	$fp = @fopen( $CFG['log'], 'a' );
 	if( $fp ) {
 		$log_uri = $uri;
@@ -415,7 +424,7 @@ echo <<<EOF
 EOF;
 
 if( $CFG['auth_method'] == 'mail' && $CFG['domain_select'] ) {
-	echo "<input class=login name=loginName size=15>\n";
+	echo "<input class=login2 name=loginName size=15>\n";
 	echo "<select name=domain class=login>\n";
 	foreach( $CFG['pop3_mapping'] as $d => $s ) {
 		echo "<option value=\"$d\">$d\n";

@@ -49,6 +49,7 @@ $strReceiver           = 'Destinataire';
 $strName               = 'Nom';
 $strEmail              = 'Mél';
 $strContent            = 'Corps du message';
+$strAttachment         = 'Attachment';
 
 $strNoSubject          = '<pas de sujet>';
 

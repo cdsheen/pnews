@@ -49,6 +49,7 @@ $strReceiver           = '收信者';
 $strEmail              = '电子邮件';
 $strName               = '名字';
 $strContent            = '文章内容';
+$strAttachment         = '附件';
 
 $strNoSubject          = '<无标题>';
 

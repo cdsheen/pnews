@@ -149,22 +149,31 @@ echo <<<EOF
 <form name=post action="$self" method=post>
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td></tr>
- <tr><td class=field>$strEmail:</td><td><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
- <tr><td class=field>$strGroup:</td><td><input name=postgroup size=40 value="$group" disabled></td></tr>
- <tr><td class=field>$strSubject:</td><td><input name=subject size=56 tabindex=1></td></tr>
- <tr><td class=field>$strContent:</td><td align=right>
+ <tr><td class=field>$strName:</td><td><input name=nickname size=20 value="$auth_user"></td>
+ <td class=field align=right>
   <input class=normal type=button value='$strFormConfirmPost' onClick='verify()' tabindex=3>
-  <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=4></td></tr>
- <tr><td colspan=2>
-  <input name=server value="$server" type=hidden>
+  <input class=normal type=button value='$strFormCancelPost' onClick='really()' tabindex=4>
+ </td>
+ </tr>
+ <tr><td class=field>$strEmail:</td><td colspan=2><input name=email size=40 value="$auth_email" $mail_disable></td></tr>
+ <tr><td class=field>$strGroup:</td><td colspan=2><input name=postgroup size=40 value="$group" disabled></td></tr>
+ <tr><td class=field>$strSubject:</td><td colspan=2><input name=subject size=56 tabindex=1></td></tr>
+ <tr><td class=field>$strContent:</td>
+ <td colspan=2 align=right></td></tr>
+ <tr><td colspan=3>
+ <input name=server value="$server" type=hidden>
  <input name=group value="$group" type=hidden>
  <textarea name=content class=content rows=12 wrap=physical tabindex=2></textarea><br />
-</td></tr>
+ </td></tr>
 </table>
 </center>
 </form>
 EOF;
+# <tr><td class=field colspan=3>
+# Attachment: <input name="userfile1" type="file"><br />
+# Attachment: <input name="userfile2" type="file"><br />
+# Attachment: <input name="userfile3" type="file"><br />
+# </td></tr>
 	html_focus( 'post', 'subject' );
 	html_tail();
 }

@@ -314,6 +314,9 @@ if( !isset($CFG['author_link']) )
 if( !isset($CFG['log']) )
 	$CFG['log'] = false;
 
+if( !isset($CFG['log_level']) )
+	$CFG['log_level'] = 3;
+
 if( $CFG['log'] && !is_writable($CFG['log']) )
 	show_error( '$CFG["log"]: You does not have write permission on ' . $CFG['log'] );
 

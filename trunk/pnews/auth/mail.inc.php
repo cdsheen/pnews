@@ -24,6 +24,19 @@ function check_user_password( $username, $password ) {
 	if( !isset( $CFG['pop3_mapping'] ) )
 		return(null);
 
+	$popuser = '';
+	foreach( $CFG['pop3_mapping'] as $d => $s ) {
+		if( preg_match( "/^(.+)($d)$/", $username, $match ) ) {
+			$nick = $match[1];
+			list($popuser, $domain) = split( '@', $username );
+			$server = $s;
+		}
+	}
+
+	if( $popuser == '' )
+		return(null);
+
+/*
 	$domain = strstr( $username, '@' );
 	if( !$domain || !isset( $CFG['pop3_mapping'][$domain] ) )
 		return(null);
@@ -31,6 +44,7 @@ function check_user_password( $username, $password ) {
 	$popuser = preg_replace( '/@.+$/', "", $username );
 
 	$server = $CFG['pop3_mapping'][$domain];
+*/
 
 	if( preg_match( '/^(\w+):\/\/([^\/]+)\/?$/', $server, $match ) ) {
 		$protocol = $match[1];
@@ -82,7 +96,7 @@ function check_user_password( $username, $password ) {
 	fputs( $sock, "QUIT\r\n" );
 	fclose( $sock );
 
-	$userinfo['%u'] = $popuser;
+	$userinfo['%u'] = $nick;
 	$userinfo['%e'] = $username;
 
 	return( $userinfo );
