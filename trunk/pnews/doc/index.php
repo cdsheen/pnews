@@ -175,7 +175,7 @@ cvs server: Updating pnews<br>
 CVS is also available online:
 <blockquote>
 <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>View CVS Repository on the Web</a><br>
-<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.gz">Nightly CVS Tarball (pnews-cvsroot.tar.gz)</a>
+<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.bz2">Nightly CVS Tarball (pnews-cvsroot.tar.bz2)</a>
 </blockquote>
 <p>
 Forum:
