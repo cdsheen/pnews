@@ -105,8 +105,13 @@ while( $buf = fgets( $lst, 512) ) {
 			$news_authperm[$catalog_num] = true;
 			$private_catalogs[] = $catalog_num;
 		}
-		if( in_array( 'nntps', $options ) || in_array( 'snews', $options ) )
+		if( in_array( 'nntps', $options ) || in_array( 'snews', $options ) ) {
 			$news_nntps[$catalog_num] = true;
+			if( version_check( '4.3.0' ) )
+				show_error( 'PHP 4.3.0 or greater is required for NNTPS support' );
+			if( !function_exists( 'openssl_get_publickey' ) )
+				show_error( 'OpenSSL is required for NNTPS support' );
+		}
 	}
 	elseif( preg_match( '/^server\s+(\S+)$/', $buf, $match ) ) {
 		$news_server[$catalog_num] = $match[1];
@@ -120,10 +125,6 @@ while( $buf = fgets( $lst, 512) ) {
 			$news_charset[$catalog_num] = $match[1];
 	}
 	elseif( preg_match( '/^auth\s+(.+)$/', $buf, $match ) ) {
-#		$match[1] = strtolower( $match[1] );
-#		if( $match[1] == 'login' )
-#			$news_authinfo[$catalog_num] = 'login';
-#		elseif( $match[1] == 'user' )
 		$news_authinfo[$catalog_num] = $match[1];
 	}
 }
@@ -628,5 +629,17 @@ ERR;
 	html_tail();
 	exit;
 }
+
+
+function version_check($vercheck)  {
+	$minver = explode(".", $vercheck);
+	$curver = explode(".", phpversion());
+	if( ($curver[0] <= $minver[0]) && ($curver[1] <= $minver[1])
+			&& ($curver[1] <= $minver[1])
+			&& ($curver[2][0] < $minver[2][0]) )
+		return true;
+	else
+		return false;
+} 
 
 ?>
