@@ -824,7 +824,7 @@ function get_group() {
 	return('');
 }
 
-function mkdirs( $path, $mode ) {
+function mkdirs( $path, $mode = 0644 ) {
 	if( is_dir($path) )
 		return true;
 	$ppath = dirname($path);

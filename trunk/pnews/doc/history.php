@@ -41,6 +41,7 @@ echo <<<EOH
 <font face=Georgia>
 PHP News Reader v2.6.0 (2004/10/)
 <ul>
+<li>Added <a href=guide.php#confirm_post>\$CFG['confirm_post']</a> and <a href=guide.php#confirm_forward>\$CFG['confirm_forward']</a> to enable the confirmation for message posting.
 <li>All language strings (\$strXXX) are renamed as \$pnews_str array.
 <li>Hierarchical directories are used for storing cache and thread data.
 </ul>

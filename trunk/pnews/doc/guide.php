@@ -605,6 +605,20 @@ You can download phpCAS from the following place:<br />
       <br />
       You should get a copy from examples/newsgroups.lst (default: <i>"newsgroups.lst"</i>)</p>
   </blockquote>
+<a name=confirm_post></a>
+  <p><strong>$CFG["confirm_post"]</strong></p>
+  <blockquote>
+    <p>The message prompted to confirm the posting (post/reply/crosspost) (default: <i>false</i>)</p>
+    <p>$CFG["confirm_post"] = "Really post the message ?";
+    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+  </blockquote>
+<a name=confirm_forward></a>
+  <p><strong>$CFG["confirm_forward"]</strong></p>
+  <blockquote>
+    <p>The message prompted to confirm the forwarding (default: <i>false</i>)</p>
+    <p>$CFG["confirm_forward"] = "Really forward the message ?";
+    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+  </blockquote>
 <a name=magic_tag></a>
   <p><strong>$CFG["magic_tag"]</strong></p>
   <blockquote> 

@@ -334,6 +334,12 @@ if( !isset( $CFG['global_readonly'] ) ) {
 		$CFG['global_readonly'] = false;
 }
 
+if( !isset( $CFG['confirm_post'] ) )
+	$CFG['confirm_post'] = false;
+
+if( !isset( $CFG['confirm_forward'] ) )
+	$CFG['confirm_forward'] = false;
+
 if( !isset( $CFG['post_signature'] ) )
 	$CFG['post_signature'] = '';
 

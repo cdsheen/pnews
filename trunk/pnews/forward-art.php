@@ -146,6 +146,16 @@ elseif( $artnum != '' ) {
 			document.post.content.focus();
 			return(false);
 		}
+<?
+		if( $CFG['confirm_forward'] ) {
+			echo <<<CONFIRM
+		if( !confirm( '$CFG[confirm_forward]' ) ) {
+			return(false);
+		}
+
+CONFIRM;
+		}
+?>
 		document.post.submit();
 		return(true);
 	}

@@ -150,6 +150,16 @@ else {
 			document.post.content.focus();
 			return(false);
 		}
+<?
+		if( $CFG['confirm_post'] ) {
+			echo <<<CONFIRM
+		if( !confirm( '$CFG[confirm_post]' ) ) {
+			return(false);
+		}
+
+CONFIRM;
+		}
+?>
 		document.post.submit();
 		return(true);
 	}
