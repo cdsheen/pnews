@@ -24,7 +24,8 @@ echo '
 -->
 PHP News Reader v2.1.3 (2003/04/13)
 <ul>
-<li>Support URL rewrite function
+<li>ANSI coloring codes is filtered.
+<li>Support URL rewrite function.
 </ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>

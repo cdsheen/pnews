@@ -193,6 +193,9 @@ function nnrp_body ( $nhd, $artnum, $prepend = "", $postpend = "", $urlquote = t
 
 			# replace e-mail as anchor
 			$buf = preg_replace( '/([\w\d-_.]+)@([\w\d-_.]+)/', ' <a href="mailto:\\1@\\2" target=_blank>\\1@\\2</a>', $buf );
+
+			# filter ANSI codes
+			$buf = preg_replace( '/\033\[[\d;]*m/', '', $buf );
 		}
 
 		if( $trans_func )
