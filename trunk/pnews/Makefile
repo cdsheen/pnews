@@ -19,7 +19,7 @@
 # Copyright (C) 2001-2005 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
-ZIPNAME=pnews260
+ZIPNAME=pnews261
 
 all:	pkg
 

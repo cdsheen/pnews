@@ -42,9 +42,9 @@ echo <<<EOH
 PHP News Reader v2.6.1 (2005/01/01)
 <ul>
 <li>Fixed the bug which perform invalid MODE READER before authentication.
+<li>Attachment is now cached if <a href=guide.php#cache_dir>\$CFG['cache_dir']</a> is enabled.
 <li>Fixed the bug which cause all attachment(s) not downloaded in v2.6.0.
 <li>Fixed the downloading of attachment with filename contains special characters (again).
-<li>Attachment is now cached if <a href=guide.php#cache_dir>\$CFG['cache_dir']</a> is enabled.
 </ul>
 PHP News Reader v2.6.0 (2004/12/25)
 <ul>
