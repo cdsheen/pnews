@@ -6,7 +6,7 @@
 // Coding:   ISO-8859-1
 
 // Copyright (C) 2001-2003 - All rights reserved
-// Pascal Aubry (Pascal.Aubry@univ-rennes1.fr)
+// Pascal Aubry (Pascal.Aubry at univ-rennes1.fr)
 
 $strAuthentication     = 'Authentification';
 $strLoginName          = 'Utilisateur';

@@ -38,7 +38,7 @@ pkg:
 	mv -f $(ZIPNAME).tgz $(ZIPNAME).zip ..
 
 gb:
-	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_gb.inc.php
+	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_b2g.inc.php
 
 www:
 	cp -f version.inc.php /home/users/c/cd/cdsheen/groups/

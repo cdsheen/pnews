@@ -6,7 +6,7 @@
 // Coding:   ISO-8859-1
 
 // Copyright (C) 2001-2003 - All rights reserved
-// Markus Översti (markus.oversti@edu.haapavesi.fi)
+// Markus Översti (markus.oversti at edu.haapavesi.fi)
 
 $strAuthentication     = 'Kirjaudu';
 $strLoginName          = 'Käyttäjänimi';
