@@ -662,7 +662,7 @@ function nnrp_authenticate( $nhd ) {
 
 	if( $CFG['auth_prompt'] == 'http' ) {
 		$user = str_replace( '%http_user', $_SERVER['PHP_AUTH_USER'], $user);
-		$pass = str_replace( '%http_pw', $_SERVER['PHP_AUTH_PW'], $pass);
+		$pass = str_replace( '%http_pw',   $_SERVER['PHP_AUTH_PW'],   $pass);
 	}
 
 	if( nnrp_auth( $nhd, $user, $pass ) ) {
