@@ -55,11 +55,18 @@ if( $info ) {
 else {
 	unset($_SESSION['auth_ticket']);
 	$retmsg = sprintf( $strReadyReturn, $xref );
+
+	$region = $curr_language;
+	$coding = $lang_coding[$region];
+
 	echo <<<EOM
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-<META HTTP-EQUIV=REFRESH CONTENT="3; URL=$xref">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache" />
+<META HTTP-EQUIV=REFRESH CONTENT="3; URL=$xref" />
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding" />
+<META HTTP-EQUIV="Content-Language" CONTENT="$region" />
 <STYLE>
 body       { font-size: 12px; color: black; background: #EEEEFF; font-family: arial }
 a          { text-decoration:none; color: blue }

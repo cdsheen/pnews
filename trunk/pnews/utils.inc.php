@@ -643,6 +643,7 @@ function nnrp_authenticate( $nhd ) {
 
 function kill_myself() {
 	echo <<<END
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <script language="JavaScript">

@@ -41,6 +41,7 @@ if( $referal == '' )
 //header( "Location: $referal" );
 
 echo <<<EOH
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
