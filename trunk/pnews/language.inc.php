@@ -26,7 +26,7 @@ $lang_option = array(	'en'         => 'English',
 			'fr'         => 'Fran&ccedil;ais',
 			'fi'         => 'Finnish',
 			'de'         => 'German',
-			'it'         => 'Italian' );
+			'it'         => 'Italiano' );
 
 $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-tw'      => 'language/chinese.inc.php',
