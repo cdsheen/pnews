@@ -41,6 +41,7 @@ echo <<<EOH
 <font face=Georgia>
 PHP News Reader v2.6.0 (2004/10/)
 <ul>
+<li>read-art.php/post-art.php/reply-art.php/forward-art.php/delete-art.php are renamed as read.php/post.php/reply.php/forward.php/delete.php.
 <li>Added <a href=guide.php#confirm_post>\$CFG['confirm_post']</a> and <a href=guide.php#confirm_forward>\$CFG['confirm_forward']</a> to enable the confirmation for message posting.
 <li>Fix the wrong version-checking codes when enabling nntps.
 <li>The line length limit has been expanded from 512 to 2048.

@@ -65,7 +65,7 @@ $mail_add_header .= "X-Source: $ip_from";
 
 $lineppg          = $CFG['articles_per_page'];
 
-$subject_limit    = 56;	# Chars Limit for Subject
+$subject_limit    = 60;	# Chars Limit for Subject
 $nick_limit       = 16;	# Chars Limit for Nickname
 $id_limit         = 18;	# Chars Limit for ID ( E-Mail before @ )
 $org_limit        = 22;	# Chars Limit for Organization
@@ -257,7 +257,7 @@ if( $CFG['auth_type'] != 'open' ) {
 
 		if( isset($_GET['login']) )
 			$need_auth = true;
-		elseif( $self_base == 'indexing.php' || $self_base == 'read-art.php' || $self_base == 'download.php' ) {
+		elseif( $self_base == 'indexing.php' || $self_base == 'read.php' || $self_base == 'download.php' ) {
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
@@ -271,7 +271,7 @@ if( $CFG['auth_type'] != 'open' ) {
 			$need_auth = true;
 	}
 	else {
-		if( $self_base == 'indexing.php' || $self_base == 'read-art.php' || $self_base == 'download.php' ) {
+		if( $self_base == 'indexing.php' || $self_base == 'read.php' || $self_base == 'download.php' ) {
 			if( $server == '' || $group == '' || $verify_catalog == -1 ) {
 				html_head( $title, 'index.php' );
 				html_tail();
@@ -624,7 +624,7 @@ function vars_convert( $instr ) {
 }
 
 function need_postperm( $script_name ) {
-	$post_action = array( 'post-art.php', 'reply-art.php', 'forward-art.php', 'xpost.php', 'delete-art.php' );
+	$post_action = array( 'post.php', 'reply.php', 'forward.php', 'xpost.php', 'delete.php' );
 	if( in_array( $script_name, $post_action ) )
 		return(true);
 	else

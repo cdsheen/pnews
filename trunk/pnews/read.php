@@ -52,10 +52,10 @@ if( $CFG['url_rewrite'] ) {
 	$headerurl = "$urlbase/article/$reserver/$group/{$artnum}h";
 }
 else {
-	$nexturl = ($nextnum>0) ? "read-art.php?server=$server&group=$group&artnum=$nextnum" : '';
-	$lasturl = ($lastnum>0) ? "read-art.php?server=$server&group=$group&artnum=$lastnum" : '';
+	$nexturl = ($nextnum>0) ? "read.php?server=$server&group=$group&artnum=$nextnum" : '';
+	$lasturl = ($lastnum>0) ? "read.php?server=$server&group=$group&artnum=$lastnum" : '';
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
-	$headerurl = "read-art.php?server=$server&group=$group&artnum=$artnum&header";
+	$headerurl = "read.php?server=$server&group=$group&artnum=$artnum&header";
 }
 
 #list( $from, $email, $subject, $date, $msgid, $org )

@@ -144,7 +144,7 @@ EOT;
 
 function read_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG, $group_default_server;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = $close ? 'close_window();' : '';
 
 	if( $server == $group_default_server )
@@ -154,66 +154,66 @@ function read_article( $server, $group, $artnum, $link_text, $close = false, $cl
 
 	if( $CFG['show_article_popup'] )
 		if( $CFG['url_rewrite'] )
-			return "<a$class_text href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
+			return "<a$ctag href=\"javascript:read_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
 		else
-			return "<a$class_text href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
+			return "<a$ctag href=\"javascript:read_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text </a>";
 	else
 		if( $CFG['url_rewrite'] )
-			return "<a$class_text href=\"article/$reserver/$group/$artnum\">$link_text </a>";
+			return "<a$ctag href=\"article/$reserver/$group/$artnum\">$link_text </a>";
 		else
-			return "<a$class_text href=\"read-art.php?server=$server&group=$group&artnum=$artnum\">$link_text </a>";
+			return "<a$ctag href=\"read.php?server=$server&group=$group&artnum=$artnum\">$link_text </a>";
 }
 
 function post_article( $server, $group, $link_text, $close = false, $class = null ) {
 	global $CFG;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = ( $close ) ? 'close_window();' : '';
 #	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:post_article( '" . $CFG['url_base'] . "', '$server', '$group' ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:post_article( '', '$server', '$group' ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:post_article( '', '$server', '$group' ); $close_cmd\">$link_text</a>";
 }
 
 function delete_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:delete_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:delete_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:delete_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:delete_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function reply_article( $server, $group, $artnum, $link_text, $quote = false, $close = false, $class = null ) {
 	global $CFG;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	$quote = ( $quote ? 1 : 0 );
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:reply_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:reply_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:reply_article( '', '$server', '$group', $artnum, $quote ); $close_cmd\">$link_text</a>";
 }
 
 function xpost_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:xpost_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:xpost_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:xpost_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:xpost_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function forward_article( $server, $group, $artnum, $link_text, $close = false, $class = null ) {
 	global $CFG;
-	$class_text = ( $class == null ) ? '' : " class=$class" ;
+	$ctag = ( $class == null ) ? '' : " class=$class" ;
 	$close_cmd = ( $CFG['show_article_popup'] ) ? 'close_window();' : '';
 	if( $CFG['url_rewrite'] )
-		return "<a$class_text href=\"javascript:forward_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:forward_article( '" . $CFG['url_base'] . "', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 	else
-		return "<a$class_text href=\"javascript:forward_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
+		return "<a$ctag href=\"javascript:forward_article( '', '$server', '$group', $artnum ); $close_cmd\">$link_text</a>";
 }
 
 function html_focus( $form, $field ) {

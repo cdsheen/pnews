@@ -21,23 +21,23 @@ function mailto( email ) {
 }
 function read_article( base, server, group, artnum ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=350,width=550";
-	var openwin = window.open( base + "read-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "read" + artnum , winstyle );
+	var openwin = window.open( base + "read.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "read" + artnum , winstyle );
 	openwin.focus();
 }
 function post_article( base, server, group ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=400,width=600";
-	var openwin = window.open( base + "post-art.php?server=" + server + "&group=" + group , "post", winstyle );
+	var openwin = window.open( base + "post.php?server=" + server + "&group=" + group , "post", winstyle );
 	openwin.focus();
 }
 function delete_article( base, server, group, artnum ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=400,width=600";
-	var openwin = window.open( base + "delete-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "delete" + artnum , winstyle );
+	var openwin = window.open( base + "delete.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "delete" + artnum , winstyle );
 	openwin.focus();
 }
 function reply_article( base, server, group, artnum, quote ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=400,width=600";
 	var quote_text = "&quote=" + quote ;
-	var openwin = window.open( base + "reply-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum + quote_text, "reply" + artnum , winstyle );
+	var openwin = window.open( base + "reply.php?server=" + server + "&group=" + group + "&artnum=" + artnum + quote_text, "reply" + artnum , winstyle );
 	openwin.focus();
 }
 function xpost_article( base, server, group, artnum ) {
@@ -47,7 +47,7 @@ function xpost_article( base, server, group, artnum ) {
 }
 function forward_article( base, server, group, artnum ) {
 	var winstyle = "status=no,menubar=no,scrollbars=yes,height=370,width=600";
-	var openwin = window.open( base + "forward-art.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "forward" + artnum , winstyle );
+	var openwin = window.open( base + "forward.php?server=" + server + "&group=" + group + "&artnum=" + artnum, "forward" + artnum , winstyle );
 	openwin.focus();
 }
 function setCookie(sName, sValue, sPath) {
