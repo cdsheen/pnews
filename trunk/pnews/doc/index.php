@@ -151,7 +151,7 @@ while( $buf = fgets( $fp, 255 ) ) {
 fclose($fp);
 
 echo <<<EOR
-You can browse the change log since June 2002 by <a href=history.php>clicking here</a>.
+You can also browse the whole change logs by <a href=history.php>clicking here</a>.
 <p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>click here</a> for a reference.<br />
 <p>
