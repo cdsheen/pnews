@@ -19,6 +19,11 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
+PHP News Reader v2.0.3 (2003/02/05)
+<ul>
+<li>Use UTF-8 for English locale
+</ul>
+<p>
 PHP News Reader v2.0.2 (2003/01/24)
 <ul>
 <li>Fix the bug of \'required\' authentication model

@@ -71,7 +71,7 @@ PHP News Reader\'s development started around 2001/08.
 I wrote this software in my leisure time. Although PHP News Reader still
 lacks many fancy features, it works fine to meet the most requirements.
 <p>
-PHP News Reader v2.0.3 (2003/02/06)
+PHP News Reader v2.0.3 (2003/02/05)
 <ul>
 <li>Use UTF-8 for English locale
 </ul>
