@@ -136,7 +136,7 @@ function nnrp_list_group( $nhd, $filter = '*', $func = null ) {
 			$buf = chop($buf);
 			if( $buf == '.' )
 				break;
-			$entry = split( " ", $buf );
+			$entry = split( ' ', $buf );
 
 			if( $re_match != '*' && !preg_match( "/\.$re_filter\$/i", $entry[0] ) )
 				continue;
@@ -215,7 +215,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 		$buf = chop( $buf );
 		if( $buf == "." )
 			break;
-		$xover = preg_split( '/\t/', $buf );
+		$xover = split( "\t", $buf );
 
 		$n = $xover[0];
 
@@ -295,7 +295,7 @@ function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
 			if( $buf == '.' )
 				break;
 
-			$artinfo = preg_split( '/\t/', $buf );
+			$artinfo = split( "\t", $buf );
 
 			$artlist[] = intval($artinfo[0]);
 		}
@@ -742,7 +742,7 @@ function get_mime_info( $headers, $def_charset, $time_format ) {
 	if( $headers['Content-Type'] ) {
 		$ctype = preg_split( '/[;\s]+/', strtolower($headers['Content-Type']) );
 		if( is_array( $ctype ) ) {
-			list( $type, $subtype ) = preg_split( '/\//', $ctype[0]);
+			list( $type, $subtype ) = split( '/', $ctype[0]);
 			$artinfo['type'] = $type;
 			$artinfo['subtype'] = $subtype;
 			array_shift( $ctype );
