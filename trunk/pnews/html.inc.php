@@ -35,6 +35,7 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 	$region = $curr_language;
 	$coding = $lang_coding[$region];
 	echo <<<EOH
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding">
