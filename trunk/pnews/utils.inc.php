@@ -852,13 +852,13 @@ function get_group() {
 	return('');
 }
 
-function mkdirs( $path, $mode = 0644 ) {
+function mkdirs( $path, $mode = 0755 ) {
 	if( is_dir($path) )
 		return true;
 	$ppath = dirname($path);
         if( !mkdirs($ppath, $mode) )
         	return false;
-	return mkdir($path);
+	return mkdir($path, $mode);
 }
 
 ?>
