@@ -87,7 +87,7 @@ $group_default_charset = $CFG['charset']['grouplst'];
 
 $private_catalogs = array();
 
-while( $buf = fgets( $lst, 512) ) {
+while( $buf = fgets( $lst, 2048 ) ) {
 	$buf = chop( $buf );
 	if( strlen( $buf ) == 0 || $buf[0] == '#' )
 		continue;
@@ -139,7 +139,10 @@ while( $buf = fgets( $lst, 512) ) {
 		$news_server[$catalog_num] = $match[1];
 	}
 	elseif( preg_match( '/^groups?\s+(.+)$/', $buf, $match ) ) {
-		$news_groups[$catalog_num] = $match[1];
+		if( isset($news_groups[$catalog_num]) )
+			$news_groups[$catalog_num] .= $match[1];
+		else
+			$news_groups[$catalog_num] = $match[1];
 	}
 	elseif( preg_match( '/^charset\s+(.+)$/', $buf, $match ) ) {
 		$match[1] = strtolower( $match[1] );
