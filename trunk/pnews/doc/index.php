@@ -55,11 +55,11 @@ PHP News Reader is a web based News Reader.
 It supports the standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
-PHP News Reader does not require your PHP installation to be compiled with '--with-imap'.
+PHP News Reader does NOT require your PHP installation to be compiled with IMAP support.
 PHP News Reader use a self-written NNRP Library to access news server via NNTP.
 And it works just fine without any database installation.
 <p>
-PHP News Reader does not support threading of News articles and per-user newsgroup subscription.
+PHP News Reader does not support threading of News articles and per-user newsgroups subscription.
 <p>
 Conformed Standards:
 <ul>
@@ -69,7 +69,7 @@ Conformed Standards:
 <li><a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=1036" target=_blank>RFC 1036 - Standard for Interchange of USENET Messages</a>
 </ul>
 <p>
-To install PHP News Reader, please check the <a href=requirement.php>requirement</a>, and then read the <a href=guide.php>Installation Guide</a>.
+To install PHP News Reader, please check the <a href=requirement.php>Requirements</a>, and then read the <a href=guide.php>Installation Guide</a>.
 <p>
 PHP News Reader has nothing to do with the user registration.
 It is designed to work with the EXISTING authentication system.
@@ -91,6 +91,8 @@ There are various handy authentication modules availabled.
 <p>
 The support for MySQL and PostgreSQL also makes it easy to integrate with the popular <a href="http://www.phpbb.com/" target=_blank>phpBB</a> system.
 <p>
+And it is easy to write your authentication module to be used by PHP News Reader.
+<p>
 The login prompt can be configured as HTTP authentication or FORM style.
 <p>
 PHP News Reader supports three interface languages (English, Traditional Chinese and Simplified Chinese).
@@ -102,7 +104,7 @@ The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is nati
 The charset of article is auto-converted to the preferred one
 while the selected charset of interface is different from the charset of the news articles.
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
-The posted articles will also be converted to the original charset of the server.
+The posted articles will also be converted to the charset of the original article in the server.
 <p>
 PHP News Reader's development started around August 2001.
 I wrote this software in my leisure time, mostly in the weekend. Although PHP News Reader still
@@ -176,7 +178,7 @@ CVS is also available online:
 <a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.gz">Nightly CVS Tarball (pnews-cvsroot.tar.gz)</a>
 </blockquote>
 <p>
-Discussion Forum:
+Forum:
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
 </blockquote>
