@@ -149,6 +149,32 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 	return( $overview );
 }
 
+function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
+
+	$next = ( $forward ? 1 : -1 );
+
+	$artnum = $from;
+
+	for( $i = 0 ; $i < $count ; $i++ ) {
+
+		$xover = nnrp_xover( $nhd, $artnum );
+		if( sizeof($xover) == 0 )
+			continue;
+
+#		print_r( $xover );
+
+		$overview[$i] = $xover[0];
+
+		$artnum += $next;
+		if( $forward && $artnum > $limit )
+			break;
+		if( !$forward && $artnum < $limit )
+			break;
+	}
+
+	return( $overview );
+}
+
 function nnrp_article ( $nhd, $artnum, $prepend = "", $postpend = "" ) {
 	send_command( $nhd, "ARTICLE $artnum" );
 	list( $code, $msg ) = get_status( $nhd );

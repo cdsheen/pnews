@@ -65,7 +65,8 @@ else {
 if( $show_from < $lowmark )
 	$show_from = $lowmark;
 
-$xover = nnrp_xover( $nhd, $show_from, $show_end );
+#$xover = nnrp_xover( $nhd, $show_from, $show_end );
+$xover = nnrp_xover_limit( $nhd, $show_from, 20, $highmark );
 
 echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
 
