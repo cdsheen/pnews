@@ -205,30 +205,50 @@ echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>\n";
 
-if( $show_end < $highmark )
-	echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
-else
-	echo $strFirstPage;
-echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+if( $show_end < $highmark ) {
+	if( $CFG['url_rewrite'] )
+		echo "<a href=group/$server/$group>$strFirstPage</a>";
+	else
+		echo "<a href=$self?server=$server&group=$group>$strFirstPage</a>";
+	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
 
-if( $show_end < $highmark )
-	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_end+1) . "&forward=1>$strPreviousPage</a>";
-else
-	echo "<font color=gray>$strPreviousPage</font>";
-echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+	$target = $show_end + 1 ;
 
-if( $show_from > $lowmark )
-	echo "<a href=$self?server=$server&group=$group&cursor=" . ($show_from-1) . ">$strNextPage</a>";
-else
-	echo "<font color=gray>$strNextPage</font>";
-echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
-
-if( $show_from > $lowmark )
-	echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
-else {
-	$totalpg = $page;
-	echo $strLastPage;
+	if( $CFG['url_rewrite'] )
+		echo "<a href=group/$server/$group/$target>$strFirstPage</a>";
+	else
+		echo "<a href=$self?server=$server&group=$group&cursor=$target&forward=1>$strPreviousPage</a>";
 }
+else {
+	echo $strFirstPage;
+	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+	echo "<font color=gray>$strPreviousPage</font>";
+}
+
+echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+
+if( $show_from > $lowmark ) {
+	$target = $show_from - 1;
+	if( $CFG['url_rewrite'] )
+		echo "<a href=group/$server/$group/$target>$strNextPage</a>";
+	else
+		echo "<a href=$self?server=$server&group=$group&cursor=$target>$strNextPage</a>";
+
+	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+
+	if( $CFG['url_rewrite'] )
+		echo "<a href=group/$server/$group/$lowmark>$strLastPage</a>";
+	else
+		echo "<a href=$self?server=$server&group=$group&cursor=$lowmark&forward=1>$strLastPage</a>";
+}
+else {
+	echo "<font color=gray>$strNextPage</font>";
+	echo "</td><td width=10% bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
+	echo $strLastPage;
+
+	$totalpg = $page;
+}
+
 echo "</td>";
 
 echo "<td bgcolor=#DDFFDD align=center onMouseover='this.bgColor=\"#FFFFC0\";' onMouseout='this.bgColor=\"#DDFFDD\";'>";
