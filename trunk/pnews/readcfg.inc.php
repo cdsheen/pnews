@@ -205,6 +205,9 @@ if( !isset($CFG['url_base']) )
 if( !isset( $CFG['group_list'] ) )
 	$CFG['group_list'] = 'newsgroups.lst';
 
+if( !isset( $CFG['magic_tag'] ) )
+	$CFG['magic_tag'] = true;
+
 if( !file_exists( $CFG['group_list'] ) )
 	config_error( '$CFG["group_list"]' );
 
