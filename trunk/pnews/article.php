@@ -51,8 +51,8 @@ if( $CFG['url_rewrite'] ) {
 	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
 }
 else {
-	$nexturl = ($nextnum>0) ? "read-art.php?server=$server&group=$group&artnum=$nextnum" : '';
-	$lasturl = ($lastnum>0) ? "read-art.php?server=$server&group=$group&artnum=$lastnum" : '';
+	$nexturl = ($nextnum>0) ? "article.php?server=$server&group=$group&artnum=$nextnum" : '';
+	$lasturl = ($lastnum>0) ? "article.php?server=$server&group=$group&artnum=$lastnum" : '';
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
 }
 
