@@ -838,11 +838,11 @@ You can download phpCAS from the following place:<br />
   <ol>
     <li>Full group name for inclusion, i.e: <b>tw.bbs.comp.hardware</b><br /><br />
     <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br /><br />
-        Only the final class of group name can be used in pattern match<br />
+        Only the last class of group name can be used in pattern match<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is INVALID.<br /><br />
-        Before v2.2.4, only 'all-match' patttern (a single <b>*</b> ) is allowed in the final class pattern of group name<br />
+        Before v2.2.4, only 'all-match' patttern (a single <b>*</b> ) is allowed in the last class pattern of group name<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in v2.2.4, while <b>tw.bbs.comp.*</b> is VALID.<br /><br />
-        After v2.3.0, the final class pattern is not restricted to a single <b>*</b>,<br />
+        After v2.3.0, the last class pattern is not restricted to a single <b>*</b>,<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in v2.3.0 or later.<br /><br />
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br />
         Only full group name is allowed here, it is used to nagative the previously included group.
