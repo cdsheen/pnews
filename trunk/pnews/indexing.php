@@ -38,61 +38,26 @@ if( ! ( $nhd && nnrp_authenticate( $nhd ) ) )
 
 list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 
+if( $CFG['cache_dir'] )
+	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark, $CFG['cache_dir'] . "/$server-$group" );
+else
+	$artlist = nnrp_article_list( $nhd, $lowmark, $highmark );
+
+$artsize = count($artlist);
+
+$highmark = $artlist[$artsize-1];
+$lowmark  = $artlist[0];
+
 echo "\n<!-- ART. NO. FROM: $lowmark  TO: $highmark -->\n";
 
-$totalpst = $highmark - $lowmark + 1 ;
-$totalpg = ceil($totalpst / $lineppg) ;
+$lineppg = $CFG['articles_per_page'];
 
 if( !isset($_GET['cursor']) )
 	$cursor = $highmark;
 else
 	$cursor = $_GET['cursor'];
 
-$forward = isset($_GET['forward']);
-
 echo "<!-- cursor: $cursor    lineppg: $lineppg -->\n";
-
-#if( $CFG['article_order_reverse'] )
-
-if( $forward ) {
-	$limit = $cursor + $lineppg * 3;
-	if( $limit > $highmark ) $limit = $highmark;
-	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $limit );
-}
-else {
-	$limit = $cursor - $lineppg * 3;
-	if( $limit < $lowmark ) $limit = $lowmark;
-	$xover = nnrp_xover_limit( $nhd, $cursor, $lineppg, $limit, false );
-}
-
-$ncount = sizeof($xover);
-
-if( $ncount == 0 ) {
-	$show_from = $show_end = $cursor;
-}
-else {
-	$show_from = $xover[0][0];
-	$show_end  = $xover[$ncount-1][0];
-}
-
-if( $totalpg == 1 )
-	$page = 1;
-elseif( $CFG['article_order_reverse'] ) {
-	$page = floor(($highmark - $show_from+1) / $lineppg);
-	if( $page == 1 && $show_end < $highmark )
-		$page = 2;
-	elseif( $page == $totalpg && $show_from > $lowmark )
-		$page = $totalpg - 1;
-}
-else {
-	$page = floor(($show_end - $lowmark+1) / $lineppg);
-	if( $page == 1 && $show_from > $lowmark )
-		$page = 2;
-	elseif( $page == $totalpg && $show_end < $highmark )
-		$page = $totalpg - 1;
-}
-
-echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
 
 echo <<<EOH
 <table border=1 cellpadding=0 cellspacing=0 width=100%>
@@ -148,54 +113,99 @@ echo <<<EOR
 
 EOR;
 
+$ncount = 0;
+$curlist = array();
+
+for( $i = $cursor ; $i >= $lowmark && $ncount < $lineppg ; $i-- ) {
+	if( in_array( $i, $artlist ) ) {
+		$curlist[] = $i;
+		$ncount++;
+	}
+}
+
+$lower = $curlist[$ncount-1];
+
+for( $i = $lower-1 ; $i >= $lowmark ; $i-- ) {
+	if( in_array( $i, $artlist ) ) {
+		$lower = $i;
+		break;
+	}
+}
+
+$higher = $curlist[0];
+
+$s = 0;
+for( $i = $higher+1 ; $i <= $highmark && $s < $lineppg ; $i++ ) {
+	if( in_array( $i, $artlist ) ) {
+		$higher = $i;
+		$s++;
+	}
+}
+
+if( !$CFG['article_order_reverse'] ) {
+	sort($curlist);
+}
+
 if( $ncount == 0 ) {
 	echo "<tr><td colspan=4 class=empty_group height=50>$strNoArticle</td></tr>\n";
+	$show_from = $show_end = $cursor;
 }
 else {
-
-$i = ( $CFG['article_order_reverse'] ) ? $ncount - 1 : 0 ;
-
-for( ; ; ) {
-	if( strlen( $xover[$i][1] ) > $subject_limit )
-		$subject = substr( $xover[$i][1], 0, $subject_limit ) . ' ..';
-	else
-		$subject = $xover[$i][1];
-
-	if( $article_convert['to'] ) {
-		$subject = $article_convert['to']( $subject );
-		$xover[$i][2] = $article_convert['to']( $xover[$i][2] );
+	if( $CFG['article_order_reverse'] ) {
+		$show_from = $curlist[$ncount - 1];
+		$show_end  = $curlist[0];
+	}
+	else {
+		$show_from = $curlist[0];
+		$show_end  = $curlist[$ncount - 1];
 	}
 
-	if( trim($subject) == '' )
-		$subject = $strNoSubject;
+	$xover = nnrp_xover( $nhd, $show_from, $show_end );
 
-	$subject = htmlspecialchars( $subject );
+	foreach( $xover as $artnum => $ov ) {
 
-	if( strlen( $xover[$i][2] ) > $nick_limit )
-		$nick = substr( $xover[$i][2], 0, $nick_limit ) . ' ..';
-	else
-		$nick = $xover[$i][2];
+		if( !$ov )
+			continue;
+		if( strlen( $ov[0] ) > $subject_limit )
+			$subject = substr( $ov[0], 0, $subject_limit ) . ' ..';
+		else
+			$subject = $ov[0];
 
-	$nick = trim($nick);
+		if( $article_convert['to'] ) {
+			$subject = $article_convert['to']( $subject );
+			$ov[1] = $article_convert['to']( $ov[1] );
+		}
 
-	if( $nick == '' ) {
-		$id = strtok( $xover[$i][5], '@.' );
+		if( trim($subject) == '' )
+			$subject = $strNoSubject;
 
-		if( strlen( $id ) > $id_limit )
-			$id = substr( $id, 0, $id_limit ) . ' ..';
-		elseif( $id == '' )
+		$subject = htmlspecialchars( $subject );
+
+		if( strlen( $ov[1] ) > $nick_limit )
+			$nick = substr( $ov[1], 0, $nick_limit ) . ' ..';
+		else
+			$nick = $ov[1];
+
+		$nick = trim($nick);
+
+		if( $nick == '' ) {
+			$id = strtok( $ov[3], '@.' );
+
+			if( strlen( $id ) > $id_limit )
+				$id = substr( $id, 0, $id_limit ) . ' ..';
+			elseif( $id == '' )
 			$id = '&lt;author&gt;';
-		$nick = $id;
-	}
-	$email = trim($xover[$i][5]);
-	$pos = strrpos( $xover[$i][3] , ':' );
-	$datestr = substr( $xover[$i][3], 0, $pos);
+			$nick = $id;
+		}
+		$email = trim($ov[3]);
+		$datestr = strftime( $CFG['time_format'], $ov[2] );
 
-	$artnum = $xover[$i][0] - $lowmark + 1 ;
-	$readlink = read_article( $server, $group, $xover[$i][0], $subject, false, 'sub' );
-	echo <<<ROW
+		$readlink = read_article( $server, $group, $artnum, $subject, false, 'sub' );
+
+		$artidx = $artnum - $lowmark + 1;
+		echo <<<ROW
 <tr class=list onMouseover='this.className="list_hover";' onMouseout='this.className="list";'>
-  <td align=right><i>$artnum</i></td>
+  <td align=right><i>$artidx</i></td>
   <td>$readlink</td>
   <td title="$email"><a href="mailto:$email">$nick</a></td>
   <td align=center><font face=serif>$datestr</font></td>
@@ -203,19 +213,38 @@ for( ; ; ) {
 
 ROW;
 
-	if( $CFG['article_order_reverse'] ) {
-		$i--;
-		if( $i < 0 ) break;
 	}
-	else {
-		$i++;
-		if( $i >= $ncount ) break;
-	}
-}
 
 }
 
 echo "</table>";
+
+$totalpg = ceil($artsize / $lineppg) ;
+
+if( $totalpg == 1 )
+	$page = 1;
+elseif( $CFG['article_order_reverse'] ) {
+	$page = floor( ( $artsize - array_search( $show_from, $artlist ) ) / $lineppg);
+	if( $page == 1 && $show_end < $highmark )
+		$page = 2;
+	elseif( $page == $totalpg && $show_from > $lowmark )
+		$page = $totalpg - 1;
+	elseif( $page > $totalpg )
+		$page = $totalpg;
+}
+else {
+	$page = floor( (array_search( $show_end, $artlist ) + $lineppg -1 ) / $lineppg);
+
+	if( $page == 1 && $show_from > $lowmark )
+		$page = 2;
+	elseif( $page == $totalpg && $show_end < $highmark )
+		$page = $totalpg - 1;
+	elseif( $page > $totalpg )
+		$page = $totalpg;
+}
+
+echo "<!-- SHOW NO. FROM: $show_from  TO: $show_end -->\n";
+
 echo "<table width=100% border=1 cellpadding=2 cellspacing=0>";
 
 echo "<tr><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
@@ -228,12 +257,10 @@ if( $CFG["article_order_reverse"] )
 			echo "<a href=\"$self?server=$server&group=$group\">$strFirstPage</a>";
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
-		$target = $show_end + 1 ;
-
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/${target}r\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/$higher\">$strPreviousPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$strPreviousPage</a>";
 	}
 	else {
 		echo $strFirstPage;
@@ -242,19 +269,20 @@ if( $CFG["article_order_reverse"] )
 	}
 else
 	if( $show_from > $lowmark ) {
-		$target = $show_from - 1;
+
+		$target = $artlist[$lineppg-1];
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strFirstPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$strFirstPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strFirstPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strFirstPage</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$strPreviousPage</a>";
+			echo "<a href=\"group/$reserver/$group/$lower\">$strPreviousPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strPreviousPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$strPreviousPage</a>";
 	}
 	else {
 		echo $strFirstPage;
@@ -266,34 +294,33 @@ echo "</td><td width=10% class=page align=center onMouseover='this.className=\"p
 
 if( $CFG["article_order_reverse"] )
 	if( $show_from > $lowmark ) {
-		$target = $show_from - 1;
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/$target\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/$lower\">$strNextPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$lower\">$strNextPage</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
+		$target = $artlist[$artsize-1];
+
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/${lowmark}r\">$strLastPage</a>";
+			echo "<a href=\"group/$reserver/$group/$target\">$strLastPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$lowmark&forward=1\">$strLastPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$target\">$strLastPage</a>";
 	}
 	else {
 		echo "<font color=gray>$strNextPage</font>";
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
-		$totalpg = $page;
+#		$totalpg = $page;
 	}
 else
 	if( $show_end < $highmark ) {
-		$target = $show_end + 1 ;
-
 		if( $CFG['url_rewrite'] )
-			echo "<a href=\"group/$reserver/$group/${target}r\">$strNextPage</a>";
+			echo "<a href=\"group/$reserver/$group/$higher\">$strNextPage</a>";
 		else
-			echo "<a href=\"$self?server=$server&group=$group&cursor=$target&forward=1\">$strNextPage</a>";
+			echo "<a href=\"$self?server=$server&group=$group&cursor=$higher\">$strNextPage</a>";
 
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 
@@ -307,7 +334,7 @@ else
 		echo "</td><td width=10% class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";
 		echo $strLastPage;
 
-		$totalpg = $page;
+#		$totalpg = $page;
 	}
 
 echo "</td><td class=page align=center onMouseover='this.className=\"page_hover\";' onMouseout='this.className=\"page\";'>\n";

@@ -53,6 +53,8 @@ PHP News Reader v2.4.0 (2003/10/04)
 <ul>
 <li>Support News Server with NNTP over SSL (NNTPS/SNEWS) connection
 <li>Support <a href=guide#auth_nntps>NNTPS</a> authentication module
+<li>Overview format
+<li>Cache
 <li>Check for the invalid access to groups not listed in newsgroups.lst
 <li>Fix the problem of filtering for ANSI coloring codes.
 </ul>

@@ -179,7 +179,27 @@ function nnrp_group ( $nhd, $group ) {
 
 function nnrp_xover ( $nhd, $from, $to=null ) {
 
-	global $CFG;
+	$ovfmt = array( 'Subject:' => 1,
+			'From:' => 2,
+			'Date:' => 3,
+			'Message-ID:' => 4,
+			'References:' => 5,
+			'Bytes:' => 6,
+			'Lines:' => 7,
+			'Xref:full' => 8 );
+
+	send_command( $nhd, "LIST OVERVIEW.FMT" );
+	list( $code, $msg ) = get_status( $nhd );
+	if( $code[0] == '2' ) {
+		$n = 1;
+		while( $buf = fgets( $nhd, 4096 ) ) {
+			$buf = trim( $buf );
+			if( $buf == "." )
+				break;
+#			echo "<!-- [$buf] => $n -->\n";
+			$ovfmt[$buf] = $n++;
+		}
+	}
 
 	if( $to == null )
 		send_command( $nhd, "XOVER $from" );
@@ -190,40 +210,101 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 	if( $code[0] != '2' )
 		return(null);
 
-	$n = 0 ;
 	while( $buf = fgets( $nhd, 4096 ) ) {
 #		echo "$buf<br />";
 		$buf = chop( $buf );
 		if( $buf == "." )
 			break;
-		$xover[$n] = preg_split( '/\t/', $buf );
+		$xover = preg_split( '/\t/', $buf );
 
-#		$overview[$n] = array();
-		$overview[$n][0] = $xover[$n][0];
-		$overview[$n][1] = decode_subject($xover[$n][1]);
-		$overview[$n][3] = strftime( $CFG['time_format'], strtotime( $xover[$n][3] ));
-		$overview[$n][4] = $xover[$n][4];	/* Message-ID */
-		$overview[$n][2] = $overview[$n][5] = '';
+		$n = $xover[0];
 
-		if( preg_match( '/^<(.+)@(.+)>$/', $xover[$n][2], $from ) ) {
-			$overview[$n][2] = $from[1];
-			$overview[$n][5] = $from[0];
+		$ov[$n] = array( decode_subject($xover[$ovfmt['Subject:']]),
+						'',
+						strtotime( $xover[$ovfmt['Date:']] ),
+						'',
+						$xover[$ovfmt['Message-ID:']] );
+
+		if( preg_match( '/^<(.+)@(.+)>$/', $xover[$ovfmt['From:']], $from ) ) {
+			$ov[$n][1] = $from[1];
+			$ov[$n][3] = $from[0];
 		}
-		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$n][2], $from ) ) {
-			$overview[$n][2] = $from[1];
-			$overview[$n][5] = $from[0];
+		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$ovfmt['From:']], $from ) ) {
+			$ov[$n][1] = $from[1];
+			$ov[$n][3] = $from[0];
 		}
-		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $xover[$n][2], $from ) ) {
-			$overview[$n][2] = decode_subject($from[1]);
-			$overview[$n][5] = $from[2];
+		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $xover[$ovfmt['From:']], $from ) ) {
+			$ov[$n][1] = decode_subject($from[1]);
+			$ov[$n][3] = $from[2];
 		}
-		elseif( preg_match( '/^(\S+) \("?([^"]+)?"?\)$/', $xover[$n][2], $from ) ) {
-			$overview[$n][2] = decode_subject($from[2]);
-			$overview[$n][5] = $from[1];
+		elseif( preg_match( '/^(\S+) \("?([^"]+)?"?\)$/', $xover[$ovfmt['From:']], $from ) ) {
+			$ov[$n][1] = decode_subject($from[2]);
+			$ov[$n][3] = $from[1];
 		}
 		$n++;
 	}
-	return( $overview );
+#	print_r( $ov );
+	return( $ov );
+}
+
+function nnrp_article_list ( $nhd, $lowmark, $highmark, $cache_file = false ) {
+
+	if( $cache_file ) {
+		$cache_max = $lowmark;
+		if( file_exists( $cache_file ) ) {
+			$list_cache = @unserialize( implode('',file( $cache_file )) );
+			if( $list_cache ) {
+				$artlist = $list_cache;
+				unset($list_cache);
+				foreach( $artlist as $idx => $artnum ) {
+					if( $artnum < $lowmark || $artnum > $highmark )
+						unset($artlist[$idx]);
+					else {
+						if( $artnum > $cache_max )
+							$cache_max = $artnum;
+					}
+				}
+			}
+		}
+		$lowmark = $cache_max + 1;
+	}
+
+	if( $lowmark <= $highmark ) {
+		if( $lowmark == $highmark )
+			send_command( $nhd, "XOVER $lowmark" );
+		else
+			send_command( $nhd, "XOVER $lowmark-$highmark" );
+		list( $code, $msg ) = get_status( $nhd );
+		echo "\n<!-- caching: $lowmark-$highmark -->\n";
+
+		if( $code[0] != '2' )
+			return($artlist);
+
+		while( $buf = fgets( $nhd, 4096 ) ) {
+#			echo "$buf<br />";
+			$buf = chop( $buf );
+			if( $buf == '.' )
+				break;
+
+			$artinfo = preg_split( '/\t/', $buf );
+
+			$artlist[] = $artinfo[0];
+		}
+	}
+
+#	$artlist = array_values( $artlist );
+#	$artlist = sort( $artlist );
+
+	if( $cache_file ) {
+		$fp = @fopen( $cache_file, 'w' );
+		if( flock( $fp, LOCK_EX|LOCK_NB ) ) {
+			@fputs( $fp, serialize( $artlist ) );
+			@flock( $fp, LOCK_UN );
+		}
+		@fclose($fp);
+	}
+
+	return( $artlist );
 }
 
 function nnrp_xover_limit ( $nhd, $from, $count, $limit, $forward = true ) {
