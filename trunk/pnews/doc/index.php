@@ -62,7 +62,7 @@ Main features:
 <li>Reading/Posting/Replying/Crossposting/Forwarding/Deleting News articles.
 <li>Multiple News server and multiple catalog of news groups.
 <li>Support NNTP over SSL (NNTPS) and NNTP authentication.
-<li>Downloading of uuencoded attachment.
+<li>Posting and downloading for uuencoded attachment.
 <li>No database access, no IMAP-enabled PHP module.
 <li>Authentication is easily configured to work with your existing system.
 <li>Multiple language interface and chinese coding conversion.
@@ -87,7 +87,7 @@ which let administrator easy to control how to authenticate users.
 There are various built-in authentication modules.
 <ul>
 <li>POP3 - authenticate user using the existing POP3 server.
-<li>Mail - authenticate user using multiple POP3 servers.
+<li>Mail - authenticate user using multiple POP3/POP3S servers.
 <!--
 <li>Firebird BBS - authenticate user with the existing Firebird Bulletin Board System.
 -->
