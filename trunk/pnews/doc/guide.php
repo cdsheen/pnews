@@ -596,6 +596,12 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["hide_email"]</strong></p>
   <blockquote> 
     <p>Enable the Anti-Spam feature, the E-Mail will be encoded by JavaScript (default: <i>true</i>)</p>
+    <p>For example, the E-Mail address "dada@pnews.com.tw" will be encoded as:</p>
+    <blockquote><i>
+    &lt;script language="JavaScript"&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;document.write( "dada" + "&amp;#64;" + "pnews&amp;#46;com&amp;#46;tw" );<br />
+    &lt;/script&gt;</i>
+    </blockquote>
     <p>This makes it difficult for Spamlist collector to automatically obtain email addresses from PHP News Reader</p>
     <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
   </blockquote>
