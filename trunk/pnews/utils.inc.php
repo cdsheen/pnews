@@ -33,7 +33,7 @@ require_once('version.inc.php');
 require_once('html.inc.php');
 require_once('nnrpclass.php');
 
-if( $_SESSION['rem_url_base'] != $CFG['url_base'] ) {
+if( isset($_SESSION['rem_url_base']) && $_SESSION['rem_url_base'] != $CFG['url_base'] ) {
 	$_SESSION['rem_url_base'] = $CFG['url_base'];
 	unset($_SESSION['rem_category']);
 	unset($_SESSION['auth_time']);

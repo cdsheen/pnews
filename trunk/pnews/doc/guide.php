@@ -304,7 +304,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=pop3s_auth></a>
   <p> <strong>POP3S (POP3 over SSL) authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'pop3s'</i>)</p>
@@ -315,7 +315,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
     </blockquote>
     <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=mail_auth></a>
   <p> <strong>Mail authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'mail'</i>)</p>
@@ -338,7 +338,7 @@ You can download phpCAS from the following place:<br />
         ".bbs@pop3s.bbs.org" =&gt; "pop3s://pop3s.bbs.org/",
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3.domain.org" =&gt; "pop3://pop3.domain.org:110/" );</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
     </blockquote>
     <p> <strong>$CFG["domain_select"]</strong></p>
     <blockquote> 
@@ -372,7 +372,7 @@ You can download phpCAS from the following place:<br />
        it has nothing to do with the authentication perform by news server.
        Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
     <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
-    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
+    <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=cas_auth></a>
   <p><strong>CAS authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'cas'</i>)</p>
@@ -651,7 +651,7 @@ You can download phpCAS from the following place:<br />
     <p>To enable threading, you must enable the cache mechanism by setting
        <a href=#cache_dir>$CFG["cache_dir"]</a> and specify the correct <a href=#thread_db_format>$CFG["thread_db_format"]</a>.
        The directroy specified by <a href=#cache_dir>$CFG["cache_dir"]</a> will be used for storing threading data.<p>
-    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> in PHP to use this feature.<p>
+    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA extension</a> in PHP to use this feature.<p>
     <p>If you enable threading, you may need to run 'clear-cache.php' regularly.<br /><br />
        This is because that PHP News Reader store information of all articles in cache and thread database.
        But, PHP News Reader does not clear the expired articles from these database,
@@ -669,7 +669,7 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["thread_db_format"]</strong></p>
   <blockquote>
     <p>Setting the dba handler used for storing threading data</p>
-    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> in PHP to use this feature.<p>
+    <p>You must install the PHP <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA extension</a> in PHP to use this feature.<p>
     <p>The handler, depends on your DBA extension,
        may be <i>dbm</i>, <i>ndbm</i>, <i>gdbm</i>, <i>db2</i>, <i>db3</i> or <i>db4</i>.<br />
        Make sure that you already enable the handler in your DBA extension.<p>

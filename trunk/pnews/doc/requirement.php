@@ -49,15 +49,15 @@ The requirement for PHP News Reader on the server side (news server) :
 The requirement for using NNTPS (SNEWS) News Server or using NNTP/FTP/POP3 over SSL as your authentication method:
 <ul>
 <li>PHP 4.3.0 or greater
-<li>PHP with <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL module</a> enabled
+<li>PHP with <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> enabled
 </ul>
 The requirement for enabling the threading support:
 <ul>
-<li>PHP with <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA module</a> enabled
+<li>PHP with <a href=http://www.php.net/manual/en/ref.dba.php target=_blank>DBA extension</a> enabled
 </ul>
-<p>The standard PHP module works just fine, IMAP or ICONV support is not necessary.<br />
-The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the corresponding authentication module.
-<p>As for <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a>, PHP News Reader requires the News Server to implement the following extensions:<br />
+The MySQL/PostgreSQL/LDAP extension for PHP module is only required if you use the corresponding authentication module.
+<p>As for <a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980</a>,
+PHP News Reader requires the News Server to implement the following extensions:<br />
 <ul>
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat] &nbsp;&nbsp;<i>(required)</i>
 <li>XOVER &nbsp;[range] &nbsp;&nbsp;<i>(required)</i>
