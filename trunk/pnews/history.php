@@ -19,17 +19,17 @@ echo '
 <font size=3 color=black face="Georgia">
 Release histroy
 <hr>
-PHP News Reader v2.0.2
+PHP News Reader v2.0.2 (2003/01/24)
 <ul>
 <li>Fix the bug of \'required\' authentication model
 </ul>
 <p>
-PHP News Reader v2.0.1
+PHP News Reader v2.0.1 (2003/01/22)
 <ul>
 <li>Correct the link of SourceForge logo
 </ul>
 <p>
-PHP News Reader v2.0
+PHP News Reader v2.0 (2003/01/19)
 <ul>
 <li>First public release and hosts on SourceForge
 <li>Rewrite the authentication codes and the use of the ticket system

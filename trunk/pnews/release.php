@@ -120,7 +120,7 @@ Sample running system:
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>
 </blockquote>
 <p>
-Download from SourceForge:
+Download the latest version from SourceForge:
 <blockquote>
 ';
 echo "<a href=\"http://prdownloads.sourceforge.net/pnews/$dname?download\"
