@@ -51,7 +51,7 @@ td.date         { background: #DDDDFF; font-size: 14px; text-align: right }
 td.author       { background: #FFFFEE; font-size: 12px; text-align: left }
 td.server       { background: #FFFFEE; font-size: 12px; text-align: right }
 
-td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; text-align: left; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; word-break: bread-all }
+td.content      { background: #EEFFEE; font-size: 13px; font-family: monospace; text-align: left }
 
 tr.footbar      { font-size: 12px }
 
@@ -76,6 +76,6 @@ pre.content     { font-size: 12px; font-family: monospace; color: black }
 
 span.link	{ color: blue; cursor: pointer }
 
-td.thread	  { width: 20px; text-align: center; font-family: Times; color: black; background: #EEFFEE; font-size: 16px; cursor: pointer  }
-td.thread_current { width: 20px; text-align: center; font-family: Times; color: black; background: #EEFFEE; font-size: 16px; font-weight: bold; border: 1px dotted gray }
-td.thread_hover	  { width: 20px; text-align: center; font-family: Times; color: white; background: black;   font-size: 16px; font-weight: bold; cursor: pointer }
+td.thread	  { width: 18px; text-align: center; font-family: Times; color: black; background: #EEFFEE; font-size: 14px; cursor: pointer  }
+td.thread_current { width: 18px; text-align: center; font-family: Times; color: black; background: #EEFFEE; font-size: 14px; font-weight: bold; border: 1px dotted gray }
+td.thread_hover	  { width: 18px; text-align: center; font-family: Times; color: white; background: black;   font-size: 14px; font-weight: bold; cursor: pointer }

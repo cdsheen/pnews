@@ -198,7 +198,7 @@ if( $CFG['thread_enable'] ) {
 		$i = 0;
 		foreach( $thlist as $art ) {
 			$i++;
-			if( $i > 1 && $i % 20 == 1 )
+			if( $i > 1 && $i % 30 == 1 )
 				echo "</tr>\n<tr>";
 			if( $art == $artnum )
 				echo "<td class=thread_current>$i</td>";
