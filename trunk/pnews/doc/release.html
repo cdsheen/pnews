@@ -10,10 +10,10 @@
 <table width=100% cellpadding=0 cellspacing=0>
 <tr>
  <td>
- <font face="Georgia"><h3>PHP News Reader v2.3.0</h3></font>
+ <font face="Georgia"><h3>PHP News Reader v2.3.1</h3></font>
  </td>
  <td align=right valign=bottum>
- <font face="Georgia" size=1>Release Date: 2003/09/06</font>
+ <font face="Georgia" size=1>Release Date: 2003/09/27</font>
  </td></tr>
 </table>
 
@@ -86,17 +86,15 @@ I wrote this software in my leisure time, mostly in the weekend.
 Although PHP News Reader still lacks many fancy features,
 it works fine to meet the basic requirements - Reading Netnews.
 <p>
-The latest version of PHP News Reader is <b>v2.3.0</b>, here is the release notes:
-<p>PHP News Reader v2.3.0 (2003/09/06)
+The latest version of PHP News Reader is <b>v2.3.1</b>, here is the release notes:
+<p>PHP News Reader v2.3.1 (2003/09/27)
 <ul>
-<li>Added French translation (by Pascal Aubry)
-<li>Support <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a> authentication module (by Pascal Aubry)
-<li>E-Mail editing can be disabled by setting <a href=guide.php#email_editing>$CFG["email_editing"]</a> as off
-<li>The character '#' is included in the uri of hyperlink auto-detection.
-<li>Support more flexible <a href=guide.php#group_match>group matching syntax</a> in newsgroup.lst.
-<li>Directly linking to the next/previous article
-<li>Language switching reworked, relation between charset and language is more clear.
-<li><a href=guide.php#interface_language>$CFG["interface_language"]</a> makes the decision at the language used in interface.
+<li>Reading article with invalid artnum will be redirected into indexing page.
+<li>Dead news server will not slow down the access for groups in other servers.
+<li>Better error handling when news server is unavailable.
+<li>Remove the read-only indication when <a href=guide.php#post_restriction>$CFG["post_restriction"]</a> is enabled.
+<li>Fix several missing style sheet errors.
+<li>Auto-correction for some invalid uri if <a href=guide.php#url_rewrite>$CFG["url_rewrite"]</a> is enabled.
 </ul>
 You can view the history since June 2002 by <a href=history.php>clicking here</a>.
 <p>
@@ -171,7 +169,7 @@ ICQ: <a href="http://wwp.icq.com/scripts/search.dll?to=73013633" title="Add ME">
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
 <hr>
-<font size=2>PHP News Reader v2.3.0 (C) 2001-2003 - Shen Cheng-Da</font>
+<font size=2>PHP News Reader v2.3.1 (C) 2001-2003 - Shen Cheng-Da</font>
 </font>
 </body>
 </html>
