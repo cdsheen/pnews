@@ -27,9 +27,9 @@ PHP News Reader is a web based News Reader. It supports the
 
 standard NNTP protocol (<a href="http://www.csie.nctu.edu.tw/~cdsheen/rfc/index.php?query=971" target=_blank>RFC 971</a>) for reading, posting, deleting,
 forwarding and replying news articles.
-In fact, PHP News Reader contains various useful functions to communicate
-with News Server, which are collected as a NNRP Library.
-NNRP Library provides a friendly API for accessing news server via NNTP.
+<p>
+PHP News Reader does not need your PHP installation to be compiled with \'--with-imap\'.
+PHP News Reader use a self-written NNRP Library to access news server via NNTP.
 <p>
 PHP News Reader does not support threading of News articles and newsgroup subscription.
 <p>
