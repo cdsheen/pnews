@@ -27,7 +27,7 @@ $strGoBack             = 'Go Back';
 
 $strNewsServer         = 'News Server';
 $strConnectServerError = 'Connect to news server failed.';
-$strReadonlyNotify     = 'Read Only Mode - Posting/Mailing is not allowed';
+$strReadonlyNotify     = 'Read Only Mode';
 
 $strGroupList          = 'Group List';
 

@@ -26,7 +26,7 @@ $strGoBack             = '回上一页';
 
 $strNewsServer         = '新闻伺服器';
 $strConnectServerError = '无法连接新闻伺服器';
-$strReadonlyNotify     = '目前处於唯读模式，无法发表文章';
+$strReadonlyNotify     = '唯读模式';
 
 $strGroupList          = '讨论区列表';
 
