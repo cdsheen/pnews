@@ -59,8 +59,9 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li>Log verbose level can be tuned by changing <a href=guide.php#log_level>\$CFG["log_level"]</a>.
 <li>Fix the group verification bug when cross-posting article.
 <li>Organization header now correctly overrides the setting of news server.
-<li>Incorrect regular expression used in split() is now fixed.
-<li>The size of downloaded attachment is now corrected.
+<li>The wrong regular expression used in split() is now fixed, this problem exists in most authentication modules.
+<li>The downloaded attachment is now in the exactly correct size.
+<li>Fix the problem of CAS login which may result in empty page.
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
 <li><a href=guide.php#post_restriction>\$CFG["post_restriction"]</a> is deprecated, and replaced by <a href=guide.php#global_readonly>\$CFG["global_readonly"]</a>
 </ul>
