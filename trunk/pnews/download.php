@@ -36,7 +36,7 @@ list( $code, $count, $lowmark, $highmark ) = nnrp_group( $nhd, $group );
 $artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog], $CFG['time_format'] );
 
 if( !$artinfo ) {
-	# unable to download this attachement
+	echo "unable to download this attachement<br>\n";
 	exit;
 }
 
@@ -80,7 +80,7 @@ if( $binary ) {
 	print $binary;
 }
 else {
-	# no such attachment
+	echo "no such attachment<br>\n";
 }
 
 exit;
