@@ -59,27 +59,6 @@ else {
 	$idxurl = "indexing.php?server=$server&group=$group&cursor=$artnum";
 }
 
-/*
-if( isset( $_GET['next'] ) || isset( $_GET['last'] ) ) {
-	if( isset( $_GET['next'] ) )
-		$artnum = nnrp_next( $nhd, $artnum );
-	else
-		$artnum = nnrp_last( $nhd, $artnum );
-	if( $artnum < 0 ) {
-		if( $CFG['show_article_popup'] )
-			kill_myself();
-		else
-			header( "Location: $idxurl" );
-	}
-	elseif( $CFG['url_rewrite'] )
-		header( "Location: $urlbase/article/$reserver/$group/$artnum" );
-	else
-		header( "Location: read-art.php?server=$server&group=$group&artnum=$artnum" );
-
-	exit;
-}
-*/
-
 #list( $from, $email, $subject, $date, $msgid, $org )
 
 $artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
@@ -87,8 +66,10 @@ $artinfo = nnrp_head( $nhd, $artnum, $news_charset[$curr_catalog] );
 if( !$artinfo ) {
 	if( $CFG['show_article_popup'] )
 		kill_myself();
+	elseif( $CFG['url_rewrite'] )
+		header( "Location: $urlbase/group/$reserver/$group/" );
 	else
-		header( "Location: $idxurl" );
+		header( "Location: indexing.php?server=$server&group=$group" );
 	exit;
 }
 
