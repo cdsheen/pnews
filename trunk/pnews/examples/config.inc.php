@@ -7,7 +7,7 @@
 # Shen Cheng-Da (cdsheen@csie.nctu.edu.tw)
 
 # This is a sample configuration.
-# You should make a copy of this file at ../
+# You should make a copy of this file at the directory of pnews.
 
 # After making a copy, you can begin editing this file,
 
@@ -38,7 +38,7 @@ define( 'off', false, true );
 $CFG["auth_type"] = "optional";
 
 
-# [auth_prompt] Specify the style of authentication prompt (default: "http")
+# [auth_prompt] Specify the style of login prompt (default: "http")
 #               (used when auth_type != 'open')
 #      "http" - authentication via HTTP login window    (default)
 #      "form" - authentication with login form
