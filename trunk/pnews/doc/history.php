@@ -30,7 +30,7 @@ echo <<<EOH
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css">
-<title>History of PHP News Reader</title>
+<title>PHP News Reader - Changelog / History</title>
 </head>
 <body style="background-color: #EEFFFF">
 <table width=100% cellpadding=0 cellspacing=0>
