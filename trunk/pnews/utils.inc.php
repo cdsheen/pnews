@@ -125,7 +125,7 @@ while( $buf = fgets( $lst, 512) ) {
 		}
 		if( in_array( 'nntps', $options ) || in_array( 'snews', $options ) ) {
 			$news_nntps[$catalog_num] = true;
-			if( version_check( '4.3.0' ) )
+			if( !version_check( '4.3.0' ) )
 				show_error( 'PHP 4.3.0 or greater is required for NNTPS support' );
 			if( !function_exists( 'openssl_get_publickey' ) )
 				show_error( 'OpenSSL is required for NNTPS support' );
