@@ -36,7 +36,7 @@ else
 if( $CFG['url_rewrite'] ) {
 	$nexturl = "$urlbase/article/$reserver/$group/$artnum/next";
 	$lasturl = "$urlbase/article/$reserver/$group/$artnum/last";
-	$idxurl  = "$urlbase/group/$reserver/$group/$artnum/";
+	$idxurl  = "$urlbase/group/$reserver/$group/$artnum";
 }
 else {
 	$nexturl = "read-art.php?server=$server&group=$group&artnum=$artnum&next=1";
