@@ -79,9 +79,9 @@ else
 
 
 if( $CFG['url_rewrite'] )
-	echo "<a href=group/$reserver/$group>$group</a>";
+	echo "<a href=group/$reserver/$group class=text>$group</a>";
 else
-	echo "<a href=indexing.php?server=$server&group=$group>$group</a>";
+	echo "<a href=indexing.php?server=$server&group=$group class=text>$group</a>";
 
 if( $article_convert['to'] )
 	echo ' <font size=-1>(Convert from ' . $article_convert['source'] . ' to ' . $article_convert['result'] . ')</font>';

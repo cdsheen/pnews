@@ -48,5 +48,8 @@ RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)/?$		read.php?server=$1&group=$2&ar
 RewriteRule	^article//?([^/]+)/([0-9]+)h/?$			read.php?server=*&group=$1&artnum=$2&header	[L]
 RewriteRule	^article/([^/]+)/([^/]+)/([0-9]+)h/?$		read.php?server=$1&group=$2&artnum=$3&header	[L]
 
+RewriteRule	^thread//?([^/]+)/([0-9]+)/?$			read.php?server=*&group=$1&artnum=$2&show_all=1	[L]
+RewriteRule	^thread/([^/]+)/([^/]+)/([0-9]+)/?$		read.php?server=$1&group=$2&artnum=$3&show_all=1	[L]
+
 RewriteRule	^dl//?([^/]+)/([0-9]+)/(.+)$			download.php?server=*&group=$1&artnum=$2&type=uuencode&filename=$3	[L]
 RewriteRule	^dl/([^/]+)/([^/]+)/([0-9]+)/(.+)$		download.php?server=$1&group=$2&artnum=$3&type=uuencode&filename=$4	[L]
