@@ -194,7 +194,7 @@ else
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'], "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
 if( $CFG['thread_enable'] ) {
-	$thlist = $nnrp->get_thread( $group, $subject );
+	$thlist = $nnrp->get_thread( $group, $artinfo['subject'] );
 	if( count($thlist) > 1 ) {
 		echo "<hr /><table border=0 cellpadding=1 cellspacing=0><tr>\n";
 		$i = 0;
