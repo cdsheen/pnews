@@ -363,7 +363,7 @@ define( 'SHOW_NULL_LINE',   8 );
 define( 'SHOW_HEADER',     16 );
 define( 'FILTER_ANSI',     32 );
 
-function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null ) {
+function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null, $download_url = '' ) {
 
 	$mode = intval($mode);
 
@@ -405,7 +405,9 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 		echo $prepend . $postpend;
 	}
 
+	$uu = array();
 	$uuencode_skip = false;
+	$i = 0;
 	while( $buf = fgets( $nhd, 4096 ) ) {
 		$buf = chop($buf);
 		if( $buf == '.' )
@@ -415,16 +417,14 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 				$uuencode_skip = false;
 		}
 		elseif( $buf[0] == '.' )
-			$body[] = substr( $buf, 1 );
+			$body[$i++] = substr( $buf, 1 );
 		elseif( preg_match( '/^begin\s(\d+)\s(\S+)$/i', $buf, $match ) ) {
 			$uuencode_skip = true;
-			if( $show_hlink )
-				$body[] = ' << ' . $match[2] . ' >> ';
-			else
-				$body[] = ' << ' . $match[2] . ' >> ';
+			$body[$i] = $match[2];
+			$uu[] = $i++;
 		}
 		else
-			$body[] = $buf;
+			$body[$i++] = $buf;
 	}
 
 	if( $artinfo['encoding'] == 'base64' )
@@ -440,6 +440,14 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 
 		if( !$show_sig && $body[$i] == '--' ) {
 			$skip_sig = true;
+			continue;
+		}
+
+		if( in_array( $i, $uu ) ) {
+			if( $show_hlink )
+				echo "$prepend &lt;&lt; <a href=\"$download_url&type=uuencode&filename={$body[$i]}\">{$body[$i]}</a> &gt;&gt; $postpend";
+			else
+				echo "$prepend &lt;&lt; {$body[$i]} &gt;&gt; $postpend";
 			continue;
 		}
 
@@ -538,7 +546,7 @@ function nnrp_get_attachment ( $nhd, $artnum, $type, $filename ) {
 		}
 	}
 
-	return($binary);
+	return($binary . "haha" );
 }
 
 

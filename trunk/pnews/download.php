@@ -70,8 +70,10 @@ if( $binary ) {
 	header( 'Accept-Ranges: bytes' );
 	header( 'Content-Length: ' . $size );
 	header( 'Content-transfer-encoding: binary' );
+	header( 'Cache-Control: no-store, no-cache, must-revalidate' );
 	if( isset($mimetype[$ext]) ) {
 		header( 'Content-Type: ' . $mimetype[$ext] );
+		header( "Content-Disposition: attachment; filename=\"$filename\"" );
 	}
 	else {
 		header( 'Content-Type: application/octet-stream' );

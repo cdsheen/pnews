@@ -172,10 +172,8 @@ $show_mode |= SHOW_HYPER_LINK|SHOW_SIGNATURE|SHOW_NULL_LINE;
 if( isset($_GET['header']) )
 	$show_mode |= SHOW_HEADER;
 
-if( $artconv['to'] )
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n", $artconv['to'] );
-else
-	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n" );
+#if( $artconv['to'] )
+nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '', "<br />\n", $artconv['to'], "download.php?server=$server&group=$group&artnum=$artnum" );
 
 nnrp_close($nhd);
 
