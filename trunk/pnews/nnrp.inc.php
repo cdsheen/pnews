@@ -130,7 +130,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 
 		if( preg_match( '/^<(.+)@(.+)>$/', $xover[$n][2], $from ) ) {
 			$overview[$n][2] = $from[1];
-			$overview[$n][5] = str_repleace( ' ', '', $from[0]);
+			$overview[$n][5] = $from[0];
 		}
 		elseif( preg_match( '/^(\S+)@(\S+)$/', $xover[$n][2], $from ) ) {
 			$overview[$n][2] = $from[1];
@@ -138,7 +138,7 @@ function nnrp_xover ( $nhd, $from, $to=null ) {
 		}
 		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $xover[$n][2], $from ) ) {
 			$overview[$n][2] = decode_subject($from[1]);
-			$overview[$n][5] = str_replace( ' ', '', $from[2] );
+			$overview[$n][5] = $from[2];
 		}
 		elseif( preg_match( '/^(\S+) \("?([^"]+)?"?\)$/', $xover[$n][2], $from ) ) {
 			$overview[$n][2] = decode_subject($from[2]);
@@ -420,7 +420,7 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 	if( $headers['From'] ) {
 		if( preg_match( '/^<(.+)@(.+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
-			$artinfo['mail'] = str_replace( ' ', '', $from[0] );
+			$artinfo['mail'] = $from[0];
 		}
 		elseif( preg_match( '/^(\S+)@(\S+)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = $from[1];
@@ -428,7 +428,7 @@ function get_mime_info( $headers, $def_charset = 'utf-8' ) {
 		}
 		elseif( preg_match( '/^"?([^"]+)?"? <(.+)>$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = decode_subject($from[1]);
-			$artinfo['mail'] = str_replace( ' ', '', $from[2]);
+			$artinfo['mail'] = $from[2];
 		}
 		elseif( preg_match( '/^(\S+@\S+) \("?([^"]+)?"?\)$/', $headers['From'], $from ) ) {
 			$artinfo['name'] = decode_subject($from[2]);
