@@ -45,8 +45,8 @@ echo "<br /><table width=95%><tr><td valign=top width=120>\n";
 
 $maxr = 30;
 $maxc = $catalog_num / $maxr;
-
-echo "<table border=1 cellpadding=2 cellspacing=0>\n";
+echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
+echo "<table border=0 cellpadding=2 cellspacing=1>\n";
 for( $i = 0 ; $i < $maxr ; $i++ ) {
 	if( $i >= $catalog_num )
 		break;
@@ -92,6 +92,7 @@ else {
 }
 
 echo "</table>\n";
+echo "</td></tr></table>\n";
 
 echo "</td><td valign=top align=left>";
 
@@ -121,12 +122,12 @@ if( $post_restriction ) {
 */
 
 
-echo "<table width=100% border=1 cellpadding=1 cellspacing=0>\n";
+echo "<table class=shadow border=1 cellpadding=0 cellspacing=0>\n<tr><td>\n";
 
 $row = array( $strNumber, $strPostNumber, $strGroup, $strGroupDescription );
 
 echo <<<EOH
-<table border=1 cellspacing=0 cellpadding=2>
+<table border=0 cellspacing=2 cellpadding=2>
 <tr class=header height=25>
   <td>$strNumber</td>
   <td>$strPostNumber</td>
@@ -191,7 +192,9 @@ EOR;
 
 }
 
-echo "</table>";
+echo "</table>\n";
+
+echo "</td></tr></table>\n";
 
 echo "</td></tr></table>\n";
 
