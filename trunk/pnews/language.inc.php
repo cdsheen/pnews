@@ -41,24 +41,14 @@ $lang_coding = array(	'en'         => 'us-ascii',
 			'fr'         => 'iso-8859-1'     );
 #			'fr'         => 'fr-ascii'       );
 
-$charset_lang = array(  'big5'       => 'zh-tw',
-			'gb'         => 'zh-cn',
-			'gb2312'     => 'zh-cn',
-			'utf-8'      => 'unicode',
-			'iso-8859-1' => 'en',
-			'us-ascii'   => 'en',
-			'ascii'      => 'en',
-			// FR by Pascal Aubry
-			'fr-ascii'    => 'fr' );
-
 $charset_alias = array( 'big5'       => 'big5',
 			'gb'         => 'gb2312',
 			'gb2312'     => 'gb2312',
 			'utf-8'      => 'utf-8',
-			'iso-8859-1' => 'us-ascii',
-			'us-ascii'   => 'us-ascii',
-			'ascii'      => 'us-ascii',
-			'fr-ascii'   => 'fr-ascii' );
+			'iso-8859-1' => 'iso-8859-1',
+			'us-ascii'   => 'iso-8859-1',
+			'fr-ascii'   => 'iso-8859-1',
+			'ascii'      => 'iso-8859-1' );
 
 if( isset($_SESSION['session_language']) )
 	$curr_language = $_SESSION['session_language'];
