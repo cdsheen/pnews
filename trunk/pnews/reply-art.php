@@ -67,13 +67,26 @@ if( $_POST['content'] != '' ) {
 		if( $artconv['back'] ) {
 			nnrp_post_begin( $nhd, $artconv['back']($nickname), $email, $artconv['back']($subject), $group, $artconv['back']($CFG['organization']), $refid, $auth_email, $_POST['charset'] );
 			nnrp_post_write( $nhd, $artconv['back']($content) );
-			if( $CFG['post_signature'] )
-				nnrp_post_write( $nhd, $artconv['back']($CFG['post_signature']) );
 		}
 		else {
 			nnrp_post_begin( $nhd, $nickname, $email, $subject, $group, $CFG['organization'], $refid, $auth_email, $_POST['charset'] );
 			nnrp_post_write( $nhd, $content );
-			if( $CFG['post_signature'] )
+		}
+		$an = intval($CFG['allow_attach_file']);
+#		echo $an;
+		for( $i = 1 ; $i <= $an ; $i++ ) {
+#			echo "attach$i [" .$HTTP_POST_FILES["attach$i"]['name']. "]<br>\n";
+			if( isset( $HTTP_POST_FILES["attach$i"]['name'] ) ) {
+				$filename = $HTTP_POST_FILES["attach$i"]['name'];
+#				echo "Attaching $filename...<br>\n";
+				uuencode( $nhd, $filename, $HTTP_POST_FILES["attach$i"]['tmp_name'] );
+			}
+		}
+
+		if( $CFG['post_signature'] ) {
+			if( $artconv['back'] )
+				nnrp_post_write( $nhd, $artconv['back']($CFG['post_signature']) );
+			else
 				nnrp_post_write( $nhd, $CFG['post_signature'] );
 		}
 		nnrp_post_finish( $nhd );
@@ -213,7 +226,7 @@ elseif( $artnum != '' ) {
 <?
 	$mail_disable = $CFG['email_editing'] ? '' : ' disabled';
 #	$subject = str_replace( '"', '\"', $subject );
-	echo "<form name=post action=\"$self\" method=post>\n";
+	echo "<form name=post action=\"$self\" method=post enctype=\"multipart/form-data\">\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
 	echo "<tr><td class=field>$strName:</td><td><input name=nickname size=20 value=\"$auth_user\"></td>\n";
 	echo " <td class=text><input name=replymail type=checkbox>$strReplyToAuthor</td></tr>\n";
@@ -236,19 +249,49 @@ elseif( $artnum != '' ) {
 	}
 </script>
 <?
-	echo "<tr><td class=field>\n";
-	echo "$strContent:</td>";
-	echo "<td colspan=2 align=right><input class=normal type=button onClick='InsertQuote();' value=\"$strFormInsertQuote\"></td></tr>\n";
-	echo "<tr><td colspan=3>";
-	echo "<textarea name=content class=content wrap=physical tabindex=1>";
-	echo "\n</textarea>\n";
-	echo "</td></tr></table></center>\n";
+	echo <<<EOF
+<tr><td class=field>$strContent:</td>
+<td colspan=2 align=right>
+<input class=normal type=button onClick='InsertQuote();' value="$strFormInsertQuote">
+</td></tr>
+<tr><td colspan=3>
+<textarea name=content class=content wrap=physical tabindex=1>
+</textarea>
+</td></tr></table>
+
+EOF;
+	$an = intval($CFG['allow_attach_file']);
+	for( $i = 1; $i <= $an ; $i++ ) {
+		$ti = 4+$i;
+		if( $i == 1 )
+			echo "<table width=100%>\n";
+		if( $i % 2 == 1 ) {
+			echo <<<EOA
+ <tr><td class=field align=right>
+ $strAttachment $i:</td>
+ <td align=left><input name="attach$i" type="file" tabindex="$ti">
+ </td>
+EOA;
+		}
+		else {
+			echo <<<EOA
+ <td class=field align=right>$strAttachment $i:
+ <input name="attach$i" type="file" tabindex="$ti">
+ </td></tr>
+EOA;
+		}
+	}
+
+	if( $i % 2 == 0 )
+		echo "</tr>\n";
+	if( $an > 0 )
+		echo "</table>\n";
+	echo "</center>\n";
 	echo "<textarea name=quote style='display: none' disabled>";
 	printf("\n$strQuoteFrom\n", "$from ($email)" );
 
 	$show_mode |= SPACE_ASIS;
 	nnrp_show( $nhd, $artnum, $artinfo, $show_mode, '&gt; ', "\n", $artconv['to'] );
-
 	nnrp_close($nhd);
 	echo "</textarea>";
 	echo "</form>\n";
