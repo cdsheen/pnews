@@ -480,7 +480,7 @@ function nnrp_show ( $nhd, $artnum, $artinfo, $mode, $prepend = '', $postpend = 
 
 		# hyperlink/email auto-detection
 		if( $show_hlink ) {
-			$pattern = array( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#;]|(&amp;))+)/', '/\b([\w-.]+)@([\w-.]+)/' );
+			$pattern = array( '/(((http)|(ftp)|(https)):\/\/([\w-.:\/~+=?,#;]|(&amp;))+)/', '/\b([\w-_.]+)@([\w-_.]+)/' );
 			$replacement = array( '<a href="$1" target=_blank>$1</a>', ' <a href="mailto:$0" target=_blank>$0</a>' );
 			$body[$i] = preg_replace( $pattern, $replacement , $body[$i] );
 		}
