@@ -192,7 +192,7 @@ else {
 		$show_from = $curlist[0];
 		$show_end  = $curlist[$ncount - 1];
 	}
-
+	echo "<!-- XOVER: $show_from-$show_end -->\n";
 	$xover = nnrp_xover( $nhd, $show_from, $show_end );
 
 	if( $CFG['show_newest_top'] )
