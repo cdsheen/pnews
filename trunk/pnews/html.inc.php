@@ -38,18 +38,18 @@ function html_head($title, $redirect = null, $bodymod = '' ) {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding">
-<META HTTP-EQUIV="Content-Language" CONTENT="$region">
-<BASE HREF="$urlbase/">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$coding" />
+<META HTTP-EQUIV="Content-Language" CONTENT="$region" />
+<BASE HREF="$urlbase/" />
 
 EOH;
 
 
 	if( $redirect )
-		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\">\n";
+		echo "\n<META HTTP-EQUIV=REFRESH CONTENT=\"1; URL=$redirect\" />\n";
 
 	echo <<<EOX
-  <LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}">
+  <LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}" />
   <script language="javascript" src="utils.js"></script>
   <title>$title </title>
 </head>
