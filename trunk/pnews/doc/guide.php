@@ -204,7 +204,7 @@ You can download phpCAS from the following place:<br>
   <blockquote> 
     <p> <strong>$CFG[&quot;ldap_server&quot;]</strong></p>
     <blockquote> 
-      <p>LDAP server address ( address:port )</p>
+      <p>LDAP server address ( address:port ), default port is 189</p>
       <p>$CFG[&quot;ldap_server&quot;] = &quot;ldap.domain.org:189&quot;;
     </blockquote>
     <p> <strong>$CFG[&quot;ldap_dn&quot;]</strong></p>
@@ -243,7 +243,7 @@ You can download phpCAS from the following place:<br>
   <blockquote> 
     <p> <strong>$CFG[&quot;ftp_server&quot;]</strong></p>
     <blockquote> 
-      <p>FTP server address ( address:port )</p>
+      <p>FTP server address ( address:port ), default port is 21</p>
       <p>$CFG["ftp_server"] = "ftp.domain.org";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;ftp_deny&quot;]</strong></p>
@@ -259,7 +259,7 @@ You can download phpCAS from the following place:<br>
   <blockquote> 
     <p> <strong>$CFG[&quot;pop3_server&quot;]</strong></p>
     <blockquote> 
-      <p>POP3 server address ( address:port )</p>
+      <p>POP3 server address ( address:port ), default port is 110</p>
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
     <p> <strong>$CFG[&quot;pop3_user_modify&quot;]</strong></p>
