@@ -625,6 +625,8 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br>
         Only full group name is allowed here, it is used to nagative the previously included group.
   </ol>
+  <a name=option></a>
+  <p><strong>Syntax of 'option'</strong></p>
   <p>In each section, an optional &quot;option&quot; setting can be defined.</p>
   <p>Two possible settings of &quot;option&quot; are currently supported.</p>
   <p>default</p>
@@ -641,7 +643,7 @@ and the other is zip.<br>Please download your preferred format from SourceForge.
   <blockquote> 
     <p><strong>option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default,private</strong></p>
   </blockquote>
-  <strong>Notice: the original 'lang' setting is deprecated since v2.1.0,<br>please use 'charset' instead.</strong>
+  <strong>Notice: the original 'lang' setting is deprecated since v2.1.0, please use 'charset' instead.</strong>
 </blockquote>
 <hr size="1">
 <table width=100% cellspacing=0 cellpadding=0><tr><td>
