@@ -99,7 +99,7 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 <hr />
 
 EOT;
-	echo '<pre class=content>' . nl2br(htmlspecialchars($content, ENT_NOQUOTES )) . "</div>\n";
+	echo '<pre class=content>' . htmlspecialchars($content, ENT_NOQUOTES ) . "</div>\n";
 	html_delay_close( 2000 );
 	echo "<hr />\n";
 	html_tail();

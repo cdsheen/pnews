@@ -38,8 +38,7 @@ if( !$artinfo ) {
 	exit;
 }
 
-$binary = $nnrp->get_attachment( $artnum, $_GET['type'], $filename );
-$size = strlen($binary);
+list($attach, $size) = $nnrp->get_attachment( $artnum, $_GET['type'], $filename );
 
 $nnrp->close();
 
@@ -66,16 +65,19 @@ $mimetype = array( 'doc'  => 'application/msword',
 		   'ppt'  => 'application/vnd.ms-powerpoint',
 		   'xls'  => 'application/vnd.ms-excel' ); 
 
-if( $binary ) {
+if( $attach ) {
+
 	$ext = strtolower(substr( $filename, strrpos( $filename, '.') + 1));
 
 #	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
 #	header( 'Expires: 0' );
 	header( 'Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+
 #	header( 'Cache-Control: no-store, no-cache, must-revalidate');	// HTTP/1.1
 #	header( 'Cache-Control: post-check=0, pre-check=0', false);
 #	header( 'Pragma: no-cache' );		// HTTP/1.0
 #	header( 'Cache-Control: private' );
+
 	header( 'Accept-Ranges: bytes' );
 	header( 'Content-Length: ' . $size );
 	header( 'Content-Transfer-Encoding: binary' );
@@ -96,7 +98,10 @@ if( $binary ) {
 		header( 'Content-Type: application/octet-stream' );
 		header( "Content-Disposition: $dtype; filename=\"$filename\"" );
 	}
-	print $binary;
+	if( !$CFG['cache_dir'] )
+		print $attach;
+	elseif( file_exists( $attach ) )
+		@readfile( $attach );
 }
 else {
 	echo "no such attachment<br>\n";

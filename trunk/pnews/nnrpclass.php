@@ -88,10 +88,10 @@ class pnews_nnrp {
 		list( $code, $msg ) = $this->get_status();
 		if( $code[0] != '2' )
 			return(null);
-		$this->send_command( 'MODE READER' );
-		list( $code, $msg ) = $this->get_status();
-		if( $code[0] != '2' )
-			return(null);
+#		$this->send_command( 'MODE READER' );
+#		list( $code, $msg ) = $this->get_status();
+#		if( $code[0] != '2' )
+#			return(null);
 		return( $this->nhd );
 	}
 
@@ -120,10 +120,10 @@ class pnews_nnrp {
 		list( $code, $msg ) = $this->get_status();
 		if( $code[0] != '2' )
 			return(null);
-		$this->send_command( 'MODE READER' );
-		list( $code, $msg ) = $this->get_status();
-		if( $code[0] != '2' )
-			return(null);
+#		$this->send_command( 'MODE READER' );
+#		list( $code, $msg ) = $this->get_status();
+#		if( $code[0] != '2' )
+#			return(null);
 		return( $this->nhd );
 	}
 
@@ -156,6 +156,7 @@ class pnews_nnrp {
 			$group_show = explode( ',', $filter );
 		$active = null;
 		foreach( $group_show as $group ) {
+			$group = trim($group);
 			if( $group[0] == '!' ) {
 				$group = substr( $group, 1 );
 
@@ -484,12 +485,12 @@ class pnews_nnrp {
 					$ext = substr( $body[$i], strrpos( $body[$i], '.') + 1);
 					if( $image_inline && strstr( 'jpg.jpeg.gif.bmp.png', strtolower($ext) ) ) {
 						echo "$prepend<img src=\"";
-						printf( "$download_url", $body[$i] );
+						printf( "$download_url", urlencode($body[$i]) );
 						echo "\" alt=\"{$body[$i]}\" />$postpend";
 					}
 					else {
 						echo "$prepend &lt;&lt; <a href=\"";
-						printf( "$download_url", $body[$i] );
+						printf( "$download_url", urlencode($body[$i]) );
 						echo "\">{$body[$i]}</a> &gt;&gt; $postpend";
 					}
 				}
@@ -532,7 +533,22 @@ class pnews_nnrp {
 		}
 	}
 
+#	function DEC( $char ) {
+#		return( (ord($char[0]) - 32) & 077 );
+#	}
+
 	function get_attachment( $artnum, $type, $filename ) {
+
+		if( $this->cache_dir ) {
+			$gdir = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $this->curr_group );
+			mkdirs($gdir);
+			$cache_file = $gdir . "/art$artnum-$filename";
+			if( file_exists( $cache_file ) && ( $fsize=filesize($cache_file) ) > 0 ) {
+				return( array( $cache_file, $fsize ) );
+			}
+			$fp = @fopen( $cache_file, 'wb');
+		}
+
 		$this->send_command( "BODY $artnum" );
 		list( $code, $msg ) = $this->get_status();
 		if( $code[0] != '2' )
@@ -540,46 +556,49 @@ class pnews_nnrp {
 #		$filename = trim($filename);
 		$filename = preg_quote($filename);
 		$binary = '';
+		$fsize = 0;
 		if( $type == 'uuencode' ) {
-			function DEC( $char ) {
-				return( (ord($char[0]) - 32) & 077 );
-			}
 			$pass = 0;
 			while( $buf = fgets( $this->nhd, 4096 ) ) {
-				$tbuf = trim($buf);
+				$tbuf = trim( $buf );
 				if( $tbuf == '.' )
 					break;
 				if( $pass == 2 ) {	# Skip the rest
 					continue;
 				}
 				elseif( $pass == 1 ) {
-					if( strtolower($tbuf) == 'end' )
+					if( $tbuf == 'end' ) {
 						$pass = 2;
+					}
 					else {
-						$i = DEC($buf[0]);
+						$i = (ord($buf[0]) - 32) & 077;
 						if( $i <= 0 )
 							continue;
 						for( $p = 1 ; $i > 0 ; $p += 4, $i -= 3 ) {
 							if( $i >= 3 ) {
-								$byte[0] = DEC($buf[$p]);
-								$byte[1] = DEC($buf[$p+1]);
-								$byte[2] = DEC($buf[$p+2]);
-								$byte[3] = DEC($buf[$p+3]);
+								$byte[0] = (ord($buf[$p]) - 32) & 077;
+								$byte[1] = (ord($buf[$p+1]) - 32) & 077;
+								$byte[2] = (ord($buf[$p+2]) - 32) & 077;
+								$byte[3] = (ord($buf[$p+3]) - 32) & 077;
 
 								$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
 								$tmp.= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
 								$tmp.= chr(($byte[2] << 6 | $byte[3] ) & 0xff);
 							}
 							else {
-								$byte[0] = DEC($buf[$p]);
-								$byte[1] = DEC($buf[$p+1]);
+								$byte[0] = (ord($buf[$p]) - 32) & 077;
+								$byte[1] = (ord($buf[$p+1]) - 32) & 077;
 								$tmp = chr(($byte[0] << 2 | $byte[1] >> 4) & 0xff);
 								if( $i > 1 ) {
-									$byte[2] = DEC($buf[$p+2]);
+									$byte[2] = (ord($buf[$p+2]) - 32) & 077;
 									$tmp .= chr(($byte[1] << 4 | $byte[2] >> 2) & 0xff);
 								}
 							}
-							$binary.= $tmp;
+							$fsize += strlen($tmp);
+							if( $this->cache_dir )
+								fwrite( $fp, $tmp );
+							else
+								$binary.= $tmp;
 						}
 					}
 				}
@@ -588,7 +607,12 @@ class pnews_nnrp {
 				}
 			}
 		}
-		return($binary);
+		if( $this->cache_dir ) {
+			fclose($fp);
+			return( array( $cache_file, $fsize ) );
+		}
+		else
+			return( array( $binary, $fsize ) );
 	}
 
 
@@ -632,17 +656,15 @@ class pnews_nnrp {
 		fwrite( $this->nhd, "Organization: $organization\r\n" );
 		fwrite( $this->nhd, "X-User-Real-E-Mail: $real_email\r\n" );
 		fwrite( $this->nhd, "User-Agent: $php_news_agent\r\n" );
+
 		fwrite( $this->nhd, "Mime-Version: 1.0\r\n" );
 		fwrite( $this->nhd, sprintf("Content-Type: text/plain; charset=\"%s\"\r\n", $art_charset ) );
 		fwrite( $this->nhd, "Content-Transfer-Encoding: 8bit\r\n" );
+
 #		fwrite( $this->nhd, "X-User-Agent-URL: http://pnews.sourceforge.net/\r\n" );
 		fwrite( $this->nhd, "X-HTTP-Posting-Host: $client\r\n" );
 		if( $proxy != '' )
 			fwrite( $this->nhd, "X-HTTP-Proxy-Server: $proxy\r\n" );
-#		fwrite( $this->nhd, "NNTP-Posting-Host: unknown@$remote\r\n" );
-#		echo( "From: $name [$email]<br />\n" );
-#		echo( "Newsgroups: $newsgroups<br />\n" );
-#		echo( "Subject: $subject<br />\n" );
 		if( $ref )
 			fwrite( $this->nhd, "References: $ref\r\n" );
 		fwrite( $this->nhd, "\r\n" );

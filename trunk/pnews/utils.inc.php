@@ -675,6 +675,7 @@ function match_group( $group, $pattern ) {
 	$groups = split( ',', $pattern );
 
 	foreach ( $groups as $reg ) {
+		$reg = trim($reg);
 		$reg = str_replace( '.', '\\.', $reg );
 		$reg = str_replace( '*', '.*', $reg );
 		$reg = str_replace( '+', '\\+', $reg );
@@ -752,6 +753,8 @@ function uuencode_file( $filename, $source, $mode = '644' ) {
 
 	global	$nnrp;
 
+# http://pages.prodigy.net/michael_santovec/decode.htm
+
 	if( !file_exists( $source ) )
 		return;
 
@@ -774,14 +777,15 @@ function uuencode_file( $filename, $source, $mode = '644' ) {
 		$byte[3] = ord($stuff[2]) & 0x3F;
 		$ilen += strlen($stuff);
 		for ($j = 0; $j < 4; $j++) {
+
 			if( $byte[$j] == 0 )
 				$text .= '`';
 			else
 				$text .= chr($byte[$j] + 32);
 			$llen++;
 			if( $llen == 60 ) {
-//				echo chr(77) . $text . "  <br />\n";
-				$nnrp->post_write( chr(77) . $text . "  \n" );
+#				echo chr(77) . $text . "  <br />\n";
+				$nnrp->post_write( chr(77) . $text . "\n" );
 				$ilen = $llen = 0;
 				$text = '';
 			}
@@ -790,12 +794,12 @@ function uuencode_file( $filename, $source, $mode = '644' ) {
 	fclose($fp);
 
 	if( $llen > 0 )
-		$nnrp->post_write( chr($ilen+32) .  $text . "  \n \nend\n" );
+		$nnrp->post_write( chr($ilen+32) .  $text . "\n`\nend\n" );
 	else
-		$nnrp->post_write( " \nend\n" );
+		$nnrp->post_write( "`\nend\n" );
 /*
 	if( $llen == 0 )
-		fwrite( $hld, "` \nend\n" );
+		fwrite( $hld, " \nend\n" );
 	elseif( $ilen == 14 )
 		fwrite( $hld, '..' .  $text . "  \n` \nend\n" );
 	else
@@ -858,7 +862,7 @@ function mkdirs( $path, $mode = 0755 ) {
 	$ppath = dirname($path);
         if( !mkdirs($ppath, $mode) )
         	return false;
-	return mkdir($path, $mode);
+	return @mkdir($path, $mode);
 }
 
 ?>
