@@ -117,7 +117,7 @@ while( $buf = fgets( $lst, 512) ) {
 			$news_charset[$catalog_num] = $match[1];
 	}
 	elseif( preg_match( '/^auth\s+(.+)$/', $buf, $match ) ) {
-		$match[1] = strtolower( $match[1] );
+#		$match[1] = strtolower( $match[1] );
 #		if( $match[1] == 'login' )
 #			$news_authinfo[$catalog_num] = 'login';
 #		elseif( $match[1] == 'user' )
