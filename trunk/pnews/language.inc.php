@@ -27,7 +27,7 @@ $lang_define = array(	'en'         => 'language/english.inc.php',
 			'zh-cn'      => 'language/chinese_gb.inc.php',
 			'unicode'    => 'language/english.inc.php' );
 
-$lang_coding = array(	'en'         => 'iso-8859-1',
+$lang_coding = array(	'en'         => 'UTF-8',
 			'zh-tw'      => 'BIG5',
 			'zh-cn'      => 'GB2312',
 			'unicode'    => 'UTF-8'       );
@@ -251,39 +251,44 @@ function u2g( $instr ) {
 	}
 }
 
-function get_conversion( $original, $preferred ) {
+function get_conversion( $orig_lang, $pref_lang ) {
 
-	if ( ( $preferred == 'zh-tw' ) && ( $original == 'zh-cn' ) ) {
+	global	$lang_coding;
+
+	$original = strtolower($lang_coding[$orig_lang]);
+	$preferred = strtolower($lang_coding[$pref_lang]);
+
+	if ( ( $preferred == 'big5' ) && ( $original == 'gb2312' ) ) {
 		$convert['to'] = 'g2b';
 		$convert['back'] = 'b2g';
 		$convert['source'] = 'GB2312';
 		$convert['result'] = 'BIG5';
 	}
-	elseif ( ( $preferred == 'zh-cn' ) && ( $original == 'zh-tw' ) ) {
+	elseif ( ( $preferred == 'gb2312' ) && ( $original == 'big5' ) ) {
 		$convert['to'] = 'b2g';
 		$convert['back'] = 'g2b';
 		$convert['source'] = 'BIG5';
 		$convert['result'] = 'GB2312';
 	}
-	elseif ( ( $preferred == 'unicode' ) && ( $original == 'zh-tw' ) ) {
+	elseif ( ( $preferred == 'utf-8' ) && ( $original == 'big5' ) ) {
 		$convert['to'] = 'b2u';
 		$convert['back'] = 'u2b';
 		$convert['source'] = 'BIG5';
 		$convert['result'] = 'Unicode (UTF-8)';
 	}
-	elseif ( ( $preferred == 'zh-tw' ) && ( $original == 'unicode' ) ) {
+	elseif ( ( $preferred == 'big5' ) && ( $original == 'utf-8' ) ) {
 		$convert['to'] = 'u2b';
 		$convert['back'] = 'b2u';
 		$convert['source'] = 'Unicode (UTF-8)';
 		$convert['result'] = 'BIG5';
 	}
-	elseif ( ( $preferred == 'unicode' ) && ( $original == 'zh-cn' ) ) {
+	elseif ( ( $preferred == 'utf-8' ) && ( $original == 'gb2312' ) ) {
 		$convert['to'] = 'g2u';
 		$convert['back'] = 'u2g';
 		$convert['source'] = 'GB2312';
 		$convert['result'] = 'Unicode (UTF-8)';
 	}
-	elseif ( ( $preferred == 'zh-cn' ) && ( $original == 'unicode' ) ) {
+	elseif ( ( $preferred == 'gb2312' ) && ( $original == 'utf-8' ) ) {
 		$convert['to'] = 'u2g';
 		$convert['back'] = 'g2u';
 		$convert['source'] = 'Unicode (UTF-8)';
