@@ -24,12 +24,14 @@ echo '
 -->
 PHP News Reader v2.2.0 (2003/05/24)
 <ul>
+<li>Support news server which requires providing username/password.
 <li>The ANSI coloring codes are filtered by default ($CFG["filter_ansi_color"]).
 <li>Support links to Next and Previous articles.
 <li>Support URL rewrite function ($CFG["url_rewrite"] and $CFG["url_base"])
 <li>Deleted articles are skipped and exactly 20 articles are displayed in one page
 <li>Add option ($CFG["article_order_reverse"]) to config the article numbering order.
 <li>Add option ($CFG["show_article_popup"]) to config the use of popup window.
+<li>Support NNTP authentication module for authenticate with News server.
 </ul>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
