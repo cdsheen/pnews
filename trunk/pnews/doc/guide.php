@@ -154,7 +154,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     <p>Specify the style of authentication prompt (default: <i>"form"</i>) 
       (used only if <a href="#auth_type">$CFG["auth_type"]</a> is not <i>'open'</i>)</p>
     <p> "http" - authenticated user via HTTP login window<br />
-      "form" - authenticated user via HTML login form (default and is recommanded)<br />
+      "form" - authenticated user via HTML login form (default and is recommended)<br />
       "cas" - authenticated user via <a href=http://www.yale.edu/tp/auth/ target=_blank>CAS</a> (with version >= 2.3.0)</p>
   </blockquote>
 <a name=post_restriction></a><a name=global_readonly></a>

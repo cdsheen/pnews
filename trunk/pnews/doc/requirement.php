@@ -59,7 +59,7 @@ The MySQL/PostgreSQL/LDAP support for PHP module is only required if you use the
 <li>LIST &nbsp;ACTIVE &nbsp;[wildmat]
 <li>LIST &nbsp;NEWSGROUPS  &nbsp;[wildmat]
 <li>XOVER &nbsp;[range]
-<li>LIST &nbsp;OVERVIEW.FMT  (not necessary)
+<li>LIST &nbsp;OVERVIEW.FMT  (recommended)
 </ul>
 The <a href="http://www.isc.org/products/INN/" target=_blank>INN News Server</a> package
  (with the version greater than <b><a href="http://www.isc.org/products/INN/">INN 1.5</a></b>) includes a NNRPD daemon to support this.
