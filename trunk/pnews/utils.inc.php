@@ -860,7 +860,7 @@ function mkdirs( $path, $mode = 0755 ) {
 	if( is_dir($path) )
 		return true;
 	$ppath = dirname($path);
-        if( !mkdirs($ppath, $mode) )
+        if( !@mkdirs($ppath, $mode) )
         	return false;
 	return @mkdir($path, $mode);
 }

@@ -95,12 +95,6 @@ class pnews_nnrp {
 		return( $this->nhd );
 	}
 
-	function mode_reader() {
-		$this->send_command( 'MODE READER' );
-		list( $code, $msg ) = $this->get_status();
-		return( $code[0] == '2' );
-	}
-
 	function open_nntps ( $nnrp_server ) {
 		if( strstr( $nnrp_server, ':' ) )
 			list( $nnrp_server, $port ) = split( ':', $nnrp_server );
@@ -125,6 +119,12 @@ class pnews_nnrp {
 #		if( $code[0] != '2' )
 #			return(null);
 		return( $this->nhd );
+	}
+
+	function mode_reader() {
+		$this->send_command( 'MODE READER' );
+		list( $code, $msg ) = $this->get_status();
+		return( $code[0] == '2' );
 	}
 
 	function help() {
@@ -290,7 +290,8 @@ class pnews_nnrp {
 		$artlist = array();
 		if( $this->cache_dir ) {
 			$gdir = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $this->curr_group );
-			mkdirs($gdir);
+			if( !mkdirs($gdir) && $this->nnrp_debug_level )
+				echo "ERROR: Can not create directory '$gdir'<br />\n";
 			$cache_file = $gdir . '/artnum.idx';
 			$fp = @fopen( $cache_file, 'rb');
 			if( $fp ) {
@@ -541,7 +542,8 @@ class pnews_nnrp {
 
 		if( $this->cache_dir ) {
 			$gdir = $this->cache_dir . '/' . $this->curr_server . '/' . str_replace( '.', '/', $this->curr_group );
-			mkdirs($gdir);
+			if( !mkdirs($gdir) && $this->nnrp_debug_level )
+				echo "ERROR: Can not create directory '$gdir'<br />\n";
 			$cache_file = $gdir . "/attach-$artnum-$filename";
 			if( file_exists( $cache_file ) && ( $fsize=filesize($cache_file) ) > 0 ) {
 				return( array( $cache_file, $fsize ) );
