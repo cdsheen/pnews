@@ -692,7 +692,7 @@ function get_status( $nhd ) {
 	$responds = @fgets( $nhd, 1024 );
 #	echo "[$responds]<br />\n";
 	$nnrp_last_result = $responds;
-	preg_match( '/^(\d+)\s(.+)$/', $responds, $match );
+	preg_match( '/^(\d+)\s*(.+)$/', $responds, $match );
 	return( array($match[1], $match[2]) );
 }
 
