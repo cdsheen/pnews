@@ -733,8 +733,8 @@ function nnrp_post_begin( $nhd, $name, $email, $subject, $newsgroups, $organizat
 }
 
 function nnrp_post_writeln( $nhd, $buf ) {
-	if( $buf == '.' )
-		fwrite( $nhd, "..\r\n" );
+	if( $buf[0] == '.' )
+		fwrite( $nhd, ".$buf\r\n" );
 	else
 		fwrite( $nhd, $buf . "\r\n" );
 }
