@@ -305,7 +305,7 @@ if( $CFG['auth_type'] != 'open' ) {
 		$auth_success = true;
 	}
 	elseif( $need_auth ) {
-		if( isset($CFG['https_login']) && $CFG['https_login'] && !isset($_SERVER['HTTPS']) ) {
+		if( isset($CFG['https_login']) && $CFG['https_login'] && ( !isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on' ) ) {
 			$_SESSION['save_postvar'] = true;
 			$_SESSION['POSTVAR'] = $_POST;
 			header( 'Location: https://' . $_SERVER['HTTP_HOST'] . $uri );
@@ -450,7 +450,7 @@ function form_login_dialog( $is_expire ) {
 	else
 		$target = $uri;
 
-	if( isset($_SERVER['HTTPS']) )
+	if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' )
 		$target = str_replace( 'http://', 'https://', $target );
 
 	$_SESSION['current_session_id'] = session_id();

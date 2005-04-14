@@ -39,11 +39,12 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-PHP News Reader v2.6.2 (2005/02/09)
+PHP News Reader v2.6.2 (2005/04/15)
 <ul>
 <li><a href=guide.php#html_header>\$CFG['html_header']</a> and <a href=guide.php#html_footer>\$CFG['html_footer']</a> are displayed when reading articles.
 <li>The HTTP request header 'Accept-Language' issued by browser is now considered as the default language.
 <li>MODE READER must be issued again after authentication on some news server.
+<li>Fixed HTTPS handling in IIS.
 </ul>
 PHP News Reader v2.6.1 (2005/01/01)
 <ul>

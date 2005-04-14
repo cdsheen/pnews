@@ -641,7 +641,7 @@ You can download phpCAS from the following place:<br />
        You should grant write permission on this directory to the user running PHP.<p>
     <p>This function is used to cache indexing data (article number list) for each group,
        it does not cache the contents of articles.
-    <p>Since <b>2.6.1</b>, attachement is also cached if you enable $CFG["cache_dir"].
+    <p>Since <b>2.6.1</b>, attachment is also cached if you enable $CFG["cache_dir"].
     <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
   </blockquote>
 <a name=thread_enable></a>

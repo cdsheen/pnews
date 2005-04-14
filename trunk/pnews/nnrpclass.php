@@ -534,10 +534,6 @@ class pnews_nnrp {
 		}
 	}
 
-#	function DEC( $char ) {
-#		return( (ord($char[0]) - 32) & 077 );
-#	}
-
 	function get_attachment( $artnum, $type, $filename ) {
 
 		if( $this->cache_dir ) {
@@ -565,7 +561,9 @@ class pnews_nnrp {
 				$tbuf = trim( $buf );
 				if( $tbuf == '.' )
 					break;
-				if( $pass == 2 ) {	# Skip the rest
+				if( $buf[0] == '.' )
+					$buf = substr( $buf, 1 ); # by ogekuri
+				if( $pass == 2 ) {      # skip the rest
 					continue;
 				}
 				elseif( $pass == 1 ) {

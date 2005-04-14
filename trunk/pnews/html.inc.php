@@ -19,12 +19,13 @@
 
 require_once('language.inc.php');
 
-if( isset($_SERVER['HTTPS']) ) {
+if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) {
 	$CFG['url_base'] = str_replace( 'http://', 'https://', $CFG['url_base'] );
 	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 }
-else
+else {
 	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
+}
 
 #if( $CFG['url_rewrite'] )
 
