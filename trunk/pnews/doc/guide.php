@@ -165,7 +165,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
     <p>This is global setting for all categories,
        if you want only one or two categories to be readonly,
        set it in <a href="#grouplst_option">newsgroups.lst</a></p>
-    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v250">v2.5.0</a> of PHP News Reader</p>
     <p>It is to replace $CFG["post_restriction"] in the previous version.</p>
   </blockquote>
 <a name=auth_http_realm></a>
@@ -303,7 +303,7 @@ You can download phpCAS from the following place:<br />
       <p>POP3 server address ( address:port ), default port is 110</p>
       <p>$CFG["pop3_server"] = "pop3.domain.org";</p>
     </blockquote>
-    <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
+    <p>This module first appeared in the <a href="history.php#v241">v2.4.1</a> of PHP News Reader</p>
     <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=pop3s_auth></a>
@@ -314,7 +314,7 @@ You can download phpCAS from the following place:<br />
       <p>POP3S server address ( address:port ), default port is 995</p>
       <p>$CFG["pop3s_server"] = "pop3s.domain.org";</p>
     </blockquote>
-    <p>This module first appeared in the <b>v2.4.1</b> of PHP News Reader</p>
+    <p>This module first appeared in the <a href="history.php#v241">v2.4.1</a> of PHP News Reader</p>
     <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=mail_auth></a>
@@ -330,7 +330,7 @@ You can download phpCAS from the following place:<br />
       <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@mail.domain.org" =&gt; "pop3.domain.org" );</p>
-    <p>Since <b>v2.5.0</b>, this module support both <b>pop3</b> and <b>pop3s</b>.<br /> You can assign the server in URI syntax as follows:</p>
+    <p>Since <a href="history.php#v250">v2.5.0</a>, this module support both <b>pop3</b> and <b>pop3s</b>.<br /> You can assign the server in URI syntax as follows:</p>
       <p>$CFG["pop3_mapping"] = array( "@foobar.com" =&gt; "pop3.foobar.com",<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         "@pop3s.domain.org" =&gt; "pop3s://pop3s.domain.org/",
@@ -344,7 +344,7 @@ You can download phpCAS from the following place:<br />
     <blockquote> 
       <p>Show domain-list selector in login dialog (default: <i>true</i>)</p>
       <p>Note that domain-list selector only appear if <a href="#auth_prompt">$CFG["auth_prompt"]</a> is <i>'form'</i></p>
-      <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+      <p>This setting first appeared in the <a href="history.php#v250">v2.5.0</a> of PHP News Reader</p>
     </blockquote>
   </blockquote>
 <a name=nntp_auth></a>
@@ -358,7 +358,7 @@ You can download phpCAS from the following place:<br />
     <p>Note that this option only deal with the authentication of PHP News Reader,
        it has nothing to do with the authentication perform by news server.
        Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=nntps_auth></a>
   <p><strong>NNTPS (NNTP over SSL) authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'nntps'</i>)</p>
@@ -371,7 +371,7 @@ You can download phpCAS from the following place:<br />
     <p>Note that this option only deal with the authentication of PHP News Reader,
        it has nothing to do with the authentication perform by news server.
        Add <a href=#grouplst_auth><b>auth</b> directive</a> to your newsgroups.lst if your news server requires authentication.</p>
-    <p>This module first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+    <p>This module first appeared in the <a href="history.php#v240">v2.4.0</a> of PHP News Reader</p>
     <p>You must enable <a href=http://www.php.net/manual/en/ref.openssl.php target=_blank>OpenSSL extension</a> in PHP, and the PHP should be <b>v4.3.0</b> or greater</p>
   </blockquote>
 <a name=cas_auth></a>
@@ -392,7 +392,7 @@ You can download phpCAS from the following place:<br />
       <p>The filename for outputing debug log, or <i>false</i> to turn off debug mode (default: <i>false</i>)</p>
       <p>$CFG["auth_cas_debug"] = "/tmp/phpcas.log";</p>
     </blockquote>
-    <p>The above settings first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
+    <p>The above settings first appeared in the <a href="history.php#v230">v2.3.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=phpbb_auth></a>
   <p><strong>phpBB authentication module paramenters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'phpbb'</i>)</p></p>
@@ -409,7 +409,7 @@ You can download phpCAS from the following place:<br />
     </blockquote>
     <p>With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     <p>Notice: Your <a href="#auth_prompt">$CFG["auth_prompt"]</a> must be <i>'other'</i> if you want to use phpBB authtication module.
-    <p>The above settings first appeared in the <b>v2.5.6</b> of PHP News Reader</p>
+    <p>The above settings first appeared in the <a href="history.php#v256">v2.5.6</a> of PHP News Reader</p>
   </blockquote>
 <a name=db_auth></a>
   <p><strong>MySQL/PostgreSQL Database authentication parameters</strong></p>
@@ -466,7 +466,7 @@ You can download phpCAS from the following place:<br />
         $CFG["db_password_crypt"] = "md5";<br />
         $CFG["db_variable"] = array( "%e" =&gt; "user_email" 
         );</p>
-      <p>Since <b>v2.5.6</b>, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
+      <p>Since <a href="history.php#v256">v2.5.6</a>, you can use 'phpbb' as <a href=#phpbb_auth>$CFG["auth_method"]</a> for seamless integration with sessions of phpBB.
       With 'phpbb' as authentication module, you can utilize the session if you already login phpBB.</p>
     </blockquote>
   </blockquote>
@@ -515,7 +515,7 @@ You can download phpCAS from the following place:<br />
 	3 - log all actions for all users.
 	</blockquote>
     <p>$CFG["log_level"] = 2;</p>
-    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v250">v2.5.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=debug_level></a>
   <p><strong>$CFG["debug_level"]</strong></p>
@@ -527,7 +527,7 @@ You can download phpCAS from the following place:<br />
         2 - NNTP debug information will be shown inline with HTML page
 	</blockquote>
     <p>$CFG["debug_level"] = 1;</p>
-    <p>This setting first appeared in the <b>v2.5.2</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v252">v2.5.2</a> of PHP News Reader</p>
   </blockquote>
   <p>&nbsp;</p>
 <a name=section2></a>
@@ -539,9 +539,9 @@ You can download phpCAS from the following place:<br />
   <p> <strong>$CFG["url_base"]</strong></p>
   <blockquote> 
     <p>Specify the base URL of your PHP News Reader installation (REQUIRED)</p>
-    <p>Prior to <b>v2.2.1</b>, this setting is only REQUIRED if <a href="#url_rewrite">$CFG["url_rewrite"]</a> is <i>true</i></p>
-    <p>After <b>v2.2.2</b>, this setting is always REQUIRED</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>Prior to <a href="history.php#v221">v2.2.1</a>, this setting is only REQUIRED if <a href="#url_rewrite">$CFG["url_rewrite"]</a> is <i>true</i></p>
+    <p>After <a href="history.php#v222">v2.2.2</a>, this setting is always REQUIRED</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=url_rewrite></a>
   <p> <strong>$CFG["url_rewrite"]</strong></p>
@@ -552,20 +552,20 @@ You can download phpCAS from the following place:<br />
     <p>And the directive <b>AccessFileName</b> must be <b>.htaccess</b>,<br />
     otherwise you should change it, or rename <b>.htaccess</b> to match your setting.</p>
     For more information about <b>mod_rewrite</b>, visit <a href="http://httpd.apache.org/docs/mod/mod_rewrite.html" target=_blank>http://httpd.apache.org/docs/mod/mod_rewrite.html</a> for details.</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=https_login></a>
   <p> <strong>$CFG["https_login"]</strong></p>
   <blockquote> 
     <p>Whether to use SSL(HTTPS) after authentication (default: <i>false</i>)</p>
-    <p>This setting first appeared in the <b>v2.2.2</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v222">v2.2.2</a> of PHP News Reader</p>
   </blockquote>
 <a name=style_sheet></a>
   <p><strong>$CFG["style_sheet"]</strong></p>
   <blockquote>
     <p>Setting the style sheet used for all html (default: <i>"standard.css"</i>)</p>
-    <p>This setting first appeared in the <b>v2.2.1</b> of PHP News Reader</p>
-    <p>After <b>v2.2.4</b>, the configured style sheet should be placed in the css/ subdirectory.</p>
+    <p>This setting first appeared in the <a href="history.php#v221">v2.2.1</a> of PHP News Reader</p>
+    <p>After <a href="history.php#v224">v2.2.4</a>, the configured style sheet should be placed in the css/ subdirectory.</p>
   </blockquote>
 <a name=title></a>
   <p> <strong>$CFG["title"]</strong></p>
@@ -585,16 +585,16 @@ You can download phpCAS from the following place:<br />
     <p>$CFG["html_header"] = "header.htm";
     <p>If $CFG["html_header"] is a valid file which can be included,<br />
        then the $CFG["banner"] setting is ignored!</p>
-    <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
-    <p>$CFG['html_header'] can be a PHP script since <b>v2.6.1</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v257">v2.5.7</a> of PHP News Reader</p>
+    <p>$CFG['html_header'] can be a PHP script since <a href="history.php#v261">v2.6.1</a> of PHP News Reader</p>
   </blockquote>
 <a name=html_footer></a>
   <p><strong>$CFG["html_footer"]</strong></p>
   <blockquote>
     <p>The file to be included as page footer (default: <i>false</i>)</p>
     <p>$CFG["html_footer"] = "footer.htm";
-    <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader</p>
-    <p>$CFG['html_footer'] can be a PHP script since <b>v2.6.1</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v257">v2.5.7</a> of PHP News Reader</p>
+    <p>$CFG['html_footer'] can be a PHP script since <a href="history.php#v261">v2.6.1</a> of PHP News Reader</p>
   </blockquote>
 <a name=group_list></a>
   <p><strong>$CFG["group_list"]</strong></p>
@@ -608,14 +608,14 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p>The message prompted to confirm the posting (post/reply/crosspost) (default: <i>false</i>)</p>
     <p>$CFG["confirm_post"] = "Really post the message ?";
-    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v260">v2.6.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=confirm_forward></a>
   <p><strong>$CFG["confirm_forward"]</strong></p>
   <blockquote>
     <p>The message prompted to confirm the forwarding (default: <i>false</i>)</p>
     <p>$CFG["confirm_forward"] = "Really forward the message ?";
-    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v260">v2.6.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=magic_tag></a>
   <p><strong>$CFG["magic_tag"]</strong></p>
@@ -628,8 +628,8 @@ You can download phpCAS from the following place:<br />
       PHP News Reader use the above magic number in <font color=red>red</font> to indicate that the group has been visited by user (with the help of browser's history).<br /><br />
       The default is <i>false</i>. If you do like this feature, you can turn it on by:
     <blockquote>$CFG["magic_tag"] = <i>true</i>;</blockquote>
-    <p>This setting first appeared in the <b>v2.2.4</b> of PHP News Reader</p>
-    <p>The default value of $CFG["magic_tag"] has been changed to <i>false</i> since <b>v2.4.1</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v224">v2.2.4</a> of PHP News Reader</p>
+    <p>The default value of $CFG["magic_tag"] has been changed to <i>false</i> since <a href="history.php#v241">v2.4.1</a> of PHP News Reader</p>
   </blockquote>
 <a name=cache_dir></a>
   <p><strong>$CFG["cache_dir"]</strong></p>
@@ -641,8 +641,8 @@ You can download phpCAS from the following place:<br />
        You should grant write permission on this directory to the user running PHP.<p>
     <p>This function is used to cache indexing data (article number list) for each group,
        it does not cache the contents of articles.
-    <p>Since <b>2.6.1</b>, attachment is also cached if you enable $CFG["cache_dir"].
-    <p>This setting first appeared in the <b>v2.4.0</b> of PHP News Reader</p>
+    <p>Since <a href="history.php#v261">v2.6.1</a>, attachment is also cached if you enable $CFG["cache_dir"].
+    <p>This setting first appeared in the <a href="history.php#v240">v2.4.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=thread_enable></a>
   <p><strong>$CFG["thread_enable"]</strong></p>
@@ -666,7 +666,7 @@ You can download phpCAS from the following place:<br />
        Please specify the location of config.inc.php as the first command line argument.<br />
        And the process must have the permission to delete files under <a href=#cache_dir>$CFG["cache_dir"]</a>.<br /><br />
        You may want to put this script in your crontab for convenience.
-    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v260">v2.6.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=thread_db_format></a>
   <p><strong>$CFG["thread_db_format"]</strong></p>
@@ -681,19 +681,19 @@ You can download phpCAS from the following place:<br />
        '<i>db3</i>' &nbsp;if&nbsp; <b>PHP &lt; 4.3.2</b>,<br />
        '<i>db4</i>' &nbsp;if&nbsp; <b>PHP &gt;= 4.3.2</b> .
        </blockquote>
-    <p>This setting first appeared in the <b>v2.6.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v260">v2.6.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=image_inline></a>
   <p><strong>$CFG["image_inline"]</strong></p>
   <blockquote>
     <p>The uuencoded image attachment will be shown inline along with article (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v251">v2.5.1</a> of PHP News Reader</p>
   </blockquote>
 <a name=allow_attach_file></a>
   <p><strong>$CFG["allow_attach_file"]</strong></p>
   <blockquote>
     <p>Setting the allowed attachment(s) when posting article (default: <i>2</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v250">v2.5.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=group_sorting></a>
   <p><strong>$CFG["group_sorting"]</strong></p>
@@ -716,19 +716,19 @@ You can download phpCAS from the following place:<br />
     &lt;/script&gt;</i>
     </blockquote>
     <p>This makes it difficult for Spamlist collector to automatically obtain email addresses from PHP News Reader</p>
-    <p>This setting first appeared in the <b>v2.5.1</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v251">v2.5.1</a> of PHP News Reader</p>
   </blockquote>
 <a name=email_editing></a>
   <p><strong>$CFG["email_editing"]</strong></p>
   <blockquote> 
     <p>Allow editing of E-Mail address when posting article (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v230">v2.3.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=articles_per_page></a>
   <p><strong>$CFG["articles_per_page"]</strong></p>
   <blockquote> 
     <p>Setting the number of articles shown per page (default: <i>20</i>)</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=show_latest_top></a>
 <a name=show_newest_top></a>
@@ -736,22 +736,22 @@ You can download phpCAS from the following place:<br />
   <p><strong>$CFG["show_latest_top"]</strong></p>
   <blockquote> 
     <p>Show the latest article as the top item (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.7</b> of PHP News Reader<br />
-    It is to replace $CFG["article_order_reverse"] in <b>v2.2 - v2.3</b> and $CFG["show_newest_top"] in <b>v2.4 - v2.5.6</b><br />
-    <p>This setting is <b>deprecated</b> since <b>v2.6.0</b> of PHP News Reader.</p>
+    <p>This setting first appeared in the <a href="history.php#v257">v2.5.7</a> of PHP News Reader<br />
+    It is to replace $CFG["article_order_reverse"] in <a href="history.php#v220">v2.2.0</a> - <a href="history.php#v231">v2.3.1</a> and $CFG["show_newest_top"] in <a href="history.php#v240">v2.4.0</a> - <a href="history.php#v256">v2.5.6</a><br />
+    <p>This setting is <b>deprecated</b> since <a href="history.php#v260">v2.6.0</a> of PHP News Reader.</p>
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>
   <blockquote> 
     <p>Controlling the article to show in popup window or not (default: <i>false</i>)</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
-    <p>This setting is <b>deprecated</b> since <b>v2.6.1</b> of PHP News Reader.</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
+    <p>This setting is <b>deprecated</b> since <a href="history.php#v261">v2.6.1</a> of PHP News Reader.</p>
   </blockquote>
 <a name=filter_ansi_color></a>
   <p><strong>$CFG["filter_ansi_color"]</strong></p>
   <blockquote> 
     <p>Setting this option to <i>true</i> will cause filtering of ANSI coloring code from article (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <b>v2.2.0</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=organization></a>
   <p> <strong>$CFG["organization"]</strong></p>
@@ -768,13 +768,13 @@ You can download phpCAS from the following place:<br />
   <p> <strong>$CFG["meta_description"]</strong></p>
   <blockquote> 
     <p>The META description embeded in HTML header (default: <i>"PHP News Server"</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.3</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v253">v2.5.3</a> of PHP News Reader</p>
   </blockquote>
 <a name=meta_keywords></a>
   <p> <strong>$CFG["meta_keywords"]</strong></p>
   <blockquote> 
     <p>The META keywords embeded in HTML header (default: <i>"news,pnews,webnews,nntp"</i>)</p>
-    <p>This setting first appeared in the <b>v2.5.3</b> of PHP News Reader</p>
+    <p>This setting first appeared in the <a href="history.php#v253">v2.5.3</a> of PHP News Reader</p>
   </blockquote>
 <a name=show_sourceforge_logo></a>
   <p> <strong>$CFG["show_sourceforge_logo"]</strong></p>
@@ -829,9 +829,9 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p>The language setting of interface ( "en", "zh-tw", "zh-cn", "unicode", "fr", "fi", "de", "it", "sk" )<br />
      (default: <i>"en"</i> )</p>
-    <p>This setting first appeared in the <b>v2.3.0</b> of PHP News Reader<br />
-       If not set in <b>v2.3.0</b> or later, the default language used in interface is "en" - English</p>
-    <p>Notice: the original $CFG["charset"]["interface"] is deprecated since <b>v2.3.0</b>,<br />please use $CFG["interface_language"] instead</p>
+    <p>This setting first appeared in the <a href="history.php#v230">v2.3.0</a> of PHP News Reader<br />
+       If not set in <a href="history.php#v230">v2.3.0</a> or later, the default language used in interface is "en" - English</p>
+    <p>Notice: the original $CFG["charset"]["interface"] is deprecated since <a href="history.php#v230">v2.3.0</a>,<br />please use $CFG["interface_language"] instead</p>
   </blockquote>
 <a name=charset_config></a>
   <p> <strong>$CFG["charset"]["config"]</strong></p>
@@ -849,7 +849,7 @@ You can download phpCAS from the following place:<br />
     <p>The charset setting used in database or LDAP.<br />
        If you do not enable database or ldap authentication module, this setting will be ignored</p>
   </blockquote>
-  <p>Notice: the original $CFG["language"] section is deprecated since <b>v2.1.0</b>,<br />please use $CFG["charset"] section instead</p>
+  <p>Notice: the original $CFG["language"] section is deprecated since <a href="history.php#v210">v2.1.0</a>,<br />please use $CFG["charset"] section instead</p>
 </blockquote>
 <a name=newsgroups_lst></a>
 <hr size="1">
@@ -879,7 +879,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
   This directive defines the news server used to retrieve newsgroups in this category.
   <p>
-  Since <b>v2.5.5</b> of PHP News Reader, the address of the news server can be configured with port number.
+  Since <a href="history.php#v255">v2.5.5</a> of PHP News Reader, the address of the news server can be configured with port number.
   <p>
   For example: <i>news.pnews-test.com:12345</i>
   </blockquote>
@@ -894,13 +894,13 @@ You can download phpCAS from the following place:<br />
     <li>Pattern match for sub-class groups inclusion, i.e: <b>tw.bbs.comp.*</b><br /><br />
         Only the last class of group name can be used in pattern match<br />
         &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.*.hardware</b> is INVALID.<br /><br />
-        Before <b>v2.2.4</b>, only 'all-match' patttern (a single <b>*</b> ) is allowed in the last class pattern of group name<br />
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in <b>v2.2.4</b>, while <b>tw.bbs.comp.*</b> is VALID.<br /><br />
-        After <b>v2.3.0</b>, the last class pattern is not restricted to a single <b>*</b>,<br />
-        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in <b>v2.3.0</b> or later.<br /><br />
+        Before <a href="history.php#v224">v2.2.4</a>, only 'all-match' patttern (a single <b>*</b> ) is allowed in the last class pattern of group name<br />
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is INVALID in <a href="history.php#v224">v2.2.4</a>, while <b>tw.bbs.comp.*</b> is VALID.<br /><br />
+        After <a href="history.php#v230">v2.3.0</a>, the last class pattern is not restricted to a single <b>*</b>,<br />
+        &nbsp;&nbsp;&nbsp;For example, <b>tw.bbs.comp.hard*</b> is now VALID in <a href="history.php#v230">v2.3.0</a> or later.<br /><br />
     <li>Full group name for exclusion, i.e: <b>!tw.bbs.comp.virus</b><br />
         Only full group name is allowed here, it is used to nagative the previously included group.<br /></br />
-    <li>Since <b>v2.6.0</b> of PHP News Reader, multiple 'group' directives can be specified in one single category.
+    <li>Since <a href="history.php#v260">v2.6.0</a> of PHP News Reader, multiple 'group' directives can be specified in one single category.
   </ol>
   </blockquote>
   <a name=grouplst_option></a>
@@ -921,20 +921,20 @@ You can download phpCAS from the following place:<br />
   <p>nntps</p>
   <blockquote> 
     <p>With this option, the connection to news server will be NNTP over SSL,
-       also known as NNTPS. This option first appeared in <b>v2.4.0</b>, and require
+       also known as NNTPS. This option first appeared in <a href="history.php#v240">v2.4.0</a>, and require
        PHP with <b>v4.3.0</b> or greater and be compiled with OpenSSL support.</p>
   </blockquote>
   <p>readonly</p>
   <blockquote> 
     <p>This category is <b>readonly</b> even if user performs a login.</p>
-    <p>This option first appeared in <b>v2.5.0</b> of PHP News Reader.</p>
+    <p>This option first appeared in <a href="history.php#v250">v2.5.0</a> of PHP News Reader.</p>
   </blockquote>
   <p>hidden</p>
   <blockquote> 
     <p>This category is <b>hidden</b> from index page.
     This category can still be accessed as normal category,
     if you know the corresponding category number.</p>
-    <p>This option first appeared in <b>v2.5.2</b> of PHP News Reader.</p>
+    <p>This option first appeared in <a href="history.php#v252">v2.5.2</a> of PHP News Reader.</p>
   </blockquote>
   <p>Multiple options can be separated by comma, for example:</p>
   <blockquote> 
@@ -951,7 +951,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myname,mypasswd</strong></p>
   </blockquote>
-  Since PHP News Reader <b>v2.5.2</b>, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
+  Since PHP News Reader <a href="history.php#v252">v2.5.2</a>, if you use '<i>http</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>,
   you can use the username and password in the http authentication as the authentication info requested by Web server. For example:</p>
   <blockquote>
     <p><strong>auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%http_user,%http_pw</strong></p>
@@ -967,7 +967,7 @@ You can download phpCAS from the following place:<br />
   <p><strong>'charset' directive</strong></p>
   <blockquote>
   <p>The charset setting for this category. All newsgroups in this category should be with the same charset.</p>
-  <p>Notice: the original 'lang' setting is deprecated since <b>v2.1.0</b>, please use 'charset' instead.</p>
+  <p>Notice: the original 'lang' setting is deprecated since <a href="history.php#v210">v2.1.0</a>, please use 'charset' instead.</p>
   </blockquote>
   <hr />
   <b>An example for <i>newsgroups.lst</i>:</b>

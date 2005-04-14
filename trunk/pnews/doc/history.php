@@ -39,6 +39,7 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
+<a name=v262></a>
 PHP News Reader v2.6.2 (2005/04/15)
 <ul>
 <li><a href=guide.php#html_header>\$CFG['html_header']</a> and <a href=guide.php#html_footer>\$CFG['html_footer']</a> are displayed when reading articles.
@@ -46,6 +47,7 @@ PHP News Reader v2.6.2 (2005/04/15)
 <li>MODE READER must be issued again after authentication on some news server.
 <li>Fixed HTTPS handling in IIS.
 </ul>
+<a name=v261></a>
 PHP News Reader v2.6.1 (2005/01/01)
 <ul>
 <li>Fixed the bug which perform invalid MODE READER before authentication.
@@ -56,6 +58,7 @@ PHP News Reader v2.6.1 (2005/01/01)
 <li>Add a new feature to show all articles of current thread in one single page.
 <li><a href=guide.php#show_article_popup>\$CFG['show_article_popup']</a> is deprecated.
 </ul>
+<a name=v260></a>
 PHP News Reader v2.6.0 (2004/12/25)
 <ul>
 <li>Experimental threading support (<a href=guide.php#thread_enable>\$CFG['thread_support']</a>)
@@ -75,11 +78,13 @@ PHP News Reader v2.6.0 (2004/12/25)
     are renamed (trimming the '-art')
 <li>Rewrite NNRP functions as a class object.
 </ul>
+<a name=v259></a>
 PHP News Reader v2.5.9 (2004/08/11)
 <ul>
 <li>Fix the login-fail bug which introduced by the configuration cache support.
 <li>Cleaning for most PHP Notice warnings.
 </ul>
+<a name=v258></a>
 PHP News Reader v2.5.8 (2004/08/05)
 <ul>
 <li>Fix the paging bug while <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is disabled.
@@ -88,6 +93,7 @@ PHP News Reader v2.5.8 (2004/08/05)
 <li>Configuraton is now cached by PHP session to increase performance.
 <li>Added Slovak translation (By Tichu)
 </ul>
+<a name=v257></a>
 PHP News Reader v2.5.7 (2004/06/02)
 <ul>
 <li>Group description can be eliminated by setting <a href=guide.php#show_group_description>\$CFG['show_group_description']</a> to <i>false</i>
@@ -95,6 +101,7 @@ PHP News Reader v2.5.7 (2004/06/02)
 <li><a href=guide.php#show_latest_top>\$CFG["show_newest_top"]</a> is renamed as <a href=guide.php#show_latest_top>\$CFG["show_latest_top"]</a>
 <li>The page number of group indexing is now displayed as a selector, which can be switched easily.
 </ul>
+<a name=v256></a>
 PHP News Reader v2.5.6 (2004/04/01)
 <ul>
 <li>New authentication module 'phpbb' for seamless integration with phpBB. (<a href=guide.php#auth_method>\$CFG['auth_method']</a>)
@@ -102,15 +109,18 @@ PHP News Reader v2.5.6 (2004/04/01)
 <li>Fix the word wrapping bug in textarea.
 <li>Workaround for the news server which does not support <b>LIST NEWSGROUPS [wildmat]</b> of RFC 2980
 </ul>
+<a name=v255></a>
 PHP News Reader v2.5.5 (2004/03/14)
 <ul>
 <li>Fixed the quote problem of the Italian language translation.
 <li>News server can be configured on an <a href=guide.php#grouplst_server>alternative port number</a> (host.domain:port)
 </ul>
+<a name=v254></a>
 PHP News Reader v2.5.4 (2004/03/02)
 <ul>
 <li>Fixed the incorrect restoring of \$_POST variable after authentication.
 </ul>
+<a name=v253></a>
 PHP News Reader v2.5.3 (2004/02/22)
 <ul>
 <li>Added Italian translation (by Francesco Rolando)
@@ -119,6 +129,7 @@ PHP News Reader v2.5.3 (2004/02/22)
 <li>Support for the configuration of HTML META description and keywords (<a href=guide.php#meta_description>\$CFG['meta_description']</a>,<a href=guide.php#meta_keywords>\$CFG['meta_keywords']</a>)
 <li>All articles will be listed when the number of articles is less than one page.
 </ul>
+<a name=v252></a>
 PHP News Reader v2.5.2 (2004/01/22)
 <ul>
 <li>MODE READER is now performed after NNTP authentication.
@@ -132,6 +143,7 @@ PHP News Reader v2.5.2 (2004/01/22)
 <li>Debug information can be examined by setting <a href=guide.php#debug_level>\$CFG["debug_level"]</a>.
 <li>Documentation for newsgroups.lst is refined.
 </ul>
+<a name=v251></a>
 PHP News Reader v2.5.1 (2003/12/25)
 <ul>
 <li>Rewrite the `uudecode' codes to fix the bug which result in wrong outputs.
@@ -141,6 +153,7 @@ PHP News Reader v2.5.1 (2003/12/25)
 <li>E-Mail link auto-detection is refined for multi-bytes environment.
 <li>Correct many words used for GB to/from BIG5 coding conversion.
 </ul>
+<a name=v250></a>
 PHP News Reader v2.5.0 (2003/11/15)
 <ul>
 <li>Supporting attach files (by UUENCODE) when posting or replying article (<a href=guide.php#allow_attach_file>\$CFG['allow_attach_file']</a>)
@@ -160,14 +173,17 @@ PHP News Reader v2.5.0 (2003/11/15)
 <li><a href=guide.php#show_sourceforge_logo>\$CFG['show_sourceforge_logo']</a> is now default to false.
 <li><a href=guide.php#post_restriction>\$CFG["post_restriction"]</a> is deprecated, and replaced by <a href=guide.php#global_readonly>\$CFG["global_readonly"]</a>
 </ul>
+<a name=v244></a>
 PHP News Reader v2.4.4 (2003/11/09)
 <ul>
 <li>Fix a bug of parsing NNTP headers, which may cause coding conversion fail to work.
 </ul>
+<a name=v243></a>
 PHP News Reader v2.4.3 (2003/11/08)
 <ul>
 <li>Workaround for MSIE SSL bug about attachment downloads (<a href="http://support.microsoft.com/default.aspx?scid=kb%3Ben-us%3B323308" target=_blank>Q323308</a>)
 </ul>
+<a name=v242></a>
 PHP News Reader v2.4.2 (2003/11/01)
 <ul>
 <li>Support the downloading of uuencoded attachment.
@@ -178,6 +194,7 @@ PHP News Reader v2.4.2 (2003/11/01)
 <li>Fix a bug of parsing Content-Type header.
 <li>Added Finnish translation (by Markus Oversti)
 </ul>
+<a name=v241></a>
 PHP News Reader v2.4.1 (2003/10/25)
 <ul>
 <li>Fix a potential bug which cause heavy loading if caching is enabled.
@@ -188,6 +205,7 @@ PHP News Reader v2.4.1 (2003/10/25)
 <li>Support <a href=guide.php#pop3s_auth>POP3S</a> (POP3 over SSL) authentication module
 <li>Support <a href=guide.php#ftps_auth>FTPS</a> (FTP over SSL) authentication module
 </ul>
+<a name=v240></a>
 PHP News Reader v2.4.0 (2003/10/04)
 <ul>
 <li>Support News Server with NNTP over SSL connection (also known as NNTPS or SNEWS)
@@ -198,6 +216,7 @@ PHP News Reader v2.4.0 (2003/10/04)
 <li><a href=guide.php#article_order_reverse>\$CFG["article_order_reverse"]</a> is deprecated, and replaced by <a href=guide.php#show_newest_top>\$CFG["show_newest_top"]</a>
 <li>Fix the problem of filtering ANSI coloring codes.
 </ul>
+<a name=v231></a>
 PHP News Reader v2.3.1 (2003/09/27)
 <ul>
 <li>Reading article with invalid artnum will be redirected into indexing page.
@@ -207,6 +226,7 @@ PHP News Reader v2.3.1 (2003/09/27)
 <li>Fix several missing style sheet errors.
 <li>Auto-correction for some invalid uri if <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is enabled.
 </ul>
+<a name=v230></a>
 PHP News Reader v2.3.0 (2003/09/06)
 <ul>
 <li>Added French translation (by Pascal Aubry)
@@ -218,20 +238,24 @@ PHP News Reader v2.3.0 (2003/09/06)
 <li>Language switching reworked, relation between charset and language is more clear.
 <li><a href=guide.php#interface_language>\$CFG["interface_language"]</a> makes the decision at the language used in interface.
 </ul>
+<a name=v224></a>
 PHP News Reader v2.2.4 (2003/07/26)
 <ul>
 <li>Fix the bug in MySQL authentication module.
 <li>Use of <a href=guide.php#magic_tag>\$CFG["magic_tag"]</a> to indicate the visit state of newsgroup
 </ul>
+<a name=v223></a>
 PHP News Reader v2.2.3 (2003/07/20)
 <ul>
 <li>Fix the bug at replying if the quoted article has leading spaces.
 </ul>
+<a name=v222></a>
 PHP News Reader v2.2.2 (2003/07/05)
 <ul>
 <li>Option to force using SSL(HTTPS) when performing login. (<a href=guide.php#https_login>\$CFG["https_login"]</a>)
 <li><a href=guide.php#url_base>\$CFG["url_base"]</a> must be configured even if <a href=guide.php#url_rewrite>\$CFG["url_rewrite"]</a> is off
 </ul>
+<a name=v221></a>
 PHP News Reader v2.2.1 (2003/06/21)
 <ul>
 <li>Initial support for style sheet configuration via <a href=guide.php#style_sheet>\$CFG["style_sheet"]</a>
@@ -244,6 +268,7 @@ PHP News Reader v2.2.1 (2003/06/21)
 <li>Language switch can be turned off by setting <a href=guide.php#language_switch>\$CFG["language_switch"]</a> as false.
 <li>Fix the lower-case problem of nnrp authentication parameter in newsgroups.lst
 </ul>
+<a name=v220></a>
 PHP News Reader v2.2.0 (2003/05/25)
 <ul>
 <li>Support news server which requires authorization.
@@ -257,12 +282,14 @@ PHP News Reader v2.2.0 (2003/05/25)
 <li>Number of articles per page can be configured by <a href=guide.php#articles_per_page>\$CFG["articles_per_page"]</a> (default is 20).
 <li>Fix a bug when post after timeout with "form" style login.
 </ul>
+<a name=v212></a>
 PHP News Reader v2.1.2 (2003/04/05)
 <ul>
 <li>Do not strip whitespace from the beginning of each line in the article posted.
 <li>Jump to the correct category when returning from indexing page.
 <li>Correct the problem of lost for POST variables when launching the login dialog.
 </ul>
+<a name=v211></a>
 PHP News Reader v2.1.1 (2003/03/08)
 <ul>
 <li>The format of time displayed can be configured by <a href=guide.php#time_format>\$CFG["time_format"]</a>.
@@ -271,6 +298,7 @@ PHP News Reader v2.1.1 (2003/03/08)
 <li>Several author name/mail parsing problems fixed.
 <li>Fix variable missing problem in 'open' authentication type.
 </ul>
+<a name=v210></a>
 PHP News Reader v2.1.0 (2003/03/02)
 <ul>
 <li>Installation Guide released.
@@ -279,27 +307,27 @@ PHP News Reader v2.1.0 (2003/03/02)
 <li>The MIME charset of article will be honored while processing news articles.
 <li>The article will be posted and mailed with correct MIME headers about charset information based on the RFC 2045 standard.
 </ul>
-<p>
+<a name=v204></a>
 PHP News Reader v2.0.4 (2003/02/18)
 <ul>
 <li>Change the article numbering order (descent)
 </ul>
-<p>
+<a name=v203></a>
 PHP News Reader v2.0.3 (2003/02/05)
 <ul>
 <li>Use UTF-8 for English locale
 </ul>
-<p>
+<a name=v202></a>
 PHP News Reader v2.0.2 (2003/01/24)
 <ul>
 <li>Fix the bug of 'required' authentication model
 </ul>
-<p>
+<a name=v201></a>
 PHP News Reader v2.0.1 (2003/01/22)
 <ul>
 <li>Correct the link of SourceForge logo
 </ul>
-<p>
+<a name=v20></a><a name=v200></a>
 PHP News Reader v2.0 (2003/01/19)
 <ul>
 <li>First public release under <a href=copying.php>GPL</a> and hosts on <a href=http://sourceforge.net/ target=_blank>SourceForge</a>
@@ -319,14 +347,14 @@ PHP News Reader v2.0 (2003/01/19)
 <li>Support private groups which only accessible by authenticated user
 <li>Fix the E-Mail parsing bug in XOVER command of NNRP library
 </ul>
-<p>
+<a name=v19></a>
 PHP News Reader v1.9 (2003/01/01)
 <ul>
 <li>LDAP authentication module support
 <li>Add X-User-Real-E-Mail: header for real E-Mail address
 <li>Fix a typo error of default language file loading
 </ul>
-<p>
+<a name=v18></a>
 PHP News Reader v1.8 (2002/10/26)
 <ul>
 <li>Support encodings including Unicode/Chinese (UTF-8), Simplified Chinese (GB2312) and Traditional Chinese (BIG5).
@@ -334,14 +362,14 @@ PHP News Reader v1.8 (2002/10/26)
 <li>Interface re-formatting for various action
 <li>Fix a bug of forwarding article in english interface
 </ul>
-<p>
+<a name=v17></a>
 PHP News Reader v1.7 (2002/10/05)
 <ul>
 <li>Support Chinese bi-directional coding conversion of BIG5/GB2312
 <li>Support Chinese on-the-fly coding conversion while posting articles
 <li>Fix the multiple MIME encoding problem of the subject
 </ul>
-<p>
+<a name=v16></a>
 PHP News Reader v1.6 (2002/08/10)
 <ul>
 <li>Support square-bracketed category in newsgroups.lst
@@ -350,7 +378,7 @@ PHP News Reader v1.6 (2002/08/10)
 <li>Mail forwarding bug fixed
 <li>Check for valid E-Mail entered by user
 </ul>
-<p>
+<a name=v15></a>
 PHP News Reader v1.5 (2002/07/06)
 <ul>
 <li>Multiple news server
@@ -358,7 +386,7 @@ PHP News Reader v1.5 (2002/07/06)
 <li>Security enhancement for newsgroup verification
 <li>Switch interface language on the fly
 </ul>
-<p>
+<a name=v14></a>
 PHP News Reader v1.4 (2002/06/09)
 <ul>
 <li>Dynamic highlight of selected item 
