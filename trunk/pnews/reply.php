@@ -56,6 +56,9 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 		$subject  = $_POST['subject'];
 	}
 
+	$nickname = rtrim($nickname);
+	$subject = rtrim($subject);
+
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
 	if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
@@ -232,14 +235,14 @@ CONFIRM;
 #	$subject = str_replace( '"', '\"', $subject );
 	echo "<form name=post action=\"$self\" method=post enctype=\"multipart/form-data\">\n";
 	echo "<center><table width=100% border=0 cellpadding=0 cellspacing=0>\n";
-	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value=\"$auth_user\"></td>\n";
+	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value=\"$auth_user \"></td>\n";
 	echo " <td class=text><input name=replymail type=checkbox>$pnews_msg[ReplyToAuthor]</td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input class=input name=email size=40 value=\"$auth_email\" $mail_disable></td>\n";
 	echo " <td class=text><input name=onlymail type=checkbox onClick='check_reply();'>$pnews_msg[NotPostToGroup]</td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input class=input name=showgroup size=40 value=\"$group\" disabled></td>\n";
 	echo " <td class=text><input class=normal type=button value=\"$pnews_msg[FormConfirmPost]\" onClick='verify()' tabindex=2>\n";
 	echo " <input class=normal type=button value=\"$pnews_msg[FormCancelPost]\" onClick='really()' tabindex=3></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td colspan=2><input class=input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td colspan=2><input class=input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . " \" size=60></td></tr>\n";
 #	echo "</table>\n<table>\n";
 	echo "<input name=authormail value=\"$email\" type=hidden>";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";

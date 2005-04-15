@@ -47,6 +47,7 @@ if( isset($_POST['content']) && $_POST['content'] != '' ) {
 		$content  = $_POST['content'];
 		$subject  = $_POST['subject'];
 	}
+	$nickname = rtrim($nickname);
 
 	if( ! ( $nnrp->open( $server, $news_nntps[$c] ) && nnrp_authenticate() ) )
 		connect_error( $server );
@@ -170,7 +171,7 @@ echo <<<EOF
 <form name=post action="$self" method=post enctype="multipart/form-data">
 <center>
 <table cellpadding=0 cellspacing=0 width=100%>
- <tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value="$auth_user"></td>
+ <tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value="$auth_user "></td>
  <td class=field align=right>
   <input class=normal type=button value='$pnews_msg[FormConfirmPost]' onClick='verify()' tabindex=3>
   <input class=normal type=button value='$pnews_msg[FormCancelPost]' onClick='really()' tabindex=4>

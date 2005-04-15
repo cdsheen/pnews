@@ -37,9 +37,11 @@ if( $confirm == 1 ) {
 	$msgid   = $_POST['msgid'];
 
 	if( $auto_slash )
-		$content  = stripslashes($_POST['content']);
+		$subject  = stripslashes($_POST['subject']);
 	else
 		$subject  = $_POST['subject'];
+
+	$subject = rtrim($subject);
 
 	$artconv = get_conversion( $_POST['charset'], $curr_charset );
 
@@ -124,7 +126,7 @@ elseif( $artnum != '' ) {
 	echo "<tr><td class=field width=12%>$pnews_msg[Name]:</td><td><input class=input name=nickname size=20 value=\"$auth_user\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Email]:</td><td><input class=input name=email size=40 value=\"$auth_email\" disabled></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input class=input size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input class=input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=60 disabled></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input class=input value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . " \" size=60 disabled></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=confirm value=1 type=hidden>\n";

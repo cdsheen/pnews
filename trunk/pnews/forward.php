@@ -47,6 +47,7 @@ if( $_POST['content'] != '' ) {
 		$content  = $_POST['content'];
 		$subject  = $_POST['subject'];
 	}
+	$subject = rtrim($subject);
 
 	html_head( "$group - $subject" );
 
@@ -163,7 +164,7 @@ CONFIRM;
 	echo "<center><table width=100% cellspacing=0 cellpadding=0>\n";
 	echo "<tr><td class=field width=12%>$pnews_msg[Receiver]:</td><td><input class=input name=receiver size=50></td></tr>\n";
 	echo "<tr><td class=field>$pnews_msg[Group]:</td><td><input class=input name=showgroup size=40 value=\"$group\" disabled></td></tr>\n";
-	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input class=input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . "\" size=55></td></tr>\n";
+	echo "<tr><td class=field>$pnews_msg[Subject]:</td><td><input class=input name=subject value=\"" . htmlspecialchars($subject, ENT_QUOTES ) . " \" size=55></td></tr>\n";
 
 	echo "<tr><td class=field>\n";
 	echo "<input name=charset value=\"" . $artinfo['charset'] . "\" type=hidden>";

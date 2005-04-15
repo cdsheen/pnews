@@ -54,7 +54,7 @@ Features:
 <li>Multiple News server and multiple categories of news groups.
 <li>Support NNTP over SSL (NNTPS) and NNTP authentication.
 <li>Posting and downloading for uuencoded attachment.
-<li>Easy to install, no database access and IMAP is not required.
+<li>Easy to install, neither database access nor IMAP is required.
 <li>Authentication is easily configured to work with your existing system.
 <li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>
