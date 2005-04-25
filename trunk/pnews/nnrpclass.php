@@ -596,7 +596,7 @@ class pnews_nnrp {
 							}
 							$fsize += strlen($tmp);
 							if( $this->cache_dir )
-								fwrite( $fp, $tmp );
+								@fwrite( $fp, $tmp );
 							else
 								$binary.= $tmp;
 						}
