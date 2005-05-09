@@ -17,6 +17,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+# Basic tutorial on how to keep sessions going across phpBB and your site 
+# Author: A_Jelly_Doughnut 
+# URL: http://www.phpbb.com/kb/article.php?article_id=143
+
 $phpbb_root_path = $CFG['auth_phpbb_path'];
 
 define( 'IN_PHPBB', true );
