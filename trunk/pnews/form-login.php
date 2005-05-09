@@ -36,7 +36,7 @@ if( isset( $_POST['domain'] ) )
 $xref = $_POST['target'];
 
 /* Check for valid session before performing authentication */
-if( $_SESSION['current_session_id'] == session_id() )
+if( $_SESSION['current_session_id'] == session_id() && !in_array( $user, $CFG['auth_deny_users']) )
 	$info = check_user_password( $user, $pass );
 else
 	$info = false;

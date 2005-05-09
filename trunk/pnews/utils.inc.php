@@ -322,8 +322,7 @@ if( $CFG['auth_type'] != 'open' ) {
 				break;
 			case 'http':
 				if( !$is_expire && isset( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) ) {
-					$info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
-					if( !$info )
+					if( !in_array( $_SERVER['PHP_AUTH_USER'], $CFG['auth_deny_users']) && ($info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] )) != false )
 						http_login_auth();
 					$now = time();
 					$_SESSION['auth_time'] = $now;

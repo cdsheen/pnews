@@ -333,6 +333,9 @@ if( !isset( $CFG['global_readonly'] ) ) {
 		$CFG['global_readonly'] = false;
 }
 
+if( !isset( $CFG['auth_deny_users'] ) || !is_array($CFG['auth_deny_users']) )
+	$CFG['auth_deny_users'] = array();
+
 if( !isset( $CFG['confirm_post'] ) )
 	$CFG['confirm_post'] = false;
 

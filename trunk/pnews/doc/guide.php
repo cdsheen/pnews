@@ -224,6 +224,14 @@ You can download phpCAS from the following place:<br />
       <br />and then return something for granting access, <i>null</i> otherwise.</p>
       <p>There's a sample authentication module in <i>auth/sample.inc.php</i>. You can begin the work from here.</p>
   </blockquote>
+<a name=auth_deny_users></a>
+  <p> <strong>$CFG["auth_deny_users"]</strong></p>
+  <blockquote> 
+    <p>Specify users (as an array) to be denied from login (defaults: empty)<br />
+      <br />
+    <p>$CFG["auth_deny_users"] = array( 'guest', 'baduser' );</p>
+    <p>This setting first appeared in the <a href="history.php#v262">v2.6.2</a> of PHP News Reader</p>
+  </blockquote>
 <a name=ldap_auth></a>
   <p> <strong>LDAP authentication parameters</strong> (REQUIRED if <a href="#auth_method">$CFG["auth_method"]</a> is <i>'ldap'</i>)</p>
   <blockquote> 
