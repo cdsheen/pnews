@@ -209,7 +209,12 @@ Donation:
 <blockquote>
 If you like PHP News Reader, and think it useful for your work, or even making profit from PHP News Reader, you can support me by donating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
 <br />
+<table>
+<tr><td>
+<a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank><img src=https://sourceforge.net/images/project-support.jpg alt="Domation Link" /></a>
+</td><td valign=middle> &nbsp;
 Make a donation: <a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank>http://sourceforge.net/donate/index.php?group_id=71412</a>
+</td></tr></table>
 </blockquote>
 <p>
 Author:

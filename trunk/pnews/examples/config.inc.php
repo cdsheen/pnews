@@ -420,10 +420,10 @@ $CFG["organization"] = "XXX News Server";
 // $CFG["post_signature"] = "\n-- \nPOST BY: PHP News Reader\n";
 
 
-# [meta_description] The META desctiption embeded in HTML header
+# [meta_description] The META description embeded in HTML header
 #                    (default: "PHP News Reader")
 
-// $CFG["meta_desciption"] = "Web-based News Reader";
+// $CFG["meta_description"] = "Web-based News Reader";
 
 
 # [meta_keywords] The META keywords embeded in HTML header
