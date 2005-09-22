@@ -40,6 +40,11 @@ include('header.php');
 echo <<<EOH
 <font face=Georgia>
 <a name=v262></a>
+PHP News Reader v2.6.3 (2005/09/22)
+<ul>
+<li>Fixed the use of array_shift() which change its return value in PHP 5.0.5
+</ul>
+<a name=v262></a>
 PHP News Reader v2.6.2 (2005/05/30)
 <ul>
 <li><a href=guide.php#html_header>\$CFG['html_header']</a> and <a href=guide.php#html_footer>\$CFG['html_footer']</a> are displayed when reading articles.
