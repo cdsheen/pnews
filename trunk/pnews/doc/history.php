@@ -42,7 +42,7 @@ echo <<<EOH
 <a name=v262></a>
 PHP News Reader v2.6.3 (2005/09/22)
 <ul>
-<li>Fixed the use of array_shift() which change its return value in PHP 5.0.5
+<li>Fixed for array_shift() as a return value in PHP 5.0.5
 </ul>
 <a name=v262></a>
 PHP News Reader v2.6.2 (2005/05/30)

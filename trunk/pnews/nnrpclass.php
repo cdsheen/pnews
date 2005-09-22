@@ -399,8 +399,7 @@ class pnews_nnrp {
 		if( $code[0] != '2' )
 			return(-1);
 		$ret = split( ' ', $msg );
-		array_shift( $ret );
-		return( $ret );
+		return( $ret[0] );
 	}
 
 	function prev( $artnum ) {
@@ -413,8 +412,7 @@ class pnews_nnrp {
 		if( $code[0] != '2' )
 			return(-1);
 		$ret = split( ' ', $msg );
-		array_shift( $ret );
-		return( $ret );
+		return( $ret[0] );
 	}
 
 	function show( $artnum, $artinfo, $mode, $prepend = '', $postpend = '', $trans_func = null, $download_url = '' ) {
