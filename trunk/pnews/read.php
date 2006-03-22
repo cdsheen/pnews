@@ -21,7 +21,7 @@ include('utils.inc.php');
 
 # -------------------------------------------------------------------
 
-$artnum = $_GET['artnum'];
+$artnum = intval($_GET['artnum']);
 
 #if( isset( $_GET['orig'] ) )
 #	$newwin = ($_GET['orig']==0);

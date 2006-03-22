@@ -39,7 +39,14 @@ include('header.php');
 
 echo <<<EOH
 <font face=Georgia>
-<a name=v262></a>
+<a name=v264></a>
+PHP News Reader v2.6.4 (2006/03/22)
+<ul>
+<li>Fixed possible XSS attack (thanks Nikolas Coukouma)
+<li>Fixed the problem for doing authentication from http_user & http_pw
+<li>Fixed CAS authentication error.
+</ul>
+<a name=v263></a>
 PHP News Reader v2.6.3 (2005/09/22)
 <ul>
 <li>Fixed for array_shift() as a return value in PHP 5.0.5

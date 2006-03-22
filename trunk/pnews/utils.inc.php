@@ -176,9 +176,6 @@ if( isset($_SESSION['save_postvar']) && $_SESSION['save_postvar'] ) {
 
 $server = isset($_GET['server']) ? $_GET['server'] : '';
 $group  = get_group();
-#echo "$server/haha/";
-#echo $_GET['server'];
-//$group  = $_GET['group'];
 
 if( $server == '*' && $group_default_server != '' )
 	$server = $group_default_server;
@@ -187,9 +184,9 @@ if( $self_base == 'index.php' ) {
 	if( isset( $_GET['c'] ) )
 		$curr_category = $_GET['c'] - 1;
 	elseif( isset( $_GET['category'] ) )
-		$curr_category = $_GET['category'] - 1;
+		$curr_category = intval($_GET['category']) - 1;
 	elseif( isset( $_GET['catalog'] ) )
-		$curr_category = $_GET['catalog'];
+		$curr_category = intval($_GET['catalog']);
 	elseif( isset($_SESSION['rem_category']) )
 		$curr_category = $_SESSION['rem_category'];
 	else
@@ -322,7 +319,7 @@ if( $CFG['auth_type'] != 'open' ) {
 				break;
 			case 'http':
 				if( !$is_expire && isset( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) ) {
-					if( !in_array( $_SERVER['PHP_AUTH_USER'], $CFG['auth_deny_users']) && ($info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] )) != false )
+					if( !in_array( $_SERVER['PHP_AUTH_USER'], $CFG['auth_deny_users']) && ($info = check_user_password( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] )) == null )
 						http_login_auth();
 					$now = time();
 					$_SESSION['auth_time'] = $now;
@@ -647,6 +644,9 @@ function verifying( $server, $group ) {
 	global $news_groups, $news_server, $category_num;
 
 	if( $server == '' || $group == '' )
+		return(-1);
+
+	if( !preg_match( '/^[\w\d.\-_+]+$/', $group ) )
 		return(-1);
 
 	for( $i = 0 ; $i < $category_num ; $i++ ) {

@@ -26,7 +26,7 @@ $title .= " - $pnews_msg[CrossPost]";
 $server     = $_POST['server'];
 $content    = $_POST['content'];
 $postgroup  = $_POST['postgroup'];
-$artnum     = $_GET['artnum'];
+$artnum     = intval($_GET['artnum']);
 
 if( $content != '' && $postgroup != '' ) {
 

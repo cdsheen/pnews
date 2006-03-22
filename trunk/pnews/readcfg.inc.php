@@ -70,14 +70,27 @@ if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timesta
 			include('auth/phpbb.inc.php');
 			break;
 		}
+
 		if( $CFG['auth_prompt'] == 'cas' ) {
 
 			@include_once('CAS/CAS.php');
+
+			$cas_server = $CFG['auth_cas_server'];
+			if( strstr( $cas_server, ':' ) ) {
+				list( $cas_server, $cas_port ) = split( ':', $cas_server );
+				$cas_port = intval($cas_port);
+			}
+			else
+				show_error('The port on which the CAS server is running was not specified. $CFG[\'auth_cas_server\'] should look like \'hostname:port\'.');
+
+			if( !isset($CFG['auth_cas_debug']) )
+				$CFG['auth_cas_debug'] = false;
 
 			phpCAS::setDebug($CFG['auth_cas_debug']);
 
 			phpCAS::client( CAS_VERSION_2_0, $cas_server, $cas_port, $CFG['auth_cas_base_uri']);
 		}
+
 	}
 	return;
 }

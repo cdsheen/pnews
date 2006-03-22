@@ -21,8 +21,8 @@ include('utils.inc.php');
 
 # -------------------------------------------------------------------
 
-$artnum  = $_GET['artnum'];
-$confirm = $_POST['confirm'];
+$artnum  = intval($_GET['artnum']);
+$confirm = intval($_POST['confirm']);
 
 if( $confirm == 1 ) {
 

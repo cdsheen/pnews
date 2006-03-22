@@ -24,7 +24,7 @@ $title .= " - $pnews_msg[Forward]";
 # -------------------------------------------------------------------
 
 
-$artnum   = $_GET['artnum'];
+$artnum   = intval($_GET['artnum']);
 
 if( $_POST['content'] != '' ) {
 

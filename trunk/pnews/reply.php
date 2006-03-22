@@ -23,7 +23,7 @@ $title .= " - $pnews_msg[Reply]";
 
 # -------------------------------------------------------------------
 
-$artnum   = $_GET['artnum'];
+$artnum   = intval($_GET['artnum']);
 
 if( isset($_POST['content']) && $_POST['content'] != '' ) {
 
