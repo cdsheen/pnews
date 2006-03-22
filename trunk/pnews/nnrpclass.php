@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2005 Shen Cheng-Da
+# Copyright (C) 2001-2006 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -852,7 +852,7 @@ class pnews_nnrp {
 	}
 }
 
-// Copyright (C) 2001-2005 - All rights reserved
+// Copyright (C) 2001-2006 - All rights reserved
 // Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 ?>

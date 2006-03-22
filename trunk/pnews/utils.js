@@ -1,4 +1,4 @@
-/* PHP News Reader - Copyright(C) 2001-2005         */
+/* PHP News Reader - Copyright(C) 2001-2006         */
 /* Shen Cheng-Da (cdsheen at users.sourceforge.net) */
 
 /* Javascript Functions, included by html.inc.php   */
