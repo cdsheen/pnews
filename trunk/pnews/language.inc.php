@@ -69,7 +69,9 @@ elseif( isset($_COOKIE['cookie_language']) ) {
 	$_SESSION['session_language'] = $_COOKIE['cookie_language'];
 }
 elseif( isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ) {
-	$ml = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
+	$lang_prefer = explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
+	$ml = $lang_prefer[0];
+#	$ml = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
 	if( isset($lang_option[$ml]) ) {
 		$curr_language = $ml;
 		$_SESSION['session_language'] = $ml;

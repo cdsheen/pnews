@@ -115,8 +115,7 @@ html_head( "$subject ($group)" );
 
 $subject = htmlspecialchars( $subject );
 
-echo "<center>\n";
-
+echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 if( $CFG['html_header'] ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
@@ -127,7 +126,10 @@ elseif( $CFG['banner'] )
 	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
 else
 	echo "<a href=index.php><span class=title>$title</span><br />";
-
+echo "</td>";
+if( isset($CFG['google_adsense_banner']) )
+	echo '<td align=right valign=top>'.$CFG['google_adsense_banner'].'</td>';
+echo "</tr></table>\n<center>\n";
 echo "<table class=shadow border=0 width=100% cellpadding=0 cellspacing=0>\n";
 echo "<tr><td class=bg>\n";
 echo "<table width=100% border=0 cellpadding=2 cellspacing=2>";
@@ -202,11 +204,16 @@ if( $thread_all ) {
 		echo <<<ARTINFO
 <tr><td class=author>$from ($hmail)</td>
 <td class=date>$date</td></tr>
-<tr><td colspan=2 class=content>\n
+<tr><td colspan=2 class=content>
+<table width=100%><tr><td>\n
 ARTINFO;
 		$nnrp->show( $an, $at, $show_mode, '', " <br />\n", $artconv['to'],
 			$CFG['url_rewrite'] ? "$dlbase/dl/$server/$group/$an/%s"
 			:	"$dlbase/download.php?server=$server&group=$group&artnum=$an&type=uuencode&filename=%s" );
+		echo "</td><td align=right valign=top>";
+		if( isset($CFG['google_adsense_article'] ) )
+			echo $CFG['google_adsense_article'];
+		echo "</td></tr></table>";
 		echo "<hr />\n";
 	}
 }
@@ -217,12 +224,17 @@ else {
 <tr><td class=author>$from ($hmail)</td>
 <td class=date>$date</td></tr>
 <tr><td colspan=2 class=content>
-<hr />\n
+<hr /><table width=100%><tr><td>\n
 ARTINFO;
 
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'],
 		$CFG['url_rewrite'] ? "$dlbase/dl/$server/$group/$artnum/%s"
 		: "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
+
+	echo "</td><td align=right valign=top>";
+	if( isset($CFG['google_adsense_article'] ) )
+		echo $CFG['google_adsense_article'];
+	echo "</td></tr></table>";
 }
 
 if( $CFG['thread_enable'] ) {

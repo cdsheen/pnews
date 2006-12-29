@@ -23,7 +23,7 @@ include('utils.inc.php');
 
 html_head( $group );
 
-echo "<center>\n";
+echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 
 if( $CFG['html_header'] ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
@@ -32,9 +32,16 @@ if( $CFG['html_header'] ) {
 		readfile( $CFG['html_header'] );
 }
 elseif( $CFG['banner'] )
-	echo "<a href=index.php>" . $CFG['banner'] . "</a><br />\n";
+	echo "<a href=index.php>" . $CFG['banner'] . "</a>\n";
 else
-	echo "<a href=index.php><span class=title>$title</span></a><br />";
+	echo "<a href=index.php><span class=title>$title</span></a>\n";
+echo "</td>";
+
+if( isset($CFG['google_adsense_group']) ) {
+	echo "<td align=right valign=top>".$CFG['google_adsense_group'].'</td>';
+}
+
+echo "</td></tr></table>\n<center>";
 
 $c = check_group( $server, $group );
 

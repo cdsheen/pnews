@@ -36,7 +36,7 @@ else
 
 $nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 
-echo "<br /><table width=95%><tr><td valign=top width=120>\n";
+echo "<br /><table width=100%><tr><td valign=top width=120>\n";
 
 $maxr = 100;
 
@@ -208,8 +208,10 @@ EOR;
 }
 
 echo "</table>\n";
-
 echo "</td></tr></table>\n";
+
+if( isset($CFG['google_adsense_list'] ) )
+	echo '</td><td align=right valign=top>'.$CFG['google_adsense_list'];
 
 echo "</td></tr></table>\n";
 
