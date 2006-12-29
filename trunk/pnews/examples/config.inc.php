@@ -451,11 +451,11 @@ $CFG["show_sourceforge_logo"] = true;
 #     "zh-tw" - Traditional Chinese        BIG5
 #     "zh-cn" - Simplified Chinese         GB2312
 #   "unicode" - Unicode                    UTF-8       (default)
-#        "fr" - French                     ISO-8859-1
-#        "fi" - Finnish                    ISO-8859-1
-#        "de" - German                     ISO-8859-1
-#        "it" - Italiano                   ISO-8859-1
-#        "sk" - Slovak                     ISO-8859-2
+#        "fr" - French                     iso-8859-1
+#        "fi" - Finnish                    iso-8859-1
+#        "de" - German                     iso-8859-1
+#        "it" - Italiano                   iso-8859-1
+#        "sk" - Slovak                     iso-8859-2
 
 # [interface_language] The language setting of interface (default: "en")
 

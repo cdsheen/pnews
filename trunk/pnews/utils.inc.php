@@ -206,7 +206,7 @@ elseif( isset($_SESSION['rem_category']) )
 else
 	$curr_category = $default_category;
 
-if( $curr_category == '' || $curr_category >= $category_num )
+if( !is_int($curr_category) || $curr_category >= $category_num )
 	$curr_category = $default_category;
 
 
