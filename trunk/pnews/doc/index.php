@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2006 Shen Cheng-Da
+# Copyright (C) 2001-2007 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -211,7 +211,7 @@ If you like PHP News Reader, and think it useful for your work, or even making p
 <br />
 <table>
 <tr><td>
-<a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank><img src=https://sourceforge.net/images/project-support.jpg alt="Domation Link" /></a>
+<a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank><img src=https://sourceforge.net/images/project-support.jpg alt="Support This Project" /></a>
 </td><td valign=middle> &nbsp;
 Make a donation: <a href="http://sourceforge.net/donate/index.php?group_id=71412" target=_blank>http://sourceforge.net/donate/index.php?group_id=71412</a>
 </td></tr></table>

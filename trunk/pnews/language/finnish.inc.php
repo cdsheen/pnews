@@ -5,7 +5,7 @@
 // Language: Finnish
 // Coding:   ISO-8859-1
 
-// Copyright (C) 2001-2005 - All rights reserved
+// Copyright (C) 2001-2007 - All rights reserved
 // Markus Översti (markus.oversti at edu.haapavesi.fi)
 
 $pnews_msg['Authentication']     = 'Kirjaudu';

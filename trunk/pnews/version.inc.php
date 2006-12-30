@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2006 Shen Cheng-Da
+# Copyright (C) 2001-2007 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,9 +20,9 @@
 # PHP News Reader - Version Information
 
 $pnews_name      = 'PHP News Reader';
-$pnews_version   = 'v2.6.4';
-$pnews_release   = '2006/03/22';
-$pnews_copyright = '(C) 2001-2006 - Shen Cheng-Da';
+$pnews_version   = 'v2.6.5';
+$pnews_release   = '2007/01/01';
+$pnews_copyright = '(C) 2001-2007 - Shen Cheng-Da';
 $pnews_claim     = "$pnews_name $pnews_version $pnews_copyright";
 
 ?>

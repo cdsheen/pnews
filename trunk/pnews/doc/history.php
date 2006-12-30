@@ -1,7 +1,7 @@
 <?
 
 # PHP News Reader
-# Copyright (C) 2001-2006 Shen Cheng-Da
+# Copyright (C) 2001-2007 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,8 +43,8 @@ echo <<<EOH
 PHP News Reader v2.6.5 (2007/01/01)
 <ul>
 <li>Fixed the browser languages detection for zh-tw and zh-cn
-<li>Added <a href=guide.php#base_url_enforcement>\$CFG['base_url_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base']. This option is also useful to deny the robot access from search engine.
-<li>Fixed the access to the first category (thanks goudal)
+<li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base']. This option is also useful to deny the robot access from search engine.
+<li>Fixed the problem to access the first category (thanks goudal)
 </ul>
 <a name=v264></a>
 PHP News Reader v2.6.4 (2006/03/22)

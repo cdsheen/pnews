@@ -5,7 +5,7 @@
 // Language: Chinese (Traditional)
 // Coding:   BIG5
 
-// Copyright (C) 2001-2005 - All rights reserved
+// Copyright (C) 2001-2007 - All rights reserved
 // Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 $pnews_msg['Authentication']     = 'ป{รา';

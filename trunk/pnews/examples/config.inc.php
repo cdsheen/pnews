@@ -5,7 +5,7 @@
 #
 # PHP News Reader Configuration File
 #
-# Copyright (C) 2001-2006 - All rights reserved
+# Copyright (C) 2001-2007 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 # This is a sample configuration.
