@@ -523,7 +523,7 @@ if( $CFG['auth_registration_info'] != '' ) {
 ?>
 </table>
 </form>
-<script language="javascript">
+<script type="text/javascript">
 	document.login.loginName.focus();
 </script>
 </td>
@@ -733,7 +733,7 @@ function kill_myself() {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script language="JavaScript">
+<script type="text/javascript">
         window.close();
 </script>
 </head>
@@ -822,7 +822,7 @@ function hide_mail( $email ) {
 	$domain = str_replace( '"', '\\"', $domain );
 	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
 	return <<<EMAIL
-<script language="JavaScript">document.write( $hmail );</script>
+<script type="text/javascript">document.write( $hmail );</script>
 EMAIL;
 }
 
@@ -840,7 +840,7 @@ function hide_mail_link( $email, $linktext = '' ) {
 	$hmail = '"' . $id . '" + "&#64;" + "' . str_replace( '.', '&#46;', $domain ) . '"';
 	if( $linktext == '' ) {
 		return <<<EMAIL
-<script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + $hmail + '</a>' );</script>
+<script type="text/javascript">document.write( '<a href="mailto:' + $hmail + '">' + $hmail + '</a>' );</script>
 EMAIL;
 	}
 	else {
@@ -848,7 +848,7 @@ EMAIL;
 		$linktext = str_replace( '"', '\\"', $linktext );
 #		$linktext = htmlspecialchars( $linktext );
 		return <<<EMAIL
-<script language="JavaScript">document.write( '<a href="mailto:' + $hmail + '">' + "$linktext" + '</a>' );</script>
+<script type="text/javascript">document.write( '<a href="mailto:' + $hmail + '">' + "$linktext" + '</a>' );</script>
 EMAIL;
 	}
 }

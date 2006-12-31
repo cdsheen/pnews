@@ -175,7 +175,7 @@ elseif( $artnum != '' ) {
 
 	html_head( "$group - $subject" );
 ?>
-<script language="javascript">
+<script type="text/javascript">
 	function really() {
 		if( document.post.content.value == "" ) {
 			window.close();
@@ -250,7 +250,7 @@ CONFIRM;
 	echo "<input name=group value=\"$group\" type=hidden>\n";
 	echo "<input name=refid type=hidden value=\"" . htmlspecialchars($refid, ENT_NOQUOTES ) . "\">\n";
 ?>
-<script language=javascript>
+<script type="text/javascript">
 	function InsertQuote() {
 		document.post.content.value = document.post.quote.value + "\n" + document.post.content.value;
 	}

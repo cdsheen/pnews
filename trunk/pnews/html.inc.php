@@ -51,7 +51,7 @@ EOH;
 
 	echo <<<EOX
 <LINK REL=STYLESHEET TYPE="text/css" HREF="css/{$CFG['style_sheet']}" />
-<script language="javascript" src="utils.js"></script>
+<script type="text/javascript" src="utils.js"></script>
 <title>$title </title>
 </head>
 <body $bodymod>
@@ -186,13 +186,13 @@ function forward_article( $server, $group, $artnum, $link_text, $close = false, 
 }
 
 function html_focus( $form, $field ) {
-	echo "<script language=\"javascript\">\n";
+	echo "<script type=\"text/javascript\">\n";
 	echo "	document.$form.$field.focus();\n";
 	echo "</script>\n";
 }
 
 function html_delay_close( $mini_seconds ) {
-	echo "<script language=\"javascript\">\n";
+	echo "<script type=\"text/javascript\">\n";
 	echo "	setTimeout( \"close_window();\", $mini_seconds );\n";
 	echo "</script>\n";
 }

@@ -722,7 +722,7 @@ You can download phpCAS from the following place:<br />
     <p>Enable the Anti-Spam feature, the E-Mail will be encoded by JavaScript (default: <i>true</i>)</p>
     <p>For example, the E-Mail address "dada@pnews.com.tw" will be encoded as:</p>
     <blockquote><i>
-    &lt;script language="JavaScript"&gt;<br />
+    &lt;script type="text/javascript"&gt;<br />
     &nbsp;&nbsp;&nbsp;&nbsp;document.write( "dada" + "&amp;#64;" + "pnews&amp;#46;com&amp;#46;tw" );<br />
     &lt;/script&gt;</i>
     </blockquote>

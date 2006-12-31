@@ -116,7 +116,7 @@ PHP News Reader's development started around August 2001.
 And since 2005, I can only afford time to support the limited bug fixes and minor improvements.
 It needs a completely rewrite to support more advanced features.
 <p>
-This is PHP News Reader <b>$pnews_version</b>.
+The latest version of PHP News Reader is <b>$pnews_version</b>.
 EOR;
 
 if( $ver[3] != 0 )
@@ -201,7 +201,7 @@ Author:
 <blockquote>
 Shen Cheng-Da<br />
 Taipei, Taiwan<br />
-<script language="JavaScript">
+<script type="text/javascript">
 	document.write("cdsheen" + "&#64;" + "users&#46;sourceforge&#46;net");
 </script>
 <br />

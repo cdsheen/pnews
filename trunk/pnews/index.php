@@ -38,6 +38,9 @@ $nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 
 echo "<p>";
 
+if( isset($CFG['advertise_group_list'] ) )
+	echo '<div style="float: right">'.$CFG['advertise_group_list'].'</div>';
+
 echo "<table width=100%><tr><td valign=top width=120>\n";
 
 $maxr = 100;
@@ -91,9 +94,6 @@ echo "</table>\n";
 echo "</td></tr></table>\n";
 
 echo "</td><td valign=top align=left>";
-
-if( isset($CFG['advertise_group_list'] ) )
-	echo '<div style="float: right">'.$CFG['advertise_group_list'].'</div>';
 
 if( ! $nnrp->connected() ) {
 	echo "<br /><br /><font size=3>$pnews_msg[ConnectServerError] (" . $news_server[$curr_category] . ")</font></td></tr></table>\n";

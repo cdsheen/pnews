@@ -317,7 +317,7 @@ $pg_str = sprintf( $pnews_msg['PageNumber'], $pg_str, $totalpg );
 
 echo <<<PG
 </td><td class=page align=center onMouseover='this.className="page_hover";' onMouseout='this.className="page";'>
-<script language=javascript>
+<script type="text/javascript">
 function initPage(pgidx) {
 	pgidx.length = $totalpg;
 	for( i = 0 ; i < $totalpg; i++ ) {
@@ -352,7 +352,7 @@ else
 	echo '&nbsp;';
 echo "</td>";
 echo <<<EOT
-<script language=javascript>
+<script type="text/javascript">
   initPage(document.select.pgidx);
 </script>
     <td class=action align=center onMouseover='this.className="action_hover";' onMouseout='this.className="action";'>

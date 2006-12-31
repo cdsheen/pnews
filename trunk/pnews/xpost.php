@@ -143,7 +143,7 @@ elseif( $artnum != '' ) {
 
 	html_head( "$group - $subject" );
 ?>
-<script language="javascript">
+<script type="text/javascript">
 	function really() {
 		if( document.post.content.value == "" ) {
 			window.close();

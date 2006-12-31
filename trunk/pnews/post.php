@@ -117,7 +117,7 @@ else {
 	html_head( $title );
 
 ?>
-<script language="javascript">
+<script type="text/javascript">
 	function really() {
 		if( document.post.content.value == "" ) {
 			window.close();
