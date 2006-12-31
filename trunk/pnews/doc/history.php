@@ -38,8 +38,9 @@ echo <<<EOH
 <b>PHP News Reader v2.6.5 (2007/01/01)</b>
 <ul>
 <li>Fixed the browser languages detection for zh-tw and zh-cn
-<li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base']. This option is also useful to deny the robot access from search engine.
-<li>Fixed the problem to access the first category (thanks goudal)
+<li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base'].
+<li>Fixed the bug which unable to access the first category (thanks goudal)
+<li>Added <a href=guide.php#advertise>\$CFG['advertise_*']</a> to add advertisement.
 </ul>
 <a name=v264></a>
 <b>PHP News Reader v2.6.4 (2006/03/22)</b>

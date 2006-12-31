@@ -166,8 +166,8 @@ http://sourceforge.net/projects/pnews/
 <p>
 Demonstration:
 <blockquote>
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<br />
-<a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
+<a href="http://enews.urdada.net/" target=_blank>http://enews.urdada.net/</a> (in English)<br />
+<a href="http://twbbs.urdada.net/" target=_blank>http://twbbs.urdada.net/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
 </blockquote>
 <p>
 Download the latest version from SourceForge:

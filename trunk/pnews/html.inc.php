@@ -21,13 +21,7 @@ require_once('language.inc.php');
 
 if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) {
 	$CFG['url_base'] = str_replace( 'http://', 'https://', $CFG['url_base'] );
-	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
 }
-else {
-	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-}
-
-#if( $CFG['url_rewrite'] )
 
 $urlbase  = preg_replace( '/[\\/]*$/', '', $CFG['url_base'] );
 
@@ -95,26 +89,11 @@ function html_foot($langopt = true) {
   <tr class=footbar><td>
      <i>
 <?
-	if( $CFG['author_link'] == false )
-		echo "<a href=\"http://sourceforge.net/projects/pnews/\" target=_blank class=text>PHP News Reader</a> $pnews_version";
-	else
-		echo "<a href=\"doc/index.php\" target=_blank class=text>PHP News Reader $pnews_version</a>";
+	echo "<a href=\"http://pnews.sourceforge.net/\" target=_blank class=text>PHP News Reader</a> $pnews_version";
 ?>
      </i>
      &nbsp;
 </td>
-<td align=right valign=center>
-<?
-	if( $CFG['show_sourceforge_logo'] ) {
-		echo <<<EOL
-<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" height=20 alt="SourceForge.net">
-</a>
-
-EOL;
-	}
-?>
-  </td>
   <td align=right>
 <?
 	if( $CFG['language_switch'] && $langopt ) {

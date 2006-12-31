@@ -606,6 +606,14 @@ You can download phpCAS from the following place:<br />
       <br />
       You should get a copy from examples/newsgroups.lst (default: <i>"newsgroups.lst"</i>)</p>
   </blockquote>
+<a name=referrer_enforcement></a>
+  <p><strong>$CFG["referrer_enforcement"]</strong></p>
+  <blockquote>
+    <p>This option will enforce the browsing to begin from (or redirect to) $CFG['url_base'] (default: <i>false</i>)</p>
+    <p>This option is also useful to deny the robot access from search engine.</p>
+    <p>$CFG["referrer_enforcement"] = true;
+    <p>This setting first appeared in the <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
+  </blockquote>
 <a name=confirm_post></a>
   <p><strong>$CFG["confirm_post"]</strong></p>
   <blockquote>
@@ -785,6 +793,11 @@ You can download phpCAS from the following place:<br />
     <p>Show sourceforge logo (default: <i>false</i>)</p>
     <p>This setting is <b>deprecated</b> since <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
   </blockquote>
+<a name=advertise></a>
+  <p>
+<strong>$CFG["advertise_group_list"]</strong> - add advertisement for group-list page.<br />
+<strong>$CFG["advertise_banner"]</strong> - add advertisement in the banner for each article-list and article page<br />
+<strong>$CFG["advertise_article"]</strong> - add advertisement for each article page
 <a name=language_switch></a>
   <p> <strong>$CFG["language_switch"]</strong></p>
   <blockquote> 

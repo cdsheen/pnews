@@ -25,6 +25,9 @@ html_head( $group );
 
 echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 
+if( isset($CFG['advertise_banner']) )
+	echo '<div style="float: right">'.$CFG['advertise_banner'].'</div>';
+
 if( $CFG['html_header'] ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
@@ -36,10 +39,6 @@ elseif( $CFG['banner'] )
 else
 	echo "<a href=index.php><span class=title>$title</span></a>\n";
 echo "</td>";
-
-if( isset($CFG['google_adsense_group']) ) {
-	echo "<td align=right valign=top>".$CFG['google_adsense_group'].'</td>';
-}
 
 echo "</td></tr></table>\n<center>";
 

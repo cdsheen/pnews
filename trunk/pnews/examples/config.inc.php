@@ -315,6 +315,12 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_list"] = "/somewhere/newsgroups.lst";
 
 
+# [referrer_enforcement] enforce the browsing to begin from $CFG["url_base"]
+#                        (default: false)
+
+// $CFG["referrer_enforcement"] = true;
+
+
 # [confirm_post] The message prompted to confirm the posting
 #                (post/reply/crosspost) (default: false)
 

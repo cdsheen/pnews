@@ -116,6 +116,10 @@ html_head( "$subject ($group)" );
 $subject = htmlspecialchars( $subject );
 
 echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
+
+if( isset($CFG['advertise_banner']) )
+	echo '<div style="float: right">'.$CFG['advertise_banner'].'</div>';
+
 if( $CFG['html_header'] ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
@@ -127,9 +131,8 @@ elseif( $CFG['banner'] )
 else
 	echo "<a href=index.php><span class=title>$title</span><br />";
 echo "</td>";
-if( isset($CFG['google_adsense_banner']) )
-	echo '<td align=right valign=top>'.$CFG['google_adsense_banner'].'</td>';
 echo "</tr></table>\n<center>\n";
+
 echo "<table class=shadow border=0 width=100% cellpadding=0 cellspacing=0>\n";
 echo "<tr><td class=bg>\n";
 echo "<table width=100% border=0 cellpadding=2 cellspacing=2>";
@@ -211,8 +214,6 @@ ARTINFO;
 			$CFG['url_rewrite'] ? "$dlbase/dl/$server/$group/$an/%s"
 			:	"$dlbase/download.php?server=$server&group=$group&artnum=$an&type=uuencode&filename=%s" );
 		echo "</td><td align=right valign=top>";
-		if( isset($CFG['google_adsense_article'] ) )
-			echo $CFG['google_adsense_article'];
 		echo "</td></tr></table>";
 		echo "<hr />\n";
 	}
@@ -227,13 +228,15 @@ else {
 <hr /><table width=100%><tr><td>\n
 ARTINFO;
 
+	if( isset($CFG['advertise_article'] ) )
+		echo '<div style="float: right">'.$CFG['advertise_article'].'</div>';
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'],
 		$CFG['url_rewrite'] ? "$dlbase/dl/$server/$group/$artnum/%s"
 		: "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
 	echo "</td><td align=right valign=top>";
-	if( isset($CFG['google_adsense_article'] ) )
-		echo $CFG['google_adsense_article'];
+#	if( isset($CFG['advertise_article'] ) )
+#		echo $CFG['advertise_article'];
 	echo "</td></tr></table>";
 }
 
