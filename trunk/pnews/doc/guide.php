@@ -23,11 +23,6 @@ $dname = 'pnews-' . str_replace( 'v', '', $pnews_version ) . '.tgz' ;
 
 $pname = 'pnews' . preg_replace( '/\D/', '', $pnews_version ) ;
 
-if( isset($_SERVER['HTTPS']) )
-	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-else
-	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-
 echo <<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -788,6 +783,7 @@ You can download phpCAS from the following place:<br />
   <p> <strong>$CFG["show_sourceforge_logo"]</strong></p>
   <blockquote> 
     <p>Show sourceforge logo (default: <i>false</i>)</p>
+    <p>This setting is <b>deprecated</b> since <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
   </blockquote>
 <a name=language_switch></a>
   <p> <strong>$CFG["language_switch"]</strong></p>
@@ -825,11 +821,11 @@ You can download phpCAS from the following place:<br />
  	<tr><td>Tranditional Chinese</td><td>zh-tw</td><td>BIG5</td></tr>
 	<tr><td>Simplified Chinese</td><td>zh-cn</td><td>GB2312</td></tr>
  	<tr><td>Unicode</td><td>Unicode</td><td>UTF-8 (default)</td></tr>
-        <tr><td>Fran&ccedil;ais</td><td>fr</td><td>ISO-8859-1</td></tr>
-        <tr><td>Finnish</td><td>fi</td><td>ISO-8859-1</td></tr>
-        <tr><td>German</td><td>de</td><td>ISO-8859-1</td></tr>
-        <tr><td>Italiano</td><td>it</td><td>ISO-8859-1</td></tr>
-	<tr><td>Slovak</td><td>sk</td><td>ISO-8859-2</td></tr>
+        <tr><td>Fran&ccedil;ais</td><td>fr</td><td>iso-8859-1</td></tr>
+        <tr><td>Finnish</td><td>fi</td><td>iso-8859-1</td></tr>
+        <tr><td>German</td><td>de</td><td>iso-8859-1</td></tr>
+        <tr><td>Italiano</td><td>it</td><td>iso-8859-1</td></tr>
+	<tr><td>Slovak</td><td>sk</td><td>iso-8859-2</td></tr>
 	</table>
   </blockquote>
 <a name=interface_language></a>
@@ -930,7 +926,7 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p>With this option, the connection to news server will be NNTP over SSL,
        also known as NNTPS. This option first appeared in <a href="history.php#v240">v2.4.0</a>, and require
-       PHP with <b>v4.3.0</b> or greater and be compiled with OpenSSL support.</p>
+       PHP with <b>v4.3.0</b> or greater and being compiled with OpenSSL extension.</p>
   </blockquote>
   <p>readonly</p>
   <blockquote> 
@@ -967,7 +963,7 @@ You can download phpCAS from the following place:<br />
   <p>
   The %http_user and %http_pw will be replaced by the username/password provided in http authentication.
   This replacement does not work if you use '<i>form</i>' as <a href=#auth_prompt>$CFG['auth_prompt']</a>.
-  This is because that the password does not available in session variable for the security reason.</p>
+  This is because that the password is not available in session data for the security reason.</p>
   The replacement of %http_* is originally coded by Jochen Staerk.
   </blockquote>
 
@@ -992,40 +988,32 @@ You can download phpCAS from the following place:<br />
   <blockquote> 
     <p><strong>[X1]<br />
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news1.domain.org<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.*,nopy.comp.network<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnews.*,pnews.comp.network<br />
       option&nbsp;&nbsp;&nbsp;&nbsp;default</strong></p>
     <p><strong>[X2]<br />
       # use the default news server<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.test,nopy.talk.*<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnews.test,pnews.talk.*<br />
       auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;none</strong></p>
     <p><strong>[X3]<br />
       server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news2.domain.org<br />
-      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nopy.comp.*,nopy.rec.*<br />
+      group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnews.comp.*,pnews.rec.*<br />
       auth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username,password<br />
       charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gb2312</strong></p>
   </blockquote>
-  <p>The first category "X1" contains all newsgroups matching "nopy.*" 
-    or "nopy.comp.network" from the news server "news1.domain.org", 
+  <p>The first category "X1" contains all newsgroups matching "pnews.*" 
+    or "pnews.comp.network" from the news server "news1.domain.org", 
     and the default charset is used in these groups. By the way, this category does not
     require authentication to the news server (by default)</p>
   <p>The second category "X2" contains all newsgroups matching 
-    "nopy.test" or "nopy.talk.*" from the default news server 
+    "pnews.test" or "pnews.talk.*" from the default news server 
     defined in the above global settings, and the default charset is used in 
     these groups.  By the way, this category does not require authentication to the news server</p>
-  <p>The third category "X3" contains all newsgroups matching "nopy.comp.*" 
-    or "nopy.rec.*" from the news server "news2.domain.org", 
+  <p>The third category "X3" contains all newsgroups matching "pnews.comp.*" 
+    or "pnews.rec.*" from the news server "news2.domain.org", 
     and the "gb2312" charset is used in these groups.
     This category does require explicily authentication to the news server by the supplied username/password</p>
 </blockquote>
-<hr size="1">
 </div>
-<table width=100% cellspacing=0 cellpadding=0><tr><td>
-<div class=small><? echo $pnews_claim; ?><br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
-</td><td align=right>
-<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="<? echo $sflogo; ?>" border="0" alt="SourceForge.net">
-</a>
-</td></tr></table>
+<? include('tailer.php'); ?>
 </body>
 </html>

@@ -19,10 +19,14 @@ echo <<<REL
 <table width=100% cellpadding=0 cellspacing=0>
 <tr>
  <td>
- <font face="Georgia"><h3>$pnews_name $pnews_version</h3></font>
+ <font face="Georgia" size=4><b>$pnews_name</b></font>
+<br />
+<i>Web-based USENET News Reader</i>
+<br />
+<br />
  </td>
- <td align=right valign=bottum>
- <font face="Georgia" size=1>Release Date: $pnews_release</font>
+ <td align=right valign=top>
+ <font face="Verdana" size=1>Release Date: $pnews_release</font>
  </td></tr>
 </table>
 REL;
@@ -30,7 +34,7 @@ REL;
 //	echo $curr_scr;
 	$title = $titles[$curr_scr];
 
-	echo "<table width=100%>\n<tr><td align=left><font size=3 face=Georgia>$title</font>";
+	echo "<table width=100% cellpadding=0 cellspacing=0>\n<tr><td align=left><font size=3 face=Georgia>$title</font>";
 	echo "</td><td align=right>\n";
 	echo "<table cellpadding=0 cellspacing=1>\n<tr><td bgcolor=black>";
 	echo "<table cellpadding=3 cellspacing=2 style='font-family: Georgia'>\n";
@@ -45,5 +49,5 @@ REL;
 	echo "</tr>\n";
 	echo "</table>\n";
 	echo "</td></tr></table>\n";
-	echo "</td></tr></table>\n<hr />\n";
+	echo "</td></tr></table>\n<div class=hr></div>\n";
 ?>

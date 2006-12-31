@@ -19,11 +19,6 @@
 
 require_once('../version.inc.php');
 
-if( isset($_SERVER['HTTPS']) )
-	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-else
-	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-
 echo <<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -86,16 +81,8 @@ The requirement for PHP News Reader on the client side (web browser) :
 </ul>
 The Mozilla 1.2 and Internet Explorer 5.5 works fine for me.
 </div>
-<hr />
-<table width=100% cellspacing=0 cellpadding=0><tr><td><div class=small>$pnews_claim<br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
-</td><td align=right>
-<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" alt="SourceForge.net">
-</a>
-</td></tr></table>
+EOH;
+	include('tailer.php');
+?>
 </body>
 </html>
-
-EOH;
-?>

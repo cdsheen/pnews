@@ -89,23 +89,22 @@ There are various built-in authentication modules.
 <li>POP3S - authenticate user using POP3 over SSL server. (version >= 2.4.1)
 <li>FTPS - authenticate user using FTP over SSL server. (version >= 2.4.1)
 <li>CAS - authenticate user using <a href=http://www.yale.edu/tp/auth target=_blank>CAS</a>. (version >= 2.3.0)
+<li>phpBB - authenticate user with the existing phpBB bulletin board system (version >= 2.5.6)
 </ul>
-<p>
-The support for MySQL and PostgreSQL also makes it possible to authenticate through
-the accounts of many PHP products, for example: <a href=guide.php#phpbb>phpBB</a>.
 <p>
 And it is easy to write your authentication module to be used by PHP News Reader.
 <p>
-The login prompt can be configured as <u>HTTP</u> (as a popup window) or <u>FORM</u> style.<br />
+The login prompt can be configured as <u>HTTP</u> (as a popup window) or <u>FORM</u> (preferred) style.<br />
 Besides, if you already login on <u>phpBB</u>, one can also utilize the session without login again.
 <p>
 PHP News Reader supports multiple interface languages, including English, Traditional Chinese, Simplified Chinese, Fran&ccedil;ais, Finnish, German, Italiano and Slovak.
-The preferred language can be switched any time and any where.
+The preferred language of client's browser will be considered as the default language.
+And this can be switched any time and any where.
 <p>
-PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in China).
+PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in Mainland China).
 <p>
-But the PHP iconv() function may not work on some old systems
-and it also has problems of handling Chinese words.
+The PHP iconv() function may not work on some old systems
+and it can not handle the conversion between Traditional and Simplifired Chinese.
 So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
 The charset of article is auto-converted to the preferred one
@@ -114,9 +113,8 @@ This conversion also effectives while posting, replying, forwarding and cross-po
 The posted articles will also be converted to the charset of the original article in the news server.
 <p>
 PHP News Reader's development started around August 2001.
-I wrote this software in my leisure time, mostly in the weekend.
-Although PHP News Reader still lacks many fancy features,
-it works fine to meet the basic requirements - Reading Netnews.
+And since 2005, I can only afford time to support the limited bug fixes and minor improvements.
+It needs a completely rewrite to support more advanced features.
 <p>
 This is PHP News Reader <b>$pnews_version</b>.
 EOR;
@@ -128,12 +126,12 @@ echo "<p>\n";
 
 $fp = fopen('history.php', 'r');
 while( $buf = fgets( $fp, 255 ) ) {
-	if( preg_match( "/^PHP News Reader $pnews_version/", $buf ) )
+	if( preg_match( "/^<b>PHP News Reader $pnews_version/", $buf ) )
 		break;
 }
 echo $buf;
 while( $buf = fgets( $fp, 255 ) ) {
-	if( preg_match( "/^PHP News Reader v/", $buf ) ) {
+	if( preg_match( "/^<b>PHP News Reader v/", $buf ) ) {
 		if( !strstr( $buf, 'v' . $ver[1] . '.' . $ver[2] . '.' ) )
 			break;
 	}
@@ -146,7 +144,7 @@ You can also browse the whole change logs by <a href=history.php>clicking here</
 <p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>click here</a> for a reference.<br />
 <p>
-You are free to use or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br />
+You are free to use and/or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br />
 And I am very appreciated if you share your comments and modification with me.
 <p>
 Acknowledgement
@@ -169,9 +167,7 @@ http://sourceforge.net/projects/pnews/
 Demonstration:
 <blockquote>
 <a href="http://www.csie.nctu.edu.tw/~cdsheen/enews/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/enews/</a> (in English)<br />
-<a href="http://www.csie.nctu.edu.tw/~cdsheen/news/" target=_blank>http://www.csie.nctu.edu.tw/~cdsheen/news/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5)<br />
 <a href="http://webnews.giga.net.tw/" target=_blank>http://webnews.giga.net.tw/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
-<a href="http://webnews.giga.net.tw/group//soc.culture.taiwan" target=_blank>http://webnews.giga.net.tw/group//soc.culture.taiwan</a>&nbsp; (threading support)
 </blockquote>
 <p>
 Download the latest version from SourceForge:
@@ -182,22 +178,6 @@ Download the latest version from SourceForge:
 Installation Guide:
 <blockquote>
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
-</blockquote>
-<p>
-Checking out the latest source from CVS Repository (read only):
-<blockquote>
-# <font color=green>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews login</font><be />
-Logging in to :pserver:anonymous@cvs.sourceforge.net:2401/cvsroot/pnews<br />
-CVS password: <font color=orange>(Press Enter)</font><br />
-# <font color=green>cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pnews co pnews</font><br />
-cvs server: Updating pnews<br />
-...
-</blockquote>
-<p>
-CVS is also available online:
-<blockquote>
-<a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/pnews/pnews/" target=_blank>View CVS Repository on the Web</a><br />
-<a href="http://cvs.sourceforge.net/cvstarballs/pnews-cvsroot.tar.bz2">Nightly CVS Tarball (pnews-cvsroot.tar.bz2)</a>
 </blockquote>
 <p>
 Forum:
@@ -229,11 +209,8 @@ Taipei, Taiwan<br />
 http://www.csie.nctu.edu.tw/~cdsheen/</a>
 </blockquote>
 </div>
-<hr />
-<div class=small>$pnews_claim</font></div>
+EOR;
+	include('tailer.php');
+?>
 </body>
 </html>
-
-EOR;
-
-?>

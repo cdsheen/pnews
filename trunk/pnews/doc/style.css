@@ -1,7 +1,9 @@
 
-body      { font-size: 12px; color: black; background: #EEFFEE; font-family: arial }
-div       { font-size: 14px; color: black; font-family: Georgia }
-div.small { font-size: 12px; color: black; font-family: Georgia }
+body      { font-size: 12px; color: black; background: #EEFFEE; font-family: Verdana }
+div       { font-size: 14px; color: black; font-family: Verdana }
+div.small { font-size: 12px; color: black; font-family: Verdana }
+div.copy { font-size: 12px; color: black; font-style: italic; font-family: Verdana }
+div.hr    { border-top: black solid 1px; margin-top: 5px; margin-bottom: 5px }
 a         { text-decoration:none; color: blue }
 a:visited { color: blue }
 a:hover   { text-decoration:underline; color:red }
@@ -11,7 +13,6 @@ a.sub:hover   { text-decoration:underline; color:red }
 a.cat         { text-decoration:none; color: blue }
 a.cat:visited { color: blue }
 a.cat:hover   { text-decoration:underline; color:black }
-hr        { height: 1pt; color: #8080A0 }
 .head     { background: #EEEEFF; color: navy; font-size: 12px }
 pre       { color: brown }
 input     { vertical-align: middle; font-size: 12px }

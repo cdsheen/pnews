@@ -19,11 +19,6 @@
 
 require_once('../version.inc.php');
 
-if( isset($_SERVER['HTTPS']) )
-	$sflogo = 'https://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-else
-	$sflogo = 'http://sourceforge.net/sflogo.php?group_id=71412&amp;type=1';
-
 echo <<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -40,8 +35,9 @@ include('header.php');
 
 echo <<<EOH
 <div>
-URL Rewrite Function (first appeared in PHP News Reader v2.2.0)
-<hr />
+<b>URL Rewrite Function</b> (first appeared in PHP News Reader v2.2.0)
+<br /> 
+<br /> 
 URL Rewrite is a cool function that make the link more readable, and this is also known as a search-engine friendly feature.<br />
 <br />
 For example, the link to read an article is:
@@ -70,17 +66,8 @@ For more information about Apache's mod_rewrite, visit <a href="http://httpd.apa
 <p>
 Check the <a href=guide.php>Installation Manual</a> for other configuration parameters.
 </div>
-<hr />
-<table width=100% cellspacing=0 cellpadding=0><tr><td><div class=small>$pnews_claim<br />
-<a href=http://sourceforge.net/projects/pnews/ target=_blank>http://sourceforge.net/projects/pnews/</a></div>
-</td><td align=right>
-<a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
-<img src="$sflogo" border="0" alt="SourceForge.net">
-</a>
-</td></tr></table>
+EOH;
+	include('tailer.php');
+?>
 </body>
 </html>
-
-EOH;
-
-?>
