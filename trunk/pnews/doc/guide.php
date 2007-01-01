@@ -45,7 +45,7 @@ include('header.php');
 <li><a href=#newsgroups_lst>Configuration of <b>newsgroups.lst</b></a>
 </ol>
 </div>
-<hr />
+<div class=hr></div>
 <a name=upgrade></a>
 <div>
 <strong><em>1. Upgrade from previous version</em></strong> 
@@ -59,8 +59,13 @@ the following procedure:
 <li>Restore <b>config.inc.php</b> and <b>newsgroups.lst</b>
 <li>Reading the <a href=history.php>release notes</a> in latest version, and modify <b>config.inc.php</b> or <b>newsgroups.lst</b> if appliable
 </ol>
+And if your previous installation was pulled from our <a href=http://subversion.tigris.org/ target=_blank>Subversion</a> repository, the upgrading process is even more simple:
+<ol>
+<li>Run "<b>svn update</b>" in the directory which PHP News Reader was installed.
+<li>Reading the <a href=history.php>release notes</a> in latest version, and modify <b>config.inc.php</b> or <b>newsgroups.lst</b> if appliable
+</ol>
 </blockquote>
-<hr />
+<div class=hr></div>
 <a name=newinstall></a>
 <strong><em>2. New Installation</em></strong> 
 <blockquote>
@@ -86,6 +91,11 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <blockquote> 
     <p> <strong># mv &nbsp;<? echo $pname; ?> &nbsp;pnews</strong>
   </blockquote>
+  <p> Alternatively, you can pull the source from repository directly if you have <a href=http://subversion.tigris.org/ target=_blank>Subversion</a> client:</p>
+  <blockquote> 
+    <p> <strong># svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews</strong>
+  </blockquote>
+  Using <a href=http://subversion.tigris.org/ target=_blank>Subversion</a> to check out the latest sources is recommended, and it makes the future upgrading easy.
   <p> The configuration of PHP News Reader contains two files, "config.inc.php" 
     and "newsgroups.lst"<br />
     You can refer the template of both files in the subdirectory "examples/".</p>
@@ -114,7 +124,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <p>If you have any problems, or find any errors in this document,<br />please send 
     your comments to cdsheen@users.sourceforge.net, any suggestion is appreciated.</p>
 </blockquote>
-<hr size="1">
+<div class=hr></div>
 <a name=config_inc_php></a>
 <strong><em>3. Configuration for CONFIG.INC.PHP</em></strong> 
 <blockquote> 
@@ -534,7 +544,7 @@ You can download phpCAS from the following place:<br />
   </blockquote>
   <p>&nbsp;</p>
 <a name=section2></a>
-<hr width=90% />
+<div class=hr></div>
   <p><strong>Section 2 - Contents</strong></p>
   <p>This section configure the contents appeared in this reader<br />
   </p>
@@ -612,6 +622,15 @@ You can download phpCAS from the following place:<br />
     <p>This option will enforce the browsing to begin from (or redirect to) $CFG['url_base'] (default: <i>false</i>)</p>
     <p>This option is also useful to deny the robot access from search engine.</p>
     <p>$CFG["referrer_enforcement"] = true;
+    <p>This setting first appeared in the <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
+  </blockquote>
+<a name=article_numbering_reverse></a>
+  <p><strong>$CFG["article_numbering_reverse"]</strong></p>
+  <blockquote>
+    <p>Since <a href="history.php#v265">v2.6.5</a>, the numbering of article in article-list page is now ascendent.</p>
+    <p>If you preferred the old-fashioned numbering order, please set this option to <i>true</i> (default: <i>false</i>)</p>
+    <p>This option only change the numbering, the article order is not affected</p>
+    <p>$CFG["article_numbering_reverse"] = true;
     <p>This setting first appeared in the <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
   </blockquote>
 <a name=confirm_post></a>
@@ -832,7 +851,7 @@ You can download phpCAS from the following place:<br />
       "Tech News" =&gt; "http://foo.bar/technews/" );</p>
   </blockquote>
 <a name=section3></a>
-<hr width=90% />
+<div class=hr></div>
   <p><strong><br />
     Section 3 - Languages</strong></p>
   <p> This section controls the setting about languages and charsets</p>
@@ -880,7 +899,7 @@ You can download phpCAS from the following place:<br />
   <p>Notice: the original $CFG["language"] section is deprecated since <a href="history.php#v210">v2.1.0</a>,<br />please use $CFG["charset"] section instead</p>
 </blockquote>
 <a name=newsgroups_lst></a>
-<hr size="1">
+<div class=hr></div>
 <strong><em>4. Configuration for NEWSGROUPS.LST</em></strong> 
 <blockquote> 
   <p>newsgroups.lst list the news server / news groups to access</p>
@@ -997,7 +1016,7 @@ You can download phpCAS from the following place:<br />
   <p>The charset setting for this category. All newsgroups in this category should be with the same charset.</p>
   <p>Notice: the original 'lang' setting is deprecated since <a href="history.php#v210">v2.1.0</a>, please use 'charset' instead.</p>
   </blockquote>
-  <hr />
+<div class=hr></div>
   <b>An example for <i>newsgroups.lst</i>:</b>
   <p>The setting before any categories are <b>global</b> settings. Two global settings 
     are valid now: <b>charset</b> and <b>server</b></p>

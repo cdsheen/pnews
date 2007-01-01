@@ -227,8 +227,10 @@ else {
 		$datestr = strftime( $CFG['time_format'], $ov[2] );
 
 		$readlink = read_article( $server, $group, $artnum, $subject, false, 'sub' );
-
-		$artidx = $artnum - $lowmark + 1;
+		if( $CFG['article_numbering_reverse'] )
+			$artidx = $artnum - $lowmark + 1;
+		else
+			$artidx = $highmark - $artnum + 1;
 		if( $CFG['hide_email'] )
 			$hmail = hide_mail_link( $email, "$nick " );
 		else

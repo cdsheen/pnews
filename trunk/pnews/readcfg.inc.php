@@ -464,6 +464,9 @@ if( !file_exists( $CFG['group_list'] ) )
 if( !isset($CFG['referrer_enforcement']) )
 	$CFG['referrer_enforcement'] = false;
 
+if( !isset($CFG['article_numbering_reverse']) )
+	$CFG['article_numbering_reverse'] = false;
+
 if( !isset($CFG['advertise_group_list']) )
 	$CFG['advertise_group_list'] = false;
 

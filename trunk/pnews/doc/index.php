@@ -169,7 +169,7 @@ Project Hosts on SourceForge:
 <b>Demonstration:</b>
 <blockquote>
 <a href="http://enews.urdada.net/" target=_blank>http://enews.urdada.net/</a>&nbsp; (in English)<br />
-<a href="http://twbbs.urdada.net/" target=_blank>http://twbbs.urdada.net/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
+<a href="http://webnews.urdada.net/" target=_blank>http://webnews.urdada.net/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
 </blockquote>
 <p>
 <b>Downloads:</b>

@@ -38,9 +38,6 @@ $nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 
 echo "<p>";
 
-if( $CFG['advertise_group_list'] )
-	echo '<div style="float: right">'.$CFG['advertise_group_list'].'</div>';
-
 echo "<table width=100%><tr><td valign=top width=120>\n";
 
 $maxr = 100;
@@ -214,6 +211,10 @@ EOR;
 
 echo "</table>\n";
 echo "</td></tr></table>\n";
+
+if( $CFG['advertise_group_list'] )
+	echo '</td><td valign=top align=right>'.$CFG['advertise_group_list'];
+
 echo "</td></tr></table>\n";
 
 html_foot();

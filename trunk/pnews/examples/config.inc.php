@@ -367,6 +367,12 @@ $CFG["title"] = "XXX News Service";
 // $CFG["group_sorting"] = true;
 
 
+# [article_numbering_reverse] use the old-fashion article numbering
+#                             in article-list page (default: false)
+
+// $CFG["article_numbering_reverse] = true;
+
+
 # [image_inline] The uuencoded image attachment will be shown
 #                inline along with article (default: true)
 
