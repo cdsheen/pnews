@@ -794,10 +794,21 @@ You can download phpCAS from the following place:<br />
     <p>This setting is <b>deprecated</b> since <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
   </blockquote>
 <a name=advertise></a>
-  <p>
-<strong>$CFG["advertise_group_list"]</strong> - add advertisement for group-list page.<br />
-<strong>$CFG["advertise_banner"]</strong> - add advertisement in the banner for each article-list and article page<br />
-<strong>$CFG["advertise_article"]</strong> - add advertisement for each article page
+<a name=advertise_group_list></a>
+<strong>$CFG["advertise_group_list"]</strong>
+  <blockquote> 
+  <p>Place advertisement in group-list page. (default: "")</p>
+  </blockquote>
+<a name=advertise_banner></a>
+<strong>$CFG["advertise_banner"]</strong>
+  <blockquote> 
+  <p>Place advertisement in the banner for each article-list and article page. (default: "")</p>
+  </blockquote>
+<a name=advertise_article></a>
+<strong>$CFG["advertise_article"]</strong>
+  <blockquote> 
+  <p>Place advertisement in the content for each article page. (default: "")</p>
+  </blockquote>
 <a name=language_switch></a>
   <p> <strong>$CFG["language_switch"]</strong></p>
   <blockquote> 

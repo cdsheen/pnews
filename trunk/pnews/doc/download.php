@@ -39,24 +39,30 @@ include('header.php');
 
 echo <<<EOR
 <div>
-Project Home:
+<b>Project Home:</b>
 <blockquote>
 <a href="http://sourceforge.net/projects/pnews/" title="SourceForge Project: PHP News Reader" target=_blank>
 http://sourceforge.net/projects/pnews/
 </a>
 </blockquote>
 <p>
-Download the latest version from SourceForge:
+<b>Downloads:</b>
 <blockquote>
-<a href="http://sourceforge.net/project/showfiles.php?group_id=71412" target=_blank>Source downloads</a>
+<a href="http://sourceforge.net/project/showfiles.php?group_id=71412" target=_blank>http://sourceforge.net/project/showfiles.php?group_id=71412</a>
+<br />
+<br />
+The latest version is also available from <a href=http://subversion.tigris.org target=_blank>Subversion</a>:
+<blockquote>
+# svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews
+</blockquote>
 </blockquote>
 <p>
-Installation Guide:
+<b>Installation Guide:</b>
 <blockquote>
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
-Forum:
+<b>Forum:</b>
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
 </blockquote>

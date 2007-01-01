@@ -25,7 +25,7 @@ html_head( $group );
 
 echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 
-if( isset($CFG['advertise_banner']) )
+if( $CFG['advertise_banner'] )
 	echo '<div style="float: right">'.$CFG['advertise_banner'].'</div>';
 
 if( $CFG['html_header'] ) {

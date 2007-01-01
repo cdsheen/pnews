@@ -117,7 +117,7 @@ $subject = htmlspecialchars( $subject );
 
 echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 
-if( isset($CFG['advertise_banner']) )
+if( $CFG['advertise_banner'] )
 	echo '<div style="float: right">'.$CFG['advertise_banner'].'</div>';
 
 if( $CFG['html_header'] ) {
@@ -228,15 +228,12 @@ else {
 <hr /><table width=100%><tr><td>\n
 ARTINFO;
 
-	if( isset($CFG['advertise_article'] ) )
+	if( $CFG['advertise_article'] )
 		echo '<div style="float: right">'.$CFG['advertise_article'].'</div>';
 	$nnrp->show( $artnum, $artinfo, $show_mode, '', " <br />\n", $artconv['to'],
 		$CFG['url_rewrite'] ? "$dlbase/dl/$server/$group/$artnum/%s"
 		: "$dlbase/download.php?server=$server&group=$group&artnum=$artnum&type=uuencode&filename=%s" );
 
-	echo "</td><td align=right valign=top>";
-#	if( isset($CFG['advertise_article'] ) )
-#		echo $CFG['advertise_article'];
 	echo "</td></tr></table>";
 }
 

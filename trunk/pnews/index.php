@@ -38,7 +38,7 @@ $nnrp->open( $news_server[$curr_category], $news_nntps[$curr_category] );
 
 echo "<p>";
 
-if( isset($CFG['advertise_group_list'] ) )
+if( $CFG['advertise_group_list'] )
 	echo '<div style="float: right">'.$CFG['advertise_group_list'].'</div>';
 
 echo "<table width=100%><tr><td valign=top width=120>\n";

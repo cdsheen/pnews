@@ -48,7 +48,7 @@ PHP News Reader is a web based News Reader.<br /><br />
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
 forwarding and replying news articles.
 <p>
-Features:
+<b>Features:</b>
 <ul>
 <li>Read/Post/Reply/Crosspost/Forward/Delete articles to/from News server(s).
 <li>Multiple News server and multiple categories of news groups.
@@ -59,7 +59,7 @@ Features:
 <li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>
 <p>
-Technical Standards:
+<b>Technical Standards:</b>
 <ul>
 <li><a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977 - Network News Transfer Protocol</a>
 <li><a href="http://rfc.giga.net.tw/rfc2980" target=_blank>RFC 2980 - Common NNTP Extensions</a>
@@ -71,7 +71,7 @@ To install PHP News Reader, please check the <a href=requirement.php>Requirement
 <p>
 PHP News Reader has nothing to do with the user registration.
 It is designed to work with the EXISTING authentication system.
-PHP News Reader supports several flexible authentication interface modules,
+PHP News Reader supports several flexible authentication modules,
 which let administrator easy to control how to authenticate users.
 There are various built-in authentication modules.
 <ul>
@@ -104,13 +104,13 @@ And this can be switched any time and any where.
 PHP News Reader also supports the on-the-fly coding conversion between Traditional Chinese (used in Taiwan) and Simplified Chinese (used in Mainland China).
 <p>
 The PHP iconv() function may not work on some old systems
-and it can not handle the conversion between Traditional and Simplifired Chinese.
+and it can not handle the conversion between Traditional and Simplified Chinese.
 So PHP News Reader use a self-implemented conversion system.
 The conversion between Chinese charsets (BIG5, GB2312 and Unicode/UTF-8) is natively supported.
 The charset of article is auto-converted to the preferred one
 while the selected charset of interface is different from the charset of the news articles.
 This conversion also effectives while posting, replying, forwarding and cross-posting articles.
-The posted articles will also be converted to the charset of the original article in the news server.
+The posted articles will also be converted to the original charset of the news group.
 <p>
 PHP News Reader's development started around August 2001.
 And since 2005, I can only afford time to support the limited bug fixes and minor improvements.
@@ -140,52 +140,59 @@ while( $buf = fgets( $fp, 255 ) ) {
 fclose($fp);
 
 echo <<<EOR
-You can also browse the whole change logs by <a href=history.php>clicking here</a>.
+The whole change log is available <a href=history.php>here</a>.
 <p>
 PHP News Reader applies <a href=copying.php>GPL</a> license, <a href=copying.php>click here</a> for a reference.<br />
 <p>
 You are free to use and/or modify PHP News Reader under the <a href=copying.php>GPL</a> license.<br />
 And I am very appreciated if you share your comments and modification with me.
 <p>
-Acknowledgement
+<b>Acknowledgement:</b>
 <blockquote>
 Many people help the development of PHP News Reader, <a href=acknowlege.php>click here</a> to know their contributions.
 </blockquote>
-Since January 2003, PHP News Reader hosts itself on SourceForge:
+<b>Project Home:</b>
+<blockquote>
+<a href="http://sourceforge.net/projects/pnews/" title="SourceForge Project: PHP News Reader" target=_blank>
+http://sourceforge.net/projects/pnews/
+</a>
+<br />
+<br />
+Project Hosts on SourceForge:
 <blockquote>
 <a href="http://sourceforge.net/" alt="http://sourceforge.net/" target=_blank>
 <img src="$sflogo" border="0" alt="SourceForge.net">
 </a>
 </blockquote>
-Project Home:
-<blockquote>
-<a href="http://sourceforge.net/projects/pnews/" title="SourceForge Project: PHP News Reader" target=_blank>
-http://sourceforge.net/projects/pnews/
-</a>
 </blockquote>
 <p>
-Demonstration:
+<b>Demonstration:</b>
 <blockquote>
-<a href="http://enews.urdada.net/" target=_blank>http://enews.urdada.net/</a> (in English)<br />
+<a href="http://enews.urdada.net/" target=_blank>http://enews.urdada.net/</a>&nbsp; (in English)<br />
 <a href="http://twbbs.urdada.net/" target=_blank>http://twbbs.urdada.net/</a>&nbsp; (tw.bbs.*, in Chinese/BIG5, with <a href="guide.php#url_rewrite"><b>url_rewrite</b></a> turning on)<br />
 </blockquote>
 <p>
-Download the latest version from SourceForge:
+<b>Downloads:</b>
 <blockquote>
+Download the latest version from SourceForge:
 <a href="http://sourceforge.net/project/showfiles.php?group_id=71412" target=_blank>Source downloads</a>
+<br />
+<br />
+The latest version is also available from <a href=http://subversion.tigris.org target=_blank>Subversion</a>:<br /><br />
+# svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews
 </blockquote>
 <p>
-Installation Guide:
+<b>Installation Guide:</b>
 <blockquote>
 <a href="guide.php">PHP News Reader - Installation and Configuration Guide</a>
 </blockquote>
 <p>
-Forum:
+<b>Forum:</b>
 <blockquote>
 <a href="https://sourceforge.net/forum/index.php?group_id=71412" target=_blank>https://sourceforge.net/forum/index.php?group_id=71412</a>
 </blockquote>
 <p>
-Donation:
+<b>Donation:</b>
 <blockquote>
 If you like PHP News Reader, and think it useful for your work, or even making profit from PHP News Reader, you can support me by donating money. But this is *NOT* required. Even without any donation, you can still use PHP News Reader under GPL license.<br />
 <br />
@@ -197,7 +204,7 @@ Make a donation: <a href="http://sourceforge.net/donate/index.php?group_id=71412
 </td></tr></table>
 </blockquote>
 <p>
-Author:
+<b>Author:</b>
 <blockquote>
 Shen Cheng-Da<br />
 Taipei, Taiwan<br />

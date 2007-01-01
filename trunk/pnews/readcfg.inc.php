@@ -461,8 +461,17 @@ if( !isset( $CFG['magic_tag'] ) )
 if( !file_exists( $CFG['group_list'] ) )
 	config_error( '$CFG["group_list"]' );
 
-if( !isset($CFG['show_sourceforge_logo']) )
-	$CFG['show_sourceforge_logo'] = false;
+if( !isset($CFG['referrer_enforcement']) )
+	$CFG['referrer_enforcement'] = false;
+
+if( !isset($CFG['advertise_group_list'] )
+	$CFG['advertise_group_list'] = false;
+
+if( !isset($CFG['advertise_banner'] )
+	$CFG['advertise_banner'] = false;
+
+if( !isset($CFG['advertise_article'] )
+	$CFG['advertise_article'] = false;
 
 if( !isset($CFG['time_format']) )
 	$CFG['time_format'] = '%Y/%m/%d %H:%M';

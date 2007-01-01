@@ -3,13 +3,14 @@
 include_once('../version.inc.php');
 
 $menus = array( 'index.php' => 'Introduction',
+    		'requirement.php' => 'Requirement',
 		'guide.php' => 'Documentation',
-		'history.php' => 'Changes and History',
+		'history.php' => 'Changes',
 		'download.php' => 'Download' );
 
 $titles = array( 'index.php' => 'PHP News Reader - Introduction',
 		'guide.php' => 'PHP News Reader - Installation and Configuration Documentation',
-		'history.php' => 'PHP News Reader - Release notes and Histroy',
+		'history.php' => 'PHP News Reader - Release notes and History',
 		'download.php' => 'PHP News Reader - Download',
 		'requirement.php' => 'PHP News Reader - Requirement',
 		'acknowlege.php' => 'PHP News Reader - Acknowlegement',
@@ -37,14 +38,14 @@ REL;
 	echo "<table width=100% cellpadding=0 cellspacing=0>\n<tr><td align=left><font size=3 face=Georgia>$title</font>";
 	echo "</td><td align=right>\n";
 	echo "<table cellpadding=0 cellspacing=1>\n<tr><td bgcolor=black>";
-	echo "<table cellpadding=3 cellspacing=2 style='font-family: Georgia'>\n";
+	echo "<table cellpadding=3 cellspacing=2 style='font-family: Verdana'>\n";
 	echo "<tr bgcolor=white>\n";
 #	echo "<td><font size=3 color=black>PHP News Reader</font></td>\n";
 	foreach( $menus as $scr => $menu ) {
 		if( $curr_scr == $scr )
-			echo "<td align=25% bgcolor=black><font size=3 color=white>$menu</font></td>\n";
+			echo "<td align=25% bgcolor=black><font size=2 color=white>$menu</font></td>\n";
 		else
-			echo "<td align=25% bgcolor=#FFFFA0 onMouseover='this.bgColor=\"#CCCCFF\"' onMouseout='this.bgColor=\"#FFFFA0\"'><a href=$scr><font size=3>$menu</font></a></td>\n";
+			echo "<td align=25% bgcolor=#FFFFA0 onMouseover='this.bgColor=\"#CCCCFF\"' onMouseout='this.bgColor=\"#FFFFA0\"'><a class=link href=$scr><font size=2>$menu</font></a></td>\n";
 	}
 	echo "</tr>\n";
 	echo "</table>\n";

@@ -40,7 +40,7 @@ echo <<<EOH
 <li>Fixed the browser languages detection for zh-tw and zh-cn
 <li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base'].
 <li>Fixed the bug which unable to access the first category (thanks goudal)
-<li>Added <a href=guide.php#advertise>\$CFG['advertise_*']</a> to add advertisement.
+<li>Added <a href=guide.php#advertise>\$CFG['advertise_*']</a> to place advertisement.
 </ul>
 <a name=v264></a>
 <b>PHP News Reader v2.6.4 (2006/03/22)</b>
