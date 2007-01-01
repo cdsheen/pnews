@@ -1,6 +1,6 @@
 
 # PHP News Reader
-# Copyright (C) 2001-2006 Shen Cheng-Da
+# Copyright (C) 2001-2007 Shen Cheng-Da
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# Copyright (C) 2001-2006 - All rights reserved
+# Copyright (C) 2001-2007 - All rights reserved
 # Shen Cheng-Da (cdsheen at users.sourceforge.net)
 
 ZIPNAME=pnews265
@@ -36,7 +36,10 @@ pkg:
 	tar zcvf $(ZIPNAME).tgz $(ZIPNAME)
 	zip -r $(ZIPNAME) $(ZIPNAME)
 	rm -rf $(ZIPNAME)
-	mv -f $(ZIPNAME).tgz $(ZIPNAME).zip ..
+
+upload:
+	ncftpput upload.sourceforge.net /incoming pnews265.tgz
+	ncftpput upload.sourceforge.net /incoming pnews265.zip
 
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_b2g.inc.php

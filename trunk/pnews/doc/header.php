@@ -32,6 +32,7 @@ echo <<<REL
 </table>
 REL;
 	$curr_scr = basename($_SERVER['PHP_SELF']);
+	$adfile = 'ad-'.$curr_scr;
 //	echo $curr_scr;
 	$title = $titles[$curr_scr];
 

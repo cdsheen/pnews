@@ -37,8 +37,12 @@ EOR;
 
 include('header.php');
 
+echo "<div>";
+
+if( file_exists($adfile) )
+          @include($adfile);
+
 echo <<<EOR
-<div>
 <b>Project Home:</b>
 <blockquote>
 <a href="http://sourceforge.net/projects/pnews/" title="SourceForge Project: PHP News Reader" target=_blank>
@@ -52,9 +56,9 @@ http://sourceforge.net/projects/pnews/
 <br />
 <br />
 The latest version is also available from <a href=http://subversion.tigris.org target=_blank>Subversion</a>:
-<blockquote>
-# svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews
-</blockquote>
+<br />
+<br />
+# <i>svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews</i>
 </blockquote>
 <p>
 <b>Installation Guide:</b>

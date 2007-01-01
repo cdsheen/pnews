@@ -38,6 +38,10 @@ include('header.php');
 
 ?>
 <div>
+<?
+if( file_exists($adfile) )
+	@include($adfile);
+?>
 <ol>
 <li><a href=#upgrade>Upgrade from previous version</a>
 <li><a href=#newinstall>New installation</a>

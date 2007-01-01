@@ -42,10 +42,12 @@ EOR;
 
 include('header.php');
 
+echo "<div><div>";
+if( file_exists($adfile) )
+	@include($adfile);
 echo <<<EOR
-<div>
 PHP News Reader is a web based News Reader.<br /><br />
-It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,
+It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,<br />
 forwarding and replying news articles.
 <p>
 <b>Features:</b>
@@ -59,6 +61,7 @@ forwarding and replying news articles.
 <li>Multiple language interface and Traditional/Simplified Chinese coding conversion.
 </ul>
 <p>
+</div>
 <b>Technical Standards:</b>
 <ul>
 <li><a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977 - Network News Transfer Protocol</a>

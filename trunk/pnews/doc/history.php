@@ -32,8 +32,12 @@ EOH;
 
 include('header.php');
 
+echo "<div>";
+
+if( file_exists($adfile) )
+	@include($adfile);
+
 echo <<<EOH
-<br />
 <a name=v265></a>
 <b>PHP News Reader v2.6.5 (2007/01/01)</b>
 <ul>
@@ -411,6 +415,7 @@ echo <<<EOH
 <li>Correct the problem about author information of XOVER, HEAD
 <li>Fix a bug of checking both "Not post to newsgroup" and "Reply to author"
 </ul>
+</div>
 EOH;
 
 include('tailer.php');
