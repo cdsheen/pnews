@@ -10,7 +10,7 @@ $menus = array( 'index.php' => 'Introduction',
 
 $titles = array( 'index.php' => 'PHP News Reader - Introduction',
 		'guide.php' => 'PHP News Reader - Installation and Configuration Documentation',
-		'history.php' => 'PHP News Reader - Release notes and History',
+		'history.php' => 'PHP News Reader - Release notes',
 		'download.php' => 'PHP News Reader - Download',
 		'requirement.php' => 'PHP News Reader - Requirement',
 		'acknowlege.php' => 'PHP News Reader - Acknowlegement',

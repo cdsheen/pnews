@@ -25,7 +25,7 @@ echo <<<EOH
 <head>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5" />
 <LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
-<title>PHP News Reader - Release notes and History</title>
+<title>PHP News Reader - Release notes</title>
 </head>
 <body style="background-color: #EEFFFF">
 EOH;
