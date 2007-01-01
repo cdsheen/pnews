@@ -470,7 +470,7 @@ if( !isset($CFG['advertise_group_list']) )
 if( !isset($CFG['advertise_banner']) )
 	$CFG['advertise_banner'] = false;
 
-if( !isset($CFG['advertise_article'] )
+if( !isset($CFG['advertise_article']) )
 	$CFG['advertise_article'] = false;
 
 if( !isset($CFG['time_format']) )
