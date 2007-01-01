@@ -464,10 +464,10 @@ if( !file_exists( $CFG['group_list'] ) )
 if( !isset($CFG['referrer_enforcement']) )
 	$CFG['referrer_enforcement'] = false;
 
-if( !isset($CFG['advertise_group_list'] )
+if( !isset($CFG['advertise_group_list']) )
 	$CFG['advertise_group_list'] = false;
 
-if( !isset($CFG['advertise_banner'] )
+if( !isset($CFG['advertise_banner']) )
 	$CFG['advertise_banner'] = false;
 
 if( !isset($CFG['advertise_article'] )
