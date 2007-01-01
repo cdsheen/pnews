@@ -1,0 +1,27 @@
+###################################################
+# PHP News Reader - Newsgroups Configuration
+# Copyright (C) 2001-2007 - All rights reserved
+# Shen Cheng-Da (cdsheen at users.sourceforge.net)
+
+# default encoding for all categories
+charset	big5
+
+# default news server for all categories
+server	news1.domain.org
+
+[X1]
+server	news1.domain.org
+group	nopy.*,nopy.comp.network
+option	default
+
+[X2]
+# use the default news server
+group	nopy.test,nopy.talk.*
+auth	none
+
+[X3]
+server	news2.domain.org
+group	nopy.comp.*,nopy.rec.*
+auth	username,password
+charset	gb
+

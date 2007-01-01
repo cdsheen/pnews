@@ -1,0 +1,55 @@
+###################################################
+# PHP News Reader - Newsgroups Configuration
+# Copyright (C) 2001-2007 - All rights reserved
+# Shen Cheng-Da (cdsheen at users.sourceforge.net)
+
+charset	big5
+
+[學術網路]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.config,tw.bbs.newgroups,tw.bbs.admin,tw.bbs.help,tw.bbs.lists,tw.bbs.admin.*,tw.bbs.test
+
+[資訊電腦]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.comp.*
+
+[風土民情]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.soc.*
+
+[娛樂資訊]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.rec.*
+
+[買賣交易]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.forsale.*,tw.bbs.forsale
+
+[學術科學]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.sci.*,tw.bbs.lang.*
+
+[聊天聯誼]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.talk,tw.bbs.talk.*
+
+[文字創作]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.literal.*
+
+[運動休閒]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.sports,tw.bbs.sports.*
+
+[校園資訊]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.edu.*,tw.bbs.campus,tw.bbs.campus.*
+
+[校友交流]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.alumni,tw.bbs.alumni.*
+
+[音樂藝術]
+server	netnews.csie.nctu.edu.tw
+group	tw.bbs.music.*
+
