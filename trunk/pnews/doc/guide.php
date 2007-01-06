@@ -99,7 +99,7 @@ and the other is zip.<br />Please download your preferred format from SourceForg
   <blockquote> 
     <p> <strong># svn co https://pnews.svn.sourceforge.net/svnroot/pnews/trunk/pnews</strong>
   </blockquote>
-  Using <a href=http://subversion.tigris.org/ target=_blank>Subversion</a> to check out the latest sources is recommended, and it makes the future upgrading easy.
+  Using <a href=http://subversion.tigris.org/ target=_blank>Subversion</a> to check out the latest sources is recommended, since it makes the future upgrading easier.
   <p> The configuration of PHP News Reader contains two files, "config.inc.php" 
     and "newsgroups.lst"<br />
     You can refer the template of both files in the subdirectory "examples/".</p>
@@ -683,7 +683,7 @@ You can download phpCAS from the following place:<br />
   <blockquote>
     <p>Enable threading (default: <i>false</i>)</p>
     <p>We only support the simplest type of threading now.<br />
-       Articles in the same thread will be <u>listed</u> in the bottum of the page
+       Articles in the same thread will be <u>listed</u> in the bottom of the page
        when you view one of the message in the thread.<p>
     <p>To enable threading, you must enable the cache mechanism by setting
        <a href=#cache_dir>$CFG["cache_dir"]</a> and specify the correct <a href=#thread_db_format>$CFG["thread_db_format"]</a>.
@@ -697,7 +697,7 @@ You can download phpCAS from the following place:<br />
        <blockquote>
        # php clear-cache.php /usr/local/apache/htdocs/pnews/config.inc.php<br />
        </blockquote>
-       Please specify the location of config.inc.php as the first command line argument.<br />
+       Please specify the location of config.inc.php as the first argument in command line.<br />
        And the process must have the permission to delete files under <a href=#cache_dir>$CFG["cache_dir"]</a>.<br /><br />
        You may want to put this script in your crontab for convenience.
     <p>This setting first appeared in the <a href="history.php#v260">v2.6.0</a> of PHP News Reader</p>
@@ -726,7 +726,7 @@ You can download phpCAS from the following place:<br />
 <a name=allow_attach_file></a>
   <p><strong>$CFG["allow_attach_file"]</strong></p>
   <blockquote>
-    <p>Setting the allowed attachment(s) when posting article (default: <i>2</i>)</p>
+    <p>Setting the number of allowed attachment(s) when posting article (default: <i>2</i>)</p>
     <p>This setting first appeared in the <a href="history.php#v250">v2.5.0</a> of PHP News Reader</p>
   </blockquote>
 <a name=group_sorting></a>
@@ -769,16 +769,11 @@ You can download phpCAS from the following place:<br />
 <a name=article_order_reverse></a>
   <p><strong>$CFG["show_latest_top"]</strong></p>
   <blockquote> 
-    <p>Show the latest article as the top item (default: <i>true</i>)</p>
-    <p>This setting first appeared in the <a href="history.php#v257">v2.5.7</a> of PHP News Reader<br />
-    It is to replace $CFG["article_order_reverse"] in <a href="history.php#v220">v2.2.0</a> - <a href="history.php#v231">v2.3.1</a> and $CFG["show_newest_top"] in <a href="history.php#v240">v2.4.0</a> - <a href="history.php#v256">v2.5.6</a><br />
     <p>This setting is <b>deprecated</b> since <a href="history.php#v260">v2.6.0</a> of PHP News Reader.</p>
   </blockquote>
 <a name=show_article_popup></a>
   <p><strong>$CFG["show_article_popup"]</strong></p>
   <blockquote> 
-    <p>Controlling the article to show in popup window or not (default: <i>false</i>)</p>
-    <p>This setting first appeared in the <a href="history.php#v220">v2.2.0</a> of PHP News Reader</p>
     <p>This setting is <b>deprecated</b> since <a href="history.php#v261">v2.6.1</a> of PHP News Reader.</p>
   </blockquote>
 <a name=filter_ansi_color></a>
@@ -813,7 +808,6 @@ You can download phpCAS from the following place:<br />
 <a name=show_sourceforge_logo></a>
   <p> <strong>$CFG["show_sourceforge_logo"]</strong></p>
   <blockquote> 
-    <p>Show sourceforge logo (default: <i>false</i>)</p>
     <p>This setting is <b>deprecated</b> since <a href="history.php#v265">v2.6.5</a> of PHP News Reader</p>
   </blockquote>
 <a name=advertise></a>
