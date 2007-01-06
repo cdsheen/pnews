@@ -38,6 +38,11 @@ if( file_exists($adfile) )
 	@include($adfile);
 
 echo <<<EOH
+<a name=v266></a>
+<b>PHP News Reader v2.6.6 [r582] (2007/01/07)</b>
+<ul>
+<li>Fixed the remote file inclusion vulnerability (if PHP <a href=http://www.php.net/manual/en/security.globals.php target=_blank>register_globals</a> is on).
+</ul>
 <a name=v265></a>
 <b>PHP News Reader v2.6.5 [r582] (2007/01/01)</b>
 <ul>
