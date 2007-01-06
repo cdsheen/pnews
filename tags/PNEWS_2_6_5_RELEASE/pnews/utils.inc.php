@@ -232,7 +232,7 @@ if( $grouplst_convert['to'] ) {
 		$news_category[$i] = $grouplst_convert['to']( $news_category[$i] );
 }
 
-if( $CFG['base_url_enforcement'] && !isset($_SESSION['urlbase_access']) ) {
+if( $CFG['referrer_enforcement'] && !isset($_SESSION['urlbase_access']) ) {
 	if( $self_base == 'index.php' )
 		$_SESSION['urlbase_access'] = 'yes';
 	elseif( $_SESSION['urlbase_access'] != 'yes' ) {
