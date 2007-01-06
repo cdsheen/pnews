@@ -25,8 +25,10 @@ $phpbb_root_path = $CFG['auth_phpbb_path'];
 
 define( 'IN_PHPBB', true );
 
-include($CFG['auth_phpbb_path'] . 'extension.inc');
-include($CFG['auth_phpbb_path'] . 'common.'.$phpEx);
+if( file_exists($CFG['auth_phpbb_path'] . 'extension.inc') )
+	include($CFG['auth_phpbb_path'] . 'extension.inc');
+if( file_exists($CFG['auth_phpbb_path'] . 'common.'.$phpEx) )
+	include($CFG['auth_phpbb_path'] . 'common.'.$phpEx);
 
 // 
 // Start session management 

@@ -97,7 +97,8 @@ $curr_charset = $lang_coding[$curr_language];
 
 // echo "<!-- include {$lang_define[$curr_language]} -->\n";
 
-@include($lang_define[$curr_language]);
+if( file_exists($lang_define[$curr_language]) )
+	@include($lang_define[$curr_language]);
 
 if( !isset( $pnews_msg['Login'] ) ) {
 	echo "<font face=Georgia>Warning: language definition missed ({$lang_define[$curr_language]})</font><br>\n";

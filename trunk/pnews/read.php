@@ -120,7 +120,7 @@ echo "<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td>";
 if( $CFG['advertise_banner'] )
 	echo '<div style="float: right">'.$CFG['advertise_banner'].'</div>';
 
-if( $CFG['html_header'] ) {
+if( $CFG['html_header'] && file_exists($CFG['html_header']) ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
 	else
@@ -344,7 +344,7 @@ echo "</center>";
 
 html_foot(false);
 
-if( $CFG['html_footer'] ) {
+if( $CFG['html_footer'] && file_exists($CFG['html_footer']) ) {
 	if( preg_match( '/\.php$/', $CFG['html_footer'] ) )
 		include( $CFG['html_footer'] );
 	else

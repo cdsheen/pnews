@@ -64,7 +64,10 @@ if( isset( $_SESSION['cfg_cache'], $_SESSION['cfg_cache_time'] ) && $cfg_timesta
 			include('auth/nntps.inc.php');
 			break;
 		case 'user':
-			include( $CFG['auth_user_module'] );
+			if( file_exists($CFG['auth_user_module']) )
+				include( $CFG['auth_user_module'] );
+			else
+			  	show_error( $CFG['auth_user_module'] . ' can not be included');
 			break;
 		case 'phpbb':
 			include('auth/phpbb.inc.php');

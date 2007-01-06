@@ -23,7 +23,7 @@ require_once('utils.inc.php');
 
 html_head( $title );
 
-if( $CFG['html_header'] ) {
+if( $CFG['html_header'] && file_exists($CFG['html_header']) ) {
 	if( preg_match( '/\.php$/', $CFG['html_header'] ) )
 		include( $CFG['html_header'] );
 	else
@@ -221,7 +221,7 @@ html_foot();
 
 $nnrp->close();
 
-if( $CFG['html_footer'] ) {
+if( $CFG['html_footer'] && file_exists($CFG['html_footer']) ) {
 	if( preg_match( '/\.php$/', $CFG['html_footer'] ) )
 		include( $CFG['html_footer'] );
 	else
