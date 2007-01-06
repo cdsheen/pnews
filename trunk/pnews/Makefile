@@ -38,8 +38,8 @@ pkg:
 	rm -rf $(ZIPNAME)
 
 upload:
-	ncftpput upload.sourceforge.net /incoming pnews265.tgz
-	ncftpput upload.sourceforge.net /incoming pnews265.zip
+	ncftpput upload.sourceforge.net /incoming $(ZIPNAME).tgz
+	ncftpput upload.sourceforge.net /incoming $(ZIPNAME).zip
 
 gb:
 	b2g < language/chinese.inc.php | sed 's/Traditional/Simplified/' | sed 's/BIG5/GB2312/' > language/chinese_b2g.inc.php
