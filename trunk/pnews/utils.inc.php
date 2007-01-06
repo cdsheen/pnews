@@ -235,7 +235,7 @@ if( $grouplst_convert['to'] ) {
 if( $CFG['referrer_enforcement'] && !isset($_SESSION['urlbase_access']) ) {
 	if( $self_base == 'index.php' )
 		$_SESSION['urlbase_access'] = 'yes';
-	elseif( $_SESSION['urlbase_access'] != 'yes' ) {
+	else {
 		header('Location: ' . $CFG['url_base'] );
 		exit;
 	}
