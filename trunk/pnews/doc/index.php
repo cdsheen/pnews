@@ -46,7 +46,7 @@ echo "<div><div>";
 if( file_exists($adfile) )
 	@include($adfile);
 echo <<<EOR
-PHP News Reader is a web based News Reader.<br /><br />
+<h4>PHP News Reader is a web-based News Reader.</h4>
 It supports the standard NNTP protocol (<a href="http://rfc.giga.net.tw/rfc977" target=_blank>RFC 977</a>) for reading, posting, deleting,<br />
 forwarding and replying news articles.
 <p>
