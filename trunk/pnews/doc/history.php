@@ -42,7 +42,7 @@ echo <<<EOH
 <b>PHP News Reader v2.6.5 [r582] (2007/01/01)</b>
 <ul>
 <li>Fixed the browser languages detection for zh-tw and zh-cn
-<li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from \$CFG['url_base'].
+<li>Added <a href=guide.php#referrer_enforcement>\$CFG['referrer_enforcement']</a> to enforce the browsing to begin from <a href=guide.php#url_base>\$CFG['url_base']</a>.
 <li>Fixed the bug which unable to access the first category (thanks goudal)
 <li>Added <a href=guide.php#article_numbering_reverse>\$CFG['article_numbering_reverse']</a> to change article number order.
 <li>Added <a href=guide.php#advertise>\$CFG['advertise_*']</a> to place advertisement.
