@@ -33,6 +33,11 @@ pkg:
 	rm -rf $(ZIPNAME)/auth/CVS
 	rm -rf $(ZIPNAME)/doc/CVS
 	rm -rf $(ZIPNAME)/css/CVS
+	rm -rf $(ZIPNAME)/examples/.svn
+	rm -rf $(ZIPNAME)/language/.svn
+	rm -rf $(ZIPNAME)/auth/.svn
+	rm -rf $(ZIPNAME)/doc/.svn
+	rm -rf $(ZIPNAME)/css/.svn
 	tar zcvf $(ZIPNAME).tgz $(ZIPNAME)
 	zip -r $(ZIPNAME) $(ZIPNAME)
 	rm -rf $(ZIPNAME)
